@@ -79,12 +79,12 @@
 // When defined as 1, the function usb_out() is called for OUT packets.
 // You need this option to send data from the host to the device in
 // a control transfer.
-#define	USBTINY_CALLBACK_OUT		0
+#define	USBTINY_CALLBACK_OUT		1
 
 // When this macro is defined as 1, an optimized CRC function is used
 // that calculates the CRC about twice as fast as the standard version,
 // but at the expense of 42 bytes of additional flash memory.
-#define	USBTINY_FAST_CRC		0
+#define	USBTINY_FAST_CRC		1
 
 // Set the macro USBTINY_ENDPOINT to 1 to add an additional endpoint,
 // according to the values of the three other macros.

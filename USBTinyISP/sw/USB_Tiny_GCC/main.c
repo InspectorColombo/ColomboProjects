@@ -55,7 +55,7 @@ enum
 #define	MISO_MASK	_BV(MISO)
 #define	SCK_MASK	_BV(SCK)
 
-#define	BUFFEN		(D,4)		// output, active low
+//#define	BUFFEN		(D,4)		// output, active low
 
 // ----------------------------------------------------------------------
 // Local data
@@ -87,6 +87,29 @@ static	inline	void	delay ( void )
 // ----------------------------------------------------------------------
 // Issue one SPI command.
 // ----------------------------------------------------------------------
+
+inline void SetSck()
+{
+	PORT |= SCK_MASK;
+}
+
+inline void ClearSck()
+{
+	PORT &= ~SCK_MASK;
+}
+
+inline void SetMosi()
+{
+	PORT |= MOSI_MASK;
+}
+
+inline void ClearMosi()
+{
+	PORT &= ~MOSI_MASK;
+}
+
+
+
 static	void	spi ( byte_t* cmd, byte_t* res, byte_t n )
 {
 	byte_t	c;
@@ -102,18 +125,22 @@ static	void	spi ( byte_t* cmd, byte_t* res, byte_t n )
 		{
 			if	( c & mask )
 			{
-				PORT |= MOSI_MASK;
+				SetMosi();
+				//PORT |= MOSI_MASK;
 			}
 			delay();
-			PORT |= SCK_MASK;
+			SetSck();
+			//PORT |= SCK_MASK;
 			delay();
 			r <<= 1;
 			if	( PIN & MISO_MASK )
 			{
 				r++;
 			}
-			PORT &= ~ MOSI_MASK;
-			PORT &= ~ SCK_MASK;
+			ClearMosi();
+			//PORT &= ~ MOSI_MASK;
+			ClearSck();
+			//PORT &= ~ SCK_MASK;
 		}
 		*res++ = r;
 	}
@@ -192,7 +219,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		{
 			mask |= RESET_MASK;
 		}
-		CLR(BUFFEN);
+//		CLR(BUFFEN);
 		DDR  = LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
 		PORT = mask;
 		return 0;
@@ -201,7 +228,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	{
 		DDR  = 0x00;
 		PORT = 0x00;
-		SET(BUFFEN);
+//		SET(BUFFEN);
 		return 0;
 	}
 	if	( ! PORT )
@@ -295,8 +322,8 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 // ----------------------------------------------------------------------
 extern	int	main ( void )
 {
-	SET(BUFFEN);
-	OUTPUT(BUFFEN);
+//	SET(BUFFEN);
+//	OUTPUT(BUFFEN);
 	usb_init();
 	for	( ;; )
 	{
