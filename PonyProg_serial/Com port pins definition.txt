@@ -1,0 +1,22 @@
+ - DB9 - Pins for RS232:
+#
+# GND   5   -- |O
+#              |   O| <-   9   RI
+# DTR   4   <- |O   |
+#              |   O| <-   8   CTS
+# TXD   3   <- |O   |
+#              |   O| ->   7   RTS
+# RXD   2   -> |O   |
+#              |   O| <-   6   DSR
+# DCD   1   -> |O
+#
+programmer
+  id    = "ponyser";
+  desc  = "design ponyprog serial, reset=!txd sck=rts mosi=dtr miso=cts";
+  type  = "serbb";
+  connection_type = serial;
+  reset = ~3;
+  sck   = ~7;
+  mosi  = ~4;
+  miso  = ~8;
+;
