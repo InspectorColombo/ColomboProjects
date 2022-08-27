@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.microchip.xc8</ToolchainName>
+    <ProjectGuid>2285C48D-296E-43FD-A7B6-69885F64CFFD</ProjectGuid>
+    <avrdevice>ATmega8535</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>USBASP_8535</AssemblyName>
+    <Name>USBASP_8535</Name>
+    <RootNamespace>USBASP_8535</RootNamespace>
+    <ToolchainFlavour>XC8_2.36</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <BootSegment>2</BootSegment>
+    <ResetRule>0</ResetRule>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <EraseKey />
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <com.microchip.xc8>
+  <com.microchip.xc8.common.optimization.RelaxBranches>True</com.microchip.xc8.common.optimization.RelaxBranches>
+  <com.microchip.xc8.common.outputfiles.hex>True</com.microchip.xc8.common.outputfiles.hex>
+  <com.microchip.xc8.common.outputfiles.eep>True</com.microchip.xc8.common.outputfiles.eep>
+  <com.microchip.xc8.common.outputfiles.usersignatures>False</com.microchip.xc8.common.outputfiles.usersignatures>
+  <com.microchip.xc8.common.outputfiles.lss>True</com.microchip.xc8.common.outputfiles.lss>
+  <com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <com.microchip.xc8.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>(%24DeviceMacro)</Value>
+      <Value>NDEBUG</Value>
+    </ListValues>
+  </com.microchip.xc8.compiler.symbols.DefSymbols>
+  <com.microchip.xc8.compiler.optimization.level>Optimize more (-O2)</com.microchip.xc8.compiler.optimization.level>
+  <com.microchip.xc8.compiler.optimization.PackStructureMembers>True</com.microchip.xc8.compiler.optimization.PackStructureMembers>
+  <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
+  <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
+  <com.microchip.xc8.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </com.microchip.xc8.linker.libraries.Libraries>
+  <com.microchip.xc8.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(ProjectDir)/usbdrv</Value>
+    </ListValues>
+  </com.microchip.xc8.assembler.general.IncludePaths>
+</com.microchip.xc8>
+    </ToolchainSettings>
+    <PostBuildEvent>rem Post Buld Events
+"c:\Program Files\Microchip\xc8\v2.36\bin\avr-objcopy.exe" -I ihex USBASP_8535.hex -O binary USBASP_8535.bin
+OddBytesCountSolver.exe USBASP_8535.bin
+copy c:\__USBASP\USBASP_8535\USBASP_8535\Release\USBASP_8535.bin c:\__AVR_DUDE\USBASP_8535.bin
+cd c:\__AVR_DUDE\
+avrdude.exe -p atmega8535 -c ponyser -i 1 -P COM4 -U flash:w:USBASP_8535.bin:r
+avrdude.exe -p ATmega8535 -c ponyser -i 1 -P COM4 -U hfuse:w:0xc9:m
+avrdude.exe -p ATmega8535 -c ponyser -i 1 -P COM4 -U lfuse:w:0xaf:m
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <com.microchip.xc8>
+        <com.microchip.xc8.common.outputfiles.hex>True</com.microchip.xc8.common.outputfiles.hex>
+        <com.microchip.xc8.common.outputfiles.eep>True</com.microchip.xc8.common.outputfiles.eep>
+        <com.microchip.xc8.common.outputfiles.usersignatures>False</com.microchip.xc8.common.outputfiles.usersignatures>
+        <com.microchip.xc8.common.outputfiles.lss>True</com.microchip.xc8.common.outputfiles.lss>
+        <com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <com.microchip.xc8.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>(%24DeviceMacro)</Value>
+            <Value>DEBUG</Value>
+          </ListValues>
+        </com.microchip.xc8.compiler.symbols.DefSymbols>
+        <com.microchip.xc8.compiler.optimization.level>Optimize debugging experience (-Og)</com.microchip.xc8.compiler.optimization.level>
+        <com.microchip.xc8.compiler.optimization.PackStructureMembers>True</com.microchip.xc8.compiler.optimization.PackStructureMembers>
+        <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
+        <com.microchip.xc8.compiler.optimization.DebugLevel>Default (-g2)</com.microchip.xc8.compiler.optimization.DebugLevel>
+        <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
+        <com.microchip.xc8.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </com.microchip.xc8.linker.libraries.Libraries>
+        <com.microchip.xc8.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(ProjectDir)/usbdrv</Value>
+          </ListValues>
+        </com.microchip.xc8.assembler.general.IncludePaths>
+        <com.microchip.xc8.assembler.debugging.DebugLevel>Default (-Wa,-g)</com.microchip.xc8.assembler.debugging.DebugLevel>
+      </com.microchip.xc8>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="clock.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="clock.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="isp.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="isp.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="oddebug.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="oddebug.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tpi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tpi.S">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tpi_defs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbasp.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbconfig-prototype.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbconfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrvasm.S">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbportability.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="asmcommon.inc">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
