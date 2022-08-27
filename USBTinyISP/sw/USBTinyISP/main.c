@@ -322,6 +322,32 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 // ----------------------------------------------------------------------
 extern	int	main ( void )
 {
+	
+/*
+	DDR  = LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
+	for(byte_t bt = 0;; ++bt)
+	{
+		if ((bt && 0b00000001) != 0)
+		{
+			PORT |= LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
+		}
+		else
+		{
+			PORT &= ~(LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK);
+		}
+		
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+	}
+*/	
+	
+	
 //	SET(BUFFEN);
 //	OUTPUT(BUFFEN);
 	usb_init();
