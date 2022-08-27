@@ -15,10 +15,6 @@
 #define TIMERVALUE      TCNT0
 #define CLOCK_T_320us	60
 
-#ifdef __AVR_ATmega8__
-#define TCCR0B  TCCR0
-#endif
-
 #ifdef __ATmega8535__
 #define TCCR0B  TCCR0
 #endif
