@@ -108,43 +108,42 @@ inline void ClearMosi()
 	PORT &= ~MOSI_MASK;
 }
 
-
-
-static	void	spi ( byte_t* cmd, byte_t* res, byte_t n )
+static void spi( byte_t* cmd, byte_t* res, byte_t n )
 {
-	byte_t	c;
-	byte_t	r;
-	byte_t	mask;
-
+	byte_t	txByte;
+	byte_t	rxByte;
 	while	( n != 0 )
 	{
 		n--;
-		c = *cmd++;
-		r = 0;
-		for	( mask = 0x80; mask; mask >>= 1 )
+		txByte = *cmd++;
+		rxByte = 0;
+
+		ClearSck();
+		for	(byte_t bitsCounter = 0;; ++bitsCounter)
 		{
-			if	( c & mask )
-			{
-				SetMosi();
-				//PORT |= MOSI_MASK;
-			}
+			((txByte & 0b10000000) != 0) ? SetMosi() : ClearMosi();
 			delay();
+			
+			if	((PIN & MISO_MASK) != 0)
+			{
+				//++rxByte;
+				rxByte |= 0b00000001;
+			}
+
 			SetSck();
-			//PORT |= SCK_MASK;
 			delay();
-			r <<= 1;
-			if	( PIN & MISO_MASK )
-			{
-				r++;
-			}
-			ClearMosi();
-			//PORT &= ~ MOSI_MASK;
 			ClearSck();
-			//PORT &= ~ SCK_MASK;
+
+			if (bitsCounter == 7)
+				break;
+			
+			txByte <<= 1;
+			rxByte <<= 1;
 		}
-		*res++ = r;
+		*res++ = rxByte;
 	}
 }
+
 
 // ----------------------------------------------------------------------
 // Create and issue a read or write SPI command.
@@ -173,8 +172,8 @@ static	void	spi_rw ( void )
 // ----------------------------------------------------------------------
 extern	byte_t	usb_setup ( byte_t data[8] )
 {
-	byte_t	bit;
-	byte_t	mask;
+//	byte_t	bit;
+//	byte_t	mask;
 	byte_t	req;
 
 	// Generic requests
@@ -183,58 +182,36 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	{
 		return 8;
 	}
-	if	( req == USBTINY_READ )
-	{
-		data[0] = PIN;
-		return 1;
-	}
-	if	( req == USBTINY_WRITE )
-	{
-		PORT = data[2];
-		return 0;
-	}
-	bit = data[2] & 7;
-	mask = 1 << bit;
-	if	( req == USBTINY_CLR )
-	{
-		PORT &= ~ mask;
-		return 0;
-	}
-	if	( req == USBTINY_SET )
-	{
-		PORT |= mask;
-		return 0;
-	}
-	if	( req == USBTINY_DDRWRITE )
-	{
-		DDR = data[2];
-	}
 
 	// Programming requests
-	if	( req == USBTINY_POWERUP )
+	if	(req == USBTINY_POWERUP)
 	{
 		sck_period = data[2];
-		mask = LED_MASK;
-		if	( data[4] )
+		if	(data[4] != 0)
 		{
-			mask |= RESET_MASK;
+			PORT = LED_MASK | RESET_MASK ;
 		}
-//		CLR(BUFFEN);
+		else
+		{
+			PORT = LED_MASK;
+		}
 		DDR  = LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
-		PORT = mask;
 		return 0;
 	}
-	if	( req == USBTINY_POWERDOWN )
+	if	(req == USBTINY_POWERDOWN)
 	{
-		DDR  = 0x00;
-		PORT = 0x00;
-//		SET(BUFFEN);
+		DDR  = RESET_MASK;			
+		PORT = RESET_MASK;		// Keep reset in 1 state(pulled up at logic level converter end), when power down.
 		return 0;
 	}
-	if	( ! PORT )
-	{
-		return 0;
-	}
+
+
+//	if	(!PORT)
+//	{
+//		return 0;
+//	}
+
+
 	if	( req == USBTINY_SPI )
 	{
 		spi( data + 2, data + 0, 4 );
@@ -245,12 +222,19 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		spi( data + 2, data + 0, 1 );
 		return 1;
 	}
-	if	( req == USBTINY_POLL_BYTES )
+	if	(req == USBTINY_POLL_BYTES )
 	{
 		poll1 = data[2];
 		poll2 = data[3];
 		return 0;
 	}
+
+	// Not supported old commands	
+	if	(req == USBTINY_READ || req == USBTINY_WRITE || req == USBTINY_CLR || req == USBTINY_SET || req == USBTINY_DDRWRITE)
+	{
+		return 0;
+	}
+	
 	address = * (uint_t*) & data[4];
 	if	( req == USBTINY_FLASH_READ )
 	{
@@ -262,7 +246,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		cmd0 = 0xa0;
 		return 0xff;	// usb_in() will be called to get the data
 	}
-	timeout = * (uint_t*) & data[2];
+	timeout = *(uint_t*)(&data[2]);
 	if	( req == USBTINY_FLASH_WRITE )
 	{
 		cmd0 = 0x40;
@@ -317,41 +301,22 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 	}
 }
 
+// Set SPI signals to proper (IDLE) state after power up of USBTinyISP
+inline void SpiInit()
+{
+	// Turn MCU Reset to 1, other signals state unconnected.
+	DDR  = RESET_MASK;
+	PORT = RESET_MASK;
+}
+
 // ----------------------------------------------------------------------
 // Main
 // ----------------------------------------------------------------------
 extern	int	main ( void )
 {
-	
-/*
-	DDR  = LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
-	for(byte_t bt = 0;; ++bt)
-	{
-		if ((bt && 0b00000001) != 0)
-		{
-			PORT |= LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
-		}
-		else
-		{
-			PORT &= ~(LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK);
-		}
-		
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-	}
-*/	
-	
-	
-//	SET(BUFFEN);
-//	OUTPUT(BUFFEN);
+	SpiInit();
 	usb_init();
-	for	( ;; )
+	for	(;;)
 	{
 		usb_poll();
 	}
