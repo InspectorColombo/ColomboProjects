@@ -43,11 +43,11 @@ enum
 #define	DDR		DDRB
 #define	PIN		PINB
 
-#define	LED		PB0		// output
+#define	LED			PB0		// output
 #define	RESET		PB4		// output
 #define	MOSI		PB5		// output
 #define	MISO		PB6		// input
-#define	SCK		PB7		// output
+#define	SCK			PB7		// output
 
 #define	LED_MASK	_BV(LED)
 #define	RESET_MASK	_BV(RESET)
@@ -108,40 +108,188 @@ inline void ClearMosi()
 	PORT &= ~MOSI_MASK;
 }
 
-static void spi( byte_t* cmd, byte_t* res, byte_t n )
+static void spiTest(byte_t* cmd, byte_t* res, byte_t n)
 {
-	byte_t	txByte;
-	byte_t	rxByte;
-	while	( n != 0 )
-	{
-		n--;
-		txByte = *cmd++;
-		rxByte = 0;
+	asm volatile("RJMP START_L0");
+	asm volatile("DELAY_L0:");
+//	asm volatile("	NOP");
+//	asm volatile("	NOP");
+//	asm volatile("	NOP");
+//	asm volatile("	NOP");
+//	asm volatile("	NOP");
+//	asm volatile("	NOP");
+//	asm volatile("	NOP");
+//	asm volatile("	NOP");
+	asm volatile("	RET");
 
-		ClearSck();
-		for	(byte_t bitsCounter = 0;; ++bitsCounter)
-		{
-			((txByte & 0b10000000) != 0) ? SetMosi() : ClearMosi();
-			delay();
-			
-			if	((PIN & MISO_MASK) != 0)
-			{
-				//++rxByte;
-				rxByte |= 0b00000001;
-			}
 
-			SetSck();
-			delay();
-			ClearSck();
+	asm volatile("START_L0:");
+	asm volatile("push R16");
+	asm volatile("IN R16, __SREG__");
+	asm volatile("push R16");
+	asm volatile("push R17");
+	asm volatile("push R18");
+	asm volatile("push R19");
+ 	asm volatile("push ZL");
+ 	asm volatile("push ZH");
+ 	asm volatile("push YL");
+ 	asm volatile("push YH");
+ 	
 
-			if (bitsCounter == 7)
-				break;
-			
-			txByte <<= 1;
-			rxByte <<= 1;
-		}
-		*res++ = rxByte;
-	}
+
+	asm volatile("LDI YH, 0x00");
+	asm volatile("MOV YL, %0" : : "r"(cmd));	// src pointer
+	asm volatile("LDI ZH, 0x00");
+	asm volatile("MOV ZL, %0" : : "r"(res));	// dst pointer
+	asm volatile("MOV R16, %0" : : "r"(n));		// counter of bytes
+
+
+	// CLK down
+	asm volatile("CBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(SCK) );
+
+	
+	asm volatile("SPI_BYTES_LOOP_L0:");
+	asm volatile("LD R17, Y+");					// Data to send and receive
+	asm volatile("LDI R18, 8");
+
+	
+	// Byte cycle
+	asm volatile("SPI_BITS_LOOP_L0:");
+	
+	// Set MOSI
+	asm volatile("	SBRS R17, 7");
+	asm volatile("	CBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(MOSI) );
+	asm volatile("	SBRC R17, 7");
+	asm volatile("	SBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(MOSI) );
+	asm volatile("	LSL R17");
+
+	//Delay	
+//	asm volatile("RCALL DELAY_L0");	
+	asm volatile("NOP");	
+	
+	// Read MISO
+	asm volatile("	SBIC %0, %1" : : "I" (_SFR_IO_ADDR(PIN)), "I"(MISO) );
+	asm volatile("	ORI R17, 0b00000001");
+	
+	// Set SCK, delay, clear sck
+	asm volatile("SBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(SCK) );
+	//asm volatile("RCALL DELAY_L0");	
+	asm volatile("NOP");	
+	asm volatile("CBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(SCK) );
+	
+	// Decrease bits counter
+	asm volatile("DEC R18");
+	asm volatile("BRNE SPI_BITS_LOOP_L0");
+	
+	asm volatile("ST Z+, R17");			// Store recieved data to buffer
+	
+	asm volatile("DEC R16");
+	asm volatile("BRNE SPI_BYTES_LOOP_L0");
+
+ 	asm volatile("pop YH");
+	asm volatile("pop YL");
+ 	asm volatile("pop ZH");
+ 	asm volatile("pop ZL");
+	asm volatile("pop R19");
+	asm volatile("pop R18");
+	asm volatile("pop R17");
+	asm volatile("pop R16");
+	asm volatile("out __SREG__, R16");
+	asm volatile("pop R16");
+
+
+	
+	
+// 		asm volatile(
+// 		"	mov	__tmp_reg__,%0	\n"
+// 		"0:	rjmp	1f		\n"
+// 		"1:	nop			\n"
+// 		"	dec	__tmp_reg__	\n"
+// 		"	brne	0b		\n"
+// 		: : "r" (sck_period) );
+
+	
+	
+// 
+// 	byte_t	txByte;
+// 	byte_t	rxByte;
+// 	while	( n != 0 )
+// 	{
+// 		n--;
+// 		txByte = *cmd++;
+// 		rxByte = 0;
+// 
+// 		ClearSck();
+// 		for	(byte_t bitsCounter = 0;; ++bitsCounter)
+// 		{
+// 			((txByte & 0b10000000) != 0) ? SetMosi() : ClearMosi();
+// 			delay();
+// 			
+// 			if	((PIN & MISO_MASK) != 0)
+// 			{
+// 				//++rxByte;
+// 				rxByte |= 0b00000001;
+// 			}
+// 
+// 			SetSck();
+// 			delay();
+// 			ClearSck();
+// 
+// 			if (bitsCounter == 7)
+// 				break;
+// 			
+// 			txByte <<= 1;
+// 			rxByte <<= 1;
+// 		}
+// 		*res++ = rxByte;
+// 	}
+}
+
+
+
+
+
+
+
+
+
+
+static void spi(byte_t* cmd, byte_t* res, byte_t n)
+{
+	spiTest(cmd, res, n);
+	
+// 	byte_t	txByte;
+// 	byte_t	rxByte;
+// 	while	( n != 0 )
+// 	{
+// 		n--;
+// 		txByte = *cmd++;
+// 		rxByte = 0;
+// 
+// 		ClearSck();
+// 		for	(byte_t bitsCounter = 0;; ++bitsCounter)
+// 		{
+// 			((txByte & 0b10000000) != 0) ? SetMosi() : ClearMosi();
+// 			delay();
+// 			
+// 			if	((PIN & MISO_MASK) != 0)
+// 			{
+// 				//++rxByte;
+// 				rxByte |= 0b00000001;
+// 			}
+// 
+// 			SetSck();
+// 			delay();
+// 			ClearSck();
+// 
+// 			if (bitsCounter == 7)
+// 			break;
+// 			
+// 			txByte <<= 1;
+// 			rxByte <<= 1;
+// 		}
+// 		*res++ = rxByte;
+// 	}
 }
 
 
