@@ -45,8 +45,10 @@ enum
 
 #define	LED			PB0		// output
 #define	RESET		PB4		// output
-#define	MOSI		PB5		// output
-#define	MISO		PB6		// input
+// #define	MOSI		PB5		// output
+// #define	MISO		PB6		// input
+#define	MOSI		PB6		// output
+#define	MISO		PB5		// input
 #define	SCK			PB7		// output
 
 #define	LED_MASK	_BV(LED)
@@ -72,17 +74,21 @@ static	byte_t		res[4];		// SPI result buffer
 // ----------------------------------------------------------------------
 // Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
 // ----------------------------------------------------------------------
+
+//Delay for (sck_period - 1) * 0.5uSec
 __attribute__((always_inline))
-static	inline	void	delay ( void )
+static	inline	void	delay_SCK ( void )
 {
-	asm volatile(
-		"	mov	__tmp_reg__,%0	\n"
-		"0:	rjmp	1f		\n"
-		"1:	nop			\n"
-		"	dec	__tmp_reg__	\n"
-		"	brne	0b		\n"
-		: : "r" (sck_period) );
+	asm volatile("			MOV	__tmp_reg__,%0" : : "r" (sck_period));
+	asm volatile("			DEC __tmp_reg__");
+	asm volatile("			BREQ DELAY_END");
+	asm volatile("DELAY_L0:	RJMP DELAY_L1");
+	asm volatile("DELAY_L1:	NOP");
+	asm volatile("DELAY_L2:	DEC	__tmp_reg__");
+	asm volatile("			BRNE DELAY_L0");
+	asm volatile("DELAY_END:");
 }
+
 
 // ----------------------------------------------------------------------
 // Issue one SPI command.
@@ -108,190 +114,84 @@ inline void ClearMosi()
 	PORT &= ~MOSI_MASK;
 }
 
-static void spiTest(byte_t* cmd, byte_t* res, byte_t n)
+inline void spi_fastest(byte_t* cmdPointer, byte_t* resPointer, byte_t n)
 {
-	asm volatile("RJMP START_L0");
-	asm volatile("DELAY_L0:");
-//	asm volatile("	NOP");
-//	asm volatile("	NOP");
-//	asm volatile("	NOP");
-//	asm volatile("	NOP");
-//	asm volatile("	NOP");
-//	asm volatile("	NOP");
-//	asm volatile("	NOP");
-//	asm volatile("	NOP");
-	asm volatile("	RET");
-
-
-	asm volatile("START_L0:");
-	asm volatile("push R16");
-	asm volatile("IN R16, __SREG__");
-	asm volatile("push R16");
-	asm volatile("push R17");
-	asm volatile("push R18");
-	asm volatile("push R19");
- 	asm volatile("push ZL");
- 	asm volatile("push ZH");
- 	asm volatile("push YL");
- 	asm volatile("push YH");
- 	
-
-
-	asm volatile("LDI YH, 0x00");
-	asm volatile("MOV YL, %0" : : "r"(cmd));	// src pointer
-	asm volatile("LDI ZH, 0x00");
-	asm volatile("MOV ZL, %0" : : "r"(res));	// dst pointer
-	asm volatile("MOV R16, %0" : : "r"(n));		// counter of bytes
-
-
-	// CLK down
-	asm volatile("CBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(SCK) );
-
+	asm volatile("	PUSH ZL");	// result pointer
+	asm volatile("	PUSH YL");	// cmd pointer
+	asm volatile("	PUSH R16");	// Byte cnt
+	asm volatile("	IN R16, __SREG__");	// Save status register
+	asm volatile("	PUSH R16");	// Byte cnt
 	
-	asm volatile("SPI_BYTES_LOOP_L0:");
-	asm volatile("LD R17, Y+");					// Data to send and receive
-	asm volatile("LDI R18, 8");
+	asm volatile("	LDI R16, %0" : : "I"((1 << USIWM0) | (1 << USICS1) | (1 << USICLK)));
+	asm volatile("	OUT %0, R16" : : "I" (_SFR_IO_ADDR(USICR)));
 
+	asm volatile("	MOV YL, %0" : : "r"(cmdPointer));		// set source buffer pointer
+	asm volatile("	LD __tmp_reg__, Y+");			// Read first byte to send
 	
-	// Byte cycle
-	asm volatile("SPI_BITS_LOOP_L0:");
-	
-	// Set MOSI
-	asm volatile("	SBRS R17, 7");
-	asm volatile("	CBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(MOSI) );
-	asm volatile("	SBRC R17, 7");
-	asm volatile("	SBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(MOSI) );
-	asm volatile("	LSL R17");
+	asm volatile("	MOV ZL, %0" : : "r"(resPointer));		// set destination buffer pointer
+	asm volatile("	MOV R16, %0" : : "r"(n));		// set number of bytes to send
 
-	//Delay	
-//	asm volatile("RCALL DELAY_L0");	
-	asm volatile("NOP");	
+	asm volatile("BYTE_LOOP_L0:");
 	
-	// Read MISO
-	asm volatile("	SBIC %0, %1" : : "I" (_SFR_IO_ADDR(PIN)), "I"(MISO) );
-	asm volatile("	ORI R17, 0b00000001");
-	
-	// Set SCK, delay, clear sck
-	asm volatile("SBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(SCK) );
-	//asm volatile("RCALL DELAY_L0");	
-	asm volatile("NOP");	
-	asm volatile("CBI %0, %1" : : "I" (_SFR_IO_ADDR(PORT)), "I"(SCK) );
-	
-	// Decrease bits counter
-	asm volatile("DEC R18");
-	asm volatile("BRNE SPI_BITS_LOOP_L0");
-	
-	asm volatile("ST Z+, R17");			// Store recieved data to buffer
-	
-	asm volatile("DEC R16");
-	asm volatile("BRNE SPI_BYTES_LOOP_L0");
+	asm volatile("	OUT %0, __tmp_reg__" : : "I" (_SFR_IO_ADDR(USIDR)));	// Set new data byte to USI
 
- 	asm volatile("pop YH");
-	asm volatile("pop YL");
- 	asm volatile("pop ZH");
- 	asm volatile("pop ZL");
-	asm volatile("pop R19");
-	asm volatile("pop R18");
-	asm volatile("pop R17");
-	asm volatile("pop R16");
-	asm volatile("out __SREG__, R16");
-	asm volatile("pop R16");
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));		// 16 strobe commands for CLK switch
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
 
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
 
-	
-	
-// 		asm volatile(
-// 		"	mov	__tmp_reg__,%0	\n"
-// 		"0:	rjmp	1f		\n"
-// 		"1:	nop			\n"
-// 		"	dec	__tmp_reg__	\n"
-// 		"	brne	0b		\n"
-// 		: : "r" (sck_period) );
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
 
-	
-	
-// 
-// 	byte_t	txByte;
-// 	byte_t	rxByte;
-// 	while	( n != 0 )
-// 	{
-// 		n--;
-// 		txByte = *cmd++;
-// 		rxByte = 0;
-// 
-// 		ClearSck();
-// 		for	(byte_t bitsCounter = 0;; ++bitsCounter)
-// 		{
-// 			((txByte & 0b10000000) != 0) ? SetMosi() : ClearMosi();
-// 			delay();
-// 			
-// 			if	((PIN & MISO_MASK) != 0)
-// 			{
-// 				//++rxByte;
-// 				rxByte |= 0b00000001;
-// 			}
-// 
-// 			SetSck();
-// 			delay();
-// 			ClearSck();
-// 
-// 			if (bitsCounter == 7)
-// 				break;
-// 			
-// 			txByte <<= 1;
-// 			rxByte <<= 1;
-// 		}
-// 		*res++ = rxByte;
-// 	}
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+	asm volatile("	SBI %0, 0" : : "I" (_SFR_IO_ADDR(USICR)));
+
+	asm volatile("	IN __tmp_reg__, %0" : : "I" (_SFR_IO_ADDR(USIDR)));
+	asm volatile("	ST Z+, __tmp_reg__");
+	asm volatile("	LD __tmp_reg__, Y+");		// read next byte to send
+	asm volatile("	DEC R16");
+	asm volatile("	BRNE BYTE_LOOP_L0");
+
+	asm volatile("POP R16");
+	asm volatile("OUT __SREG__, R16");		// restore status register
+	asm volatile("POP R16");
+	asm volatile("POP YL");
+	asm volatile("POP ZL");
 }
 
-
-
-
-
-
-
-
-
-
-static void spi(byte_t* cmd, byte_t* res, byte_t n)
+static void spi(byte_t* cmdPointer, byte_t* resPointer, byte_t n)
 {
-	spiTest(cmd, res, n);
-	
-// 	byte_t	txByte;
-// 	byte_t	rxByte;
-// 	while	( n != 0 )
-// 	{
-// 		n--;
-// 		txByte = *cmd++;
-// 		rxByte = 0;
-// 
-// 		ClearSck();
-// 		for	(byte_t bitsCounter = 0;; ++bitsCounter)
-// 		{
-// 			((txByte & 0b10000000) != 0) ? SetMosi() : ClearMosi();
-// 			delay();
-// 			
-// 			if	((PIN & MISO_MASK) != 0)
-// 			{
-// 				//++rxByte;
-// 				rxByte |= 0b00000001;
-// 			}
-// 
-// 			SetSck();
-// 			delay();
-// 			ClearSck();
-// 
-// 			if (bitsCounter == 7)
-// 			break;
-// 			
-// 			txByte <<= 1;
-// 			rxByte <<= 1;
-// 		}
-// 		*res++ = rxByte;
-// 	}
-}
+	if (sck_period == 1)
+	{
+		spi_fastest(cmdPointer, resPointer, n);
+		return;
+	}
 
+	while	( n != 0 )
+	{
+		n--;
+		
+		USIDR = *cmdPointer++;
+		USISR = (1 << USIOIF);
+		USICR = (1 << USIWM0) | (1 << USICS1) | (1 << USICLK);
+
+		while((USISR & (1 << USIOIF)) == 0)	
+		{
+			delay_SCK();
+			USICR = (1 << USIWM0) | (1 << USICS1) | (1 << USICLK) | (1 << USITC);
+		}
+		*resPointer++ = USIDR;
+	}
+}
 
 // ----------------------------------------------------------------------
 // Create and issue a read or write SPI command.
@@ -320,8 +220,6 @@ static	void	spi_rw ( void )
 // ----------------------------------------------------------------------
 extern	byte_t	usb_setup ( byte_t data[8] )
 {
-//	byte_t	bit;
-//	byte_t	mask;
 	byte_t	req;
 
 	// Generic requests
@@ -348,17 +246,10 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	}
 	if	(req == USBTINY_POWERDOWN)
 	{
-		DDR  = RESET_MASK;			
-		PORT = RESET_MASK;		// Keep reset in 1 state(pulled up at logic level converter end), when power down.
-		return 0;
+ 		DDR  = RESET_MASK | SCK_MASK | MOSI_MASK;
+ 		PORT = RESET_MASK;		// Keep reset in 1 state(pulled up at logic level converter end), when power down.
+ 		return 0;
 	}
-
-
-//	if	(!PORT)
-//	{
-//		return 0;
-//	}
-
 
 	if	( req == USBTINY_SPI )
 	{
@@ -453,7 +344,7 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 inline void SpiInit()
 {
 	// Turn MCU Reset to 1, other signals state unconnected.
-	DDR  = RESET_MASK;
+	DDR  = RESET_MASK | SCK_MASK | MOSI_MASK;
 	PORT = RESET_MASK;
 }
 
