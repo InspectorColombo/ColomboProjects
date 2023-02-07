@@ -1429,6 +1429,38 @@
 <circle x="0" y="0" radius="12.3" width="0.4" layer="21"/>
 <circle x="0" y="0" radius="4.8" width="0.4" layer="21"/>
 </package>
+<package name="D2PAK">
+<smd name="2" x="0" y="0" dx="11" dy="9.65" layer="1"/>
+<smd name="1" x="-2.54" y="-11.17" dx="2.32" dy="3.81" layer="1"/>
+<smd name="3" x="2.54" y="-11.17" dx="2.32" dy="3.81" layer="1"/>
+<rectangle x1="-3.3" y1="-9.1" x2="-1.8" y2="-5" layer="21"/>
+<rectangle x1="1.8" y1="-9.1" x2="3.3" y2="-5" layer="21"/>
+<rectangle x1="-0.75" y1="-7" x2="0.75" y2="-5" layer="21"/>
+<wire x1="-5" y1="-6.2" x2="5" y2="-6.2" width="0.4" layer="51"/>
+<wire x1="5" y1="-6.2" x2="5" y2="3.1" width="0.4" layer="51"/>
+<wire x1="5" y1="3.1" x2="-5" y2="3.1" width="0.4" layer="51"/>
+<wire x1="-5" y1="3.1" x2="-5" y2="-6.2" width="0.4" layer="51"/>
+<wire x1="-5" y1="3.1" x2="-5" y2="3.9" width="0.4" layer="51"/>
+<wire x1="-5" y1="3.9" x2="-4.4" y2="4.5" width="0.4" layer="51"/>
+<wire x1="-4.4" y1="4.5" x2="4.4" y2="4.5" width="0.4" layer="51"/>
+<wire x1="4.4" y1="4.5" x2="5" y2="3.9" width="0.4" layer="51"/>
+<wire x1="5" y1="3.9" x2="5" y2="3.1" width="0.4" layer="51"/>
+<text x="-2.54" y="1.27" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="-1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="KEY_7X4.5">
+<pad name="1" x="-3.5" y="-2.25" drill="0.8" diameter="2"/>
+<pad name="2" x="3.5" y="-2.25" drill="0.8" diameter="2"/>
+<pad name="4" x="-3.5" y="2.25" drill="0.8" diameter="2"/>
+<pad name="3" x="3.5" y="2.25" drill="0.8" diameter="2"/>
+<wire x1="-2.3" y1="2.9" x2="2.3" y2="2.9" width="0.4" layer="21"/>
+<wire x1="-2.3" y1="-2.9" x2="2.3" y2="-2.9" width="0.4" layer="21"/>
+<wire x1="3.3" y1="-0.9" x2="3.3" y2="0.9" width="0.4" layer="21"/>
+<wire x1="-3.3" y1="0.9" x2="-3.3" y2="-0.9" width="0.4" layer="21"/>
+<circle x="0" y="0" radius="1" width="0.4" layer="21"/>
+<text x="-3" y="4" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-3" y="-5" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -2222,6 +2254,51 @@
 <pin name="SEC1_END" x="5.08" y="0" visible="off" length="short" rot="R180"/>
 <pin name="SEC2_START" x="5.08" y="-2.54" visible="off" length="short" rot="R180"/>
 <pin name="SEC2_END" x="5.08" y="-10.16" visible="off" length="short" rot="R180"/>
+</symbol>
+<symbol name="LINEAR_STABILIZER">
+<wire x1="5.08" y1="-2.54" x2="5.08" y2="2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<pin name="GND" x="0" y="-5.08" visible="pad" length="short" direction="in" rot="R90"/>
+<pin name="OUT" x="7.62" y="0" visible="pad" length="short" direction="out" rot="R180"/>
+<pin name="IN" x="-7.62" y="0" visible="pad" length="short" direction="in"/>
+<text x="-2.54" y="5.08" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="2.54" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
+<text x="-4.445" y="-0.635" size="1.27" layer="94" font="vector" ratio="20">IN</text>
+<text x="1.27" y="-0.635" size="1.27" layer="94" font="vector" ratio="20">OUT</text>
+</symbol>
+<symbol name="LM317">
+<wire x1="5.08" y1="-2.54" x2="5.08" y2="2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<pin name="ADJ" x="0" y="-5.08" visible="pad" length="short" direction="in" rot="R90"/>
+<pin name="OUT" x="7.62" y="0" visible="pad" length="short" direction="out" rot="R180"/>
+<pin name="IN" x="-7.62" y="0" visible="pad" length="short" direction="in"/>
+<text x="-2.54" y="5.08" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="2.54" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
+<text x="-4.445" y="0" size="1.27" layer="94" font="vector" ratio="20">IN</text>
+<text x="1.27" y="0" size="1.27" layer="94" font="vector" ratio="20">OUT</text>
+<text x="-1.27" y="-1.905" size="1.27" layer="94" font="vector" ratio="20">ADJ</text>
+</symbol>
+<symbol name="KEY">
+<wire x1="-3.81" y1="-1.27" x2="3.81" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="0" x2="1.5875" y2="0.635" width="0.254" layer="94"/>
+<pin name="2" x="6.35" y="0" visible="off" length="middle" rot="R180"/>
+<pin name="1" x="-6.35" y="0" visible="off" length="middle"/>
+<wire x1="-1.27" y1="3.81" x2="0" y2="3.81" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="3.81" x2="-1.27" y2="3.175" width="0.254" layer="94"/>
+<text x="-3.81" y="5.08" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="3.81" y="-2.54" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+<wire x1="0" y1="3.81" x2="0" y2="2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="2.2225" x2="0" y2="1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="1.27" x2="0" y2="0.9525" width="0.254" layer="94"/>
+<wire x1="0" y1="3.81" x2="1.27" y2="3.81" width="0.254" layer="94"/>
+<wire x1="1.27" y1="3.81" x2="1.27" y2="3.175" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="2.54" x2="3.81" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="2.54" x2="-3.81" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="3.81" y1="2.54" x2="3.81" y2="-1.27" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -3131,6 +3208,73 @@
 <connect gate="G$1" pin="SEC1_START" pad="W2_START"/>
 <connect gate="G$1" pin="SEC2_END" pad="W3_END"/>
 <connect gate="G$1" pin="SEC2_START" pad="W3_START"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="7805">
+<gates>
+<gate name="U$1" symbol="LINEAR_STABILIZER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(D2PAK)" package="D2PAK">
+<connects>
+<connect gate="U$1" pin="GND" pad="2"/>
+<connect gate="U$1" pin="IN" pad="1"/>
+<connect gate="U$1" pin="OUT" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="7905">
+<gates>
+<gate name="G$1" symbol="LINEAR_STABILIZER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(D2PAK)" package="D2PAK">
+<connects>
+<connect gate="G$1" pin="GND" pad="1"/>
+<connect gate="G$1" pin="IN" pad="2"/>
+<connect gate="G$1" pin="OUT" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LM317">
+<gates>
+<gate name="G$1" symbol="LM317" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(D2PAK)" package="D2PAK">
+<connects>
+<connect gate="G$1" pin="ADJ" pad="1"/>
+<connect gate="G$1" pin="IN" pad="3"/>
+<connect gate="G$1" pin="OUT" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="KEY">
+<gates>
+<gate name="G$1" symbol="KEY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(7X4.5)" package="KEY_7X4.5">
+<connects>
+<connect gate="G$1" pin="1" pad="1 2"/>
+<connect gate="G$1" pin="2" pad="3 4"/>
 </connects>
 <technologies>
 <technology name=""/>
