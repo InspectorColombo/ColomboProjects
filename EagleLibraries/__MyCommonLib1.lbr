@@ -1461,6 +1461,36 @@
 <text x="-3" y="4" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-3" y="-5" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="DO-41_5MM">
+<pad name="ANODE" x="-2.54" y="0" drill="0.9" diameter="1.9304"/>
+<pad name="CATHODE" x="2.54" y="0" drill="0.9" diameter="1.9304"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="-1.27" y1="-1.27" x2="0.3175" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.3175" y1="-1.27" x2="0.635" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="1.27" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="1.27" y1="-1.27" x2="1.27" y2="1.27" width="0.4" layer="21"/>
+<wire x1="1.27" y1="1.27" x2="0.635" y2="1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="0.3175" y2="1.27" width="0.4" layer="21"/>
+<wire x1="0.3175" y1="1.27" x2="-1.27" y2="1.27" width="0.4" layer="21"/>
+<wire x1="0.3175" y1="1.27" x2="0.3175" y2="-1.27" width="0.4" layer="21"/>
+<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="3.81" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-1.27" y1="0" x2="-1.27" y2="1.27" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="1.27" x2="0.3175" y2="1.27" width="0.4" layer="51"/>
+<wire x1="0.3175" y1="1.27" x2="0.635" y2="1.27" width="0.4" layer="51"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="1.27" width="0.4" layer="51"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.4" layer="51"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="1.27" y1="-1.27" x2="0.635" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="0.635" y1="-1.27" x2="0.3175" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="0.3175" y1="-1.27" x2="-1.27" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="-1.27" x2="-1.27" y2="0" width="0.4" layer="51"/>
+<wire x1="0.3175" y1="1.27" x2="0.3175" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="0" x2="-2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -2827,6 +2857,15 @@
 </technologies>
 </device>
 <device name="DO-41_20MM" package="DO-41_20MM">
+<connects>
+<connect gate="D$1" pin="ANODE" pad="ANODE"/>
+<connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="DO-41_5MM" package="DO-41_5MM">
 <connects>
 <connect gate="D$1" pin="ANODE" pad="ANODE"/>
 <connect gate="D$1" pin="CATHODE" pad="CATHODE"/>

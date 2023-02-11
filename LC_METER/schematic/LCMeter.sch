@@ -1014,6 +1014,36 @@ DIN A4, landscape with location and doc. field</description>
 <text x="0.635" y="-1.905" size="1.27" layer="52" font="vector" ratio="20" rot="MR0">4</text>
 <text x="-1.905" y="-1.905" size="1.27" layer="52" font="vector" ratio="20" rot="MR0">6</text>
 </package>
+<package name="DO-41_5MM">
+<pad name="ANODE" x="-2.54" y="0" drill="0.9" diameter="1.9304"/>
+<pad name="CATHODE" x="2.54" y="0" drill="0.9" diameter="1.9304"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="-1.27" y1="-1.27" x2="0.3175" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.3175" y1="-1.27" x2="0.635" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="1.27" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="1.27" y1="-1.27" x2="1.27" y2="1.27" width="0.4" layer="21"/>
+<wire x1="1.27" y1="1.27" x2="0.635" y2="1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="0.3175" y2="1.27" width="0.4" layer="21"/>
+<wire x1="0.3175" y1="1.27" x2="-1.27" y2="1.27" width="0.4" layer="21"/>
+<wire x1="0.3175" y1="1.27" x2="0.3175" y2="-1.27" width="0.4" layer="21"/>
+<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="3.81" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-1.27" y1="0" x2="-1.27" y2="1.27" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="1.27" x2="0.3175" y2="1.27" width="0.4" layer="51"/>
+<wire x1="0.3175" y1="1.27" x2="0.635" y2="1.27" width="0.4" layer="51"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="1.27" width="0.4" layer="51"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.4" layer="51"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="1.27" y1="-1.27" x2="0.635" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="0.635" y1="-1.27" x2="0.3175" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="0.3175" y1="-1.27" x2="-1.27" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="-1.27" x2="-1.27" y2="0" width="0.4" layer="51"/>
+<wire x1="0.3175" y1="1.27" x2="0.3175" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="0" x2="-2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="USB_TYPE_B">
@@ -1979,6 +2009,15 @@ DIN A4, landscape with location and doc. field</description>
 </technologies>
 </device>
 <device name="DO-41_20MM" package="DO-41_20MM">
+<connects>
+<connect gate="D$1" pin="ANODE" pad="ANODE"/>
+<connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="DO-41_5MM" package="DO-41_5MM">
 <connects>
 <connect gate="D$1" pin="ANODE" pad="ANODE"/>
 <connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
@@ -4040,7 +4079,6 @@ Grid 5.00 mm&lt;p&gt;
 <part name="J4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
 <part name="J6" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
 <part name="J8" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
-<part name="J9" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
 <part name="J10" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
 <part name="C10" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="C11" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
@@ -4195,7 +4233,6 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND67" library="supply1" deviceset="GND" device=""/>
 <part name="X4" library="__MyCommonLib1" deviceset="USB_MICRO" device="MICRO" value="USB_MICRO"/>
 <part name="GND70" library="supply1" deviceset="GND" device=""/>
-<part name="J11" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
 <part name="IC10" library="__MyCommonLib1" deviceset="MC34063" device="(SO-8)" value="MC34063"/>
 <part name="TR1" library="__MyCommonLib1" deviceset="TRANS_3WIND" device="RING25X10_HOR" value="TRANS"/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
@@ -4214,12 +4251,12 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND71" library="supply1" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" deviceset="GND" device=""/>
 <part name="D28" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="FR207"/>
-<part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="FR207"/>
+<part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="FR207"/>
 <part name="C56" library="__MyCommonLib1" deviceset="C" device="SMD_1206_BIG_GAP" value="0.47uFx16V"/>
 <part name="C57" library="__MyCommonLib1" deviceset="CE" device="10MM" value="470uFx16V"/>
 <part name="GND73" library="supply1" deviceset="GND" device=""/>
 <part name="GND74" library="supply1" deviceset="GND" device=""/>
-<part name="R84" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K1"/>
+<part name="R84" library="__MyCommonLib1" deviceset="R" device="0207" value="5K1"/>
 <part name="R85" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K7"/>
 <part name="GND75" library="supply1" deviceset="GND" device=""/>
 <part name="C49" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx16V"/>
@@ -4232,11 +4269,9 @@ Grid 5.00 mm&lt;p&gt;
 <part name="C52" library="__MyCommonLib1" deviceset="CE" device="10MM" value="47uFx16V"/>
 <part name="GND79" library="supply1" deviceset="GND" device=""/>
 <part name="GND80" library="supply1" deviceset="GND" device=""/>
-<part name="R81" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="5K1"/>
-<part name="R82" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="1K7"/>
+<part name="R81" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K1"/>
+<part name="R82" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K7"/>
 <part name="IC8" library="__MyCommonLib1" deviceset="7905" device="(D2PAK)" value="7905"/>
-<part name="C47" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.47uFx16V"/>
-<part name="GND81" library="supply1" deviceset="GND" device=""/>
 <part name="GND82" library="supply1" deviceset="GND" device=""/>
 <part name="GND83" library="supply1" deviceset="GND" device=""/>
 <part name="C3" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
@@ -5097,10 +5132,6 @@ Grid 5.00 mm&lt;p&gt;
 <instance part="J8" gate="R$1" x="55.88" y="58.42" smashed="yes" rot="MR90">
 <attribute name="NAME" x="50.8" y="60.96" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="58.42" y="60.96" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
-</instance>
-<instance part="J9" gate="R$1" x="55.88" y="33.02" smashed="yes" rot="MR90">
-<attribute name="NAME" x="50.8" y="35.56" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="58.42" y="35.56" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
 <instance part="J10" gate="R$1" x="55.88" y="25.4" smashed="yes" rot="MR90">
 <attribute name="NAME" x="50.8" y="27.94" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
@@ -6079,8 +6110,6 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="45.72" y1="165.1" x2="45.72" y2="149.86" width="0.1524" layer="91"/>
 <junction x="45.72" y="149.86"/>
 <junction x="45.72" y="132.08"/>
-<pinref part="J9" gate="R$1" pin="PIN0"/>
-<wire x1="50.8" y1="33.02" x2="45.72" y2="33.02" width="0.1524" layer="91"/>
 <junction x="45.72" y="66.04"/>
 <junction x="45.72" y="99.06"/>
 <pinref part="R19" gate="R$1" pin="PIN1"/>
@@ -6095,6 +6124,8 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="68.58" y1="99.06" x2="45.72" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="IC5" gate="G$1" pin="SER_CLK"/>
 <wire x1="68.58" y1="66.04" x2="45.72" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="IC6" gate="G$1" pin="SER_CLK"/>
+<wire x1="45.72" y1="33.02" x2="68.58" y2="33.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LED_DATA'" class="0">
@@ -6144,13 +6175,6 @@ Grid 5.00 mm&lt;p&gt;
 <pinref part="IC3" gate="G$1" pin="LATCH"/>
 <pinref part="J4" gate="R$1" pin="PIN1"/>
 <wire x1="60.96" y1="124.46" x2="68.58" y2="124.46" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$104" class="0">
-<segment>
-<pinref part="IC6" gate="G$1" pin="SER_CLK"/>
-<pinref part="J9" gate="R$1" pin="PIN1"/>
-<wire x1="60.96" y1="33.02" x2="68.58" y2="33.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$107" class="0">
@@ -7590,10 +7614,6 @@ Grid 5.00 mm&lt;p&gt;
 <instance part="GND70" gate="1" x="20.32" y="137.16" smashed="yes">
 <attribute name="VALUE" x="17.78" y="134.62" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="J11" gate="R$1" x="38.1" y="154.94" smashed="yes" rot="R90">
-<attribute name="NAME" x="38.1" y="152.4" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="35.56" y="152.4" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
 <instance part="IC10" gate="G$1" x="116.84" y="106.68" smashed="yes">
 <attribute name="NAME" x="111.76" y="93.98" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="124.46" y="93.98" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
@@ -7734,13 +7754,6 @@ Grid 5.00 mm&lt;p&gt;
 <attribute name="NAME" x="180.34" y="154.94" size="1.27" layer="95" font="vector" ratio="20"/>
 <attribute name="VALUE" x="180.34" y="153.035" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="C47" gate="C$1" x="193.04" y="144.78" smashed="yes">
-<attribute name="NAME" x="200.66" y="142.24" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="200.66" y="140.335" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
-<instance part="GND81" gate="1" x="193.04" y="137.16" smashed="yes">
-<attribute name="VALUE" x="190.5" y="134.62" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
 <instance part="GND82" gate="1" x="198.12" y="137.16" smashed="yes">
 <attribute name="VALUE" x="195.58" y="134.62" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
@@ -7867,11 +7880,6 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="208.28" y1="60.96" x2="208.28" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C47" gate="C$1" pin="PIN0"/>
-<pinref part="GND81" gate="1" pin="GND"/>
-<wire x1="193.04" y1="142.24" x2="193.04" y2="139.7" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="IC8" gate="G$1" pin="GND"/>
 <pinref part="GND83" gate="1" pin="GND"/>
 <wire x1="182.88" y1="142.24" x2="182.88" y2="144.78" width="0.1524" layer="91"/>
@@ -7917,9 +7925,9 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="45.72" y1="129.54" x2="53.34" y2="129.54" width="0.1524" layer="91"/>
 <junction x="45.72" y="129.54"/>
 <label x="53.34" y="131.445" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-<pinref part="J11" gate="R$1" pin="PIN0"/>
-<wire x1="43.18" y1="154.94" x2="45.72" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="154.94" x2="45.72" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="X4" gate="X$1" pin="D-"/>
+<wire x1="25.4" y1="154.94" x2="45.72" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="USB_D+" class="0">
@@ -7932,13 +7940,6 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="25.4" y1="152.4" x2="33.02" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="152.4" x2="33.02" y2="127" width="0.1524" layer="91"/>
 <junction x="33.02" y="127"/>
-</segment>
-</net>
-<net name="N$132" class="0">
-<segment>
-<pinref part="X4" gate="X$1" pin="D-"/>
-<pinref part="J11" gate="R$1" pin="PIN1"/>
-<wire x1="33.02" y1="154.94" x2="25.4" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$10" class="0">
@@ -8078,11 +8079,7 @@ Grid 5.00 mm&lt;p&gt;
 <net name="-5V_FINE" class="0">
 <segment>
 <pinref part="IC8" gate="G$1" pin="OUT"/>
-<wire x1="190.5" y1="149.86" x2="193.04" y2="149.86" width="0.1524" layer="91"/>
-<pinref part="C47" gate="C$1" pin="PIN1"/>
-<wire x1="193.04" y1="147.32" x2="193.04" y2="149.86" width="0.1524" layer="91"/>
-<junction x="193.04" y="149.86"/>
-<wire x1="193.04" y1="149.86" x2="198.12" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="149.86" x2="198.12" y2="149.86" width="0.1524" layer="91"/>
 <label x="208.28" y="151.765" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <pinref part="C48" gate="C$1" pin="-"/>
 <wire x1="198.12" y1="149.86" x2="208.28" y2="149.86" width="0.1524" layer="91"/>
