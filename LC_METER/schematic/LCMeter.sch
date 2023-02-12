@@ -456,16 +456,16 @@ DIN A4, landscape with location and doc. field</description>
 <smd name="9" x="2.69875" y="-4.445" dx="1.5" dy="0.68" layer="1" rot="R180"/>
 </package>
 <package name="KEM-5161(NARROW)">
-<pad name="1" x="-5.08" y="-7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="2" x="-2.54" y="-7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="3" x="0" y="-7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="4" x="2.54" y="-7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="5" x="5.08" y="-7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="6" x="5.08" y="7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="7" x="2.54" y="7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="8" x="0" y="7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="9" x="-2.54" y="7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
-<pad name="10" x="-5.08" y="7.62" drill="0.6" diameter="1.4" shape="long" rot="R90"/>
+<pad name="1" x="-5.08" y="-7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="2" x="-2.54" y="-7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="3" x="0" y="-7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="4" x="2.54" y="-7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="5" x="5.08" y="-7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="6" x="5.08" y="7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="7" x="2.54" y="7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="8" x="0" y="7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="9" x="-2.54" y="7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
+<pad name="10" x="-5.08" y="7.62" drill="0.6" diameter="1.3" shape="long" rot="R90"/>
 <wire x1="-6.0325" y1="9.2075" x2="6.0325" y2="9.2075" width="0.5" layer="21"/>
 <wire x1="6.0325" y1="9.2075" x2="6.0325" y2="8.5725" width="0.5" layer="21"/>
 <wire x1="6.0325" y1="6.6675" x2="6.0325" y2="-6.6675" width="0.5" layer="21"/>
@@ -1043,6 +1043,68 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="-1.27" y1="0" x2="-2.54" y2="0" width="0.4" layer="51"/>
 <wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="21"/>
 <wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="51"/>
+</package>
+<package name="PIN2X3_2.54MM_LOOSE_PADS">
+<pad name="1" x="-2.54" y="-1.27" drill="0.8" diameter="1.4" shape="square" rot="R270"/>
+<text x="3.81" y="-3.81" size="1.27" layer="27" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+<text x="3.81" y="5.08" size="1.27" layer="25" font="vector" ratio="20" rot="R180">&gt;NAME</text>
+<wire x1="-3.81" y1="-1.905" x2="-3.175" y2="-2.54" width="0.4" layer="25"/>
+<wire x1="-3.175" y1="-2.54" x2="-1.905" y2="-2.54" width="0.4" layer="25"/>
+<wire x1="-1.905" y1="-2.54" x2="-1.27" y2="-1.905" width="0.4" layer="25"/>
+<wire x1="-3.4925" y1="0" x2="-3.81" y2="-0.3175" width="0.4" layer="25"/>
+<wire x1="-3.81" y1="-0.3175" x2="-3.81" y2="-1.905" width="0.4" layer="25"/>
+<wire x1="-3.81" y1="-1.905" x2="-3.175" y2="-2.54" width="0.4" layer="51"/>
+<wire x1="-3.175" y1="-2.54" x2="-1.905" y2="-2.54" width="0.4" layer="51"/>
+<wire x1="-1.905" y1="-2.54" x2="-1.27" y2="-1.905" width="0.4" layer="51"/>
+<wire x1="-3.4925" y1="0" x2="-3.81" y2="-0.3175" width="0.4" layer="51"/>
+<wire x1="-3.81" y1="-0.3175" x2="-3.81" y2="-1.905" width="0.4" layer="51"/>
+<pad name="2" x="-2.54" y="1.27" drill="0.8" diameter="1.4" rot="R90"/>
+<wire x1="-3.81" y1="0.3175" x2="-3.4925" y2="0" width="0.4" layer="25"/>
+<wire x1="-1.27" y1="1.905" x2="-1.905" y2="2.54" width="0.4" layer="25"/>
+<wire x1="-1.905" y1="2.54" x2="-3.175" y2="2.54" width="0.4" layer="25"/>
+<wire x1="-3.175" y1="2.54" x2="-3.81" y2="1.905" width="0.4" layer="25"/>
+<wire x1="-3.81" y1="1.905" x2="-3.81" y2="0.3175" width="0.4" layer="25"/>
+<wire x1="-3.81" y1="0.3175" x2="-3.4925" y2="0" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="1.905" x2="-1.905" y2="2.54" width="0.4" layer="51"/>
+<wire x1="-1.905" y1="2.54" x2="-3.175" y2="2.54" width="0.4" layer="51"/>
+<wire x1="-3.175" y1="2.54" x2="-3.81" y2="1.905" width="0.4" layer="51"/>
+<wire x1="-3.81" y1="1.905" x2="-3.81" y2="0.3175" width="0.4" layer="51"/>
+<pad name="3" x="0" y="-1.27" drill="0.8" diameter="1.4" rot="R270"/>
+<wire x1="-1.27" y1="-1.905" x2="-0.635" y2="-2.54" width="0.4" layer="25"/>
+<wire x1="-0.635" y1="-2.54" x2="0.635" y2="-2.54" width="0.4" layer="25"/>
+<wire x1="0.635" y1="-2.54" x2="1.27" y2="-1.905" width="0.4" layer="25"/>
+<wire x1="-1.27" y1="-1.905" x2="-0.635" y2="-2.54" width="0.4" layer="51"/>
+<wire x1="-0.635" y1="-2.54" x2="0.635" y2="-2.54" width="0.4" layer="51"/>
+<wire x1="0.635" y1="-2.54" x2="1.27" y2="-1.905" width="0.4" layer="51"/>
+<pad name="4" x="0" y="1.27" drill="0.8" diameter="1.4" rot="R90"/>
+<wire x1="1.27" y1="1.905" x2="0.635" y2="2.54" width="0.4" layer="25"/>
+<wire x1="0.635" y1="2.54" x2="-0.635" y2="2.54" width="0.4" layer="25"/>
+<wire x1="-0.635" y1="2.54" x2="-1.27" y2="1.905" width="0.4" layer="25"/>
+<wire x1="1.27" y1="1.905" x2="0.635" y2="2.54" width="0.4" layer="51"/>
+<wire x1="0.635" y1="2.54" x2="-0.635" y2="2.54" width="0.4" layer="51"/>
+<wire x1="-0.635" y1="2.54" x2="-1.27" y2="1.905" width="0.4" layer="51"/>
+<pad name="5" x="2.54" y="-1.27" drill="0.8" diameter="1.4" rot="R270"/>
+<wire x1="1.27" y1="-1.905" x2="1.905" y2="-2.54" width="0.4" layer="25"/>
+<wire x1="1.905" y1="-2.54" x2="3.175" y2="-2.54" width="0.4" layer="25"/>
+<wire x1="1.27" y1="-1.905" x2="1.905" y2="-2.54" width="0.4" layer="51"/>
+<wire x1="1.905" y1="-2.54" x2="3.175" y2="-2.54" width="0.4" layer="51"/>
+<pad name="6" x="2.54" y="1.27" drill="0.8" diameter="1.4" rot="R90"/>
+<wire x1="3.175" y1="2.54" x2="1.905" y2="2.54" width="0.4" layer="25"/>
+<wire x1="1.905" y1="2.54" x2="1.27" y2="1.905" width="0.4" layer="25"/>
+<wire x1="3.175" y1="2.54" x2="1.905" y2="2.54" width="0.4" layer="51"/>
+<wire x1="1.905" y1="2.54" x2="1.27" y2="1.905" width="0.4" layer="51"/>
+<wire x1="3.175" y1="-2.54" x2="3.81" y2="-1.905" width="0.4" layer="25"/>
+<wire x1="3.81" y1="-1.905" x2="3.81" y2="-0.3175" width="0.4" layer="25"/>
+<wire x1="3.81" y1="-0.3175" x2="3.4925" y2="0" width="0.4" layer="25"/>
+<wire x1="3.175" y1="-2.54" x2="3.81" y2="-1.905" width="0.4" layer="51"/>
+<wire x1="3.81" y1="-1.905" x2="3.81" y2="-0.3175" width="0.4" layer="51"/>
+<wire x1="3.81" y1="-0.3175" x2="3.4925" y2="0" width="0.4" layer="51"/>
+<wire x1="3.4925" y1="0" x2="3.81" y2="0.3175" width="0.4" layer="25"/>
+<wire x1="3.81" y1="0.3175" x2="3.81" y2="1.905" width="0.4" layer="25"/>
+<wire x1="3.81" y1="1.905" x2="3.175" y2="2.54" width="0.4" layer="25"/>
+<wire x1="3.4925" y1="0" x2="3.81" y2="0.3175" width="0.4" layer="51"/>
+<wire x1="3.81" y1="0.3175" x2="3.81" y2="1.905" width="0.4" layer="51"/>
+<wire x1="3.81" y1="1.905" x2="3.175" y2="2.54" width="0.4" layer="51"/>
 </package>
 </packages>
 <symbols>
@@ -2097,6 +2159,19 @@ DIN A4, landscape with location and doc. field</description>
 </technologies>
 </device>
 <device name="2.54MM_SIDE_BOARD" package="PIN2X3_2.54MM_MALE_SIDE_BOARD">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="2.54MM_LOOSE_PADS" package="PIN2X3_2.54MM_LOOSE_PADS">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
@@ -4306,7 +4381,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="R5" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
 <part name="R6" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
 <part name="R7" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
-<part name="X1" library="__MyCommonLib1" deviceset="PIN2X3" device="_2.54MM" value="MCU_PROGRAMMING"/>
+<part name="X1" library="__MyCommonLib1" deviceset="PIN2X3" device="2.54MM_LOOSE_PADS" value="MCU_PROGRAMMING"/>
 <part name="GND98" library="supply1" deviceset="GND" device=""/>
 <part name="C48" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="47uFx16V"/>
 <part name="R86" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
