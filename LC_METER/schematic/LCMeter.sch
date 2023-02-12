@@ -4142,7 +4142,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="R54" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100K"/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
-<part name="R59" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="300R"/>
+<part name="R59" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="300R"/>
 <part name="D10" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="C20" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
@@ -4248,7 +4248,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="C53" library="__MyCommonLib1" deviceset="CE" device="10MM" value="1000uFx16V"/>
 <part name="GND71" library="supply1" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" deviceset="GND" device=""/>
-<part name="D28" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="FR207"/>
+<part name="D28" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="FR207"/>
 <part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="FR207"/>
 <part name="C56" library="__MyCommonLib1" deviceset="C" device="SMD_1206_BIG_GAP" value="0.47uFx16V"/>
 <part name="C57" library="__MyCommonLib1" deviceset="CE" device="10MM" value="470uFx16V"/>
@@ -4320,6 +4320,13 @@ Grid 5.00 mm&lt;p&gt;
 <part name="C58" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="4.7uF"/>
 <part name="GND81" library="supply1" deviceset="GND" device=""/>
 <part name="GND86" library="supply1" deviceset="GND" device=""/>
+<part name="J11" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
+<part name="R100" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
+<part name="R89" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K"/>
+<part name="C4" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
+<part name="D4" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
+<part name="GND43" library="supply1" deviceset="GND" device=""/>
+<part name="GND88" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4473,9 +4480,31 @@ Grid 5.00 mm&lt;p&gt;
 <instance part="GND98" gate="1" x="198.12" y="106.68" smashed="yes">
 <attribute name="VALUE" x="196.85" y="102.87" size="1.778" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="J100" gate="R$1" x="95.25" y="149.86" smashed="yes" rot="R90">
-<attribute name="NAME" x="91.44" y="147.32" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="97.79" y="147.32" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="J100" gate="R$1" x="96.52" y="144.78" smashed="yes" rot="R90">
+<attribute name="NAME" x="92.71" y="142.24" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="99.06" y="142.24" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
+<instance part="R100" gate="R$1" x="139.7" y="144.78" smashed="yes" rot="R90">
+<attribute name="NAME" x="135.89" y="142.24" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="142.24" y="142.24" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
+<instance part="R89" gate="R$1" x="132.08" y="137.16" smashed="yes" rot="R180">
+<attribute name="NAME" x="134.62" y="134.62" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="134.62" y="137.16" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
+<instance part="C4" gate="C$1" x="127" y="137.16" smashed="yes" rot="MR0">
+<attribute name="NAME" x="123.19" y="134.62" size="1.27" layer="95" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="123.19" y="132.08" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
+</instance>
+<instance part="D4" gate="D1" x="132.08" y="149.86" smashed="yes">
+<attribute name="NAME" x="130.81" y="158.75" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="133.35" y="157.48" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
+<instance part="GND43" gate="1" x="132.08" y="127" smashed="yes">
+<attribute name="VALUE" x="131.445" y="123.825" size="1.778" layer="96" font="vector" ratio="20"/>
+</instance>
+<instance part="GND88" gate="1" x="127" y="127" smashed="yes">
+<attribute name="VALUE" x="126.365" y="122.555" size="1.778" layer="96" font="vector" ratio="20"/>
 </instance>
 </instances>
 <busses>
@@ -4571,6 +4600,16 @@ Grid 5.00 mm&lt;p&gt;
 <label x="208.28" y="118.745" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <wire x1="198.12" y1="116.84" x2="198.12" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="GND98" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C4" gate="C$1" pin="PIN0"/>
+<pinref part="GND88" gate="1" pin="GND"/>
+<wire x1="127" y1="134.62" x2="127" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R89" gate="R$1" pin="PIN1"/>
+<pinref part="GND43" gate="1" pin="GND"/>
+<wire x1="132.08" y1="132.08" x2="132.08" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="USB_D-" class="0">
@@ -4698,6 +4737,12 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="210.82" y1="111.76" x2="200.66" y2="111.76" width="0.1524" layer="91"/>
 <label x="208.28" y="113.665" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 </segment>
+<segment>
+<pinref part="D4" gate="D1" pin="CATHODE"/>
+<wire x1="132.08" y1="152.4" x2="132.08" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="154.94" x2="144.78" y2="154.94" width="0.1524" layer="91"/>
+<label x="144.78" y="156.21" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
 </net>
 <net name="N$141" class="0">
 <segment>
@@ -4708,8 +4753,8 @@ Grid 5.00 mm&lt;p&gt;
 </net>
 <net name="L_ADC" class="0">
 <segment>
-<wire x1="100.33" y1="149.86" x2="111.76" y2="149.86" width="0.1524" layer="91"/>
-<label x="111.76" y="151.13" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<wire x1="101.6" y1="144.78" x2="109.22" y2="144.78" width="0.1524" layer="91"/>
+<label x="109.22" y="146.05" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <pinref part="J100" gate="R$1" pin="PIN0"/>
 </segment>
 </net>
@@ -4898,11 +4943,40 @@ Grid 5.00 mm&lt;p&gt;
 <label x="55.88" y="169.545" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 </segment>
 </net>
-<net name="N$100" class="0">
+<net name="BATTERY_ADC" class="0">
+<segment>
+<pinref part="C4" gate="C$1" pin="PIN1"/>
+<pinref part="R100" gate="R$1" pin="PIN1"/>
+<wire x1="127" y1="139.7" x2="127" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="127" y1="144.78" x2="132.08" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="R89" gate="R$1" pin="PIN0"/>
+<wire x1="132.08" y1="144.78" x2="134.62" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="142.24" x2="132.08" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="D4" gate="D1" pin="ANODE"/>
+<wire x1="132.08" y1="147.32" x2="132.08" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="144.78" x2="127" y2="144.78" width="0.1524" layer="91"/>
+<junction x="127" y="144.78"/>
+<junction x="132.08" y="144.78"/>
+<label x="124.46" y="146.05" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="(ADC2)PA2"/>
+<wire x1="88.9" y1="149.86" x2="104.14" y2="149.86" width="0.1524" layer="91"/>
+<label x="104.14" y="151.13" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
+</net>
+<net name="+5V_USB" class="0">
+<segment>
+<pinref part="R100" gate="R$1" pin="PIN0"/>
+<wire x1="144.78" y1="144.78" x2="154.94" y2="144.78" width="0.1524" layer="91"/>
+<label x="154.94" y="146.05" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
+</net>
+<net name="N$100" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="(ADC0)PA0"/>
 <pinref part="J100" gate="R$1" pin="PIN1"/>
-<wire x1="90.17" y1="149.86" x2="88.9" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="144.78" x2="91.44" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -7796,6 +7870,10 @@ Grid 5.00 mm&lt;p&gt;
 <attribute name="NAME" x="200.66" y="148.59" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="200.66" y="146.685" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
+<instance part="J11" gate="R$1" x="38.1" y="154.94" smashed="yes" rot="R270">
+<attribute name="NAME" x="35.56" y="156.21" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="41.91" y="157.48" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -7957,9 +8035,9 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="45.72" y1="129.54" x2="53.34" y2="129.54" width="0.1524" layer="91"/>
 <junction x="45.72" y="129.54"/>
 <label x="53.34" y="131.445" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<wire x1="43.18" y1="154.94" x2="45.72" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="154.94" x2="45.72" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="X4" gate="X$1" pin="D-"/>
-<wire x1="25.4" y1="154.94" x2="45.72" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="J11" gate="R$1" pin="PIN1"/>
 </segment>
 </net>
 <net name="USB_D+" class="0">
@@ -8133,6 +8211,13 @@ Grid 5.00 mm&lt;p&gt;
 <wire x1="165.1" y1="93.98" x2="165.1" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="D28" gate="D$1" pin="ANODE"/>
 <wire x1="165.1" y1="71.12" x2="170.18" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$101" class="0">
+<segment>
+<pinref part="X4" gate="X$1" pin="D-"/>
+<pinref part="J11" gate="R$1" pin="PIN0"/>
+<wire x1="33.02" y1="154.94" x2="25.4" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
