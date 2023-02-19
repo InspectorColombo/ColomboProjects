@@ -1701,6 +1701,15 @@
 <wire x1="0.5" y1="1.4" x2="1.1" y2="1.4" width="0.4" layer="21"/>
 <wire x1="0.8" y1="1.1" x2="0.8" y2="1.7" width="0.4" layer="21"/>
 </package>
+<package name="R_1.0W_VERTICAL">
+<pad name="PAD_0" x="-2.5" y="0" drill="0.9" diameter="2"/>
+<pad name="PAD1" x="2.5" y="0" drill="0.9" diameter="2"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;name</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;value</text>
+<circle x="2.5" y="0" radius="2.3" width="0.4" layer="21"/>
+<wire x1="0.2" y1="0" x2="-1.2" y2="0" width="0.4" layer="21"/>
+<wire x1="-2.5" y1="0" x2="-1.2" y2="0" width="0.4" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -2695,6 +2704,15 @@
 </technologies>
 </device>
 <device name="2.0W" package="R_2.0W">
+<connects>
+<connect gate="R$1" pin="PIN0" pad="PAD_0"/>
+<connect gate="R$1" pin="PIN1" pad="PAD1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="1.0W_VERT" package="R_1.0W_VERTICAL">
 <connects>
 <connect gate="R$1" pin="PIN0" pad="PAD_0"/>
 <connect gate="R$1" pin="PIN1" pad="PAD1"/>
