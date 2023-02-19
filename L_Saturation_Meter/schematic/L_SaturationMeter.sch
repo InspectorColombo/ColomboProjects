@@ -1496,7 +1496,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="R13" library="__MyCommonLib1" deviceset="R" device="2.0W" value="10R"/>
 <part name="X2" library="con-wago-500" deviceset="W237-102" device="" value="POWER_12V"/>
-<part name="X3" library="con-wago-500" deviceset="W237-102" device=""/>
+<part name="X3" library="con-wago-500" deviceset="W237-102" device="" value="L_TEST_END"/>
 <part name="X4" library="con-wago-500" deviceset="W237-102" device="" value="I_SENSE"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
@@ -1542,7 +1542,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="C100" library="__MyCommonLib1" deviceset="CE" device="10MM" value="1000uFx25V"/>
 <part name="C8" library="__MyCommonLib1" deviceset="CE" device="10MM" value="1000uFx25V"/>
 <part name="C104" library="__MyCommonLib1" deviceset="CE" device="8.2MM" value="470uFx16V"/>
-<part name="X1" library="con-wago-500" deviceset="W237-102" device="">
+<part name="X1" library="con-wago-500" deviceset="W237-102" device="" value="L_TEST_START">
 <attribute name="MF" value=""/>
 <attribute name="MPN" value="237-102"/>
 <attribute name="OC_FARNELL" value="unknown"/>
@@ -1607,7 +1607,6 @@ Grid 5.00 mm&lt;p&gt;
 <attribute name="NAME" x="200.66" y="125.349" size="1.778" layer="95" rot="MR180"/>
 </instance>
 <instance part="X3" gate="-2" x="200.66" y="129.54" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="203.2" y="126.873" size="1.778" layer="96" rot="MR180"/>
 <attribute name="NAME" x="200.66" y="130.429" size="1.778" layer="95" rot="MR180"/>
 </instance>
 <instance part="X4" gate="-1" x="208.28" y="96.52" smashed="yes" rot="MR0">
@@ -1776,7 +1775,9 @@ Grid 5.00 mm&lt;p&gt;
 <instance part="X1" gate="-1" x="200.66" y="149.86" smashed="yes" rot="MR0">
 <attribute name="NAME" x="200.66" y="150.749" size="1.778" layer="95" rot="MR180"/>
 </instance>
-<instance part="X1" gate="-2" x="200.66" y="144.78" rot="MR0"/>
+<instance part="X1" gate="-2" x="200.66" y="144.78" smashed="yes" rot="MR0">
+<attribute name="NAME" x="200.66" y="145.669" size="1.778" layer="95" rot="MR180"/>
+</instance>
 </instances>
 <busses>
 </busses>
