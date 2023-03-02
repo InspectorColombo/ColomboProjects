@@ -1220,7 +1220,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="C53" library="__MyCommonLib1" deviceset="CE" device="10MM" value="1000uFx16V"/>
 <part name="GND71" library="supply1" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" deviceset="GND" device=""/>
-<part name="R84" library="__MyCommonLib1" deviceset="R" device="0204" value="4K7"/>
+<part name="R84" library="__MyCommonLib1" deviceset="R" device="0207" value="4K7"/>
 <part name="R85" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K6"/>
 <part name="GND75" library="supply1" deviceset="GND" device=""/>
 <part name="X1" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="VCC_IN"/>
@@ -1261,6 +1261,8 @@ DIN A4, landscape with location and doc. field</description>
 <part name="X6" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="GND"/>
 <part name="R7" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="***"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
+<part name="C10" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
+<part name="GND14" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1453,6 +1455,13 @@ DIN A4, landscape with location and doc. field</description>
 <instance part="GND13" gate="1" x="96.52" y="71.12" smashed="yes">
 <attribute name="VALUE" x="93.98" y="67.31" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
+<instance part="C10" gate="C$1" x="116.84" y="81.28" smashed="yes" rot="MR0">
+<attribute name="NAME" x="118.11" y="83.82" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="119.38" y="80.01" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+</instance>
+<instance part="GND14" gate="1" x="116.84" y="71.12" smashed="yes">
+<attribute name="VALUE" x="114.3" y="67.31" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -1546,6 +1555,11 @@ DIN A4, landscape with location and doc. field</description>
 <pinref part="R7" gate="R$1" pin="PIN0"/>
 <pinref part="GND13" gate="1" pin="GND"/>
 <wire x1="96.52" y1="76.2" x2="96.52" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C10" gate="C$1" pin="PIN0"/>
+<pinref part="GND14" gate="1" pin="GND"/>
+<wire x1="116.84" y1="78.74" x2="116.84" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$133" class="0">
@@ -1741,7 +1755,8 @@ DIN A4, landscape with location and doc. field</description>
 <net name="+5V_STAB" class="0">
 <segment>
 <pinref part="R84" gate="R$1" pin="PIN1"/>
-<wire x1="114.3" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="88.9" x2="116.84" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="88.9" x2="124.46" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="D1" gate="D$1" pin="CATHODE"/>
 <wire x1="172.72" y1="129.54" x2="180.34" y2="129.54" width="0.1524" layer="91"/>
@@ -1764,6 +1779,9 @@ DIN A4, landscape with location and doc. field</description>
 <junction x="193.04" y="129.54"/>
 <label x="215.9" y="130.81" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <pinref part="X3" gate="X$1" pin="1"/>
+<pinref part="C10" gate="C$1" pin="PIN1"/>
+<wire x1="116.84" y1="83.82" x2="116.84" y2="88.9" width="0.1524" layer="91"/>
+<junction x="116.84" y="88.9"/>
 </segment>
 </net>
 <net name="N$1" class="0">
