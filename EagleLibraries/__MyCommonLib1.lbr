@@ -1758,6 +1758,18 @@
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="-1" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="RING_16X8_2WIND">
+<text x="-2.8575" y="10.16" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.8575" y="7.62" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<pad name="W2_END" x="-4" y="-2.54" drill="0.8" diameter="2.54"/>
+<pad name="W1_END" x="-4" y="2.54" drill="0.8" diameter="2.54"/>
+<pad name="W2_START" x="4" y="-2.54" drill="0.8" diameter="2.54"/>
+<pad name="W1_START" x="4" y="2.54" drill="0.8" diameter="2.54"/>
+<wire x1="-3.8" y1="7.8" x2="-3.8" y2="-7.8" width="0.4" layer="21"/>
+<wire x1="-3.8" y1="-7.8" x2="3.8" y2="-7.8" width="0.4" layer="21"/>
+<wire x1="3.8" y1="-7.8" x2="3.8" y2="7.8" width="0.4" layer="21"/>
+<wire x1="3.8" y1="7.8" x2="-3.8" y2="7.8" width="0.4" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -2695,6 +2707,30 @@
 <pin name="SEC1_START" x="5.08" y="5.08" visible="off" length="short" rot="R180"/>
 <pin name="SEC1_NEAR_START" x="5.08" y="2.54" visible="off" length="short" rot="R180"/>
 <pin name="SEC1_END" x="5.08" y="-5.08" visible="off" length="short" rot="R180"/>
+<wire x1="2.54" y1="-2.54" x2="2.54" y2="-5.08" width="0.254" layer="94" curve="180"/>
+</symbol>
+<symbol name="TRANS_2">
+<wire x1="-2.54" y1="-5.08" x2="-2.54" y2="-2.54" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="-2.54" x2="-2.54" y2="0" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="2.54" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="2.54" x2="-2.54" y2="5.08" width="0.254" layer="94" curve="180"/>
+<pin name="PRI_START" x="-5.08" y="-5.08" visible="off" length="short"/>
+<pin name="PRI_END" x="-5.08" y="5.08" visible="off" length="short"/>
+<circle x="-2.54" y="-3.81" radius="0.3175" width="0.508" layer="94"/>
+<text x="0" y="8.89" size="1.27" layer="95" font="vector" ratio="20" rot="R180">&gt;NAME</text>
+<text x="0" y="10.16" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+<wire x1="2.54" y1="5.08" x2="2.54" y2="2.54" width="0.254" layer="94" curve="180"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="0" width="0.254" layer="94" curve="180"/>
+<wire x1="2.54" y1="0" x2="2.54" y2="-2.54" width="0.254" layer="94" curve="180"/>
+<circle x="2.54" y="3.81" radius="0.3175" width="0.508" layer="94"/>
+<text x="-4.445" y="1.905" size="1.27" layer="94" font="vector" rot="R270">PRI</text>
+<text x="3.175" y="3.175" size="1.27" layer="94" font="vector" rot="R270">SEC</text>
+<wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.508" layer="94"/>
+<wire x1="0" y1="2.54" x2="0" y2="1.27" width="0.508" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="-1.27" width="0.508" layer="94"/>
+<wire x1="0" y1="-2.54" x2="0" y2="-3.81" width="0.508" layer="94"/>
+<pin name="SEC_START" x="5.08" y="5.08" visible="off" length="short" rot="R180"/>
+<pin name="SEC_END" x="5.08" y="-5.08" visible="off" length="short" rot="R180"/>
 <wire x1="2.54" y1="-2.54" x2="2.54" y2="-5.08" width="0.254" layer="94" curve="180"/>
 </symbol>
 </symbols>
@@ -3898,6 +3934,24 @@
 <connect gate="G$1" pin="B" pad="1"/>
 <connect gate="G$1" pin="C" pad="2"/>
 <connect gate="G$1" pin="E" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TRANS_2WIND">
+<gates>
+<gate name="G$1" symbol="TRANS_2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(RING_16X8)" package="RING_16X8_2WIND">
+<connects>
+<connect gate="G$1" pin="PRI_END" pad="W1_END"/>
+<connect gate="G$1" pin="PRI_START" pad="W1_START"/>
+<connect gate="G$1" pin="SEC_END" pad="W2_END"/>
+<connect gate="G$1" pin="SEC_START" pad="W2_START"/>
 </connects>
 <technologies>
 <technology name=""/>
