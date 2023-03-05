@@ -1266,7 +1266,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="R3" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="*"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
-<part name="D2" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="SB2100"/>
+<part name="D2" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="SB2100"/>
 <part name="D3" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="SB2100"/>
 <part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10R"/>
 <part name="C1" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="1n0"/>
