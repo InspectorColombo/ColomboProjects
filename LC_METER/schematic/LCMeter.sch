@@ -4193,7 +4193,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="R8" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="68R"/>
 <part name="R9" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K5"/>
 <part name="FRAME3" library="frames" deviceset="A4L-LOC" device="" value="L_METER"/>
-<part name="R55" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
+<part name="R55" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
 <part name="C17" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="1nF"/>
 <part name="T1" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="T2" library="__MyCommonLib1" deviceset="BC857" device="SOT23_SMALL_PADS" value="BC857"/>
@@ -4206,7 +4206,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="C19" library="__MyCommonLib1" deviceset="C" device="SMD_1206_BIG_GAP" value="0.47uF"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
 <part name="R60" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
-<part name="R58" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="20K"/>
+<part name="R58" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="24K"/>
 <part name="C16" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="IC7" library="__MyCommonLib1" deviceset="LM324" device=""/>
 <part name="C25" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
@@ -4215,14 +4215,14 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
-<part name="R54" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100K"/>
+<part name="R54" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="120K"/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
-<part name="R59" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="300R"/>
+<part name="R59" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="1K0"/>
 <part name="D10" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="C20" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
-<part name="R74" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
+<part name="R74" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
 <part name="C39" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="1nF"/>
 <part name="T3" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="T7" library="__MyCommonLib1" deviceset="BC857" device="SOT23_SMALL_PADS" value="BC857"/>
@@ -4235,10 +4235,10 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND25" library="supply1" deviceset="GND" device=""/>
 <part name="T4" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="C41" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
-<part name="R75" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="25K"/>
+<part name="R75" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="24K"/>
 <part name="GND44" library="supply1" deviceset="GND" device=""/>
 <part name="GND46" library="supply1" deviceset="GND" device=""/>
-<part name="R67" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100K"/>
+<part name="R67" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="120K"/>
 <part name="R68" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R76" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100R"/>
 <part name="GND47" library="supply1" deviceset="GND" device=""/>
@@ -4247,8 +4247,8 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND49" library="supply1" deviceset="GND" device=""/>
 <part name="T5" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="C42" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
-<part name="R77" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="25K"/>
-<part name="R69" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100K"/>
+<part name="R77" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="24K"/>
+<part name="R69" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="120K"/>
 <part name="R70" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R78" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100R"/>
 <part name="GND50" library="supply1" deviceset="GND" device=""/>
@@ -4257,8 +4257,8 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND52" library="supply1" deviceset="GND" device=""/>
 <part name="T6" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="C43" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
-<part name="R79" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="25K"/>
-<part name="R71" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100K"/>
+<part name="R79" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="24K"/>
+<part name="R71" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="120K"/>
 <part name="R72" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R80" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100R"/>
 <part name="GND53" library="supply1" deviceset="GND" device=""/>
@@ -4384,15 +4384,15 @@ Grid 5.00 mm&lt;p&gt;
 <part name="X1" library="__MyCommonLib1" deviceset="PIN2X3" device="2.54MM_LOOSE_PADS" value="MCU_PROGRAMMING"/>
 <part name="GND98" library="supply1" deviceset="GND" device=""/>
 <part name="C48" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="47uFx16V"/>
-<part name="R86" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
+<part name="R86" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND33" library="supply1" deviceset="GND" device=""/>
-<part name="R87" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
+<part name="R87" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
-<part name="R88" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
+<part name="R88" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND35" library="supply1" deviceset="GND" device=""/>
 <part name="J100" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="0"/>
-<part name="C47" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="4.7uF"/>
-<part name="C58" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="4.7uF"/>
+<part name="C47" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="100uFx10V"/>
+<part name="C58" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="100uFx10V"/>
 <part name="GND81" library="supply1" deviceset="GND" device=""/>
 <part name="GND86" library="supply1" deviceset="GND" device=""/>
 <part name="J11" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>

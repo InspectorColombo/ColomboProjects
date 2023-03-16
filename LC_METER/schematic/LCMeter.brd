@@ -58,7 +58,7 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="no"/>
@@ -1110,7 +1110,7 @@ design rules under a new name.</description>
 <element name="R10" library="__MyCommonLib1" package="RSMD_0805" value="68R" x="19.7" y="40.4" rot="MR90"/>
 <element name="R8" library="__MyCommonLib1" package="RSMD_0805" value="68R" x="25.4" y="40.4" rot="MR270"/>
 <element name="R9" library="__MyCommonLib1" package="RSMD_0805" value="1K5" x="22.5" y="40.4" rot="MR270"/>
-<element name="R55" library="__MyCommonLib1" package="RSMD_0805" value="4K7" x="23" y="11.4" rot="MR0"/>
+<element name="R55" library="__MyCommonLib1" package="RSMD_0805" value="2K2" x="23" y="11.4" rot="MR0"/>
 <element name="C17" library="__MyCommonLib1" package="RSMD_0805" value="1nF" x="23" y="8.8" rot="MR180"/>
 <element name="T1" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC847" x="18.5" y="9" rot="MR180"/>
 <element name="T2" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC857" x="18.5" y="4.1" rot="MR180"/>
@@ -1125,16 +1125,16 @@ design rules under a new name.</description>
 <element name="R57" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="***" x="10.4" y="12.2" rot="MR0"/>
 <element name="C19" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="0.47uF" x="5.5" y="18.1" rot="MR180"/>
 <element name="R60" library="__MyCommonLib1" package="RSMD_0805" value="4K7" x="5.5" y="12.1" rot="MR0"/>
-<element name="R58" library="__MyCommonLib1" package="RSMD_0805" value="20K" x="11.1" y="15.2" rot="MR180"/>
+<element name="R58" library="__MyCommonLib1" package="RSMD_0805" value="24K" x="11.1" y="15.2" rot="MR180"/>
 <element name="C16" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="14.2" y="18.7" rot="MR270"/>
 <element name="IC7" library="__MyCommonLib1" package="SOIC14" value="LM324" x="6" y="24.4" rot="MR90"/>
 <element name="C25" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="4" y="30.8" rot="MR180"/>
 <element name="C21" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="12.2" y="24.4" rot="MR90"/>
-<element name="R54" library="__MyCommonLib1" package="RSMD_0805" value="100K" x="11.6" y="18.7" rot="MR90"/>
-<element name="R59" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="300R" x="18.4" y="18.9" rot="MR180"/>
+<element name="R54" library="__MyCommonLib1" package="RSMD_0805" value="120K" x="11.6" y="18.7" rot="MR90"/>
+<element name="R59" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="1K0" x="18.4" y="18.9" rot="MR180"/>
 <element name="D10" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="25.2" y="18.7" rot="MR90"/>
 <element name="C20" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="22.6" y="19.5" rot="MR90"/>
-<element name="R74" library="__MyCommonLib1" package="RSMD_0805" value="4K7" x="38.5" y="3.1" rot="MR180"/>
+<element name="R74" library="__MyCommonLib1" package="RSMD_0805" value="2K2" x="38.5" y="3.1" rot="MR180"/>
 <element name="C39" library="__MyCommonLib1" package="RSMD_0805" value="1nF" x="38.5" y="5.7" rot="MR0"/>
 <element name="T3" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC847" x="43.1" y="8.4" rot="MR0"/>
 <element name="T7" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC857" x="43.1" y="3.5" rot="MR0"/>
@@ -1149,22 +1149,22 @@ design rules under a new name.</description>
 </element>
 <element name="T4" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC847" x="61" y="14" rot="MR90"/>
 <element name="C41" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="61" y="9" rot="MR270"/>
-<element name="R75" library="__MyCommonLib1" package="RSMD_0805" value="25K" x="66" y="15" rot="MR0"/>
-<element name="R67" library="__MyCommonLib1" package="RSMD_0805" value="100K" x="64" y="19" rot="MR90"/>
+<element name="R75" library="__MyCommonLib1" package="RSMD_0805" value="24K" x="66" y="15" rot="MR0"/>
+<element name="R67" library="__MyCommonLib1" package="RSMD_0805" value="120K" x="64" y="19" rot="MR90"/>
 <element name="R68" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="58" y="19" rot="MR90"/>
 <element name="R76" library="__MyCommonLib1" package="RSMD_0805" value="100R" x="66" y="12" rot="MR0"/>
 <element name="C35" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="67" y="19" rot="MR270"/>
 <element name="T5" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC847" x="61" y="24" rot="MR90"/>
 <element name="C42" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="61" y="19" rot="MR270"/>
-<element name="R77" library="__MyCommonLib1" package="RSMD_0805" value="25K" x="66" y="25.5" rot="MR0"/>
-<element name="R69" library="__MyCommonLib1" package="RSMD_0805" value="100K" x="64" y="29" rot="MR90"/>
+<element name="R77" library="__MyCommonLib1" package="RSMD_0805" value="24K" x="66" y="25.5" rot="MR0"/>
+<element name="R69" library="__MyCommonLib1" package="RSMD_0805" value="120K" x="64" y="29" rot="MR90"/>
 <element name="R70" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="58" y="29" rot="MR90"/>
 <element name="R78" library="__MyCommonLib1" package="RSMD_0805" value="100R" x="66" y="22.5" rot="MR0"/>
 <element name="C36" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="67" y="29" rot="MR270"/>
 <element name="T6" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC847" x="61" y="34" rot="MR90"/>
 <element name="C43" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="61" y="29" rot="MR270"/>
-<element name="R79" library="__MyCommonLib1" package="RSMD_0805" value="25K" x="66" y="36" rot="MR0"/>
-<element name="R71" library="__MyCommonLib1" package="RSMD_0805" value="100K" x="62" y="39" rot="MR90"/>
+<element name="R79" library="__MyCommonLib1" package="RSMD_0805" value="24K" x="66" y="36" rot="MR0"/>
+<element name="R71" library="__MyCommonLib1" package="RSMD_0805" value="120K" x="62" y="39" rot="MR90"/>
 <element name="R72" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="59" y="39" rot="MR90"/>
 <element name="R80" library="__MyCommonLib1" package="RSMD_0805" value="100R" x="66" y="33" rot="MR0"/>
 <element name="C37" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="66" y="40" rot="MR180"/>
@@ -1243,12 +1243,12 @@ design rules under a new name.</description>
 <element name="R7" library="__MyCommonLib1" package="RSMD_0805" value="4K7" x="64.2" y="47.8" rot="MR270"/>
 <element name="X1" library="__MyCommonLib1" package="PIN2X3_2.54MM_LOOSE_PADS" value="MCU_PROGRAMMING" x="17.4" y="23.6"/>
 <element name="C48" library="__MyCommonLib1" package="CE_6.3MM" value="47uFx16V" x="5.9" y="34"/>
-<element name="R86" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="41" y="14.5" rot="MR90"/>
-<element name="R87" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="46.5" y="28" rot="MR270"/>
-<element name="R88" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="46" y="37.5" rot="MR270"/>
+<element name="R86" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="41" y="14.5" rot="MR90"/>
+<element name="R87" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="46.5" y="28" rot="MR270"/>
+<element name="R88" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="46" y="37.5" rot="MR270"/>
 <element name="J100" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="0" x="29.4" y="15.9" rot="MR180"/>
-<element name="C47" library="__MyCommonLib1" package="CE_6.3MM" value="4.7uF" x="16.5" y="12.5"/>
-<element name="C58" library="__MyCommonLib1" package="CE_6.3MM" value="4.7uF" x="38.4" y="12" rot="R270"/>
+<element name="C47" library="__MyCommonLib1" package="CE_6.3MM" value="100uFx10V" x="16.5" y="12.5"/>
+<element name="C58" library="__MyCommonLib1" package="CE_6.3MM" value="100uFx10V" x="38.4" y="12" rot="R270"/>
 <element name="J11" library="__MyCommonLib1" package="RSMD_0805" value="0" x="8.5" y="77.2" rot="MR90"/>
 <element name="R100" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="34" y="47.3" rot="MR270"/>
 <element name="R89" library="__MyCommonLib1" package="RSMD_0805" value="1K" x="35.3" y="19.8" rot="MR90"/>
