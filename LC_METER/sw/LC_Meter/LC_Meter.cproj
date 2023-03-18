@@ -122,6 +122,18 @@
     <PostBuildEvent>$(SolutionDir)PostBuild.bat $(SolutionDir) Debug c:\__AVR_DUDE_NEW\</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdcReader.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="AdcReader.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="KeysReader.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="KeysReader.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LedScreen.c">
       <SubType>compile</SubType>
     </Compile>

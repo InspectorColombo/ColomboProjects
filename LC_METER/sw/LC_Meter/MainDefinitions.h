@@ -9,6 +9,9 @@
 #define MAINDEFINITIONS_H_
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
+
+#include "stdbool.h"
 
 #ifdef __HAS_ELPM__
 #   define PROGMEM __farflash

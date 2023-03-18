@@ -8,6 +8,8 @@
 #include "MainDefinitions.h"
 #include "LedScreen.h"
 #include "PwmControl.h"
+#include "AdcReader.h"
+#include "KeysReader.h"
 
 int main(void)
 {
@@ -32,8 +34,19 @@ int main(void)
 */	
 	InitLedsScreen();
 	InitPwm();
+	KeysReaderInit();
+	sei();
+
+// 	for(;;)
+// 	{
+// 	}
+
 	
-	EnableLPwm100uS();
+	AdcTurnOn(ADC_BATTERY);
+	
+	
+	
+	//EnableLPwm100uS();
 	
 //	PushToLed(0x01);
 //	PushToLed(0x02);
@@ -43,22 +56,38 @@ int main(void)
 	
     /* Replace with your application code */
     char message[5] = {' ', ' ', ' ', ' ', ' '};
-	uint16_t value = 12345;
+	uint16_t counter = 0;
 	while (1) 
     {
 		//asm volatile ("sleep");
 		//value += 1;
 		
-
+		//uint16_t adcValue = AdcRead();
+		
+		
 		
 		//char* messagePtr = &message[0];
 		
 		CopyString(message, "BT---");
 		
-		value = 12748;
-		IntToString(value, &message[0], 2);
+		//IntToString(adcValue, &message[0], 5);
+		IntToString(counter, &message[0], 5);
+		LedWriteWithDot(message, 255);
 		
-		LedWriteWithDot(message, 1);
+		if (IsKeyModePressed())
+		{
+			++counter;
+		}
+
+		if (IsKeyRangePressed())
+		{
+			--counter;
+		}
+
+		if (IsKeyReservedPressed())
+		{
+			counter += 100;
+		}
 
 		//++value;
 		
