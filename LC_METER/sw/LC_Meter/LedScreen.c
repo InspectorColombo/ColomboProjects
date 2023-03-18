@@ -9,6 +9,7 @@
 #include "LedScreen.h"
 
 
+
 // According to PCB routing, Segments have such binding with bits in shift register:
 //
 //      (4)
@@ -26,7 +27,7 @@
 //
 //
 
-// Here is Digits, Detters and some signs definition:
+// Here is Digits, Letters and some signs definition:
 const char LED_DOT = 0b00000001;	// "."
 const char LED_MINUS = 0b01000000;	// "-"
 
@@ -84,126 +85,140 @@ char GetLedDigit(const uint8_t src)
 char GetLedLetter(const uint8_t src)
 {
 	if (src >= 'A' && src <= 'Z')
-	return LedLettersDefinition[src - 'A'];
+		return LedLettersDefinition[src - 'A'];
 
 	if (src >= 'a' && src <= 'z')
-	return LedLettersDefinition[src - 'a'];
+		return LedLettersDefinition[src - 'a'];
+
+	if (src >= '0' && src <= '9')
+		return LedDigitsDefinition[src - '0'];
 
 	if (src == ' ')
-	return 0;
+		return 0;
+		
+	if (src == '-')
+		return LED_MINUS;
 
 	return 0;
 }
 
+void InitLedsScreen()
+{
+	LEDS_PORT &= ~((1 << LEDS_DATA) | (1 << LEDS_SCK) | (1 << LEDS_LATCH));
+	LEDS_DDR |= (1 << LEDS_DATA) | (1 << LEDS_SCK) | (1 << LEDS_LATCH);
+}
 
 inline void SetLedSck()
 {
-	PORTC |= (1 << 3);
-	DDRC |= (1 << 3);
+	LEDS_PORT |= 1 << LEDS_SCK;
 }
 
 inline void ClrLedSck()
 {
-	PORTC &= ~(1 << 3);
-	DDRC |= (1 << 3);
+	LEDS_PORT &= ~(1 << LEDS_SCK);
 }
 
 inline void SetLedLatch()
 {
-	PORTC |= (1 << 2);
-	DDRC |= (1 << 2);
+	LEDS_PORT |= 1 << LEDS_LATCH;
 }
 
 inline void ClrLedLatch()
 {
-	PORTC &= ~(1 << 2);
-	DDRC |= (1 << 2);
+	LEDS_PORT &= ~(1 << LEDS_LATCH);
 }
 
 inline void SetLedData()
 {
-	PORTC |= (1 << 1);
-	DDRC |= (1 << 1);
+	LEDS_PORT |= 1 << LEDS_DATA;
 }
 
 inline void ClrLedData()
 {
-	PORTC &= ~(1 << 1);
-	DDRC |= (1 << 1);
+	LEDS_PORT &= ~(1 << LEDS_DATA);
 }
-
-inline void LedDelay()
-{
-	for(int i=0; i < 100; ++i)
-	{
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-	}
-	
-}
-
 
 inline void LedLatch()
 {
-	LedDelay();
 	SetLedLatch();
-	LedDelay();
 	ClrLedLatch();
-	LedDelay();
 }
 
 
-
-void PushToLed(const uint8_t value)
+inline void PushByteToLedShiftRegister(const uint8_t value)
 {
-	ClrLedSck();
-	LedDelay();
-	
-	uint8_t tmpVal = value;
-	for(uint8_t i = 0; i < 8; ++i)
-	{
-		ClrLedSck();
-		if ((tmpVal & 0x01) != 00)
-		{
-			SetLedData();
-		}
-		else
-		{
-			ClrLedData();
-		}
-		
-		LedDelay();
-		
-		SetLedSck();
-		
-		LedDelay();
-		
-		tmpVal = tmpVal >> 1;
-		
-		ClrLedSck();
-	}
-	LedDelay();
-	
+ 	ClrLedSck();
+ 	uint8_t tmpVal = value;
+ 	for(uint8_t i = 8; i != 0; --i)
+ 	{
+ 		if ((tmpVal & 0x01) != 0)
+ 		{
+ 			SetLedData();
+ 		}
+ 		else
+ 		{
+ 			ClrLedData();
+ 		}
+ 		
+ 		SetLedSck();
+ 		ClrLedSck();
+ 		tmpVal = tmpVal >> 1;
+ 	}
 }
 
-void LedWriteWithDot(const char* str, const uint8_t dotPos)
+inline void LedWriteWithDot(const char* strInput, const uint8_t dotPos)
 {
-	dotPos;
+	const char* str = strInput + 4;
 	for(uint8_t charIdx = 0; charIdx < 5; ++charIdx)
 	{
-		uint8_t currChar = *(str + 4 - charIdx);
-		//		if (dotPos == (5 - charIdx))
-		//		{
-		//			currChar |= LED_DOT;
-		//		}
-
-		PushToLed(GetLedLetter(currChar));
+		uint8_t currChar = GetLedLetter(*str);
+		if (charIdx == dotPos)
+		{
+			currChar |= LED_DOT;
+		}
+		PushByteToLedShiftRegister(currChar);
+		--str;
 	}
 	LedLatch();
+}
+
+void LedWrite(const char* str)
+{
+	LedWriteWithDot(str, 255);
+}
+
+
+// void IntToString(const uint16_t srcInput, char* dstInput)
+// {
+// 	char* dst = dstInput + 4;
+// 	uint16_t src = srcInput;
+// 	for(uint8_t digitCnt = 5; digitCnt != 0; --digitCnt)
+// 	{
+// 		*dst = (uint8_t)((src % 10) + '0');
+// 		--dst;
+// 		src /= 10;
+// 	}
+// }
+
+void CopyString(char* dst, const char* src)
+{
+	for(uint8_t idx = 0; idx < 5; ++idx)
+	{
+		dst[idx] = src[idx];
+	}
+}
+
+void IntToString(const uint16_t srcInput, char* dstInput, const uint8_t digitsCount)
+{
+	char* dst = dstInput + 4;
+	uint16_t src = srcInput;
+	for(uint8_t dgtCnt = 0; dgtCnt < 5; ++dgtCnt)
+	{
+		if (dgtCnt < digitsCount)
+		{
+			*dst = (uint8_t)((src % 10) + '0');
+			--dst;
+		}
+		src /= 10;
+	}
 }
