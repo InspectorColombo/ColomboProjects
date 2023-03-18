@@ -7,37 +7,33 @@
 
 #include "MainDefinitions.h"
 #include "LedScreen.h"
+#include "PwmControl.h"
 
 int main(void)
 {
-	
-	
-/*	
+/*
  	//asm volatile(" LDI r16, 0x32");
  	asm volatile(" LDI r17, 0b00100000");
  	asm volatile(" LDI r18, 0b11011111");
- 	asm volatile("	out 0x11, r17");	
+ 	asm volatile("	sbi 0x14, 3");	
  
  	asm volatile("Loop1: ");
  	//asm volatile("	out 0x12, r17");
-	 asm volatile("	sbi 0x12, 5");
+	 asm volatile("	sbi 0x15, 3");
  	//asm volatile("	nop");
  	asm volatile("	nop");
  	asm volatile("	nop");
  	asm volatile("	nop");
  	//asm volatile("	out 0x12, r18");
-	 asm volatile("	cbi 0x12, 5");
+	 asm volatile("	cbi 0x15, 3");
  	//asm volatile("	nop");
  	asm volatile("	nop");
  	asm volatile("	RJMP Loop1");
 */	
-	
-	
-	
-	
-	
-	
 	InitLedsScreen();
+	InitPwm();
+	
+	EnableLPwm100uS();
 	
 //	PushToLed(0x01);
 //	PushToLed(0x02);
@@ -59,23 +55,12 @@ int main(void)
 		
 		CopyString(message, "BT---");
 		
-		value = 48;
+		value = 12748;
 		IntToString(value, &message[0], 2);
 		
 		LedWriteWithDot(message, 1);
-		//LedWrite(message);
 
 		//++value;
-
-// 		PushToLed(GetLedLetter('F'));
-// 		PushToLed(GetLedLetter('u'));
-// 		PushToLed(GetLedDigit(0));
-// 		PushToLed(GetLedDigit(0));
-// 		PushToLed(GetLedDigit(0));
-// 		
-// 		
-// 		
-// 		LedLatch();
 		
     }
 }

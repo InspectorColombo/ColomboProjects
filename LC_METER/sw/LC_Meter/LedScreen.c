@@ -8,8 +8,6 @@
 #include "MainDefinitions.h"
 #include "LedScreen.h"
 
-
-
 // According to PCB routing, Segments have such binding with bits in shift register:
 //
 //      (4)
@@ -138,13 +136,6 @@ inline void ClrLedData()
 	LEDS_PORT &= ~(1 << LEDS_DATA);
 }
 
-inline void LedLatch()
-{
-	SetLedLatch();
-	ClrLedLatch();
-}
-
-
 inline void PushByteToLedShiftRegister(const uint8_t value)
 {
  	ClrLedSck();
@@ -179,26 +170,15 @@ inline void LedWriteWithDot(const char* strInput, const uint8_t dotPos)
 		PushByteToLedShiftRegister(currChar);
 		--str;
 	}
-	LedLatch();
+
+	SetLedLatch();
+	ClrLedLatch();
 }
 
 void LedWrite(const char* str)
 {
 	LedWriteWithDot(str, 255);
 }
-
-
-// void IntToString(const uint16_t srcInput, char* dstInput)
-// {
-// 	char* dst = dstInput + 4;
-// 	uint16_t src = srcInput;
-// 	for(uint8_t digitCnt = 5; digitCnt != 0; --digitCnt)
-// 	{
-// 		*dst = (uint8_t)((src % 10) + '0');
-// 		--dst;
-// 		src /= 10;
-// 	}
-// }
 
 void CopyString(char* dst, const char* src)
 {

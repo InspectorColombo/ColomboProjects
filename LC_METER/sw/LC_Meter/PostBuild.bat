@@ -19,4 +19,4 @@ copy "%ProjectDir%%BuildConfig%\LC_Meter.bin" "%AvrDudeDir%\LC_Meter.bin" /y
 cd "%AvrDudeDir%"
 avrdude.exe -p atmega8535 -c USBTiny -B 10 -U flash:w:LC_Meter.bin:r
 avrdude.exe -p ATmega8535 -c USBTiny -B 10 -U hfuse:w:0xc9:m
-avrdude.exe -p ATmega8535 -c USBTiny -B 10 -U lfuse:w:0xaf:m
+avrdude.exe -p ATmega8535 -c USBTiny -B 10 -U lfuse:w:0x2f:m
