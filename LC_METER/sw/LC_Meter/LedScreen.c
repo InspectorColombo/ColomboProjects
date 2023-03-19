@@ -28,6 +28,7 @@
 // Here is Digits, Letters and some signs definition:
 const char LED_DOT = 0b00000001;	// "."
 const char LED_MINUS = 0b01000000;	// "-"
+const char LED_UNDERSCORE = 0b00100000;	// "_"
 
 PROGMEM const char LedDigitsDefinition[] =
 {
@@ -82,14 +83,18 @@ char GetLedDigit(const uint8_t src)
 
 char GetLedLetter(const uint8_t src)
 {
+	if (src >= '0' && src <= '9')
+		return LedDigitsDefinition[src - '0'];
+
 	if (src >= 'A' && src <= 'Z')
 		return LedLettersDefinition[src - 'A'];
 
 	if (src >= 'a' && src <= 'z')
 		return LedLettersDefinition[src - 'a'];
 
-	if (src >= '0' && src <= '9')
-		return LedDigitsDefinition[src - '0'];
+	if (src == '_')
+		return LED_UNDERSCORE;
+
 
 	if (src == ' ')
 		return 0;

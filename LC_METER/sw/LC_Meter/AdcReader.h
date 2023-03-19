@@ -22,5 +22,6 @@ void AdcTurnOn(const uint8_t source);
 void AdcTurnOff();
 void AdcSelectInput(const uint8_t source);
 uint16_t AdcRead();
+uint16_t AdcReadMultipleTimes(const uint8_t timesToRead);
 
 #endif /* ADCREADER_H_ */

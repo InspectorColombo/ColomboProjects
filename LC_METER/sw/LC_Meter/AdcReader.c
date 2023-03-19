@@ -60,3 +60,15 @@ uint16_t AdcRead()
 	
 	return result;
 }
+
+// Read ADC multiple times
+// Max number of times = 64
+uint16_t AdcReadMultipleTimes(const uint8_t timesToRead)
+{
+	uint16_t result = 0;
+	for(uint8_t readCnt = 0; readCnt < timesToRead; ++readCnt)
+	{
+		result += AdcRead();
+	}
+	return result;
+}

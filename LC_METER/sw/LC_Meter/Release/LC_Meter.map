@@ -2,18 +2,23 @@ Archive member included to satisfy reference by file (symbol)
 
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodhi4.o)
                               LedScreen.o (__udivmodhi4)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+                              main.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8535/avr4/crtatmega8535.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_copy_data.o)
                               LedScreen.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_clear_bss.o)
                               KeysReader.o (__do_clear_bss)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+                              main.o (__umulhisi3)
 
 Allocating common symbols
 Common symbol       size              file
 
 Key2Timer           0x1               KeysReader.o
 Key3Timer           0x1               KeysReader.o
+adcPrevValue        0x2               main.o
 Key1Timer           0x1               KeysReader.o
 
 Discarded input sections
@@ -25,19 +30,20 @@ Discarded input sections
  .bss           0x00000000        0x0 AdcReader.o
  .text.AdcTurnOff
                 0x00000000        0x4 AdcReader.o
- .text.AdcSelectInput
-                0x00000000        0xc AdcReader.o
- .text.AdcRead  0x00000000       0x1c AdcReader.o
  .text          0x00000000        0x0 KeysReader.o
  .data          0x00000000        0x0 KeysReader.o
  .bss           0x00000000        0x0 KeysReader.o
+ .text.IsKeyRangePressed
+                0x00000000        0x8 KeysReader.o
+ .text.IsKeyReservedPressed
+                0x00000000        0x8 KeysReader.o
  .text          0x00000000        0x0 LedScreen.o
  .data          0x00000000        0x0 LedScreen.o
  .bss           0x00000000        0x0 LedScreen.o
  .text.GetLedDigit
                 0x00000000       0x14 LedScreen.o
- .text.LedWrite
-                0x00000000        0x4 LedScreen.o
+ .rodata.LED_UNDERSCORE
+                0x00000000        0x1 LedScreen.o
  .rodata.LED_MINUS
                 0x00000000        0x1 LedScreen.o
  .rodata.LED_DOT
@@ -72,6 +78,20 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodhi4.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodhi4.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
@@ -120,6 +140,20 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
 
 Memory Configuration
 
@@ -250,7 +284,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2de
+.text           0x00000000      0x43c
  *(.vectors)
  .vectors       0x00000000       0x2a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8535/avr4/crtatmega8535.o
                 0x00000000                __vector_default
@@ -340,52 +374,72 @@ END GROUP
  .text.AdcTurnOn
                 0x00000086        0xc AdcReader.o
                 0x00000086                AdcTurnOn
+ .text.AdcSelectInput
+                0x00000092        0xc AdcReader.o
+                0x00000092                AdcSelectInput
+ .text.AdcRead  0x0000009e       0x1c AdcReader.o
+                0x0000009e                AdcRead
+ .text.AdcReadMultipleTimes
+                0x000000ba       0x2a AdcReader.o
+                0x000000ba                AdcReadMultipleTimes
  .text.__vector_4
-                0x00000092       0x4e KeysReader.o
-                0x00000092                __vector_4
+                0x000000e4       0x4e KeysReader.o
+                0x000000e4                __vector_4
  .text.KeysReaderInit
-                0x000000e0       0x26 KeysReader.o
-                0x000000e0                KeysReaderInit
+                0x00000132       0x26 KeysReader.o
+                0x00000132                KeysReaderInit
  .text.IsKeyPressed
-                0x00000106       0x30 KeysReader.o
-                0x00000106                IsKeyPressed
+                0x00000158       0x30 KeysReader.o
+                0x00000158                IsKeyPressed
  .text.IsKeyModePressed
-                0x00000136        0x8 KeysReader.o
-                0x00000136                IsKeyModePressed
- .text.IsKeyRangePressed
-                0x0000013e        0x8 KeysReader.o
-                0x0000013e                IsKeyRangePressed
- .text.IsKeyReservedPressed
-                0x00000146        0x8 KeysReader.o
-                0x00000146                IsKeyReservedPressed
+                0x00000188        0x8 KeysReader.o
+                0x00000188                IsKeyModePressed
  .text.GetLedLetter
-                0x0000014e       0x44 LedScreen.o
-                0x0000014e                GetLedLetter
+                0x00000190       0x4c LedScreen.o
+                0x00000190                GetLedLetter
  .text.InitLedsScreen
-                0x00000192        0xe LedScreen.o
-                0x00000192                InitLedsScreen
+                0x000001dc        0xe LedScreen.o
+                0x000001dc                InitLedsScreen
  .text.LedWriteWithDot
-                0x000001a0       0x4c LedScreen.o
-                0x000001a0                LedWriteWithDot
+                0x000001ea       0x4c LedScreen.o
+                0x000001ea                LedWriteWithDot
+ .text.LedWrite
+                0x00000236        0x4 LedScreen.o
+                0x00000236                LedWrite
  .text.CopyString
-                0x000001ec       0x1a LedScreen.o
-                0x000001ec                CopyString
+                0x0000023a       0x1a LedScreen.o
+                0x0000023a                CopyString
  .text.IntToString
-                0x00000206       0x3c LedScreen.o
-                0x00000206                IntToString
+                0x00000254       0x3c LedScreen.o
+                0x00000254                IntToString
+ .text.ApplyAdcHisteresys
+                0x00000290       0x1e main.o
+                0x00000290                ApplyAdcHisteresys
+ .text.BatteryShow
+                0x000002ae       0x9e main.o
+                0x000002ae                BatteryShow
  .text.startup.main
-                0x00000242       0x6e main.o
-                0x00000242                main
- .text.InitPwm  0x000002b0        0x2 PwmControl.o
-                0x000002b0                InitPwm
+                0x0000034c       0x4c main.o
+                0x0000034c                main
+ .text.InitPwm  0x00000398        0x2 PwmControl.o
+                0x00000398                InitPwm
+ .text.DisableAllPwm
+                0x0000039a       0x1a PwmControl.o
+                0x0000039a                DisableAllPwm
  .text.libgcc.div
-                0x000002b2       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodhi4.o)
-                0x000002b2                __udivmodhi4
-                0x000002da                . = ALIGN (0x2)
+                0x000003b4       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodhi4.o)
+                0x000003b4                __udivmodhi4
+ .text.libgcc.div
+                0x000003dc       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x000003dc                __udivmodsi4
+ .text.libgcc.mul
+                0x00000420       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_umulhisi3.o)
+                0x00000420                __umulhisi3
+                0x00000438                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002da        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
-                0x000002da                _exit
-                0x000002da                exit
+ .fini9         0x00000438        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+                0x00000438                _exit
+                0x00000438                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -404,44 +458,47 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002da        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x00000438        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x000002de                _etext = .
+                0x0000043c                _etext = .
 
-.data           0x00800060        0xc load address 0x000002de
+.data           0x00800060       0x1e load address 0x0000043c
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
+ .data.message  0x00800060        0x5 main.o
+                0x00800060                message
  *(.gnu.linkonce.d*)
  *(.rodata)
- .rodata        0x00800060        0x5 main.o
  *(.rodata*)
  .rodata.str1.1
-                0x00800065        0x6 main.o
+                0x00800065       0x18 main.o
  *(.gnu.linkonce.r*)
-                0x0080006c                . = ALIGN (0x2)
- *fill*         0x0080006b        0x1 
-                0x0080006c                _edata = .
-                0x0080006c                PROVIDE (__data_end, .)
+                0x0080007e                . = ALIGN (0x2)
+ *fill*         0x0080007d        0x1 
+                0x0080007e                _edata = .
+                0x0080007e                PROVIDE (__data_end, .)
 
-.bss            0x0080006c        0x3
-                0x0080006c                PROVIDE (__bss_start, .)
+.bss            0x0080007e        0x5
+                0x0080007e                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x0080006c        0x3 KeysReader.o
-                0x0080006c                Key2Timer
-                0x0080006d                Key3Timer
-                0x0080006e                Key1Timer
-                0x0080006f                PROVIDE (__bss_end, .)
-                0x000002de                __data_load_start = LOADADDR (.data)
-                0x000002ea                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0080007e        0x3 KeysReader.o
+                0x0080007e                Key2Timer
+                0x0080007f                Key3Timer
+                0x00800080                Key1Timer
+ COMMON         0x00800081        0x2 main.o
+                0x00800081                adcPrevValue
+                0x00800083                PROVIDE (__bss_end, .)
+                0x0000043c                __data_load_start = LOADADDR (.data)
+                0x0000045a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080006f        0x0
+.noinit         0x00800083        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080006f                _end = .
+                0x00800083                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0

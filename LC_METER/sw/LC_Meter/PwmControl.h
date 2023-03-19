@@ -22,6 +22,6 @@ void EnableEsrPwm();
 void EnableLPwm10uS();
 void EnableLPwm100uS();
 void EnableLPwm1000uS();
-
+void DisableAllPwm();
 
 #endif /* PWMCONTROL_H_ */

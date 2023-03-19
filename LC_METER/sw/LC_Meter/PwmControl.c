@@ -70,3 +70,11 @@ void EnableLPwm1000uS()
 	TCCR1A = 0b00100010;
 	TCCR1B = 0b00011010;	// clk/8 (2MHz)
 }
+
+void DisableAllPwm()
+{
+	PWM_PORT &= ~((1 << L_PWM_PIN) | (1 << ESR_PWM_PIN));
+	PWM_DDR &= ~((1 << ESR_PWM_PIN) | (1 << L_PWM_PIN));	// Disable PWM outputs
+	TCCR1A &= 0b00001111;	// No PWM, normal operation
+	TCCR1B &= 0b11111000;	// No clock
+}
