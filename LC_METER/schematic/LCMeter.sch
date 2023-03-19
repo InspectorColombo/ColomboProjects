@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -4342,8 +4342,8 @@ Grid 5.00 mm&lt;p&gt;
 <part name="C52" library="__MyCommonLib1" deviceset="CE" device="10MM" value="47uFx16V"/>
 <part name="GND79" library="supply1" deviceset="GND" device=""/>
 <part name="GND80" library="supply1" deviceset="GND" device=""/>
-<part name="R81" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R82" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K0"/>
+<part name="R81" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K1 1%"/>
+<part name="R82" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K3 1%"/>
 <part name="IC8" library="__MyCommonLib1" deviceset="7905" device="(D2PAK)" value="7905"/>
 <part name="GND82" library="supply1" deviceset="GND" device=""/>
 <part name="GND83" library="supply1" deviceset="GND" device=""/>
@@ -4402,6 +4402,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="D4" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="GND43" library="supply1" deviceset="GND" device=""/>
 <part name="GND88" library="supply1" deviceset="GND" device=""/>
+<part name="R90" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100K*"/>
 </parts>
 <sheets>
 <sheet>
@@ -7889,25 +7890,25 @@ Grid 5.00 mm&lt;p&gt;
 <attribute name="VALUE" x="99.06" y="68.58" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="C49" gate="C$1" x="177.8" y="66.04" smashed="yes">
-<attribute name="NAME" x="176.53" y="68.58" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="175.26" y="66.04" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="175.26" y="64.77" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
 <instance part="C50" gate="C$1" x="182.88" y="66.04" smashed="yes">
-<attribute name="NAME" x="184.15" y="67.31" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="184.15" y="63.5" size="1.27" layer="96" font="vector" ratio="20"/>
+<attribute name="NAME" x="175.26" y="63.5" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="175.26" y="62.23" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
 <instance part="GND76" gate="1" x="177.8" y="58.42" smashed="yes">
 <attribute name="VALUE" x="175.26" y="55.88" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="GND77" gate="1" x="182.88" y="58.42" smashed="yes">
-<attribute name="VALUE" x="180.34" y="53.34" size="1.27" layer="96" font="vector" ratio="20"/>
+<attribute name="VALUE" x="181.61" y="55.88" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="IC9" gate="G$1" x="193.04" y="71.12" smashed="yes">
 <attribute name="NAME" x="190.5" y="76.2" size="1.27" layer="95" font="vector" ratio="20"/>
 <attribute name="VALUE" x="190.5" y="74.295" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="GND78" gate="1" x="208.28" y="55.88" smashed="yes">
-<attribute name="VALUE" x="205.74" y="50.8" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="GND78" gate="1" x="193.04" y="43.18" smashed="yes">
+<attribute name="VALUE" x="190.5" y="38.1" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="C51" gate="C$1" x="213.36" y="66.04" smashed="yes">
 <attribute name="NAME" x="220.98" y="60.96" size="1.27" layer="95" font="vector" ratio="20"/>
@@ -7918,18 +7919,18 @@ Grid 5.00 mm&lt;p&gt;
 <attribute name="VALUE" x="220.98" y="66.04" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="GND79" gate="1" x="213.36" y="58.42" smashed="yes">
-<attribute name="VALUE" x="210.82" y="53.34" size="1.27" layer="96" font="vector" ratio="20"/>
+<attribute name="VALUE" x="210.82" y="55.88" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="GND80" gate="1" x="218.44" y="58.42" smashed="yes">
-<attribute name="VALUE" x="215.9" y="53.34" size="1.27" layer="96" font="vector" ratio="20"/>
+<attribute name="VALUE" x="218.44" y="55.88" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="R81" gate="R$1" x="200.66" y="63.5" smashed="yes" rot="R90">
-<attribute name="NAME" x="201.93" y="67.31" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="201.93" y="66.04" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="199.39" y="67.31" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="204.47" y="66.04" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
-<instance part="R82" gate="R$1" x="200.66" y="60.96" smashed="yes" rot="R90">
-<attribute name="NAME" x="198.12" y="58.42" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="198.12" y="57.15" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="R82" gate="R$1" x="193.04" y="55.88" smashed="yes">
+<attribute name="NAME" x="195.58" y="58.42" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="195.58" y="57.15" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="IC8" gate="G$1" x="182.88" y="149.86" smashed="yes">
 <attribute name="NAME" x="180.34" y="154.94" size="1.27" layer="95" font="vector" ratio="20"/>
@@ -7948,6 +7949,10 @@ Grid 5.00 mm&lt;p&gt;
 <instance part="J11" gate="R$1" x="38.1" y="154.94" smashed="yes" rot="R270">
 <attribute name="NAME" x="35.56" y="156.21" size="1.27" layer="95" font="vector" ratio="20"/>
 <attribute name="VALUE" x="41.91" y="157.48" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
+</instance>
+<instance part="R90" gate="R$1" x="190.5" y="55.88" smashed="yes">
+<attribute name="NAME" x="195.58" y="54.61" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="195.58" y="53.34" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 </instances>
 <busses>
@@ -8061,8 +8066,12 @@ Grid 5.00 mm&lt;p&gt;
 <segment>
 <pinref part="R82" gate="R$1" pin="PIN0"/>
 <pinref part="GND78" gate="1" pin="GND"/>
-<wire x1="205.74" y1="60.96" x2="208.28" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="60.96" x2="208.28" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="50.8" x2="193.04" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="R90" gate="R$1" pin="PIN0"/>
+<wire x1="193.04" y1="48.26" x2="193.04" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="48.26" x2="190.5" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="48.26" x2="190.5" y2="50.8" width="0.1524" layer="91"/>
+<junction x="193.04" y="48.26"/>
 </segment>
 <segment>
 <pinref part="IC8" gate="G$1" pin="GND"/>
@@ -8253,12 +8262,14 @@ Grid 5.00 mm&lt;p&gt;
 <segment>
 <pinref part="R82" gate="R$1" pin="PIN1"/>
 <pinref part="IC9" gate="G$1" pin="ADJ"/>
-<wire x1="195.58" y1="60.96" x2="193.04" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="60.96" x2="193.04" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="R81" gate="R$1" pin="PIN1"/>
 <wire x1="193.04" y1="63.5" x2="193.04" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="63.5" x2="193.04" y2="63.5" width="0.1524" layer="91"/>
 <junction x="193.04" y="63.5"/>
+<pinref part="R90" gate="R$1" pin="PIN1"/>
+<wire x1="193.04" y1="63.5" x2="190.5" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="63.5" x2="190.5" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="-5V_FINE" class="0">
