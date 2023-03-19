@@ -4397,7 +4397,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND86" library="supply1" deviceset="GND" device=""/>
 <part name="J11" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
 <part name="R100" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
-<part name="R89" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K"/>
+<part name="R89" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K0"/>
 <part name="C4" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="D4" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="GND43" library="supply1" deviceset="GND" device=""/>
