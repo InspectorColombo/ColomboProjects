@@ -1420,7 +1420,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND36" library="supply1" deviceset="GND" device=""/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="IC2" library="__MyCommonLib1" deviceset="74HC595" device="(SOIC16)" value="74HC595"/>
-<part name="R1" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
+<part name="R1" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="1K0"/>
 <part name="R2" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R5" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
