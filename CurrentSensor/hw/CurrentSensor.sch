@@ -1453,7 +1453,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="R12" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="10K"/>
 <part name="C7" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
-<part name="R13" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
+<part name="R13" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K3"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="D3" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
@@ -1647,7 +1647,7 @@ DIN A4, landscape with location and doc. field</description>
 </instance>
 <instance part="R12" gate="R$1" x="30.48" y="116.84" smashed="yes" rot="R270">
 <attribute name="NAME" x="29.21" y="118.745" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="33.02" y="118.745" size="1.27" layer="96" font="vector" ratio="20"/>
+<attribute name="VALUE" x="27.94" y="113.665" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="C7" gate="C$1" x="43.18" y="109.22" smashed="yes" rot="MR180">
 <attribute name="NAME" x="45.72" y="111.76" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
