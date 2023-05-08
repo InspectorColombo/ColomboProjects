@@ -30,12 +30,12 @@
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -46,19 +46,19 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="no"/>
@@ -546,63 +546,186 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="IC3" library="__MyCommonLib1" package="SOIC8(0.15'')" value="ATTINY45" x="27.27" y="38.9" rot="MR270"/>
-<element name="C3" library="__MyCommonLib1" package="CE_5.2MM" value="10uFx16V" x="25.66" y="15.24" rot="R270"/>
-<element name="C4" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="28.2" y="15.24" rot="MR90"/>
+<element name="IC3" library="__MyCommonLib1" package="SOIC8(0.15'')" value="ATTINY45" x="27.27" y="38.9" smashed="yes" rot="MR270">
+<attribute name="NAME" x="25.36" y="42.095" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="22.56" y="35.915" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="C3" library="__MyCommonLib1" package="CE_5.2MM" value="10uFx16V" x="25.66" y="15.24" smashed="yes" rot="R270">
+<attribute name="NAME" x="24.82" y="11.27" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="25.22" y="18.74" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="C4" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="28.2" y="15.24" smashed="yes" rot="MR90">
+<attribute name="NAME" x="27.4" y="14.44" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
+<attribute name="VALUE" x="27.6" y="18.04" size="1.27" layer="28" font="vector" ratio="20" rot="MR90"/>
+</element>
 <element name="X1" library="__MyCommonLib1" package="PIN1X1_3.5MM_SIDE_BOARD" value="VCC_IN" x="4" y="18.18" smashed="yes" rot="MR90">
-<attribute name="NAME" x="0.19" y="20.72" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="1.46" y="21.99" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+<attribute name="NAME" x="7.59" y="17.72" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="1.86" y="17.79" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="X4" library="__MyCommonLib1" package="PIN1X1_3.5MM_SIDE_BOARD" value="GND_FROM_CHARGE" x="4" y="29.21" smashed="yes" rot="MR90">
-<attribute name="NAME" x="-2.35" y="36.83" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="4" y="34.29" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+<attribute name="NAME" x="8.05" y="29.03" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="1.2" y="29.29" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="X3" library="__MyCommonLib1" package="PIN1X1_3.5MM_SIDE_BOARD" value="GND_TO_ACC" x="4" y="36.83" smashed="yes" rot="MR90">
-<attribute name="NAME" x="6.54" y="40.64" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="7.81" y="41.91" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+<attribute name="NAME" x="7.54" y="36.64" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="1.61" y="36.51" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
-<element name="R16" library="__MyCommonLib1" package="R_1.0W" value="0.1Ohm" x="13.97" y="38.1" rot="R270"/>
+<element name="R16" library="__MyCommonLib1" package="R_1.0W" value="0.1Ohm" x="13.97" y="38.1" smashed="yes" rot="R270">
+<attribute name="NAME" x="13.37" y="39.9" size="1.27" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="17.17" y="40.7" size="1.27" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
 <element name="X2" library="__MyCommonLib1" package="PIN1X1_3.5MM_SIDE_BOARD" value="CHARGE_IN" x="4.2" y="10.76" smashed="yes" rot="MR90">
-<attribute name="NAME" x="2.93" y="13.3" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="1.66" y="15.84" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+<attribute name="NAME" x="8.93" y="10.1" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="1.26" y="10.44" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
-<element name="D1" library="__MyCommonLib1" package="DO-41_10MM" value="1N4148" x="10.62" y="23.33"/>
-<element name="D2" library="__MyCommonLib1" package="DO-41_10MM" value="1N4148" x="14.7" y="15.24" rot="R90"/>
-<element name="C1" library="__MyCommonLib1" package="CE_6.3MM" value="470uFx25V" x="19.66" y="19.42" rot="R180"/>
-<element name="C2" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="19.46" y="21.96" rot="MR180"/>
-<element name="IC1" library="__MyCommonLib1" package="D2PAK" value="LM317" x="29.94" y="6.95" rot="MR90"/>
-<element name="R3" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="21.65" y="13.7" rot="MR180"/>
-<element name="R8" library="__MyCommonLib1" package="RSMD_0805" value="3K0" x="21.65" y="16.51" rot="MR0"/>
-<element name="IC2" library="__MyCommonLib1" package="SOIC16" value="74HC595" x="31.75" y="23.86" rot="MR0"/>
-<element name="R1" library="__MyCommonLib1" package="RSMD_1206" value="1K0" x="35.4" y="33.42" rot="MR180"/>
-<element name="R2" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="39.77" y="30.68" rot="MR180"/>
-<element name="R4" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="39.37" y="27.94" rot="MR180"/>
-<element name="R5" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="49.17" y="24.2" rot="MR180"/>
-<element name="R7" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="43.77" y="24.06" rot="MR180"/>
-<element name="R9" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="39.17" y="22.52" rot="MR180"/>
-<element name="R10" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="43.77" y="16.38" rot="MR180"/>
-<element name="R11" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="38.84" y="17.03" rot="MR270"/>
-<element name="LED1" library="__MyCommonLib1" package="LED3MM" value="RED" x="44.5" y="35.56"/>
-<element name="LED2" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="51" y="35.56"/>
-<element name="LED3" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="44.5" y="27.94"/>
-<element name="LED4" library="__MyCommonLib1" package="LED3MM" value="GREEN" x="51" y="27.94"/>
-<element name="LED5" library="__MyCommonLib1" package="LED3MM" value="RED" x="51" y="20.32"/>
-<element name="LED6" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="44.5" y="20.32"/>
-<element name="LED7" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="44.5" y="12.7"/>
-<element name="LED8" library="__MyCommonLib1" package="LED3MM" value="GREEN" x="51" y="12.7"/>
-<element name="C6" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="34.22" y="16.84" rot="MR180"/>
-<element name="C9" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="21.52" y="37.56" rot="MR180"/>
-<element name="R15" library="__MyCommonLib1" package="RSMD_0805" value="4K7" x="21.52" y="40.37" rot="MR180"/>
-<element name="R14" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="17.78" y="46.99" rot="MR180"/>
-<element name="D5" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="27.94" y="46.99" rot="MR180"/>
-<element name="C8" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="28.94" y="43.98" rot="MR180"/>
-<element name="D4" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="22.02" y="44.92" rot="MR90"/>
-<element name="C5" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="24.8" y="26.4" rot="MR180"/>
-<element name="R6" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="25.4" y="29.88" rot="MR270"/>
-<element name="R12" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="10K" x="18.2" y="27.14" rot="MR180"/>
-<element name="C7" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="32.84" y="37.44" rot="MR180"/>
-<element name="R13" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="32.84" y="40.45" rot="MR0"/>
-<element name="D3" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="21.99" y="33.55" rot="MR180"/>
+<element name="D1" library="__MyCommonLib1" package="DO-41_10MM" value="1N4001" x="10.62" y="23.33" smashed="yes">
+<attribute name="NAME" x="7.88" y="20.07" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="7.28" y="25.4" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="D2" library="__MyCommonLib1" package="DO-41_10MM" value="1N4001" x="14.7" y="15.24" smashed="yes" rot="R90">
+<attribute name="NAME" x="15.5" y="10.36" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="13.03" y="11.7" size="1.27" layer="27" font="vector" ratio="20" rot="R90"/>
+</element>
+<element name="C1" library="__MyCommonLib1" package="CE_6.3MM" value="470uFx25V" x="19.66" y="19.42" smashed="yes" rot="R180">
+<attribute name="NAME" x="20.8" y="15.21" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="27.4" y="25.14" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="C2" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="19.46" y="21.96" smashed="yes" rot="MR180">
+<attribute name="NAME" x="18.26" y="22.56" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="16.94" y="21.44" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+</element>
+<element name="IC1" library="__MyCommonLib1" package="D2PAK" value="LM317" x="29.94" y="6.95" smashed="yes" rot="MR90">
+<attribute name="NAME" x="36.01" y="5.01" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
+<attribute name="VALUE" x="18.07" y="4.41" size="1.27" layer="28" font="vector" ratio="20" rot="MR90"/>
+</element>
+<element name="R3" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="21.65" y="13.7" smashed="yes" rot="MR180">
+<attribute name="NAME" x="16.25" y="14.1" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="19.85" y="14.3" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R8" library="__MyCommonLib1" package="RSMD_0805" value="3K0" x="21.65" y="16.51" smashed="yes" rot="MR0">
+<attribute name="NAME" x="18.65" y="16.11" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="23.25" y="15.91" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+</element>
+<element name="IC2" library="__MyCommonLib1" package="SOIC16" value="74HC595" x="31.75" y="23.86" smashed="yes" rot="MR0">
+<attribute name="NAME" x="32.89" y="29.775" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="32.125" y="27.89" size="1.27" layer="28" font="vector" ratio="20" rot="MR270"/>
+</element>
+<element name="R1" library="__MyCommonLib1" package="RSMD_1206" value="1K0" x="35.4" y="33.42" smashed="yes" rot="MR180">
+<attribute name="NAME" x="38.8" y="34.02" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="33.4" y="33.82" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R2" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="39.77" y="30.68" smashed="yes" rot="MR180">
+<attribute name="NAME" x="42.17" y="31.08" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="37.97" y="31.28" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R4" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="39.37" y="27.94" smashed="yes" rot="MR180">
+<attribute name="NAME" x="42.17" y="28.54" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="37.57" y="28.54" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R5" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="49.17" y="24.2" smashed="yes" rot="MR180">
+<attribute name="NAME" x="47.97" y="22.8" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="47.37" y="24.8" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R7" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="43.77" y="24.06" smashed="yes" rot="MR180">
+<attribute name="NAME" x="42.77" y="22.66" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="41.97" y="24.66" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R9" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="39.17" y="22.52" smashed="yes" rot="MR180">
+<attribute name="NAME" x="34.57" y="23.12" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="37.37" y="23.12" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R10" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="43.77" y="16.38" smashed="yes" rot="MR180">
+<attribute name="NAME" x="42.17" y="14.78" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="42.17" y="16.98" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R11" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="38.84" y="17.03" smashed="yes" rot="MR270">
+<attribute name="NAME" x="39.44" y="14.83" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
+<attribute name="VALUE" x="39.44" y="18.83" size="1.27" layer="28" font="vector" ratio="20" rot="MR270"/>
+</element>
+<element name="LED1" library="__MyCommonLib1" package="LED3MM" value="RED" x="44.5" y="35.56" smashed="yes">
+<attribute name="NAME" x="42.1" y="34.64" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="41.5" y="36.84" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="LED2" library="__MyCommonLib1" package="LED3MM" value="GREEN" x="51" y="35.56" smashed="yes">
+<attribute name="NAME" x="56" y="35.96" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="55.4" y="33.56" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="LED3" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="44.5" y="27.94" smashed="yes">
+<attribute name="NAME" x="41.5" y="27.26" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="41.5" y="29.26" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="LED4" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="51" y="27.94" smashed="yes">
+<attribute name="NAME" x="55.8" y="28.14" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="56" y="25.54" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="LED5" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="51" y="20.32" smashed="yes">
+<attribute name="NAME" x="55.6" y="20.92" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="56.4" y="18.92" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="LED6" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="44.5" y="20.32" smashed="yes">
+<attribute name="NAME" x="41.7" y="20.08" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="41.9" y="22.08" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="LED7" library="__MyCommonLib1" package="LED3MM" value="GREEN" x="44.5" y="12.7" smashed="yes">
+<attribute name="NAME" x="41.7" y="12.5" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="41.9" y="14.3" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="LED8" library="__MyCommonLib1" package="LED3MM" value="RED" x="51" y="12.7" smashed="yes">
+<attribute name="NAME" x="56.2" y="13.7" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="56" y="11.5" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="C6" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="34.22" y="16.84" smashed="yes" rot="MR180">
+<attribute name="NAME" x="33.02" y="17.44" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="31.42" y="15.24" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="C9" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="21.52" y="37.56" smashed="yes" rot="MR180">
+<attribute name="NAME" x="20.32" y="38.16" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="13.72" y="37.96" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R15" library="__MyCommonLib1" package="RSMD_0805" value="4K7" x="21.52" y="40.37" smashed="yes" rot="MR180">
+<attribute name="NAME" x="15.32" y="40.97" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="15.32" y="40.97" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R14" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="17.78" y="46.99" smashed="yes" rot="MR180">
+<attribute name="NAME" x="11.18" y="47.59" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="16.38" y="45.19" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="D5" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="27.94" y="46.99" smashed="yes" rot="MR180">
+<attribute name="NAME" x="26.74" y="51.79" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="26.54" y="49.59" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="C8" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="28.94" y="43.98" smashed="yes" rot="MR180">
+<attribute name="NAME" x="27.74" y="44.58" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="31.34" y="44.58" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="D4" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="22.02" y="44.92" smashed="yes" rot="MR90">
+<attribute name="NAME" x="23.08" y="50.82" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="23.62" y="43.92" size="1.27" layer="28" font="vector" ratio="20" rot="MR90"/>
+</element>
+<element name="C5" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="24.8" y="26.4" smashed="yes" rot="MR180">
+<attribute name="NAME" x="23.4" y="27" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="22.6" y="24.8" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R6" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="25.4" y="29.88" smashed="yes" rot="MR270">
+<attribute name="NAME" x="28.2" y="30.68" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
+<attribute name="VALUE" x="26" y="31.68" size="1.27" layer="28" font="vector" ratio="20" rot="MR270"/>
+</element>
+<element name="R12" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="10K" x="18.2" y="27.14" smashed="yes" rot="MR180">
+<attribute name="NAME" x="11.4" y="27.94" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="16.4" y="27.74" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="C7" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="32.84" y="37.44" smashed="yes" rot="MR180">
+<attribute name="NAME" x="31.44" y="38.04" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="35.84" y="37.84" size="1.27" layer="28" font="vector" ratio="20" rot="MR180"/>
+</element>
+<element name="R13" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="32.84" y="40.45" smashed="yes" rot="MR0">
+<attribute name="NAME" x="39.04" y="39.85" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="38.84" y="39.85" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+</element>
+<element name="D3" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="21.99" y="33.55" smashed="yes" rot="MR180">
+<attribute name="NAME" x="20.59" y="32.55" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="20.41" y="33.05" size="1.27" layer="28" font="vector" ratio="20" rot="MR0"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">

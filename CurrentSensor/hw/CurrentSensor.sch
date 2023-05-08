@@ -1408,8 +1408,8 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND23" library="supply1" deviceset="GND" device=""/>
 <part name="R16" library="__MyCommonLib1" deviceset="R" device="1.0W" value="0.1Ohm"/>
 <part name="X2" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_SIDE_BOARD" value="CHARGE_IN"/>
-<part name="D1" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4148"/>
-<part name="D2" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4148"/>
+<part name="D1" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4001"/>
+<part name="D2" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4001"/>
 <part name="C1" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="470uFx25V"/>
 <part name="C2" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
@@ -1430,13 +1430,13 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R11" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="LED1" library="__MyCommonLib1" deviceset="LED3MM" device="" value="RED"/>
-<part name="LED2" library="__MyCommonLib1" deviceset="LED3MM" device="" value="YELLOW"/>
+<part name="LED2" library="__MyCommonLib1" deviceset="LED3MM" device="" value="GREEN"/>
 <part name="LED3" library="__MyCommonLib1" deviceset="LED3MM" device="" value="YELLOW"/>
-<part name="LED4" library="__MyCommonLib1" deviceset="LED3MM" device="" value="GREEN"/>
-<part name="LED5" library="__MyCommonLib1" deviceset="LED3MM" device="" value="RED"/>
+<part name="LED4" library="__MyCommonLib1" deviceset="LED3MM" device="" value="YELLOW"/>
+<part name="LED5" library="__MyCommonLib1" deviceset="LED3MM" device="" value="YELLOW"/>
 <part name="LED6" library="__MyCommonLib1" deviceset="LED3MM" device="" value="YELLOW"/>
-<part name="LED7" library="__MyCommonLib1" deviceset="LED3MM" device="" value="YELLOW"/>
-<part name="LED8" library="__MyCommonLib1" deviceset="LED3MM" device="" value="GREEN"/>
+<part name="LED7" library="__MyCommonLib1" deviceset="LED3MM" device="" value="GREEN"/>
+<part name="LED8" library="__MyCommonLib1" deviceset="LED3MM" device="" value="RED"/>
 <part name="C6" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="C9" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
