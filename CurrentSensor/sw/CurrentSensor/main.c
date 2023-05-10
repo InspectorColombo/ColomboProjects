@@ -18,7 +18,11 @@ int main(void)
 	
 	for(;;)
 	{
-		testVal = GetVoltageAdcValueInMv(100);
+		//testVal = GetVoltageAdcValueInMv(4000);
+		testVal = GetCurrentInMa(100);
+		
+		//testVal = Convert10bitSignedToUnsignedInRange_0_1023(0x1FF);
+		
 		ShowDebug16bitValue(testVal);
 		DelayDebugMiliSeconds(10);
 	}
