@@ -3,21 +3,21 @@ CurrentSensor.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000206  00000000  00000000  00000054  2**1
+  0 .text         000000ea  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  0000025a  2**0
+  1 .data         00000000  00800060  00800060  0000013e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  0000025a  2**0
+  2 .comment      00000030  00000000  00000000  0000013e  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000028c  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000170  2**2
                   CONTENTS, READONLY
-  4 .debug_info   00000420  00000000  00000000  000002c8  2**0
+  4 .debug_info   00000420  00000000  00000000  000001ac  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 000003e8  00000000  00000000  000006e8  2**0
+  5 .debug_abbrev 000003e8  00000000  00000000  000005cc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   000000f2  00000000  00000000  00000ad0  2**0
+  6 .debug_line   000000f2  00000000  00000000  000009b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_str    00000169  00000000  00000000  00000bc2  2**0
+  7 .debug_str    00000169  00000000  00000000  00000aa6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -46,266 +46,105 @@ Disassembly of section .text:
   24:	d1 e0       	ldi	r29, 0x01	; 1
   26:	de bf       	out	0x3e, r29	; 62
   28:	cd bf       	out	0x3d, r28	; 61
-  2a:	5a d0       	rcall	.+180    	; 0xe0 <main>
-  2c:	ea c0       	rjmp	.+468    	; 0x202 <_exit>
+  2a:	2f d0       	rcall	.+94     	; 0x8a <main>
+  2c:	5c c0       	rjmp	.+184    	; 0xe6 <_exit>
 
 0000002e <__bad_interrupt>:
   2e:	e8 cf       	rjmp	.-48     	; 0x0 <__vectors>
 
-00000030 <InitCurrentSensorADC>:
-  30:	87 b3       	in	r24, 0x17	; 23
-  32:	87 7e       	andi	r24, 0xE7	; 231
-  34:	87 bb       	out	0x17, r24	; 23
-  36:	88 b3       	in	r24, 0x18	; 24
-  38:	87 7e       	andi	r24, 0xE7	; 231
-  3a:	88 bb       	out	0x18, r24	; 24
-  3c:	87 e0       	ldi	r24, 0x07	; 7
-  3e:	87 b9       	out	0x07, r24	; 7
-  40:	86 e9       	ldi	r24, 0x96	; 150
-  42:	86 b9       	out	0x06, r24	; 6
-  44:	83 b1       	in	r24, 0x03	; 3
-  46:	80 74       	andi	r24, 0x40	; 64
-  48:	83 b9       	out	0x03, r24	; 3
-  4a:	84 b3       	in	r24, 0x14	; 20
-  4c:	88 61       	ori	r24, 0x18	; 24
-  4e:	84 bb       	out	0x14, r24	; 20
-  50:	08 95       	ret
-
-00000052 <StartAdcConversion>:
-  52:	34 9a       	sbi	0x06, 4	; 6
-  54:	36 9a       	sbi	0x06, 6	; 6
-  56:	34 9b       	sbis	0x06, 4	; 6
-  58:	fe cf       	rjmp	.-4      	; 0x56 <StartAdcConversion+0x4>
-  5a:	34 9a       	sbi	0x06, 4	; 6
-  5c:	24 b1       	in	r18, 0x04	; 4
-  5e:	85 b1       	in	r24, 0x05	; 5
-  60:	90 e0       	ldi	r25, 0x00	; 0
-  62:	98 2f       	mov	r25, r24
-  64:	88 27       	eor	r24, r24
-  66:	82 0f       	add	r24, r18
-  68:	91 1d       	adc	r25, r1
-  6a:	08 95       	ret
-
-0000006c <GetCurrentInMa>:
-  6c:	cf 92       	push	r12
-  6e:	df 92       	push	r13
-  70:	ef 92       	push	r14
-  72:	ff 92       	push	r15
-  74:	0f 93       	push	r16
-  76:	1f 93       	push	r17
-  78:	cf 93       	push	r28
-  7a:	df 93       	push	r29
-  7c:	8c 01       	movw	r16, r24
-  7e:	09 3f       	cpi	r16, 0xF9	; 249
-  80:	87 ea       	ldi	r24, 0xA7	; 167
-  82:	18 07       	cpc	r17, r24
-  84:	10 f0       	brcs	.+4      	; 0x8a <GetCurrentInMa+0x1e>
-  86:	08 ef       	ldi	r16, 0xF8	; 248
-  88:	17 ea       	ldi	r17, 0xA7	; 167
-  8a:	d2 df       	rcall	.-92     	; 0x30 <InitCurrentSensorADC>
-  8c:	e2 df       	rcall	.-60     	; 0x52 <StartAdcConversion>
-  8e:	e8 01       	movw	r28, r16
-  90:	c1 2c       	mov	r12, r1
-  92:	d1 2c       	mov	r13, r1
-  94:	76 01       	movw	r14, r12
-  96:	20 97       	sbiw	r28, 0x00	; 0
-  98:	39 f0       	breq	.+14     	; 0xa8 <GetCurrentInMa+0x3c>
-  9a:	db df       	rcall	.-74     	; 0x52 <StartAdcConversion>
-  9c:	c8 0e       	add	r12, r24
-  9e:	d9 1e       	adc	r13, r25
-  a0:	e1 1c       	adc	r14, r1
-  a2:	f1 1c       	adc	r15, r1
-  a4:	21 97       	sbiw	r28, 0x01	; 1
-  a6:	f7 cf       	rjmp	.-18     	; 0x96 <GetCurrentInMa+0x2a>
-  a8:	21 e6       	ldi	r18, 0x61	; 97
-  aa:	30 e0       	ldi	r19, 0x00	; 0
-  ac:	40 e0       	ldi	r20, 0x00	; 0
-  ae:	50 e0       	ldi	r21, 0x00	; 0
-  b0:	c7 01       	movw	r24, r14
-  b2:	b6 01       	movw	r22, r12
-  b4:	6b d0       	rcall	.+214    	; 0x18c <__mulsi3>
-  b6:	28 e2       	ldi	r18, 0x28	; 40
-  b8:	30 e0       	ldi	r19, 0x00	; 0
-  ba:	40 e0       	ldi	r20, 0x00	; 0
-  bc:	50 e0       	ldi	r21, 0x00	; 0
-  be:	7f d0       	rcall	.+254    	; 0x1be <__udivmodsi4>
-  c0:	ca 01       	movw	r24, r20
-  c2:	b9 01       	movw	r22, r18
-  c4:	98 01       	movw	r18, r16
-  c6:	40 e0       	ldi	r20, 0x00	; 0
-  c8:	50 e0       	ldi	r21, 0x00	; 0
-  ca:	79 d0       	rcall	.+242    	; 0x1be <__udivmodsi4>
-  cc:	c9 01       	movw	r24, r18
-  ce:	df 91       	pop	r29
-  d0:	cf 91       	pop	r28
-  d2:	1f 91       	pop	r17
-  d4:	0f 91       	pop	r16
-  d6:	ff 90       	pop	r15
-  d8:	ef 90       	pop	r14
-  da:	df 90       	pop	r13
-  dc:	cf 90       	pop	r12
-  de:	08 95       	ret
-
-000000e0 <main>:
-  e0:	84 e6       	ldi	r24, 0x64	; 100
-  e2:	90 e0       	ldi	r25, 0x00	; 0
-  e4:	c3 df       	rcall	.-122    	; 0x6c <GetCurrentInMa>
-  e6:	30 d0       	rcall	.+96     	; 0x148 <ShowDebug16bitValue>
-  e8:	8a e0       	ldi	r24, 0x0A	; 10
-  ea:	0e d0       	rcall	.+28     	; 0x108 <DelayDebugMiliSeconds>
-  ec:	f9 cf       	rjmp	.-14     	; 0xe0 <main>
-
-000000ee <DelayDebugMicroseconds>:
-  ee:	88 23       	and	r24, r24
-  f0:	51 f0       	breq	.+20     	; 0x106 <__DATA_REGION_LENGTH__+0x6>
+00000030 <LedLatchDelay>:
+  30:	96 e0       	ldi	r25, 0x06	; 6
+  32:	84 e6       	ldi	r24, 0x64	; 100
 	...
- 102:	81 50       	subi	r24, 0x01	; 1
- 104:	f4 cf       	rjmp	.-24     	; 0xee <DelayDebugMicroseconds>
- 106:	08 95       	ret
+  40:	81 50       	subi	r24, 0x01	; 1
+  42:	c1 f7       	brne	.-16     	; 0x34 <LedLatchDelay+0x4>
+  44:	91 50       	subi	r25, 0x01	; 1
+  46:	a9 f7       	brne	.-22     	; 0x32 <LedLatchDelay+0x2>
+  48:	08 95       	ret
 
-00000108 <DelayDebugMiliSeconds>:
- 108:	cf 93       	push	r28
- 10a:	c8 2f       	mov	r28, r24
- 10c:	cc 23       	and	r28, r28
- 10e:	61 f0       	breq	.+24     	; 0x128 <DelayDebugMiliSeconds+0x20>
- 110:	88 ec       	ldi	r24, 0xC8	; 200
- 112:	ed df       	rcall	.-38     	; 0xee <DelayDebugMicroseconds>
- 114:	88 ec       	ldi	r24, 0xC8	; 200
- 116:	eb df       	rcall	.-42     	; 0xee <DelayDebugMicroseconds>
- 118:	88 ec       	ldi	r24, 0xC8	; 200
- 11a:	e9 df       	rcall	.-46     	; 0xee <DelayDebugMicroseconds>
- 11c:	88 ec       	ldi	r24, 0xC8	; 200
- 11e:	e7 df       	rcall	.-50     	; 0xee <DelayDebugMicroseconds>
- 120:	88 ec       	ldi	r24, 0xC8	; 200
- 122:	e5 df       	rcall	.-54     	; 0xee <DelayDebugMicroseconds>
- 124:	c1 50       	subi	r28, 0x01	; 1
- 126:	f2 cf       	rjmp	.-28     	; 0x10c <DelayDebugMiliSeconds+0x4>
- 128:	cf 91       	pop	r28
- 12a:	08 95       	ret
+0000004a <SendLedByte>:
+  4a:	cf 93       	push	r28
+  4c:	c8 2f       	mov	r28, r24
+  4e:	c1 98       	cbi	0x18, 1	; 24
+  50:	ef df       	rcall	.-34     	; 0x30 <LedLatchDelay>
+  52:	8c 2f       	mov	r24, r28
+  54:	98 e0       	ldi	r25, 0x08	; 8
+  56:	87 ff       	sbrs	r24, 7
+  58:	02 c0       	rjmp	.+4      	; 0x5e <SendLedByte+0x14>
+  5a:	c0 9a       	sbi	0x18, 0	; 24
+  5c:	01 c0       	rjmp	.+2      	; 0x60 <SendLedByte+0x16>
+  5e:	c0 98       	cbi	0x18, 0	; 24
+  60:	00 00       	nop
+  62:	00 00       	nop
+  64:	c1 9a       	sbi	0x18, 1	; 24
+  66:	91 50       	subi	r25, 0x01	; 1
+  68:	29 f0       	breq	.+10     	; 0x74 <SendLedByte+0x2a>
+  6a:	00 00       	nop
+  6c:	00 00       	nop
+  6e:	c1 98       	cbi	0x18, 1	; 24
+  70:	88 0f       	add	r24, r24
+  72:	f1 cf       	rjmp	.-30     	; 0x56 <SendLedByte+0xc>
+  74:	dd df       	rcall	.-70     	; 0x30 <LedLatchDelay>
+  76:	c1 98       	cbi	0x18, 1	; 24
+  78:	cf 91       	pop	r28
+  7a:	08 95       	ret
 
-0000012c <Marker>:
- 12c:	cf 93       	push	r28
- 12e:	c8 2f       	mov	r28, r24
- 130:	cc 23       	and	r28, r28
- 132:	41 f0       	breq	.+16     	; 0x144 <Marker+0x18>
- 134:	c0 9a       	sbi	0x18, 0	; 24
- 136:	81 e0       	ldi	r24, 0x01	; 1
- 138:	da df       	rcall	.-76     	; 0xee <DelayDebugMicroseconds>
- 13a:	c0 98       	cbi	0x18, 0	; 24
- 13c:	81 e0       	ldi	r24, 0x01	; 1
- 13e:	d7 df       	rcall	.-82     	; 0xee <DelayDebugMicroseconds>
- 140:	c1 50       	subi	r28, 0x01	; 1
- 142:	f6 cf       	rjmp	.-20     	; 0x130 <Marker+0x4>
- 144:	cf 91       	pop	r28
- 146:	08 95       	ret
+0000007c <InitLeds>:
+  7c:	c1 98       	cbi	0x18, 1	; 24
+  7e:	c0 98       	cbi	0x18, 0	; 24
+  80:	87 b3       	in	r24, 0x17	; 23
+  82:	83 60       	ori	r24, 0x03	; 3
+  84:	87 bb       	out	0x17, r24	; 23
+  86:	80 e0       	ldi	r24, 0x00	; 0
+  88:	e0 cf       	rjmp	.-64     	; 0x4a <SendLedByte>
 
-00000148 <ShowDebug16bitValue>:
- 148:	0f 93       	push	r16
- 14a:	1f 93       	push	r17
- 14c:	cf 93       	push	r28
- 14e:	df 93       	push	r29
- 150:	8c 01       	movw	r16, r24
- 152:	b8 9a       	sbi	0x17, 0	; 23
- 154:	84 e6       	ldi	r24, 0x64	; 100
- 156:	ea df       	rcall	.-44     	; 0x12c <Marker>
- 158:	e8 01       	movw	r28, r16
- 15a:	10 e1       	ldi	r17, 0x10	; 16
- 15c:	d7 ff       	sbrs	r29, 7
- 15e:	02 c0       	rjmp	.+4      	; 0x164 <__stack+0x5>
- 160:	c0 9a       	sbi	0x18, 0	; 24
- 162:	01 c0       	rjmp	.+2      	; 0x166 <__stack+0x7>
- 164:	c0 98       	cbi	0x18, 0	; 24
- 166:	88 ec       	ldi	r24, 0xC8	; 200
- 168:	c2 df       	rcall	.-124    	; 0xee <DelayDebugMicroseconds>
- 16a:	83 e0       	ldi	r24, 0x03	; 3
- 16c:	df df       	rcall	.-66     	; 0x12c <Marker>
- 16e:	cc 0f       	add	r28, r28
- 170:	dd 1f       	adc	r29, r29
- 172:	11 50       	subi	r17, 0x01	; 1
- 174:	29 f0       	breq	.+10     	; 0x180 <__stack+0x21>
- 176:	18 30       	cpi	r17, 0x08	; 8
- 178:	89 f7       	brne	.-30     	; 0x15c <ShowDebug16bitValue+0x14>
- 17a:	89 e1       	ldi	r24, 0x19	; 25
- 17c:	d7 df       	rcall	.-82     	; 0x12c <Marker>
- 17e:	ee cf       	rjmp	.-36     	; 0x15c <ShowDebug16bitValue+0x14>
- 180:	c0 98       	cbi	0x18, 0	; 24
- 182:	df 91       	pop	r29
- 184:	cf 91       	pop	r28
- 186:	1f 91       	pop	r17
- 188:	0f 91       	pop	r16
- 18a:	08 95       	ret
+0000008a <main>:
+  8a:	f8 df       	rcall	.-16     	; 0x7c <InitLeds>
+  8c:	c1 e0       	ldi	r28, 0x01	; 1
+  8e:	8c 2f       	mov	r24, r28
+  90:	dc df       	rcall	.-72     	; 0x4a <SendLedByte>
+  92:	8a ef       	ldi	r24, 0xFA	; 250
+  94:	16 d0       	rcall	.+44     	; 0xc2 <DelayDebugMiliSeconds>
+  96:	8a ef       	ldi	r24, 0xFA	; 250
+  98:	14 d0       	rcall	.+40     	; 0xc2 <DelayDebugMiliSeconds>
+  9a:	8a ef       	ldi	r24, 0xFA	; 250
+  9c:	12 d0       	rcall	.+36     	; 0xc2 <DelayDebugMiliSeconds>
+  9e:	8a ef       	ldi	r24, 0xFA	; 250
+  a0:	10 d0       	rcall	.+32     	; 0xc2 <DelayDebugMiliSeconds>
+  a2:	cc 0f       	add	r28, r28
+  a4:	a1 f7       	brne	.-24     	; 0x8e <main+0x4>
+  a6:	f2 cf       	rjmp	.-28     	; 0x8c <main+0x2>
 
-0000018c <__mulsi3>:
- 18c:	ee 27       	eor	r30, r30
- 18e:	ff 27       	eor	r31, r31
+000000a8 <DelayDebugMicroseconds>:
+  a8:	88 23       	and	r24, r24
+  aa:	51 f0       	breq	.+20     	; 0xc0 <DelayDebugMicroseconds+0x18>
+	...
+  bc:	81 50       	subi	r24, 0x01	; 1
+  be:	f4 cf       	rjmp	.-24     	; 0xa8 <DelayDebugMicroseconds>
+  c0:	08 95       	ret
 
-00000190 <__mulsi3_helper>:
- 190:	aa 27       	eor	r26, r26
- 192:	bb 27       	eor	r27, r27
- 194:	08 c0       	rjmp	.+16     	; 0x1a6 <__mulsi3_helper+0x16>
- 196:	a2 0f       	add	r26, r18
- 198:	b3 1f       	adc	r27, r19
- 19a:	e4 1f       	adc	r30, r20
- 19c:	f5 1f       	adc	r31, r21
- 19e:	22 0f       	add	r18, r18
- 1a0:	33 1f       	adc	r19, r19
- 1a2:	44 1f       	adc	r20, r20
- 1a4:	55 1f       	adc	r21, r21
- 1a6:	96 95       	lsr	r25
- 1a8:	87 95       	ror	r24
- 1aa:	77 95       	ror	r23
- 1ac:	67 95       	ror	r22
- 1ae:	98 f3       	brcs	.-26     	; 0x196 <__mulsi3_helper+0x6>
- 1b0:	70 40       	sbci	r23, 0x00	; 0
- 1b2:	a9 f7       	brne	.-22     	; 0x19e <__mulsi3_helper+0xe>
- 1b4:	00 97       	sbiw	r24, 0x00	; 0
- 1b6:	99 f7       	brne	.-26     	; 0x19e <__mulsi3_helper+0xe>
- 1b8:	bd 01       	movw	r22, r26
- 1ba:	cf 01       	movw	r24, r30
- 1bc:	08 95       	ret
+000000c2 <DelayDebugMiliSeconds>:
+  c2:	cf 93       	push	r28
+  c4:	c8 2f       	mov	r28, r24
+  c6:	cc 23       	and	r28, r28
+  c8:	61 f0       	breq	.+24     	; 0xe2 <DelayDebugMiliSeconds+0x20>
+  ca:	88 ec       	ldi	r24, 0xC8	; 200
+  cc:	ed df       	rcall	.-38     	; 0xa8 <DelayDebugMicroseconds>
+  ce:	88 ec       	ldi	r24, 0xC8	; 200
+  d0:	eb df       	rcall	.-42     	; 0xa8 <DelayDebugMicroseconds>
+  d2:	88 ec       	ldi	r24, 0xC8	; 200
+  d4:	e9 df       	rcall	.-46     	; 0xa8 <DelayDebugMicroseconds>
+  d6:	88 ec       	ldi	r24, 0xC8	; 200
+  d8:	e7 df       	rcall	.-50     	; 0xa8 <DelayDebugMicroseconds>
+  da:	88 ec       	ldi	r24, 0xC8	; 200
+  dc:	e5 df       	rcall	.-54     	; 0xa8 <DelayDebugMicroseconds>
+  de:	c1 50       	subi	r28, 0x01	; 1
+  e0:	f2 cf       	rjmp	.-28     	; 0xc6 <DelayDebugMiliSeconds+0x4>
+  e2:	cf 91       	pop	r28
+  e4:	08 95       	ret
 
-000001be <__udivmodsi4>:
- 1be:	a1 e2       	ldi	r26, 0x21	; 33
- 1c0:	1a 2e       	mov	r1, r26
- 1c2:	aa 1b       	sub	r26, r26
- 1c4:	bb 1b       	sub	r27, r27
- 1c6:	fd 01       	movw	r30, r26
- 1c8:	0d c0       	rjmp	.+26     	; 0x1e4 <__udivmodsi4_ep>
+000000e6 <_exit>:
+  e6:	f8 94       	cli
 
-000001ca <__udivmodsi4_loop>:
- 1ca:	aa 1f       	adc	r26, r26
- 1cc:	bb 1f       	adc	r27, r27
- 1ce:	ee 1f       	adc	r30, r30
- 1d0:	ff 1f       	adc	r31, r31
- 1d2:	a2 17       	cp	r26, r18
- 1d4:	b3 07       	cpc	r27, r19
- 1d6:	e4 07       	cpc	r30, r20
- 1d8:	f5 07       	cpc	r31, r21
- 1da:	20 f0       	brcs	.+8      	; 0x1e4 <__udivmodsi4_ep>
- 1dc:	a2 1b       	sub	r26, r18
- 1de:	b3 0b       	sbc	r27, r19
- 1e0:	e4 0b       	sbc	r30, r20
- 1e2:	f5 0b       	sbc	r31, r21
-
-000001e4 <__udivmodsi4_ep>:
- 1e4:	66 1f       	adc	r22, r22
- 1e6:	77 1f       	adc	r23, r23
- 1e8:	88 1f       	adc	r24, r24
- 1ea:	99 1f       	adc	r25, r25
- 1ec:	1a 94       	dec	r1
- 1ee:	69 f7       	brne	.-38     	; 0x1ca <__udivmodsi4_loop>
- 1f0:	60 95       	com	r22
- 1f2:	70 95       	com	r23
- 1f4:	80 95       	com	r24
- 1f6:	90 95       	com	r25
- 1f8:	9b 01       	movw	r18, r22
- 1fa:	ac 01       	movw	r20, r24
- 1fc:	bd 01       	movw	r22, r26
- 1fe:	cf 01       	movw	r24, r30
- 200:	08 95       	ret
-
-00000202 <_exit>:
- 202:	f8 94       	cli
-
-00000204 <__stop_program>:
- 204:	ff cf       	rjmp	.-2      	; 0x204 <__stop_program>
+000000e8 <__stop_program>:
+  e8:	ff cf       	rjmp	.-2      	; 0xe8 <__stop_program>

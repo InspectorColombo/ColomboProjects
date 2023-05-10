@@ -14,21 +14,38 @@ Discarded input sections
  .text          0x00000000        0x0 cs_adc.o
  .data          0x00000000        0x0 cs_adc.o
  .bss           0x00000000        0x0 cs_adc.o
+ .text.InitCurrentSensorADC
+                0x00000000       0x22 cs_adc.o
  .text.InitVoltageADC
                 0x00000000       0x16 cs_adc.o
+ .text.StartAdcConversion
+                0x00000000       0x1a cs_adc.o
  .text.GetVoltageAdcValueInMv
                 0x00000000       0x74 cs_adc.o
+ .text.GetCurrentInMa
+                0x00000000       0x74 cs_adc.o
+ .comment       0x00000000       0x31 cs_adc.o
+ .text          0x00000000        0x0 LedsControl.o
+ .data          0x00000000        0x0 LedsControl.o
+ .bss           0x00000000        0x0 LedsControl.o
+ .text.UpdateLedsState
+                0x00000000        0x2 LedsControl.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
  .text          0x00000000        0x0 my_debug.o
  .data          0x00000000        0x0 my_debug.o
  .bss           0x00000000        0x0 my_debug.o
+ .text.Marker   0x00000000       0x1c my_debug.o
  .text.ShowDebug8bitValue
                 0x00000000       0x2e my_debug.o
+ .text.ShowDebug16bitValue
+                0x00000000       0x44 my_debug.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
+ .text.libgcc.mul
+                0x00000000       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .text.libgcc.div
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
@@ -45,6 +62,8 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
  .text.libgcc.mul
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.div
+                0x00000000       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
  .text.libgcc.prologue
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
@@ -87,6 +106,7 @@ Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
 LOAD cs_adc.o
+LOAD LedsControl.o
 LOAD main.o
 LOAD my_debug.o
 START GROUP
@@ -198,7 +218,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x206
+.text           0x00000000       0xea
  *(.vectors)
  .vectors       0x00000000       0x1e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
                 0x00000000                __vector_default
@@ -270,41 +290,29 @@ END GROUP
                 0x0000002e                __vector_10
                 0x00000030                . = ALIGN (0x2)
  *(.text.*)
- .text.InitCurrentSensorADC
-                0x00000030       0x22 cs_adc.o
-                0x00000030                InitCurrentSensorADC
- .text.StartAdcConversion
-                0x00000052       0x1a cs_adc.o
-                0x00000052                StartAdcConversion
- .text.GetCurrentInMa
-                0x0000006c       0x74 cs_adc.o
-                0x0000006c                GetCurrentInMa
+ .text.LedLatchDelay
+                0x00000030       0x1a LedsControl.o
+                0x00000030                LedLatchDelay
+ .text.SendLedByte
+                0x0000004a       0x32 LedsControl.o
+                0x0000004a                SendLedByte
+ .text.InitLeds
+                0x0000007c        0xe LedsControl.o
+                0x0000007c                InitLeds
  .text.startup.main
-                0x000000e0        0xe main.o
-                0x000000e0                main
+                0x0000008a       0x1e main.o
+                0x0000008a                main
  .text.DelayDebugMicroseconds
-                0x000000ee       0x1a my_debug.o
-                0x000000ee                DelayDebugMicroseconds
+                0x000000a8       0x1a my_debug.o
+                0x000000a8                DelayDebugMicroseconds
  .text.DelayDebugMiliSeconds
-                0x00000108       0x24 my_debug.o
-                0x00000108                DelayDebugMiliSeconds
- .text.Marker   0x0000012c       0x1c my_debug.o
-                0x0000012c                Marker
- .text.ShowDebug16bitValue
-                0x00000148       0x44 my_debug.o
-                0x00000148                ShowDebug16bitValue
- .text.libgcc.mul
-                0x0000018c       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
-                0x0000018c                __mulsi3
-                0x00000190                __mulsi3_helper
- .text.libgcc.div
-                0x000001be       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
-                0x000001be                __udivmodsi4
-                0x00000202                . = ALIGN (0x2)
+                0x000000c2       0x24 my_debug.o
+                0x000000c2                DelayDebugMiliSeconds
+                0x000000e6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000202        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
-                0x00000202                _exit
-                0x00000202                exit
+ .fini9         0x000000e6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+                0x000000e6                _exit
+                0x000000e6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -323,11 +331,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000202        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+ .fini0         0x000000e6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000206                _etext = .
+                0x000000ea                _etext = .
 
-.data           0x00800060        0x0 load address 0x00000206
+.data           0x00800060        0x0 load address 0x000000ea
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -345,8 +353,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x00000206                __data_load_start = LOADADDR (.data)
-                0x00000206                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000000ea                __data_load_start = LOADADDR (.data)
+                0x000000ea                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800060        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -394,7 +402,7 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 cs_adc.o
+ .comment       0x00000000       0x30 LedsControl.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 main.o
  .comment       0x00000030       0x31 my_debug.o

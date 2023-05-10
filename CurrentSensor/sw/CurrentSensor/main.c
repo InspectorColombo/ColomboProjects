@@ -9,13 +9,33 @@
 
 #include "my_debug.h"
 #include "cs_adc.h"
-
+#include "LedsControl.h"
 
 int main(void)
 {
+	InitLeds();
 	
+	//SendLedByte(0xFF);
+	
+	uint8_t testLed = 0x01;
+	for(;;)
+	{
+		SendLedByte(testLed);
+		DelayDebugMiliSeconds(250);
+		DelayDebugMiliSeconds(250);
+		DelayDebugMiliSeconds(250);
+		DelayDebugMiliSeconds(250);
+		
+		testLed = testLed << 1;
+		if (testLed == 0)
+		{
+			testLed = 0x01;
+		}
+	}
+
+
+/*	
 	uint16_t testVal = 0x12FA;
-	
 	for(;;)
 	{
 		//testVal = GetVoltageAdcValueInMv(4000);
@@ -23,96 +43,10 @@ int main(void)
 		
 		//testVal = Convert10bitSignedToUnsignedInRange_0_1023(0x1FF);
 		
-		ShowDebug16bitValue(testVal);
+		//ShowDebug16bitValue(testVal);
 		DelayDebugMiliSeconds(10);
 	}
-	
-	
-/*
+*/	
 
-	//asm volatile("LDI R16, 0x18");
-	asm volatile("LDI R17, 0x00");
-	asm volatile("LDI R18, 0x01");
-
-	asm volatile("LOOP1:");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-	asm volatile("out 0x18, r17");
-	asm volatile("out 0x18, r18");
-
-	asm volatile("rjmp LOOP1");
-*/
-
-//	for(;;)
-//	{
-//		PORTB |= (1 << PB0);
-//		PORTB &= ~(1 << PB0);
-//	}
-	
-	
-    /* Replace with your application code */
-    while (1) 
-    {
-    }
 }
 
