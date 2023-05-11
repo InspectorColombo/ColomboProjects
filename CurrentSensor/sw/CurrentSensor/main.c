@@ -146,7 +146,9 @@ struct LedsFlashData
 void ConvertLevelToBitsAndFlashCount(const uint8_t level, struct LedsFlashData* flashData)
 {
 	flashData->bitsMask = (0b00001111 << ((level + 2) / 3)) >> 4;
-	flashData->flashMask = (0b00001000 << ((level + 2) / 3)) >> 4;
+	flashData->flashMask = ((level % 3) == 0)
+		? 0x00
+		: ((0b00001000 << ((level + 2) / 3)) >> 4);
 	flashData->flashCount = level % 3;	
 }
 
@@ -155,35 +157,47 @@ int main(void)
 {
 	InitLeds();
 	
-	uint16_t prevVoltage = GetVoltageAdcValueInMv(100);
-	uint16_t prevCurrent = GetCurrentInMa(100);
-	
+	uint8_t prevVoltageLevel = 0;
+	uint8_t prevCurrentLevel = 0;
+	prevVoltageLevel;
+	prevCurrentLevel;
+
+	struct LedsFlashData voltageFlashData;
+	struct LedsFlashData currentFlashData;
 	for(;;)
 	{
-		uint16_t voltage = GetVoltageAdcValueInMv(100);
-		uint16_t current = GetCurrentInMa(100);
+		uint16_t voltage = GetVoltageAdcValueInMv(1000);
+		uint16_t current = GetCurrentInMa(1000);
 		
 		uint8_t currentLedLevel = GetCurrentLedLevel(current, 0);
 		uint8_t voltageLedLevel = GetVoltageLedLevel(voltage, 0);
-		
-		
-		struct LedsFlashData voltageFlashData;
-		struct LedsFlashData currentFlashData;
-		
-//		uint8_t voltageBits = 0;
-//		uint8_t voltageFlashMask = 0;
-//		uint8_t voltageFlashCnt = 0;
-		
-//		uint8_t currentBits = 0;
-//		uint8_t currentFlashMask = 0;
-//		uint8_t currentFlashCnt = 0;
-		
+
 		ConvertLevelToBitsAndFlashCount(currentLedLevel, &currentFlashData);
 		ConvertLevelToBitsAndFlashCount(voltageLedLevel, &voltageFlashData);
+
 		
-		UpdateLedsState(currentFlashData.bitsMask, voltageFlashData.bitsMask);
+		// Control LEDs / flashing
+		uint8_t currentBits;
+		uint8_t voltageBits;
+		for(uint8_t flashCnt = 0; flashCnt < 3 ; ++flashCnt)
+		{
+			currentBits = (currentFlashData.flashMask != 0 && flashCnt < currentFlashData.flashCount)
+				? currentFlashData.bitsMask
+				: (currentFlashData.bitsMask & ~(currentFlashData.flashMask));
+				
+			voltageBits = (voltageFlashData.flashMask != 0 && flashCnt < voltageFlashData.flashCount)
+				? voltageFlashData.bitsMask
+				: (voltageFlashData.bitsMask & ~(voltageFlashData.flashMask));
 
+			UpdateLedsState(currentBits, voltageBits);
+			DelayMiliSec(200);
+			
+			currentBits = currentFlashData.bitsMask & ~(currentFlashData.flashMask);
+			voltageBits = voltageFlashData.bitsMask & ~(voltageFlashData.flashMask);
 
+			UpdateLedsState(currentBits, voltageBits);
+			DelayMiliSec(200);
+		}
 	}
 
 
