@@ -150,6 +150,12 @@
     <PostBuildEvent>$(SolutionDir)PostBuild.bat $(SolutionDir) Release c:\__AVR_DUDE_NEW\</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CsDelay.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="CsDelay.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="cs_adc.c">
       <SubType>compile</SubType>
     </Compile>
