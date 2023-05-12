@@ -1,4 +1,5 @@
 #include "LedsControl.h"
+#include "CsDelay.h"
 
 #define LED_PORT	PORTB
 #define LED_DDR		DDRB
@@ -25,31 +26,9 @@ inline void ClearLedData()
 	LED_PORT &= ~(1 << LED_DATA);
 }
 
-inline void LedBitDelay()
+inline void LedRcChainLatchDelay()
 {
-	asm volatile("NOP");
-	asm volatile("NOP");
-}
-
-void LedLatchDelay()
-{
-	// 600 uSec timeout - for LED latch RC chain switch
-	for(uint8_t repeatCnt = 6; repeatCnt != 0; --repeatCnt)
-	{
-		// 100 usec delay
-		for(uint8_t usecCnt = 100; usecCnt  != 0; --usecCnt)
-		{
-			// 1 usec delay
-			asm volatile("NOP");
-			asm volatile("NOP");
-			asm volatile("NOP");
-			asm volatile("NOP");
-			asm volatile("NOP");
-			asm volatile("NOP");
-			//		asm volatile("NOP");
-			//		asm volatile("NOP");
-		}
-	}
+	DelayMicroSec(60);
 }
 
 
@@ -59,7 +38,7 @@ void SendLedByte(const uint8_t byteToSend)
 
 	// Clear sck and LED latch
 	ClearLedSck();
-	LedLatchDelay();
+	LedRcChainLatchDelay();
 
 	for(uint8_t byteCnt = 8;; --byteCnt)
 	{
@@ -72,19 +51,16 @@ void SendLedByte(const uint8_t byteToSend)
 			ClearLedData();
 		}
 		
-		LedBitDelay();
 		SetLedSck();
 		
 		if (byteCnt == 1)
 			break;		// Break on "1" sck state to activate data latch RC chain
-		
-		LedBitDelay();
 		ClearLedSck();
 		byte = byte << 1;
 	}
 	
 	// Wait for LED latch turned ON
-	LedLatchDelay();
+	LedRcChainLatchDelay();
 	ClearLedSck();
 }
 

@@ -171,10 +171,10 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="my_debug.c">
+    <Compile Include="VoltageCurrentLevels.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="my_debug.h">
+    <Compile Include="VoltageCurrentLevels.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
