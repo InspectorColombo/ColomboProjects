@@ -2817,6 +2817,37 @@
 <pin name="PB1(MISO/DO/AIN1/OC0B/OC1A/PCINT1)" x="-30.48" y="-5.08" length="short"/>
 <pin name="PB0(MOSI/DI/SDA/AIN0/OC0A/~OC1A/AREF/PCINT0)" x="-30.48" y="-7.62" length="short"/>
 </symbol>
+<symbol name="FT232RL">
+<pin name="TXD" x="17.78" y="15.24" length="short" rot="R180"/>
+<pin name="VCC" x="-17.78" y="12.7" length="short"/>
+<wire x1="-15.24" y1="17.78" x2="-15.24" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="-20.32" x2="15.24" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-20.32" x2="15.24" y2="17.78" width="0.254" layer="94"/>
+<wire x1="15.24" y1="17.78" x2="-15.24" y2="17.78" width="0.254" layer="94"/>
+<text x="-7.62" y="20.32" size="1.27" layer="95" font="vector" ratio="20" rot="R180">&gt;NAME</text>
+<text x="12.7" y="20.32" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+<pin name="AGND" x="-17.78" y="-15.24" length="short"/>
+<pin name="GND" x="-17.78" y="-17.78" length="short"/>
+<pin name="TEST" x="-17.78" y="-12.7" length="short"/>
+<pin name="VCC_IO" x="-17.78" y="15.24" length="short"/>
+<pin name="USB_DM" x="-17.78" y="2.54" length="short"/>
+<pin name="USB_DP" x="-17.78" y="0" length="short"/>
+<pin name="RESET#" x="-17.78" y="7.62" length="short"/>
+<pin name="OSC_I" x="-17.78" y="-5.08" length="short"/>
+<pin name="OSC_O" x="-17.78" y="-7.62" length="short"/>
+<pin name="RXD" x="17.78" y="12.7" length="short" rot="R180"/>
+<pin name="RTS#" x="17.78" y="10.16" length="short" rot="R180"/>
+<pin name="CTS#" x="17.78" y="7.62" length="short" rot="R180"/>
+<pin name="DTR#" x="17.78" y="5.08" length="short" rot="R180"/>
+<pin name="DSR#" x="17.78" y="2.54" length="short" rot="R180"/>
+<pin name="DCD#" x="17.78" y="0" length="short" rot="R180"/>
+<pin name="RI#" x="17.78" y="-2.54" length="short" rot="R180"/>
+<pin name="CBUS0" x="17.78" y="-7.62" length="short" rot="R180"/>
+<pin name="CBUS1" x="17.78" y="-10.16" length="short" rot="R180"/>
+<pin name="CBUS2" x="17.78" y="-12.7" length="short" rot="R180"/>
+<pin name="CBUS3" x="17.78" y="-15.24" length="short" rot="R180"/>
+<pin name="CBUS4" x="17.78" y="-17.78" length="short" rot="R180"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="R">
