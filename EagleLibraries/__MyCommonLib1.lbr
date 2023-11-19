@@ -1881,6 +1881,24 @@
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="LED_0805">
+<smd name="ANODE" x="-1.05" y="0" dx="1" dy="1.6" layer="1" rot="R180"/>
+<smd name="CATHODE" x="1.05" y="0" dx="1" dy="1.6" layer="1" rot="R180"/>
+<wire x1="-1.8" y1="1" x2="1.8" y2="1" width="0.127" layer="39"/>
+<wire x1="1.8" y1="1" x2="1.8" y2="-1" width="0.127" layer="39"/>
+<wire x1="1.8" y1="-1" x2="-1.8" y2="-1" width="0.127" layer="39"/>
+<wire x1="-1.8" y1="-1" x2="-1.8" y2="1" width="0.127" layer="39"/>
+<wire x1="-1.9" y1="1.1" x2="0.3" y2="1.1" width="0.2" layer="21"/>
+<wire x1="0.3" y1="1.1" x2="1.9" y2="1.1" width="0.2" layer="21"/>
+<wire x1="1.9" y1="1.1" x2="1.9" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="1.9" y1="-1.1" x2="0.3" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="0.3" y1="-1.1" x2="-1.9" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="-1.9" y1="-1.1" x2="-1.9" y2="1.1" width="0.2" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;name</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;value</text>
+<wire x1="1.9" y1="1.1" x2="1.9" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="0.3" y1="1.1" x2="0.3" y2="-1.1" width="0.2" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -3173,7 +3191,16 @@
 <gate name="LED$1" symbol="LED" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="LED3MM">
+<device name="(3MM)" package="LED3MM">
+<connects>
+<connect gate="LED$1" pin="ANODE" pad="ANODE"/>
+<connect gate="LED$1" pin="CATHODE" pad="CATHODE"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(SMD0805)" package="LED_0805">
 <connects>
 <connect gate="LED$1" pin="ANODE" pad="ANODE"/>
 <connect gate="LED$1" pin="CATHODE" pad="CATHODE"/>

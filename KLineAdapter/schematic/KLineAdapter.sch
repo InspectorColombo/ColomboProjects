@@ -263,6 +263,24 @@ DIN A4, landscape with location and doc. field</description>
 <smd name="PAD0" x="-2.7" y="0" dx="1.6" dy="3.5" layer="1"/>
 <smd name="PAD1" x="2.7" y="0" dx="1.6" dy="3.5" layer="1"/>
 </package>
+<package name="LED_0805">
+<smd name="ANODE" x="-1.05" y="0" dx="1" dy="1.6" layer="1" rot="R180"/>
+<smd name="CATHODE" x="1.05" y="0" dx="1" dy="1.6" layer="1" rot="R180"/>
+<wire x1="-1.8" y1="1" x2="1.8" y2="1" width="0.127" layer="39"/>
+<wire x1="1.8" y1="1" x2="1.8" y2="-1" width="0.127" layer="39"/>
+<wire x1="1.8" y1="-1" x2="-1.8" y2="-1" width="0.127" layer="39"/>
+<wire x1="-1.8" y1="-1" x2="-1.8" y2="1" width="0.127" layer="39"/>
+<wire x1="-1.9" y1="1.1" x2="0.3" y2="1.1" width="0.2" layer="21"/>
+<wire x1="0.3" y1="1.1" x2="1.9" y2="1.1" width="0.2" layer="21"/>
+<wire x1="1.9" y1="1.1" x2="1.9" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="1.9" y1="-1.1" x2="0.3" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="0.3" y1="-1.1" x2="-1.9" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="-1.9" y1="-1.1" x2="-1.9" y2="1.1" width="0.2" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;name</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;value</text>
+<wire x1="1.9" y1="1.1" x2="1.9" y2="-1.1" width="0.2" layer="21"/>
+<wire x1="0.3" y1="1.1" x2="0.3" y2="-1.1" width="0.2" layer="21"/>
+</package>
 <package name="LED3MM">
 <pad name="ANODE" x="-1.27" y="0" drill="0.8" diameter="1.9304"/>
 <pad name="CATHODE" x="1.27" y="0" drill="0.8" diameter="1.9304"/>
@@ -975,7 +993,16 @@ DIN A4, landscape with location and doc. field</description>
 <gate name="LED$1" symbol="LED" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="LED3MM">
+<device name="(3MM)" package="LED3MM">
+<connects>
+<connect gate="LED$1" pin="ANODE" pad="ANODE"/>
+<connect gate="LED$1" pin="CATHODE" pad="CATHODE"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(SMD0805)" package="LED_0805">
 <connects>
 <connect gate="LED$1" pin="ANODE" pad="ANODE"/>
 <connect gate="LED$1" pin="CATHODE" pad="CATHODE"/>
@@ -1250,7 +1277,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="R13" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R14" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="LED4" library="__MyCommonLib1" deviceset="LED3MM" device="" value="green"/>
+<part name="LED4" library="__MyCommonLib1" deviceset="LED3MM" device="(SMD0805)" value="green"/>
 <part name="D22" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="C6" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="C100" library="__MyCommonLib1" deviceset="CE" device="5.2MM" value="47uF x 25V"/>
@@ -1260,9 +1287,9 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R16" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K7"/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
 <part name="D4" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
-<part name="X4" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="OBD2_KLINE"/>
-<part name="X2" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="OBD2_+12V"/>
-<part name="X5" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="OBD2_GND"/>
+<part name="X4" library="__MyCommonLib1" deviceset="PIN1X1" device="2.54MM" value="OBD2_KLINE"/>
+<part name="X2" library="__MyCommonLib1" deviceset="PIN1X1" device="2.54MM" value="OBD2_+12V"/>
+<part name="X5" library="__MyCommonLib1" deviceset="PIN1X1" device="2.54MM" value="OBD2_GND"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
@@ -1270,10 +1297,10 @@ DIN A4, landscape with location and doc. field</description>
 <plain>
 </plain>
 <instances>
-<instance part="FRAME1" gate="G$1" x="444.5" y="55.88" smashed="yes">
-<attribute name="DRAWING_NAME" x="661.67" y="71.12" size="2.54" layer="94" font="vector"/>
-<attribute name="LAST_DATE_TIME" x="661.67" y="66.04" size="2.286" layer="94" font="vector"/>
-<attribute name="SHEET" x="675.005" y="60.96" size="2.54" layer="94" font="vector"/>
+<instance part="FRAME1" gate="G$1" x="0" y="0" smashed="yes">
+<attribute name="DRAWING_NAME" x="217.17" y="15.24" size="2.54" layer="94" font="vector"/>
+<attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94" font="vector"/>
+<attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94" font="vector"/>
 </instance>
 <instance part="X3" gate="X$1" x="15.24" y="48.26" rot="MR0"/>
 <instance part="GND7" gate="1" x="15.24" y="33.02" smashed="yes">
@@ -1511,14 +1538,9 @@ DIN A4, landscape with location and doc. field</description>
 </net>
 <net name="N$1" class="0">
 <segment>
-<pinref part="U$2" gate="G$1" pin="VCC_IO"/>
-<wire x1="22.86" y1="111.76" x2="20.32" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="20.32" y1="111.76" x2="20.32" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="C1" gate="C$1" pin="PIN1"/>
-<wire x1="17.78" y1="109.22" x2="20.32" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="3V3_OUT"/>
-<wire x1="22.86" y1="109.22" x2="20.32" y2="109.22" width="0.1524" layer="91"/>
-<junction x="20.32" y="109.22"/>
+<wire x1="22.86" y1="109.22" x2="17.78" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC_USB" class="0">
@@ -1549,8 +1571,13 @@ DIN A4, landscape with location and doc. field</description>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="VCC"/>
-<wire x1="22.86" y1="114.3" x2="12.7" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="114.3" x2="20.32" y2="114.3" width="0.1524" layer="91"/>
 <label x="20.32" y="116.84" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<pinref part="U$2" gate="G$1" pin="VCC_IO"/>
+<wire x1="20.32" y1="114.3" x2="12.7" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="111.76" x2="20.32" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="111.76" x2="20.32" y2="114.3" width="0.1524" layer="91"/>
+<junction x="20.32" y="114.3"/>
 </segment>
 <segment>
 <pinref part="D4" gate="D1" pin="CATHODE"/>
