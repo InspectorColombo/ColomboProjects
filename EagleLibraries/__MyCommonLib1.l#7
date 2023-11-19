@@ -4177,6 +4177,23 @@
 </gates>
 <devices>
 <device name="(SSOP-28)" package="SSOP-28">
+<connects>
+<connect gate="G$1" pin="CBUS2" pad="13"/>
+<connect gate="G$1" pin="CBUS3" pad="14"/>
+<connect gate="G$1" pin="CBUS4" pad="12"/>
+<connect gate="G$1" pin="CTS#" pad="11"/>
+<connect gate="G$1" pin="DCD#" pad="10"/>
+<connect gate="G$1" pin="DSR#" pad="9"/>
+<connect gate="G$1" pin="DTR#" pad="2"/>
+<connect gate="G$1" pin="GND" pad="7"/>
+<connect gate="G$1" pin="RI#" pad="6"/>
+<connect gate="G$1" pin="RTS#" pad="3"/>
+<connect gate="G$1" pin="RXD" pad="5"/>
+<connect gate="G$1" pin="TXD" pad="1"/>
+<connect gate="G$1" pin="USB_DM" pad="16"/>
+<connect gate="G$1" pin="USB_DP" pad="15"/>
+<connect gate="G$1" pin="VCC_IO" pad="4"/>
+</connects>
 <technologies>
 <technology name=""/>
 </technologies>
