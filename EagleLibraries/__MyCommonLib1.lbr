@@ -4148,6 +4148,15 @@
 <technology name=""/>
 </technologies>
 </device>
+<device name="(0805)" package="RSMD_0805">
+<connects>
+<connect gate="G$1" pin="END" pad="PAD_0"/>
+<connect gate="G$1" pin="START" pad="PAD_1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="ATTINY45">
