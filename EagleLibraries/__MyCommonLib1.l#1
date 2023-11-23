@@ -4184,6 +4184,15 @@
 <technology name=""/>
 </technologies>
 </device>
+<device name="" package="RSMD_1206">
+<connects>
+<connect gate="G$1" pin="END" pad="PAD_0"/>
+<connect gate="G$1" pin="START" pad="PAD_1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="ATTINY45">
