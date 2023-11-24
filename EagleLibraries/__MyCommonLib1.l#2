@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -2943,28 +2943,33 @@
 <pin name="3V3_OUT" x="-17.78" y="10.16" length="short"/>
 </symbol>
 <symbol name="ODB2">
-<wire x1="10.16" y1="-15.24" x2="10.16" y2="20.32" width="0.254" layer="94"/>
-<wire x1="10.16" y1="20.32" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="12.7" x2="-10.16" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-10.16" x2="10.16" y2="-15.24" width="0.254" layer="94"/>
-<text x="-5.08" y="25.4" size="1.27" layer="95" font="vector" ratio="20" rot="R180">&gt;NAME</text>
-<text x="25.4" y="15.24" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
-<pin name="1" x="-12.7" y="10.16" length="short"/>
-<pin name="2" x="-12.7" y="7.62" length="short"/>
-<pin name="3" x="-12.7" y="5.08" length="short"/>
-<pin name="4" x="-12.7" y="2.54" length="short"/>
-<pin name="5" x="-12.7" y="0" length="short"/>
-<pin name="6" x="-12.7" y="-2.54" length="short"/>
-<pin name="7" x="-12.7" y="-5.08" length="short"/>
-<pin name="8" x="-12.7" y="-7.62" length="short"/>
-<pin name="9" x="12.7" y="10.16" length="short" rot="R180"/>
-<pin name="10" x="12.7" y="7.62" length="short" rot="R180"/>
-<pin name="11" x="12.7" y="5.08" length="short" rot="R180"/>
-<pin name="12" x="12.7" y="2.54" length="short" rot="R180"/>
-<pin name="13" x="12.7" y="0" length="short" rot="R180"/>
-<pin name="14" x="12.7" y="-2.54" length="short" rot="R180"/>
-<pin name="15" x="12.7" y="-5.08" length="short" rot="R180"/>
-<pin name="16" x="12.7" y="-7.62" length="short" rot="R180"/>
+<wire x1="15.24" y1="-12.7" x2="15.24" y2="15.24" width="0.254" layer="94"/>
+<wire x1="15.24" y1="15.24" x2="-12.7" y2="12.7" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="12.7" x2="-12.7" y2="3.81" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="3.81" x2="-13.97" y2="3.81" width="0.254" layer="94"/>
+<wire x1="-13.97" y1="3.81" x2="-13.97" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-13.97" y1="-1.27" x2="-12.7" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-1.27" x2="-12.7" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-10.16" x2="15.24" y2="-12.7" width="0.254" layer="94"/>
+<text x="-5.08" y="17.78" size="1.27" layer="95" font="vector" ratio="20" rot="R180">&gt;NAME</text>
+<text x="10.16" y="17.78" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+<pin name="1(NC)" x="-15.24" y="10.16" length="short"/>
+<pin name="2(J1850+)" x="-15.24" y="7.62" length="short"/>
+<pin name="3(NC)" x="-15.24" y="5.08" length="short"/>
+<pin name="4(CHAS_GND)" x="-15.24" y="2.54" length="short"/>
+<pin name="5(SIGN_GND)" x="-15.24" y="0" length="short"/>
+<pin name="6(CAN_H)" x="-15.24" y="-2.54" length="short"/>
+<pin name="7(K_LINE)" x="-15.24" y="-5.08" length="short"/>
+<pin name="8(NC)" x="-15.24" y="-7.62" length="short"/>
+<pin name="9(NC)" x="17.78" y="10.16" length="short" rot="R180"/>
+<pin name="10(J1850-)" x="17.78" y="7.62" length="short" rot="R180"/>
+<pin name="11(NC)" x="17.78" y="5.08" length="short" rot="R180"/>
+<pin name="12(NC)" x="17.78" y="2.54" length="short" rot="R180"/>
+<pin name="13(NC)" x="17.78" y="0" length="short" rot="R180"/>
+<pin name="14(CAN_L)" x="17.78" y="-2.54" length="short" rot="R180"/>
+<pin name="15(L_LINE)" x="17.78" y="-5.08" length="short" rot="R180"/>
+<pin name="16(BATT+)" x="17.78" y="-7.62" length="short" rot="R180"/>
+<wire x1="-12.7" y1="3.81" x2="-12.7" y2="-1.27" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -4304,6 +4309,36 @@
 <connect gate="G$1" pin="USB_DP" pad="15"/>
 <connect gate="G$1" pin="VCC" pad="20"/>
 <connect gate="G$1" pin="VCC_IO" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="ODB2">
+<gates>
+<gate name="G$1" symbol="ODB2" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="ODB2">
+<connects>
+<connect gate="G$1" pin="1(NC)" pad="1"/>
+<connect gate="G$1" pin="10(J1850-)" pad="10"/>
+<connect gate="G$1" pin="11(NC)" pad="11"/>
+<connect gate="G$1" pin="12(NC)" pad="12"/>
+<connect gate="G$1" pin="13(NC)" pad="13"/>
+<connect gate="G$1" pin="14(CAN_L)" pad="14"/>
+<connect gate="G$1" pin="15(L_LINE)" pad="15"/>
+<connect gate="G$1" pin="16(BATT+)" pad="16"/>
+<connect gate="G$1" pin="2(J1850+)" pad="2"/>
+<connect gate="G$1" pin="3(NC)" pad="3"/>
+<connect gate="G$1" pin="4(CHAS_GND)" pad="4"/>
+<connect gate="G$1" pin="5(SIGN_GND)" pad="5"/>
+<connect gate="G$1" pin="6(CAN_H)" pad="6"/>
+<connect gate="G$1" pin="7(K_LINE)" pad="7"/>
+<connect gate="G$1" pin="8(NC)" pad="8"/>
+<connect gate="G$1" pin="9(NC)" pad="9"/>
 </connects>
 <technologies>
 <technology name=""/>

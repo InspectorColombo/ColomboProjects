@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -1916,20 +1916,20 @@
 <pad name="14" x="6" y="-4" drill="1.4" diameter="2.5"/>
 <pad name="15" x="10" y="-4" drill="1.4" diameter="2.5"/>
 <pad name="16" x="14" y="-4" drill="1.4" diameter="2.5"/>
-<wire x1="-20.5" y1="7.5" x2="-17.5" y2="-7.5" width="0.5" layer="21"/>
-<wire x1="-17.5" y1="-7.5" x2="17.5" y2="-7.5" width="0.5" layer="21"/>
-<wire x1="17.5" y1="-7.5" x2="20.5" y2="7.5" width="0.5" layer="21"/>
-<wire x1="20.5" y1="7.5" x2="4.15" y2="7.5" width="0.5" layer="21"/>
-<wire x1="4.15" y1="7.5" x2="4.15" y2="9.3" width="0.5" layer="21"/>
-<wire x1="4.15" y1="9.3" x2="-4.15" y2="9.3" width="0.5" layer="21"/>
-<wire x1="-4.15" y1="9.3" x2="-4.15" y2="7.5" width="0.5" layer="21"/>
-<wire x1="-4.15" y1="7.5" x2="-20.5" y2="7.5" width="0.5" layer="21"/>
+<wire x1="-20.5" y1="7.5" x2="-17.5" y2="-7.5" width="0.5" layer="22"/>
+<wire x1="-17.5" y1="-7.5" x2="17.5" y2="-7.5" width="0.5" layer="22"/>
+<wire x1="17.5" y1="-7.5" x2="20.5" y2="7.5" width="0.5" layer="22"/>
+<wire x1="20.5" y1="7.5" x2="4.15" y2="7.5" width="0.5" layer="22"/>
+<wire x1="4.15" y1="7.5" x2="4.15" y2="9.3" width="0.5" layer="22"/>
+<wire x1="4.15" y1="9.3" x2="-4.15" y2="9.3" width="0.5" layer="22"/>
+<wire x1="-4.15" y1="9.3" x2="-4.15" y2="7.5" width="0.5" layer="22"/>
+<wire x1="-4.15" y1="7.5" x2="-20.5" y2="7.5" width="0.5" layer="22"/>
 <text x="-17" y="3.5" size="1.27" layer="51" font="vector" ratio="20">1</text>
 <text x="16.5" y="4" size="1.27" layer="51" font="vector" ratio="20">8</text>
 <text x="-17" y="-5" size="1.27" layer="51" font="vector" ratio="20">9</text>
 <text x="15.5" y="-5.5" size="1.27" layer="51" font="vector" ratio="20">16</text>
-<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<text x="0" y="0" size="1.27" layer="26" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="28" font="vector" ratio="20">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -4309,6 +4309,36 @@
 <connect gate="G$1" pin="USB_DP" pad="15"/>
 <connect gate="G$1" pin="VCC" pad="20"/>
 <connect gate="G$1" pin="VCC_IO" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="ODB2">
+<gates>
+<gate name="G$1" symbol="ODB2" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="ODB2">
+<connects>
+<connect gate="G$1" pin="1(NC)" pad="1"/>
+<connect gate="G$1" pin="10(J1850-)" pad="10"/>
+<connect gate="G$1" pin="11(NC)" pad="11"/>
+<connect gate="G$1" pin="12(NC)" pad="12"/>
+<connect gate="G$1" pin="13(NC)" pad="13"/>
+<connect gate="G$1" pin="14(CAN_L)" pad="14"/>
+<connect gate="G$1" pin="15(L_LINE)" pad="15"/>
+<connect gate="G$1" pin="16(BATT+)" pad="16"/>
+<connect gate="G$1" pin="2(J1850+)" pad="2"/>
+<connect gate="G$1" pin="3(NC)" pad="3"/>
+<connect gate="G$1" pin="4(CHAS_GND)" pad="4"/>
+<connect gate="G$1" pin="5(SIGN_GND)" pad="5"/>
+<connect gate="G$1" pin="6(CAN_H)" pad="6"/>
+<connect gate="G$1" pin="7(K_LINE)" pad="7"/>
+<connect gate="G$1" pin="8(NC)" pad="8"/>
+<connect gate="G$1" pin="9(NC)" pad="9"/>
 </connects>
 <technologies>
 <technology name=""/>
