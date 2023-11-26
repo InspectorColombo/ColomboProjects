@@ -1296,9 +1296,9 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R16" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K7"/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
 <part name="D4" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
-<part name="X4" library="__MyCommonLib1" deviceset="PIN1X1" device="2.54MM" value="OBD2_KLINE"/>
+<part name="X4" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="OBD2_KLINE"/>
 <part name="X2" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="OBD2_+12V"/>
-<part name="X5" library="__MyCommonLib1" deviceset="PIN1X1" device="2.54MM" value="OBD2_GND"/>
+<part name="X5" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_PWR" value="OBD2_GND"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="J1" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0 Ohm"/>
 </parts>

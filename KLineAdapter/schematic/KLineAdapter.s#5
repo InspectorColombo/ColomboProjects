@@ -1725,6 +1725,13 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="137.16" y1="106.68" x2="137.16" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="U$2" gate="G$1" pin="RXD"/>
+<pinref part="J1" gate="R$1" pin="PIN0"/>
+<wire x1="60.96" y1="111.76" x2="58.42" y2="111.76" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
