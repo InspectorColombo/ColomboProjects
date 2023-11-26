@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
@@ -1630,12 +1630,12 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="C55" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="1n0*"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="R83" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="0.62R"/>
+<part name="R83" library="__MyCommonLib1" deviceset="R" device="SMD_2512" value="0.62R"/>
 <part name="C54" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx16V"/>
 <part name="C53" library="__MyCommonLib1" deviceset="CE" device="16MM" value="1000uFx16V"/>
 <part name="GND71" library="supply1" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" deviceset="GND" device=""/>
-<part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="UF4007"/>
+<part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
 <part name="C57" library="__MyCommonLib1" deviceset="CE" device="16MM" value="20uF x 450V"/>
 <part name="GND74" library="supply1" deviceset="GND" device=""/>
 <part name="R84" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="130K*"/>
@@ -1653,11 +1653,11 @@ Grid 5.00 mm&lt;p&gt;
 <part name="D5" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="20R"/>
-<part name="T17" library="__MyCommonLib1" deviceset="IRF830" device="TO-220_VER2"/>
+<part name="T17" library="__MyCommonLib1" deviceset="IRF830" device="TO-220"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="TR2" library="__MyCommonLib1" deviceset="TRANS_2WIND" device="(RING_25X10)" value="test_ring"/>
-<part name="D10" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_12.5MM" value="UF4001"/>
-<part name="R5" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="*"/>
+<part name="D10" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_15MM" value="UF4001"/>
+<part name="R5" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="*"/>
 <part name="C1" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.1uF x 50V"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="R6" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="130K*"/>
@@ -1682,6 +1682,8 @@ Grid 5.00 mm&lt;p&gt;
 <part name="R10" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
+<part name="C2" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="*"/>
+<part name="R11" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="*"/>
 </parts>
 <sheets>
 <sheet>
@@ -1859,6 +1861,14 @@ Grid 5.00 mm&lt;p&gt;
 <instance part="GND14" gate="1" x="43.18" y="68.58" smashed="yes">
 <attribute name="VALUE" x="40.64" y="66.04" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
+<instance part="C2" gate="C$1" x="205.74" y="152.4" smashed="yes" rot="R90">
+<attribute name="NAME" x="203.2" y="154.94" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="208.28" y="154.94" size="1.27" layer="96" font="vector" ratio="20" rot="R90"/>
+</instance>
+<instance part="R11" gate="R$1" x="215.9" y="152.4" smashed="yes" rot="R90">
+<attribute name="NAME" x="213.36" y="154.94" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="218.44" y="154.94" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -2001,6 +2011,11 @@ Grid 5.00 mm&lt;p&gt;
 <label x="248.92" y="144.78" size="1.778" layer="95" rot="R180"/>
 <pinref part="R6" gate="R$1" pin="PIN0"/>
 <pinref part="X2" gate="-1" pin="KL"/>
+<pinref part="R11" gate="R$1" pin="PIN0"/>
+<wire x1="220.98" y1="152.4" x2="223.52" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="152.4" x2="223.52" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="147.32" x2="210.82" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="210.82" y1="147.32" x2="210.82" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$139" class="0">
@@ -2145,7 +2160,12 @@ Grid 5.00 mm&lt;p&gt;
 <segment>
 <pinref part="TR2" gate="G$1" pin="SEC_START"/>
 <pinref part="D29" gate="D$1" pin="ANODE"/>
-<wire x1="198.12" y1="142.24" x2="203.2" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="142.24" x2="200.66" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="C2" gate="C$1" pin="PIN1"/>
+<wire x1="200.66" y1="142.24" x2="203.2" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="152.4" x2="200.66" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="200.66" y1="152.4" x2="200.66" y2="142.24" width="0.1524" layer="91"/>
+<junction x="200.66" y="142.24"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -2210,6 +2230,13 @@ Grid 5.00 mm&lt;p&gt;
 <pinref part="T16" gate="T$1" pin="C"/>
 <pinref part="R8" gate="R$1" pin="PIN0"/>
 <wire x1="43.18" y1="91.44" x2="43.18" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$18" class="0">
+<segment>
+<pinref part="C2" gate="C$1" pin="PIN0"/>
+<pinref part="R11" gate="R$1" pin="PIN1"/>
+<wire x1="208.28" y1="152.4" x2="210.82" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

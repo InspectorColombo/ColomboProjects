@@ -1630,13 +1630,13 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="C55" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="1n0*"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="R83" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="0.62R"/>
+<part name="R83" library="__MyCommonLib1" deviceset="R" device="SMD_2512" value="0.62R"/>
 <part name="C54" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx16V"/>
-<part name="C53" library="__MyCommonLib1" deviceset="CE" device="10MM" value="1000uFx16V"/>
+<part name="C53" library="__MyCommonLib1" deviceset="CE" device="16MM" value="1000uFx16V"/>
 <part name="GND71" library="supply1" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" deviceset="GND" device=""/>
-<part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="UF4007"/>
-<part name="C57" library="__MyCommonLib1" deviceset="CE" device="10MM" value="20uF x 450V"/>
+<part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
+<part name="C57" library="__MyCommonLib1" deviceset="CE" device="16MM" value="20uF x 450V"/>
 <part name="GND74" library="supply1" deviceset="GND" device=""/>
 <part name="R84" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="130K*"/>
 <part name="R85" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K6"/>
@@ -1653,11 +1653,11 @@ Grid 5.00 mm&lt;p&gt;
 <part name="D5" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="20R"/>
-<part name="T17" library="__MyCommonLib1" deviceset="IRF830" device="TO-220_VER2"/>
+<part name="T17" library="__MyCommonLib1" deviceset="IRF830" device="TO-220"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="TR2" library="__MyCommonLib1" deviceset="TRANS_2WIND" device="(RING_25X10)" value="test_ring"/>
-<part name="D10" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_12.5MM" value="UF4001"/>
-<part name="R5" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="*"/>
+<part name="D10" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_15MM" value="UF4001"/>
+<part name="R5" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="*"/>
 <part name="C1" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.1uF x 50V"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="R6" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="130K*"/>
