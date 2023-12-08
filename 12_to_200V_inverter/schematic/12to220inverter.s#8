@@ -1636,7 +1636,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND71" library="supply1" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" deviceset="GND" device=""/>
 <part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="UF4007"/>
-<part name="C57" library="__MyCommonLib1" deviceset="CE" device="10MM" value="20uF x 450V"/>
+<part name="C57" library="__MyCommonLib1" deviceset="CE" device="16MM" value="20uF x 450V"/>
 <part name="GND74" library="supply1" deviceset="GND" device=""/>
 <part name="R84" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="130K*"/>
 <part name="R85" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K6"/>

@@ -1632,7 +1632,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="R83" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="0.62R"/>
 <part name="C54" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx16V"/>
-<part name="C53" library="__MyCommonLib1" deviceset="CE" device="10MM" value="1000uFx16V"/>
+<part name="C53" library="__MyCommonLib1" deviceset="CE" device="16MM" value="1000uFx16V"/>
 <part name="GND71" library="supply1" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" deviceset="GND" device=""/>
 <part name="D29" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="UF4007"/>
