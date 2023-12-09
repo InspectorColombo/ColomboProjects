@@ -1637,7 +1637,7 @@ Grid 5.00 mm&lt;p&gt;
 <part name="C6" library="__MyCommonLib1" deviceset="CE" device="8.2MM" value="100uF x 16V"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
-<part name="C2" library="__MyCommonLib1" deviceset="CE" device="16MM" value="100uF x 16V"/>
+<part name="C2" library="__MyCommonLib1" deviceset="CE" device="16MM" value="1000uF x 16V"/>
 <part name="C7" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx16V"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>

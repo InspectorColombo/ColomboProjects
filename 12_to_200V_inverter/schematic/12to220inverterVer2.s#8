@@ -2210,6 +2210,18 @@ Grid 5.00 mm&lt;p&gt;
 <label x="215.9" y="53.34" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 </segment>
 </net>
+<net name="V_REF" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="OUT_CTRL"/>
+<wire x1="91.44" y1="114.3" x2="93.98" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="114.3" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="REF"/>
+<wire x1="93.98" y1="109.22" x2="91.44" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="109.22" x2="106.68" y2="109.22" width="0.1524" layer="91"/>
+<junction x="93.98" y="109.22"/>
+<label x="106.68" y="111.76" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
