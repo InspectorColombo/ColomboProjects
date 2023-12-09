@@ -1659,12 +1659,12 @@ Grid 5.00 mm&lt;p&gt;
 <part name="D9" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
 <part name="D11" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
-<part name="R15" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="5R1"/>
-<part name="C5" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx16V"/>
-<part name="C6" library="__MyCommonLib1" deviceset="CE" device="8.2MM" value="100uF x 16V"/>
+<part name="R15" library="__MyCommonLib1" deviceset="R" device="SMD_2512" value="5R1"/>
+<part name="C5" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.47uFx16V"/>
+<part name="C6" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="100uF x 16V"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
-<part name="C2" library="__MyCommonLib1" deviceset="CE" device="16MM" value="1000uF x 16V"/>
+<part name="C2" library="__MyCommonLib1" deviceset="CE" device="12.5MM" value="1000uF x 16V"/>
 <part name="C7" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx16V"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
@@ -2313,7 +2313,7 @@ Grid 5.00 mm&lt;p&gt;
 <pinref part="R2" gate="R$1" pin="PIN1"/>
 <wire x1="114.3" y1="144.78" x2="114.3" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="147.32" x2="127" y2="147.32" width="0.1524" layer="91"/>
-<label x="106.68" y="149.86" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<label x="127" y="149.86" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 </segment>
 <segment>
 <pinref part="R18" gate="R$1" pin="PIN1"/>
