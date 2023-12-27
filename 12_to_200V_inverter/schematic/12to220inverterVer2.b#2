@@ -819,9 +819,7 @@ design rules under a new name.</description>
 <vertex x="12.4" y="37.6"/>
 <vertex x="7.9" y="33.1"/>
 <vertex x="7.9" y="27.2"/>
-<vertex x="3.5" y="22.8"/>
-<vertex x="3.5" y="12.1"/>
-<vertex x="2.8" y="11.4"/>
+<vertex x="2.8" y="22.1"/>
 <vertex x="2.8" y="6.3"/>
 <vertex x="4.6" y="4.5"/>
 <vertex x="13" y="4.5"/>
@@ -1122,16 +1120,30 @@ design rules under a new name.</description>
 <contactref element="X2" pad="2"/>
 <contactref element="R15" pad="PAD0"/>
 <contactref element="R5" pad="PAD_1"/>
-<wire x1="17.2" y1="13.6" x2="17.45" y2="16" width="0.5" layer="16"/>
-<wire x1="17.45" y1="16" x2="19.2" y2="16" width="0.5" layer="16"/>
-<wire x1="19.2" y1="16" x2="20.6" y2="19" width="0.5" layer="16"/>
-<wire x1="20.6" y1="19" x2="22" y2="20.9" width="0.5" layer="16"/>
-<wire x1="22" y1="20.9" x2="25.7" y2="24.6" width="0.5" layer="16"/>
-<wire x1="25.7" y1="24.6" x2="35.9" y2="24.6" width="0.5" layer="16"/>
-<wire x1="35.9" y1="24.6" x2="46.6" y2="35.3" width="0.5" layer="16"/>
-<wire x1="46.6" y1="35.3" x2="53.85" y2="35.3" width="0.5" layer="16"/>
 <wire x1="53.9" y1="35.35" x2="53.85" y2="35.3" width="0.5" layer="16"/>
-<wire x1="11.5" y1="9.13" x2="17.2" y2="13.6" width="0" layer="19" extent="16-16"/>
+<polygon width="0.5" layer="16" thermals="no">
+<vertex x="9.7" y="12.7"/>
+<vertex x="9.7" y="7"/>
+<vertex x="10.3" y="6.4"/>
+<vertex x="12.4" y="6.4"/>
+<vertex x="13" y="7"/>
+<vertex x="13" y="11.1"/>
+<vertex x="14.8" y="12.9"/>
+<vertex x="19.6" y="12.9"/>
+<vertex x="20.4" y="13.7"/>
+<vertex x="20.4" y="16.9"/>
+<vertex x="13.9" y="16.9"/>
+</polygon>
+<wire x1="53.85" y1="35.3" x2="52.6" y2="35.3" width="0.8" layer="16"/>
+<wire x1="52.6" y1="35.3" x2="51.8" y2="34.5" width="0.8" layer="16"/>
+<wire x1="51.8" y1="34.5" x2="46.8" y2="34.5" width="0.8" layer="16"/>
+<wire x1="46.8" y1="34.5" x2="45.9" y2="33.6" width="0.8" layer="16"/>
+<wire x1="45.9" y1="33.6" x2="42.9" y2="33.6" width="1" layer="16"/>
+<wire x1="42.9" y1="33.6" x2="33.7" y2="24.4" width="1" layer="16"/>
+<wire x1="33.7" y1="24.4" x2="25.6" y2="24.4" width="1" layer="16"/>
+<wire x1="25.6" y1="24.4" x2="20.7" y2="19.5" width="1" layer="16"/>
+<wire x1="20.7" y1="19.5" x2="20.7" y2="17.3" width="1" layer="16"/>
+<wire x1="20.7" y1="17.3" x2="19.7" y2="16.3" width="1" layer="16"/>
 </signal>
 <signal name="+200VDC_OUT">
 <contactref element="X2" pad="1"/>
@@ -1166,7 +1178,19 @@ design rules under a new name.</description>
 <wire x1="23.1" y1="37.2" x2="18.6" y2="32.7" width="1" layer="16"/>
 <wire x1="18.6" y1="32.7" x2="13.51" y2="32.7" width="1" layer="16"/>
 <wire x1="13.51" y1="32.7" x2="13.01" y2="32.2" width="1" layer="16"/>
-<wire x1="13.01" y1="32.2" x2="6.5" y2="9.13" width="0" layer="19" extent="1-1"/>
+<polygon width="0.5" layer="16" thermals="no">
+<vertex x="4.6" y="19.5"/>
+<vertex x="4.6" y="7.2"/>
+<vertex x="5.4" y="6.4"/>
+<vertex x="7.5" y="6.4"/>
+<vertex x="8.1" y="7"/>
+<vertex x="8.1" y="15.1"/>
+<vertex x="15.4" y="22.4"/>
+<vertex x="15.4" y="31"/>
+<vertex x="13.2" y="33.2"/>
+<vertex x="10.9" y="33.2"/>
+<vertex x="10.9" y="25.8"/>
+</polygon>
 </signal>
 <signal name="+12V_CONTROL">
 <contactref element="T15" pad="2"/>
