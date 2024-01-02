@@ -471,6 +471,47 @@
 <wire x1="0" y1="0" x2="1.27" y2="0" width="0.4" layer="51"/>
 <wire x1="2.54" y1="0" x2="3.81" y2="0" width="0.4" layer="51"/>
 </package>
+<package name="NTC_9.0X4.2">
+<pad name="PAD_0" x="-3.25" y="1.1" drill="0.9" diameter="2"/>
+<pad name="PAD1" x="3.25" y="-1.1" drill="0.9" diameter="2"/>
+<wire x1="-2.2" y1="1.9" x2="4.3" y2="1.9" width="0.4" layer="21"/>
+<wire x1="4.3" y1="-0.3" x2="4.3" y2="1.9" width="0.4" layer="21"/>
+<wire x1="2.2" y1="-1.9" x2="-4.3" y2="-1.9" width="0.4" layer="21"/>
+<wire x1="-4.3" y1="-1.9" x2="-4.3" y2="0.3" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="TRANS_37X26_3578_11_13_15_17">
+<wire x1="-18.3" y1="12.8" x2="18.3" y2="12.8" width="0.4" layer="21"/>
+<wire x1="18.3" y1="12.8" x2="18.3" y2="-12.8" width="0.4" layer="21"/>
+<wire x1="18.3" y1="-12.8" x2="-18.3" y2="-12.8" width="0.4" layer="21"/>
+<wire x1="-18.3" y1="-12.8" x2="-18.3" y2="12.8" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<pad name="3" x="-8" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="5" x="0" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="7" x="8" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="8" x="12" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="11" x="12" y="10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="13" x="4" y="10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="15" x="-4" y="10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="17" x="-12" y="10" drill="1" diameter="2.54" rot="R90"/>
+</package>
+<package name="TO-220(VER2)">
+<pad name="1" x="-2.54" y="0" drill="1.2" diameter="2.2" rot="R90"/>
+<pad name="2" x="0" y="-2.54" drill="1.2" diameter="2.2" rot="R90"/>
+<pad name="3" x="2.54" y="0" drill="1.2" diameter="2.2" rot="R90"/>
+<wire x1="-5.08" y1="3.175" x2="5.08" y2="3.175" width="0.4" layer="21"/>
+<wire x1="5.08" y1="3.175" x2="5.08" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="5.08" y1="-1.27" x2="3.81" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="-3.81" y1="-1.27" x2="-5.08" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="-5.08" y1="-1.27" x2="-5.08" y2="3.175" width="0.4" layer="21"/>
+<rectangle x1="-5.08" y1="1.905" x2="5.08" y2="3.175" layer="21"/>
+<text x="-2.54" y="3.81" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="-3.81" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-1.905" y1="-1.27" x2="-0.635" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="1.905" y2="-1.27" width="0.4" layer="21"/>
+</package>
 </packages>
 </library>
 <library name="con-wago-500">
@@ -785,11 +826,24 @@ design rules under a new name.</description>
 <element name="D3" library="__MyCommonLib1" package="SOD-80" value="MBR0540" x="-18.2" y="-33"/>
 <element name="R21" library="__MyCommonLib1" package="RSMD_0805" value="150R" x="-19" y="-36.1"/>
 <element name="C9" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF x 10V" x="-19" y="-39.2"/>
-<element name="X101" library="__MyCommonLib1" package="BRD_CONNECTOR_12X10.2" value="220VAC" x="-15" y="-45.5"/>
-<element name="F1" library="__MyCommonLib1" package="FUSE_20X5.6MM" value="0.3A" x="-8.1" y="-53.4"/>
+<element name="X101" library="__MyCommonLib1" package="BRD_CONNECTOR_12X10.2" value="220VAC" x="-16.1" y="-44.2" rot="R180"/>
+<element name="F1" library="__MyCommonLib1" package="FUSE_20X5.6MM" value="0.3A" x="-12.2" y="-54.3"/>
 <element name="C101" library="__MyCommonLib1" package="MKP_18X6" value="0.1uF x 275VAC X2" x="-28.5" y="-47.1"/>
-<element name="TR101" library="__MyCommonLib1" package="EMI_CM_21X17" value="EMI" x="-40" y="-45.7"/>
-<element name="C10" library="__MyCommonLib1" package="MKP_18X6" value="0.1uF x 275VAC X2" x="-56" y="-47.2"/>
+<element name="TR101" library="__MyCommonLib1" package="EMI_CM_21X17" value="EMI" x="-41" y="-46.4" rot="R180"/>
+<element name="C10" library="__MyCommonLib1" package="MKP_18X6" value="0.1uF x 275VAC X2" x="-52.8" y="-48"/>
+<element name="RT1" library="__MyCommonLib1" package="NTC_9.0X4.2" value="5 Ohm" x="-61.1" y="-55.3" rot="R180"/>
+<element name="D101" library="__MyCommonLib1" package="DO-41_10MM" value="1N4007" x="-61.6" y="-46.9" rot="R90"/>
+<element name="D102" library="__MyCommonLib1" package="DO-41_10MM" value="1N4007" x="-58.1" y="-46.9" rot="R90"/>
+<element name="D103" library="__MyCommonLib1" package="DO-41_10MM" value="1N4007" x="-65" y="-46.9" rot="R270"/>
+<element name="D104" library="__MyCommonLib1" package="DO-41_10MM" value="1N4007" x="-68.4" y="-46.9" rot="R270"/>
+<element name="CE101" library="__MyCommonLib1" package="CE_13MM" value="22uF x 400V" x="-63.8" y="-33.7"/>
+<element name="R101" library="__MyCommonLib1" package="RSMD_0805" value="240K" x="-28.5" y="-50" rot="MR270"/>
+<element name="R24" library="__MyCommonLib1" package="RSMD_0805" value="240K" x="-28.5" y="-43.2" rot="MR270"/>
+<element name="TR102" library="__MyCommonLib1" package="TRANS_37X26_3578_11_13_15_17" value="Self made transformer. From TR8 sat reciever." x="-51.8" y="-70.6"/>
+<element name="D105" library="__MyCommonLib1" package="DO-41_10MM" value="UF4007" x="-64.1" y="-88"/>
+<element name="ZD101" library="__MyCommonLib1" package="DO-41_10MM" value="P6KE200" x="-64.1" y="-93.9"/>
+<element name="T101" library="__MyCommonLib1" package="TO-220(VER2)" value="16N60" x="-65" y="-101.1"/>
+<element name="R25" library="__MyCommonLib1" package="RSMD_1206" value="240K" x="-68.3" y="-107.3"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -1516,31 +1570,95 @@ design rules under a new name.</description>
 <signal name="N$13">
 <contactref element="X101" pad="1"/>
 <contactref element="F1" pad="PAD1"/>
-<wire x1="3.65" y1="-53.4" x2="-19" y2="-45.5" width="0" layer="19" extent="1-1"/>
+<wire x1="-0.45" y1="-54.3" x2="-12.1" y2="-44.2" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$22">
 <contactref element="X101" pad="2"/>
 <contactref element="C101" pad="1"/>
 <contactref element="TR101" pad="W2_START"/>
-<wire x1="-28.5" y1="-39.48" x2="-45.08" y2="-52.1" width="0" layer="19" extent="1-1"/>
-<wire x1="-11" y1="-45.5" x2="-28.5" y2="-39.48" width="0" layer="19" extent="1-1"/>
+<contactref element="R24" pad="PAD_0"/>
+<wire x1="-28.5" y1="-39.48" x2="-35.92" y2="-40" width="0" layer="19" extent="1-1"/>
+<wire x1="-28.5" y1="-42.15" x2="-28.5" y2="-39.48" width="0" layer="19" extent="16-16"/>
+<wire x1="-20.1" y1="-44.2" x2="-28.5" y2="-42.15" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$27">
 <contactref element="F1" pad="PAD_0"/>
 <contactref element="C101" pad="2"/>
 <contactref element="TR101" pad="W1_START"/>
-<wire x1="-19.85" y1="-53.4" x2="-28.5" y2="-54.72" width="0" layer="19" extent="1-1"/>
-<wire x1="-45.08" y1="-39.3" x2="-28.5" y2="-54.72" width="0" layer="19" extent="1-1"/>
+<contactref element="R101" pad="PAD_1"/>
+<wire x1="-28.5" y1="-51.05" x2="-35.92" y2="-52.8" width="0" layer="19" extent="16-16"/>
+<wire x1="-28.5" y1="-54.72" x2="-28.5" y2="-51.05" width="0" layer="19" extent="16-16"/>
+<wire x1="-23.95" y1="-54.3" x2="-28.5" y2="-54.72" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$28">
 <contactref element="TR101" pad="W2_END"/>
 <contactref element="C10" pad="1"/>
-<wire x1="-34.92" y1="-52.1" x2="-56" y2="-39.58" width="0" layer="19" extent="1-1"/>
+<contactref element="D102" pad="ANODE"/>
+<contactref element="D104" pad="CATHODE"/>
+<wire x1="-58.1" y1="-51.98" x2="-68.4" y2="-51.98" width="0" layer="19" extent="1-1"/>
+<wire x1="-52.8" y1="-40.38" x2="-58.1" y2="-51.98" width="0" layer="19" extent="1-1"/>
+<wire x1="-46.08" y1="-40" x2="-52.8" y2="-40.38" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$29">
 <contactref element="TR101" pad="W1_END"/>
 <contactref element="C10" pad="2"/>
-<wire x1="-34.92" y1="-39.3" x2="-56" y2="-54.82" width="0" layer="19" extent="1-1"/>
+<contactref element="RT1" pad="PAD_0"/>
+<wire x1="-52.8" y1="-55.62" x2="-57.85" y2="-56.4" width="0" layer="19" extent="1-1"/>
+<wire x1="-46.08" y1="-52.8" x2="-52.8" y2="-55.62" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$30">
+<contactref element="RT1" pad="PAD1"/>
+<contactref element="D103" pad="CATHODE"/>
+<contactref element="D101" pad="ANODE"/>
+<wire x1="-65" y1="-51.98" x2="-64.35" y2="-54.2" width="0" layer="19" extent="1-1"/>
+<wire x1="-61.6" y1="-51.98" x2="-65" y2="-51.98" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$32">
+<contactref element="D102" pad="CATHODE"/>
+<contactref element="D101" pad="CATHODE"/>
+<contactref element="CE101" pad="PLUS"/>
+<contactref element="TR102" pad="5"/>
+<contactref element="ZD101" pad="ANODE"/>
+<wire x1="-51.8" y1="-80.6" x2="-69.18" y2="-93.9" width="0" layer="19" extent="1-1"/>
+<wire x1="-58.1" y1="-41.82" x2="-51.8" y2="-80.6" width="0" layer="19" extent="1-1"/>
+<wire x1="-61.6" y1="-41.82" x2="-58.1" y2="-41.82" width="0" layer="19" extent="1-1"/>
+<wire x1="-61.26" y1="-33.7" x2="-61.6" y2="-41.82" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$33">
+<contactref element="D103" pad="ANODE"/>
+<contactref element="D104" pad="ANODE"/>
+<contactref element="CE101" pad="MINUS"/>
+<contactref element="R25" pad="PAD_0"/>
+<wire x1="-68.4" y1="-41.82" x2="-69.85" y2="-107.3" width="0" layer="19" extent="1-1"/>
+<wire x1="-65" y1="-41.82" x2="-68.4" y2="-41.82" width="0" layer="19" extent="1-1"/>
+<wire x1="-66.34" y1="-33.7" x2="-65" y2="-41.82" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$31">
+<contactref element="R101" pad="PAD_0"/>
+<contactref element="R24" pad="PAD_1"/>
+<wire x1="-28.5" y1="-44.25" x2="-28.5" y2="-48.95" width="0" layer="19" extent="16-16"/>
+</signal>
+<signal name="N$34">
+<contactref element="TR102" pad="3"/>
+<contactref element="TR102" pad="15"/>
+<wire x1="-55.8" y1="-60.6" x2="-59.8" y2="-80.6" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$35">
+<contactref element="TR102" pad="17"/>
+<contactref element="D105" pad="ANODE"/>
+<contactref element="T101" pad="2"/>
+<wire x1="-69.18" y1="-88" x2="-65" y2="-103.64" width="0" layer="19" extent="1-1"/>
+<wire x1="-63.8" y1="-60.6" x2="-69.18" y2="-88" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$36">
+<contactref element="D105" pad="CATHODE"/>
+<contactref element="ZD101" pad="CATHODE"/>
+<wire x1="-59.02" y1="-88" x2="-59.02" y2="-93.9" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$37">
+<contactref element="R25" pad="PAD_1"/>
+<contactref element="T101" pad="3"/>
+<wire x1="-62.46" y1="-101.1" x2="-66.75" y2="-107.3" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 </board>
