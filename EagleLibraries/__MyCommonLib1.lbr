@@ -2161,6 +2161,26 @@
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="BRD_CONNECTOR_12X10.2">
+<pad name="1" x="-4" y="0" drill="1.5" diameter="3.5"/>
+<pad name="2" x="4" y="0" drill="1.5" diameter="3.5"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-5.8" y1="4.9" x2="-2.54" y2="4.9" width="0.4" layer="21"/>
+<wire x1="-2.54" y1="4.9" x2="2.54" y2="4.9" width="0.4" layer="21"/>
+<wire x1="2.54" y1="4.9" x2="5.8" y2="4.9" width="0.4" layer="21"/>
+<wire x1="5.8" y1="4.9" x2="5.8" y2="3" width="0.4" layer="21"/>
+<wire x1="5.8" y1="3" x2="5.8" y2="1" width="0.4" layer="21"/>
+<wire x1="5.8" y1="-1" x2="5.8" y2="-4.9" width="0.4" layer="21"/>
+<wire x1="5.8" y1="-4.9" x2="-5.8" y2="-4.9" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="-4.9" x2="-5.8" y2="-1" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="1" x2="-5.8" y2="3" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="3" x2="-5.8" y2="4.9" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="3" x2="-2.54" y2="3" width="0.4" layer="21"/>
+<wire x1="-2.54" y1="3" x2="-2.54" y2="4.9" width="0.4" layer="21"/>
+<wire x1="2.54" y1="4.9" x2="2.54" y2="3" width="0.4" layer="21"/>
+<wire x1="2.54" y1="3" x2="5.8" y2="3" width="0.4" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -3793,6 +3813,15 @@
 </gates>
 <devices>
 <device name="2.54MM" package="PIN2X1_2.54MM">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="BRD_CONN_12X10.2" package="BRD_CONNECTOR_12X10.2">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
