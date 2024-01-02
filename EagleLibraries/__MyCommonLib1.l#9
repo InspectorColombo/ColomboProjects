@@ -2151,6 +2151,36 @@
 <wire x1="4.8" y1="0" x2="4.8" y2="-2.1" width="0.4" layer="21"/>
 <wire x1="-4.8" y1="0" x2="4.8" y2="0" width="0.4" layer="21"/>
 </package>
+<package name="NTC_9.0X4.2">
+<pad name="PAD_0" x="-3.25" y="1.1" drill="0.9" diameter="2"/>
+<pad name="PAD1" x="3.25" y="-1.1" drill="0.9" diameter="2"/>
+<wire x1="-2.2" y1="1.9" x2="4.3" y2="1.9" width="0.4" layer="21"/>
+<wire x1="4.3" y1="-0.3" x2="4.3" y2="1.9" width="0.4" layer="21"/>
+<wire x1="2.2" y1="-1.9" x2="-4.3" y2="-1.9" width="0.4" layer="21"/>
+<wire x1="-4.3" y1="-1.9" x2="-4.3" y2="0.3" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="BRD_CONNECTOR_12X10.2">
+<pad name="1" x="-4" y="0" drill="1.5" diameter="3.5"/>
+<pad name="2" x="4" y="0" drill="1.5" diameter="3.5"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-5.8" y1="4.9" x2="-2.54" y2="4.9" width="0.4" layer="21"/>
+<wire x1="-2.54" y1="4.9" x2="2.54" y2="4.9" width="0.4" layer="21"/>
+<wire x1="2.54" y1="4.9" x2="5.8" y2="4.9" width="0.4" layer="21"/>
+<wire x1="5.8" y1="4.9" x2="5.8" y2="3" width="0.4" layer="21"/>
+<wire x1="5.8" y1="3" x2="5.8" y2="1" width="0.4" layer="21"/>
+<wire x1="5.8" y1="-1" x2="5.8" y2="-4.9" width="0.4" layer="21"/>
+<wire x1="5.8" y1="-4.9" x2="-5.8" y2="-4.9" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="-4.9" x2="-5.8" y2="-1" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="1" x2="-5.8" y2="3" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="3" x2="-5.8" y2="4.9" width="0.4" layer="21"/>
+<wire x1="-5.8" y1="3" x2="-2.54" y2="3" width="0.4" layer="21"/>
+<wire x1="-2.54" y1="3" x2="-2.54" y2="4.9" width="0.4" layer="21"/>
+<wire x1="2.54" y1="4.9" x2="2.54" y2="3" width="0.4" layer="21"/>
+<wire x1="2.54" y1="3" x2="5.8" y2="3" width="0.4" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -3404,6 +3434,20 @@
 <text x="2.54" y="1.27" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
 <text x="2.54" y="0" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
 <wire x1="0" y1="2.54" x2="0" y2="-2.54" width="0.254" layer="94"/>
+</symbol>
+<symbol name="TERMISTOR_NTC">
+<pin name="PIN1" x="5.08" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+<wire x1="2.54" y1="0.9525" x2="2.54" y2="-0.9525" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-0.9525" x2="-2.54" y2="-0.9525" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-0.9525" x2="-2.54" y2="0.9525" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0.9525" x2="2.54" y2="0.9525" width="0.254" layer="94"/>
+<pin name="PIN0" x="-5.08" y="0" visible="off" length="short" direction="pas"/>
+<text x="-2.54" y="3.81" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="2.54" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-2.54" y1="-1.905" x2="-1.905" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="-1.905" y1="-1.905" x2="1.905" y2="1.905" width="0.254" layer="94"/>
+<text x="-0.635" y="-2.54" size="1.27" layer="94" font="vector" ratio="20">-t</text>
+<circle x="1.5875" y="-1.5875" radius="0.15875" width="0.127" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -4990,6 +5034,38 @@
 <connect gate="G$1" pin="W1_START" pad="W1_START"/>
 <connect gate="G$1" pin="W2_END" pad="W2_END"/>
 <connect gate="G$1" pin="W2_START" pad="W2_START"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="FUSE">
+<gates>
+<gate name="G$1" symbol="FUSE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="20X5.6MM" package="FUSE_20X5.6MM">
+<connects>
+<connect gate="G$1" pin="PIN0" pad="PAD_0"/>
+<connect gate="G$1" pin="PIN1" pad="PAD1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TERMISTOR_NTC">
+<gates>
+<gate name="G$1" symbol="TERMISTOR_NTC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="9.0X4.2" package="NTC_9.0X4.2">
+<connects>
+<connect gate="G$1" pin="PIN0" pad="PAD_0"/>
+<connect gate="G$1" pin="PIN1" pad="PAD1"/>
 </connects>
 <technologies>
 <technology name=""/>
