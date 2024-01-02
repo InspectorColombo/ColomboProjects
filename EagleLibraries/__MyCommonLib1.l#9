@@ -2078,10 +2078,10 @@
 <pad name="W1_END" x="5.08" y="6.4" drill="0.9" diameter="2.2"/>
 <pad name="W2_START" x="-5.08" y="-6.4" drill="0.9" diameter="2.2"/>
 <pad name="W2_END" x="5.08" y="-6.4" drill="0.9" diameter="2.2"/>
-<wire x1="-7.9" y1="8.8" x2="7.9" y2="8.8" width="0.4" layer="21"/>
-<wire x1="7.9" y1="8.8" x2="7.9" y2="-8.8" width="0.4" layer="21"/>
-<wire x1="7.9" y1="-8.8" x2="-7.9" y2="-8.8" width="0.4" layer="21"/>
-<wire x1="-7.9" y1="-8.8" x2="-7.9" y2="8.8" width="0.4" layer="21"/>
+<wire x1="-8.3" y1="10.3" x2="8.3" y2="10.3" width="0.4" layer="21"/>
+<wire x1="8.3" y1="10.3" x2="8.3" y2="-10.3" width="0.4" layer="21"/>
+<wire x1="8.3" y1="-10.3" x2="-8.3" y2="-10.3" width="0.4" layer="21"/>
+<wire x1="-8.3" y1="-10.3" x2="-8.3" y2="10.3" width="0.4" layer="21"/>
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 <wire x1="-5.08" y1="-2.54" x2="-2.54" y2="-2.54" width="0.4" layer="51" curve="-180"/>
@@ -2100,6 +2100,14 @@
 <wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.4" layer="51"/>
 <wire x1="0" y1="0" x2="1.27" y2="0" width="0.4" layer="51"/>
 <wire x1="2.54" y1="0" x2="3.81" y2="0" width="0.4" layer="51"/>
+</package>
+<package name="MKP_13.4X4">
+<pad name="1" x="0" y="3.81" drill="0.9" diameter="2.2"/>
+<pad name="2" x="0" y="-3.81" drill="0.9" diameter="2.2"/>
+<wire x1="-1.8" y1="5.08" x2="-1.8" y2="-6.35" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-6.35" x2="1.8" y2="-6.35" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-6.35" x2="1.8" y2="5.08" width="0.4" layer="21"/>
+<wire x1="1.8" y1="5.08" x2="-1.8" y2="5.08" width="0.4" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -4880,6 +4888,35 @@
 <connect gate="G$1" pin="PRI2_START" pad="17"/>
 <connect gate="G$1" pin="SEC_END" pad="11"/>
 <connect gate="G$1" pin="SEC_START" pad="13"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="EMI_FILTER_COMMON_MODE">
+<gates>
+<gate name="G$1" symbol="EMI_FILTER_COMMON_MODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(18X16.2)" package="EMI_CM_18X16.2">
+<connects>
+<connect gate="G$1" pin="W1_END" pad="W1_END"/>
+<connect gate="G$1" pin="W1_START" pad="W1_START"/>
+<connect gate="G$1" pin="W2_END" pad="W2_END"/>
+<connect gate="G$1" pin="W2_START" pad="W2_START"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(21X17)" package="EMI_CM_21X17">
+<connects>
+<connect gate="G$1" pin="W1_END" pad="W1_END"/>
+<connect gate="G$1" pin="W1_START" pad="W1_START"/>
+<connect gate="G$1" pin="W2_END" pad="W2_END"/>
+<connect gate="G$1" pin="W2_START" pad="W2_START"/>
 </connects>
 <technologies>
 <technology name=""/>

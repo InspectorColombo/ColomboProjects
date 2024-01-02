@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -2100,6 +2100,26 @@
 <wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.4" layer="51"/>
 <wire x1="0" y1="0" x2="1.27" y2="0" width="0.4" layer="51"/>
 <wire x1="2.54" y1="0" x2="3.81" y2="0" width="0.4" layer="51"/>
+</package>
+<package name="MKP_13.4X4">
+<pad name="1" x="0" y="5.08" drill="0.9" diameter="2.2"/>
+<pad name="2" x="0" y="-5.08" drill="0.9" diameter="2.2"/>
+<wire x1="-1.8" y1="6.5" x2="-1.8" y2="-6.5" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-6.5" x2="1.8" y2="-6.5" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-6.5" x2="1.8" y2="6.5" width="0.4" layer="21"/>
+<wire x1="1.8" y1="6.5" x2="-1.8" y2="6.5" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="MKP_17X8">
+<pad name="1" x="0" y="5.08" drill="0.9" diameter="2.2"/>
+<pad name="2" x="0" y="-5.08" drill="0.9" diameter="2.2"/>
+<wire x1="-1.8" y1="6.5" x2="-1.8" y2="-6.5" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-6.5" x2="1.8" y2="-6.5" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-6.5" x2="1.8" y2="6.5" width="0.4" layer="21"/>
+<wire x1="1.8" y1="6.5" x2="-1.8" y2="6.5" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -4893,6 +4913,17 @@
 </gates>
 <devices>
 <device name="(18X16.2)" package="EMI_CM_18X16.2">
+<connects>
+<connect gate="G$1" pin="W1_END" pad="W1_END"/>
+<connect gate="G$1" pin="W1_START" pad="W1_START"/>
+<connect gate="G$1" pin="W2_END" pad="W2_END"/>
+<connect gate="G$1" pin="W2_START" pad="W2_START"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(21X17)" package="EMI_CM_21X17">
 <connects>
 <connect gate="G$1" pin="W1_END" pad="W1_END"/>
 <connect gate="G$1" pin="W1_START" pad="W1_START"/>
