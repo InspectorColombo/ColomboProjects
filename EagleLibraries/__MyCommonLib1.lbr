@@ -1995,6 +1995,56 @@
 <wire x1="-5.715" y1="-2.0875" x2="-5.715" y2="2.4875" width="0.4" layer="27"/>
 <wire x1="-6.015" y1="-1.5875" x2="-6.015" y2="1.4875" width="0.4" layer="27"/>
 </package>
+<package name="TRANS_29.5X23_1234567_910">
+<pad name="1" x="-10.16" y="-8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="2" x="-5.08" y="-8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="3" x="0" y="-8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="4" x="5.08" y="-8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="5" x="10.16" y="-8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="6" x="10.16" y="8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="7" x="5.08" y="8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="9" x="-5.08" y="8.9" drill="1" diameter="2.54" rot="R90"/>
+<pad name="10" x="-10.16" y="8.9" drill="1" diameter="2.54" rot="R90"/>
+<wire x1="-14.55" y1="11.3" x2="14.55" y2="11.3" width="0.4" layer="21"/>
+<wire x1="14.55" y1="11.3" x2="14.55" y2="-11.3" width="0.4" layer="21"/>
+<wire x1="14.55" y1="-11.3" x2="-14.55" y2="-11.3" width="0.4" layer="21"/>
+<wire x1="-14.55" y1="-11.3" x2="-14.55" y2="11.3" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="TIO20_V2">
+<pad name="1" x="-10.16" y="-6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="2" x="-5.08" y="-6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="3" x="0" y="-6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="4" x="5.08" y="-6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="5" x="10.16" y="-6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="6" x="10.16" y="6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="7" x="5.08" y="6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="9" x="-5.08" y="6.4" drill="1" diameter="2.54" rot="R90"/>
+<pad name="10" x="-10.16" y="6.4" drill="1" diameter="2.54" rot="R90"/>
+<wire x1="-12.8" y1="9.3" x2="12.8" y2="9.3" width="0.4" layer="21"/>
+<wire x1="12.8" y1="9.3" x2="12.8" y2="-9.3" width="0.4" layer="21"/>
+<wire x1="12.8" y1="-9.3" x2="-12.8" y2="-9.3" width="0.4" layer="21"/>
+<wire x1="-12.8" y1="-9.3" x2="-12.8" y2="9.3" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="TRANS_37X26_3578_11_13_15_17">
+<wire x1="-18.3" y1="12.8" x2="18.3" y2="12.8" width="0.4" layer="21"/>
+<wire x1="18.3" y1="12.8" x2="18.3" y2="-12.8" width="0.4" layer="21"/>
+<wire x1="18.3" y1="-12.8" x2="-18.3" y2="-12.8" width="0.4" layer="21"/>
+<wire x1="-18.3" y1="-12.8" x2="-18.3" y2="12.8" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<pad name="3" x="-8" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="5" x="0" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="7" x="8" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="8" x="12" y="-10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="11" x="12" y="10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="13" x="4" y="10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="15" x="-4" y="10" drill="1" diameter="2.54" rot="R90"/>
+<pad name="17" x="-12" y="10" drill="1" diameter="2.54" rot="R90"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -3119,6 +3169,100 @@
 <pin name="DTC" x="-15.24" y="10.16" length="short"/>
 <pin name="OUT_CTRL" x="12.7" y="-2.54" length="short" rot="R180"/>
 <pin name="FEEDBACK" x="12.7" y="-12.7" length="short" rot="R180"/>
+</symbol>
+<symbol name="TRANS_FLYBACK_AUX_SINGLE_OUTPUT_WITH_SHIELD">
+<wire x1="-2.54" y1="7.62" x2="-2.54" y2="10.16" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="10.16" x2="-2.54" y2="12.7" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="12.7" x2="-2.54" y2="15.24" width="0.254" layer="94" curve="180"/>
+<pin name="PRI1_START" x="-5.08" y="5.08" visible="off" length="short"/>
+<pin name="PRI1_END" x="-5.08" y="15.24" visible="off" length="short"/>
+<circle x="-2.54" y="6.35" radius="0.3175" width="0.508" layer="94"/>
+<text x="0" y="19.05" size="1.27" layer="95" font="vector" ratio="20" rot="R180">&gt;NAME</text>
+<text x="0" y="20.32" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="0" width="0.254" layer="94" curve="180"/>
+<wire x1="5.08" y1="0" x2="5.08" y2="-2.54" width="0.254" layer="94" curve="180"/>
+<wire x1="5.08" y1="-2.54" x2="5.08" y2="-5.08" width="0.254" layer="94" curve="180"/>
+<circle x="5.08" y="1.27" radius="0.3175" width="0.508" layer="94"/>
+<text x="-4.445" y="14.605" size="1.27" layer="94" font="vector" rot="R270">PRI_1</text>
+<text x="5.715" y="0.635" size="1.27" layer="94" font="vector" rot="R270">SEC</text>
+<wire x1="1.27" y1="15.24" x2="1.27" y2="13.97" width="0.508" layer="94"/>
+<wire x1="1.27" y1="12.7" x2="1.27" y2="11.43" width="0.508" layer="94"/>
+<wire x1="1.27" y1="10.16" x2="1.27" y2="8.89" width="0.508" layer="94"/>
+<wire x1="1.27" y1="7.62" x2="1.27" y2="6.35" width="0.508" layer="94"/>
+<pin name="SEC_START" x="7.62" y="2.54" visible="off" length="short" rot="R180"/>
+<pin name="SEC_END" x="7.62" y="-5.08" visible="off" length="short" rot="R180"/>
+<wire x1="-2.54" y1="-5.08" x2="-2.54" y2="-2.54" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="-2.54" x2="-2.54" y2="0" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="2.54" width="0.254" layer="94" curve="180"/>
+<pin name="PRI2_START" x="-5.08" y="-7.62" visible="off" length="short"/>
+<pin name="PRI2_END" x="-5.08" y="2.54" visible="off" length="short"/>
+<circle x="-2.54" y="-6.35" radius="0.3175" width="0.508" layer="94"/>
+<text x="-4.445" y="-0.635" size="1.27" layer="94" font="vector" rot="R270">PRI_2</text>
+<wire x1="-2.54" y1="-7.62" x2="-2.54" y2="-5.08" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="7.62" width="0.254" layer="94" curve="180"/>
+<wire x1="1.27" y1="5.08" x2="1.27" y2="3.81" width="0.508" layer="94"/>
+<wire x1="1.27" y1="2.54" x2="1.27" y2="1.27" width="0.508" layer="94"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.508" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="-3.81" width="0.508" layer="94"/>
+<wire x1="1.27" y1="-5.08" x2="1.27" y2="-6.35" width="0.508" layer="94"/>
+<wire x1="1.27" y1="-7.62" x2="1.27" y2="-8.89" width="0.508" layer="94"/>
+<wire x1="1.27" y1="-10.16" x2="1.27" y2="-11.43" width="0.508" layer="94"/>
+<wire x1="1.27" y1="-12.7" x2="1.27" y2="-13.97" width="0.508" layer="94"/>
+<wire x1="-2.54" y1="-15.24" x2="-2.54" y2="-12.7" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="-12.7" x2="-2.54" y2="-10.16" width="0.254" layer="94" curve="180"/>
+<pin name="AUX_END" x="-5.08" y="-15.24" visible="off" length="short"/>
+<pin name="AUX_START" x="-5.08" y="-10.16" visible="off" length="short"/>
+<circle x="-2.54" y="-11.43" radius="0.3175" width="0.508" layer="94"/>
+<text x="-4.445" y="-10.795" size="1.27" layer="94" font="vector" rot="R270">AUX</text>
+<pin name="SHIELD" x="0" y="-17.78" visible="off" length="short" rot="R90"/>
+<wire x1="0" y1="-15.24" x2="0" y2="15.24" width="0.127" layer="94"/>
+</symbol>
+<symbol name="TRANS_37X26_3578_11_13_15_17">
+</symbol>
+<symbol name="TRANS_FLYBACK_AUX_SINGLE_OUTPUT">
+<wire x1="-2.54" y1="7.62" x2="-2.54" y2="10.16" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="10.16" x2="-2.54" y2="12.7" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="12.7" x2="-2.54" y2="15.24" width="0.254" layer="94" curve="180"/>
+<pin name="PRI1_START" x="-5.08" y="5.08" visible="off" length="short"/>
+<pin name="PRI1_END" x="-5.08" y="15.24" visible="off" length="short"/>
+<circle x="-2.54" y="6.35" radius="0.3175" width="0.508" layer="94"/>
+<text x="0" y="19.05" size="1.27" layer="95" font="vector" ratio="20" rot="R180">&gt;NAME</text>
+<text x="0" y="20.32" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="0" width="0.254" layer="94" curve="180"/>
+<wire x1="2.54" y1="0" x2="2.54" y2="-2.54" width="0.254" layer="94" curve="180"/>
+<wire x1="2.54" y1="-2.54" x2="2.54" y2="-5.08" width="0.254" layer="94" curve="180"/>
+<circle x="2.54" y="1.27" radius="0.3175" width="0.508" layer="94"/>
+<text x="-4.445" y="14.605" size="1.27" layer="94" font="vector" rot="R270">PRI_1</text>
+<text x="3.175" y="0.635" size="1.27" layer="94" font="vector" rot="R270">SEC</text>
+<wire x1="0" y1="15.24" x2="0" y2="13.97" width="0.508" layer="94"/>
+<wire x1="0" y1="12.7" x2="0" y2="11.43" width="0.508" layer="94"/>
+<wire x1="0" y1="10.16" x2="0" y2="8.89" width="0.508" layer="94"/>
+<wire x1="0" y1="7.62" x2="0" y2="6.35" width="0.508" layer="94"/>
+<pin name="SEC_START" x="5.08" y="2.54" visible="off" length="short" rot="R180"/>
+<pin name="SEC_END" x="5.08" y="-5.08" visible="off" length="short" rot="R180"/>
+<wire x1="-2.54" y1="-5.08" x2="-2.54" y2="-2.54" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="-2.54" x2="-2.54" y2="0" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="2.54" width="0.254" layer="94" curve="180"/>
+<pin name="PRI2_START" x="-5.08" y="-7.62" visible="off" length="short"/>
+<pin name="PRI2_END" x="-5.08" y="2.54" visible="off" length="short"/>
+<circle x="-2.54" y="-6.35" radius="0.3175" width="0.508" layer="94"/>
+<text x="-4.445" y="-0.635" size="1.27" layer="94" font="vector" rot="R270">PRI_2</text>
+<wire x1="-2.54" y1="-7.62" x2="-2.54" y2="-5.08" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="7.62" width="0.254" layer="94" curve="180"/>
+<wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.508" layer="94"/>
+<wire x1="0" y1="2.54" x2="0" y2="1.27" width="0.508" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="-1.27" width="0.508" layer="94"/>
+<wire x1="0" y1="-2.54" x2="0" y2="-3.81" width="0.508" layer="94"/>
+<wire x1="0" y1="-5.08" x2="0" y2="-6.35" width="0.508" layer="94"/>
+<wire x1="0" y1="-7.62" x2="0" y2="-8.89" width="0.508" layer="94"/>
+<wire x1="0" y1="-10.16" x2="0" y2="-11.43" width="0.508" layer="94"/>
+<wire x1="0" y1="-12.7" x2="0" y2="-13.97" width="0.508" layer="94"/>
+<wire x1="-2.54" y1="-15.24" x2="-2.54" y2="-12.7" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="-12.7" x2="-2.54" y2="-10.16" width="0.254" layer="94" curve="180"/>
+<pin name="AUX_END" x="-5.08" y="-15.24" visible="off" length="short"/>
+<pin name="AUX_START" x="-5.08" y="-10.16" visible="off" length="short"/>
+<circle x="-2.54" y="-11.43" radius="0.3175" width="0.508" layer="94"/>
+<text x="-4.445" y="-10.795" size="1.27" layer="94" font="vector" rot="R270">AUX</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -4598,6 +4742,66 @@
 <connect gate="G$1" pin="SEC1_START" pad="6"/>
 <connect gate="G$1" pin="SEC2_END" pad="3"/>
 <connect gate="G$1" pin="SEC2_START" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TRANS_FLYBACK_AUX_SINGLE_OUT_WITH_SHIELD">
+<gates>
+<gate name="G$1" symbol="TRANS_FLYBACK_AUX_SINGLE_OUTPUT_WITH_SHIELD" x="0" y="10.16"/>
+</gates>
+<devices>
+<device name="(TIO20-V2)" package="TIO20_V2">
+<connects>
+<connect gate="G$1" pin="AUX_END" pad="5"/>
+<connect gate="G$1" pin="AUX_START" pad="4"/>
+<connect gate="G$1" pin="PRI1_END" pad="2"/>
+<connect gate="G$1" pin="PRI1_START" pad="1"/>
+<connect gate="G$1" pin="PRI2_END" pad="9"/>
+<connect gate="G$1" pin="PRI2_START" pad="10"/>
+<connect gate="G$1" pin="SEC_END" pad="6"/>
+<connect gate="G$1" pin="SEC_START" pad="7"/>
+<connect gate="G$1" pin="SHIELD" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TRANS_FLYBACK_AUX_SINGLE_OUT">
+<gates>
+<gate name="G$1" symbol="TRANS_FLYBACK_AUX_SINGLE_OUTPUT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(TRANS29.5X23)" package="TRANS_29.5X23_1234567_910">
+<connects>
+<connect gate="G$1" pin="AUX_END" pad="5"/>
+<connect gate="G$1" pin="AUX_START" pad="4"/>
+<connect gate="G$1" pin="PRI1_END" pad="2"/>
+<connect gate="G$1" pin="PRI1_START" pad="1"/>
+<connect gate="G$1" pin="PRI2_END" pad="9"/>
+<connect gate="G$1" pin="PRI2_START" pad="10"/>
+<connect gate="G$1" pin="SEC_END" pad="6"/>
+<connect gate="G$1" pin="SEC_START" pad="7"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(TRANS_37X26)" package="TRANS_37X26_3578_11_13_15_17">
+<connects>
+<connect gate="G$1" pin="AUX_END" pad="8"/>
+<connect gate="G$1" pin="AUX_START" pad="7"/>
+<connect gate="G$1" pin="PRI1_END" pad="5"/>
+<connect gate="G$1" pin="PRI1_START" pad="3"/>
+<connect gate="G$1" pin="PRI2_END" pad="15"/>
+<connect gate="G$1" pin="PRI2_START" pad="17"/>
+<connect gate="G$1" pin="SEC_END" pad="11"/>
+<connect gate="G$1" pin="SEC_START" pad="13"/>
 </connects>
 <technologies>
 <technology name=""/>

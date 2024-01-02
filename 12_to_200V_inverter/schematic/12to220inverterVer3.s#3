@@ -1713,8 +1713,8 @@ Grid 5.00 mm&lt;p&gt;
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="R2" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="33R"/>
-<part name="R3" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="39K"/>
-<part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K2"/>
+<part name="R3" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="160K"/>
+<part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="R5" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
@@ -1743,6 +1743,10 @@ Grid 5.00 mm&lt;p&gt;
 <sheets>
 <sheet>
 <plain>
+<text x="22.86" y="134.62" size="1.27" layer="94" font="vector" ratio="20">0.3A current protection</text>
+<text x="106.68" y="101.6" size="1.27" layer="94" font="vector" ratio="20">16V overvoltage treshold.</text>
+<text x="106.68" y="99.06" size="1.27" layer="94" font="vector" ratio="20">+/- 1V hysteresis</text>
+<text x="22.86" y="132.08" size="1.27" layer="94" font="vector" ratio="20">0.6A - fast turn off</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0" smashed="yes">
