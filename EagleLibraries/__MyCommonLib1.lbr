@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -2241,6 +2241,54 @@
 <wire x1="-5.3" y1="1.8" x2="-4.9" y2="1.8" width="0.4" layer="21"/>
 <wire x1="4.9" y1="-1.8" x2="5.3" y2="-1.8" width="0.4" layer="21"/>
 </package>
+<package name="DO-27_15MM">
+<pad name="ANODE" x="-7.62" y="0" drill="1.5" diameter="3"/>
+<pad name="CATHODE" x="7.62" y="0" drill="1.5" diameter="3"/>
+<wire x1="-4.4" y1="2.55" x2="-4.4" y2="0" width="0.4" layer="21"/>
+<wire x1="-4.4" y1="0" x2="-4.4" y2="-2.55" width="0.4" layer="21"/>
+<wire x1="-4.4" y1="-2.55" x2="2.8" y2="-2.55" width="0.4" layer="21"/>
+<wire x1="2.8" y1="-2.55" x2="3.2" y2="-2.55" width="0.4" layer="21"/>
+<wire x1="3.2" y1="-2.55" x2="4.4" y2="-2.55" width="0.4" layer="21"/>
+<wire x1="4.4" y1="-2.55" x2="4.4" y2="0" width="0.4" layer="21"/>
+<wire x1="4.4" y1="0" x2="4.4" y2="2.55" width="0.4" layer="21"/>
+<wire x1="4.4" y1="2.55" x2="3.2" y2="2.55" width="0.4" layer="21"/>
+<wire x1="3.2" y1="2.55" x2="2.8" y2="2.55" width="0.4" layer="21"/>
+<wire x1="2.8" y1="2.55" x2="-4.4" y2="2.55" width="0.4" layer="21"/>
+<wire x1="-4.4" y1="0" x2="-6.35" y2="0" width="0.4" layer="21"/>
+<wire x1="4.4" y1="0" x2="6.35" y2="0" width="0.4" layer="21"/>
+<wire x1="3.2" y1="2.55" x2="3.2" y2="-2.55" width="0.4" layer="21"/>
+<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-4.4" y1="0" x2="-4.4" y2="2.55" width="0.4" layer="51"/>
+<wire x1="-4.4" y1="2.55" x2="2.8" y2="2.55" width="0.4" layer="51"/>
+<wire x1="2.8" y1="2.55" x2="3.2" y2="2.55" width="0.4" layer="51"/>
+<wire x1="3.2" y1="2.55" x2="4.4" y2="2.55" width="0.4" layer="51"/>
+<wire x1="4.4" y1="2.55" x2="4.4" y2="0" width="0.4" layer="51"/>
+<wire x1="4.4" y1="0" x2="4.4" y2="-2.55" width="0.4" layer="51"/>
+<wire x1="4.4" y1="-2.55" x2="3.2" y2="-2.55" width="0.4" layer="51"/>
+<wire x1="3.2" y1="-2.55" x2="2.8" y2="-2.55" width="0.4" layer="51"/>
+<wire x1="2.8" y1="-2.55" x2="-4.4" y2="-2.55" width="0.4" layer="51"/>
+<wire x1="-4.4" y1="-2.55" x2="-4.4" y2="0" width="0.4" layer="51"/>
+<wire x1="3.2" y1="2.55" x2="3.2" y2="-2.55" width="0.4" layer="51"/>
+<wire x1="4.4" y1="0" x2="7.62" y2="0" width="0.4" layer="51"/>
+<wire x1="-4.4" y1="0" x2="-7.62" y2="0" width="0.4" layer="51"/>
+<wire x1="2.8" y1="2.55" x2="2.8" y2="-2.55" width="0.4" layer="51"/>
+<wire x1="2.8" y1="2.55" x2="2.8" y2="-2.55" width="0.4" layer="21"/>
+</package>
+<package name="COIL_7MM">
+<pad name="1" x="-1.5" y="0" drill="0.7" diameter="2.2"/>
+<pad name="2" x="1.5" y="0" drill="0.7" diameter="2.2"/>
+<circle x="0" y="0" radius="3.3" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="COIL_10MM">
+<pad name="1" x="-2.5" y="0" drill="0.7" diameter="2.5"/>
+<pad name="2" x="2.5" y="0" drill="0.7" diameter="2.5"/>
+<circle x="0" y="0" radius="4.8" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -3582,6 +3630,20 @@
 <wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.254" layer="94"/>
 <wire x1="0" y1="1.905" x2="0" y2="0.635" width="0.254" layer="94"/>
 <wire x1="-0.635" y1="-1.27" x2="0.635" y2="-1.27" width="0.254" layer="94"/>
+</symbol>
+<symbol name="DIODE_SHOTTKY">
+<pin name="CATHODE" x="0" y="2.54" visible="off" length="short" direction="pas" rot="R270"/>
+<wire x1="-1.27" y1="-0.9525" x2="0" y2="1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="1.27" x2="1.27" y2="-0.9525" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-0.9525" x2="-1.27" y2="-0.9525" width="0.254" layer="94"/>
+<pin name="ANODE" x="0" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
+<text x="2.54" y="1.27" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="2.54" y="0" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-1.27" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="1.905" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.905" x2="-0.9525" y2="1.905" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0.635" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0.635" x2="0.9525" y2="0.635" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -4967,10 +5029,28 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="" package="RSMD_1206">
+<device name="(1206)" package="RSMD_1206">
 <connects>
 <connect gate="G$1" pin="END" pad="PAD_0"/>
 <connect gate="G$1" pin="START" pad="PAD_1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(10MM)" package="COIL_10MM">
+<connects>
+<connect gate="G$1" pin="END" pad="2"/>
+<connect gate="G$1" pin="START" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(7MM)" package="COIL_7MM">
+<connects>
+<connect gate="G$1" pin="END" pad="2"/>
+<connect gate="G$1" pin="START" pad="1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -5352,6 +5432,22 @@
 <connects>
 <connect gate="G$1" pin="MINUS" pad="MINUS"/>
 <connect gate="G$1" pin="PLUS" pad="PLUS"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SR360">
+<gates>
+<gate name="G$1" symbol="DIODE_SHOTTKY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="_15MM" package="DO-27_15MM">
+<connects>
+<connect gate="G$1" pin="ANODE" pad="ANODE"/>
+<connect gate="G$1" pin="CATHODE" pad="CATHODE"/>
 </connects>
 <technologies>
 <technology name=""/>
