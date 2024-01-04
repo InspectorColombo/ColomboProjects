@@ -2275,10 +2275,10 @@
 <wire x1="2.8" y1="2.55" x2="2.8" y2="-2.55" width="0.4" layer="51"/>
 <wire x1="2.8" y1="2.55" x2="2.8" y2="-2.55" width="0.4" layer="21"/>
 </package>
-<package name="RLB0812">
+<package name="COIL_7MM">
 <pad name="1" x="-1.5" y="0" drill="0.7" diameter="2.2"/>
 <pad name="2" x="1.5" y="0" drill="0.7" diameter="2.2"/>
-<circle x="0" y="0" radius="3.4" width="0.4" layer="21"/>
+<circle x="0" y="0" radius="3.3" width="0.4" layer="21"/>
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>

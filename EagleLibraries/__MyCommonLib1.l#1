@@ -5455,6 +5455,33 @@
 </device>
 </devices>
 </deviceset>
+<deviceset name="BSS84">
+<gates>
+<gate name="G$1" symbol="PMOS_AND_DIODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(SOT23_SMALL_PADS)" package="SOT23_SMALL_PADS">
+<connects>
+<connect gate="G$1" pin="DRAIN" pad="3"/>
+<connect gate="G$1" pin="GATE" pad="1"/>
+<connect gate="G$1" pin="SOURCE" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(SOT23)" package="SOT23">
+<connects>
+<connect gate="G$1" pin="DRAIN" pad="3"/>
+<connect gate="G$1" pin="GATE" pad="1"/>
+<connect gate="G$1" pin="SOURCE" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </drawing>

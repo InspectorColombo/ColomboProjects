@@ -5412,7 +5412,7 @@
 <gate name="G$1" symbol="DIODE_SHOTTKY" x="0" y="0"/>
 </gates>
 <devices>
-<device name="15MM" package="DO-27_15MM">
+<device name="_15MM" package="DO-27_15MM">
 <connects>
 <connect gate="G$1" pin="ANODE" pad="ANODE"/>
 <connect gate="G$1" pin="CATHODE" pad="CATHODE"/>
