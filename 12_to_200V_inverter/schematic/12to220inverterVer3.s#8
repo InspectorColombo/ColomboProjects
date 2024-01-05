@@ -6265,6 +6265,11 @@ DIN A4, landscape with location and doc. field</description>
 </net>
 <net name="VOLTAGE_ADC" class="0">
 <segment>
+<pinref part="IC3" gate="G$1" pin="PB3(ADC3/~OC1B/CLKI/XTAL1/PCINT3)"/>
+<wire x1="99.06" y1="25.4" x2="119.38" y2="25.4" width="0.1524" layer="91"/>
+<label x="119.38" y="26.67" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
+<segment>
 <pinref part="R75" gate="R$1" pin="PIN1"/>
 <pinref part="C30" gate="C$1" pin="PIN0"/>
 <wire x1="33.02" y1="109.22" x2="35.56" y2="109.22" width="0.1524" layer="91"/>
@@ -6272,17 +6277,12 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="40.64" y1="109.22" x2="40.64" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="R76" gate="R$1" pin="PIN1"/>
 <wire x1="35.56" y1="106.68" x2="35.56" y2="109.22" width="0.1524" layer="91"/>
-<junction x="35.56" y="109.22"/>
-<wire x1="40.64" y1="109.22" x2="55.88" y2="109.22" width="0.1524" layer="91"/>
-<junction x="40.64" y="109.22"/>
-<label x="55.88" y="110.49" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <pinref part="D12" gate="D1" pin="ANODE"/>
 <wire x1="40.64" y1="111.76" x2="40.64" y2="109.22" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="G$1" pin="PB3(ADC3/~OC1B/CLKI/XTAL1/PCINT3)"/>
-<wire x1="99.06" y1="25.4" x2="119.38" y2="25.4" width="0.1524" layer="91"/>
-<label x="119.38" y="26.67" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<junction x="35.56" y="109.22"/>
+<junction x="40.64" y="109.22"/>
+<wire x1="40.64" y1="109.22" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
+<label x="58.42" y="111.76" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 </segment>
 </net>
 <net name="I_CS_ADC" class="0">
@@ -6562,22 +6562,20 @@ DIN A4, landscape with location and doc. field</description>
 <junction x="17.78" y="73.66"/>
 </segment>
 </net>
-<net name="CONV_TEMP_ADC" class="0">
-<segment>
-<pinref part="R99" gate="R$1" pin="PIN1"/>
-<pinref part="C35" gate="C$1" pin="PIN0"/>
-<wire x1="30.48" y1="73.66" x2="33.02" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="73.66" x2="33.02" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="73.66" x2="45.72" y2="73.66" width="0.1524" layer="91"/>
-<junction x="33.02" y="73.66"/>
-<label x="45.72" y="76.2" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-</segment>
-</net>
 <net name="CONV_TEMP_ADC(SCK)" class="0">
 <segment>
 <pinref part="IC3" gate="G$1" pin="PB2(SCK/USCK/SCL/ADC1/T0/INT0/PCINT2)"/>
 <wire x1="99.06" y1="22.86" x2="119.38" y2="22.86" width="0.1524" layer="91"/>
 <label x="119.38" y="24.13" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
+<segment>
+<pinref part="R99" gate="R$1" pin="PIN1"/>
+<pinref part="C35" gate="C$1" pin="PIN0"/>
+<wire x1="30.48" y1="73.66" x2="33.02" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="73.66" x2="33.02" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="73.66" x2="50.8" y2="73.66" width="0.1524" layer="91"/>
+<junction x="33.02" y="73.66"/>
+<label x="50.8" y="76.2" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 </segment>
 </net>
 </nets>

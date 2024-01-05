@@ -699,20 +699,6 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="2.54" y1="1.905" x2="2.54" y2="6.35" width="1.1" layer="21"/>
 <pad name="SCREW_PAD" x="0" y="19.05" drill="3.7" diameter="6.5"/>
 </package>
-<package name="TRANS_38X35MM">
-<pad name="3" x="-2.54" y="-15.24" drill="0.9" diameter="2.3"/>
-<pad name="4" x="2.54" y="-15.24" drill="0.9" diameter="2.3"/>
-<pad name="5" x="7.62" y="-15.24" drill="0.9" diameter="2.3"/>
-<pad name="6" x="12.7" y="-15.24" drill="0.9" diameter="2.3"/>
-<pad name="9" x="2.54" y="15.24" drill="0.9" diameter="2.3"/>
-<pad name="10" x="-2.54" y="15.24" drill="0.9" diameter="2.3"/>
-<wire x1="-15" y1="18.8" x2="15" y2="18.8" width="0.4" layer="21"/>
-<wire x1="15" y1="18.8" x2="15" y2="-18.8" width="0.4" layer="21"/>
-<wire x1="15" y1="-18.8" x2="-15" y2="-18.8" width="0.4" layer="21"/>
-<wire x1="-15" y1="-18.8" x2="-15" y2="18.8" width="0.4" layer="21"/>
-<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
-</package>
 <package name="SOIC16">
 <smd name="15" x="2.69875" y="3.175" dx="1.5" dy="0.68" layer="1" rot="R180"/>
 <smd name="16" x="2.69875" y="4.445" dx="1.5" dy="0.68" layer="1" rot="R180"/>
@@ -1492,6 +1478,22 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="3.4925" y1="0" x2="3.81" y2="0.3175" width="0.4" layer="51"/>
 <wire x1="3.81" y1="0.3175" x2="3.81" y2="1.905" width="0.4" layer="51"/>
 <wire x1="3.81" y1="1.905" x2="3.175" y2="2.54" width="0.4" layer="51"/>
+</package>
+<package name="RING_TRANSF_30X9_3WINGS">
+<pad name="PRI_A_START1" x="-3.7" y="-2.7" drill="0.9" diameter="2.2"/>
+<pad name="SEC_START" x="0" y="4.5" drill="0.7" diameter="2.54"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<circle x="0" y="0" radius="4.7" width="0.4" layer="21"/>
+<circle x="0" y="0" radius="14.3" width="0.4" layer="21"/>
+<pad name="PRI_A_START2" x="-1.9" y="-4.1" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_START1" x="1.9" y="-4.1" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_START2" x="3.7" y="-2.7" drill="0.9" diameter="2.2"/>
+<pad name="SEC_END" x="0" y="14.5" drill="0.7" diameter="2.54"/>
+<pad name="PRI_A_END1" x="-4.7" y="-13.8" drill="0.9" diameter="2.2"/>
+<pad name="PRI_A_END2" x="-2.4" y="-14.3" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_END1" x="2.4" y="-14.3" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_END2" x="4.7" y="-13.8" drill="0.9" diameter="2.2"/>
 </package>
 </packages>
 <symbols>
@@ -2540,26 +2542,6 @@ DIN A4, landscape with location and doc. field</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="TRANS_38X30MM">
-<gates>
-<gate name="G$1" symbol="TRANS_3" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="TRANS_38X35MM">
-<connects>
-<connect gate="G$1" pin="PRI_END" pad="10"/>
-<connect gate="G$1" pin="PRI_START" pad="9"/>
-<connect gate="G$1" pin="SEC1_END" pad="5"/>
-<connect gate="G$1" pin="SEC1_START" pad="6"/>
-<connect gate="G$1" pin="SEC2_END" pad="3"/>
-<connect gate="G$1" pin="SEC2_START" pad="4"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="TL494">
 <gates>
 <gate name="G$1" symbol="TL494" x="0" y="0"/>
@@ -3265,6 +3247,26 @@ DIN A4, landscape with location and doc. field</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="TRANS_RING25MM_3WINGS">
+<gates>
+<gate name="G$1" symbol="TRANS_3" x="0" y="0"/>
+</gates>
+<devices>
+<device name="HOR" package="RING_TRANSF_30X9_3WINGS">
+<connects>
+<connect gate="G$1" pin="PRI_END" pad="SEC_END"/>
+<connect gate="G$1" pin="PRI_START" pad="SEC_START"/>
+<connect gate="G$1" pin="SEC1_END" pad="PRI_A_END1 PRI_A_END2"/>
+<connect gate="G$1" pin="SEC1_START" pad="PRI_A_START1 PRI_A_START2"/>
+<connect gate="G$1" pin="SEC2_END" pad="PRI_B_END1 PRI_B_END2"/>
+<connect gate="G$1" pin="SEC2_START" pad="PRI_B_START1 PRI_B_START2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="supply1">
@@ -3316,7 +3318,6 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R8" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R9" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R10" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
-<part name="TR3" library="__MyCommonLib1" deviceset="TRANS_38X30MM" device="" value="12_to_200_trans"/>
 <part name="U1" library="__MyCommonLib1" deviceset="TL494" device="(SOIC-16)" value="TL494"/>
 <part name="T2" library="__MyCommonLib1" deviceset="IRF830" device="TO-220" value="IRFZ24N"/>
 <part name="T3" library="__MyCommonLib1" deviceset="BC857" device="SOT23_SMALL_PADS" value="BC857"/>
@@ -3567,6 +3568,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R100" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1R0"/>
 <part name="X5" library="__MyCommonLib1" deviceset="PIN2X3" device="2.54MM_LOOSE_PADS" value="MCU_PROGRAMMING"/>
 <part name="GND98" library="supply1" deviceset="GND" device=""/>
+<part name="TR4" library="__MyCommonLib1" deviceset="TRANS_RING25MM_3WINGS" device="HOR" value="12_to_200_trans"/>
 </parts>
 <sheets>
 <sheet>
@@ -3598,10 +3600,6 @@ DIN A4, landscape with location and doc. field</description>
 <instance part="R10" gate="R$1" x="50.8" y="134.62" smashed="yes">
 <attribute name="NAME" x="53.34" y="139.7" size="1.27" layer="95" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="53.34" y="134.62" size="1.27" layer="96" font="vector" ratio="20" rot="R270"/>
-</instance>
-<instance part="TR3" gate="G$1" x="132.08" y="144.78" smashed="yes" rot="MR270">
-<attribute name="NAME" x="121.92" y="146.05" size="1.27" layer="95" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="121.92" y="144.78" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
 </instance>
 <instance part="U1" gate="G$1" x="104.14" y="48.26" smashed="yes">
 <attribute name="NAME" x="93.98" y="68.58" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
@@ -3807,6 +3805,10 @@ DIN A4, landscape with location and doc. field</description>
 <attribute name="NAME" x="45.72" y="165.1" size="1.27" layer="95" font="vector" ratio="20"/>
 <attribute name="VALUE" x="52.07" y="165.1" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
+<instance part="TR4" gate="G$1" x="132.08" y="144.78" smashed="yes" rot="MR270">
+<attribute name="NAME" x="137.16" y="148.59" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="137.16" y="147.32" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -3827,14 +3829,14 @@ DIN A4, landscape with location and doc. field</description>
 <junction x="30.48" y="162.56"/>
 </segment>
 <segment>
-<pinref part="TR3" gate="G$1" pin="SEC1_END"/>
 <wire x1="132.08" y1="139.7" x2="132.08" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="137.16" x2="134.62" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="TR3" gate="G$1" pin="SEC2_START"/>
 <wire x1="134.62" y1="137.16" x2="134.62" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="137.16" x2="111.76" y2="137.16" width="0.1524" layer="91"/>
 <junction x="132.08" y="137.16"/>
 <label x="121.92" y="139.7" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<pinref part="TR4" gate="G$1" pin="SEC1_END"/>
+<pinref part="TR4" gate="G$1" pin="SEC2_START"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -3911,7 +3913,7 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="121.92" y1="132.08" x2="121.92" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="132.08" x2="124.46" y2="132.08" width="0.1524" layer="91"/>
 <junction x="121.92" y="132.08"/>
-<pinref part="TR3" gate="G$1" pin="SEC1_START"/>
+<pinref part="TR4" gate="G$1" pin="SEC1_START"/>
 </segment>
 </net>
 <net name="N$25" class="0">
@@ -3923,8 +3925,8 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="144.78" y1="132.08" x2="144.78" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="132.08" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
 <junction x="144.78" y="132.08"/>
-<pinref part="TR3" gate="G$1" pin="SEC2_END"/>
 <wire x1="142.24" y1="139.7" x2="142.24" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="TR4" gate="G$1" pin="SEC2_END"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -4155,10 +4157,10 @@ DIN A4, landscape with location and doc. field</description>
 </net>
 <net name="N$8" class="0">
 <segment>
-<pinref part="TR3" gate="G$1" pin="PRI_END"/>
 <pinref part="C4" gate="C$1" pin="MINUS"/>
 <wire x1="127" y1="167.64" x2="124.46" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="167.64" x2="124.46" y2="149.86" width="0.1524" layer="91"/>
+<pinref part="TR4" gate="G$1" pin="PRI_END"/>
 </segment>
 </net>
 <net name="N$10" class="0">
@@ -4348,7 +4350,6 @@ DIN A4, landscape with location and doc. field</description>
 <net name="N$15" class="0">
 <segment>
 <pinref part="D9" gate="D$1" pin="ANODE"/>
-<pinref part="TR3" gate="G$1" pin="PRI_START"/>
 <wire x1="134.62" y1="157.48" x2="134.62" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="152.4" x2="134.62" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="C12" gate="C$1" pin="MINUS"/>
@@ -4360,6 +4361,7 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="149.86" y1="160.02" x2="149.86" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="152.4" x2="144.78" y2="152.4" width="0.1524" layer="91"/>
 <junction x="144.78" y="152.4"/>
+<pinref part="TR4" gate="G$1" pin="PRI_START"/>
 </segment>
 </net>
 <net name="N$65" class="0">
