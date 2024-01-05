@@ -2338,6 +2338,27 @@
 <wire x1="3.65125" y1="1.42875" x2="1.42875" y2="3.65125" width="0.4" layer="51"/>
 <wire x1="1.42875" y1="3.65125" x2="-1.42875" y2="3.65125" width="0.4" layer="51"/>
 </package>
+<package name="AUTO_FUSE_SMALL">
+<pad name="PAD_0" x="-3.75" y="0" drill="3.3" diameter="5.5"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;name</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;value</text>
+<pad name="PAD_1" x="3.75" y="0" drill="3.3" diameter="5.5"/>
+<wire x1="-5.3" y1="1.8" x2="5.3" y2="1.8" width="0.4" layer="51"/>
+<wire x1="5.3" y1="1.8" x2="5.3" y2="-1.8" width="0.4" layer="51"/>
+<wire x1="5.3" y1="-1.8" x2="-5.3" y2="-1.8" width="0.4" layer="51"/>
+<wire x1="-5.3" y1="-1.8" x2="-5.3" y2="1.8" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="1.8" x2="1.27" y2="1.8" width="0.4" layer="21"/>
+<wire x1="-1.27" y1="-1.8" x2="1.27" y2="-1.8" width="0.4" layer="21"/>
+<wire x1="-3.81" y1="0" x2="-2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="1.27" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="1.27" x2="2.54" y2="1.27" width="0.4" layer="51"/>
+<wire x1="2.54" y1="1.27" x2="2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="2.54" y1="0" x2="2.54" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="2.54" y1="-1.27" x2="-2.54" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="0" x2="2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="2.54" y1="0" x2="3.81" y2="0" width="0.4" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -5406,6 +5427,15 @@
 <connects>
 <connect gate="G$1" pin="PIN0" pad="PAD_0"/>
 <connect gate="G$1" pin="PIN1" pad="PAD1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="AUTO_SMALL" package="AUTO_FUSE_SMALL">
+<connects>
+<connect gate="G$1" pin="PIN0" pad="PAD_0"/>
+<connect gate="G$1" pin="PIN1" pad="PAD_1"/>
 </connects>
 <technologies>
 <technology name=""/>
