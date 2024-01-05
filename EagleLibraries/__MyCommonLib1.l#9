@@ -2275,6 +2275,20 @@
 <wire x1="2.8" y1="2.55" x2="2.8" y2="-2.55" width="0.4" layer="51"/>
 <wire x1="2.8" y1="2.55" x2="2.8" y2="-2.55" width="0.4" layer="21"/>
 </package>
+<package name="COIL_7MM">
+<pad name="1" x="-1.5" y="0" drill="0.7" diameter="2.2"/>
+<pad name="2" x="1.5" y="0" drill="0.7" diameter="2.2"/>
+<circle x="0" y="0" radius="3.3" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="COIL_10MM">
+<pad name="1" x="-2.5" y="0" drill="0.7" diameter="2.5"/>
+<pad name="2" x="2.5" y="0" drill="0.7" diameter="2.5"/>
+<circle x="0" y="0" radius="4.8" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -5015,10 +5029,28 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="" package="RSMD_1206">
+<device name="(1206)" package="RSMD_1206">
 <connects>
 <connect gate="G$1" pin="END" pad="PAD_0"/>
 <connect gate="G$1" pin="START" pad="PAD_1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(10MM)" package="COIL_10MM">
+<connects>
+<connect gate="G$1" pin="END" pad="2"/>
+<connect gate="G$1" pin="START" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(7MM)" package="COIL_7MM">
+<connects>
+<connect gate="G$1" pin="END" pad="2"/>
+<connect gate="G$1" pin="START" pad="1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -5409,9 +5441,58 @@
 </deviceset>
 <deviceset name="SR360">
 <gates>
+<gate name="G$1" symbol="DIODE_SHOTTKY" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="DO-27_15MM">
+<device name="_15MM" package="DO-27_15MM">
+<connects>
+<connect gate="G$1" pin="ANODE" pad="ANODE"/>
+<connect gate="G$1" pin="CATHODE" pad="CATHODE"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="BSS84">
+<gates>
+<gate name="G$1" symbol="PMOS_AND_DIODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(SOT23_SMALL_PADS)" package="SOT23_SMALL_PADS">
+<connects>
+<connect gate="G$1" pin="DRAIN" pad="3"/>
+<connect gate="G$1" pin="GATE" pad="1"/>
+<connect gate="G$1" pin="SOURCE" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(SOT23)" package="SOT23">
+<connects>
+<connect gate="G$1" pin="DRAIN" pad="3"/>
+<connect gate="G$1" pin="GATE" pad="1"/>
+<connect gate="G$1" pin="SOURCE" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="AO4407">
+<gates>
+<gate name="G$1" symbol="PMOS_AND_DIODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(SO8)" package="SOIC8">
+<connects>
+<connect gate="G$1" pin="DRAIN" pad="5 6 7 8"/>
+<connect gate="G$1" pin="GATE" pad="4"/>
+<connect gate="G$1" pin="SOURCE" pad="1 2 3"/>
+</connects>
 <technologies>
 <technology name=""/>
 </technologies>
