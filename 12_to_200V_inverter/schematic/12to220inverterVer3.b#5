@@ -1228,7 +1228,7 @@ design rules under a new name.</description>
 <element name="D11" library="__MyCommonLib1" package="DO-27_15MM" value="SR3A0" x="187.4" y="302.7"/>
 <element name="CE2" library="__MyCommonLib1" package="CE_13MM" value="1000uF x 25V" x="206.6" y="300" rot="R90"/>
 <element name="L1" library="__MyCommonLib1" package="COIL_7MM" value="20uH" x="339.4" y="255.2" rot="R90"/>
-<element name="CE3" library="__MyCommonLib1" package="CE_5.2MM" value="100uF x 25V" x="346.2" y="236.3" rot="R90"/>
+<element name="CE3" library="__MyCommonLib1" package="CE_6.3MM" value="47uF x 25V" x="346.2" y="236.3" rot="R90"/>
 <element name="IC4" library="__MyCommonLib1" package="SOT23" value="TL431" x="351.1" y="235.6" rot="MR270"/>
 <element name="R59" library="__MyCommonLib1" package="RSMD_0805" value="5K6" x="355.2" y="235.3" rot="MR270"/>
 <element name="R61" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="358.3" y="235.3" rot="MR270"/>
@@ -1353,6 +1353,15 @@ design rules under a new name.</description>
 <element name="R108" library="__MyCommonLib1" package="RSMD_0805" value="100K*" x="2" y="-37"/>
 <element name="R109" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="2" y="-41"/>
 <element name="C24" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF*" x="2" y="-45"/>
+<element name="IC100" library="__MyCommonLib1" package="SOIC8" value="LM358" x="-5" y="-41"/>
+<element name="C37" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="-6" y="-49"/>
+<element name="R110" library="__MyCommonLib1" package="RSMD_0805" value="200K*" x="-6" y="-53"/>
+<element name="R111" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="-6" y="-57"/>
+<element name="C38" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="-6" y="-61"/>
+<element name="C39" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="-6" y="-65"/>
+<element name="R112" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="-6" y="-69"/>
+<element name="D17" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="-5" y="-73"/>
+<element name="D18" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="-5" y="-77"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -1433,6 +1442,14 @@ design rules under a new name.</description>
 <contactref element="IC9" pad="3"/>
 <contactref element="C22" pad="PAD_1"/>
 <contactref element="R71" pad="PAD_1"/>
+<contactref element="C24" pad="PAD_0"/>
+<contactref element="IC100" pad="4"/>
+<contactref element="IC100" pad="4"/>
+<contactref element="C37" pad="PAD_1"/>
+<contactref element="IC100" pad="3"/>
+<contactref element="R111" pad="PAD_1"/>
+<contactref element="C39" pad="PAD_1"/>
+<contactref element="D17" pad="ANODE"/>
 <wire x1="319.5" y1="447.85" x2="313.3" y2="447.85" width="0" layer="19" extent="16-16"/>
 <wire x1="282.59875" y1="426.265" x2="313.3" y2="447.85" width="0" layer="19" extent="16-16"/>
 <wire x1="277.20125" y1="431.345" x2="282.59875" y2="426.265" width="0" layer="19" extent="16-16"/>
@@ -1465,8 +1482,8 @@ design rules under a new name.</description>
 <wire x1="315.32" y1="242.9" x2="206.6" y2="297.46" width="0" layer="19" extent="1-1"/>
 <wire x1="318.7" y1="250.15" x2="315.32" y2="242.9" width="0" layer="19" extent="16-16"/>
 <wire x1="321.8" y1="250.15" x2="318.7" y2="250.15" width="0" layer="19" extent="16-16"/>
-<wire x1="346.2" y1="235.3" x2="321.8" y2="250.15" width="0" layer="19" extent="16-16"/>
-<wire x1="352.4" y1="235.6" x2="346.2" y2="235.3" width="0" layer="19" extent="16-16"/>
+<wire x1="346.2" y1="235.03" x2="321.8" y2="250.15" width="0" layer="19" extent="16-16"/>
+<wire x1="352.4" y1="235.6" x2="346.2" y2="235.03" width="0" layer="19" extent="16-16"/>
 <wire x1="377.64" y1="222.6" x2="352.4" y2="235.6" width="0" layer="19" extent="16-16"/>
 <wire x1="392.2" y1="227.25" x2="377.64" y2="222.6" width="0" layer="19" extent="16-16"/>
 <wire x1="29.5" y1="198.5" x2="206.6" y2="297.46" width="0" layer="19" extent="16-16"/>
@@ -1478,6 +1495,13 @@ design rules under a new name.</description>
 <wire x1="3" y1="-17.3" x2="82" y2="50" width="0" layer="19" extent="1-1"/>
 <wire x1="3.05" y1="-25" x2="3" y2="-17.3" width="0" layer="19" extent="1-1"/>
 <wire x1="3.05" y1="-33" x2="3.05" y2="-25" width="0" layer="19" extent="1-1"/>
+<wire x1="0.95" y1="-45" x2="3.05" y2="-33" width="0" layer="19" extent="1-1"/>
+<wire x1="-4.95" y1="-49" x2="0.95" y2="-45" width="0" layer="19" extent="1-1"/>
+<wire x1="-7.69875" y1="-42.905" x2="-4.95" y2="-49" width="0" layer="19" extent="1-1"/>
+<wire x1="-7.69875" y1="-41.635" x2="-7.69875" y2="-42.905" width="0" layer="19" extent="1-1"/>
+<wire x1="-4.95" y1="-57" x2="-4.95" y2="-49" width="0" layer="19" extent="1-1"/>
+<wire x1="-4.95" y1="-65" x2="-4.95" y2="-57" width="0" layer="19" extent="1-1"/>
+<wire x1="-3.125" y1="-73" x2="-4.95" y2="-65" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+12V_BAT">
 <contactref element="C6" pad="PAD_1"/>
@@ -2109,6 +2133,7 @@ design rules under a new name.</description>
 <contactref element="R76" pad="PAD_0"/>
 <contactref element="X4" pad="1"/>
 <contactref element="D4" pad="ANODE"/>
+<contactref element="R112" pad="PAD_1"/>
 <wire x1="105.6" y1="331.35" x2="97.1" y2="340.5" width="0" layer="19" extent="16-16"/>
 <wire x1="86.5" y1="347.35" x2="97.1" y2="340.5" width="0" layer="19" extent="16-16"/>
 <wire x1="73.8" y1="245.5" x2="105.6" y2="331.35" width="0" layer="19" extent="16-16"/>
@@ -2137,6 +2162,7 @@ design rules under a new name.</description>
 <wire x1="78.55" y1="577.9" x2="78.9" y2="575" width="0" layer="19" extent="16-16"/>
 <wire x1="335.8" y1="449.95" x2="201.9" y2="474.29" width="0" layer="19" extent="16-16"/>
 <wire x1="342" y1="449.95" x2="335.8" y2="449.95" width="0" layer="19" extent="16-16"/>
+<wire x1="-4.95" y1="-69" x2="67.62" y2="229.2" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$15">
 <contactref element="D3" pad="ANODE"/>
@@ -2239,8 +2265,14 @@ design rules under a new name.</description>
 <contactref element="IC7" pad="10"/>
 <contactref element="R97" pad="PAD_0"/>
 <contactref element="X8" pad="5"/>
+<contactref element="IC100" pad="8"/>
+<contactref element="C37" pad="PAD_0"/>
+<contactref element="D18" pad="CATHODE"/>
 <wire x1="120.825" y1="89.69875" x2="128.445" y2="89.69875" width="0" layer="19" extent="16-16"/>
 <wire x1="180.95" y1="122" x2="128.445" y2="89.69875" width="0" layer="19" extent="16-16"/>
+<wire x1="-2.30125" y1="-39.095" x2="120.825" y2="89.69875" width="0" layer="19" extent="1-16"/>
+<wire x1="-7.05" y1="-49" x2="-2.30125" y2="-39.095" width="0" layer="19" extent="1-1"/>
+<wire x1="-6.875" y1="-77" x2="-7.05" y2="-49" width="0" layer="19" extent="1-1"/>
 <wire x1="388.7" y1="230.725" x2="180.95" y2="122" width="0" layer="19" extent="16-16"/>
 <wire x1="275.7" y1="373.605" x2="388.7" y2="230.725" width="0" layer="19" extent="16-16"/>
 <wire x1="271.57" y1="372.34" x2="275.7" y2="373.605" width="0" layer="19" extent="16-16"/>
@@ -2345,9 +2377,6 @@ design rules under a new name.</description>
 <wire x1="281.1" y1="372.335" x2="255.8" y2="422.875" width="0" layer="19" extent="16-16"/>
 <wire x1="269.45" y1="532.9" x2="255.8" y2="449.725" width="0" layer="19" extent="16-16"/>
 <wire x1="264.75" y1="539.1" x2="269.45" y2="532.9" width="0" layer="19" extent="16-16"/>
-</signal>
-<signal name="CHARGER_ENABLED">
-<contactref element="D23" pad="ANODE"/>
 </signal>
 <signal name="N$94">
 <contactref element="R58" pad="PAD_1"/>
@@ -2638,13 +2667,15 @@ design rules under a new name.</description>
 <signal name="N$120">
 <via x="6" y="94" extent="1-16" drill="5" diameter="10"/>
 </signal>
-<signal name="N$122">
+<signal name="CHARGER_POWER">
 <contactref element="D11" pad="CATHODE"/>
 <contactref element="CE2" pad="PLUS"/>
 <contactref element="L1" pad="1"/>
 <contactref element="D16" pad="ANODE"/>
+<contactref element="D23" pad="ANODE"/>
 <wire x1="206.6" y1="302.54" x2="195.02" y2="302.7" width="0" layer="19" extent="1-1"/>
 <wire x1="339.4" y1="253.7" x2="206.6" y2="302.54" width="0" layer="19" extent="1-1"/>
+<wire x1="104.8" y1="474.475" x2="195.02" y2="302.7" width="0" layer="19" extent="16-16"/>
 <wire x1="2.38" y1="-10" x2="195.02" y2="302.7" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$98">
@@ -2663,10 +2694,10 @@ design rules under a new name.</description>
 <wire x1="179.1" y1="467.05" x2="182.2" y2="469.15" width="0" layer="19" extent="16-16"/>
 <wire x1="169.8" y1="466.925" x2="179.1" y2="467.05" width="0" layer="19" extent="16-16"/>
 <wire x1="339.4" y1="256.7" x2="229.5" y2="470.65" width="0" layer="19" extent="16-16"/>
-<wire x1="346.2" y1="237.3" x2="339.4" y2="256.7" width="0" layer="19" extent="1-1"/>
-<wire x1="355.2" y1="236.35" x2="346.2" y2="237.3" width="0" layer="19" extent="16-16"/>
+<wire x1="346.2" y1="237.57" x2="339.4" y2="256.7" width="0" layer="19" extent="1-1"/>
+<wire x1="355.2" y1="236.35" x2="346.2" y2="237.57" width="0" layer="19" extent="16-16"/>
 <wire x1="358.3" y1="236.35" x2="355.2" y2="236.35" width="0" layer="19" extent="16-16"/>
-<wire x1="0.95" y1="-29" x2="346.2" y2="237.3" width="0" layer="19" extent="1-1"/>
+<wire x1="0.95" y1="-29" x2="346.2" y2="237.57" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$97">
 <contactref element="R69" pad="PAD_1"/>
@@ -2691,18 +2722,48 @@ design rules under a new name.</description>
 <signal name="N$116">
 <contactref element="R108" pad="PAD_0"/>
 <contactref element="IC3" pad="1"/>
-<contactref element="C24" pad="PAD_1"/>
 <contactref element="R73" pad="PAD_1"/>
 <wire x1="0.95" y1="-37" x2="27.55" y2="190" width="0" layer="19" extent="1-16"/>
-<wire x1="3.05" y1="-45" x2="0.95" y2="-37" width="0" layer="19" extent="1-1"/>
 <wire x1="221.405" y1="462.00125" x2="27.55" y2="190" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$121">
 <contactref element="R109" pad="PAD_0"/>
 <contactref element="IC3" pad="2"/>
-<contactref element="C24" pad="PAD_0"/>
+<contactref element="C24" pad="PAD_1"/>
 <wire x1="0.95" y1="-41" x2="220.135" y2="462.00125" width="0" layer="19" extent="1-16"/>
-<wire x1="0.95" y1="-45" x2="0.95" y2="-41" width="0" layer="19" extent="1-1"/>
+<wire x1="3.05" y1="-45" x2="0.95" y2="-41" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$115">
+<contactref element="IC100" pad="2"/>
+<contactref element="IC100" pad="1"/>
+<wire x1="-7.69875" y1="-39.095" x2="-7.69875" y2="-40.365" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$122">
+<contactref element="IC100" pad="6"/>
+<contactref element="R110" pad="PAD_1"/>
+<contactref element="R111" pad="PAD_0"/>
+<contactref element="C38" pad="PAD_1"/>
+<wire x1="-7.05" y1="-57" x2="-4.95" y2="-61" width="0" layer="19" extent="1-1"/>
+<wire x1="-4.95" y1="-53" x2="-7.05" y2="-57" width="0" layer="19" extent="1-1"/>
+<wire x1="-2.30125" y1="-41.635" x2="-4.95" y2="-53" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$123">
+<contactref element="R110" pad="PAD_0"/>
+<contactref element="IC100" pad="7"/>
+<contactref element="C38" pad="PAD_0"/>
+<wire x1="-7.05" y1="-53" x2="-7.05" y2="-61" width="0" layer="19" extent="1-1"/>
+<wire x1="-2.30125" y1="-40.365" x2="-7.05" y2="-53" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$124">
+<contactref element="IC100" pad="5"/>
+<contactref element="C39" pad="PAD_0"/>
+<contactref element="R112" pad="PAD_0"/>
+<contactref element="D17" pad="CATHODE"/>
+<contactref element="D18" pad="ANODE"/>
+<wire x1="-6.875" y1="-73" x2="-3.125" y2="-77" width="0" layer="19" extent="1-1"/>
+<wire x1="-7.05" y1="-69" x2="-6.875" y2="-73" width="0" layer="19" extent="1-1"/>
+<wire x1="-7.05" y1="-65" x2="-7.05" y2="-69" width="0" layer="19" extent="1-1"/>
+<wire x1="-2.30125" y1="-42.905" x2="-7.05" y2="-65" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 </board>
