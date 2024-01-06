@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -2301,6 +2301,64 @@
 <wire x1="5.4" y1="-1.8" x2="4.8" y2="-1.8" width="0.4" layer="21"/>
 <wire x1="-5.4" y1="1.8" x2="-4.8" y2="1.8" width="0.4" layer="21"/>
 </package>
+<package name="RING_TRANSF_30X9_3WINGS">
+<pad name="PRI_A_START1" x="-3.7" y="-2.7" drill="0.9" diameter="2.2"/>
+<pad name="SEC_START" x="0" y="4.5" drill="0.7" diameter="2.54"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<circle x="0" y="0" radius="4.7" width="0.4" layer="21"/>
+<circle x="0" y="0" radius="14.3" width="0.4" layer="21"/>
+<pad name="PRI_A_START2" x="-1.9" y="-4.1" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_START1" x="1.9" y="-4.1" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_START2" x="3.7" y="-2.7" drill="0.9" diameter="2.2"/>
+<pad name="SEC_END" x="0" y="14.5" drill="0.7" diameter="2.54"/>
+<pad name="PRI_A_END1" x="-4.7" y="-13.8" drill="0.9" diameter="2.2"/>
+<pad name="PRI_A_END2" x="-2.4" y="-14.3" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_END1" x="2.4" y="-14.3" drill="0.9" diameter="2.2"/>
+<pad name="PRI_B_END2" x="4.7" y="-13.8" drill="0.9" diameter="2.2"/>
+</package>
+<package name="PIN1X1_D3.5MM">
+<pad name="1" x="0" y="0" drill="3.5" diameter="6.5"/>
+<text x="0" y="1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<text x="0" y="1.27" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.4" layer="25"/>
+<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.4" layer="25"/>
+<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.4" layer="25"/>
+<wire x1="-0.635" y1="-1.27" x2="0.635" y2="-1.27" width="0.4" layer="25"/>
+<wire x1="0.635" y1="-1.27" x2="1.27" y2="-0.635" width="0.4" layer="25"/>
+<wire x1="1.27" y1="-0.635" x2="1.27" y2="0.635" width="0.4" layer="25"/>
+<wire x1="1.27" y1="0.635" x2="0.635" y2="1.27" width="0.4" layer="25"/>
+<wire x1="0.635" y1="1.27" x2="-0.635" y2="1.27" width="0.4" layer="25"/>
+<wire x1="-1.42875" y1="3.65125" x2="-3.65125" y2="1.42875" width="0.4" layer="51"/>
+<wire x1="-3.65125" y1="1.42875" x2="-3.65125" y2="-1.42875" width="0.4" layer="51"/>
+<wire x1="-3.65125" y1="-1.42875" x2="-1.42875" y2="-3.65125" width="0.4" layer="51"/>
+<wire x1="-1.42875" y1="-3.65125" x2="1.42875" y2="-3.65125" width="0.4" layer="51"/>
+<wire x1="1.42875" y1="-3.65125" x2="3.65125" y2="-1.42875" width="0.4" layer="51"/>
+<wire x1="3.65125" y1="-1.42875" x2="3.65125" y2="1.42875" width="0.4" layer="51"/>
+<wire x1="3.65125" y1="1.42875" x2="1.42875" y2="3.65125" width="0.4" layer="51"/>
+<wire x1="1.42875" y1="3.65125" x2="-1.42875" y2="3.65125" width="0.4" layer="51"/>
+</package>
+<package name="AUTO_FUSE_SMALL">
+<pad name="PAD_0" x="-3.75" y="0" drill="3.3" diameter="5.5"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;name</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;value</text>
+<pad name="PAD_1" x="3.75" y="0" drill="3.3" diameter="5.5"/>
+<wire x1="-5.3" y1="1.8" x2="5.3" y2="1.8" width="0.4" layer="51"/>
+<wire x1="5.3" y1="1.8" x2="5.3" y2="-1.8" width="0.4" layer="51"/>
+<wire x1="5.3" y1="-1.8" x2="-5.3" y2="-1.8" width="0.4" layer="51"/>
+<wire x1="-5.3" y1="-1.8" x2="-5.3" y2="1.8" width="0.4" layer="51"/>
+<wire x1="-1.27" y1="1.8" x2="1.27" y2="1.8" width="0.4" layer="21"/>
+<wire x1="-1.27" y1="-1.8" x2="1.27" y2="-1.8" width="0.4" layer="21"/>
+<wire x1="-3.81" y1="0" x2="-2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="1.27" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="1.27" x2="2.54" y2="1.27" width="0.4" layer="51"/>
+<wire x1="2.54" y1="1.27" x2="2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="2.54" y1="0" x2="2.54" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="2.54" y1="-1.27" x2="-2.54" y2="-1.27" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="-2.54" y1="0" x2="2.54" y2="0" width="0.4" layer="51"/>
+<wire x1="2.54" y1="0" x2="3.81" y2="0" width="0.4" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -4044,6 +4102,14 @@
 <technology name=""/>
 </technologies>
 </device>
+<device name="3.5MM_DRILL" package="PIN1X1_D3.5MM">
+<connects>
+<connect gate="X$1" pin="1" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="PIN1X2">
@@ -5533,6 +5599,26 @@
 <connects>
 <connect gate="G$1" pin="PIN0" pad="0"/>
 <connect gate="G$1" pin="PIN1" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TRANS_RING25MM_3WINGS">
+<gates>
+<gate name="G$1" symbol="TRANS_3" x="0" y="0"/>
+</gates>
+<devices>
+<device name="HOR" package="RING_TRANSF_30X9_3WINGS">
+<connects>
+<connect gate="G$1" pin="PRI_END" pad="SEC_END"/>
+<connect gate="G$1" pin="PRI_START" pad="SEC_START"/>
+<connect gate="G$1" pin="SEC1_END" pad="PRI_A_END1 PRI_A_END2"/>
+<connect gate="G$1" pin="SEC1_START" pad="PRI_A_START1 PRI_A_START2"/>
+<connect gate="G$1" pin="SEC2_END" pad="PRI_B_END1 PRI_B_END2"/>
+<connect gate="G$1" pin="SEC2_START" pad="PRI_B_START1 PRI_B_START2"/>
 </connects>
 <technologies>
 <technology name=""/>
