@@ -3636,25 +3636,22 @@ DIN A4, landscape with location and doc. field</description>
 <part name="TR2" library="__MyCommonLib1" deviceset="EMI_FILTER_COMMON_MODE" device="(21X17)" value="EMI"/>
 <part name="C12" library="__MyCommonLib1" deviceset="C" device="MKP_18X6" value="0.1uF x 275VAC X2"/>
 <part name="RT1" library="__MyCommonLib1" deviceset="TERMISTOR_NTC" device="9.0X4.2" value="5 Ohm"/>
-<part name="D8" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="1N4007"/>
-<part name="D9" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="1N4007"/>
-<part name="D10" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="1N4007"/>
-<part name="D12" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="1N4007"/>
+<part name="D8" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4007"/>
+<part name="D9" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4007"/>
+<part name="D10" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4007"/>
+<part name="D12" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4007"/>
 <part name="CE1" library="__MyCommonLib1" deviceset="CE" device="13MM" value="22uF x 400V"/>
 <part name="R29" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="240K"/>
 <part name="R32" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="240K"/>
 <part name="TR3" library="__MyCommonLib1" deviceset="TRANS_FLYBACK_AUX_SINGLE_OUT" device="(TRANS_37X26)" value="Self made transformer. From TR8 sat reciever."/>
-<part name="D13" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="UF4007"/>
-<part name="ZD2" library="__MyCommonLib1" deviceset="ZENNER" device="DO-41_5MM" value="P6KE200"/>
+<part name="D13" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
+<part name="ZD2" library="__MyCommonLib1" deviceset="ZENNER" device="DO-41_10MM" value="P6KE200"/>
 <part name="T10" library="__MyCommonLib1" deviceset="IRF830" device="TO-220_VER2" value="16N60"/>
 <part name="R57" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="3R9"/>
 <part name="IC1" library="__MyCommonLib1" deviceset="UC3842" device="SOIC8" value="UC3842"/>
 <part name="C20" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF x 50V"/>
 <part name="CE5" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="22uFx50V"/>
-<part name="R30" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="120K"/>
-<part name="R31" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="120K"/>
-<part name="R37" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="120K"/>
-<part name="R38" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="120K"/>
+<part name="R30" library="__MyCommonLib1" deviceset="R" device="1.0W" value="120K"/>
 <part name="R50" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="16R"/>
 <part name="C17" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF 16V"/>
 <part name="R43" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
@@ -3678,10 +3675,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="T9" library="__MyCommonLib1" deviceset="BC857" device="SOT23_SMALL_PADS" value="BC857"/>
 <part name="D15" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="R40" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K6"/>
-<part name="R34" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="33K"/>
-<part name="R33" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="33K"/>
-<part name="R35" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="33K"/>
-<part name="R36" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="33K"/>
+<part name="R35" library="__MyCommonLib1" deviceset="R" device="1.0W_VERT" value="33K"/>
 <part name="C13" library="__MyCommonLib1" deviceset="C" device="CER_11X4" value="10nF x 2kV"/>
 <part name="T14" library="__MyCommonLib1" deviceset="BC857" device="SOT23_SMALL_PADS" value="BC857"/>
 <part name="R51" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K6"/>
@@ -4852,21 +4846,9 @@ DIN A4, landscape with location and doc. field</description>
 <attribute name="NAME" x="95.25" y="102.87" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="95.25" y="101.6" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
-<instance part="R30" gate="R$1" x="99.06" y="157.48" smashed="yes" rot="MR0">
-<attribute name="NAME" x="104.14" y="153.67" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="109.22" y="153.67" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
-</instance>
-<instance part="R31" gate="R$1" x="101.6" y="157.48" smashed="yes">
-<attribute name="NAME" x="104.14" y="153.67" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="109.22" y="153.67" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
-<instance part="R37" gate="R$1" x="99.06" y="144.78" smashed="yes" rot="MR0">
-<attribute name="NAME" x="104.14" y="152.4" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="109.22" y="152.4" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
-</instance>
-<instance part="R38" gate="R$1" x="101.6" y="144.78" smashed="yes">
-<attribute name="NAME" x="104.14" y="149.86" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="109.22" y="149.86" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="R30" gate="R$1" x="99.06" y="149.86" smashed="yes" rot="MR0">
+<attribute name="NAME" x="101.6" y="152.4" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="101.6" y="149.86" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
 <instance part="R50" gate="R$1" x="109.22" y="116.84" smashed="yes" rot="R90">
 <attribute name="NAME" x="104.14" y="119.38" size="1.27" layer="95" font="vector" ratio="20"/>
@@ -4960,21 +4942,9 @@ DIN A4, landscape with location and doc. field</description>
 <attribute name="NAME" x="111.76" y="132.08" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="114.3" y="130.81" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="R34" gate="R$1" x="142.24" y="154.94" smashed="yes" rot="R270">
-<attribute name="NAME" x="127" y="158.75" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="132.08" y="158.75" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
-<instance part="R33" gate="R$1" x="129.54" y="154.94" smashed="yes" rot="R270">
-<attribute name="NAME" x="127" y="161.29" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="132.08" y="160.02" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
-<instance part="R35" gate="R$1" x="129.54" y="152.4" smashed="yes" rot="R270">
-<attribute name="NAME" x="127" y="160.02" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="132.08" y="161.29" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
-<instance part="R36" gate="R$1" x="142.24" y="152.4" smashed="yes" rot="R270">
-<attribute name="NAME" x="127" y="157.48" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="132.08" y="157.48" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="R35" gate="R$1" x="134.62" y="152.4" smashed="yes" rot="R270">
+<attribute name="NAME" x="129.54" y="154.94" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="134.62" y="154.94" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="C13" gate="C$1" x="134.62" y="147.32" smashed="yes" rot="MR270">
 <attribute name="NAME" x="137.16" y="146.05" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
@@ -5388,33 +5358,25 @@ DIN A4, landscape with location and doc. field</description>
 <junction x="93.98" y="165.1"/>
 <wire x1="93.98" y1="165.1" x2="99.06" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="ZD2" gate="G$1" pin="ANODE"/>
-<wire x1="99.06" y1="165.1" x2="101.6" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="165.1" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="165.1" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="165.1" x2="149.86" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="162.56" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
 <junction x="121.92" y="165.1"/>
 <pinref part="R30" gate="R$1" pin="PIN1"/>
-<wire x1="99.06" y1="162.56" x2="99.06" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="R31" gate="R$1" pin="PIN1"/>
-<wire x1="101.6" y1="162.56" x2="101.6" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="154.94" x2="99.06" y2="165.1" width="0.1524" layer="91"/>
 <junction x="99.06" y="165.1"/>
-<junction x="101.6" y="165.1"/>
 <pinref part="C13" gate="C$1" pin="PIN0"/>
 <wire x1="137.16" y1="147.32" x2="149.86" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="147.32" x2="149.86" y2="152.4" width="0.1524" layer="91"/>
-<pinref part="R34" gate="R$1" pin="PIN1"/>
-<wire x1="149.86" y1="152.4" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="154.94" x2="149.86" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="147.32" y1="154.94" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="R36" gate="R$1" pin="PIN1"/>
-<wire x1="147.32" y1="152.4" x2="149.86" y2="152.4" width="0.1524" layer="91"/>
-<junction x="149.86" y="154.94"/>
-<junction x="149.86" y="152.4"/>
 <pinref part="TR3" gate="G$1" pin="PRI2_START"/>
+<wire x1="149.86" y1="152.4" x2="149.86" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="142.24" x2="157.48" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="142.24" x2="157.48" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="165.1" x2="149.86" y2="165.1" width="0.1524" layer="91"/>
 <junction x="149.86" y="165.1"/>
+<pinref part="R35" gate="R$1" pin="PIN1"/>
+<wire x1="139.7" y1="152.4" x2="149.86" y2="152.4" width="0.1524" layer="91"/>
+<junction x="149.86" y="152.4"/>
 </segment>
 </net>
 <net name="N$31" class="0">
@@ -5463,18 +5425,14 @@ DIN A4, landscape with location and doc. field</description>
 <pinref part="ZD2" gate="G$1" pin="CATHODE"/>
 <wire x1="124.46" y1="142.24" x2="121.92" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="142.24" x2="121.92" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="R33" gate="R$1" pin="PIN0"/>
 <wire x1="121.92" y1="147.32" x2="121.92" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="152.4" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="154.94" x2="121.92" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="154.94" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="152.4" x2="121.92" y2="157.48" width="0.1524" layer="91"/>
 <pinref part="R35" gate="R$1" pin="PIN0"/>
-<wire x1="124.46" y1="152.4" x2="121.92" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="152.4" x2="121.92" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="C13" gate="C$1" pin="PIN1"/>
 <wire x1="132.08" y1="147.32" x2="121.92" y2="147.32" width="0.1524" layer="91"/>
 <junction x="121.92" y="147.32"/>
 <junction x="121.92" y="152.4"/>
-<junction x="121.92" y="154.94"/>
 </segment>
 </net>
 <net name="N$37" class="0">
@@ -5488,20 +5446,6 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="127" y1="109.22" x2="127" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="106.68" x2="134.62" y2="106.68" width="0.1524" layer="91"/>
 <junction x="134.62" y="106.68"/>
-</segment>
-</net>
-<net name="N$40" class="0">
-<segment>
-<pinref part="R31" gate="R$1" pin="PIN0"/>
-<pinref part="R38" gate="R$1" pin="PIN1"/>
-<wire x1="101.6" y1="152.4" x2="101.6" y2="149.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$41" class="0">
-<segment>
-<pinref part="R30" gate="R$1" pin="PIN0"/>
-<pinref part="R37" gate="R$1" pin="PIN1"/>
-<wire x1="99.06" y1="152.4" x2="99.06" y2="149.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$20" class="0">
@@ -5762,11 +5706,6 @@ DIN A4, landscape with location and doc. field</description>
 <net name="N$38" class="0">
 <segment>
 <pinref part="T9" gate="T$1" pin="C"/>
-<pinref part="R38" gate="R$1" pin="PIN0"/>
-<wire x1="101.6" y1="139.7" x2="101.6" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="137.16" x2="99.06" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="R37" gate="R$1" pin="PIN0"/>
-<wire x1="99.06" y1="137.16" x2="99.06" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="C20" gate="C$1" pin="PIN1"/>
 <pinref part="IC1" gate="G$1" pin="VCC"/>
 <wire x1="99.06" y1="99.06" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
@@ -5777,8 +5716,7 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="104.14" y1="101.6" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
 <junction x="99.06" y="101.6"/>
 <junction x="99.06" y="116.84"/>
-<wire x1="99.06" y1="137.16" x2="99.06" y2="127" width="0.1524" layer="91"/>
-<junction x="99.06" y="137.16"/>
+<wire x1="99.06" y1="144.78" x2="99.06" y2="127" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="127" x2="99.06" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="124.46" x2="99.06" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="127" x2="99.06" y2="127" width="0.1524" layer="91"/>
@@ -5786,6 +5724,7 @@ DIN A4, landscape with location and doc. field</description>
 <pinref part="D15" gate="D1" pin="ANODE"/>
 <wire x1="104.14" y1="124.46" x2="99.06" y2="124.46" width="0.1524" layer="91"/>
 <junction x="99.06" y="124.46"/>
+<pinref part="R30" gate="R$1" pin="PIN0"/>
 </segment>
 </net>
 <net name="N$42" class="0">
@@ -5797,20 +5736,6 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="50.8" y1="134.62" x2="106.68" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="134.62" x2="109.22" y2="134.62" width="0.1524" layer="91"/>
 <junction x="106.68" y="134.62"/>
-</segment>
-</net>
-<net name="N$52" class="0">
-<segment>
-<pinref part="R33" gate="R$1" pin="PIN1"/>
-<pinref part="R34" gate="R$1" pin="PIN0"/>
-<wire x1="134.62" y1="154.94" x2="137.16" y2="154.94" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$53" class="0">
-<segment>
-<pinref part="R35" gate="R$1" pin="PIN1"/>
-<pinref part="R36" gate="R$1" pin="PIN0"/>
-<wire x1="134.62" y1="152.4" x2="137.16" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$54" class="0">

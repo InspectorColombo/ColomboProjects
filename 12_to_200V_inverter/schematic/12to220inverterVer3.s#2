@@ -3645,7 +3645,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R32" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="240K"/>
 <part name="TR3" library="__MyCommonLib1" deviceset="TRANS_FLYBACK_AUX_SINGLE_OUT" device="(TRANS_37X26)" value="Self made transformer. From TR8 sat reciever."/>
 <part name="D13" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
-<part name="ZD2" library="__MyCommonLib1" deviceset="ZENNER" device="DO-41_10MM" value="P6KE200"/>
+<part name="ZD2" library="__MyCommonLib1" deviceset="ZENNER" device="DO-41_5MM" value="P6KE200"/>
 <part name="T10" library="__MyCommonLib1" deviceset="IRF830" device="TO-220_VER2" value="16N60"/>
 <part name="R57" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="3R9"/>
 <part name="IC1" library="__MyCommonLib1" deviceset="UC3842" device="SOIC8" value="UC3842"/>
