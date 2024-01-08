@@ -58,7 +58,7 @@
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
@@ -2387,6 +2387,34 @@
 <wire x1="-10.3" y1="-7.8" x2="-10.3" y2="7.8" width="0.4" layer="21"/>
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="TO-220(VER2)_BIG_PADS">
+<pad name="1" x="-2.54" y="0" drill="1.2" diameter="2.54" rot="R90"/>
+<pad name="2" x="0" y="-2.54" drill="1.2" diameter="2.54" rot="R90"/>
+<pad name="3" x="2.54" y="0" drill="1.2" diameter="2.54" rot="R90"/>
+<wire x1="-5.08" y1="3.175" x2="5.08" y2="3.175" width="0.4" layer="21"/>
+<wire x1="5.08" y1="3.175" x2="5.08" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="5.08" y1="-1.27" x2="3.81" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="-3.81" y1="-1.27" x2="-5.08" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="-5.08" y1="-1.27" x2="-5.08" y2="3.175" width="0.4" layer="21"/>
+<rectangle x1="-5.08" y1="1.905" x2="5.08" y2="3.175" layer="21"/>
+<text x="-2.54" y="3.81" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="-3.81" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-1.905" y1="-1.27" x2="-0.635" y2="-1.27" width="0.4" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="1.905" y2="-1.27" width="0.4" layer="21"/>
+</package>
+<package name="PIN2X1_2.54_WITH_CLAMP">
+<pad name="1" x="-1.27" y="0" drill="0.9" diameter="1.9304" shape="octagon"/>
+<text x="-1.27" y="1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<text x="-1.27" y="1.27" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<pad name="2" x="1.27" y="0" drill="0.9" diameter="1.9304"/>
+<wire x1="-2.8" y1="2.7" x2="2.8" y2="2.7" width="0.4" layer="21"/>
+<wire x1="2.8" y1="2.7" x2="2.8" y2="-2" width="0.4" layer="21"/>
+<wire x1="2.8" y1="-2" x2="2.8" y2="-2.7" width="0.4" layer="21"/>
+<wire x1="2.8" y1="-2.7" x2="-2.8" y2="-2.7" width="0.4" layer="21"/>
+<wire x1="-2.8" y1="-2.7" x2="-2.8" y2="-2" width="0.4" layer="21"/>
+<wire x1="-2.8" y1="-2" x2="-2.8" y2="2.7" width="0.4" layer="21"/>
+<wire x1="2.8" y1="-2" x2="-2.8" y2="-2" width="0.4" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -4943,6 +4971,36 @@
 <technology name=""/>
 </technologies>
 </device>
+<device name="TO-220VER2" package="TO-220(VER2)">
+<connects>
+<connect gate="G$1" pin="ADJ" pad="1"/>
+<connect gate="G$1" pin="IN" pad="3"/>
+<connect gate="G$1" pin="OUT" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="TO-220" package="TO-220">
+<connects>
+<connect gate="G$1" pin="ADJ" pad="1"/>
+<connect gate="G$1" pin="IN" pad="3"/>
+<connect gate="G$1" pin="OUT" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="TO-220(VER2)_BIG_PADS" package="TO-220(VER2)_BIG_PADS">
+<connects>
+<connect gate="G$1" pin="ADJ" pad="1"/>
+<connect gate="G$1" pin="IN" pad="3"/>
+<connect gate="G$1" pin="OUT" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="KEY">
@@ -5009,6 +5067,16 @@
 <device name="TO-200(HORIZONTAL_SCREW_PAD)" package="TO-220(HORIZONTAL_WITH_SCREW_PAD)">
 <connects>
 <connect gate="G$1" pin="DRAIN" pad="2 SCREW_PAD"/>
+<connect gate="G$1" pin="GATE" pad="1"/>
+<connect gate="G$1" pin="SOURCE" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="TO-220_VER2_BIG_PADS" package="TO-220(VER2)_BIG_PADS">
+<connects>
+<connect gate="G$1" pin="DRAIN" pad="2"/>
 <connect gate="G$1" pin="GATE" pad="1"/>
 <connect gate="G$1" pin="SOURCE" pad="3"/>
 </connects>
@@ -5671,6 +5739,21 @@
 <connect gate="G$1" pin="SEC1_START" pad="PRI_A_START1 PRI_A_START2"/>
 <connect gate="G$1" pin="SEC2_END" pad="PRI_B_END1 PRI_B_END2"/>
 <connect gate="G$1" pin="SEC2_START" pad="PRI_B_START1 PRI_B_START2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HEATSINK">
+<gates>
+<gate name="G$1" symbol="HEATSINK" x="0" y="0"/>
+</gates>
+<devices>
+<device name="_21X16MM" package="HEATSINK_21X16">
+<connects>
+<connect gate="G$1" pin="PIN0" pad="PACKAGE"/>
 </connects>
 <technologies>
 <technology name=""/>
