@@ -3666,7 +3666,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="FRAME4" library="frames" deviceset="A4L-LOC" device="" value="12_TO_200VDC_CONVERTER"/>
 <part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="T4" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
-<part name="R7" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
+<part name="R7" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="1K0"/>
 <part name="R13" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R8" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="IC10" library="__MyCommonLib1" deviceset="TL494" device="(SOIC-16)" value="TL494"/>
@@ -7438,9 +7438,11 @@ DIN A4, landscape with location and doc. field</description>
 <net name="BUZZER_ON" class="0">
 <segment>
 <pinref part="R92" gate="R$1" pin="PIN1"/>
-<pinref part="IC6" gate="G$1" pin="QA"/>
-<wire x1="218.44" y1="99.06" x2="190.5" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="99.06" x2="195.58" y2="99.06" width="0.1524" layer="91"/>
 <label x="215.9" y="101.6" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<pinref part="IC6" gate="G$1" pin="QB"/>
+<wire x1="190.5" y1="96.52" x2="195.58" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="96.52" x2="195.58" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CONVERTER_ON" class="0">

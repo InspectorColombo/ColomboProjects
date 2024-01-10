@@ -3666,7 +3666,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="FRAME4" library="frames" deviceset="A4L-LOC" device="" value="12_TO_200VDC_CONVERTER"/>
 <part name="R4" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="T4" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
-<part name="R7" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
+<part name="R7" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="1K0"/>
 <part name="R13" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R8" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="IC10" library="__MyCommonLib1" deviceset="TL494" device="(SOIC-16)" value="TL494"/>
@@ -3828,7 +3828,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="C32" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="10nF"/>
 <part name="R95" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="R93" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="10K"/>
+<part name="R93" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="C31" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="R96" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K3"/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
@@ -3888,12 +3888,12 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R92" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND28" library="supply1" deviceset="GND" device=""/>
 <part name="RT3" library="__MyCommonLib1" deviceset="TERMISTOR_NTC" device="5.5X3" value="22K_20deg"/>
-<part name="R97" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="10K"/>
+<part name="R97" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="C34" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
 <part name="GND30" library="supply1" deviceset="GND" device=""/>
-<part name="R98" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="10K"/>
-<part name="D21" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4001"/>
+<part name="R98" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
+<part name="D21" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_12.5MM" value="1N4001"/>
 <part name="T1" library="__MyCommonLib1" deviceset="AO4407" device="(SO8)" value="AO4407AL"/>
 <part name="R1" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1R0"/>
 <part name="X8" library="__MyCommonLib1" deviceset="PIN2X3" device="2.54MM_LOOSE_PADS" value="MCU_PROGRAMMING"/>
