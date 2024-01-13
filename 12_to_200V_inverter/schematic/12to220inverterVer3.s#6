@@ -3844,7 +3844,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R54" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="IC3" library="__MyCommonLib1" deviceset="LM358" device="SOIC8"/>
 <part name="T18" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
-<part name="R78" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K1"/>
+<part name="R78" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="5K1"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="R83" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="330R"/>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
@@ -3852,7 +3852,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R81" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="240R"/>
 <part name="C26" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="R79" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
-<part name="R72" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
+<part name="R72" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="4K7"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="C21" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
