@@ -2929,7 +2929,12 @@ design rules under a new name.</description>
 <vertex x="115" y="37"/>
 <vertex x="113.2" y="37"/>
 <vertex x="112" y="38.2"/>
-<vertex x="93.6" y="38.2"/>
+<vertex x="103.4" y="38.2"/>
+<vertex x="103" y="38.6"/>
+<vertex x="102.6" y="38.2"/>
+<vertex x="96" y="38.2"/>
+<vertex x="94.4" y="39.8"/>
+<vertex x="92" y="39.8"/>
 <vertex x="91.4" y="40.4"/>
 <vertex x="88" y="40.4"/>
 </polygon>
@@ -3510,8 +3515,6 @@ design rules under a new name.</description>
 <wire x1="100.20125" y1="90.79875" x2="100.4" y2="90.6" width="0.7" layer="16"/>
 <wire x1="81.6" y1="90.35" x2="84.35" y2="90.35" width="1" layer="16"/>
 <wire x1="84.35" y1="90.35" x2="84.4" y2="90.4" width="1" layer="16"/>
-<wire x1="72.73" y1="87.46" x2="70.86" y2="87.46" width="1" layer="16"/>
-<wire x1="70.86" y1="87.46" x2="70.4" y2="87" width="0.5" layer="16"/>
 <polygon width="0.5" layer="16" thermals="no">
 <vertex x="49.8" y="87.2"/>
 <vertex x="49.8" y="85.4"/>
@@ -3543,7 +3546,7 @@ design rules under a new name.</description>
 <wire x1="122.425" y1="93.775" x2="122.4" y2="93.8" width="0.7" layer="16"/>
 <wire x1="66.4" y1="87" x2="66.6" y2="86.8" width="0.4" layer="16"/>
 <wire x1="66.6" y1="86.8" x2="70.2" y2="86.8" width="0.4" layer="16"/>
-<wire x1="70.2" y1="86.8" x2="70.4" y2="87" width="0.4" layer="16"/>
+<wire x1="70.2" y1="86.8" x2="70.6" y2="87.2" width="0.4" layer="16"/>
 <wire x1="89.925" y1="90.79875" x2="89.925" y2="89.725" width="0.4" layer="16"/>
 <wire x1="89.925" y1="89.725" x2="89.6" y2="89.4" width="0.4" layer="16"/>
 <wire x1="89.6" y1="89.4" x2="87.8" y2="89.4" width="0.4" layer="16"/>
@@ -3551,6 +3554,15 @@ design rules under a new name.</description>
 <wire x1="87.2" y1="89.4" x2="86.8" y2="89.8" width="0.4" layer="16"/>
 <wire x1="86.8" y1="89.8" x2="87.4" y2="89.8" width="0.4" layer="16"/>
 <wire x1="87.4" y1="89.8" x2="87.8" y2="89.4" width="0.4" layer="16"/>
+<polygon width="0.5" layer="16" thermals="no">
+<vertex x="70.6" y="87"/>
+<vertex x="73" y="87"/>
+<vertex x="73.4" y="87.4"/>
+<vertex x="73.4" y="87.8"/>
+<vertex x="73" y="88.2"/>
+<vertex x="71.6" y="88.2"/>
+<vertex x="70.6" y="87.2"/>
+</polygon>
 </signal>
 <signal name="N$83">
 <contactref element="R99" pad="PAD_1"/>
@@ -3594,7 +3606,6 @@ design rules under a new name.</description>
 <contactref element="X8" pad="6"/>
 <wire x1="58.235" y1="84.3" x2="58.235" y2="85.635" width="0.5" layer="16"/>
 <wire x1="58.235" y1="85.635" x2="58.6" y2="86" width="0.5" layer="16"/>
-<wire x1="75.27" y1="87.46" x2="76.41" y2="88.6" width="0.7" layer="16"/>
 <contactref element="IC6" pad="11"/>
 <contactref element="R95" pad="PAD_0"/>
 <wire x1="123.695" y1="90.295" x2="123" y2="89.6" width="0.5" layer="16"/>
@@ -3612,7 +3623,6 @@ design rules under a new name.</description>
 <wire x1="60.4" y1="86" x2="61.2" y2="85.2" width="0.5" layer="16"/>
 <wire x1="61.2" y1="85.2" x2="65" y2="85.2" width="0.5" layer="16"/>
 <wire x1="65" y1="85.2" x2="65.8" y2="86" width="0.5" layer="16"/>
-<wire x1="73.81" y1="86" x2="75.27" y2="87.46" width="1" layer="16"/>
 <wire x1="123.695" y1="90.295" x2="123.695" y2="91.29875" width="0.5" layer="16"/>
 <wire x1="110" y1="94" x2="110.6" y2="94" width="0.5" layer="16"/>
 <wire x1="110.6" y1="94" x2="109.8" y2="94.8" width="0.5" layer="16"/>
@@ -3620,10 +3630,22 @@ design rules under a new name.</description>
 <wire x1="113" y1="94.05" x2="112.95" y2="94" width="0.5" layer="16"/>
 <wire x1="112.95" y1="94" x2="110.6" y2="94" width="0.5" layer="16"/>
 <wire x1="65.8" y1="86" x2="70.6" y2="86" width="0.4" layer="16"/>
-<wire x1="70.6" y1="86" x2="73.81" y2="86" width="0.5" layer="16"/>
-<wire x1="76.41" y1="88.6" x2="86.4" y2="88.6" width="0.8" layer="16"/>
+<wire x1="76.61" y1="88.6" x2="86.4" y2="88.6" width="0.8" layer="16"/>
 <wire x1="86.4" y1="88.6" x2="90.4" y2="88.6" width="0.4" layer="16"/>
 <wire x1="90.4" y1="88.6" x2="91.195" y2="89.395" width="0.4" layer="16"/>
+<polygon width="0.5" layer="16" thermals="no">
+<vertex x="76.8" y="88.4"/>
+<vertex x="74.2" y="85.8"/>
+<vertex x="70.8" y="85.8"/>
+<vertex x="70.6" y="86"/>
+<vertex x="73.8" y="86"/>
+<vertex x="74.6" y="86.8"/>
+<vertex x="74.6" y="88"/>
+<vertex x="74.8" y="88.2"/>
+<vertex x="76" y="88.2"/>
+<vertex x="76.4" y="88.6"/>
+<vertex x="76.8" y="88.6"/>
+</polygon>
 </signal>
 <signal name="LED_DATA(MOSI)">
 <contactref element="IC8" pad="5"/>
@@ -3695,6 +3717,14 @@ design rules under a new name.</description>
 <wire x1="70.25" y1="91.25" x2="70.3" y2="91.25" width="0.5" layer="16"/>
 <wire x1="73.83" y1="91.25" x2="73.98" y2="91.25" width="0.5" layer="16"/>
 <wire x1="73.98" y1="91.25" x2="75.27" y2="92.54" width="0.5" layer="16"/>
+<polygon width="0.5" layer="16" thermals="no">
+<vertex x="74.4" y="91.8"/>
+<vertex x="75" y="91.8"/>
+<vertex x="76" y="92.8"/>
+<vertex x="76" y="93.8"/>
+<vertex x="75.6" y="93.8"/>
+<vertex x="74.4" y="92.6"/>
+</polygon>
 </signal>
 <signal name="VOLTAGE_ADC">
 <contactref element="IC8" pad="2"/>
@@ -4490,7 +4520,15 @@ design rules under a new name.</description>
 <wire x1="68.4" y1="88.025" x2="68.575" y2="88.2" width="0.8" layer="16"/>
 <wire x1="68.575" y1="88.2" x2="69.4" y2="88.2" width="0.8" layer="16"/>
 <wire x1="69.4" y1="88.2" x2="71.2" y2="90" width="0.8" layer="16"/>
-<wire x1="71.2" y1="90" x2="72.73" y2="90" width="0.8" layer="16"/>
+<polygon width="0.5" layer="16" thermals="no">
+<vertex x="73.2" y="90.4"/>
+<vertex x="71.2" y="90.4"/>
+<vertex x="70.6" y="89.8"/>
+<vertex x="70.6" y="89.2"/>
+<vertex x="73" y="89.2"/>
+<vertex x="73.4" y="89.6"/>
+<vertex x="73.4" y="90.2"/>
+</polygon>
 </signal>
 <signal name="ANY_LAMP_ON">
 <contactref element="D27" pad="CATHODE"/>
