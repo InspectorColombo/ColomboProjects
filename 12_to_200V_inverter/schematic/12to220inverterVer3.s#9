@@ -3953,6 +3953,8 @@ DIN A4, landscape with location and doc. field</description>
 <part name="J4" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="0"/>
 <part name="C9" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="0.47uFx25V"/>
 <part name="TR4" library="__MyCommonLib1" deviceset="TRANS_FLYBACK_AUX_SINGLE_OUT" device="(TRANS29.5X23)" value="Self made transformer. From TR8 sat reciever."/>
+<part name="C39" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF x 50V"/>
+<part name="GND40" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5383,6 +5385,13 @@ DIN A4, landscape with location and doc. field</description>
 <attribute name="NAME" x="186.69" y="96.52" size="1.27" layer="95" font="vector" ratio="20"/>
 <attribute name="VALUE" x="168.91" y="91.44" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
+<instance part="C39" gate="C$1" x="111.76" y="81.28" smashed="yes" rot="MR0">
+<attribute name="NAME" x="115.57" y="83.82" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="115.57" y="82.55" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+</instance>
+<instance part="GND40" gate="1" x="111.76" y="73.66" smashed="yes">
+<attribute name="VALUE" x="110.49" y="71.12" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -6091,6 +6100,11 @@ DIN A4, landscape with location and doc. field</description>
 <pinref part="GND38" gate="1" pin="GND"/>
 <wire x1="17.78" y1="43.18" x2="17.78" y2="40.64" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="GND40" gate="1" pin="GND"/>
+<pinref part="C39" gate="C$1" pin="PIN0"/>
+<wire x1="111.76" y1="76.2" x2="111.76" y2="78.74" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$94" class="0">
 <segment>
@@ -6303,7 +6317,8 @@ DIN A4, landscape with location and doc. field</description>
 <pinref part="R61" gate="R$1" pin="PIN0"/>
 <wire x1="106.68" y1="71.12" x2="106.68" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="76.2" x2="106.68" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="86.36" x2="215.9" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="86.36" x2="111.76" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="86.36" x2="215.9" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="86.36" x2="215.9" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="93.98" x2="215.9" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="116.84" x2="223.52" y2="116.84" width="0.1524" layer="91"/>
@@ -6330,6 +6345,9 @@ DIN A4, landscape with location and doc. field</description>
 <pinref part="IC2" gate="G$1" pin="LED_CATHODE"/>
 <wire x1="88.9" y1="86.36" x2="106.68" y2="86.36" width="0.1524" layer="91"/>
 <junction x="106.68" y="86.36"/>
+<pinref part="C39" gate="C$1" pin="PIN1"/>
+<wire x1="111.76" y1="83.82" x2="111.76" y2="86.36" width="0.1524" layer="91"/>
+<junction x="111.76" y="86.36"/>
 </segment>
 </net>
 <net name="N$125" class="0">
