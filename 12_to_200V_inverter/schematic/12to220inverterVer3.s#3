@@ -3727,7 +3727,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="D13" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_12.5MM" value="UF4007"/>
 <part name="ZD2" library="__MyCommonLib1" deviceset="ZENNER" device="DO-41_10MM" value="P6KE200"/>
 <part name="T10" library="__MyCommonLib1" deviceset="IRF830" device="TO-220_VER2_BIG_PADS" value="16N60"/>
-<part name="R57" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="3R9"/>
+<part name="R57" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="2R4"/>
 <part name="IC1" library="__MyCommonLib1" deviceset="UC3842" device="SOIC8" value="UC3842"/>
 <part name="C20" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF x 50V"/>
 <part name="CE5" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="22uFx50V"/>
@@ -3736,14 +3736,14 @@ DIN A4, landscape with location and doc. field</description>
 <part name="C17" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF 16V"/>
 <part name="R43" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="C18" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="5n1 x 16V"/>
-<part name="R53" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K9*"/>
+<part name="R53" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100R"/>
 <part name="C19" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="1n0 x 16V*"/>
 <part name="T11" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="T12" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="R52" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="22K"/>
 <part name="R55" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R45" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="22K"/>
-<part name="R46" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K9*"/>
+<part name="R46" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="3K6*"/>
 <part name="RT2" library="__MyCommonLib1" deviceset="TERMISTOR_NTC" device="5.5X3" value="22K_20deg"/>
 <part name="R44" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="82K"/>
 <part name="R39" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="22K"/>

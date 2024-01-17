@@ -3893,7 +3893,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
 <part name="GND30" library="supply1" deviceset="GND" device=""/>
 <part name="R98" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
-<part name="D21" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_12.5MM" value="1N4001"/>
+<part name="D21" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4001"/>
 <part name="T1" library="__MyCommonLib1" deviceset="AO4407" device="(SO8)" value="AO4407AL"/>
 <part name="R1" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="1R0"/>
 <part name="X8" library="__MyCommonLib1" deviceset="PIN2X3" device="2.54MM_LOOSE_PADS" value="MCU_PROGRAMMING"/>

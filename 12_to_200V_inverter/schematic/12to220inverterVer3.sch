@@ -3813,14 +3813,14 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R105" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="R106" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
-<part name="LED1" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="RED"/>
-<part name="LED2" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="GREEN"/>
-<part name="LED3" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="YELLOW"/>
-<part name="LED4" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="YELLOW"/>
-<part name="LED5" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="YELLOW"/>
-<part name="LED6" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="YELLOW"/>
-<part name="LED7" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="GREEN"/>
-<part name="LED8" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="RED"/>
+<part name="LED1" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="VOLT_GREEN2"/>
+<part name="LED2" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="CURR_RED"/>
+<part name="LED3" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="VOLT_GREEN1"/>
+<part name="LED4" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="CURR_YELLOW"/>
+<part name="LED5" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="VOLT_YELLOW"/>
+<part name="LED6" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="CURR_GREEN1"/>
+<part name="LED7" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="VOLT_RED"/>
+<part name="LED8" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="CURR_GREEN2"/>
 <part name="C33" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="C36" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
