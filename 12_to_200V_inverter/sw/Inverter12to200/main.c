@@ -17,22 +17,66 @@ int main(void)
 	ShiftRegInit();
 	
 	
-	
 	for(;;)
 	{
-		BuzzerOn();
-		ConverterOn();
+		LedCurrRedOff();
+		LedVoltRedOn();	
+ 		ShiftRegPush();	
+ 		DelayMiliSec(500);
+		 
+		LedVoltRedOff();
+		LedVoltYellowOn();
+		ShiftRegPush();
+		DelayMiliSec(500);
+		
+		LedVoltYellowOff(); 
+		LedVoltGreen1On();
+		ShiftRegPush();
+		DelayMiliSec(500);
+		 
+		LedVoltGreen1Off();
+		LedVoltGreen2On();
 		ShiftRegPush();
 		DelayMiliSec(500);
 
-		BuzzerOff();
+		LedVoltGreen2Off();
+		LedCurrGreen2On();
 		ShiftRegPush();
-		DelayMiliSec(1500);
-		
-		ConverterOff();
+		DelayMiliSec(500);
+
+		LedCurrGreen2Off();
+		LedCurrGreen1On();
 		ShiftRegPush();
-		DelayMiliSec(2000);
+		DelayMiliSec(500);
+
+		LedCurrGreen1Off();
+		LedCurrYellowOn();
+		ShiftRegPush();
+		DelayMiliSec(500);
+
+		LedCurrYellowOff();
+		LedCurrRedOn();
+		ShiftRegPush();
+		DelayMiliSec(500);
 	}
+
+	
+	
+// 	for(;;)
+// 	{
+// 		BuzzerOn();
+// 		ConverterOn();
+// 		ShiftRegPush();
+// 		DelayMiliSec(500);
+// 
+// 		BuzzerOff();
+// 		ShiftRegPush();
+// 		DelayMiliSec(1500);
+// 		
+// 		ConverterOff();
+// 		ShiftRegPush();
+// 		DelayMiliSec(2000);
+// 	}
 
 	
 	

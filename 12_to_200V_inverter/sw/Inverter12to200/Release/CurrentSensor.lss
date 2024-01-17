@@ -3,23 +3,23 @@ CurrentSensor.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000146  00000000  00000000  00000074  2**1
+  0 .text         0000026c  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  000001ba  2**0
+  1 .data         00000000  00800060  00800060  000002e0  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000002  00800060  00800060  000001ba  2**0
+  2 .bss          00000002  00800060  00800060  000002e0  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000001ba  2**0
+  3 .comment      00000030  00000000  00000000  000002e0  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001ec  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000310  2**2
                   CONTENTS, READONLY
-  5 .debug_info   00000420  00000000  00000000  00000228  2**0
+  5 .debug_info   00000420  00000000  00000000  0000034c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000003e8  00000000  00000000  00000648  2**0
+  6 .debug_abbrev 000003e8  00000000  00000000  0000076c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000000f2  00000000  00000000  00000a30  2**0
+  7 .debug_line   000000f2  00000000  00000000  00000b54  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000169  00000000  00000000  00000b22  2**0
+  8 .debug_str    00000169  00000000  00000000  00000c46  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -62,8 +62,8 @@ Disassembly of section .text:
   34:	a2 36       	cpi	r26, 0x62	; 98
   36:	b2 07       	cpc	r27, r18
   38:	e1 f7       	brne	.-8      	; 0x32 <.do_clear_bss_loop>
-  3a:	71 d0       	rcall	.+226    	; 0x11e <main>
-  3c:	82 c0       	rjmp	.+260    	; 0x142 <_exit>
+  3a:	e4 d0       	rcall	.+456    	; 0x204 <main>
+  3c:	15 c1       	rjmp	.+554    	; 0x268 <_exit>
 
 0000003e <__bad_interrupt>:
   3e:	e0 cf       	rjmp	.-64     	; 0x0 <__vectors>
@@ -97,105 +97,230 @@ Disassembly of section .text:
   74:	cf 91       	pop	r28
   76:	08 95       	ret
 
-00000078 <BuzzerOn>:
+00000078 <LedVoltGreen2On>:
   78:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
   7c:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
-  80:	80 62       	ori	r24, 0x20	; 32
+  80:	91 60       	ori	r25, 0x01	; 1
   82:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
   86:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
   8a:	08 95       	ret
 
-0000008c <BuzzerOff>:
+0000008c <LedVoltGreen2Off>:
   8c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
   90:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
-  94:	8f 7d       	andi	r24, 0xDF	; 223
+  94:	9e 7f       	andi	r25, 0xFE	; 254
   96:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
   9a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
   9e:	08 95       	ret
 
-000000a0 <ConverterOn>:
+000000a0 <LedVoltGreen1On>:
   a0:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
   a4:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
-  a8:	80 64       	ori	r24, 0x40	; 64
+  a8:	94 60       	ori	r25, 0x04	; 4
   aa:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
   ae:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
   b2:	08 95       	ret
 
-000000b4 <ConverterOff>:
+000000b4 <LedVoltGreen1Off>:
   b4:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
   b8:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
-  bc:	8f 7b       	andi	r24, 0xBF	; 191
+  bc:	9b 7f       	andi	r25, 0xFB	; 251
   be:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
   c2:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
   c6:	08 95       	ret
 
-000000c8 <SendShiftRegisterWord>:
-  c8:	cf 93       	push	r28
-  ca:	df 93       	push	r29
-  cc:	d8 2f       	mov	r29, r24
-  ce:	c9 2f       	mov	r28, r25
-  d0:	c1 98       	cbi	0x18, 1	; 24
-  d2:	8c e3       	ldi	r24, 0x3C	; 60
-  d4:	b5 df       	rcall	.-150    	; 0x40 <DelayMicroSec>
-  d6:	8d 2f       	mov	r24, r29
-  d8:	9c 2f       	mov	r25, r28
-  da:	20 e1       	ldi	r18, 0x10	; 16
-  dc:	97 ff       	sbrs	r25, 7
-  de:	02 c0       	rjmp	.+4      	; 0xe4 <SendShiftRegisterWord+0x1c>
-  e0:	c0 9a       	sbi	0x18, 0	; 24
-  e2:	01 c0       	rjmp	.+2      	; 0xe6 <SendShiftRegisterWord+0x1e>
-  e4:	c0 98       	cbi	0x18, 0	; 24
-  e6:	c1 9a       	sbi	0x18, 1	; 24
-  e8:	21 50       	subi	r18, 0x01	; 1
-  ea:	21 f0       	breq	.+8      	; 0xf4 <SendShiftRegisterWord+0x2c>
-  ec:	c1 98       	cbi	0x18, 1	; 24
-  ee:	88 0f       	add	r24, r24
-  f0:	99 1f       	adc	r25, r25
-  f2:	f4 cf       	rjmp	.-24     	; 0xdc <SendShiftRegisterWord+0x14>
-  f4:	df 91       	pop	r29
-  f6:	cf 91       	pop	r28
-  f8:	08 95       	ret
+000000c8 <LedVoltYellowOn>:
+  c8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  cc:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  d0:	90 61       	ori	r25, 0x10	; 16
+  d2:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  d6:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+  da:	08 95       	ret
 
-000000fa <ShiftRegInit>:
-  fa:	c1 98       	cbi	0x18, 1	; 24
-  fc:	c0 98       	cbi	0x18, 0	; 24
-  fe:	87 b3       	in	r24, 0x17	; 23
- 100:	83 60       	ori	r24, 0x03	; 3
- 102:	87 bb       	out	0x17, r24	; 23
- 104:	80 e0       	ldi	r24, 0x00	; 0
- 106:	90 e0       	ldi	r25, 0x00	; 0
- 108:	df cf       	rjmp	.-66     	; 0xc8 <SendShiftRegisterWord>
+000000dc <LedVoltYellowOff>:
+  dc:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  e0:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  e4:	9f 7e       	andi	r25, 0xEF	; 239
+  e6:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  ea:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+  ee:	08 95       	ret
 
-0000010a <ShiftRegPush>:
- 10a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
- 10e:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
- 112:	9f 6f       	ori	r25, 0xFF	; 255
- 114:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
- 118:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
- 11c:	d5 cf       	rjmp	.-86     	; 0xc8 <SendShiftRegisterWord>
+000000f0 <LedVoltRedOn>:
+  f0:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  f4:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  f8:	90 64       	ori	r25, 0x40	; 64
+  fa:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  fe:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 102:	08 95       	ret
 
-0000011e <main>:
- 11e:	ed df       	rcall	.-38     	; 0xfa <ShiftRegInit>
- 120:	ab df       	rcall	.-170    	; 0x78 <BuzzerOn>
- 122:	be df       	rcall	.-132    	; 0xa0 <ConverterOn>
- 124:	f2 df       	rcall	.-28     	; 0x10a <ShiftRegPush>
- 126:	84 ef       	ldi	r24, 0xF4	; 244
- 128:	91 e0       	ldi	r25, 0x01	; 1
- 12a:	94 df       	rcall	.-216    	; 0x54 <DelayMiliSec>
- 12c:	af df       	rcall	.-162    	; 0x8c <BuzzerOff>
- 12e:	ed df       	rcall	.-38     	; 0x10a <ShiftRegPush>
- 130:	8c ed       	ldi	r24, 0xDC	; 220
- 132:	95 e0       	ldi	r25, 0x05	; 5
- 134:	8f df       	rcall	.-226    	; 0x54 <DelayMiliSec>
- 136:	be df       	rcall	.-132    	; 0xb4 <ConverterOff>
- 138:	e8 df       	rcall	.-48     	; 0x10a <ShiftRegPush>
- 13a:	80 ed       	ldi	r24, 0xD0	; 208
- 13c:	97 e0       	ldi	r25, 0x07	; 7
- 13e:	8a df       	rcall	.-236    	; 0x54 <DelayMiliSec>
- 140:	ef cf       	rjmp	.-34     	; 0x120 <main+0x2>
+00000104 <LedVoltRedOff>:
+ 104:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 108:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 10c:	9f 7b       	andi	r25, 0xBF	; 191
+ 10e:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 112:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 116:	08 95       	ret
 
-00000142 <_exit>:
- 142:	f8 94       	cli
+00000118 <LedCurrGreen2On>:
+ 118:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 11c:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 120:	90 68       	ori	r25, 0x80	; 128
+ 122:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 126:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 12a:	08 95       	ret
 
-00000144 <__stop_program>:
- 144:	ff cf       	rjmp	.-2      	; 0x144 <__stop_program>
+0000012c <LedCurrGreen2Off>:
+ 12c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 130:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 134:	9f 77       	andi	r25, 0x7F	; 127
+ 136:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 13a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 13e:	08 95       	ret
+
+00000140 <LedCurrGreen1On>:
+ 140:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 144:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 148:	90 62       	ori	r25, 0x20	; 32
+ 14a:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 14e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 152:	08 95       	ret
+
+00000154 <LedCurrGreen1Off>:
+ 154:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 158:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 15c:	9f 7d       	andi	r25, 0xDF	; 223
+ 15e:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 162:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 166:	08 95       	ret
+
+00000168 <LedCurrYellowOn>:
+ 168:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 16c:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 170:	98 60       	ori	r25, 0x08	; 8
+ 172:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 176:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 17a:	08 95       	ret
+
+0000017c <LedCurrYellowOff>:
+ 17c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 180:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 184:	97 7f       	andi	r25, 0xF7	; 247
+ 186:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 18a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 18e:	08 95       	ret
+
+00000190 <LedCurrRedOn>:
+ 190:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 194:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 198:	92 60       	ori	r25, 0x02	; 2
+ 19a:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 19e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 1a2:	08 95       	ret
+
+000001a4 <LedCurrRedOff>:
+ 1a4:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 1a8:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 1ac:	9d 7f       	andi	r25, 0xFD	; 253
+ 1ae:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 1b2:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 1b6:	08 95       	ret
+
+000001b8 <SendShiftRegisterWord>:
+ 1b8:	cf 93       	push	r28
+ 1ba:	df 93       	push	r29
+ 1bc:	d8 2f       	mov	r29, r24
+ 1be:	c9 2f       	mov	r28, r25
+ 1c0:	c1 98       	cbi	0x18, 1	; 24
+ 1c2:	8c e3       	ldi	r24, 0x3C	; 60
+ 1c4:	3d df       	rcall	.-390    	; 0x40 <DelayMicroSec>
+ 1c6:	8d 2f       	mov	r24, r29
+ 1c8:	9c 2f       	mov	r25, r28
+ 1ca:	20 e1       	ldi	r18, 0x10	; 16
+ 1cc:	97 ff       	sbrs	r25, 7
+ 1ce:	02 c0       	rjmp	.+4      	; 0x1d4 <SendShiftRegisterWord+0x1c>
+ 1d0:	c0 9a       	sbi	0x18, 0	; 24
+ 1d2:	01 c0       	rjmp	.+2      	; 0x1d6 <SendShiftRegisterWord+0x1e>
+ 1d4:	c0 98       	cbi	0x18, 0	; 24
+ 1d6:	c1 9a       	sbi	0x18, 1	; 24
+ 1d8:	21 50       	subi	r18, 0x01	; 1
+ 1da:	21 f0       	breq	.+8      	; 0x1e4 <SendShiftRegisterWord+0x2c>
+ 1dc:	c1 98       	cbi	0x18, 1	; 24
+ 1de:	88 0f       	add	r24, r24
+ 1e0:	99 1f       	adc	r25, r25
+ 1e2:	f4 cf       	rjmp	.-24     	; 0x1cc <SendShiftRegisterWord+0x14>
+ 1e4:	df 91       	pop	r29
+ 1e6:	cf 91       	pop	r28
+ 1e8:	08 95       	ret
+
+000001ea <ShiftRegInit>:
+ 1ea:	c1 98       	cbi	0x18, 1	; 24
+ 1ec:	c0 98       	cbi	0x18, 0	; 24
+ 1ee:	87 b3       	in	r24, 0x17	; 23
+ 1f0:	83 60       	ori	r24, 0x03	; 3
+ 1f2:	87 bb       	out	0x17, r24	; 23
+ 1f4:	80 e0       	ldi	r24, 0x00	; 0
+ 1f6:	90 e0       	ldi	r25, 0x00	; 0
+ 1f8:	df cf       	rjmp	.-66     	; 0x1b8 <SendShiftRegisterWord>
+
+000001fa <ShiftRegPush>:
+ 1fa:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 1fe:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 202:	da cf       	rjmp	.-76     	; 0x1b8 <SendShiftRegisterWord>
+
+00000204 <main>:
+ 204:	f2 df       	rcall	.-28     	; 0x1ea <ShiftRegInit>
+ 206:	ce df       	rcall	.-100    	; 0x1a4 <LedCurrRedOff>
+ 208:	73 df       	rcall	.-282    	; 0xf0 <LedVoltRedOn>
+ 20a:	f7 df       	rcall	.-18     	; 0x1fa <ShiftRegPush>
+ 20c:	84 ef       	ldi	r24, 0xF4	; 244
+ 20e:	91 e0       	ldi	r25, 0x01	; 1
+ 210:	21 df       	rcall	.-446    	; 0x54 <DelayMiliSec>
+ 212:	78 df       	rcall	.-272    	; 0x104 <LedVoltRedOff>
+ 214:	59 df       	rcall	.-334    	; 0xc8 <LedVoltYellowOn>
+ 216:	f1 df       	rcall	.-30     	; 0x1fa <ShiftRegPush>
+ 218:	84 ef       	ldi	r24, 0xF4	; 244
+ 21a:	91 e0       	ldi	r25, 0x01	; 1
+ 21c:	1b df       	rcall	.-458    	; 0x54 <DelayMiliSec>
+ 21e:	5e df       	rcall	.-324    	; 0xdc <LedVoltYellowOff>
+ 220:	3f df       	rcall	.-386    	; 0xa0 <LedVoltGreen1On>
+ 222:	eb df       	rcall	.-42     	; 0x1fa <ShiftRegPush>
+ 224:	84 ef       	ldi	r24, 0xF4	; 244
+ 226:	91 e0       	ldi	r25, 0x01	; 1
+ 228:	15 df       	rcall	.-470    	; 0x54 <DelayMiliSec>
+ 22a:	44 df       	rcall	.-376    	; 0xb4 <LedVoltGreen1Off>
+ 22c:	25 df       	rcall	.-438    	; 0x78 <LedVoltGreen2On>
+ 22e:	e5 df       	rcall	.-54     	; 0x1fa <ShiftRegPush>
+ 230:	84 ef       	ldi	r24, 0xF4	; 244
+ 232:	91 e0       	ldi	r25, 0x01	; 1
+ 234:	0f df       	rcall	.-482    	; 0x54 <DelayMiliSec>
+ 236:	2a df       	rcall	.-428    	; 0x8c <LedVoltGreen2Off>
+ 238:	6f df       	rcall	.-290    	; 0x118 <LedCurrGreen2On>
+ 23a:	df df       	rcall	.-66     	; 0x1fa <ShiftRegPush>
+ 23c:	84 ef       	ldi	r24, 0xF4	; 244
+ 23e:	91 e0       	ldi	r25, 0x01	; 1
+ 240:	09 df       	rcall	.-494    	; 0x54 <DelayMiliSec>
+ 242:	74 df       	rcall	.-280    	; 0x12c <LedCurrGreen2Off>
+ 244:	7d df       	rcall	.-262    	; 0x140 <LedCurrGreen1On>
+ 246:	d9 df       	rcall	.-78     	; 0x1fa <ShiftRegPush>
+ 248:	84 ef       	ldi	r24, 0xF4	; 244
+ 24a:	91 e0       	ldi	r25, 0x01	; 1
+ 24c:	03 df       	rcall	.-506    	; 0x54 <DelayMiliSec>
+ 24e:	82 df       	rcall	.-252    	; 0x154 <LedCurrGreen1Off>
+ 250:	8b df       	rcall	.-234    	; 0x168 <LedCurrYellowOn>
+ 252:	d3 df       	rcall	.-90     	; 0x1fa <ShiftRegPush>
+ 254:	84 ef       	ldi	r24, 0xF4	; 244
+ 256:	91 e0       	ldi	r25, 0x01	; 1
+ 258:	fd de       	rcall	.-518    	; 0x54 <DelayMiliSec>
+ 25a:	90 df       	rcall	.-224    	; 0x17c <LedCurrYellowOff>
+ 25c:	99 df       	rcall	.-206    	; 0x190 <LedCurrRedOn>
+ 25e:	cd df       	rcall	.-102    	; 0x1fa <ShiftRegPush>
+ 260:	84 ef       	ldi	r24, 0xF4	; 244
+ 262:	91 e0       	ldi	r25, 0x01	; 1
+ 264:	f7 de       	rcall	.-530    	; 0x54 <DelayMiliSec>
+ 266:	cf cf       	rjmp	.-98     	; 0x206 <main+0x2>
+
+00000268 <_exit>:
+ 268:	f8 94       	cli
+
+0000026a <__stop_program>:
+ 26a:	ff cf       	rjmp	.-2      	; 0x26a <__stop_program>
