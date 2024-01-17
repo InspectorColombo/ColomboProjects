@@ -28,14 +28,14 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -1433,7 +1433,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="113" y="43" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="111.6" y="43.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
-<element name="R46" library="__MyCommonLib1" package="RSMD_0805" value="3K9*" x="112.4" y="51" smashed="yes" rot="MR180">
+<element name="R46" library="__MyCommonLib1" package="RSMD_0805" value="3K6*" x="112.4" y="51" smashed="yes" rot="MR180">
 <attribute name="NAME" x="112.4" y="51" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="110.6" y="51.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
@@ -4892,9 +4892,7 @@ design rules under a new name.</description>
 <vertex x="78.8" y="60.2"/>
 <vertex x="75.6" y="57"/>
 </polygon>
-<contactref element="IC2" pad="2"/>
 <contactref element="C39" pad="PAD_1"/>
-<wire x1="115.73" y1="61.81" x2="114.87" y2="60.95" width="0.8" layer="16"/>
 <wire x1="114.87" y1="60.95" x2="113" y2="60.95" width="0.8" layer="16"/>
 <wire x1="113" y1="60.95" x2="110" y2="60.95" width="0.8" layer="16"/>
 <wire x1="78.8" y1="64.2" x2="78.8" y2="59.4" width="0.8" layer="16"/>
@@ -4940,6 +4938,8 @@ design rules under a new name.</description>
 <vertex x="108" y="61.6"/>
 <vertex x="107.2" y="61.6"/>
 </polygon>
+<contactref element="IC2" pad="1"/>
+<wire x1="114.87" y1="60.95" x2="118.27" y2="61.81" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$125">
 <contactref element="R62" pad="PAD_1"/>
@@ -5178,12 +5178,6 @@ design rules under a new name.</description>
 <vertex x="73.2" y="16.8"/>
 </polygon>
 </signal>
-<signal name="N$40">
-<contactref element="IC2" pad="1"/>
-<contactref element="R59" pad="PAD_1"/>
-<wire x1="118.05" y1="65" x2="118.05" y2="62.03" width="0.8" layer="16"/>
-<wire x1="118.05" y1="62.03" x2="118.27" y2="61.81" width="0.8" layer="16"/>
-</signal>
 <signal name="N$61">
 <contactref element="RT1" pad="PAD_0"/>
 <contactref element="F2" pad="PAD1"/>
@@ -5211,6 +5205,11 @@ design rules under a new name.</description>
 <vertex x="140.8" y="58.8"/>
 <vertex x="139.8" y="59.8"/>
 </polygon>
+</signal>
+<signal name="N$13">
+<contactref element="IC2" pad="2"/>
+<contactref element="R59" pad="PAD_1"/>
+<wire x1="115.73" y1="61.81" x2="118.05" y2="65" width="0" layer="19" extent="16-16"/>
 </signal>
 </signals>
 </board>
