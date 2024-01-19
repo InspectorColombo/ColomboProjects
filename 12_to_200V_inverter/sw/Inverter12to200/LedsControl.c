@@ -197,10 +197,6 @@ void SendShiftRegisterWord(const uint16_t wordToSend)
 	ClearLedSck();
 }
 
-
-
-
-
 void ShiftRegInit()
 {
 	ClearLedSck();
@@ -223,3 +219,5 @@ void ShiftRegPush()
 	//g_shiftRegCodeWord |= 0xFF00;
 	SendShiftRegisterWord(g_shiftRegCodeWord);
 }
+
+

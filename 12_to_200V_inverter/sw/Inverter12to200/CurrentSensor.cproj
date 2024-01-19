@@ -162,6 +162,12 @@
     <Compile Include="cs_adc.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="DebugSwUart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DebugSwUart.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LedsControl.c">
       <SubType>compile</SubType>
     </Compile>

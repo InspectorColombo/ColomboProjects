@@ -39,6 +39,7 @@ SUBDIRS :=
 C_SRCS +=  \
 ../CsDelay.c \
 ../cs_adc.c \
+../DebugSwUart.c \
 ../LedsControl.c \
 ../main.c \
 ../VoltageCurrentLevels.c
@@ -53,6 +54,7 @@ ASM_SRCS +=
 OBJS +=  \
 CsDelay.o \
 cs_adc.o \
+DebugSwUart.o \
 LedsControl.o \
 main.o \
 VoltageCurrentLevels.o
@@ -60,6 +62,7 @@ VoltageCurrentLevels.o
 OBJS_AS_ARGS +=  \
 CsDelay.o \
 cs_adc.o \
+DebugSwUart.o \
 LedsControl.o \
 main.o \
 VoltageCurrentLevels.o
@@ -67,6 +70,7 @@ VoltageCurrentLevels.o
 C_DEPS +=  \
 CsDelay.d \
 cs_adc.d \
+DebugSwUart.d \
 LedsControl.d \
 main.d \
 VoltageCurrentLevels.d
@@ -74,6 +78,7 @@ VoltageCurrentLevels.d
 C_DEPS_AS_ARGS +=  \
 CsDelay.d \
 cs_adc.d \
+DebugSwUart.d \
 LedsControl.d \
 main.d \
 VoltageCurrentLevels.d
@@ -100,6 +105,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./cs_adc.o: .././cs_adc.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=attiny45 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\gcc\dev\attiny45" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./DebugSwUart.o: .././DebugSwUart.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=attiny45 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\gcc\dev\attiny45" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -12,8 +12,26 @@
 #include "CsDelay.h"
 #include "VoltageCurrentLevels.h"
 
+#include "DebugSwUart.h"
+
 int main(void)
 {
+	SwUartInit(SW_UART_57600);
+	//SwUartTestFrequencyPrecision();
+	for(;;)
+	{
+		SwUartPrintString("Hello, what's are you doing there?  ");
+		SwUartPrintByte(123);
+		SwUartPrintString("\r\n");
+		DelayMiliSec(500);
+	}
+	
+	
+	
+	
+	
+	
+	
 	ShiftRegInit();
 	
 	

@@ -6,6 +6,8 @@ CsDelay.c
 
 cs_adc.c
 
+DebugSwUart.c
+
 LedsControl.c
 
 main.c
