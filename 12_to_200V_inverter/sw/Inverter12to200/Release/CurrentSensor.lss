@@ -3,23 +3,23 @@ CurrentSensor.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000330  00000000  00000000  00000094  2**1
+  0 .text         00000488  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000000e  00800060  00000330  000003c4  2**0
+  1 .data         0000000e  00800060  00000488  0000051c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000001  0080006e  0080006e  000003d2  2**0
+  2 .bss          00000003  0080006e  0080006e  0000052a  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000003d2  2**0
+  3 .comment      00000030  00000000  00000000  0000052a  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000404  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000055c  2**2
                   CONTENTS, READONLY
-  5 .debug_info   00000420  00000000  00000000  00000440  2**0
+  5 .debug_info   00000420  00000000  00000000  00000598  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000003e8  00000000  00000000  00000860  2**0
+  6 .debug_abbrev 000003e8  00000000  00000000  000009b8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000000f2  00000000  00000000  00000c48  2**0
+  7 .debug_line   000000f2  00000000  00000000  00000da0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000169  00000000  00000000  00000d3a  2**0
+  8 .debug_str    00000169  00000000  00000000  00000e92  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -53,8 +53,8 @@ Disassembly of section .text:
   2a:	10 e0       	ldi	r17, 0x00	; 0
   2c:	a0 e6       	ldi	r26, 0x60	; 96
   2e:	b0 e0       	ldi	r27, 0x00	; 0
-  30:	e0 e3       	ldi	r30, 0x30	; 48
-  32:	f3 e0       	ldi	r31, 0x03	; 3
+  30:	e8 e8       	ldi	r30, 0x88	; 136
+  32:	f4 e0       	ldi	r31, 0x04	; 4
   34:	02 c0       	rjmp	.+4      	; 0x3a <__do_copy_data+0x10>
   36:	05 90       	lpm	r0, Z+
   38:	0d 92       	st	X+, r0
@@ -72,11 +72,11 @@ Disassembly of section .text:
   48:	1d 92       	st	X+, r1
 
 0000004a <.do_clear_bss_start>:
-  4a:	af 36       	cpi	r26, 0x6F	; 111
+  4a:	a1 37       	cpi	r26, 0x71	; 113
   4c:	b2 07       	cpc	r27, r18
   4e:	e1 f7       	brne	.-8      	; 0x48 <.do_clear_bss_loop>
-  50:	1f d1       	rcall	.+574    	; 0x290 <main>
-  52:	6c c1       	rjmp	.+728    	; 0x32c <_exit>
+  50:	bd d1       	rcall	.+890    	; 0x3cc <main>
+  52:	18 c2       	rjmp	.+1072   	; 0x484 <_exit>
 
 00000054 <__bad_interrupt>:
   54:	d5 cf       	rjmp	.-86     	; 0x0 <__vectors>
@@ -110,17 +110,17 @@ Disassembly of section .text:
   8a:	cf 91       	pop	r28
   8c:	08 95       	ret
 
-0000008e <InitVoltageADC>:
-  8e:	bb 98       	cbi	0x17, 3	; 23
-  90:	c3 98       	cbi	0x18, 3	; 24
-  92:	83 e0       	ldi	r24, 0x03	; 3
+0000008e <InitCurrentSensorADC>:
+  8e:	bc 98       	cbi	0x17, 4	; 23
+  90:	c4 98       	cbi	0x18, 4	; 24
+  92:	82 e0       	ldi	r24, 0x02	; 2
   94:	87 b9       	out	0x07, r24	; 7
   96:	86 e9       	ldi	r24, 0x96	; 150
   98:	86 b9       	out	0x06, r24	; 6
   9a:	83 b1       	in	r24, 0x03	; 3
   9c:	80 74       	andi	r24, 0x40	; 64
   9e:	83 b9       	out	0x03, r24	; 3
-  a0:	a2 9a       	sbi	0x14, 2	; 20
+  a0:	a4 9a       	sbi	0x14, 4	; 20
   a2:	08 95       	ret
 
 000000a4 <StartAdcConversion>:
@@ -138,7 +138,7 @@ Disassembly of section .text:
   ba:	91 1d       	adc	r25, r1
   bc:	08 95       	ret
 
-000000be <GetVoltageAdcValueInMv>:
+000000be <GetCurrentAdcInMa>:
   be:	cf 92       	push	r12
   c0:	df 92       	push	r13
   c2:	ef 92       	push	r14
@@ -148,13 +148,13 @@ Disassembly of section .text:
   ca:	cf 93       	push	r28
   cc:	df 93       	push	r29
   ce:	ec 01       	movw	r28, r24
-  d0:	c7 36       	cpi	r28, 0x67	; 103
-  d2:	81 e2       	ldi	r24, 0x21	; 33
+  d0:	c2 3f       	cpi	r28, 0xF2	; 242
+  d2:	88 e3       	ldi	r24, 0x38	; 56
   d4:	d8 07       	cpc	r29, r24
-  d6:	10 f0       	brcs	.+4      	; 0xdc <GetVoltageAdcValueInMv+0x1e>
-  d8:	c6 e6       	ldi	r28, 0x66	; 102
-  da:	d1 e2       	ldi	r29, 0x21	; 33
-  dc:	d8 df       	rcall	.-80     	; 0x8e <InitVoltageADC>
+  d6:	10 f0       	brcs	.+4      	; 0xdc <GetCurrentAdcInMa+0x1e>
+  d8:	c1 ef       	ldi	r28, 0xF1	; 241
+  da:	d8 e3       	ldi	r29, 0x38	; 56
+  dc:	d8 df       	rcall	.-80     	; 0x8e <InitCurrentSensorADC>
   de:	e2 df       	rcall	.-60     	; 0xa4 <StartAdcConversion>
   e0:	00 e0       	ldi	r16, 0x00	; 0
   e2:	10 e0       	ldi	r17, 0x00	; 0
@@ -171,27 +171,27 @@ Disassembly of section .text:
   f8:	f1 1c       	adc	r15, r1
   fa:	0f 5f       	subi	r16, 0xFF	; 255
   fc:	1f 4f       	sbci	r17, 0xFF	; 255
-  fe:	f5 cf       	rjmp	.-22     	; 0xea <GetVoltageAdcValueInMv+0x2c>
- 100:	2b ee       	ldi	r18, 0xEB	; 235
+  fe:	f5 cf       	rjmp	.-22     	; 0xea <GetCurrentAdcInMa+0x2c>
+ 100:	20 e2       	ldi	r18, 0x20	; 32
  102:	31 e0       	ldi	r19, 0x01	; 1
  104:	40 e0       	ldi	r20, 0x00	; 0
  106:	50 e0       	ldi	r21, 0x00	; 0
  108:	c7 01       	movw	r24, r14
  10a:	b6 01       	movw	r22, r12
- 10c:	d4 d0       	rcall	.+424    	; 0x2b6 <__mulsi3>
- 10e:	29 e1       	ldi	r18, 0x19	; 25
+ 10c:	80 d1       	rcall	.+768    	; 0x40e <__mulsi3>
+ 10e:	2d e7       	ldi	r18, 0x7D	; 125
  110:	30 e0       	ldi	r19, 0x00	; 0
  112:	40 e0       	ldi	r20, 0x00	; 0
  114:	50 e0       	ldi	r21, 0x00	; 0
- 116:	e8 d0       	rcall	.+464    	; 0x2e8 <__udivmodsi4>
+ 116:	94 d1       	rcall	.+808    	; 0x440 <__udivmodsi4>
  118:	ca 01       	movw	r24, r20
  11a:	b9 01       	movw	r22, r18
  11c:	98 01       	movw	r18, r16
  11e:	40 e0       	ldi	r20, 0x00	; 0
  120:	50 e0       	ldi	r21, 0x00	; 0
- 122:	e2 d0       	rcall	.+452    	; 0x2e8 <__udivmodsi4>
+ 122:	8e d1       	rcall	.+796    	; 0x440 <__udivmodsi4>
  124:	c9 01       	movw	r24, r18
- 126:	40 96       	adiw	r24, 0x10	; 16
+ 126:	08 96       	adiw	r24, 0x08	; 8
  128:	df 91       	pop	r29
  12a:	cf 91       	pop	r28
  12c:	1f 91       	pop	r17
@@ -318,7 +318,7 @@ Disassembly of section .text:
  214:	81 f0       	breq	.+32     	; 0x236 <SwUartPrintLong+0x56>
  216:	a5 01       	movw	r20, r10
  218:	94 01       	movw	r18, r8
- 21a:	66 d0       	rcall	.+204    	; 0x2e8 <__udivmodsi4>
+ 21a:	12 d1       	rcall	.+548    	; 0x440 <__udivmodsi4>
  21c:	a6 2f       	mov	r26, r22
  21e:	b9 01       	movw	r22, r18
  220:	ca 01       	movw	r24, r20
@@ -378,98 +378,250 @@ Disassembly of section .text:
  28c:	8f 90       	pop	r8
  28e:	08 95       	ret
 
-00000290 <main>:
- 290:	82 e0       	ldi	r24, 0x02	; 2
- 292:	7c df       	rcall	.-264    	; 0x18c <SwUartInit>
- 294:	80 e6       	ldi	r24, 0x60	; 96
- 296:	90 e0       	ldi	r25, 0x00	; 0
- 298:	98 df       	rcall	.-208    	; 0x1ca <SwUartPrintString>
- 29a:	81 e0       	ldi	r24, 0x01	; 1
- 29c:	90 e0       	ldi	r25, 0x00	; 0
- 29e:	0f df       	rcall	.-482    	; 0xbe <GetVoltageAdcValueInMv>
- 2a0:	bc 01       	movw	r22, r24
- 2a2:	80 e0       	ldi	r24, 0x00	; 0
- 2a4:	90 e0       	ldi	r25, 0x00	; 0
- 2a6:	9c df       	rcall	.-200    	; 0x1e0 <SwUartPrintLong>
- 2a8:	8a e6       	ldi	r24, 0x6A	; 106
- 2aa:	90 e0       	ldi	r25, 0x00	; 0
- 2ac:	8e df       	rcall	.-228    	; 0x1ca <SwUartPrintString>
- 2ae:	84 ef       	ldi	r24, 0xF4	; 244
- 2b0:	91 e0       	ldi	r25, 0x01	; 1
- 2b2:	db de       	rcall	.-586    	; 0x6a <DelayMiliSec>
- 2b4:	ef cf       	rjmp	.-34     	; 0x294 <main+0x4>
+00000290 <BuzzerOff>:
+ 290:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 294:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 298:	8f 7d       	andi	r24, 0xDF	; 223
+ 29a:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 29e:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 2a2:	08 95       	ret
 
-000002b6 <__mulsi3>:
- 2b6:	ee 27       	eor	r30, r30
- 2b8:	ff 27       	eor	r31, r31
+000002a4 <AddChargeVoltageOff>:
+ 2a4:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 2a8:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2ac:	87 7f       	andi	r24, 0xF7	; 247
+ 2ae:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2b2:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 2b6:	08 95       	ret
 
-000002ba <__mulsi3_helper>:
- 2ba:	aa 27       	eor	r26, r26
- 2bc:	bb 27       	eor	r27, r27
- 2be:	08 c0       	rjmp	.+16     	; 0x2d0 <__mulsi3_helper+0x16>
- 2c0:	a2 0f       	add	r26, r18
- 2c2:	b3 1f       	adc	r27, r19
- 2c4:	e4 1f       	adc	r30, r20
- 2c6:	f5 1f       	adc	r31, r21
- 2c8:	22 0f       	add	r18, r18
- 2ca:	33 1f       	adc	r19, r19
- 2cc:	44 1f       	adc	r20, r20
- 2ce:	55 1f       	adc	r21, r21
- 2d0:	96 95       	lsr	r25
- 2d2:	87 95       	ror	r24
- 2d4:	77 95       	ror	r23
- 2d6:	67 95       	ror	r22
- 2d8:	98 f3       	brcs	.-26     	; 0x2c0 <__mulsi3_helper+0x6>
- 2da:	70 40       	sbci	r23, 0x00	; 0
- 2dc:	a9 f7       	brne	.-22     	; 0x2c8 <__mulsi3_helper+0xe>
- 2de:	00 97       	sbiw	r24, 0x00	; 0
- 2e0:	99 f7       	brne	.-26     	; 0x2c8 <__mulsi3_helper+0xe>
- 2e2:	bd 01       	movw	r22, r26
- 2e4:	cf 01       	movw	r24, r30
- 2e6:	08 95       	ret
+000002b8 <ConverterOff>:
+ 2b8:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 2bc:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2c0:	8f 7b       	andi	r24, 0xBF	; 191
+ 2c2:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2c6:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 2ca:	08 95       	ret
 
-000002e8 <__udivmodsi4>:
- 2e8:	a1 e2       	ldi	r26, 0x21	; 33
- 2ea:	1a 2e       	mov	r1, r26
- 2ec:	aa 1b       	sub	r26, r26
- 2ee:	bb 1b       	sub	r27, r27
- 2f0:	fd 01       	movw	r30, r26
- 2f2:	0d c0       	rjmp	.+26     	; 0x30e <__udivmodsi4_ep>
+000002cc <SenseBatteryVoltageOff>:
+ 2cc:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 2d0:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2d4:	8f 77       	andi	r24, 0x7F	; 127
+ 2d6:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2da:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 2de:	08 95       	ret
 
-000002f4 <__udivmodsi4_loop>:
- 2f4:	aa 1f       	adc	r26, r26
- 2f6:	bb 1f       	adc	r27, r27
- 2f8:	ee 1f       	adc	r30, r30
- 2fa:	ff 1f       	adc	r31, r31
- 2fc:	a2 17       	cp	r26, r18
- 2fe:	b3 07       	cpc	r27, r19
- 300:	e4 07       	cpc	r30, r20
- 302:	f5 07       	cpc	r31, r21
- 304:	20 f0       	brcs	.+8      	; 0x30e <__udivmodsi4_ep>
- 306:	a2 1b       	sub	r26, r18
- 308:	b3 0b       	sbc	r27, r19
- 30a:	e4 0b       	sbc	r30, r20
- 30c:	f5 0b       	sbc	r31, r21
+000002e0 <LedVoltGreen2Off>:
+ 2e0:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 2e4:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2e8:	9e 7f       	andi	r25, 0xFE	; 254
+ 2ea:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2ee:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 2f2:	08 95       	ret
 
-0000030e <__udivmodsi4_ep>:
- 30e:	66 1f       	adc	r22, r22
- 310:	77 1f       	adc	r23, r23
- 312:	88 1f       	adc	r24, r24
- 314:	99 1f       	adc	r25, r25
- 316:	1a 94       	dec	r1
- 318:	69 f7       	brne	.-38     	; 0x2f4 <__udivmodsi4_loop>
- 31a:	60 95       	com	r22
- 31c:	70 95       	com	r23
- 31e:	80 95       	com	r24
- 320:	90 95       	com	r25
- 322:	9b 01       	movw	r18, r22
- 324:	ac 01       	movw	r20, r24
- 326:	bd 01       	movw	r22, r26
- 328:	cf 01       	movw	r24, r30
- 32a:	08 95       	ret
+000002f4 <LedVoltGreen1Off>:
+ 2f4:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 2f8:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 2fc:	9b 7f       	andi	r25, 0xFB	; 251
+ 2fe:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 302:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 306:	08 95       	ret
 
-0000032c <_exit>:
- 32c:	f8 94       	cli
+00000308 <LedVoltYellowOff>:
+ 308:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 30c:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 310:	9f 7e       	andi	r25, 0xEF	; 239
+ 312:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 316:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 31a:	08 95       	ret
 
-0000032e <__stop_program>:
- 32e:	ff cf       	rjmp	.-2      	; 0x32e <__stop_program>
+0000031c <LedVoltRedOff>:
+ 31c:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 320:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 324:	9f 7b       	andi	r25, 0xBF	; 191
+ 326:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 32a:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 32e:	08 95       	ret
+
+00000330 <LedCurrGreen2Off>:
+ 330:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 334:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 338:	9f 77       	andi	r25, 0x7F	; 127
+ 33a:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 33e:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 342:	08 95       	ret
+
+00000344 <LedCurrGreen1Off>:
+ 344:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 348:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 34c:	9f 7d       	andi	r25, 0xDF	; 223
+ 34e:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 352:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 356:	08 95       	ret
+
+00000358 <LedCurrYellowOff>:
+ 358:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 35c:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 360:	97 7f       	andi	r25, 0xF7	; 247
+ 362:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 366:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 36a:	08 95       	ret
+
+0000036c <LedCurrRedOff>:
+ 36c:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 370:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 374:	9d 7f       	andi	r25, 0xFD	; 253
+ 376:	90 93 70 00 	sts	0x0070, r25	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 37a:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <g_shiftRegCodeWord>
+ 37e:	08 95       	ret
+
+00000380 <SendShiftRegisterWord>:
+ 380:	cf 93       	push	r28
+ 382:	df 93       	push	r29
+ 384:	d8 2f       	mov	r29, r24
+ 386:	c9 2f       	mov	r28, r25
+ 388:	c1 98       	cbi	0x18, 1	; 24
+ 38a:	8c e3       	ldi	r24, 0x3C	; 60
+ 38c:	64 de       	rcall	.-824    	; 0x56 <DelayMicroSec>
+ 38e:	8d 2f       	mov	r24, r29
+ 390:	9c 2f       	mov	r25, r28
+ 392:	20 e1       	ldi	r18, 0x10	; 16
+ 394:	97 ff       	sbrs	r25, 7
+ 396:	02 c0       	rjmp	.+4      	; 0x39c <SendShiftRegisterWord+0x1c>
+ 398:	c0 9a       	sbi	0x18, 0	; 24
+ 39a:	01 c0       	rjmp	.+2      	; 0x39e <SendShiftRegisterWord+0x1e>
+ 39c:	c0 98       	cbi	0x18, 0	; 24
+ 39e:	c1 9a       	sbi	0x18, 1	; 24
+ 3a0:	21 50       	subi	r18, 0x01	; 1
+ 3a2:	21 f0       	breq	.+8      	; 0x3ac <SendShiftRegisterWord+0x2c>
+ 3a4:	c1 98       	cbi	0x18, 1	; 24
+ 3a6:	88 0f       	add	r24, r24
+ 3a8:	99 1f       	adc	r25, r25
+ 3aa:	f4 cf       	rjmp	.-24     	; 0x394 <SendShiftRegisterWord+0x14>
+ 3ac:	df 91       	pop	r29
+ 3ae:	cf 91       	pop	r28
+ 3b0:	08 95       	ret
+
+000003b2 <ShiftRegInit>:
+ 3b2:	c1 98       	cbi	0x18, 1	; 24
+ 3b4:	c0 98       	cbi	0x18, 0	; 24
+ 3b6:	87 b3       	in	r24, 0x17	; 23
+ 3b8:	83 60       	ori	r24, 0x03	; 3
+ 3ba:	87 bb       	out	0x17, r24	; 23
+ 3bc:	80 e0       	ldi	r24, 0x00	; 0
+ 3be:	90 e0       	ldi	r25, 0x00	; 0
+ 3c0:	df cf       	rjmp	.-66     	; 0x380 <SendShiftRegisterWord>
+
+000003c2 <ShiftRegPush>:
+ 3c2:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <g_shiftRegCodeWord>
+ 3c6:	90 91 70 00 	lds	r25, 0x0070	; 0x800070 <g_shiftRegCodeWord+0x1>
+ 3ca:	da cf       	rjmp	.-76     	; 0x380 <SendShiftRegisterWord>
+
+000003cc <main>:
+ 3cc:	f2 df       	rcall	.-28     	; 0x3b2 <ShiftRegInit>
+ 3ce:	ce df       	rcall	.-100    	; 0x36c <LedCurrRedOff>
+ 3d0:	c3 df       	rcall	.-122    	; 0x358 <LedCurrYellowOff>
+ 3d2:	b8 df       	rcall	.-144    	; 0x344 <LedCurrGreen1Off>
+ 3d4:	ad df       	rcall	.-166    	; 0x330 <LedCurrGreen2Off>
+ 3d6:	a2 df       	rcall	.-188    	; 0x31c <LedVoltRedOff>
+ 3d8:	97 df       	rcall	.-210    	; 0x308 <LedVoltYellowOff>
+ 3da:	8c df       	rcall	.-232    	; 0x2f4 <LedVoltGreen1Off>
+ 3dc:	81 df       	rcall	.-254    	; 0x2e0 <LedVoltGreen2Off>
+ 3de:	58 df       	rcall	.-336    	; 0x290 <BuzzerOff>
+ 3e0:	61 df       	rcall	.-318    	; 0x2a4 <AddChargeVoltageOff>
+ 3e2:	6a df       	rcall	.-300    	; 0x2b8 <ConverterOff>
+ 3e4:	73 df       	rcall	.-282    	; 0x2cc <SenseBatteryVoltageOff>
+ 3e6:	ed df       	rcall	.-38     	; 0x3c2 <ShiftRegPush>
+ 3e8:	82 e0       	ldi	r24, 0x02	; 2
+ 3ea:	d0 de       	rcall	.-608    	; 0x18c <SwUartInit>
+ 3ec:	80 e6       	ldi	r24, 0x60	; 96
+ 3ee:	90 e0       	ldi	r25, 0x00	; 0
+ 3f0:	ec de       	rcall	.-552    	; 0x1ca <SwUartPrintString>
+ 3f2:	81 e0       	ldi	r24, 0x01	; 1
+ 3f4:	90 e0       	ldi	r25, 0x00	; 0
+ 3f6:	63 de       	rcall	.-826    	; 0xbe <GetCurrentAdcInMa>
+ 3f8:	bc 01       	movw	r22, r24
+ 3fa:	80 e0       	ldi	r24, 0x00	; 0
+ 3fc:	90 e0       	ldi	r25, 0x00	; 0
+ 3fe:	f0 de       	rcall	.-544    	; 0x1e0 <SwUartPrintLong>
+ 400:	8a e6       	ldi	r24, 0x6A	; 106
+ 402:	90 e0       	ldi	r25, 0x00	; 0
+ 404:	e2 de       	rcall	.-572    	; 0x1ca <SwUartPrintString>
+ 406:	84 ef       	ldi	r24, 0xF4	; 244
+ 408:	91 e0       	ldi	r25, 0x01	; 1
+ 40a:	2f de       	rcall	.-930    	; 0x6a <DelayMiliSec>
+ 40c:	ef cf       	rjmp	.-34     	; 0x3ec <main+0x20>
+
+0000040e <__mulsi3>:
+ 40e:	ee 27       	eor	r30, r30
+ 410:	ff 27       	eor	r31, r31
+
+00000412 <__mulsi3_helper>:
+ 412:	aa 27       	eor	r26, r26
+ 414:	bb 27       	eor	r27, r27
+ 416:	08 c0       	rjmp	.+16     	; 0x428 <__mulsi3_helper+0x16>
+ 418:	a2 0f       	add	r26, r18
+ 41a:	b3 1f       	adc	r27, r19
+ 41c:	e4 1f       	adc	r30, r20
+ 41e:	f5 1f       	adc	r31, r21
+ 420:	22 0f       	add	r18, r18
+ 422:	33 1f       	adc	r19, r19
+ 424:	44 1f       	adc	r20, r20
+ 426:	55 1f       	adc	r21, r21
+ 428:	96 95       	lsr	r25
+ 42a:	87 95       	ror	r24
+ 42c:	77 95       	ror	r23
+ 42e:	67 95       	ror	r22
+ 430:	98 f3       	brcs	.-26     	; 0x418 <__mulsi3_helper+0x6>
+ 432:	70 40       	sbci	r23, 0x00	; 0
+ 434:	a9 f7       	brne	.-22     	; 0x420 <__mulsi3_helper+0xe>
+ 436:	00 97       	sbiw	r24, 0x00	; 0
+ 438:	99 f7       	brne	.-26     	; 0x420 <__mulsi3_helper+0xe>
+ 43a:	bd 01       	movw	r22, r26
+ 43c:	cf 01       	movw	r24, r30
+ 43e:	08 95       	ret
+
+00000440 <__udivmodsi4>:
+ 440:	a1 e2       	ldi	r26, 0x21	; 33
+ 442:	1a 2e       	mov	r1, r26
+ 444:	aa 1b       	sub	r26, r26
+ 446:	bb 1b       	sub	r27, r27
+ 448:	fd 01       	movw	r30, r26
+ 44a:	0d c0       	rjmp	.+26     	; 0x466 <__udivmodsi4_ep>
+
+0000044c <__udivmodsi4_loop>:
+ 44c:	aa 1f       	adc	r26, r26
+ 44e:	bb 1f       	adc	r27, r27
+ 450:	ee 1f       	adc	r30, r30
+ 452:	ff 1f       	adc	r31, r31
+ 454:	a2 17       	cp	r26, r18
+ 456:	b3 07       	cpc	r27, r19
+ 458:	e4 07       	cpc	r30, r20
+ 45a:	f5 07       	cpc	r31, r21
+ 45c:	20 f0       	brcs	.+8      	; 0x466 <__udivmodsi4_ep>
+ 45e:	a2 1b       	sub	r26, r18
+ 460:	b3 0b       	sbc	r27, r19
+ 462:	e4 0b       	sbc	r30, r20
+ 464:	f5 0b       	sbc	r31, r21
+
+00000466 <__udivmodsi4_ep>:
+ 466:	66 1f       	adc	r22, r22
+ 468:	77 1f       	adc	r23, r23
+ 46a:	88 1f       	adc	r24, r24
+ 46c:	99 1f       	adc	r25, r25
+ 46e:	1a 94       	dec	r1
+ 470:	69 f7       	brne	.-38     	; 0x44c <__udivmodsi4_loop>
+ 472:	60 95       	com	r22
+ 474:	70 95       	com	r23
+ 476:	80 95       	com	r24
+ 478:	90 95       	com	r25
+ 47a:	9b 01       	movw	r18, r22
+ 47c:	ac 01       	movw	r20, r24
+ 47e:	bd 01       	movw	r22, r26
+ 480:	cf 01       	movw	r24, r30
+ 482:	08 95       	ret
+
+00000484 <_exit>:
+ 484:	f8 94       	cli
+
+00000486 <__stop_program>:
+ 486:	ff cf       	rjmp	.-2      	; 0x486 <__stop_program>

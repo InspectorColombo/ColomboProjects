@@ -4,15 +4,15 @@
 
 void InitCurrentSensorADC()
 {
-	// Disable port outputs and pull ups
-	DDRB &= ~((1 << PB3) | (1 << PB4));
-	PORTB &= ~((1 << PB3) | (1 << PB4));
+	// PB4(ADC2) - current sensor input. 
+	DDRB &= ~(1 << PB4);
+	PORTB &= ~(1 << PB4);
 	
 	// 00 - REFS10 - VCC voltage ADC reference
 	// 0 - ADLAR - right adjusted
 	// 0 - REFS2
-	// 0111 - MUX3..0 - ADC2+/ADC3- (Rcs/GND) 20x gain
-	ADMUX = 0b00000111;
+	// 0010 - MUX3..0 - ADC2 input
+	ADMUX = 0b00000010;
 	
 	// 1 - ADEN enabled
 	// 0 - ADSC start conversion disabled
@@ -32,11 +32,11 @@ void InitCurrentSensorADC()
 	// 00 - reserved
 	// 0 - ADC0D
 	// 1 - ADC2D	- disable digital input on "current sensor"
-	// 1 - ADC3D	- disable digital input on "ground sensor"
+	// 0 - ADC3D	- disable digital input on "ground sensor"
 	// 0 - ADC1D
 	// 0 - AIN1D
 	// 0 - AIN0D
-	DIDR0 |= (1 << ADC2D) | (1 << ADC3D);
+	DIDR0 |= (1 << ADC2D);
 }
 
 void InitVoltageADC()
@@ -71,11 +71,11 @@ void InitVoltageADC()
 	// 00 - reserved
 	// 0 - ADC0D
 	// 0 - ADC2D	- disable digital input on "current sensor"
-	// 0 - ADC3D	- disable digital input on "ground sensor"
-	// 1 - ADC1D
+	// 1 - ADC3D	- disable digital input on "ground sensor"
+	// 0 - ADC1D
 	// 0 - AIN1D
 	// 0 - AIN0D
-	DIDR0 |= (1 << ADC1D);
+	DIDR0 |= (1 << ADC3D);
 }
 
 uint16_t StartAdcConversion()
@@ -132,11 +132,11 @@ uint16_t GetVoltageAdcValueInMv(const uint16_t readCyclesCount)
  	return (uint16_t)(voltageInmV + ADC_OFFSET_ERROR);
 }
 
-uint16_t GetCurrentInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue)
+uint16_t GetCurrentAdcInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue)
 {
-	// 43000 - max cycles count to get average value without uint32 overflow
-	const uint16_t adcCyclesCount = (numberOfAdcReadCyclesToGetAverageValue > 43000)
-		? 43000
+	const uint16_t MAX_ADC_COUNT = 14577;
+	const uint16_t adcCyclesCount = (numberOfAdcReadCyclesToGetAverageValue > MAX_ADC_COUNT)
+		? MAX_ADC_COUNT
 		: numberOfAdcReadCyclesToGetAverageValue;
 
 	// 1st let's get current ADC value
@@ -146,18 +146,20 @@ uint16_t GetCurrentInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue)
 	uint16_t adcValue = StartAdcConversion();
 	
 	uint32_t summaryCurrentValue = 0;
-	for(uint16_t readCnt = adcCyclesCount; readCnt != 0; --readCnt)
+	for(uint16_t readCnt = 0; readCnt < adcCyclesCount; ++readCnt)
 	{
 		adcValue = StartAdcConversion();
 		summaryCurrentValue += ((uint32_t)adcValue);
 	}
 
-	// To obtain current in milliamps, adc should be multiplied by 2.425
-	// 2.425 = 2425 / 1000 = 97 / 40;
-	
-	summaryCurrentValue *= (uint32_t)(1964);
-	summaryCurrentValue /= (uint32_t)(100);
+	// Current ratio is 2.304mA / ADC div
+	// Current offset error = 8.53mA
+	// 2304/1000 = 288 / 125
+	summaryCurrentValue *= (uint32_t)(288);
+	summaryCurrentValue /= (uint32_t)(125);
 	summaryCurrentValue /= (uint32_t)(adcCyclesCount);
 
-	return (uint16_t)(summaryCurrentValue);
+	const uint16_t ADC_OFFSET_ERROR = 8;
+
+	return (uint16_t)(summaryCurrentValue) + ADC_OFFSET_ERROR;
 }

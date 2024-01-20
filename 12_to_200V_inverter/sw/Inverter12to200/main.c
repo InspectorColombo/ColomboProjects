@@ -16,14 +16,43 @@
 
 int main(void)
 {
+	{
+		ShiftRegInit();
+		LedCurrRedOff();
+		LedCurrYellowOff();
+		LedCurrGreen1Off();
+		LedCurrGreen2Off();
+		
+		LedVoltRedOff();
+		LedVoltYellowOff();
+		LedVoltGreen1Off();
+		LedVoltGreen2Off();
+		
+		BuzzerOff();
+		AddChargeVoltageOff();
+		ConverterOff();
+		SenseBatteryVoltageOff();
+
+		ShiftRegPush();	
+	}
+	
+	
+	
+	
+	
 	SwUartInit(SW_UART_57600);
 	//SwUartTestFrequencyPrecision();
 	for(;;)
 	{
-		SwUartPrintString("Voltage: ");
-		SwUartPrintLong(GetVoltageAdcValueInMv(1));
-		SwUartPrintString("\r\n");
+ 		SwUartPrintString("Current: ");
+ 		SwUartPrintLong(GetCurrentAdcInMa(1));
+ 		SwUartPrintString("\r\n");
 		
+//		SwUartPrintString("Voltage: ");
+//		SwUartPrintLong(GetVoltageAdcValueInMv(1));
+//		SwUartPrintString("\r\n");
+
+
 		DelayMiliSec(500);
 	}
 	
