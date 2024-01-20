@@ -41,15 +41,17 @@ void InitCurrentSensorADC()
 
 void InitVoltageADC()
 {
+	// PB3(ADC3) - battery voltage ADC
+	
 	// Disable port outputs and pull ups
-	DDRB &= ~(1 << PB2);
-	PORTB &= ~(1 << PB2);
+	DDRB &= ~(1 << PB3);
+	PORTB &= ~(1 << PB3);
 	
 	// 00 - REFS10 - VCC voltage ADC reference
 	// 0 - ADLAR - right adjusted
 	// 0 - REFS2
-	// 0001 - MUX3..0 - ADC1(+12V measurement)
-	ADMUX = 0b00000001;
+	// 0011 - MUX3..0 - ADC3(+12V battery measurement)
+	ADMUX = 0b00000011;
 	
 	// 1 - ADEN enabled
 	// 0 - ADSC start conversion disabled
@@ -101,34 +103,33 @@ uint16_t StartAdcConversion()
 	return result;
 }
 
-uint16_t GetVoltageAdcValueInMv(const uint16_t numberOfAdcReadCyclesToGetAverageValue)
+uint16_t GetVoltageAdcValueInMv(const uint16_t readCyclesCount)
 {
-	// 8533 - max cycles count to get average value without uint32 overflow
-	const uint16_t adcCyclesCount = (numberOfAdcReadCyclesToGetAverageValue > 8533)
-		? 8533
-		: numberOfAdcReadCyclesToGetAverageValue;
-	
+	// readCount may be 427 maximum
+	const uint16_t MAX_ADC_COUNT = 8550;
+	const uint16_t limitedReadCyclesCount = (readCyclesCount > MAX_ADC_COUNT) ? MAX_ADC_COUNT : readCyclesCount;
 	InitVoltageADC();
 	
 	// Fake read ADC value for 1st pass, to avoid incorrect values after ADC power ON
-	uint16_t adcValue = StartAdcConversion();
+	uint16_t currAdcValue = StartAdcConversion();
 	
-	
-	uint32_t summaryResult = 0;
-	for(uint16_t readCnt = adcCyclesCount; readCnt != 0; --readCnt)
+	// Real conversion
+	uint32_t voltageInmV = 0;
+	for(uint16_t i = 0; i < limitedReadCyclesCount; ++i)
 	{
-		adcValue = StartAdcConversion();
-		summaryResult += ((uint32_t)adcValue);
+		currAdcValue = StartAdcConversion();
+		voltageInmV += (uint32_t)(currAdcValue);
 	}
-
-	// Should be multiplied by 19.68 to obtain voltage value in mV
-	// 19.68 = 492/25
-	summaryResult *= 492;
-	summaryResult /= 25;
-
-	summaryResult /= (uint32_t)(adcCyclesCount);
-
-	return (uint16_t)(summaryResult);
+	
+	// 19.64mV/ADC step
+	// 491/25 = 19.64
+	voltageInmV *= (uint32_t)(491);
+	voltageInmV /= (uint32_t)(25);
+	voltageInmV /= (uint32_t)(limitedReadCyclesCount);
+	
+	// ADC offset error -16.0mV
+ 	const uint32_t ADC_OFFSET_ERROR = 16;
+ 	return (uint16_t)(voltageInmV + ADC_OFFSET_ERROR);
 }
 
 uint16_t GetCurrentInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue)
@@ -154,8 +155,8 @@ uint16_t GetCurrentInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue)
 	// To obtain current in milliamps, adc should be multiplied by 2.425
 	// 2.425 = 2425 / 1000 = 97 / 40;
 	
-	summaryCurrentValue *= (uint32_t)(97);
-	summaryCurrentValue /= (uint32_t)(40);
+	summaryCurrentValue *= (uint32_t)(1964);
+	summaryCurrentValue /= (uint32_t)(100);
 	summaryCurrentValue /= (uint32_t)(adcCyclesCount);
 
 	return (uint16_t)(summaryCurrentValue);

@@ -162,22 +162,71 @@ void SwUartPrintString(char* str)
 	}
 }
 
-void SwUartPrintByte(const uint8_t numb)
+void SwUartPrintWord(const uint16_t numbToPrint)
 {
-	uint8_t numbTemp = numb;
-	const uint8_t dgt0 = (numbTemp % 10);
-	numbTemp /= 10;
-	const uint8_t dgt1 = (numbTemp % 10);
-	numbTemp /= 10;
-	const uint8_t dgt2 = (numbTemp % 10);
-	if (dgt2 != 0)
+	uint16_t numb = numbToPrint;
+	uint8_t dgts[5];
+	for(uint8_t dgtCnt = 4;; --dgtCnt)
 	{
-		SwUartSendByte(dgt2 + '0');
+		uint8_t currDigit = 0;
+		if (numb != 0)
+		{
+			currDigit = (uint8_t)(numb % 10);
+			numb /= 10;
+		}
+		if (dgtCnt == 4 || currDigit != 0 || numb != 0)
+		{
+			currDigit += '0';
+		}
+		dgts[dgtCnt] = currDigit;
+		
+		if (dgtCnt == 0)
+			break;
 	}
-	if (dgt1 != 0)
+
+	for(uint8_t dgtCnt = 0; dgtCnt < 5; ++dgtCnt)
 	{
-		SwUartSendByte(dgt1 + '0');
+		uint8_t currDigit = dgts[dgtCnt];
+		if (currDigit != 0x00)
+		{
+			SwUartSendByte(currDigit);
+		}
 	}
-	SwUartSendByte(dgt0 + '0');
 }
 
+void SwUartPrintLong(const uint32_t src)
+{
+	uint32_t numb = src;
+	uint8_t dgts[10];
+	for(uint8_t dgtCnt = 9;; --dgtCnt)
+	{
+		uint8_t currDigit = 0;
+		if (numb != 0)
+		{
+			currDigit = (uint8_t)(numb % 10);
+			numb /= 10;
+		}
+		if (dgtCnt == 9 || currDigit != 0 || numb != 0)
+		{
+			currDigit += '0';
+		}
+		dgts[dgtCnt] = currDigit;
+		
+		if (dgtCnt == 0)
+		break;
+	}
+
+	for(uint8_t dgtCnt = 0; dgtCnt < 10; ++dgtCnt)
+	{
+		uint8_t currDigit = dgts[dgtCnt];
+		if (currDigit != 0x00)
+		{
+			SwUartSendByte(currDigit);
+		}
+	}
+}
+
+void SwUartPrintByte(const uint8_t numb)
+{
+	SwUartPrintWord((uint16_t)(numb));
+}

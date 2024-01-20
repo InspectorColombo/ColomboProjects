@@ -19,6 +19,8 @@ void SwUartTestFrequencyPrecision();
 
 void SwUartPrintString(char* str);
 void SwUartPrintByte(const uint8_t numb);
+void SwUartPrintWord(const uint16_t numb);
+void SwUartPrintLong(const uint32_t src);
 
 
 

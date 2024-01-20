@@ -20,17 +20,12 @@ int main(void)
 	//SwUartTestFrequencyPrecision();
 	for(;;)
 	{
-		SwUartPrintString("Hello, what's are you doing there?  ");
-		SwUartPrintByte(123);
+		SwUartPrintString("Voltage: ");
+		SwUartPrintLong(GetVoltageAdcValueInMv(1));
 		SwUartPrintString("\r\n");
+		
 		DelayMiliSec(500);
 	}
-	
-	
-	
-	
-	
-	
 	
 	ShiftRegInit();
 	
