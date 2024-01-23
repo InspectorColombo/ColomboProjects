@@ -28,13 +28,13 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
@@ -1375,7 +1375,7 @@ design rules under a new name.</description>
 <element name="D13" library="__MyCommonLib1" package="DO-41_12.5MM" value="UF4007" x="107" y="14"/>
 <element name="ZD2" library="__MyCommonLib1" package="DO-41_10MM" value="P6KE200" x="115" y="8" rot="R90"/>
 <element name="T10" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="16N60" x="101" y="19"/>
-<element name="R57" library="__MyCommonLib1" package="RSMD_1206" value="2R4" x="107" y="18" smashed="yes" rot="MR90">
+<element name="R57" library="__MyCommonLib1" package="RSMD_1206" value="3R6" x="107" y="18" smashed="yes" rot="MR90">
 <attribute name="NAME" x="107" y="18" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="106.4" y="16.8" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
@@ -1405,7 +1405,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="116" y="23" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="117" y="21" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
-<element name="R53" library="__MyCommonLib1" package="RSMD_0805" value="100R" x="112.4" y="23" smashed="yes" rot="MR180">
+<element name="R53" library="__MyCommonLib1" package="RSMD_0805" value="3K9" x="112.4" y="23" smashed="yes" rot="MR180">
 <attribute name="NAME" x="112.4" y="23" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="110.8" y="23.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
@@ -1433,7 +1433,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="113" y="43" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="111.6" y="43.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
-<element name="R46" library="__MyCommonLib1" package="RSMD_0805" value="3K6*" x="112.4" y="51" smashed="yes" rot="MR180">
+<element name="R46" library="__MyCommonLib1" package="RSMD_0805" value="9K1*" x="112.4" y="51" smashed="yes" rot="MR180">
 <attribute name="NAME" x="112.4" y="51" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="110.6" y="51.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
@@ -1618,14 +1618,38 @@ design rules under a new name.</description>
 <attribute name="NAME" x="135" y="67" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="133.6" y="67.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
-<element name="LED1" library="__MyCommonLib1" package="LED3MM" value="RED" x="146.6" y="82"/>
-<element name="LED2" library="__MyCommonLib1" package="LED3MM" value="GREEN" x="140" y="82"/>
-<element name="LED3" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="146.6" y="77"/>
-<element name="LED4" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="140" y="77"/>
-<element name="LED5" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="146.6" y="72"/>
-<element name="LED6" library="__MyCommonLib1" package="LED3MM" value="YELLOW" x="140" y="72"/>
-<element name="LED7" library="__MyCommonLib1" package="LED3MM" value="GREEN" x="146.6" y="67"/>
-<element name="LED8" library="__MyCommonLib1" package="LED3MM" value="RED" x="140" y="67"/>
+<element name="LED1" library="__MyCommonLib1" package="LED3MM" value="VOLT_GREEN2" x="146.6" y="82" smashed="yes">
+<attribute name="NAME" x="150.4" y="82" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="158" y="82.2" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="LED2" library="__MyCommonLib1" package="LED3MM" value="CURR_RED" x="140" y="82" smashed="yes">
+<attribute name="NAME" x="124.6" y="82.8" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="137.2" y="83" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="LED3" library="__MyCommonLib1" package="LED3MM" value="VOLT_GREEN1" x="146.6" y="77" smashed="yes">
+<attribute name="NAME" x="150.4" y="77" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="158" y="77.2" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="LED4" library="__MyCommonLib1" package="LED3MM" value="CURR_YELLOW" x="140" y="77" smashed="yes">
+<attribute name="NAME" x="123.4" y="77.6" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="137" y="77.8" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="LED5" library="__MyCommonLib1" package="LED3MM" value="VOLT_YELLOW" x="146.6" y="72" smashed="yes">
+<attribute name="NAME" x="150.4" y="72.2" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="157.6" y="72.2" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="LED6" library="__MyCommonLib1" package="LED3MM" value="CURR_GREEN1" x="140" y="72" smashed="yes">
+<attribute name="NAME" x="123.2" y="72.6" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="137" y="72.6" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="LED7" library="__MyCommonLib1" package="LED3MM" value="VOLT_RED" x="146.6" y="67" smashed="yes">
+<attribute name="NAME" x="150.6" y="67" size="1.27" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="157.6" y="67.2" size="1.27" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="LED8" library="__MyCommonLib1" package="LED3MM" value="CURR_GREEN2" x="140" y="67" smashed="yes">
+<attribute name="NAME" x="122.8" y="67.4" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="136.6" y="67.4" size="1.27" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
 <element name="C33" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="132.6" y="88.6" smashed="yes" rot="MR270">
 <attribute name="NAME" x="132.6" y="88.6" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
 <attribute name="VALUE" x="133.2" y="91.2" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
@@ -1975,6 +1999,9 @@ design rules under a new name.</description>
 <attribute name="NAME" x="110" y="62" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
 <attribute name="VALUE" x="108" y="63.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
+<element name="T14" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC857" x="-0.2" y="-4.8"/>
+<element name="R33" library="__MyCommonLib1" package="RSMD_0805" value="5K6" x="-0.6" y="-9"/>
+<element name="R34" library="__MyCommonLib1" package="RSMD_0805" value="560R" x="-0.6" y="-12.2"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -2690,6 +2717,8 @@ design rules under a new name.</description>
 <wire x1="109.05" y1="24.65" x2="112" y2="27.6" width="1" layer="16"/>
 <wire x1="112" y1="27.6" x2="112" y2="30.2" width="1" layer="16"/>
 <wire x1="112" y1="30.2" x2="112.2" y2="30.4" width="1" layer="16"/>
+<contactref element="R33" pad="PAD_1"/>
+<wire x1="0.45" y1="-9" x2="109.05" y2="23" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="+200VDC_OUT">
 <contactref element="C2" pad="PLUS"/>
@@ -3334,6 +3363,8 @@ design rules under a new name.</description>
 <wire x1="117.2" y1="23" x2="118" y2="23.8" width="0.5" layer="16"/>
 <wire x1="118" y1="23.8" x2="119" y2="23.8" width="0.5" layer="16"/>
 <wire x1="119" y1="23.8" x2="119" y2="24.05" width="0.5" layer="16"/>
+<contactref element="T14" pad="2"/>
+<wire x1="-1.4" y1="-3.5" x2="113.45" y2="23" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$44">
 <contactref element="T11" pad="2"/>
@@ -3546,6 +3577,10 @@ design rules under a new name.</description>
 <vertex x="102.6" y="45"/>
 <vertex x="101.6" y="45"/>
 </polygon>
+<contactref element="R34" pad="PAD_1"/>
+<contactref element="T14" pad="3"/>
+<wire x1="-0.2" y1="-6.1" x2="0.45" y2="-12.2" width="0" layer="19" extent="1-1"/>
+<wire x1="81.9" y1="25.08" x2="-0.2" y2="-6.1" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$51">
 <contactref element="D14" pad="CATHODE"/>
@@ -5211,6 +5246,13 @@ design rules under a new name.</description>
 <contactref element="IC2" pad="2"/>
 <contactref element="R59" pad="PAD_1"/>
 <wire x1="115.73" y1="61.81" x2="118.05" y2="65" width="0" layer="19" extent="16-16"/>
+</signal>
+<signal name="N$40">
+<contactref element="R34" pad="PAD_0"/>
+<contactref element="T14" pad="1"/>
+<contactref element="R33" pad="PAD_0"/>
+<wire x1="-1.65" y1="-9" x2="-1.65" y2="-12.2" width="0" layer="19" extent="1-1"/>
+<wire x1="1" y1="-3.5" x2="-1.65" y2="-9" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 </board>

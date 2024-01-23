@@ -8,7 +8,7 @@
 </settings>
 <grid distance="0.2" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -23,19 +23,19 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -1375,7 +1375,7 @@ design rules under a new name.</description>
 <element name="D13" library="__MyCommonLib1" package="DO-41_12.5MM" value="UF4007" x="107" y="14"/>
 <element name="ZD2" library="__MyCommonLib1" package="DO-41_10MM" value="P6KE200" x="115" y="8" rot="R90"/>
 <element name="T10" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="16N60" x="101" y="19"/>
-<element name="R57" library="__MyCommonLib1" package="RSMD_1206" value="3R9" x="107" y="18" smashed="yes" rot="MR90">
+<element name="R57" library="__MyCommonLib1" package="RSMD_1206" value="2R4" x="107" y="18" smashed="yes" rot="MR90">
 <attribute name="NAME" x="107" y="18" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="106.4" y="16.8" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
@@ -1405,7 +1405,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="116" y="23" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="117" y="21" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
-<element name="R53" library="__MyCommonLib1" package="RSMD_0805" value="3K9*" x="112.4" y="23" smashed="yes" rot="MR180">
+<element name="R53" library="__MyCommonLib1" package="RSMD_0805" value="100R" x="112.4" y="23" smashed="yes" rot="MR180">
 <attribute name="NAME" x="112.4" y="23" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="110.8" y="23.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
@@ -1433,7 +1433,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="113" y="43" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="111.6" y="43.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
-<element name="R46" library="__MyCommonLib1" package="RSMD_0805" value="3K9*" x="112.4" y="51" smashed="yes" rot="MR180">
+<element name="R46" library="__MyCommonLib1" package="RSMD_0805" value="3K6*" x="112.4" y="51" smashed="yes" rot="MR180">
 <attribute name="NAME" x="112.4" y="51" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="110.6" y="51.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
@@ -4088,8 +4088,8 @@ design rules under a new name.</description>
 <vertex x="130" y="93.2"/>
 <vertex x="130" y="89.8"/>
 <vertex x="132.6" y="89.8"/>
-<vertex x="132.8" y="98"/>
-<vertex x="132" y="98.8"/>
+<vertex x="132.6" y="98"/>
+<vertex x="131.8" y="98.8"/>
 </polygon>
 <wire x1="102.95" y1="90.8" x2="100.6" y2="90.8" width="1" layer="16"/>
 <wire x1="100.6" y1="90.8" x2="100.4" y2="90.6" width="1" layer="16"/>
@@ -4826,6 +4826,7 @@ design rules under a new name.</description>
 <wire x1="93.6" y1="71" x2="94.95" y2="71" width="0.8" layer="16"/>
 <wire x1="94.95" y1="71" x2="95" y2="71.05" width="0.8" layer="16"/>
 <wire x1="95" y1="72.92" x2="95" y2="71.05" width="0.8" layer="1"/>
+<wire x1="95" y1="71.05" x2="95" y2="71.05" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$117">
 <via x="6" y="6" extent="1-16" drill="5" diameter="10"/>
@@ -4892,9 +4893,7 @@ design rules under a new name.</description>
 <vertex x="78.8" y="60.2"/>
 <vertex x="75.6" y="57"/>
 </polygon>
-<contactref element="IC2" pad="2"/>
 <contactref element="C39" pad="PAD_1"/>
-<wire x1="115.73" y1="61.81" x2="114.87" y2="60.95" width="0.8" layer="16"/>
 <wire x1="114.87" y1="60.95" x2="113" y2="60.95" width="0.8" layer="16"/>
 <wire x1="113" y1="60.95" x2="110" y2="60.95" width="0.8" layer="16"/>
 <wire x1="78.8" y1="64.2" x2="78.8" y2="59.4" width="0.8" layer="16"/>
@@ -4940,6 +4939,8 @@ design rules under a new name.</description>
 <vertex x="108" y="61.6"/>
 <vertex x="107.2" y="61.6"/>
 </polygon>
+<contactref element="IC2" pad="1"/>
+<wire x1="114.87" y1="60.95" x2="118.27" y2="61.81" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$125">
 <contactref element="R62" pad="PAD_1"/>
@@ -5178,12 +5179,6 @@ design rules under a new name.</description>
 <vertex x="73.2" y="16.8"/>
 </polygon>
 </signal>
-<signal name="N$40">
-<contactref element="IC2" pad="1"/>
-<contactref element="R59" pad="PAD_1"/>
-<wire x1="118.05" y1="65" x2="118.05" y2="62.03" width="0.8" layer="16"/>
-<wire x1="118.05" y1="62.03" x2="118.27" y2="61.81" width="0.8" layer="16"/>
-</signal>
 <signal name="N$61">
 <contactref element="RT1" pad="PAD_0"/>
 <contactref element="F2" pad="PAD1"/>
@@ -5211,6 +5206,11 @@ design rules under a new name.</description>
 <vertex x="140.8" y="58.8"/>
 <vertex x="139.8" y="59.8"/>
 </polygon>
+</signal>
+<signal name="N$13">
+<contactref element="IC2" pad="2"/>
+<contactref element="R59" pad="PAD_1"/>
+<wire x1="115.73" y1="61.81" x2="118.05" y2="65" width="0" layer="19" extent="16-16"/>
 </signal>
 </signals>
 </board>
