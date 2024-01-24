@@ -16,14 +16,14 @@ del "%AvrDudeDir%\CurrentSensor.bin"
 copy "%ProjectDir%%BuildConfig%\CurrentSensor.bin" "%AvrDudeDir%\CurrentSensor.bin" /y 
 
 cd "%AvrDudeDir%"
-avrdude.exe -p attiny45 -c USBTiny -B 10 -U flash:w:CurrentSensor.bin:r
-avrdude.exe -p attiny45 -c USBTiny -B 10 -U hfuse:w:0xdc:m
+avrdude.exe -p attiny45 -c USBTiny -B 150 -U flash:w:CurrentSensor.bin:r
+avrdude.exe -p attiny45 -c USBTiny -B 150 -U hfuse:w:0xdc:m
 
 rem 1MHz
 rem avrdude.exe -p attiny45 -c USBTiny -B 10 -U lfuse:w:0x62:m
 
 rem 8MHz
-avrdude.exe -p attiny45 -c USBTiny -B 10 -U lfuse:w:0xE2:m
+avrdude.exe -p attiny45 -c USBTiny -B 150 -U lfuse:w:0xE2:m
 
 
-avrdude.exe -p attiny45 -c USBTiny -B 10 -U efuse:w:0xFF:m
+avrdude.exe -p attiny45 -c USBTiny -B 150 -U efuse:w:0xFF:m

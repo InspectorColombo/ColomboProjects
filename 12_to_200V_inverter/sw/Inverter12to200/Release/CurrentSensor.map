@@ -1,19 +1,19 @@
 Archive member included to satisfy reference by file (symbol)
 
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+                              cs_adc.o (__mulhi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
                               cs_adc.o (__mulsi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodqi4.o)
                               VoltageCurrentLevels.o (__udivmodqi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodhi4.o)
-                              DebugSwUart.o (__udivmodhi4)
+                              cs_adc.o (__udivmodhi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_divmodhi4.o)
                               VoltageCurrentLevels.o (__divmodhi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
                               cs_adc.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o (exit)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
-                              main.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
                               DebugSwUart.o (__do_clear_bss)
 
@@ -27,24 +27,50 @@ Discarded input sections
  .text          0x00000000        0x0 cs_adc.o
  .data          0x00000000        0x0 cs_adc.o
  .bss           0x00000000        0x0 cs_adc.o
+ .text.InitCurrentSensorADC
+                0x00000000       0x16 cs_adc.o
  .text.InitVoltageADC
                 0x00000000       0x16 cs_adc.o
+ .text.InitTemperatureSensorADC
+                0x00000000       0x16 cs_adc.o
+ .text.StartAdcConversion
+                0x00000000       0x1a cs_adc.o
  .text.GetVoltageAdcValueInMv
                 0x00000000       0x7c cs_adc.o
+ .text.GetCurrentAdcInMa
+                0x00000000       0x7c cs_adc.o
+ .text.GetTemperatureAdcInDegrees
+                0x00000000       0xcc cs_adc.o
+ .progmem.data.TempSensorTable
+                0x00000000       0x5a cs_adc.o
+ .comment       0x00000000       0x31 cs_adc.o
  .text          0x00000000        0x0 DebugSwUart.o
  .data          0x00000000        0x0 DebugSwUart.o
  .bss           0x00000000        0x0 DebugSwUart.o
+ .text.SwUartOneBitDelay
+                0x00000000       0x26 DebugSwUart.o
+ .text.SetOsccal
+                0x00000000       0x2c DebugSwUart.o
+ .text.SwUartInit
+                0x00000000       0x14 DebugSwUart.o
+ .text.SwUartSendByte
+                0x00000000       0x2a DebugSwUart.o
  .text.SwUartTestFrequencyPrecision
                 0x00000000       0x14 DebugSwUart.o
+ .text.SwUartPrintString
+                0x00000000       0x16 DebugSwUart.o
  .text.SwUartPrintWord
                 0x00000000       0x90 DebugSwUart.o
+ .text.SwUartPrintLong
+                0x00000000       0xb0 DebugSwUart.o
  .text.SwUartPrintByte
                 0x00000000        0x4 DebugSwUart.o
+ .bss.g_swUartBaudrate
+                0x00000000        0x1 DebugSwUart.o
+ .comment       0x00000000       0x31 DebugSwUart.o
  .text          0x00000000        0x0 LedsControl.o
  .data          0x00000000        0x0 LedsControl.o
  .bss           0x00000000        0x0 LedsControl.o
- .text.BuzzerOn
-                0x00000000       0x14 LedsControl.o
  .text.AddChargeVoltageOn
                 0x00000000       0x14 LedsControl.o
  .text.ConverterOn
@@ -52,8 +78,6 @@ Discarded input sections
  .text.SenseBatteryVoltageOn
                 0x00000000       0x14 LedsControl.o
  .text.LedVoltGreen2On
-                0x00000000       0x14 LedsControl.o
- .text.LedVoltGreen1On
                 0x00000000       0x14 LedsControl.o
  .text.LedVoltYellowOn
                 0x00000000       0x14 LedsControl.o
@@ -70,6 +94,8 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text.GetKeysStatus
+                0x00000000       0x30 main.o
  .text          0x00000000        0x0 VoltageCurrentLevels.o
  .data          0x00000000        0x0 VoltageCurrentLevels.o
  .bss           0x00000000        0x0 VoltageCurrentLevels.o
@@ -90,9 +116,27 @@ Discarded input sections
  .progmem.data.CurrentLevelsTable
                 0x00000000       0x18 VoltageCurrentLevels.o
  .comment       0x00000000       0x31 VoltageCurrentLevels.o
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .text.libgcc.mul
+                0x00000000       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
+ .text.libgcc.mul
+                0x00000000       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .text.libgcc.div
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
@@ -157,6 +201,8 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
  .text.libgcc.mul
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.div
+                0x00000000       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
  .text.libgcc.prologue
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
@@ -182,22 +228,6 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
- .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
@@ -345,7 +375,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x488
+.text           0x00000000      0x27a
  *(.vectors)
  .vectors       0x00000000       0x1e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
                 0x00000000                __vector_default
@@ -386,10 +416,8 @@ END GROUP
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x0000002a       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
-                0x0000002a                __do_copy_data
- .init4         0x00000040       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
-                0x00000040                __do_clear_bss
+ .init4         0x0000002a       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
+                0x0000002a                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -400,120 +428,101 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000050        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
+ .init9         0x0000003a        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
  *(.init9)
  *(.text)
- .text          0x00000054        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
-                0x00000054                __vector_1
-                0x00000054                __vector_12
-                0x00000054                __bad_interrupt
-                0x00000054                __vector_6
-                0x00000054                __vector_3
-                0x00000054                __vector_11
-                0x00000054                __vector_13
-                0x00000054                __vector_7
-                0x00000054                __vector_5
-                0x00000054                __vector_4
-                0x00000054                __vector_9
-                0x00000054                __vector_2
-                0x00000054                __vector_8
-                0x00000054                __vector_14
-                0x00000054                __vector_10
-                0x00000056                . = ALIGN (0x2)
+ .text          0x0000003e        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
+                0x0000003e                __vector_1
+                0x0000003e                __vector_12
+                0x0000003e                __bad_interrupt
+                0x0000003e                __vector_6
+                0x0000003e                __vector_3
+                0x0000003e                __vector_11
+                0x0000003e                __vector_13
+                0x0000003e                __vector_7
+                0x0000003e                __vector_5
+                0x0000003e                __vector_4
+                0x0000003e                __vector_9
+                0x0000003e                __vector_2
+                0x0000003e                __vector_8
+                0x0000003e                __vector_14
+                0x0000003e                __vector_10
+                0x00000040                . = ALIGN (0x2)
  *(.text.*)
  .text.DelayMicroSec
-                0x00000056       0x14 CsDelay.o
-                0x00000056                DelayMicroSec
+                0x00000040       0x14 CsDelay.o
+                0x00000040                DelayMicroSec
  .text.DelayMiliSec
-                0x0000006a       0x24 CsDelay.o
-                0x0000006a                DelayMiliSec
- .text.InitCurrentSensorADC
-                0x0000008e       0x16 cs_adc.o
-                0x0000008e                InitCurrentSensorADC
- .text.StartAdcConversion
-                0x000000a4       0x1a cs_adc.o
-                0x000000a4                StartAdcConversion
- .text.GetCurrentAdcInMa
-                0x000000be       0x7c cs_adc.o
-                0x000000be                GetCurrentAdcInMa
- .text.SwUartOneBitDelay
-                0x0000013a       0x26 DebugSwUart.o
-                0x0000013a                SwUartOneBitDelay
- .text.SetOsccal
-                0x00000160       0x2c DebugSwUart.o
-                0x00000160                SetOsccal
- .text.SwUartInit
-                0x0000018c       0x14 DebugSwUart.o
-                0x0000018c                SwUartInit
- .text.SwUartSendByte
-                0x000001a0       0x2a DebugSwUart.o
-                0x000001a0                SwUartSendByte
- .text.SwUartPrintString
-                0x000001ca       0x16 DebugSwUart.o
-                0x000001ca                SwUartPrintString
- .text.SwUartPrintLong
-                0x000001e0       0xb0 DebugSwUart.o
-                0x000001e0                SwUartPrintLong
+                0x00000054       0x24 CsDelay.o
+                0x00000054                DelayMiliSec
+ .text.BuzzerOn
+                0x00000078       0x14 LedsControl.o
+                0x00000078                BuzzerOn
  .text.BuzzerOff
-                0x00000290       0x14 LedsControl.o
-                0x00000290                BuzzerOff
+                0x0000008c       0x14 LedsControl.o
+                0x0000008c                BuzzerOff
  .text.AddChargeVoltageOff
-                0x000002a4       0x14 LedsControl.o
-                0x000002a4                AddChargeVoltageOff
+                0x000000a0       0x14 LedsControl.o
+                0x000000a0                AddChargeVoltageOff
  .text.ConverterOff
-                0x000002b8       0x14 LedsControl.o
-                0x000002b8                ConverterOff
+                0x000000b4       0x14 LedsControl.o
+                0x000000b4                ConverterOff
  .text.SenseBatteryVoltageOff
-                0x000002cc       0x14 LedsControl.o
-                0x000002cc                SenseBatteryVoltageOff
+                0x000000c8       0x14 LedsControl.o
+                0x000000c8                SenseBatteryVoltageOff
  .text.LedVoltGreen2Off
-                0x000002e0       0x14 LedsControl.o
-                0x000002e0                LedVoltGreen2Off
+                0x000000dc       0x14 LedsControl.o
+                0x000000dc                LedVoltGreen2Off
+ .text.LedVoltGreen1On
+                0x000000f0       0x14 LedsControl.o
+                0x000000f0                LedVoltGreen1On
  .text.LedVoltGreen1Off
-                0x000002f4       0x14 LedsControl.o
-                0x000002f4                LedVoltGreen1Off
+                0x00000104       0x14 LedsControl.o
+                0x00000104                LedVoltGreen1Off
  .text.LedVoltYellowOff
-                0x00000308       0x14 LedsControl.o
-                0x00000308                LedVoltYellowOff
+                0x00000118       0x14 LedsControl.o
+                0x00000118                LedVoltYellowOff
  .text.LedVoltRedOff
-                0x0000031c       0x14 LedsControl.o
-                0x0000031c                LedVoltRedOff
+                0x0000012c       0x14 LedsControl.o
+                0x0000012c                LedVoltRedOff
  .text.LedCurrGreen2Off
-                0x00000330       0x14 LedsControl.o
-                0x00000330                LedCurrGreen2Off
+                0x00000140       0x14 LedsControl.o
+                0x00000140                LedCurrGreen2Off
  .text.LedCurrGreen1Off
-                0x00000344       0x14 LedsControl.o
-                0x00000344                LedCurrGreen1Off
+                0x00000154       0x14 LedsControl.o
+                0x00000154                LedCurrGreen1Off
  .text.LedCurrYellowOff
-                0x00000358       0x14 LedsControl.o
-                0x00000358                LedCurrYellowOff
+                0x00000168       0x14 LedsControl.o
+                0x00000168                LedCurrYellowOff
  .text.LedCurrRedOff
-                0x0000036c       0x14 LedsControl.o
-                0x0000036c                LedCurrRedOff
+                0x0000017c       0x14 LedsControl.o
+                0x0000017c                LedCurrRedOff
  .text.SendShiftRegisterWord
-                0x00000380       0x32 LedsControl.o
-                0x00000380                SendShiftRegisterWord
+                0x00000190       0x32 LedsControl.o
+                0x00000190                SendShiftRegisterWord
  .text.ShiftRegInit
-                0x000003b2       0x10 LedsControl.o
-                0x000003b2                ShiftRegInit
+                0x000001c2       0x10 LedsControl.o
+                0x000001c2                ShiftRegInit
  .text.ShiftRegPush
-                0x000003c2        0xa LedsControl.o
-                0x000003c2                ShiftRegPush
+                0x000001d2        0xa LedsControl.o
+                0x000001d2                ShiftRegPush
+ .text.StartTimer1DelayInMs
+                0x000001dc       0x3a main.o
+                0x000001dc                StartTimer1DelayInMs
+ .text.IsTimer1DelayInMsElapsed
+                0x00000216       0x14 main.o
+                0x00000216                IsTimer1DelayInMsElapsed
+ .text.WaitTimer1DelayInMsElapsed
+                0x0000022a        0x8 main.o
+                0x0000022a                WaitTimer1DelayInMsElapsed
  .text.startup.main
-                0x000003cc       0x42 main.o
-                0x000003cc                main
- .text.libgcc.mul
-                0x0000040e       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
-                0x0000040e                __mulsi3
-                0x00000412                __mulsi3_helper
- .text.libgcc.div
-                0x00000440       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
-                0x00000440                __udivmodsi4
-                0x00000484                . = ALIGN (0x2)
+                0x00000232       0x44 main.o
+                0x00000232                main
+                0x00000276                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000484        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
-                0x00000484                _exit
-                0x00000484                exit
+ .fini9         0x00000276        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+                0x00000276                _exit
+                0x00000276                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -532,45 +541,39 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000484        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+ .fini0         0x00000276        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000488                _etext = .
+                0x0000027a                _etext = .
 
-.data           0x00800060        0xe load address 0x00000488
-                0x00800060                PROVIDE (__data_start, .)
+.data           0x00800060        0x0 load address 0x0000027a
+                [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x00800060        0xd main.o
  *(.gnu.linkonce.r*)
-                0x0080006e                . = ALIGN (0x2)
- *fill*         0x0080006d        0x1 
-                0x0080006e                _edata = .
-                0x0080006e                PROVIDE (__data_end, .)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                [!provide]                PROVIDE (__data_end, .)
 
-.bss            0x0080006e        0x3
-                0x0080006e                PROVIDE (__bss_start, .)
+.bss            0x00800060        0x2
+                0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.g_swUartBaudrate
-                0x0080006e        0x1 DebugSwUart.o
-                0x0080006e                g_swUartBaudrate
  .bss.g_shiftRegCodeWord
-                0x0080006f        0x2 LedsControl.o
-                0x0080006f                g_shiftRegCodeWord
+                0x00800060        0x2 LedsControl.o
+                0x00800060                g_shiftRegCodeWord
  *(COMMON)
-                0x00800071                PROVIDE (__bss_end, .)
-                0x00000488                __data_load_start = LOADADDR (.data)
-                0x00000496                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800062                PROVIDE (__bss_end, .)
+                0x0000027a                __data_load_start = LOADADDR (.data)
+                0x0000027a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800071        0x0
+.noinit         0x00800062        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800071                _end = .
+                0x00800062                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -614,8 +617,6 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 CsDelay.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 cs_adc.o
- .comment       0x00000030       0x31 DebugSwUart.o
  .comment       0x00000030       0x31 LedsControl.o
  .comment       0x00000030       0x31 main.o
 

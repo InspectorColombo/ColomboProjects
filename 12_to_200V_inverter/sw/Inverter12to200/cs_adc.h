@@ -11,4 +11,7 @@ uint16_t GetVoltageAdcValueInMv(const uint16_t numberOfAdcReadCyclesToGetAverage
 // Return current in milliamps
 uint16_t GetCurrentAdcInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue);
 
+uint8_t GetTemperatureAdcInDegrees(const uint16_t numberOfAdcReadCyclesToGetAverageValue);
+
+
 #endif
