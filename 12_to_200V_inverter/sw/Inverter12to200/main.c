@@ -87,189 +87,224 @@ void WaitTimer1DelayInMsElapsed()
 	}
 }
 
+inline void Timer1Delay(const uint16_t delayInMs)
+{
+	StartTimer1DelayInMs(delayInMs);
+	WaitTimer1DelayInMsElapsed();
+}
+
+
+
+void StartUpInit()
+{
+	ShiftRegInit();
+
+	AllLedsOff();
+	BuzzerOff();
+	AddChargeVoltageOff();
+	ConverterOff();
+	SenseBatteryVoltageOn();
+	ShiftRegPush();
+}
+
+void Beep(const uint16_t durationInMs)
+{
+	BuzzerOn();
+	ShiftRegPush();
+	StartTimer1DelayInMs(durationInMs);
+	WaitTimer1DelayInMsElapsed();
+	BuzzerOff();
+	ShiftRegPush();
+}
+
+// STATUS WORD definition
+#define ST_OVERTEMPERATURE	0x00000001
+#define ST_CONVERTER_ENABLE	0x00000010
+#define ST_LOW_BATTERY		0x00000100
+#define ST_LOW_BATTERY		0x00000100
+
+
+struct StatusWord
+{
+	uint8_t status;	
+	
+	void Check()
+	{
+		if (status == 15)
+		{
+			DelayMiliSec(2);
+		}
+	}
+};
 
 
 int main(void)
 {
-	{
-		ShiftRegInit();
-		LedCurrRedOff();
-		LedCurrYellowOff();
-		LedCurrGreen1Off();
-		LedCurrGreen2Off();
-		
-		LedVoltRedOff();
-		LedVoltYellowOff();
-		LedVoltGreen1Off();
-		LedVoltGreen2Off();
-		
-		BuzzerOff();
-		AddChargeVoltageOff();
-		ConverterOff();
-		SenseBatteryVoltageOff();
+	StartUpInit();
 
-		ShiftRegPush();	
-	}
+	//SwUartInit(SW_UART_57600);
 	
-	BuzzerOn();
-	ShiftRegPush();
-	DelayMiliSec(200);
-	BuzzerOff();
-	ShiftRegPush();	
+	// Start beep
+	Beep(100);
+
+	// main cycle
+
+	uint8_t prevVoltageLedLevel = 0;
+	uint8_t prevCurrentLedLevel = 0;
+	struct LedsFlashData voltageFlashData;
+	struct LedsFlashData currentFlashData;
+
+
 	
+	uint8_t forceLowBatteryOperation = 0;
+	uint8_t forceLowBatteryKeyPressCount = 0;
+	uint8_t prevKeysStatus = GetKeysStatus();
+		
+	//const uint8_t batteryLowWarningBeepCount = 0;
+	const uint16_t voltageHysteresys = 30;	// 30mV
+	const uint16_t currentHysteresys = 10;	// 10mA
+	const uint16_t ADC_READ_COUNT = 100;
+	StartTimer1DelayInMs(100);
 	
+	// Counter of 100mSec period
+	uint8_t cnt100ms = 29;
+	
+	struct StatusWord state;
+	
+	state.status = 12;
 	
 	for(;;)
 	{
-		
-		LedVoltGreen1On();
-		ShiftRegPush();
-		StartTimer1DelayInMs(10);
-		WaitTimer1DelayInMsElapsed();
-
-		LedVoltGreen1Off();
-		ShiftRegPush();
-		StartTimer1DelayInMs(10);		
-		WaitTimer1DelayInMsElapsed();
-	}
-
-	
-	SwUartInit(SW_UART_57600);
-
-	for(;;)
-	{
-		if (GetKeysStatus() == 1)
+		++cnt100ms;
+		if (cnt100ms >= 30)
 		{
-			LedVoltGreen2On();
+			cnt100ms = 0;
+		}
+		WaitTimer1DelayInMsElapsed();
+		StartTimer1DelayInMs(100);
+		
+		// Check temperature
+		const uint16_t TURN_OFF_TEMPERATURE = 85;
+		const uint16_t TURN_ON_TEMPERATURE = 50;
+		const uint16_t currentTemperature = GetTemperatureAdcInDegrees(ADC_READ_COUNT);
+		if (currentTemperature >= TURN_OFF_TEMPERATURE)
+		{
+			cnt100ms = 0;
+			ConverterOff();
+			AddChargeVoltageOff();
+			AllLedsOff();
+			ShiftRegPush();
+			
+			// 5 beeps inform about over temperature
+			if (cnt100ms == 0 || cnt100ms == 2 || cnt100ms == 4 || cnt100ms == 6 || cnt100ms == 8)
+			{
+				if (state.status == 12)
+				{
+					LedCurrYellowOff();
+					ShiftRegPush();
+				}
+				
+				AllLedsOff();
+				LedCurrYellowOn();
+				LedVoltYellowOn();
+				ShiftRegPush();
+				Beep(50);
+			}
+			else
+			{
+				AllLedsOff();
+				ShiftRegPush();
+			}
+
+			for(;;)
+			{
+				for(uint8_t tempBeepCount = 5; tempBeepCount != 0; --tempBeepCount)
+				{
+					Beep(50);
+					LedCurrYellowOn();
+					LedVoltYellowOn();
+					ShiftRegPush();
+					DelayMiliSec(100);
+					LedCurrYellowOff();
+					LedVoltYellowOff();
+					ShiftRegPush();
+					
+				}
+				
+				for(uint8_t temperatureCheckCount = 30; temperatureCheckCount != 0; --temperatureCheckCount)
+				{
+					DelayMiliSec(100);
+					if (GetTemperatureAdcInDegrees(ADC_READ_COUNT) <= TURN_ON_TEMPERATURE)
+						break;					
+				}
+				if (GetTemperatureAdcInDegrees(ADC_READ_COUNT) <= TURN_ON_TEMPERATURE)
+					break;
+			}
+			continue;
+		}
+		
+		uint16_t voltage = GetVoltageAdcValueInMv(ADC_READ_COUNT);
+		uint16_t current = GetCurrentAdcInMa(ADC_READ_COUNT);
+
+		// Check additional voltage on charger
+		const uint16_t CHARGER_ADD_VOLTAGE_ON_THRESHOLD = 140;
+		const uint16_t CHARGER_ADD_VOLTAGE_OFF_THRESHOLD = 100;
+		if (current < CHARGER_ADD_VOLTAGE_OFF_THRESHOLD)
+		{
+			AddChargeVoltageOff();
+			LedVoltRedOff();
 			ShiftRegPush();
 		}
 		else
 		{
-			LedVoltGreen2Off();
+			if (current > CHARGER_ADD_VOLTAGE_ON_THRESHOLD)
+			{
+				LedVoltRedOn();
+				AddChargeVoltageOn();
+				ShiftRegPush();
+			}			
+		}
+
+		// Read keys status
+		const uint8_t keysStatus = GetKeysStatus();
+		
+		// Check for battery low voltages
+		const uint16_t BATTERY_LOW_WARNING_LEVEL = 10100;
+		const uint16_t BATTERY_LOW_TURN_OFF_LEVEL = 9700;
+		const uint16_t BATTERY_LOW_TURN_ON_LEVEL = 10500;
+		if (voltage < BATTERY_LOW_WARNING_LEVEL && keysStatus != 0 && forceLowBatteryOperation == 0)
+		{
+// 			if (batteryLowWarningBeepCount < 3)
+// 			{
+// 				Beep(50);
+// 			}
+// 			DelayMiliSec(100);
+// 			batteryLowWarningBeepCount = (batteryLowWarningBeepCount < 30)
+// 				? batteryLowWarningBeepCount + 1
+// 				: 0;
+		}
+		
+		if (voltage < BATTERY_LOW_TURN_OFF_LEVEL && keysStatus != 0 && forceLowBatteryOperation == 0)
+		{
+			ConverterOff();
+			BuzzerOn();
 			ShiftRegPush();
 		}
-	
-	}
 
-
-
-/*	
-	uint8_t onState = 0;
-	for(;;)
-	{
-		onState = (onState == 0) ? 1 : 0;
-		
-		
-		if (onState != 0)
+		if ((voltage > BATTERY_LOW_TURN_ON_LEVEL || forceLowBatteryOperation == 1) && keysStatus != 0)
 		{
-			SenseBatteryVoltageOn();
+			ConverterOn();
+			BuzzerOff();
+			ShiftRegPush();
 		}
-		else
-		{
-			SenseBatteryVoltageOff();
-		}
-		ShiftRegPush();
+
+		// Check battery undervoltage ""
 		
-		const uint8_t testCnt = 20;
-		uint16_t results[testCnt];
-		for(uint8_t i = 0; i < testCnt; ++i)
-		{
-			results[i] = GetVoltageAdcValueInMv(1);
-			DelayMiliSec(1);
-		}
 		
-		SwUartPrintString((onState != 0) ? "ON\r\n" : "OFF\r\n");
-		for(uint8_t i = 0; i < testCnt; ++i)
-		{
-			SwUartPrintString("Voltage[");
-			SwUartPrintByte(i);
-			SwUartPrintString("]=");
-			SwUartPrintWord(results[i]);
-			SwUartPrintString("mV\r\n");
-		}
-		DelayMiliSec(5000);
-	}
-*/
-
-	ShiftRegInit();
-	
-	
-	for(;;)
-	{
-		LedCurrRedOff();
-		LedVoltRedOn();	
- 		ShiftRegPush();	
- 		DelayMiliSec(500);
-		 
-		LedVoltRedOff();
-		LedVoltYellowOn();
-		ShiftRegPush();
-		DelayMiliSec(500);
 		
-		LedVoltYellowOff(); 
-		LedVoltGreen1On();
-		ShiftRegPush();
-		DelayMiliSec(500);
-		 
-		LedVoltGreen1Off();
-		LedVoltGreen2On();
-		ShiftRegPush();
-		DelayMiliSec(500);
+		// Check 
+		
 
-		LedVoltGreen2Off();
-		LedCurrGreen2On();
-		ShiftRegPush();
-		DelayMiliSec(500);
-
-		LedCurrGreen2Off();
-		LedCurrGreen1On();
-		ShiftRegPush();
-		DelayMiliSec(500);
-
-		LedCurrGreen1Off();
-		LedCurrYellowOn();
-		ShiftRegPush();
-		DelayMiliSec(500);
-
-		LedCurrYellowOff();
-		LedCurrRedOn();
-		ShiftRegPush();
-		DelayMiliSec(500);
-	}
-
-	
-	
-// 	for(;;)
-// 	{
-// 		BuzzerOn();
-// 		ConverterOn();
-// 		ShiftRegPush();
-// 		DelayMiliSec(500);
-// 
-// 		BuzzerOff();
-// 		ShiftRegPush();
-// 		DelayMiliSec(1500);
-// 		
-// 		ConverterOff();
-// 		ShiftRegPush();
-// 		DelayMiliSec(2000);
-// 	}
-
-	
-	
-	
-// 	uint8_t prevVoltageLedLevel = 0;
-// 	uint8_t prevCurrentLedLevel = 0;
-// 	struct LedsFlashData voltageFlashData;
-// 	struct LedsFlashData currentFlashData;
-// 	
-// 	const uint16_t voltageHysteresys = 30;	// 30mV
-// 	const uint16_t currentHysteresys = 10;	// 10mA
-// 	for(;;)
-// 	{
-// 		uint16_t voltage = GetVoltageAdcValueInMv(1000);
-// 		uint16_t current = GetCurrentInMa(1000);
-// 		
 // 		uint8_t currentLedLevel = GetCurrentLedLevelNew(current, 0);
 // 		uint8_t voltageLedLevel = GetVoltageLedLevelNew(voltage, 0);
 // 
@@ -288,23 +323,28 @@ int main(void)
 // 			currentBits = (currentFlashData.flashMask != 0 && flashCnt < currentFlashData.flashCount)
 // 				? currentFlashData.bitsMask
 // 				: (currentFlashData.bitsMask & ~(currentFlashData.flashMask));
-// 				
+// 
 // 			voltageBits = (voltageFlashData.flashMask != 0 && flashCnt < voltageFlashData.flashCount)
 // 				? voltageFlashData.bitsMask
 // 				: (voltageFlashData.bitsMask & ~(voltageFlashData.flashMask));
 // 
 // 			UpdateLedsState(currentBits, voltageBits);
 // 			DelayMiliSec(120);
-// 			
+// 
 // 			currentBits = currentFlashData.bitsMask & ~(currentFlashData.flashMask);
 // 			voltageBits = voltageFlashData.bitsMask & ~(voltageFlashData.flashMask);
 // 
 // 			UpdateLedsState(currentBits, voltageBits);
 // 			DelayMiliSec(120);
 // 		}
-// 		
+// 
 // 		prevVoltageLedLevel = voltageLedLevel;
 // 		prevCurrentLedLevel = currentLedLevel;
-// 	}
+		
+		prevKeysStatus = keysStatus;
+		WaitTimer1DelayInMsElapsed();
+	}	
+
+
 }
 

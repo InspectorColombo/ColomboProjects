@@ -37,11 +37,11 @@ inline void BuzzerOff()
 
 inline void AddChargeVoltageOn()
 {
-	g_shiftRegCodeWord |= SR_ADD_CHARGE_VOLTAGE;
+	g_shiftRegCodeWord &= ~SR_ADD_CHARGE_VOLTAGE;
 }
 inline void AddChargeVoltageOff()
 {
-	g_shiftRegCodeWord &= ~SR_ADD_CHARGE_VOLTAGE;
+	g_shiftRegCodeWord |= SR_ADD_CHARGE_VOLTAGE;	
 }
 
 inline void ConverterOn()
@@ -129,6 +129,19 @@ inline void LedCurrRedOn()
 inline void LedCurrRedOff()
 {
 	g_shiftRegCodeWord &= ~SR_LED_CURR_RED;
+}
+
+void AllLedsOff()
+{
+	LedCurrRedOff();
+	LedCurrYellowOff();
+	LedCurrGreen1Off();
+	LedCurrGreen2Off();
+	
+	LedVoltRedOff();
+	LedVoltYellowOff();
+	LedVoltGreen1Off();
+	LedVoltGreen2Off();
 }
 
 

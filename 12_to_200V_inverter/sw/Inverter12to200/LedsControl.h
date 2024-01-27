@@ -34,6 +34,8 @@ void LedCurrYellowOff();
 void LedCurrRedOn();
 void LedCurrRedOff();
 
+void AllLedsOff();
+
 
 //void SendLedByte(const uint8_t byteToSend);
 
