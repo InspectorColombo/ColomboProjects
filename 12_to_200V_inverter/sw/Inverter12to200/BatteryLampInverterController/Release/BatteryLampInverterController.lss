@@ -1,0 +1,1023 @@
+
+BatteryLampInverterController.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000794  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000808  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  00800060  00800060  00000808  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000808  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000838  2**2
+                  CONTENTS, READONLY
+  5 .debug_info   00000420  00000000  00000000  00000874  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000003e8  00000000  00000000  00000c94  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000000f2  00000000  00000000  0000107c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000169  00000000  00000000  0000116e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	3b c0       	rjmp	.+118    	; 0x78 <__ctors_end>
+   2:	4a c0       	rjmp	.+148    	; 0x98 <__bad_interrupt>
+   4:	49 c0       	rjmp	.+146    	; 0x98 <__bad_interrupt>
+   6:	48 c0       	rjmp	.+144    	; 0x98 <__bad_interrupt>
+   8:	47 c0       	rjmp	.+142    	; 0x98 <__bad_interrupt>
+   a:	46 c0       	rjmp	.+140    	; 0x98 <__bad_interrupt>
+   c:	45 c0       	rjmp	.+138    	; 0x98 <__bad_interrupt>
+   e:	44 c0       	rjmp	.+136    	; 0x98 <__bad_interrupt>
+  10:	43 c0       	rjmp	.+134    	; 0x98 <__bad_interrupt>
+  12:	42 c0       	rjmp	.+132    	; 0x98 <__bad_interrupt>
+  14:	41 c0       	rjmp	.+130    	; 0x98 <__bad_interrupt>
+  16:	40 c0       	rjmp	.+128    	; 0x98 <__bad_interrupt>
+  18:	3f c0       	rjmp	.+126    	; 0x98 <__bad_interrupt>
+  1a:	3e c0       	rjmp	.+124    	; 0x98 <__bad_interrupt>
+  1c:	3d c0       	rjmp	.+122    	; 0x98 <__bad_interrupt>
+
+0000001e <TempSensorTable>:
+  1e:	00 00 ff 98 00 87 ac 00 82 c3 00 7d de 00 78 f9     ...........}..x.
+  2e:	00 73 1d 01 6e 3d 01 69 61 01 64 88 01 5f b3 01     .s..n=.ia.d.._..
+  3e:	5a de 01 55 0d 02 50 3c 02 4b 6f 02 46 98 02 41     Z..U..P<.Ko.F..A
+  4e:	c5 02 3c ef 02 37 19 03 32 3b 03 2d 5c 03 28 78     ..<..7..2;.-\.(x
+  5e:	03 23 93 03 1e ad 03 19 be 03 14 cd 03 0f d8 03     .#..............
+  6e:	0a e3 03 05 e9 03 01 ff 03 00                       ..........
+
+00000078 <__ctors_end>:
+  78:	11 24       	eor	r1, r1
+  7a:	1f be       	out	0x3f, r1	; 63
+  7c:	cf e5       	ldi	r28, 0x5F	; 95
+  7e:	d1 e0       	ldi	r29, 0x01	; 1
+  80:	de bf       	out	0x3e, r29	; 62
+  82:	cd bf       	out	0x3d, r28	; 61
+
+00000084 <__do_clear_bss>:
+  84:	20 e0       	ldi	r18, 0x00	; 0
+  86:	a0 e6       	ldi	r26, 0x60	; 96
+  88:	b0 e0       	ldi	r27, 0x00	; 0
+  8a:	01 c0       	rjmp	.+2      	; 0x8e <.do_clear_bss_start>
+
+0000008c <.do_clear_bss_loop>:
+  8c:	1d 92       	st	X+, r1
+
+0000008e <.do_clear_bss_start>:
+  8e:	a2 36       	cpi	r26, 0x62	; 98
+  90:	b2 07       	cpc	r27, r18
+  92:	e1 f7       	brne	.-8      	; 0x8c <.do_clear_bss_loop>
+  94:	57 d0       	rcall	.+174    	; 0x144 <main>
+  96:	7c c3       	rjmp	.+1784   	; 0x790 <_exit>
+
+00000098 <__bad_interrupt>:
+  98:	b3 cf       	rjmp	.-154    	; 0x0 <__vectors>
+
+0000009a <_Z8IsKeysONv>:
+  9a:	cf 93       	push	r28
+  9c:	df 93       	push	r29
+  9e:	77 d2       	rcall	.+1262   	; 0x58e <_Z22SenseBatteryVoltageOffv>
+  a0:	fd d2       	rcall	.+1530   	; 0x69c <_Z12ShiftRegPushv>
+  a2:	83 e0       	ldi	r24, 0x03	; 3
+  a4:	90 e0       	ldi	r25, 0x00	; 0
+  a6:	db d0       	rcall	.+438    	; 0x25e <_Z12DelayMiliSecj>
+  a8:	81 e0       	ldi	r24, 0x01	; 1
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	18 d1       	rcall	.+560    	; 0x2de <GetVoltageAdcValueInMv>
+  ae:	ec 01       	movw	r28, r24
+  b0:	64 d2       	rcall	.+1224   	; 0x57a <_Z21SenseBatteryVoltageOnv>
+  b2:	f4 d2       	rcall	.+1512   	; 0x69c <_Z12ShiftRegPushv>
+  b4:	83 e0       	ldi	r24, 0x03	; 3
+  b6:	90 e0       	ldi	r25, 0x00	; 0
+  b8:	d2 d0       	rcall	.+420    	; 0x25e <_Z12DelayMiliSecj>
+  ba:	81 e0       	ldi	r24, 0x01	; 1
+  bc:	c9 3e       	cpi	r28, 0xE9	; 233
+  be:	d3 40       	sbci	r29, 0x03	; 3
+  c0:	08 f4       	brcc	.+2      	; 0xc4 <_Z8IsKeysONv+0x2a>
+  c2:	80 e0       	ldi	r24, 0x00	; 0
+  c4:	df 91       	pop	r29
+  c6:	cf 91       	pop	r28
+  c8:	08 95       	ret
+
+000000ca <_Z20StartTimer1DelayInMsj>:
+  ca:	81 15       	cp	r24, r1
+  cc:	22 e0       	ldi	r18, 0x02	; 2
+  ce:	92 07       	cpc	r25, r18
+  d0:	20 f4       	brcc	.+8      	; 0xda <_Z20StartTimer1DelayInMsj+0x10>
+  d2:	96 95       	lsr	r25
+  d4:	87 95       	ror	r24
+  d6:	80 95       	com	r24
+  d8:	01 c0       	rjmp	.+2      	; 0xdc <_Z20StartTimer1DelayInMsj+0x12>
+  da:	80 e0       	ldi	r24, 0x00	; 0
+  dc:	9f e0       	ldi	r25, 0x0F	; 15
+  de:	90 bf       	out	0x30, r25	; 48
+  e0:	9c b5       	in	r25, 0x2c	; 44
+  e2:	93 78       	andi	r25, 0x83	; 131
+  e4:	9c bd       	out	0x2c, r25	; 44
+  e6:	1e bc       	out	0x2e, r1	; 46
+  e8:	1b bc       	out	0x2b, r1	; 43
+  ea:	9f ef       	ldi	r25, 0xFF	; 255
+  ec:	9d bd       	out	0x2d, r25	; 45
+  ee:	97 b5       	in	r25, 0x27	; 39
+  f0:	9b 7f       	andi	r25, 0xFB	; 251
+  f2:	97 bd       	out	0x27, r25	; 39
+  f4:	99 b7       	in	r25, 0x39	; 57
+  f6:	9f 7b       	andi	r25, 0xBF	; 191
+  f8:	99 bf       	out	0x39, r25	; 57
+  fa:	8f bd       	out	0x2f, r24	; 47
+  fc:	88 b7       	in	r24, 0x38	; 56
+  fe:	84 60       	ori	r24, 0x04	; 4
+ 100:	88 bf       	out	0x38, r24	; 56
+ 102:	08 95       	ret
+
+00000104 <_Z24IsTimer1DelayInMsElapsedv>:
+ 104:	98 b7       	in	r25, 0x38	; 56
+ 106:	89 2f       	mov	r24, r25
+ 108:	84 70       	andi	r24, 0x04	; 4
+ 10a:	92 ff       	sbrs	r25, 2
+ 10c:	04 c0       	rjmp	.+8      	; 0x116 <_Z24IsTimer1DelayInMsElapsedv+0x12>
+ 10e:	88 b7       	in	r24, 0x38	; 56
+ 110:	84 60       	ori	r24, 0x04	; 4
+ 112:	88 bf       	out	0x38, r24	; 56
+ 114:	81 e0       	ldi	r24, 0x01	; 1
+ 116:	08 95       	ret
+
+00000118 <_Z26WaitTimer1DelayInMsElapsedv>:
+ 118:	f5 df       	rcall	.-22     	; 0x104 <_Z24IsTimer1DelayInMsElapsedv>
+ 11a:	88 23       	and	r24, r24
+ 11c:	e9 f3       	breq	.-6      	; 0x118 <_Z26WaitTimer1DelayInMsElapsedv>
+ 11e:	08 95       	ret
+
+00000120 <_Z11StartUpInitv>:
+ 120:	b5 d2       	rcall	.+1386   	; 0x68c <_Z12ShiftRegInitv>
+ 122:	8f d2       	rcall	.+1310   	; 0x642 <_Z10AllLedsOffv>
+ 124:	02 d2       	rcall	.+1028   	; 0x52a <_Z9BuzzerOffv>
+ 126:	15 d2       	rcall	.+1066   	; 0x552 <_Z19AddChargeVoltageOffv>
+ 128:	1e d2       	rcall	.+1084   	; 0x566 <_Z12ConverterOffv>
+ 12a:	27 d2       	rcall	.+1102   	; 0x57a <_Z21SenseBatteryVoltageOnv>
+ 12c:	b7 c2       	rjmp	.+1390   	; 0x69c <_Z12ShiftRegPushv>
+
+0000012e <_Z4Beepj>:
+ 12e:	cf 93       	push	r28
+ 130:	df 93       	push	r29
+ 132:	ec 01       	movw	r28, r24
+ 134:	f0 d1       	rcall	.+992    	; 0x516 <_Z8BuzzerOnv>
+ 136:	b2 d2       	rcall	.+1380   	; 0x69c <_Z12ShiftRegPushv>
+ 138:	ce 01       	movw	r24, r28
+ 13a:	91 d0       	rcall	.+290    	; 0x25e <_Z12DelayMiliSecj>
+ 13c:	f6 d1       	rcall	.+1004   	; 0x52a <_Z9BuzzerOffv>
+ 13e:	df 91       	pop	r29
+ 140:	cf 91       	pop	r28
+ 142:	ac c2       	rjmp	.+1368   	; 0x69c <_Z12ShiftRegPushv>
+
+00000144 <main>:
+ 144:	cf 93       	push	r28
+ 146:	df 93       	push	r29
+ 148:	1f 92       	push	r1
+ 14a:	cd b7       	in	r28, 0x3d	; 61
+ 14c:	de b7       	in	r29, 0x3e	; 62
+ 14e:	f8 94       	cli
+ 150:	e7 df       	rcall	.-50     	; 0x120 <_Z11StartUpInitv>
+ 152:	84 e6       	ldi	r24, 0x64	; 100
+ 154:	90 e0       	ldi	r25, 0x00	; 0
+ 156:	eb df       	rcall	.-42     	; 0x12e <_Z4Beepj>
+ 158:	84 e6       	ldi	r24, 0x64	; 100
+ 15a:	90 e0       	ldi	r25, 0x00	; 0
+ 15c:	b6 df       	rcall	.-148    	; 0xca <_Z20StartTimer1DelayInMsj>
+ 15e:	ce 01       	movw	r24, r28
+ 160:	01 96       	adiw	r24, 0x01	; 1
+ 162:	99 d1       	rcall	.+818    	; 0x496 <_ZN7LedLamp13LedLampStatusC1Ev>
+ 164:	60 e0       	ldi	r22, 0x00	; 0
+ 166:	ce 01       	movw	r24, r28
+ 168:	01 96       	adiw	r24, 0x01	; 1
+ 16a:	9c d1       	rcall	.+824    	; 0x4a4 <_ZN7LedLamp13LedLampStatus18SetOverTemperatureEb>
+ 16c:	ce 01       	movw	r24, r28
+ 16e:	01 96       	adiw	r24, 0x01	; 1
+ 170:	ba d1       	rcall	.+884    	; 0x4e6 <_ZNK7LedLamp13LedLampStatus7IsKeyONEv>
+ 172:	18 2f       	mov	r17, r24
+ 174:	68 2f       	mov	r22, r24
+ 176:	ce 01       	movw	r24, r28
+ 178:	01 96       	adiw	r24, 0x01	; 1
+ 17a:	c4 d1       	rcall	.+904    	; 0x504 <_ZN7LedLamp13LedLampStatus12SetPrevKeyONEb>
+ 17c:	61 2f       	mov	r22, r17
+ 17e:	ce 01       	movw	r24, r28
+ 180:	01 96       	adiw	r24, 0x01	; 1
+ 182:	b7 d1       	rcall	.+878    	; 0x4f2 <_ZN7LedLamp13LedLampStatus8SetKeyONEb>
+ 184:	c9 df       	rcall	.-110    	; 0x118 <_Z26WaitTimer1DelayInMsElapsedv>
+ 186:	84 e6       	ldi	r24, 0x64	; 100
+ 188:	90 e0       	ldi	r25, 0x00	; 0
+ 18a:	9f df       	rcall	.-194    	; 0xca <_Z20StartTimer1DelayInMsj>
+ 18c:	81 e0       	ldi	r24, 0x01	; 1
+ 18e:	90 e0       	ldi	r25, 0x00	; 0
+ 190:	22 d1       	rcall	.+580    	; 0x3d6 <GetTemperatureAdcInDegrees>
+ 192:	08 2f       	mov	r16, r24
+ 194:	10 e0       	ldi	r17, 0x00	; 0
+ 196:	84 e6       	ldi	r24, 0x64	; 100
+ 198:	90 e0       	ldi	r25, 0x00	; 0
+ 19a:	a1 d0       	rcall	.+322    	; 0x2de <GetVoltageAdcValueInMv>
+ 19c:	7c 01       	movw	r14, r24
+ 19e:	84 e6       	ldi	r24, 0x64	; 100
+ 1a0:	90 e0       	ldi	r25, 0x00	; 0
+ 1a2:	db d0       	rcall	.+438    	; 0x35a <GetCurrentAdcInMa>
+ 1a4:	6c 01       	movw	r12, r24
+ 1a6:	ce 01       	movw	r24, r28
+ 1a8:	01 96       	adiw	r24, 0x01	; 1
+ 1aa:	9d d1       	rcall	.+826    	; 0x4e6 <_ZNK7LedLamp13LedLampStatus7IsKeyONEv>
+ 1ac:	68 2f       	mov	r22, r24
+ 1ae:	ce 01       	movw	r24, r28
+ 1b0:	01 96       	adiw	r24, 0x01	; 1
+ 1b2:	a8 d1       	rcall	.+848    	; 0x504 <_ZN7LedLamp13LedLampStatus12SetPrevKeyONEb>
+ 1b4:	72 df       	rcall	.-284    	; 0x9a <_Z8IsKeysONv>
+ 1b6:	68 2f       	mov	r22, r24
+ 1b8:	ce 01       	movw	r24, r28
+ 1ba:	01 96       	adiw	r24, 0x01	; 1
+ 1bc:	9a d1       	rcall	.+820    	; 0x4f2 <_ZN7LedLamp13LedLampStatus8SetKeyONEb>
+ 1be:	ce 01       	movw	r24, r28
+ 1c0:	01 96       	adiw	r24, 0x01	; 1
+ 1c2:	6c d1       	rcall	.+728    	; 0x49c <_ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv>
+ 1c4:	81 11       	cpse	r24, r1
+ 1c6:	03 c0       	rjmp	.+6      	; 0x1ce <__stack+0x6f>
+ 1c8:	05 35       	cpi	r16, 0x55	; 85
+ 1ca:	11 05       	cpc	r17, r1
+ 1cc:	a0 f5       	brcc	.+104    	; 0x236 <__stack+0xd7>
+ 1ce:	ce 01       	movw	r24, r28
+ 1d0:	01 96       	adiw	r24, 0x01	; 1
+ 1d2:	64 d1       	rcall	.+712    	; 0x49c <_ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv>
+ 1d4:	88 23       	and	r24, r24
+ 1d6:	19 f0       	breq	.+6      	; 0x1de <__stack+0x7f>
+ 1d8:	03 33       	cpi	r16, 0x33	; 51
+ 1da:	11 05       	cpc	r17, r1
+ 1dc:	88 f1       	brcs	.+98     	; 0x240 <__stack+0xe1>
+ 1de:	84 ee       	ldi	r24, 0xE4	; 228
+ 1e0:	e8 16       	cp	r14, r24
+ 1e2:	85 e2       	ldi	r24, 0x25	; 37
+ 1e4:	f8 06       	cpc	r15, r24
+ 1e6:	10 f4       	brcc	.+4      	; 0x1ec <__stack+0x8d>
+ 1e8:	61 e0       	ldi	r22, 0x01	; 1
+ 1ea:	06 c0       	rjmp	.+12     	; 0x1f8 <__stack+0x99>
+ 1ec:	85 eb       	ldi	r24, 0xB5	; 181
+ 1ee:	e8 16       	cp	r14, r24
+ 1f0:	8d e2       	ldi	r24, 0x2D	; 45
+ 1f2:	f8 06       	cpc	r15, r24
+ 1f4:	48 f0       	brcs	.+18     	; 0x208 <__stack+0xa9>
+ 1f6:	60 e0       	ldi	r22, 0x00	; 0
+ 1f8:	ce 01       	movw	r24, r28
+ 1fa:	01 96       	adiw	r24, 0x01	; 1
+ 1fc:	62 d1       	rcall	.+708    	; 0x4c2 <_ZN7LedLamp13LedLampStatus13SetLowBatteryEb>
+ 1fe:	60 e0       	ldi	r22, 0x00	; 0
+ 200:	ce 01       	movw	r24, r28
+ 202:	01 96       	adiw	r24, 0x01	; 1
+ 204:	67 d1       	rcall	.+718    	; 0x4d4 <_ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb>
+ 206:	0a c0       	rjmp	.+20     	; 0x21c <__stack+0xbd>
+ 208:	84 e7       	ldi	r24, 0x74	; 116
+ 20a:	e8 16       	cp	r14, r24
+ 20c:	87 e2       	ldi	r24, 0x27	; 39
+ 20e:	f8 06       	cpc	r15, r24
+ 210:	28 f4       	brcc	.+10     	; 0x21c <__stack+0xbd>
+ 212:	ce 01       	movw	r24, r28
+ 214:	01 96       	adiw	r24, 0x01	; 1
+ 216:	4f d1       	rcall	.+670    	; 0x4b6 <_ZNK7LedLamp13LedLampStatus12IsLowBatteryEv>
+ 218:	88 23       	and	r24, r24
+ 21a:	89 f3       	breq	.-30     	; 0x1fe <__stack+0x9f>
+ 21c:	8d e8       	ldi	r24, 0x8D	; 141
+ 21e:	c8 16       	cp	r12, r24
+ 220:	d1 04       	cpc	r13, r1
+ 222:	10 f0       	brcs	.+4      	; 0x228 <__stack+0xc9>
+ 224:	8c d1       	rcall	.+792    	; 0x53e <_Z18AddChargeVoltageOnv>
+ 226:	ae cf       	rjmp	.-164    	; 0x184 <__stack+0x25>
+ 228:	84 e6       	ldi	r24, 0x64	; 100
+ 22a:	c8 16       	cp	r12, r24
+ 22c:	d1 04       	cpc	r13, r1
+ 22e:	08 f0       	brcs	.+2      	; 0x232 <__stack+0xd3>
+ 230:	a9 cf       	rjmp	.-174    	; 0x184 <__stack+0x25>
+ 232:	8f d1       	rcall	.+798    	; 0x552 <_Z19AddChargeVoltageOffv>
+ 234:	a7 cf       	rjmp	.-178    	; 0x184 <__stack+0x25>
+ 236:	61 e0       	ldi	r22, 0x01	; 1
+ 238:	ce 01       	movw	r24, r28
+ 23a:	01 96       	adiw	r24, 0x01	; 1
+ 23c:	33 d1       	rcall	.+614    	; 0x4a4 <_ZN7LedLamp13LedLampStatus18SetOverTemperatureEb>
+ 23e:	c7 cf       	rjmp	.-114    	; 0x1ce <__stack+0x6f>
+ 240:	60 e0       	ldi	r22, 0x00	; 0
+ 242:	ce 01       	movw	r24, r28
+ 244:	01 96       	adiw	r24, 0x01	; 1
+ 246:	2e d1       	rcall	.+604    	; 0x4a4 <_ZN7LedLamp13LedLampStatus18SetOverTemperatureEb>
+ 248:	ca cf       	rjmp	.-108    	; 0x1de <__stack+0x7f>
+
+0000024a <_Z13DelayMicroSech>:
+ 24a:	88 23       	and	r24, r24
+ 24c:	39 f0       	breq	.+14     	; 0x25c <_Z13DelayMicroSech+0x12>
+	...
+ 256:	00 00       	nop
+ 258:	81 50       	subi	r24, 0x01	; 1
+ 25a:	f7 cf       	rjmp	.-18     	; 0x24a <_Z13DelayMicroSech>
+ 25c:	08 95       	ret
+
+0000025e <_Z12DelayMiliSecj>:
+ 25e:	cf 93       	push	r28
+ 260:	df 93       	push	r29
+ 262:	ec 01       	movw	r28, r24
+ 264:	20 97       	sbiw	r28, 0x00	; 0
+ 266:	51 f0       	breq	.+20     	; 0x27c <_Z12DelayMiliSecj+0x1e>
+ 268:	8a ef       	ldi	r24, 0xFA	; 250
+ 26a:	ef df       	rcall	.-34     	; 0x24a <_Z13DelayMicroSech>
+ 26c:	8a ef       	ldi	r24, 0xFA	; 250
+ 26e:	ed df       	rcall	.-38     	; 0x24a <_Z13DelayMicroSech>
+ 270:	8a ef       	ldi	r24, 0xFA	; 250
+ 272:	eb df       	rcall	.-42     	; 0x24a <_Z13DelayMicroSech>
+ 274:	8a ef       	ldi	r24, 0xFA	; 250
+ 276:	e9 df       	rcall	.-46     	; 0x24a <_Z13DelayMicroSech>
+ 278:	21 97       	sbiw	r28, 0x01	; 1
+ 27a:	f4 cf       	rjmp	.-24     	; 0x264 <_Z12DelayMiliSecj+0x6>
+ 27c:	df 91       	pop	r29
+ 27e:	cf 91       	pop	r28
+ 280:	08 95       	ret
+
+00000282 <_Z20InitCurrentSensorADCv>:
+ 282:	bc 98       	cbi	0x17, 4	; 23
+ 284:	c4 98       	cbi	0x18, 4	; 24
+ 286:	82 e0       	ldi	r24, 0x02	; 2
+ 288:	87 b9       	out	0x07, r24	; 7
+ 28a:	86 e9       	ldi	r24, 0x96	; 150
+ 28c:	86 b9       	out	0x06, r24	; 6
+ 28e:	83 b1       	in	r24, 0x03	; 3
+ 290:	80 74       	andi	r24, 0x40	; 64
+ 292:	83 b9       	out	0x03, r24	; 3
+ 294:	a4 9a       	sbi	0x14, 4	; 20
+ 296:	08 95       	ret
+
+00000298 <_Z14InitVoltageADCv>:
+ 298:	bb 98       	cbi	0x17, 3	; 23
+ 29a:	c3 98       	cbi	0x18, 3	; 24
+ 29c:	83 e0       	ldi	r24, 0x03	; 3
+ 29e:	87 b9       	out	0x07, r24	; 7
+ 2a0:	86 e9       	ldi	r24, 0x96	; 150
+ 2a2:	86 b9       	out	0x06, r24	; 6
+ 2a4:	83 b1       	in	r24, 0x03	; 3
+ 2a6:	80 74       	andi	r24, 0x40	; 64
+ 2a8:	83 b9       	out	0x03, r24	; 3
+ 2aa:	a3 9a       	sbi	0x14, 3	; 20
+ 2ac:	08 95       	ret
+
+000002ae <_Z24InitTemperatureSensorADCv>:
+ 2ae:	ba 98       	cbi	0x17, 2	; 23
+ 2b0:	c2 98       	cbi	0x18, 2	; 24
+ 2b2:	81 e0       	ldi	r24, 0x01	; 1
+ 2b4:	87 b9       	out	0x07, r24	; 7
+ 2b6:	86 e9       	ldi	r24, 0x96	; 150
+ 2b8:	86 b9       	out	0x06, r24	; 6
+ 2ba:	83 b1       	in	r24, 0x03	; 3
+ 2bc:	80 74       	andi	r24, 0x40	; 64
+ 2be:	83 b9       	out	0x03, r24	; 3
+ 2c0:	a2 9a       	sbi	0x14, 2	; 20
+ 2c2:	08 95       	ret
+
+000002c4 <_Z18StartAdcConversionv>:
+ 2c4:	34 9a       	sbi	0x06, 4	; 6
+ 2c6:	36 9a       	sbi	0x06, 6	; 6
+ 2c8:	34 9b       	sbis	0x06, 4	; 6
+ 2ca:	fe cf       	rjmp	.-4      	; 0x2c8 <_Z18StartAdcConversionv+0x4>
+ 2cc:	34 9a       	sbi	0x06, 4	; 6
+ 2ce:	24 b1       	in	r18, 0x04	; 4
+ 2d0:	85 b1       	in	r24, 0x05	; 5
+ 2d2:	90 e0       	ldi	r25, 0x00	; 0
+ 2d4:	98 2f       	mov	r25, r24
+ 2d6:	88 27       	eor	r24, r24
+ 2d8:	82 0f       	add	r24, r18
+ 2da:	91 1d       	adc	r25, r1
+ 2dc:	08 95       	ret
+
+000002de <GetVoltageAdcValueInMv>:
+ 2de:	cf 92       	push	r12
+ 2e0:	df 92       	push	r13
+ 2e2:	ef 92       	push	r14
+ 2e4:	ff 92       	push	r15
+ 2e6:	0f 93       	push	r16
+ 2e8:	1f 93       	push	r17
+ 2ea:	cf 93       	push	r28
+ 2ec:	df 93       	push	r29
+ 2ee:	ec 01       	movw	r28, r24
+ 2f0:	c7 36       	cpi	r28, 0x67	; 103
+ 2f2:	81 e2       	ldi	r24, 0x21	; 33
+ 2f4:	d8 07       	cpc	r29, r24
+ 2f6:	10 f0       	brcs	.+4      	; 0x2fc <GetVoltageAdcValueInMv+0x1e>
+ 2f8:	c6 e6       	ldi	r28, 0x66	; 102
+ 2fa:	d1 e2       	ldi	r29, 0x21	; 33
+ 2fc:	cd df       	rcall	.-102    	; 0x298 <_Z14InitVoltageADCv>
+ 2fe:	e2 df       	rcall	.-60     	; 0x2c4 <_Z18StartAdcConversionv>
+ 300:	00 e0       	ldi	r16, 0x00	; 0
+ 302:	10 e0       	ldi	r17, 0x00	; 0
+ 304:	c1 2c       	mov	r12, r1
+ 306:	d1 2c       	mov	r13, r1
+ 308:	76 01       	movw	r14, r12
+ 30a:	0c 17       	cp	r16, r28
+ 30c:	1d 07       	cpc	r17, r29
+ 30e:	41 f0       	breq	.+16     	; 0x320 <GetVoltageAdcValueInMv+0x42>
+ 310:	d9 df       	rcall	.-78     	; 0x2c4 <_Z18StartAdcConversionv>
+ 312:	c8 0e       	add	r12, r24
+ 314:	d9 1e       	adc	r13, r25
+ 316:	e1 1c       	adc	r14, r1
+ 318:	f1 1c       	adc	r15, r1
+ 31a:	0f 5f       	subi	r16, 0xFF	; 255
+ 31c:	1f 4f       	sbci	r17, 0xFF	; 255
+ 31e:	f5 cf       	rjmp	.-22     	; 0x30a <GetVoltageAdcValueInMv+0x2c>
+ 320:	2b ee       	ldi	r18, 0xEB	; 235
+ 322:	31 e0       	ldi	r19, 0x01	; 1
+ 324:	40 e0       	ldi	r20, 0x00	; 0
+ 326:	50 e0       	ldi	r21, 0x00	; 0
+ 328:	c7 01       	movw	r24, r14
+ 32a:	b6 01       	movw	r22, r12
+ 32c:	e2 d1       	rcall	.+964    	; 0x6f2 <__mulsi3>
+ 32e:	29 e1       	ldi	r18, 0x19	; 25
+ 330:	30 e0       	ldi	r19, 0x00	; 0
+ 332:	40 e0       	ldi	r20, 0x00	; 0
+ 334:	50 e0       	ldi	r21, 0x00	; 0
+ 336:	0a d2       	rcall	.+1044   	; 0x74c <__udivmodsi4>
+ 338:	ca 01       	movw	r24, r20
+ 33a:	b9 01       	movw	r22, r18
+ 33c:	98 01       	movw	r18, r16
+ 33e:	40 e0       	ldi	r20, 0x00	; 0
+ 340:	50 e0       	ldi	r21, 0x00	; 0
+ 342:	04 d2       	rcall	.+1032   	; 0x74c <__udivmodsi4>
+ 344:	c9 01       	movw	r24, r18
+ 346:	40 96       	adiw	r24, 0x10	; 16
+ 348:	df 91       	pop	r29
+ 34a:	cf 91       	pop	r28
+ 34c:	1f 91       	pop	r17
+ 34e:	0f 91       	pop	r16
+ 350:	ff 90       	pop	r15
+ 352:	ef 90       	pop	r14
+ 354:	df 90       	pop	r13
+ 356:	cf 90       	pop	r12
+ 358:	08 95       	ret
+
+0000035a <GetCurrentAdcInMa>:
+ 35a:	cf 92       	push	r12
+ 35c:	df 92       	push	r13
+ 35e:	ef 92       	push	r14
+ 360:	ff 92       	push	r15
+ 362:	0f 93       	push	r16
+ 364:	1f 93       	push	r17
+ 366:	cf 93       	push	r28
+ 368:	df 93       	push	r29
+ 36a:	ec 01       	movw	r28, r24
+ 36c:	c2 3f       	cpi	r28, 0xF2	; 242
+ 36e:	88 e3       	ldi	r24, 0x38	; 56
+ 370:	d8 07       	cpc	r29, r24
+ 372:	10 f0       	brcs	.+4      	; 0x378 <GetCurrentAdcInMa+0x1e>
+ 374:	c1 ef       	ldi	r28, 0xF1	; 241
+ 376:	d8 e3       	ldi	r29, 0x38	; 56
+ 378:	84 df       	rcall	.-248    	; 0x282 <_Z20InitCurrentSensorADCv>
+ 37a:	a4 df       	rcall	.-184    	; 0x2c4 <_Z18StartAdcConversionv>
+ 37c:	00 e0       	ldi	r16, 0x00	; 0
+ 37e:	10 e0       	ldi	r17, 0x00	; 0
+ 380:	c1 2c       	mov	r12, r1
+ 382:	d1 2c       	mov	r13, r1
+ 384:	76 01       	movw	r14, r12
+ 386:	0c 17       	cp	r16, r28
+ 388:	1d 07       	cpc	r17, r29
+ 38a:	41 f0       	breq	.+16     	; 0x39c <GetCurrentAdcInMa+0x42>
+ 38c:	9b df       	rcall	.-202    	; 0x2c4 <_Z18StartAdcConversionv>
+ 38e:	c8 0e       	add	r12, r24
+ 390:	d9 1e       	adc	r13, r25
+ 392:	e1 1c       	adc	r14, r1
+ 394:	f1 1c       	adc	r15, r1
+ 396:	0f 5f       	subi	r16, 0xFF	; 255
+ 398:	1f 4f       	sbci	r17, 0xFF	; 255
+ 39a:	f5 cf       	rjmp	.-22     	; 0x386 <GetCurrentAdcInMa+0x2c>
+ 39c:	20 e2       	ldi	r18, 0x20	; 32
+ 39e:	31 e0       	ldi	r19, 0x01	; 1
+ 3a0:	40 e0       	ldi	r20, 0x00	; 0
+ 3a2:	50 e0       	ldi	r21, 0x00	; 0
+ 3a4:	c7 01       	movw	r24, r14
+ 3a6:	b6 01       	movw	r22, r12
+ 3a8:	a4 d1       	rcall	.+840    	; 0x6f2 <__mulsi3>
+ 3aa:	2d e7       	ldi	r18, 0x7D	; 125
+ 3ac:	30 e0       	ldi	r19, 0x00	; 0
+ 3ae:	40 e0       	ldi	r20, 0x00	; 0
+ 3b0:	50 e0       	ldi	r21, 0x00	; 0
+ 3b2:	cc d1       	rcall	.+920    	; 0x74c <__udivmodsi4>
+ 3b4:	ca 01       	movw	r24, r20
+ 3b6:	b9 01       	movw	r22, r18
+ 3b8:	98 01       	movw	r18, r16
+ 3ba:	40 e0       	ldi	r20, 0x00	; 0
+ 3bc:	50 e0       	ldi	r21, 0x00	; 0
+ 3be:	c6 d1       	rcall	.+908    	; 0x74c <__udivmodsi4>
+ 3c0:	c9 01       	movw	r24, r18
+ 3c2:	08 96       	adiw	r24, 0x08	; 8
+ 3c4:	df 91       	pop	r29
+ 3c6:	cf 91       	pop	r28
+ 3c8:	1f 91       	pop	r17
+ 3ca:	0f 91       	pop	r16
+ 3cc:	ff 90       	pop	r15
+ 3ce:	ef 90       	pop	r14
+ 3d0:	df 90       	pop	r13
+ 3d2:	cf 90       	pop	r12
+ 3d4:	08 95       	ret
+
+000003d6 <GetTemperatureAdcInDegrees>:
+ 3d6:	7f 92       	push	r7
+ 3d8:	8f 92       	push	r8
+ 3da:	9f 92       	push	r9
+ 3dc:	af 92       	push	r10
+ 3de:	bf 92       	push	r11
+ 3e0:	cf 92       	push	r12
+ 3e2:	df 92       	push	r13
+ 3e4:	ef 92       	push	r14
+ 3e6:	ff 92       	push	r15
+ 3e8:	0f 93       	push	r16
+ 3ea:	1f 93       	push	r17
+ 3ec:	cf 93       	push	r28
+ 3ee:	df 93       	push	r29
+ 3f0:	8c 01       	movw	r16, r24
+ 3f2:	5d df       	rcall	.-326    	; 0x2ae <_Z24InitTemperatureSensorADCv>
+ 3f4:	67 df       	rcall	.-306    	; 0x2c4 <_Z18StartAdcConversionv>
+ 3f6:	c0 e0       	ldi	r28, 0x00	; 0
+ 3f8:	d0 e0       	ldi	r29, 0x00	; 0
+ 3fa:	c1 2c       	mov	r12, r1
+ 3fc:	d1 2c       	mov	r13, r1
+ 3fe:	76 01       	movw	r14, r12
+ 400:	c0 17       	cp	r28, r16
+ 402:	d1 07       	cpc	r29, r17
+ 404:	39 f0       	breq	.+14     	; 0x414 <__LOCK_REGION_LENGTH__+0x14>
+ 406:	5e df       	rcall	.-324    	; 0x2c4 <_Z18StartAdcConversionv>
+ 408:	c8 0e       	add	r12, r24
+ 40a:	d9 1e       	adc	r13, r25
+ 40c:	e1 1c       	adc	r14, r1
+ 40e:	f1 1c       	adc	r15, r1
+ 410:	21 96       	adiw	r28, 0x01	; 1
+ 412:	f6 cf       	rjmp	.-20     	; 0x400 <__LOCK_REGION_LENGTH__>
+ 414:	9e 01       	movw	r18, r28
+ 416:	40 e0       	ldi	r20, 0x00	; 0
+ 418:	50 e0       	ldi	r21, 0x00	; 0
+ 41a:	c7 01       	movw	r24, r14
+ 41c:	b6 01       	movw	r22, r12
+ 41e:	96 d1       	rcall	.+812    	; 0x74c <__udivmodsi4>
+ 420:	49 01       	movw	r8, r18
+ 422:	5a 01       	movw	r10, r20
+ 424:	69 01       	movw	r12, r18
+ 426:	3f d1       	rcall	.+638    	; 0x6a6 <GetTempSensorTableSize>
+ 428:	78 2e       	mov	r7, r24
+ 42a:	c1 e0       	ldi	r28, 0x01	; 1
+ 42c:	c7 15       	cp	r28, r7
+ 42e:	20 f5       	brcc	.+72     	; 0x478 <__LOCK_REGION_LENGTH__+0x78>
+ 430:	df ef       	ldi	r29, 0xFF	; 255
+ 432:	dc 0f       	add	r29, r28
+ 434:	8d 2f       	mov	r24, r29
+ 436:	39 d1       	rcall	.+626    	; 0x6aa <GetTempSensorTableAdcValue>
+ 438:	7c 01       	movw	r14, r24
+ 43a:	8c 2f       	mov	r24, r28
+ 43c:	36 d1       	rcall	.+620    	; 0x6aa <GetTempSensorTableAdcValue>
+ 43e:	8c 01       	movw	r16, r24
+ 440:	ce 14       	cp	r12, r14
+ 442:	df 04       	cpc	r13, r15
+ 444:	b8 f0       	brcs	.+46     	; 0x474 <__LOCK_REGION_LENGTH__+0x74>
+ 446:	8c 15       	cp	r24, r12
+ 448:	9d 05       	cpc	r25, r13
+ 44a:	a0 f0       	brcs	.+40     	; 0x474 <__LOCK_REGION_LENGTH__+0x74>
+ 44c:	8d 2f       	mov	r24, r29
+ 44e:	37 d1       	rcall	.+622    	; 0x6be <GetTempSensorTableTemperatureValue>
+ 450:	d8 2f       	mov	r29, r24
+ 452:	8c 2f       	mov	r24, r28
+ 454:	34 d1       	rcall	.+616    	; 0x6be <GetTempSensorTableTemperatureValue>
+ 456:	8e 18       	sub	r8, r14
+ 458:	9f 08       	sbc	r9, r15
+ 45a:	6d 2f       	mov	r22, r29
+ 45c:	70 e0       	ldi	r23, 0x00	; 0
+ 45e:	68 1b       	sub	r22, r24
+ 460:	71 09       	sbc	r23, r1
+ 462:	c4 01       	movw	r24, r8
+ 464:	35 d1       	rcall	.+618    	; 0x6d0 <__mulhi3>
+ 466:	b8 01       	movw	r22, r16
+ 468:	6e 19       	sub	r22, r14
+ 46a:	7f 09       	sbc	r23, r15
+ 46c:	5b d1       	rcall	.+694    	; 0x724 <__udivmodhi4>
+ 46e:	8d 2f       	mov	r24, r29
+ 470:	86 1b       	sub	r24, r22
+ 472:	03 c0       	rjmp	.+6      	; 0x47a <__LOCK_REGION_LENGTH__+0x7a>
+ 474:	cf 5f       	subi	r28, 0xFF	; 255
+ 476:	da cf       	rjmp	.-76     	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
+ 478:	8f ef       	ldi	r24, 0xFF	; 255
+ 47a:	df 91       	pop	r29
+ 47c:	cf 91       	pop	r28
+ 47e:	1f 91       	pop	r17
+ 480:	0f 91       	pop	r16
+ 482:	ff 90       	pop	r15
+ 484:	ef 90       	pop	r14
+ 486:	df 90       	pop	r13
+ 488:	cf 90       	pop	r12
+ 48a:	bf 90       	pop	r11
+ 48c:	af 90       	pop	r10
+ 48e:	9f 90       	pop	r9
+ 490:	8f 90       	pop	r8
+ 492:	7f 90       	pop	r7
+ 494:	08 95       	ret
+
+00000496 <_ZN7LedLamp13LedLampStatusC1Ev>:
+ 496:	fc 01       	movw	r30, r24
+ 498:	10 82       	st	Z, r1
+ 49a:	08 95       	ret
+
+0000049c <_ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv>:
+ 49c:	fc 01       	movw	r30, r24
+ 49e:	80 81       	ld	r24, Z
+ 4a0:	81 70       	andi	r24, 0x01	; 1
+ 4a2:	08 95       	ret
+
+000004a4 <_ZN7LedLamp13LedLampStatus18SetOverTemperatureEb>:
+ 4a4:	fc 01       	movw	r30, r24
+ 4a6:	90 81       	ld	r25, Z
+ 4a8:	66 23       	and	r22, r22
+ 4aa:	11 f0       	breq	.+4      	; 0x4b0 <_ZN7LedLamp13LedLampStatus18SetOverTemperatureEb+0xc>
+ 4ac:	91 60       	ori	r25, 0x01	; 1
+ 4ae:	01 c0       	rjmp	.+2      	; 0x4b2 <_ZN7LedLamp13LedLampStatus18SetOverTemperatureEb+0xe>
+ 4b0:	9e 7f       	andi	r25, 0xFE	; 254
+ 4b2:	90 83       	st	Z, r25
+ 4b4:	08 95       	ret
+
+000004b6 <_ZNK7LedLamp13LedLampStatus12IsLowBatteryEv>:
+ 4b6:	fc 01       	movw	r30, r24
+ 4b8:	80 81       	ld	r24, Z
+ 4ba:	82 fb       	bst	r24, 2
+ 4bc:	88 27       	eor	r24, r24
+ 4be:	80 f9       	bld	r24, 0
+ 4c0:	08 95       	ret
+
+000004c2 <_ZN7LedLamp13LedLampStatus13SetLowBatteryEb>:
+ 4c2:	fc 01       	movw	r30, r24
+ 4c4:	90 81       	ld	r25, Z
+ 4c6:	66 23       	and	r22, r22
+ 4c8:	11 f0       	breq	.+4      	; 0x4ce <_ZN7LedLamp13LedLampStatus13SetLowBatteryEb+0xc>
+ 4ca:	94 60       	ori	r25, 0x04	; 4
+ 4cc:	01 c0       	rjmp	.+2      	; 0x4d0 <_ZN7LedLamp13LedLampStatus13SetLowBatteryEb+0xe>
+ 4ce:	9b 7f       	andi	r25, 0xFB	; 251
+ 4d0:	90 83       	st	Z, r25
+ 4d2:	08 95       	ret
+
+000004d4 <_ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb>:
+ 4d4:	fc 01       	movw	r30, r24
+ 4d6:	90 81       	ld	r25, Z
+ 4d8:	66 23       	and	r22, r22
+ 4da:	11 f0       	breq	.+4      	; 0x4e0 <_ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb+0xc>
+ 4dc:	98 60       	ori	r25, 0x08	; 8
+ 4de:	01 c0       	rjmp	.+2      	; 0x4e2 <_ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb+0xe>
+ 4e0:	97 7f       	andi	r25, 0xF7	; 247
+ 4e2:	90 83       	st	Z, r25
+ 4e4:	08 95       	ret
+
+000004e6 <_ZNK7LedLamp13LedLampStatus7IsKeyONEv>:
+ 4e6:	fc 01       	movw	r30, r24
+ 4e8:	80 81       	ld	r24, Z
+ 4ea:	85 fb       	bst	r24, 5
+ 4ec:	88 27       	eor	r24, r24
+ 4ee:	80 f9       	bld	r24, 0
+ 4f0:	08 95       	ret
+
+000004f2 <_ZN7LedLamp13LedLampStatus8SetKeyONEb>:
+ 4f2:	fc 01       	movw	r30, r24
+ 4f4:	90 81       	ld	r25, Z
+ 4f6:	66 23       	and	r22, r22
+ 4f8:	11 f0       	breq	.+4      	; 0x4fe <_ZN7LedLamp13LedLampStatus8SetKeyONEb+0xc>
+ 4fa:	90 62       	ori	r25, 0x20	; 32
+ 4fc:	01 c0       	rjmp	.+2      	; 0x500 <_ZN7LedLamp13LedLampStatus8SetKeyONEb+0xe>
+ 4fe:	9f 7d       	andi	r25, 0xDF	; 223
+ 500:	90 83       	st	Z, r25
+ 502:	08 95       	ret
+
+00000504 <_ZN7LedLamp13LedLampStatus12SetPrevKeyONEb>:
+ 504:	fc 01       	movw	r30, r24
+ 506:	90 81       	ld	r25, Z
+ 508:	66 23       	and	r22, r22
+ 50a:	11 f0       	breq	.+4      	; 0x510 <_ZN7LedLamp13LedLampStatus12SetPrevKeyONEb+0xc>
+ 50c:	90 64       	ori	r25, 0x40	; 64
+ 50e:	01 c0       	rjmp	.+2      	; 0x512 <_ZN7LedLamp13LedLampStatus12SetPrevKeyONEb+0xe>
+ 510:	9f 7b       	andi	r25, 0xBF	; 191
+ 512:	90 83       	st	Z, r25
+ 514:	08 95       	ret
+
+00000516 <_Z8BuzzerOnv>:
+ 516:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 51a:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 51e:	80 62       	ori	r24, 0x20	; 32
+ 520:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 524:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 528:	08 95       	ret
+
+0000052a <_Z9BuzzerOffv>:
+ 52a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 52e:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 532:	8f 7d       	andi	r24, 0xDF	; 223
+ 534:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 538:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 53c:	08 95       	ret
+
+0000053e <_Z18AddChargeVoltageOnv>:
+ 53e:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 542:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 546:	87 7f       	andi	r24, 0xF7	; 247
+ 548:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 54c:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 550:	08 95       	ret
+
+00000552 <_Z19AddChargeVoltageOffv>:
+ 552:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 556:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 55a:	88 60       	ori	r24, 0x08	; 8
+ 55c:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 560:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 564:	08 95       	ret
+
+00000566 <_Z12ConverterOffv>:
+ 566:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 56a:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 56e:	8f 7b       	andi	r24, 0xBF	; 191
+ 570:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 574:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 578:	08 95       	ret
+
+0000057a <_Z21SenseBatteryVoltageOnv>:
+ 57a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 57e:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 582:	80 68       	ori	r24, 0x80	; 128
+ 584:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 588:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 58c:	08 95       	ret
+
+0000058e <_Z22SenseBatteryVoltageOffv>:
+ 58e:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 592:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 596:	8f 77       	andi	r24, 0x7F	; 127
+ 598:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 59c:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5a0:	08 95       	ret
+
+000005a2 <_Z16LedVoltGreen2Offv>:
+ 5a2:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5a6:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5aa:	9e 7f       	andi	r25, 0xFE	; 254
+ 5ac:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5b0:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5b4:	08 95       	ret
+
+000005b6 <_Z16LedVoltGreen1Offv>:
+ 5b6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5ba:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5be:	9b 7f       	andi	r25, 0xFB	; 251
+ 5c0:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5c4:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5c8:	08 95       	ret
+
+000005ca <_Z16LedVoltYellowOffv>:
+ 5ca:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5ce:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5d2:	9f 7e       	andi	r25, 0xEF	; 239
+ 5d4:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5d8:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5dc:	08 95       	ret
+
+000005de <_Z13LedVoltRedOffv>:
+ 5de:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5e2:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5e6:	9f 7b       	andi	r25, 0xBF	; 191
+ 5e8:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5ec:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5f0:	08 95       	ret
+
+000005f2 <_Z16LedCurrGreen2Offv>:
+ 5f2:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5f6:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5fa:	9f 77       	andi	r25, 0x7F	; 127
+ 5fc:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 600:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 604:	08 95       	ret
+
+00000606 <_Z16LedCurrGreen1Offv>:
+ 606:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 60a:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 60e:	9f 7d       	andi	r25, 0xDF	; 223
+ 610:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 614:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 618:	08 95       	ret
+
+0000061a <_Z16LedCurrYellowOffv>:
+ 61a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 61e:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 622:	97 7f       	andi	r25, 0xF7	; 247
+ 624:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 628:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 62c:	08 95       	ret
+
+0000062e <_Z13LedCurrRedOffv>:
+ 62e:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 632:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 636:	9d 7f       	andi	r25, 0xFD	; 253
+ 638:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 63c:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 640:	08 95       	ret
+
+00000642 <_Z10AllLedsOffv>:
+ 642:	f5 df       	rcall	.-22     	; 0x62e <_Z13LedCurrRedOffv>
+ 644:	ea df       	rcall	.-44     	; 0x61a <_Z16LedCurrYellowOffv>
+ 646:	df df       	rcall	.-66     	; 0x606 <_Z16LedCurrGreen1Offv>
+ 648:	d4 df       	rcall	.-88     	; 0x5f2 <_Z16LedCurrGreen2Offv>
+ 64a:	c9 df       	rcall	.-110    	; 0x5de <_Z13LedVoltRedOffv>
+ 64c:	be df       	rcall	.-132    	; 0x5ca <_Z16LedVoltYellowOffv>
+ 64e:	b3 df       	rcall	.-154    	; 0x5b6 <_Z16LedVoltGreen1Offv>
+ 650:	a8 cf       	rjmp	.-176    	; 0x5a2 <_Z16LedVoltGreen2Offv>
+
+00000652 <_Z11ClearLedSckv>:
+ 652:	c1 98       	cbi	0x18, 1	; 24
+ 654:	08 95       	ret
+
+00000656 <_Z21SendShiftRegisterWordj>:
+ 656:	0f 93       	push	r16
+ 658:	1f 93       	push	r17
+ 65a:	cf 93       	push	r28
+ 65c:	df 93       	push	r29
+ 65e:	8c 01       	movw	r16, r24
+ 660:	f8 df       	rcall	.-16     	; 0x652 <_Z11ClearLedSckv>
+ 662:	8c e3       	ldi	r24, 0x3C	; 60
+ 664:	f2 dd       	rcall	.-1052   	; 0x24a <_Z13DelayMicroSech>
+ 666:	e8 01       	movw	r28, r16
+ 668:	10 e1       	ldi	r17, 0x10	; 16
+ 66a:	d7 ff       	sbrs	r29, 7
+ 66c:	02 c0       	rjmp	.+4      	; 0x672 <_Z21SendShiftRegisterWordj+0x1c>
+ 66e:	c0 9a       	sbi	0x18, 0	; 24
+ 670:	01 c0       	rjmp	.+2      	; 0x674 <_Z21SendShiftRegisterWordj+0x1e>
+ 672:	c0 98       	cbi	0x18, 0	; 24
+ 674:	c1 9a       	sbi	0x18, 1	; 24
+ 676:	11 50       	subi	r17, 0x01	; 1
+ 678:	21 f0       	breq	.+8      	; 0x682 <_Z21SendShiftRegisterWordj+0x2c>
+ 67a:	eb df       	rcall	.-42     	; 0x652 <_Z11ClearLedSckv>
+ 67c:	cc 0f       	add	r28, r28
+ 67e:	dd 1f       	adc	r29, r29
+ 680:	f4 cf       	rjmp	.-24     	; 0x66a <_Z21SendShiftRegisterWordj+0x14>
+ 682:	df 91       	pop	r29
+ 684:	cf 91       	pop	r28
+ 686:	1f 91       	pop	r17
+ 688:	0f 91       	pop	r16
+ 68a:	08 95       	ret
+
+0000068c <_Z12ShiftRegInitv>:
+ 68c:	e2 df       	rcall	.-60     	; 0x652 <_Z11ClearLedSckv>
+ 68e:	c0 98       	cbi	0x18, 0	; 24
+ 690:	87 b3       	in	r24, 0x17	; 23
+ 692:	83 60       	ori	r24, 0x03	; 3
+ 694:	87 bb       	out	0x17, r24	; 23
+ 696:	80 e0       	ldi	r24, 0x00	; 0
+ 698:	90 e0       	ldi	r25, 0x00	; 0
+ 69a:	dd cf       	rjmp	.-70     	; 0x656 <_Z21SendShiftRegisterWordj>
+
+0000069c <_Z12ShiftRegPushv>:
+ 69c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 6a0:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 6a4:	d8 cf       	rjmp	.-80     	; 0x656 <_Z21SendShiftRegisterWordj>
+
+000006a6 <GetTempSensorTableSize>:
+ 6a6:	8e e1       	ldi	r24, 0x1E	; 30
+ 6a8:	08 95       	ret
+
+000006aa <GetTempSensorTableAdcValue>:
+ 6aa:	90 e0       	ldi	r25, 0x00	; 0
+ 6ac:	63 e0       	ldi	r22, 0x03	; 3
+ 6ae:	70 e0       	ldi	r23, 0x00	; 0
+ 6b0:	0f d0       	rcall	.+30     	; 0x6d0 <__mulhi3>
+ 6b2:	82 5e       	subi	r24, 0xE2	; 226
+ 6b4:	9f 4f       	sbci	r25, 0xFF	; 255
+ 6b6:	fc 01       	movw	r30, r24
+ 6b8:	85 91       	lpm	r24, Z+
+ 6ba:	95 91       	lpm	r25, Z+
+ 6bc:	08 95       	ret
+
+000006be <GetTempSensorTableTemperatureValue>:
+ 6be:	90 e0       	ldi	r25, 0x00	; 0
+ 6c0:	63 e0       	ldi	r22, 0x03	; 3
+ 6c2:	70 e0       	ldi	r23, 0x00	; 0
+ 6c4:	05 d0       	rcall	.+10     	; 0x6d0 <__mulhi3>
+ 6c6:	80 5e       	subi	r24, 0xE0	; 224
+ 6c8:	9f 4f       	sbci	r25, 0xFF	; 255
+ 6ca:	fc 01       	movw	r30, r24
+ 6cc:	84 91       	lpm	r24, Z
+ 6ce:	08 95       	ret
+
+000006d0 <__mulhi3>:
+ 6d0:	00 24       	eor	r0, r0
+ 6d2:	55 27       	eor	r21, r21
+ 6d4:	04 c0       	rjmp	.+8      	; 0x6de <__mulhi3+0xe>
+ 6d6:	08 0e       	add	r0, r24
+ 6d8:	59 1f       	adc	r21, r25
+ 6da:	88 0f       	add	r24, r24
+ 6dc:	99 1f       	adc	r25, r25
+ 6de:	00 97       	sbiw	r24, 0x00	; 0
+ 6e0:	29 f0       	breq	.+10     	; 0x6ec <__mulhi3+0x1c>
+ 6e2:	76 95       	lsr	r23
+ 6e4:	67 95       	ror	r22
+ 6e6:	b8 f3       	brcs	.-18     	; 0x6d6 <__mulhi3+0x6>
+ 6e8:	71 05       	cpc	r23, r1
+ 6ea:	b9 f7       	brne	.-18     	; 0x6da <__mulhi3+0xa>
+ 6ec:	80 2d       	mov	r24, r0
+ 6ee:	95 2f       	mov	r25, r21
+ 6f0:	08 95       	ret
+
+000006f2 <__mulsi3>:
+ 6f2:	ee 27       	eor	r30, r30
+ 6f4:	ff 27       	eor	r31, r31
+
+000006f6 <__mulsi3_helper>:
+ 6f6:	aa 27       	eor	r26, r26
+ 6f8:	bb 27       	eor	r27, r27
+ 6fa:	08 c0       	rjmp	.+16     	; 0x70c <__mulsi3_helper+0x16>
+ 6fc:	a2 0f       	add	r26, r18
+ 6fe:	b3 1f       	adc	r27, r19
+ 700:	e4 1f       	adc	r30, r20
+ 702:	f5 1f       	adc	r31, r21
+ 704:	22 0f       	add	r18, r18
+ 706:	33 1f       	adc	r19, r19
+ 708:	44 1f       	adc	r20, r20
+ 70a:	55 1f       	adc	r21, r21
+ 70c:	96 95       	lsr	r25
+ 70e:	87 95       	ror	r24
+ 710:	77 95       	ror	r23
+ 712:	67 95       	ror	r22
+ 714:	98 f3       	brcs	.-26     	; 0x6fc <__mulsi3_helper+0x6>
+ 716:	70 40       	sbci	r23, 0x00	; 0
+ 718:	a9 f7       	brne	.-22     	; 0x704 <__mulsi3_helper+0xe>
+ 71a:	00 97       	sbiw	r24, 0x00	; 0
+ 71c:	99 f7       	brne	.-26     	; 0x704 <__mulsi3_helper+0xe>
+ 71e:	bd 01       	movw	r22, r26
+ 720:	cf 01       	movw	r24, r30
+ 722:	08 95       	ret
+
+00000724 <__udivmodhi4>:
+ 724:	aa 1b       	sub	r26, r26
+ 726:	bb 1b       	sub	r27, r27
+ 728:	51 e1       	ldi	r21, 0x11	; 17
+ 72a:	07 c0       	rjmp	.+14     	; 0x73a <__udivmodhi4_ep>
+
+0000072c <__udivmodhi4_loop>:
+ 72c:	aa 1f       	adc	r26, r26
+ 72e:	bb 1f       	adc	r27, r27
+ 730:	a6 17       	cp	r26, r22
+ 732:	b7 07       	cpc	r27, r23
+ 734:	10 f0       	brcs	.+4      	; 0x73a <__udivmodhi4_ep>
+ 736:	a6 1b       	sub	r26, r22
+ 738:	b7 0b       	sbc	r27, r23
+
+0000073a <__udivmodhi4_ep>:
+ 73a:	88 1f       	adc	r24, r24
+ 73c:	99 1f       	adc	r25, r25
+ 73e:	5a 95       	dec	r21
+ 740:	a9 f7       	brne	.-22     	; 0x72c <__udivmodhi4_loop>
+ 742:	80 95       	com	r24
+ 744:	90 95       	com	r25
+ 746:	bc 01       	movw	r22, r24
+ 748:	cd 01       	movw	r24, r26
+ 74a:	08 95       	ret
+
+0000074c <__udivmodsi4>:
+ 74c:	a1 e2       	ldi	r26, 0x21	; 33
+ 74e:	1a 2e       	mov	r1, r26
+ 750:	aa 1b       	sub	r26, r26
+ 752:	bb 1b       	sub	r27, r27
+ 754:	fd 01       	movw	r30, r26
+ 756:	0d c0       	rjmp	.+26     	; 0x772 <__udivmodsi4_ep>
+
+00000758 <__udivmodsi4_loop>:
+ 758:	aa 1f       	adc	r26, r26
+ 75a:	bb 1f       	adc	r27, r27
+ 75c:	ee 1f       	adc	r30, r30
+ 75e:	ff 1f       	adc	r31, r31
+ 760:	a2 17       	cp	r26, r18
+ 762:	b3 07       	cpc	r27, r19
+ 764:	e4 07       	cpc	r30, r20
+ 766:	f5 07       	cpc	r31, r21
+ 768:	20 f0       	brcs	.+8      	; 0x772 <__udivmodsi4_ep>
+ 76a:	a2 1b       	sub	r26, r18
+ 76c:	b3 0b       	sbc	r27, r19
+ 76e:	e4 0b       	sbc	r30, r20
+ 770:	f5 0b       	sbc	r31, r21
+
+00000772 <__udivmodsi4_ep>:
+ 772:	66 1f       	adc	r22, r22
+ 774:	77 1f       	adc	r23, r23
+ 776:	88 1f       	adc	r24, r24
+ 778:	99 1f       	adc	r25, r25
+ 77a:	1a 94       	dec	r1
+ 77c:	69 f7       	brne	.-38     	; 0x758 <__udivmodsi4_loop>
+ 77e:	60 95       	com	r22
+ 780:	70 95       	com	r23
+ 782:	80 95       	com	r24
+ 784:	90 95       	com	r25
+ 786:	9b 01       	movw	r18, r22
+ 788:	ac 01       	movw	r20, r24
+ 78a:	bd 01       	movw	r22, r26
+ 78c:	cf 01       	movw	r24, r30
+ 78e:	08 95       	ret
+
+00000790 <_exit>:
+ 790:	f8 94       	cli
+
+00000792 <__stop_program>:
+ 792:	ff cf       	rjmp	.-2      	; 0x792 <__stop_program>
