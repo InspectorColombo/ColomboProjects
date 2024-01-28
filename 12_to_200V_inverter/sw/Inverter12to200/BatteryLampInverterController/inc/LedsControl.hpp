@@ -16,6 +16,16 @@ void ConverterOff();
 void SenseBatteryVoltageOn();
 void SenseBatteryVoltageOff();
 
+
+void SetLedVoltGreen2(const bool value);
+void SetLedVoltGreen1(const bool value);
+void SetLedVoltYellow(const bool value);
+void SetLedVoltRed(const bool value);
+void SetLedCurrGreen2(const bool value);
+void SetLedCurrGreen1(const bool value);
+void SetLedCurrYellow(const bool value);
+void SetLedCurrRed(const bool value);
+
 void LedVoltGreen2On();
 void LedVoltGreen2Off();
 void LedVoltGreen1On();

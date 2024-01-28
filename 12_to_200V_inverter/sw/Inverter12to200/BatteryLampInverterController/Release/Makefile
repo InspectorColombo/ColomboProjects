@@ -45,8 +45,7 @@ C_SRCS +=  \
 ../src/DebugSwUart.cpp \
 ../src/LedLampStatus.cpp \
 ../src/LedsControl.cpp \
-../src/my_debug.cpp \
-../src/VoltageCurrentLevels.cpp
+../src/my_debug.cpp
 
 
 PREPROCESSING_SRCS += 
@@ -62,8 +61,7 @@ src/cs_adc.o \
 src/DebugSwUart.o \
 src/LedLampStatus.o \
 src/LedsControl.o \
-src/my_debug.o \
-src/VoltageCurrentLevels.o
+src/my_debug.o
 
 OBJS_AS_ARGS +=  \
 main.o \
@@ -72,8 +70,7 @@ src/cs_adc.o \
 src/DebugSwUart.o \
 src/LedLampStatus.o \
 src/LedsControl.o \
-src/my_debug.o \
-src/VoltageCurrentLevels.o
+src/my_debug.o
 
 C_DEPS +=  \
 main.d \
@@ -82,8 +79,7 @@ src/cs_adc.d \
 src/DebugSwUart.d \
 src/LedLampStatus.d \
 src/LedsControl.d \
-src/my_debug.d \
-src/VoltageCurrentLevels.d
+src/my_debug.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
@@ -92,8 +88,7 @@ src/cs_adc.d \
 src/DebugSwUart.d \
 src/LedLampStatus.d \
 src/LedsControl.d \
-src/my_debug.d \
-src/VoltageCurrentLevels.d
+src/my_debug.d
 
 OUTPUT_FILE_PATH +=BatteryLampInverterController.elf
 
@@ -153,13 +148,6 @@ src/LedsControl.o: ../src/LedsControl.cpp
 	
 
 src/my_debug.o: ../src/my_debug.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\include" -I"..\\inc"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=attiny45 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\gcc\dev\attiny45" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-src/VoltageCurrentLevels.o: ../src/VoltageCurrentLevels.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\include" -I"..\\inc"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=attiny45 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\gcc\dev\attiny45" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -11,7 +11,8 @@ main.d main.o: .././main.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  ..\\inc/cs_adc.hpp ..\\inc/LedsControl.hpp ..\\inc/CsDelay.hpp \
- ..\\inc/VoltageCurrentLevels.hpp ..\\inc/LedLampStatus.hpp \
+ ..\\inc/LedLampStatus.hpp ..\\inc/FastKeySwitchingDetector.hpp \
+ ..\\inc/VoltageCurrentIndicators.hpp ..\\inc/LedsControl.hpp \
  ..\\inc/DebugSwUart.hpp
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
@@ -42,8 +43,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ..\\inc/CsDelay.hpp:
 
-..\\inc/VoltageCurrentLevels.hpp:
-
 ..\\inc/LedLampStatus.hpp:
+
+..\\inc/FastKeySwitchingDetector.hpp:
+
+..\\inc/VoltageCurrentIndicators.hpp:
+
+..\\inc/LedsControl.hpp:
 
 ..\\inc/DebugSwUart.hpp:

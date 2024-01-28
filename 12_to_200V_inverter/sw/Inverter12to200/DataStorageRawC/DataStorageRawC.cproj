@@ -123,7 +123,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="inc\IndicatorsTable.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="inc\TempSensorTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\IndicatorsTable.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\TempSensorTable.c">

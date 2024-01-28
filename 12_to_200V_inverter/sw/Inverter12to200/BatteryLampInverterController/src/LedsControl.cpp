@@ -63,6 +63,41 @@ void SenseBatteryVoltageOff()
 }
 
 
+void SetLedVoltGreen2(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_GREEN2) : (g_shiftRegCodeWord & ~SR_LED_VOLT_GREEN2);
+}
+void SetLedVoltGreen1(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_GREEN1) : (g_shiftRegCodeWord & ~SR_LED_VOLT_GREEN1);
+}
+void SetLedVoltYellow(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_YELLOW) : (g_shiftRegCodeWord & ~SR_LED_VOLT_YELLOW);
+}
+void SetLedVoltRed(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_RED) : (g_shiftRegCodeWord & ~SR_LED_VOLT_RED);
+}
+void SetLedCurrGreen2(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_GREEN2) : (g_shiftRegCodeWord & ~SR_LED_CURR_GREEN2);
+}
+void SetLedCurrGreen1(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_GREEN1) : (g_shiftRegCodeWord & ~SR_LED_CURR_GREEN1);
+}
+void SetLedCurrYellow(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_YELLOW) : (g_shiftRegCodeWord & ~SR_LED_CURR_YELLOW);
+}
+void SetLedCurrRed(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_RED) : (g_shiftRegCodeWord & ~SR_LED_CURR_RED);
+}
+
+
+
 // Voltage LEDs routines
 void LedVoltGreen2On()
 {

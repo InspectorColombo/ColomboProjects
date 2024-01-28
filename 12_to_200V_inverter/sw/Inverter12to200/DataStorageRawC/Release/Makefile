@@ -39,6 +39,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../src/IndicatorsTable.c \
 ../src/TempSensorTable.c
 
 
@@ -49,15 +50,19 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+src/IndicatorsTable.o \
 src/TempSensorTable.o
 
 OBJS_AS_ARGS +=  \
+src/IndicatorsTable.o \
 src/TempSensorTable.o
 
 C_DEPS +=  \
+src/IndicatorsTable.d \
 src/TempSensorTable.d
 
 C_DEPS_AS_ARGS +=  \
+src/IndicatorsTable.d \
 src/TempSensorTable.d
 
 OUTPUT_FILE_PATH +=libDataStorageRawC.a
@@ -74,6 +79,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+src/IndicatorsTable.o: ../src/IndicatorsTable.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\include" -I"..\\inc"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=attiny45 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.10.348\gcc\dev\attiny45" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 src/TempSensorTable.o: ../src/TempSensorTable.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0

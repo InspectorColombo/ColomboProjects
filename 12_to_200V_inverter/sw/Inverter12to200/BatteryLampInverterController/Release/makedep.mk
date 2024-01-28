@@ -16,5 +16,3 @@ src\LedsControl.cpp
 
 src\my_debug.cpp
 
-src\VoltageCurrentLevels.cpp
-

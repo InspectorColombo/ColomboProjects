@@ -10,8 +10,10 @@
 #include "cs_adc.hpp"
 #include "LedsControl.hpp"
 #include "CsDelay.hpp"
-#include "VoltageCurrentLevels.hpp"
+//#include "VoltageCurrentLevels.hpp"
 #include "LedLampStatus.hpp"
+#include "FastKeySwitchingDetector.hpp"
+#include "VoltageCurrentIndicators.hpp"
 
 #include "DebugSwUart.hpp"
 
@@ -117,19 +119,7 @@ void Beep(const uint16_t durationInMs)
 }
 
 
-class FastKeySwitchingDetector
-{
-public:
-	FastKeySwitching(const uint8_t maxDurationPeriod)
-
-
-private:
-	const uint8_t m_period;
-
-
-};
-
-
+LedLamp::FastKeySwitchingDetector fastKeySwitchDetector(30, true);
 
 int main(void)
 {
@@ -163,13 +153,20 @@ int main(void)
     
     LedLamp::LedLampStatus status;
 	
+	
 	status.SetOverTemperature(false);
 
 	const bool isKeyOn = status.IsKeyON();
 	status.SetPrevKeyON(isKeyOn);
 	status.SetKeyON(isKeyOn);
-
-	uint8_t ignoreLowBatterySwitchCnt = 0;
+	//LedLamp::FastKeySwitchingDetector fastKeySwitchDetector(30, isKeyOn);
+	
+	
+	
+	
+	
+	//uint8_t ignoreLowBatterySwitchCnt = 0;
+	LedLamp::VoltageIndicator voltageIndicator;
     for(;;)
     {
 		// Wait 100msec
@@ -244,10 +241,18 @@ int main(void)
 			}
 		}
 		
+		// Check for fast key switching
+		fastKeySwitchDetector.Update(status.IsKeyON());
+		if (status.IsLowBattery() && !status.IsIgnoreLowBattery() && fastKeySwitchDetector.IsFastSwitchingDetected())
+		{
+			status.SetIgnoreLowBattery(true);
+		}
 		
 		
+		// Indication
+		voltageIndicator.Update(voltage);
 		
-		
+		ShiftRegPush();
 		
     }   
 
