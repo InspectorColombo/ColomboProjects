@@ -55,9 +55,6 @@ PROGMEM const struct TempAdcValue TempSensorTable[TEMP_SENSOR_TABLE_SIZE]=
 	(struct TempAdcValue) {.adcValue=1023, .temperature=0}
 };
 
-
-
-
 uint8_t GetTempSensorTableSize()
 {
 	return TEMP_SENSOR_TABLE_SIZE;
@@ -72,3 +69,4 @@ uint8_t GetTempSensorTableTemperatureValue(const uint8_t idx)
 {
 	return TempSensorTable[idx].temperature;
 }
+

@@ -17,7 +17,4 @@ uint16_t GetVoltageLevelTableValue(const uint8_t idx);
 uint8_t GetCurrentLevelsTableSize();
 uint16_t GetCurrentLevelTableValue(const uint8_t idx);
 
-
-
-
 #endif // __INDICATORS_TABLE_H__

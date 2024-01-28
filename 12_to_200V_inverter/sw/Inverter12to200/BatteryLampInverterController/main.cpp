@@ -10,7 +10,6 @@
 #include "cs_adc.hpp"
 #include "LedsControl.hpp"
 #include "CsDelay.hpp"
-//#include "VoltageCurrentLevels.hpp"
 #include "LedLampStatus.hpp"
 #include "FastKeySwitchingDetector.hpp"
 #include "VoltageCurrentIndicators.hpp"
@@ -167,6 +166,7 @@ int main(void)
 	
 	//uint8_t ignoreLowBatterySwitchCnt = 0;
 	LedLamp::VoltageIndicator voltageIndicator;
+	LedLamp::CurrentIndicator currentIndicator;
     for(;;)
     {
 		// Wait 100msec
@@ -176,7 +176,7 @@ int main(void)
             cnt100ms = 0;
         }
         WaitTimer1DelayInMsElapsed();
-        StartTimer1DelayInMs(100);
+        StartTimer1DelayInMs(20);
         
 		// Get all ADC values
 		const uint16_t temperature = GetTemperatureAdcInDegrees(1);
@@ -251,6 +251,17 @@ int main(void)
 		
 		// Indication
 		voltageIndicator.Update(voltage);
+		currentIndicator.Update(chargeCurrent);
+		
+		
+		if (status.IsKeyON())
+		{
+			ConverterOn();
+		}
+		else
+		{
+			ConverterOff();
+		}
 		
 		ShiftRegPush();
 		
