@@ -10,7 +10,7 @@
 namespace LedLamp
 {
 
-#define FAST_KEYS_SWITCH_COUNT	3
+#define FAST_KEYS_SWITCH_COUNT	6
 
 class FastKeySwitchingDetector
 {
@@ -23,7 +23,7 @@ public:
 		m_prevKeyState(keysState)
 	{
 		// Set default delay period to max possible value, to avoid false detection
-		for(uint8_t idx = 0; idx < FAST_KEYS_SWITCH_COUNT * 2; ++idx)
+		for(uint8_t idx = 0; idx < FAST_KEYS_SWITCH_COUNT; ++idx)
 		{
 			m_delayArray[idx] = 0xFF;
 		}
@@ -33,15 +33,19 @@ public:
 	{
 		if (keysState == m_prevKeyState)
 		{
-			if (m_delayArray[m_currentDelayIdx] != 255) 
-			{
-				++m_delayArray[m_currentDelayIdx];
-			}
+ 			if (m_delayArray[m_currentDelayIdx] != 255) 
+ 			{
+ 				m_delayArray[m_currentDelayIdx] += 1;
+ 			}
 			return;
 		}
 		
 		// Update current delay idx
-		m_currentDelayIdx = (m_currentDelayIdx < FAST_KEYS_SWITCH_COUNT * 2) ? (m_currentDelayIdx + 1) : 0;
+		++m_currentDelayIdx;
+		if (m_currentDelayIdx >= FAST_KEYS_SWITCH_COUNT)
+		{
+			m_currentDelayIdx = 0;			
+		}
 
 		m_delayArray[m_currentDelayIdx] = 0;
 		m_prevKeyState = keysState;
@@ -50,16 +54,17 @@ public:
 	bool IsFastSwitchingDetected() const
 	{
 		uint16_t summaryDelay = 0;
-		for(uint8_t idx = 0; idx < FAST_KEYS_SWITCH_COUNT * 2; ++idx)
+		for(uint8_t idx = 0; idx < FAST_KEYS_SWITCH_COUNT; ++idx)
 		{
-			summaryDelay += (uint16_t)(m_delayArray[idx]);
+			const uint16_t toAdd = (uint16_t)(m_delayArray[idx]);
+			summaryDelay += toAdd;
 		}
 		return m_maxDurationPeriodToDetect >= summaryDelay;
 	}
 
 private:
 	const uint16_t	m_maxDurationPeriodToDetect;
-	uint8_t			m_delayArray[FAST_KEYS_SWITCH_COUNT * 2];
+	uint8_t			m_delayArray[FAST_KEYS_SWITCH_COUNT];
 	uint8_t			m_currentDelayIdx;
 	bool			m_prevKeyState;
 };

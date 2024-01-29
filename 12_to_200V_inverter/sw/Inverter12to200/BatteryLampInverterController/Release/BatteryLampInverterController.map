@@ -413,7 +413,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xbbc
+.text           0x00000000      0xbfa
  *(.vectors)
  .vectors       0x00000000       0x1e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
                 0x00000000                __vector_default
@@ -544,205 +544,205 @@ END GROUP
                 0x000002b8       0x16 main.o
                 0x000002b8                _Z4Beepj
  .text.startup.main
-                0x000002ce      0x21c main.o
+                0x000002ce      0x25a main.o
                 0x000002ce                main
  .text.startup._GLOBAL__sub_I__Z8IsKeysONv
-                0x000004ea       0x22 main.o
+                0x00000528       0x22 main.o
  .text._Z13DelayMicroSech
-                0x0000050c       0x14 src/CsDelay.o
-                0x0000050c                _Z13DelayMicroSech
+                0x0000054a       0x14 src/CsDelay.o
+                0x0000054a                _Z13DelayMicroSech
  .text._Z12DelayMiliSecj
-                0x00000520       0x24 src/CsDelay.o
-                0x00000520                _Z12DelayMiliSecj
+                0x0000055e       0x24 src/CsDelay.o
+                0x0000055e                _Z12DelayMiliSecj
  .text._Z20InitCurrentSensorADCv
-                0x00000544       0x16 src/cs_adc.o
-                0x00000544                _Z20InitCurrentSensorADCv
+                0x00000582       0x16 src/cs_adc.o
+                0x00000582                _Z20InitCurrentSensorADCv
  .text._Z14InitVoltageADCv
-                0x0000055a       0x16 src/cs_adc.o
-                0x0000055a                _Z14InitVoltageADCv
+                0x00000598       0x16 src/cs_adc.o
+                0x00000598                _Z14InitVoltageADCv
  .text._Z24InitTemperatureSensorADCv
-                0x00000570       0x16 src/cs_adc.o
-                0x00000570                _Z24InitTemperatureSensorADCv
+                0x000005ae       0x16 src/cs_adc.o
+                0x000005ae                _Z24InitTemperatureSensorADCv
  .text._Z18StartAdcConversionv
-                0x00000586       0x1a src/cs_adc.o
-                0x00000586                _Z18StartAdcConversionv
+                0x000005c4       0x1a src/cs_adc.o
+                0x000005c4                _Z18StartAdcConversionv
  .text.GetVoltageAdcValueInMv
-                0x000005a0       0x7c src/cs_adc.o
-                0x000005a0                GetVoltageAdcValueInMv
+                0x000005de       0x7c src/cs_adc.o
+                0x000005de                GetVoltageAdcValueInMv
  .text.GetCurrentAdcInMa
-                0x0000061c       0x7c src/cs_adc.o
-                0x0000061c                GetCurrentAdcInMa
+                0x0000065a       0x7c src/cs_adc.o
+                0x0000065a                GetCurrentAdcInMa
  .text.GetTemperatureAdcInDegrees
-                0x00000698       0xc0 src/cs_adc.o
-                0x00000698                GetTemperatureAdcInDegrees
+                0x000006d6       0xc0 src/cs_adc.o
+                0x000006d6                GetTemperatureAdcInDegrees
  .text._ZN7LedLamp13LedLampStatusC2Ev
-                0x00000758        0x6 src/LedLampStatus.o
-                0x00000758                _ZN7LedLamp13LedLampStatusC2Ev
-                0x00000758                _ZN7LedLamp13LedLampStatusC1Ev
+                0x00000796        0x6 src/LedLampStatus.o
+                0x00000796                _ZN7LedLamp13LedLampStatusC2Ev
+                0x00000796                _ZN7LedLamp13LedLampStatusC1Ev
  .text._ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv
-                0x0000075e        0x8 src/LedLampStatus.o
-                0x0000075e                _ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv
+                0x0000079c        0x8 src/LedLampStatus.o
+                0x0000079c                _ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv
  .text._ZN7LedLamp13LedLampStatus18SetOverTemperatureEb
-                0x00000766       0x12 src/LedLampStatus.o
-                0x00000766                _ZN7LedLamp13LedLampStatus18SetOverTemperatureEb
+                0x000007a4       0x12 src/LedLampStatus.o
+                0x000007a4                _ZN7LedLamp13LedLampStatus18SetOverTemperatureEb
  .text._ZNK7LedLamp13LedLampStatus12IsLowBatteryEv
-                0x00000778        0xc src/LedLampStatus.o
-                0x00000778                _ZNK7LedLamp13LedLampStatus12IsLowBatteryEv
+                0x000007b6        0xc src/LedLampStatus.o
+                0x000007b6                _ZNK7LedLamp13LedLampStatus12IsLowBatteryEv
  .text._ZN7LedLamp13LedLampStatus13SetLowBatteryEb
-                0x00000784       0x12 src/LedLampStatus.o
-                0x00000784                _ZN7LedLamp13LedLampStatus13SetLowBatteryEb
+                0x000007c2       0x12 src/LedLampStatus.o
+                0x000007c2                _ZN7LedLamp13LedLampStatus13SetLowBatteryEb
  .text._ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb
-                0x00000796       0x12 src/LedLampStatus.o
-                0x00000796                _ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb
+                0x000007d4       0x12 src/LedLampStatus.o
+                0x000007d4                _ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb
  .text._ZNK7LedLamp13LedLampStatus18IsIgnoreLowBatteryEv
-                0x000007a8        0xa src/LedLampStatus.o
-                0x000007a8                _ZNK7LedLamp13LedLampStatus18IsIgnoreLowBatteryEv
+                0x000007e6        0xa src/LedLampStatus.o
+                0x000007e6                _ZNK7LedLamp13LedLampStatus18IsIgnoreLowBatteryEv
  .text._ZN7LedLamp13LedLampStatus19SetIgnoreLowBatteryEb
-                0x000007b2       0x12 src/LedLampStatus.o
-                0x000007b2                _ZN7LedLamp13LedLampStatus19SetIgnoreLowBatteryEb
+                0x000007f0       0x12 src/LedLampStatus.o
+                0x000007f0                _ZN7LedLamp13LedLampStatus19SetIgnoreLowBatteryEb
  .text._ZNK7LedLamp13LedLampStatus7IsKeyONEv
-                0x000007c4        0xc src/LedLampStatus.o
-                0x000007c4                _ZNK7LedLamp13LedLampStatus7IsKeyONEv
+                0x00000802        0xc src/LedLampStatus.o
+                0x00000802                _ZNK7LedLamp13LedLampStatus7IsKeyONEv
  .text._ZN7LedLamp13LedLampStatus8SetKeyONEb
-                0x000007d0       0x12 src/LedLampStatus.o
-                0x000007d0                _ZN7LedLamp13LedLampStatus8SetKeyONEb
+                0x0000080e       0x12 src/LedLampStatus.o
+                0x0000080e                _ZN7LedLamp13LedLampStatus8SetKeyONEb
  .text._ZN7LedLamp13LedLampStatus12SetPrevKeyONEb
-                0x000007e2       0x12 src/LedLampStatus.o
-                0x000007e2                _ZN7LedLamp13LedLampStatus12SetPrevKeyONEb
+                0x00000820       0x12 src/LedLampStatus.o
+                0x00000820                _ZN7LedLamp13LedLampStatus12SetPrevKeyONEb
  .text._Z8BuzzerOnv
-                0x000007f4       0x14 src/LedsControl.o
-                0x000007f4                _Z8BuzzerOnv
+                0x00000832       0x14 src/LedsControl.o
+                0x00000832                _Z8BuzzerOnv
  .text._Z9BuzzerOffv
-                0x00000808       0x14 src/LedsControl.o
-                0x00000808                _Z9BuzzerOffv
+                0x00000846       0x14 src/LedsControl.o
+                0x00000846                _Z9BuzzerOffv
  .text._Z18AddChargeVoltageOnv
-                0x0000081c       0x14 src/LedsControl.o
-                0x0000081c                _Z18AddChargeVoltageOnv
+                0x0000085a       0x14 src/LedsControl.o
+                0x0000085a                _Z18AddChargeVoltageOnv
  .text._Z19AddChargeVoltageOffv
-                0x00000830       0x14 src/LedsControl.o
-                0x00000830                _Z19AddChargeVoltageOffv
+                0x0000086e       0x14 src/LedsControl.o
+                0x0000086e                _Z19AddChargeVoltageOffv
  .text._Z11ConverterOnv
-                0x00000844       0x14 src/LedsControl.o
-                0x00000844                _Z11ConverterOnv
+                0x00000882       0x14 src/LedsControl.o
+                0x00000882                _Z11ConverterOnv
  .text._Z12ConverterOffv
-                0x00000858       0x14 src/LedsControl.o
-                0x00000858                _Z12ConverterOffv
+                0x00000896       0x14 src/LedsControl.o
+                0x00000896                _Z12ConverterOffv
  .text._Z21SenseBatteryVoltageOnv
-                0x0000086c       0x14 src/LedsControl.o
-                0x0000086c                _Z21SenseBatteryVoltageOnv
+                0x000008aa       0x14 src/LedsControl.o
+                0x000008aa                _Z21SenseBatteryVoltageOnv
  .text._Z22SenseBatteryVoltageOffv
-                0x00000880       0x14 src/LedsControl.o
-                0x00000880                _Z22SenseBatteryVoltageOffv
+                0x000008be       0x14 src/LedsControl.o
+                0x000008be                _Z22SenseBatteryVoltageOffv
  .text._Z16SetLedVoltGreen2b
-                0x00000894       0x1c src/LedsControl.o
-                0x00000894                _Z16SetLedVoltGreen2b
+                0x000008d2       0x1c src/LedsControl.o
+                0x000008d2                _Z16SetLedVoltGreen2b
  .text._Z16SetLedVoltGreen1b
-                0x000008b0       0x1c src/LedsControl.o
-                0x000008b0                _Z16SetLedVoltGreen1b
+                0x000008ee       0x1c src/LedsControl.o
+                0x000008ee                _Z16SetLedVoltGreen1b
  .text._Z16SetLedVoltYellowb
-                0x000008cc       0x1c src/LedsControl.o
-                0x000008cc                _Z16SetLedVoltYellowb
+                0x0000090a       0x1c src/LedsControl.o
+                0x0000090a                _Z16SetLedVoltYellowb
  .text._Z13SetLedVoltRedb
-                0x000008e8       0x1c src/LedsControl.o
-                0x000008e8                _Z13SetLedVoltRedb
+                0x00000926       0x1c src/LedsControl.o
+                0x00000926                _Z13SetLedVoltRedb
  .text._Z16SetLedCurrGreen2b
-                0x00000904       0x1c src/LedsControl.o
-                0x00000904                _Z16SetLedCurrGreen2b
+                0x00000942       0x1c src/LedsControl.o
+                0x00000942                _Z16SetLedCurrGreen2b
  .text._Z16SetLedCurrGreen1b
-                0x00000920       0x1c src/LedsControl.o
-                0x00000920                _Z16SetLedCurrGreen1b
+                0x0000095e       0x1c src/LedsControl.o
+                0x0000095e                _Z16SetLedCurrGreen1b
  .text._Z16SetLedCurrYellowb
-                0x0000093c       0x1c src/LedsControl.o
-                0x0000093c                _Z16SetLedCurrYellowb
+                0x0000097a       0x1c src/LedsControl.o
+                0x0000097a                _Z16SetLedCurrYellowb
  .text._Z13SetLedCurrRedb
-                0x00000958       0x1c src/LedsControl.o
-                0x00000958                _Z13SetLedCurrRedb
+                0x00000996       0x1c src/LedsControl.o
+                0x00000996                _Z13SetLedCurrRedb
  .text._Z16LedVoltGreen2Offv
-                0x00000974       0x14 src/LedsControl.o
-                0x00000974                _Z16LedVoltGreen2Offv
+                0x000009b2       0x14 src/LedsControl.o
+                0x000009b2                _Z16LedVoltGreen2Offv
  .text._Z16LedVoltGreen1Offv
-                0x00000988       0x14 src/LedsControl.o
-                0x00000988                _Z16LedVoltGreen1Offv
+                0x000009c6       0x14 src/LedsControl.o
+                0x000009c6                _Z16LedVoltGreen1Offv
  .text._Z16LedVoltYellowOffv
-                0x0000099c       0x14 src/LedsControl.o
-                0x0000099c                _Z16LedVoltYellowOffv
+                0x000009da       0x14 src/LedsControl.o
+                0x000009da                _Z16LedVoltYellowOffv
  .text._Z13LedVoltRedOffv
-                0x000009b0       0x14 src/LedsControl.o
-                0x000009b0                _Z13LedVoltRedOffv
+                0x000009ee       0x14 src/LedsControl.o
+                0x000009ee                _Z13LedVoltRedOffv
  .text._Z16LedCurrGreen2Offv
-                0x000009c4       0x14 src/LedsControl.o
-                0x000009c4                _Z16LedCurrGreen2Offv
+                0x00000a02       0x14 src/LedsControl.o
+                0x00000a02                _Z16LedCurrGreen2Offv
  .text._Z16LedCurrGreen1Offv
-                0x000009d8       0x14 src/LedsControl.o
-                0x000009d8                _Z16LedCurrGreen1Offv
+                0x00000a16       0x14 src/LedsControl.o
+                0x00000a16                _Z16LedCurrGreen1Offv
  .text._Z16LedCurrYellowOffv
-                0x000009ec       0x14 src/LedsControl.o
-                0x000009ec                _Z16LedCurrYellowOffv
+                0x00000a2a       0x14 src/LedsControl.o
+                0x00000a2a                _Z16LedCurrYellowOffv
  .text._Z13LedCurrRedOffv
-                0x00000a00       0x14 src/LedsControl.o
-                0x00000a00                _Z13LedCurrRedOffv
+                0x00000a3e       0x14 src/LedsControl.o
+                0x00000a3e                _Z13LedCurrRedOffv
  .text._Z10AllLedsOffv
-                0x00000a14       0x10 src/LedsControl.o
-                0x00000a14                _Z10AllLedsOffv
+                0x00000a52       0x10 src/LedsControl.o
+                0x00000a52                _Z10AllLedsOffv
  .text._Z11ClearLedSckv
-                0x00000a24        0x4 src/LedsControl.o
-                0x00000a24                _Z11ClearLedSckv
+                0x00000a62        0x4 src/LedsControl.o
+                0x00000a62                _Z11ClearLedSckv
  .text._Z21SendShiftRegisterWordj
-                0x00000a28       0x36 src/LedsControl.o
-                0x00000a28                _Z21SendShiftRegisterWordj
+                0x00000a66       0x36 src/LedsControl.o
+                0x00000a66                _Z21SendShiftRegisterWordj
  .text._Z12ShiftRegInitv
-                0x00000a5e       0x10 src/LedsControl.o
-                0x00000a5e                _Z12ShiftRegInitv
+                0x00000a9c       0x10 src/LedsControl.o
+                0x00000a9c                _Z12ShiftRegInitv
  .text._Z12ShiftRegPushv
-                0x00000a6e        0xa src/LedsControl.o
-                0x00000a6e                _Z12ShiftRegPushv
+                0x00000aac        0xa src/LedsControl.o
+                0x00000aac                _Z12ShiftRegPushv
  .text.GetVoltageLevelsTableSize
-                0x00000a78        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000a78                GetVoltageLevelsTableSize
+                0x00000ab6        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000ab6                GetVoltageLevelsTableSize
  .text.GetVoltageLevelTableValue
-                0x00000a7c       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000a7c                GetVoltageLevelTableValue
+                0x00000aba       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000aba                GetVoltageLevelTableValue
  .text.GetCurrentLevelsTableSize
-                0x00000a8e        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000a8e                GetCurrentLevelsTableSize
+                0x00000acc        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000acc                GetCurrentLevelsTableSize
  .text.GetCurrentLevelTableValue
-                0x00000a92       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000a92                GetCurrentLevelTableValue
+                0x00000ad0       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000ad0                GetCurrentLevelTableValue
  .text.GetLedFlashingTableValue
-                0x00000aa4        0xc C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000aa4                GetLedFlashingTableValue
+                0x00000ae2        0xc C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000ae2                GetLedFlashingTableValue
  .text.GetTempSensorTableSize
-                0x00000ab0        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
-                0x00000ab0                GetTempSensorTableSize
+                0x00000aee        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
+                0x00000aee                GetTempSensorTableSize
  .text.GetTempSensorTableAdcValue
-                0x00000ab4       0x14 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
-                0x00000ab4                GetTempSensorTableAdcValue
+                0x00000af2       0x14 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
+                0x00000af2                GetTempSensorTableAdcValue
  .text.GetTempSensorTableTemperatureValue
-                0x00000ac8       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
-                0x00000ac8                GetTempSensorTableTemperatureValue
+                0x00000b06       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
+                0x00000b06                GetTempSensorTableTemperatureValue
  .text.libgcc.mul
-                0x00000ada       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulqi3.o)
-                0x00000ada                __mulqi3
+                0x00000b18       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulqi3.o)
+                0x00000b18                __mulqi3
  .text.libgcc.mul
-                0x00000aec       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
-                0x00000aec                __mulhi3
+                0x00000b2a       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+                0x00000b2a                __mulhi3
  .text.libgcc.mul
-                0x00000b0e       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
-                0x00000b0e                __mulsi3
-                0x00000b12                __mulsi3_helper
+                0x00000b4c       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
+                0x00000b4c                __mulsi3
+                0x00000b50                __mulsi3_helper
  .text.libgcc.div
-                0x00000b40       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodhi4.o)
-                0x00000b40                __udivmodhi4
+                0x00000b7e       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodhi4.o)
+                0x00000b7e                __udivmodhi4
  .text.libgcc.div
-                0x00000b68       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
-                0x00000b68                __udivmodsi4
- .text.libgcc   0x00000bac        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_tablejump2.o)
-                0x00000bac                __tablejump2__
-                0x00000bb8                . = ALIGN (0x2)
+                0x00000ba6       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
+                0x00000ba6                __udivmodsi4
+ .text.libgcc   0x00000bea        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_tablejump2.o)
+                0x00000bea                __tablejump2__
+                0x00000bf6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000bb8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
-                0x00000bb8                _exit
-                0x00000bb8                exit
+ .fini9         0x00000bf6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+                0x00000bf6                _exit
+                0x00000bf6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -761,11 +761,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000bb8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+ .fini0         0x00000bf6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000bbc                _etext = .
+                0x00000bfa                _etext = .
 
-.data           0x00800060       0x14 load address 0x00000bbc
+.data           0x00800060       0x14 load address 0x00000bfa
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -795,8 +795,8 @@ END GROUP
                 0x0080007e                g_shiftRegCodeWord
  *(COMMON)
                 0x00800080                PROVIDE (__bss_end, .)
-                0x00000bbc                __data_load_start = LOADADDR (.data)
-                0x00000bd0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000bfa                __data_load_start = LOADADDR (.data)
+                0x00000c0e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800080        0x0
                 [!provide]                PROVIDE (__noinit_start, .)

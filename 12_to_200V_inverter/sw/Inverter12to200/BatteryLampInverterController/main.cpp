@@ -117,8 +117,9 @@ void Beep(const uint16_t durationInMs)
     ShiftRegPush();
 }
 
+//volatile uint8_t testArray[7] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11};
 
-LedLamp::FastKeySwitchingDetector fastKeySwitchDetector(30, true);
+LedLamp::FastKeySwitchingDetector fastKeySwitchDetector(40, true);
 
 int main(void)
 {
@@ -126,9 +127,24 @@ int main(void)
 	asm volatile("cli");
 	
     StartUpInit();
-	//DelayMiliSec(2000);
-
-//	SwUartInit(SW_UART_600);
+	
+	//SwUartInit(SW_UART_600);
+	
+	//SwUartInit(SW_UART_19200);
+	
+// 	SwUartPrintByte(0x0D);
+// 	DelayMiliSec(200);
+// 	
+// 	SwUartPrintByte(0x0D);
+// 	SwUartPrintByte(0x0A);
+// 	DelayMiliSec(200);
+// 
+// 	
+// 	
+// 	SwUartPrintString("Hello");
+	
+//	for(;;);
+	
 	
 
     Beep(100);
@@ -167,7 +183,8 @@ int main(void)
 	//uint8_t ignoreLowBatterySwitchCnt = 0;
 	LedLamp::VoltageIndicator voltageIndicator;
 	LedLamp::CurrentIndicator currentIndicator;
-    for(;;)
+    
+	for(;;)
     {
 		// Wait 100msec
         ++cnt100ms;
@@ -176,7 +193,7 @@ int main(void)
             cnt100ms = 0;
         }
         WaitTimer1DelayInMsElapsed();
-        StartTimer1DelayInMs(20);
+        StartTimer1DelayInMs(100);
         
 		// Get all ADC values
 		const uint16_t temperature = GetTemperatureAdcInDegrees(1);
@@ -204,6 +221,10 @@ int main(void)
         const uint16_t BATTERY_LOW_WARNING_LEVEL = 10100;	// 10.1V - warning beeps
         const uint16_t BATTERY_LOW_TURN_OFF_LEVEL = 9700;	// 9.7V - turn OFF
         const uint16_t BATTERY_LOW_TURN_ON_LEVEL = 11700;	// 11.7V - turn ON after low battery turn OFF
+//        const uint16_t BATTERY_LOW_WARNING_LEVEL = 13100;	// 10.1V - warning beeps
+//        const uint16_t BATTERY_LOW_TURN_OFF_LEVEL = 12700;	// 9.7V - turn OFF
+//        const uint16_t BATTERY_LOW_TURN_ON_LEVEL = 13700;	// 11.7V - turn ON after low battery turn OFF
+
 		if (voltage < BATTERY_LOW_TURN_OFF_LEVEL)
 		{
 			status.SetLowBattery(true);
@@ -225,9 +246,20 @@ int main(void)
 			}
 		}
 		
-		// Check battery current and apply additional charge voltage switch 
-        const uint16_t CHARGER_ADD_VOLTAGE_ON_THRESHOLD = 140;		// 0.14A - charge current threshold to ENABLE additional voltage.
-        const uint16_t CHARGER_ADD_VOLTAGE_OFF_THRESHOLD = 100;		// 0.1A - charge current threshold to DISABLE additional voltage.
+	
+		// Check for fast key switching
+		fastKeySwitchDetector.Update(status.IsKeyON());
+		if (status.IsLowBattery() && !status.IsIgnoreLowBattery() && fastKeySwitchDetector.IsFastSwitchingDetected())
+		{
+			status.SetIgnoreLowBattery(true);
+			Beep(500);
+		}
+		
+
+		// Control actions
+		// Check battery current and apply additional charge voltage switch
+		const uint16_t CHARGER_ADD_VOLTAGE_ON_THRESHOLD = 140;		// 0.14A - charge current threshold to ENABLE additional voltage.
+		const uint16_t CHARGER_ADD_VOLTAGE_OFF_THRESHOLD = 100;		// 0.1A - charge current threshold to DISABLE additional voltage.
 
 		if (chargeCurrent > CHARGER_ADD_VOLTAGE_ON_THRESHOLD)
 		{
@@ -240,31 +272,26 @@ int main(void)
 				AddChargeVoltageOff();
 			}
 		}
-		
-		// Check for fast key switching
-		fastKeySwitchDetector.Update(status.IsKeyON());
-		if (status.IsLowBattery() && !status.IsIgnoreLowBattery() && fastKeySwitchDetector.IsFastSwitchingDetected())
-		{
-			status.SetIgnoreLowBattery(true);
-		}
-		
-		
+
+
+		// ON/OFF converter
+ 		if (status.IsKeyON() && (!status.IsLowBattery() ||  (status.IsLowBattery() && status.IsIgnoreLowBattery())))
+ 		{
+ 			ConverterOn();
+ 		}
+ 		else
+ 		{
+ 			ConverterOff();
+ 		}
+
 		// Indication
-		voltageIndicator.Update(voltage);
-		currentIndicator.Update(chargeCurrent);
-		
-		
-		if (status.IsKeyON())
-		{
-			ConverterOn();
-		}
-		else
-		{
-			ConverterOff();
-		}
+ 		if (status.IsKeyON())
+ 		{
+ 			voltageIndicator.Update(voltage);
+ 		}
+ 		currentIndicator.Update(chargeCurrent);
 		
 		ShiftRegPush();
-		
     }   
 
 
