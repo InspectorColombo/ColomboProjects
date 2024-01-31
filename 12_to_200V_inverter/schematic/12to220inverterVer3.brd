@@ -28,9 +28,9 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
@@ -1372,8 +1372,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="143.4" y="38.8" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="TR3" library="__MyCommonLib1" package="TRANS_37X26_3578_11_13_15_17" value="Self made transformer. From TR8 sat reciever." x="77" y="19" rot="R90"/>
-<element name="D13" library="__MyCommonLib1" package="DO-41_12.5MM" value="UF4007" x="107" y="14"/>
-<element name="ZD2" library="__MyCommonLib1" package="DO-41_10MM" value="P6KE200" x="115" y="8" rot="R90"/>
+<element name="D13" library="__MyCommonLib1" package="DO-41_12.5MM" value="UF4007" x="106.6" y="14"/>
+<element name="ZD2" library="__MyCommonLib1" package="DO-41_5MM" value="P6KE200" x="106.4" y="5.8" rot="R90"/>
 <element name="T10" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="16N60" x="101" y="19"/>
 <element name="R57" library="__MyCommonLib1" package="RSMD_1206" value="2R4" x="107" y="18" smashed="yes" rot="MR90">
 <attribute name="NAME" x="107" y="18" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
@@ -1475,11 +1475,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="98" y="40" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
 <attribute name="VALUE" x="99.2" y="39.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
-<element name="R35" library="__MyCommonLib1" package="R_1.0W_VERTICAL" value="33K" x="106.6" y="6.4" smashed="yes" rot="R270">
-<attribute name="NAME" x="106.6" y="6.4" size="1.27" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="106.6" y="6.4" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
-</element>
-<element name="C13" library="__MyCommonLib1" package="CAP_CER_11X4" value="10nF x 2kV" x="111.4" y="6.8" rot="R90"/>
+<element name="C13" library="__MyCommonLib1" package="CAP_CER_11X4" value="10nF x 2kV" x="110.2" y="6.8" rot="R90"/>
 <element name="IC2" library="__MyCommonLib1" package="DIP4" value="PC817" x="117" y="58" rot="R180"/>
 <element name="C14" library="__MyCommonLib1" package="RSMD_0805" value="2n2 x 50V" x="58" y="29" smashed="yes" rot="MR180">
 <attribute name="NAME" x="58" y="29" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
@@ -1502,13 +1498,13 @@ design rules under a new name.</description>
 <attribute name="NAME" x="116" y="73" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
 <attribute name="VALUE" x="118.8" y="75.2" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
-<element name="R59" library="__MyCommonLib1" package="RSMD_0805" value="5K6" x="117" y="65" smashed="yes" rot="MR180">
-<attribute name="NAME" x="117" y="65" size="1.27" layer="26" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="115.8" y="65.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
+<element name="R59" library="__MyCommonLib1" package="RSMD_0805" value="5K6" x="112.8" y="63.4" smashed="yes" rot="MR270">
+<attribute name="NAME" x="112.8" y="63.4" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
+<attribute name="VALUE" x="113.2" y="64.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
-<element name="R61" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="113" y="62" smashed="yes" rot="MR90">
-<attribute name="NAME" x="113" y="62" size="1.27" layer="26" font="vector" ratio="20" rot="MR90"/>
-<attribute name="VALUE" x="112.6" y="60.8" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
+<element name="R61" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="117" y="64.8" smashed="yes" rot="MR0">
+<attribute name="NAME" x="117" y="64.8" size="1.27" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="118.2" y="64.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="C25" library="__MyCommonLib1" package="RSMD_0805" value="100pF" x="112" y="73" smashed="yes" rot="MR270">
 <attribute name="NAME" x="112" y="73" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1999,7 +1995,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="110" y="62" size="1.27" layer="26" font="vector" ratio="20" rot="MR270"/>
 <attribute name="VALUE" x="108" y="63.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
-<element name="R33" library="__MyCommonLib1" package="R_1.0W" value="750K" x="7.4" y="-4.8"/>
+<element name="R33" library="__MyCommonLib1" package="R0207" value="750K" x="114" y="-10.2" rot="R270"/>
 <element name="ZD3" library="__MyCommonLib1" package="DO-41_10MM" value="5V6" x="3.6" y="-11.6"/>
 <element name="R34" library="__MyCommonLib1" package="RSMD_1206" value="2K0" x="-0.6" y="-15"/>
 <element name="R36" library="__MyCommonLib1" package="RSMD_1206" value="2K0" x="-0.6" y="-18.6"/>
@@ -2007,6 +2003,7 @@ design rules under a new name.</description>
 <element name="R38" library="__MyCommonLib1" package="RSMD_1206" value="2K0" x="-0.6" y="-25.8"/>
 <element name="R51" library="__MyCommonLib1" package="RSMD_1206" value="2K0" x="-0.6" y="-29.4"/>
 <element name="R56" library="__MyCommonLib1" package="RSMD_1206" value="2K0" x="-0.6" y="-33"/>
+<element name="C40" library="__MyCommonLib1" package="RSMD_0805" value="10nF*" x="122.8" y="23.6" rot="MR180"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -3225,7 +3222,6 @@ design rules under a new name.</description>
 <contactref element="ZD2" pad="ANODE"/>
 <contactref element="R30" pad="PAD1"/>
 <contactref element="C13" pad="PAD_0"/>
-<contactref element="R35" pad="PAD1"/>
 <contactref element="C16" pad="2"/>
 <contactref element="TR3" pad="17"/>
 <contactref element="TR4" pad="10"/>
@@ -3258,7 +3254,7 @@ design rules under a new name.</description>
 <vertex x="122.8" y="19.4"/>
 </polygon>
 <contactref element="R33" pad="PAD1"/>
-<wire x1="59" y1="8.92" x2="16.29" y2="-4.8" width="0" layer="19" extent="1-1"/>
+<wire x1="118.78" y1="3" x2="114" y2="-15.28" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$31">
 <contactref element="R29" pad="PAD_0"/>
@@ -3300,18 +3296,15 @@ design rules under a new name.</description>
 <signal name="N$36">
 <contactref element="D13" pad="CATHODE"/>
 <contactref element="ZD2" pad="CATHODE"/>
-<contactref element="R35" pad="PAD_0"/>
 <contactref element="C13" pad="PAD1"/>
 <polygon width="0.5" layer="16" thermals="no">
 <vertex x="105.8" y="8.2"/>
 <vertex x="106.6" y="7.4"/>
-<vertex x="113.2" y="7.4"/>
-<vertex x="115.8" y="10"/>
-<vertex x="115.8" y="13.2"/>
-<vertex x="115.2" y="13.8"/>
-<vertex x="114.8" y="13.8"/>
-<vertex x="113.8" y="14.8"/>
-<vertex x="113" y="14.8"/>
+<vertex x="112.8" y="7.4"/>
+<vertex x="113.6" y="8.2"/>
+<vertex x="113.6" y="14.4"/>
+<vertex x="113.4" y="14.6"/>
+<vertex x="112.8" y="14.6"/>
 <vertex x="112.2" y="14"/>
 <vertex x="112.2" y="12.8"/>
 <vertex x="110" y="10.6"/>
@@ -3383,7 +3376,7 @@ design rules under a new name.</description>
 <wire x1="118" y1="23.8" x2="119" y2="23.8" width="0.5" layer="16"/>
 <wire x1="119" y1="23.8" x2="119" y2="24.05" width="0.5" layer="16"/>
 <contactref element="R33" pad="PAD_0"/>
-<wire x1="-1.49" y1="-4.8" x2="113.45" y2="23" width="0" layer="19" extent="16-16"/>
+<wire x1="114" y1="-5.12" x2="114.6" y2="23" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$44">
 <contactref element="T11" pad="2"/>
@@ -3596,6 +3589,8 @@ design rules under a new name.</description>
 <vertex x="102.6" y="45"/>
 <vertex x="101.6" y="45"/>
 </polygon>
+<contactref element="C40" pad="PAD_0"/>
+<wire x1="121.635" y1="23.435" x2="121.75" y2="23.6" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$51">
 <contactref element="D14" pad="CATHODE"/>
@@ -3678,6 +3673,8 @@ design rules under a new name.</description>
 <wire x1="122" y1="46.8" x2="118.6" y2="50.2" width="0.5" layer="16"/>
 <wire x1="118.6" y1="50.2" x2="118.6" y2="53.86" width="0.5" layer="16"/>
 <wire x1="118.6" y1="53.86" x2="118.27" y2="54.19" width="0.5" layer="16"/>
+<contactref element="C40" pad="PAD_1"/>
+<wire x1="123.85" y1="23.6" x2="122.905" y2="26.30125" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$56">
 <contactref element="C14" pad="PAD_0"/>
@@ -3723,14 +3720,6 @@ design rules under a new name.</description>
 <wire x1="114.3" y1="68" x2="114.3" y2="70.3" width="0.8" layer="16"/>
 <wire x1="114.3" y1="70.3" x2="114.7" y2="70.7" width="0.8" layer="16"/>
 <wire x1="114.7" y1="71.9" x2="114.7" y2="70.7" width="0.8" layer="16"/>
-<wire x1="113" y1="63.05" x2="113.2" y2="63.25" width="0.8" layer="16"/>
-<wire x1="113.2" y1="63.25" x2="113.2" y2="64.2" width="0.8" layer="16"/>
-<wire x1="113.2" y1="64.2" x2="113.8" y2="64.8" width="0.8" layer="16"/>
-<wire x1="113.8" y1="64.8" x2="114.2" y2="64.8" width="0.8" layer="16"/>
-<wire x1="114.2" y1="64.8" x2="115.75" y2="64.8" width="0.8" layer="16"/>
-<wire x1="115.95" y1="65" x2="115.75" y2="64.8" width="0.8" layer="16"/>
-<wire x1="114.3" y1="68" x2="114.3" y2="64.9" width="0.8" layer="16"/>
-<wire x1="114.3" y1="64.9" x2="114.2" y2="64.8" width="0.8" layer="16"/>
 <wire x1="109" y1="74.05" x2="109.25" y2="73.8" width="0.5" layer="16"/>
 <wire x1="109.25" y1="73.8" x2="110" y2="73.8" width="0.5" layer="16"/>
 <wire x1="110" y1="73.8" x2="110.6" y2="73.2" width="0.5" layer="16"/>
@@ -3738,6 +3727,8 @@ design rules under a new name.</description>
 <wire x1="112" y1="71.95" x2="111.75" y2="72.2" width="0.5" layer="16"/>
 <wire x1="111.75" y1="72.2" x2="111" y2="72.2" width="0.5" layer="16"/>
 <wire x1="111" y1="72.2" x2="110.6" y2="72.6" width="0.5" layer="16"/>
+<wire x1="115.95" y1="64.8" x2="114.3" y2="68" width="0" layer="19" extent="16-16"/>
+<wire x1="112.8" y1="64.45" x2="115.95" y2="64.8" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="-VBAT">
 <contactref element="ZD1" pad="ANODE"/>
@@ -4946,8 +4937,6 @@ design rules under a new name.</description>
 <vertex x="75.6" y="57"/>
 </polygon>
 <contactref element="C39" pad="PAD_1"/>
-<wire x1="114.87" y1="60.95" x2="113" y2="60.95" width="0.8" layer="16"/>
-<wire x1="113" y1="60.95" x2="110" y2="60.95" width="0.8" layer="16"/>
 <wire x1="78.8" y1="64.2" x2="78.8" y2="59.4" width="0.8" layer="16"/>
 <wire x1="110" y1="60.95" x2="107.85" y2="60.95" width="0.8" layer="16"/>
 <via x="105.4" y="61.2" extent="1-16" drill="0.6" diameter="2"/>
@@ -4992,7 +4981,8 @@ design rules under a new name.</description>
 <vertex x="107.2" y="61.6"/>
 </polygon>
 <contactref element="IC2" pad="1"/>
-<wire x1="114.87" y1="60.95" x2="118.27" y2="61.81" width="0" layer="19" extent="16-16"/>
+<wire x1="118.27" y1="61.81" x2="118.05" y2="64.8" width="0" layer="19" extent="16-16"/>
+<wire x1="110" y1="60.95" x2="118.27" y2="61.81" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$126">
 <contactref element="R114" pad="PAD_1"/>
@@ -5247,7 +5237,7 @@ design rules under a new name.</description>
 <signal name="N$13">
 <contactref element="IC2" pad="2"/>
 <contactref element="R59" pad="PAD_1"/>
-<wire x1="115.73" y1="61.81" x2="118.05" y2="65" width="0" layer="19" extent="16-16"/>
+<wire x1="112.8" y1="62.35" x2="115.73" y2="61.81" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$63">
 <contactref element="R56" pad="PAD_1"/>
