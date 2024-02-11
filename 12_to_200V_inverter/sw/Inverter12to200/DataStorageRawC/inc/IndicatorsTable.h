@@ -8,8 +8,9 @@
 
 #include <avr/io.h>
 
-uint8_t GetLedFlashingTableSize();
-uint8_t GetLedFlashingTableValue(const uint8_t idx);
+uint8_t GetLedTableSize();
+uint8_t  GetLedMaskTableValue(const uint8_t level);
+uint32_t GetLedFlashingFlagsTableValue(const uint8_t level);
 
 uint8_t GetVoltageLevelsTableSize();
 uint16_t GetVoltageLevelTableValue(const uint8_t idx);

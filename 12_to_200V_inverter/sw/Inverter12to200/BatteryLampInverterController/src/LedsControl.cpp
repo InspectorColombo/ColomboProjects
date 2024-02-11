@@ -96,6 +96,10 @@ void SetLedCurrRed(const bool value)
 	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_RED) : (g_shiftRegCodeWord & ~SR_LED_CURR_RED);
 }
 
+void SetBuzzer(const bool value)
+{
+	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_BUZZER) : (g_shiftRegCodeWord & ~SR_BUZZER);
+}
 
 
 // Voltage LEDs routines
@@ -179,6 +183,13 @@ void AllLedsOff()
 	LedVoltGreen2Off();
 }
 
+void VoltageLedsOff()
+{
+	LedVoltRedOff();
+	LedVoltYellowOff();
+	LedVoltGreen1Off();
+	LedVoltGreen2Off();
+}
 
 
 // Shift register SPI low level routines

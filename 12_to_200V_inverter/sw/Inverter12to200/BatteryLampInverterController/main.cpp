@@ -117,7 +117,6 @@ void Beep(const uint16_t durationInMs)
     ShiftRegPush();
 }
 
-//volatile uint8_t testArray[7] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11};
 
 LedLamp::FastKeySwitchingDetector fastKeySwitchDetector(40, true);
 
@@ -127,83 +126,47 @@ int main(void)
 	asm volatile("cli");
 	
     StartUpInit();
-	
-	//SwUartInit(SW_UART_600);
-	
-	//SwUartInit(SW_UART_19200);
-	
-// 	SwUartPrintByte(0x0D);
-// 	DelayMiliSec(200);
-// 	
-// 	SwUartPrintByte(0x0D);
-// 	SwUartPrintByte(0x0A);
-// 	DelayMiliSec(200);
-// 
-// 	
-// 	
-// 	SwUartPrintString("Hello");
-	
-//	for(;;);
-	
-	
 
-    Beep(100);
-
-    // main cycle
-
-//     uint8_t prevVoltageLedLevel = 0;
-//     uint8_t prevCurrentLedLevel = 0;
-//     struct LedsFlashData voltageFlashData;
-//     struct LedsFlashData currentFlashData;
-
-       
-    //const uint8_t batteryLowWarningBeepCount = 0;
-//     const uint16_t voltageHysteresys = 30;  // 30mV
-//     const uint16_t currentHysteresys = 10;  // 10mA
+    Beep(50);
     const uint16_t ADC_READ_COUNT = 100;
     StartTimer1DelayInMs(100);
     
-    // Counter of 100mSec period
-    uint8_t cnt100ms = 29;
-    
-    LedLamp::LedLampStatus status;
+	
+	LedLamp::LedLampStatus status;
+	LedLamp::UpdateCounter updateCounter;
+	LedLamp::VoltageIndicator voltageIndicator;
+	LedLamp::CurrentIndicator currentIndicator;
+	LedLamp::LedsAndBeepIndicator ledsAndBeepIndicator;
 	
 	
 	status.SetOverTemperature(false);
-
-	const bool isKeyOn = status.IsKeyON();
+	const bool isKeyOn = IsKeysON();
 	status.SetPrevKeyON(isKeyOn);
 	status.SetKeyON(isKeyOn);
-	//LedLamp::FastKeySwitchingDetector fastKeySwitchDetector(30, isKeyOn);
+	status.SetIgnoreLowBattery(false);
+	status.SetPrevIgnoreLowBattery(false);
+	updateCounter.Reset();
 	
-	
-	
-	
-	
-	//uint8_t ignoreLowBatterySwitchCnt = 0;
-	LedLamp::VoltageIndicator voltageIndicator;
-	LedLamp::CurrentIndicator currentIndicator;
-    
+	// Main cycle
 	for(;;)
     {
-		// Wait 100msec
-        ++cnt100ms;
-        if (cnt100ms >= 30)
-        {
-            cnt100ms = 0;
-        }
+		// Wait 70msec
         WaitTimer1DelayInMsElapsed();
-        StartTimer1DelayInMs(100);
+        StartTimer1DelayInMs(70);
         
 		// Get all ADC values
 		const uint16_t temperature = GetTemperatureAdcInDegrees(1);
         const uint16_t voltage = GetVoltageAdcValueInMv(ADC_READ_COUNT);
         const uint16_t chargeCurrent = GetCurrentAdcInMa(ADC_READ_COUNT);
 
+		if (updateCounter.GetUpdateFlag())
+		{
+			status.SetPrevIgnoreLowBattery(status.IsIgnoreLowBattery());
+		}
+
         // Update keys status
         status.SetPrevKeyON(status.IsKeyON());
         status.SetKeyON(IsKeysON());
-
 		
         // Check temperature
         const uint16_t TURN_OFF_TEMPERATURE = 85;
@@ -236,25 +199,24 @@ int main(void)
 			{
 				status.SetLowBattery(false);
 				status.SetLowBatteryWarning(false);
+				status.SetIgnoreLowBattery(false);
 			}
 			else
 			{
 				if (voltage < BATTERY_LOW_WARNING_LEVEL && !status.IsLowBattery())
 				{
-					status.SetLowBatteryWarning(false);
+					status.SetLowBatteryWarning(true);
 				}
 			}
 		}
-		
-	
+
 		// Check for fast key switching
 		fastKeySwitchDetector.Update(status.IsKeyON());
 		if (status.IsLowBattery() && !status.IsIgnoreLowBattery() && fastKeySwitchDetector.IsFastSwitchingDetected())
 		{
 			status.SetIgnoreLowBattery(true);
-			Beep(500);
+			updateCounter.Reset();
 		}
-		
 
 		// Control actions
 		// Check battery current and apply additional charge voltage switch
@@ -273,9 +235,8 @@ int main(void)
 			}
 		}
 
-
 		// ON/OFF converter
- 		if (status.IsKeyON() && (!status.IsLowBattery() ||  (status.IsLowBattery() && status.IsIgnoreLowBattery())))
+ 		if (status.IsKeyON() && !status.IsOverTemperature() && (!status.IsLowBattery() || status.IsIgnoreLowBattery()) )
  		{
  			ConverterOn();
  		}
@@ -285,13 +246,59 @@ int main(void)
  		}
 
 		// Indication
- 		if (status.IsKeyON())
- 		{
- 			voltageIndicator.Update(voltage);
- 		}
- 		currentIndicator.Update(chargeCurrent);
+		if (updateCounter.GetUpdateFlag())
+		{
+	 		if (status.IsKeyON())
+ 			{
+	 			voltageIndicator.Update(voltage);
+				ledsAndBeepIndicator.SetVoltageFlagsAndMask(
+					voltageIndicator.GetLedsFlashingFlagsAccordingToLevel(),
+					voltageIndicator.GetLedsMaskAccordingToLevel());
+	 		}
+ 			else
+ 			{
+		 		ledsAndBeepIndicator.SetVoltageFlagsAndMask(0x00000000, 0x00);
+ 			}
+ 			currentIndicator.Update(chargeCurrent);
+			ledsAndBeepIndicator.SetCurrentFlagsAndMask(
+				currentIndicator.GetLedsFlashingFlagsAccordingToLevel(),
+				currentIndicator.GetLedsMaskAccordingToLevel());
+		}
 		
+		ledsAndBeepIndicator.SetBeepFlags(0b00000000000000000000000000000000);
+		if (status.IsLowBatteryWarning())
+		{
+			ledsAndBeepIndicator.SetBeepFlags(0b00000000001100000000110000000011);
+		}
+		if (status.IsLowBattery())
+		{
+			ledsAndBeepIndicator.SetBeepFlags(0b00111111111111111111111111111111);
+		}
+		if (status.IsIgnoreLowBattery())
+		{
+			if (!status.IsPrevIgnoreLowBattery())
+			{
+				ledsAndBeepIndicator.SetBeepFlags(0b00000011000011000011000011000011);
+				ledsAndBeepIndicator.SetCurrentFlagsAndMask(0b00000011000011000011000011000011, 0b11000000);
+				ledsAndBeepIndicator.SetVoltageFlagsAndMask(0b00000011000011000011000011000011, 0b00110000);
+			}
+			else
+			{
+				ledsAndBeepIndicator.SetBeepFlags(0b00000000000000000000000000000000);
+			}
+		}
+
+		if (status.IsOverTemperature())
+		{
+			ledsAndBeepIndicator.SetBeepFlags(0b00000001111100000111110000011111);
+			ledsAndBeepIndicator.SetCurrentFlagsAndMask(0b00000001111100000111110000011111, 0b01000000);
+			ledsAndBeepIndicator.SetVoltageFlagsAndMask(0b00000001111100000111110000011111, 0b00100000);
+		}
+
+		ledsAndBeepIndicator.Update(updateCounter.GetShiftBitMask());
 		ShiftRegPush();
+		
+		updateCounter.Increment();
     }   
 
 

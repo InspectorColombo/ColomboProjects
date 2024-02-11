@@ -26,6 +26,8 @@ void SetLedCurrGreen1(const bool value);
 void SetLedCurrYellow(const bool value);
 void SetLedCurrRed(const bool value);
 
+void SetBuzzer(const bool value);
+
 void LedVoltGreen2On();
 void LedVoltGreen2Off();
 void LedVoltGreen1On();
@@ -45,6 +47,7 @@ void LedCurrRedOn();
 void LedCurrRedOff();
 
 void AllLedsOff();
+void VoltageLedsOff();
 
 
 //void SendLedByte(const uint8_t byteToSend);

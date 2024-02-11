@@ -33,6 +33,9 @@ public:
 	bool IsIgnoreLowBattery() const;
 	void SetIgnoreLowBattery(const bool nv);
 
+	bool IsPrevIgnoreLowBattery() const;
+	void SetPrevIgnoreLowBattery(const bool nv);
+
 	bool IsKeyON() const;
 	void SetKeyON(const bool nv);
 

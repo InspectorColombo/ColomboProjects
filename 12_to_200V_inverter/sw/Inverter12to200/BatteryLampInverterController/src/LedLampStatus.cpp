@@ -9,13 +9,14 @@
 
 namespace LedLamp
 {
-static const uint8_t ST_OVERTEMPERATURE		= 0b00000001;
-static const uint8_t ST_CONVERTER_ON		= 0b00000010;
-static const uint8_t ST_LOW_BATTERY			= 0b00000100;
-static const uint8_t ST_LOW_BATTERY_WARNING = 0b00001000;
-static const uint8_t ST_IGNORE_LOW_BATTERY	= 0b00010000;
-static const uint8_t ST_KEY_ON				= 0b00100000;
-static const uint8_t ST_PREV_KEY_ON			= 0b01000000;
+static const uint8_t ST_OVERTEMPERATURE			= 0b00000001;
+static const uint8_t ST_CONVERTER_ON			= 0b00000010;
+static const uint8_t ST_LOW_BATTERY				= 0b00000100;
+static const uint8_t ST_LOW_BATTERY_WARNING		= 0b00001000;
+static const uint8_t ST_IGNORE_LOW_BATTERY		= 0b00010000;
+static const uint8_t ST_PREV_IGNORE_LOW_BATTERY	= 0b00100000;
+static const uint8_t ST_KEY_ON					= 0b01000000;
+static const uint8_t ST_PREV_KEY_ON				= 0b10000000;
 
 LedLampStatus::LedLampStatus() : m_statusByte(0)
 {
@@ -67,6 +68,14 @@ void LedLampStatus::SetIgnoreLowBattery(const bool nv)
 	m_statusByte = nv ? (m_statusByte | ST_IGNORE_LOW_BATTERY) : (m_statusByte & ~ST_IGNORE_LOW_BATTERY);
 }
 
+bool LedLampStatus::IsPrevIgnoreLowBattery() const
+{
+	return (m_statusByte & ST_PREV_IGNORE_LOW_BATTERY) != 0;
+}
+void LedLampStatus::SetPrevIgnoreLowBattery(const bool nv)
+{
+	m_statusByte = nv ? (m_statusByte | ST_PREV_IGNORE_LOW_BATTERY) : (m_statusByte & ~ST_PREV_IGNORE_LOW_BATTERY);
+}
 
 bool LedLampStatus::IsKeyON() const
 {

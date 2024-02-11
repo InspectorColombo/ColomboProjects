@@ -64,31 +64,53 @@ uint16_t GetCurrentLevelTableValue(const uint8_t idx)
 	return CurrentLevelsTable[idx];
 }
 
-#define LEDS_FLASHING_TABLE_SIZE	((LED_INDICATOR_LEVELS_COUNT + 1) * 3)
-PROGMEM const uint8_t LedFlashingTable[LEDS_FLASHING_TABLE_SIZE]=
+#define LEDS_TABLE_SIZE	(LED_INDICATOR_LEVELS_COUNT + 1)
+PROGMEM const uint8_t LedMaskTable[LEDS_TABLE_SIZE]=
 {
-	//   1    0       3    2       5    4
-	// 0000 0000    0000 0000    0000 0000
-	0b00000000,	0b00000000, 0b00000000,			//"    " - 0
-	0b00000001, 0b00000000, 0b00000000,			//"   ." - 1
-	0b00000001, 0b00000001, 0b00000000,			//"   :" - 2
-	0b00010001, 0b00010001, 0b00010001,			//"   o" - 3
-	0b00010011, 0b00010001, 0b00010001,			//"  .o" - 4
-	0b00010011, 0b00010011, 0b00010001,			//"  :o" - 5
-	0b00110011, 0b00110011, 0b00110011,			//"  oo" - 6
-	0b00110111, 0b00110011, 0b00110011,			//" .oo" - 7
-	0b00110111, 0b00110111, 0b00110011,			//" :oo" - 8
-	0b01110111, 0b01110111, 0b01110111,			//" ooo" - 9
-	0b01111111, 0b01110111, 0b01110111,			//".ooo" - 10
-	0b01111111, 0b01111111, 0b01110111,			//":ooo" - 11
-	0b11111111, 0b11111111, 0b11111111			//"oooo" - 12
+	0b00000000,		//"    " - 0
+	0b00010000,		//"   ." - 1
+	0b00010000,		//"   :" - 2
+	0b00000001,		//"   o" - 3
+	0b00100001,		//"  .o" - 4
+	0b00100001,		//"  :o" - 5
+	0b00000011,		//"  oo" - 6
+	0b01000011,		//" .oo" - 7
+	0b01000011,		//" :oo" - 8
+	0b00000111,		//" ooo" - 9
+	0b10000111,		//".ooo" - 10
+	0b10000111,		//":ooo" - 11
+	0b00001111		//"oooo" - 12
 };
-uint8_t GetLedFlashingTableSize()
+
+PROGMEM const uint32_t LedFlashingFlagsTable[LEDS_TABLE_SIZE]=
 {
-	return LEDS_FLASHING_TABLE_SIZE;
+	0b00000000000000000000000000000000,		//"    " - 0
+	0b00000000000000000000000000000111,		//"   ." - 1
+	0b00000000000000000001110000000111,		//"   :" - 2
+	0b00000000000000000000000000000000,		//"   o" - 3
+	0b00000000000000000000000000000111,		//"  .o" - 4
+	0b00000000000000000001110000000111,		//"  :o" - 5
+	0b00000000000000000000000000000000,		//"  oo" - 6
+	0b00000000000000000000000000000111,		//" .oo" - 7
+	0b00000000000000000001110000000111,		//" :oo" - 8
+	0b00000000000000000000000000000000,		//" ooo" - 9
+	0b00000000000000000000000000000111,		//".ooo" - 10
+	0b00000000000000000001110000000111,		//":ooo" - 11
+	0b00000000000000000000000000000000		//"oooo" - 12
+};
+
+uint8_t GetLedTableSize()
+{
+	return LEDS_TABLE_SIZE;
 }
-uint8_t GetLedFlashingTableValue(const uint8_t idx)
+
+uint8_t  GetLedMaskTableValue(const uint8_t level)
 {
-	return LedFlashingTable[idx];
+	return LedMaskTable[level];
+}
+
+uint32_t GetLedFlashingFlagsTableValue(const uint8_t level)
+{
+	return LedFlashingFlagsTable[level];
 }
 

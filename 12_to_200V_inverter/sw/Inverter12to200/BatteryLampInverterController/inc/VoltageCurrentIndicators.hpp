@@ -12,8 +12,9 @@
 
 extern "C" 
 {
-uint8_t GetLedFlashingTableSize();
-uint8_t GetLedFlashingTableValue(const uint8_t idx);
+uint8_t GetLedTableSize();
+uint8_t  GetLedMaskTableValue(const uint8_t level);
+uint32_t GetLedFlashingFlagsTableValue(const uint8_t level);
 uint8_t GetCurrentLevelsTableSize();
 uint16_t GetCurrentLevelTableValue(const uint8_t idx);
 uint8_t GetVoltageLevelsTableSize();
@@ -25,98 +26,135 @@ uint8_t GetLetFlashSelectIdxTableValue(const uint8_t idx);
 namespace LedLamp
 {
 
+
+class UpdateCounter
+{
+public:
+	UpdateCounter() : m_bit(0x01)
+	{
+	}
+	
+	void Increment()
+	{
+		m_bit = m_bit << 1;
+		if ((m_bit & (((uint32_t)(1)) << 30)) != 0)
+		{
+			m_bit = 0x01;
+		}
+	}
+	
+	const uint32_t& GetShiftBitMask() const
+	{
+		return m_bit;
+	}
+
+	bool GetUpdateFlag() const
+	{
+		return (m_bit & 0x01) != 0;
+	}
+
+	void Reset()
+	{
+		//m_cnt = 0;
+		m_bit = 0x01;
+	}
+
+private:
+	//uint8_t		m_cnt;
+	uint32_t	m_bit;
+};
+
+
+class LedsAndBeepIndicator
+{
+public:
+	LedsAndBeepIndicator() : m_beepFlags(0), m_voltFlags(0), m_currFlags(0), m_voltMask(0), m_currMask(0), m_beepMask(0)
+	{
+	}
+
+	void Update(const uint32_t& shiftBitMask) const
+	{
+		SetBuzzer((shiftBitMask & m_beepFlags) != 0);
+		
+		uint8_t voltMask = m_voltMask & 0b00001111;
+		if ((shiftBitMask & m_voltFlags) != 0)
+		{
+			voltMask |= (m_voltMask >> 4);
+		}
+
+		SetLedVoltRed((voltMask & 0b00000001) != 0);
+		SetLedVoltYellow((voltMask & 0b00000010) != 0);
+		SetLedVoltGreen1((voltMask & 0b00000100) != 0);
+		SetLedVoltGreen2((voltMask & 0b00001000) != 0);
+
+		uint8_t currMask = m_currMask & 0b00001111;
+		if ((shiftBitMask & m_currFlags) != 0)
+		{
+			currMask |= (m_currMask >> 4);
+		}
+
+		SetLedCurrGreen2((currMask & 0b00000001) != 0);
+		SetLedCurrGreen1((currMask & 0b00000010) != 0);
+		SetLedCurrYellow((currMask & 0b00000100) != 0);
+		SetLedCurrRed((currMask & 0b00001000) != 0);
+	}
+
+	void SetVoltageFlagsAndMask(const uint32_t& flags, const uint8_t mask)
+	{
+		m_voltFlags = flags;
+		m_voltMask = mask;
+	}
+
+	void SetCurrentFlagsAndMask(const uint32_t& flags, const uint8_t mask)
+	{
+		m_currFlags = flags;
+		m_currMask = mask;
+	}
+
+	void SetBeepFlags(const uint32_t& flags)
+	{
+		m_beepFlags = flags;
+	}
+
+private:
+	uint32_t	m_beepFlags;
+	uint32_t	m_voltFlags;
+	uint32_t	m_currFlags;
+	
+	uint8_t		m_voltMask;
+	uint8_t		m_currMask;
+	uint8_t		m_beepMask;
+};
+	
+	
 class IndicatorIF
 {
 public:
-	IndicatorIF() : m_level(0), m_updateCnt(0) 
+	IndicatorIF() : m_level(0)
 	{
 	}
-
+	
 protected:
 	virtual void Update(const uint16_t value, const uint16_t hysteresys)
 	{
-		if (m_updateCnt == 0)
+		const uint8_t newLevel = GetLevel(value);
+		if (newLevel < m_level)
 		{
-			const uint8_t newLevel = GetLevel(value);
-			if (newLevel < m_level)
-			{
-				m_level = GetLevel(value + hysteresys);
-			}
-			else
-			{
-				if (newLevel > m_level && value > hysteresys)
-				{
-					m_level = GetLevel(value - hysteresys);
-				}
-				else
-				{
-					m_level = newLevel;
-				}
-			}
-		}
-		
-		m_updateCnt = (m_updateCnt < 30) ? (m_updateCnt + 1) : 0;
-	}
-	
-	uint8_t GetLedFlashMaskAccordingToLevel(const uint8_t level)
-	{
-		uint8_t idx = 0;
-		bool useUpperBits = false;
-		if (m_updateCnt < 4)
-		{
-			idx = 0;
-			useUpperBits = false;
+			m_level = GetLevel(value + hysteresys);
 		}
 		else
 		{
-			if (m_updateCnt < 10)
+			if (newLevel > m_level && value > hysteresys)
 			{
-				idx = 0;
-				useUpperBits = true;
+				m_level = GetLevel(value - hysteresys);
 			}
 			else
 			{
-				if (m_updateCnt < 14)
-				{
-					idx = 1;
-					useUpperBits = false;
-				}
-				else
-				{
-					if (m_updateCnt < 20)
-					{
-						idx = 1;
-						useUpperBits = true;
-					}
-					else
-					{
-						if (m_updateCnt < 24)
-						{
-							idx = 2;
-							useUpperBits = false;
-						}
-						else
-						{
-							if (m_updateCnt < 30)
-							{
-								idx = 2;
-								useUpperBits = true;
-							}
-						}
-					}
-				}
+				m_level = newLevel;
 			}
 		}
-		idx += level * 3;
-		
-		uint8_t result = GetLedFlashingTableValue(idx);
-		if (useUpperBits)
-		{
-			result = result >> 4;
-		}
-		return result;
 	}
-
+	
 	virtual uint8_t GetTableSize() const = 0;
 	virtual uint16_t GetTableValue(const uint8_t idx) const = 0;
 	
@@ -132,9 +170,6 @@ protected:
 	}
 	
 	uint8_t	m_level;
-
-private:
-	uint8_t m_updateCnt;
 };
 
 
@@ -149,33 +184,16 @@ public:
 	{
 		const uint16_t VOLTAGE_HYSTERESYS = 30;		// 30mV
 		IndicatorIF::Update(voltage, VOLTAGE_HYSTERESYS);
-		
-// 		// Update level only on 1st step
-// 		if (m_updateCnt == 0)
-// 		{
-// 			const uint8_t newLevel = GetLevel(voltage);
-// 			if (newLevel < m_level)
-// 			{
-// 				m_level = GetLevel(voltage + VOLTAGE_HYSTERESYS);
-// 			}
-// 			else
-// 			{
-// 				if (newLevel > m_level && voltage > VOLTAGE_HYSTERESYS)
-// 				{
-// 					m_level = GetLevel(voltage - VOLTAGE_HYSTERESYS);
-// 				}
-// 				else
-// 				{
-// 					m_level = newLevel;
-// 				}
-// 			}
-// 		}
+	}
+	
+	uint8_t GetLedsMaskAccordingToLevel() const
+	{
+		return GetLedMaskTableValue(m_level);
+	}
 
-		const uint8_t ledsMask = GetLedFlashMaskAccordingToLevel(m_level);
-		SetLedVoltRed((ledsMask & 0b00000001) != 0);
-		SetLedVoltYellow((ledsMask & 0b00000010) != 0);
-		SetLedVoltGreen1((ledsMask & 0b00000100) != 0);
-		SetLedVoltGreen2((ledsMask & 0b00001000) != 0);
+	uint32_t GetLedsFlashingFlagsAccordingToLevel() const
+	{
+		return GetLedFlashingFlagsTableValue(m_level);
 	}
 
 private:
@@ -200,37 +218,16 @@ public:
 	{
 		const uint16_t CURRENT_HYSTERESYS = 10;		// 10mA
 		IndicatorIF::Update(current, CURRENT_HYSTERESYS);
+	}
 
-// 		// Update level only on 1st step
-// 		if (m_updateCnt == 0)
-// 		{
-// 			const uint16_t CURRENT_HYSTERESYS = 10;		// 10mA
-// 			const uint8_t newLevel = GetLevel(current);
-// 			if (newLevel < m_level)
-// 			{
-// 				m_level = GetLevel(current + CURRENT_HYSTERESYS);
-// 			}
-// 			else
-// 			{
-// 				if (newLevel > m_level && current > CURRENT_HYSTERESYS)
-// 				{
-// 					m_level = GetLevel(current - CURRENT_HYSTERESYS);
-// 				}
-// 				else
-// 				{
-// 					m_level = newLevel;
-// 				}
-// 				
-// 			}
-// 			
-// 			m_level = GetLevel(current);
-// 		}
+	uint8_t GetLedsMaskAccordingToLevel() const
+	{
+		return GetLedMaskTableValue(m_level);
+	}
 
-		const uint8_t ledsMask = GetLedFlashMaskAccordingToLevel(m_level);
-		SetLedCurrRed((ledsMask & 0b00000001) != 0);
-		SetLedCurrYellow((ledsMask & 0b00000010) != 0);
-		SetLedCurrGreen1((ledsMask & 0b00000100) != 0);
-		SetLedCurrGreen2((ledsMask & 0b00001000) != 0);
+	uint32_t GetLedsFlashingFlagsAccordingToLevel() const
+	{
+		return GetLedFlashingFlagsTableValue(m_level);
 	}
 
 private:
@@ -243,7 +240,6 @@ private:
 		return GetCurrentLevelTableValue(idx);
 	}
 };
-
 
 }	// namespace LedLamp
 
