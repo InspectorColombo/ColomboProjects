@@ -13,7 +13,7 @@ main.d main.o: .././main.cpp \
  ..\\inc/cs_adc.hpp ..\\inc/LedsControl.hpp ..\\inc/CsDelay.hpp \
  ..\\inc/LedLampStatus.hpp ..\\inc/FastKeySwitchingDetector.hpp \
  ..\\inc/VoltageCurrentIndicators.hpp ..\\inc/LedsControl.hpp \
- ..\\inc/DebugSwUart.hpp
+ ../../DataStorageRawC/inc/IndicatorsTable.h ..\\inc/DebugSwUart.hpp
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -50,5 +50,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ..\\inc/VoltageCurrentIndicators.hpp:
 
 ..\\inc/LedsControl.hpp:
+
+../../DataStorageRawC/inc/IndicatorsTable.h:
 
 ..\\inc/DebugSwUart.hpp:

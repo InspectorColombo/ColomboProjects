@@ -19,7 +19,8 @@ copy "%ProjectDir%%BuildConfig%\%ProjectName%.bin" "%AvrDudeDir%\%ProjectName%.b
 
 cd "%AvrDudeDir%"
 avrdude.exe -p attiny45 -c USBTiny -B 150 -U flash:w:%ProjectName%.bin:r
-avrdude.exe -p attiny45 -c USBTiny -B 150 -U hfuse:w:0xdc:m
+rem avrdude.exe -p attiny45 -c USBTiny -B 150 -U hfuse:w:0xdc:m
+avrdude.exe -p attiny45 -c USBTiny -B 150 -U hfuse:w:0xdd:m
 
 rem 1MHz
 rem avrdude.exe -p attiny45 -c USBTiny -B 10 -U lfuse:w:0x62:m

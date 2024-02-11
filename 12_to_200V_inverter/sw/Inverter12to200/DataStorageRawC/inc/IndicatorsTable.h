@@ -8,14 +8,33 @@
 
 #include <avr/io.h>
 
-uint8_t GetLedTableSize();
-uint8_t  GetLedMaskTableValue(const uint8_t level);
-uint32_t GetLedFlashingFlagsTableValue(const uint8_t level);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-uint8_t GetVoltageLevelsTableSize();
-uint16_t GetVoltageLevelTableValue(const uint8_t idx);
+#define VCT_VOLTAGE 0
+#define VCT_CURRENT 1
 
-uint8_t GetCurrentLevelsTableSize();
-uint16_t GetCurrentLevelTableValue(const uint8_t idx);
+uint16_t GetVoltageCurrentTableValue(const uint8_t idx, const uint8_t tableNameIdx);
+
+// Indication states definition
+#define IST_VOLTAGE					0
+#define IST_CURRENT					1
+#define IST_LOW_BATTERY_WARNING		2
+#define IST_LOW_BATTERY_SHUTDOWN	3
+#define IST_IGNORE_LOW_BATTERY		4
+#define IST_OVERTEMPERATURE			5
+#define IST_UNKNOWN					255
+
+// return 0b0000 000B CCCC VVVV
+// B - beep enable
+// CCCC - current LEDs enable
+// VVVV - voltage LEDs enable
+uint16_t GetCurrVoltBeepInfo(const uint8_t level, const uint8_t updateCnt, const uint8_t indicationState);
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // __INDICATORS_TABLE_H__

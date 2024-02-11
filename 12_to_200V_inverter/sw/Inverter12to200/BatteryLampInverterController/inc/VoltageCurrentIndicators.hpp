@@ -9,6 +9,7 @@
 //#include "VoltageLevelsTable.h"
 //#include "LedFlashingTable.h"
 #include "LedsControl.hpp"
+#include "IndicatorsTable.h"
 
 extern "C" 
 {
@@ -30,123 +31,95 @@ namespace LedLamp
 class UpdateCounter
 {
 public:
-	UpdateCounter() : m_bit(0x01)
+	UpdateCounter() : m_cnt(0)
 	{
 	}
 	
 	void Increment()
 	{
-		m_bit = m_bit << 1;
-		if ((m_bit & (((uint32_t)(1)) << 30)) != 0)
+		++m_cnt;
+		if (m_cnt == 30)
 		{
-			m_bit = 0x01;
+			m_cnt = 0;
 		}
 	}
 	
-	const uint32_t& GetShiftBitMask() const
+	uint8_t GetCounter() const
 	{
-		return m_bit;
+		return m_cnt;
 	}
 
 	bool GetUpdateFlag() const
 	{
-		return (m_bit & 0x01) != 0;
+		return m_cnt == 0;
 	}
 
 	void Reset()
 	{
-		//m_cnt = 0;
-		m_bit = 0x01;
+		m_cnt = 0;
 	}
 
 private:
-	//uint8_t		m_cnt;
-	uint32_t	m_bit;
+	uint8_t		m_cnt;
 };
 
 
 class LedsAndBeepIndicator
 {
 public:
-	LedsAndBeepIndicator() : m_beepFlags(0), m_voltFlags(0), m_currFlags(0), m_voltMask(0), m_currMask(0), m_beepMask(0)
+	static void Update(const uint8_t indicationType, const uint8_t updateCnt, const uint8_t level = 0)
 	{
+		UpdateLedsState(GetCurrVoltBeepInfo(level, updateCnt, indicationType), false);
 	}
 
-	void Update(const uint32_t& shiftBitMask) const
+	static void UpdateWithMerge(const uint8_t indicationType, const uint8_t updateCnt, const uint8_t level = 0)
 	{
-		SetBuzzer((shiftBitMask & m_beepFlags) != 0);
-		
-		uint8_t voltMask = m_voltMask & 0b00001111;
-		if ((shiftBitMask & m_voltFlags) != 0)
-		{
-			voltMask |= (m_voltMask >> 4);
-		}
-
-		SetLedVoltRed((voltMask & 0b00000001) != 0);
-		SetLedVoltYellow((voltMask & 0b00000010) != 0);
-		SetLedVoltGreen1((voltMask & 0b00000100) != 0);
-		SetLedVoltGreen2((voltMask & 0b00001000) != 0);
-
-		uint8_t currMask = m_currMask & 0b00001111;
-		if ((shiftBitMask & m_currFlags) != 0)
-		{
-			currMask |= (m_currMask >> 4);
-		}
-
-		SetLedCurrGreen2((currMask & 0b00000001) != 0);
-		SetLedCurrGreen1((currMask & 0b00000010) != 0);
-		SetLedCurrYellow((currMask & 0b00000100) != 0);
-		SetLedCurrRed((currMask & 0b00001000) != 0);
+		UpdateLedsState(GetCurrVoltBeepInfo(level, updateCnt, indicationType), true);
 	}
-
-	void SetVoltageFlagsAndMask(const uint32_t& flags, const uint8_t mask)
-	{
-		m_voltFlags = flags;
-		m_voltMask = mask;
-	}
-
-	void SetCurrentFlagsAndMask(const uint32_t& flags, const uint8_t mask)
-	{
-		m_currFlags = flags;
-		m_currMask = mask;
-	}
-
-	void SetBeepFlags(const uint32_t& flags)
-	{
-		m_beepFlags = flags;
-	}
-
-private:
-	uint32_t	m_beepFlags;
-	uint32_t	m_voltFlags;
-	uint32_t	m_currFlags;
 	
-	uint8_t		m_voltMask;
-	uint8_t		m_currMask;
-	uint8_t		m_beepMask;
+private:
+	static void UpdateLedsState(const uint16_t ledsBeepState, const bool mergeWithPreviousState)
+	{
+		if (!mergeWithPreviousState)
+		{
+			SetBuzzer(false);
+			AllLedsOff();
+		}
+
+		if ((ledsBeepState & 0x0100) != 0)		SetBuzzer(true);
+		if ((ledsBeepState & 0b00000001) != 0)	SetLedVoltRed(true);
+		if ((ledsBeepState & 0b00000010) != 0)	SetLedVoltYellow(true);
+		if ((ledsBeepState & 0b00000100) != 0)	SetLedVoltGreen1(true);
+		if ((ledsBeepState & 0b00001000) != 0)	SetLedVoltGreen2(true);
+		if ((ledsBeepState & 0b00010000) != 0)	SetLedCurrGreen2(true);
+		if ((ledsBeepState & 0b00100000) != 0)	SetLedCurrGreen1(true);
+		if ((ledsBeepState & 0b01000000) != 0)	SetLedCurrYellow(true);
+		if ((ledsBeepState & 0b10000000) != 0)	SetLedCurrRed(true);
+	}
 };
 	
 	
-class IndicatorIF
+class IndicatorLevelCalculator
 {
 public:
-	IndicatorIF() : m_level(0)
+	IndicatorLevelCalculator(const uint8_t tableNameIdx) : m_level(0), m_tableNameIdx(tableNameIdx)
 	{
 	}
 	
-protected:
-	virtual void Update(const uint16_t value, const uint16_t hysteresys)
+	virtual void Update(const uint16_t value)
 	{
-		const uint8_t newLevel = GetLevel(value);
+		const uint16_t hysteresis = GetVoltageCurrentTableValue(1, m_tableNameIdx);
+		
+		const uint8_t newLevel = CalculateLevel(value);
 		if (newLevel < m_level)
 		{
-			m_level = GetLevel(value + hysteresys);
+			m_level = CalculateLevel(value + hysteresis);
 		}
 		else
 		{
-			if (newLevel > m_level && value > hysteresys)
+			if (newLevel > m_level && value > hysteresis)
 			{
-				m_level = GetLevel(value - hysteresys);
+				m_level = CalculateLevel(value - hysteresis);
 			}
 			else
 			{
@@ -154,91 +127,26 @@ protected:
 			}
 		}
 	}
-	
-	virtual uint8_t GetTableSize() const = 0;
-	virtual uint16_t GetTableValue(const uint8_t idx) const = 0;
-	
-	uint8_t GetLevel(const uint16_t value)
+
+	uint8_t GetLevel() const
 	{
-		const uint8_t tableSize = GetTableSize();
+		return m_level;
+	}
+
+private:
+	uint8_t CalculateLevel(const uint16_t value) const
+	{
+		const uint8_t tableSize = (uint8_t)(GetVoltageCurrentTableValue(0, m_tableNameIdx));
 		for(uint8_t level = 0; level < tableSize; ++level)
 		{
-			if (value <= GetTableValue(level))
+			if (value <= GetVoltageCurrentTableValue(level + 2, m_tableNameIdx))
 				return level;
 		}
 		return tableSize;
 	}
 	
 	uint8_t	m_level;
-};
-
-
-class VoltageIndicator : private IndicatorIF
-{
-public:
-	VoltageIndicator() : IndicatorIF()
-	{
-	}
-	
-	void Update(const uint16_t voltage)
-	{
-		const uint16_t VOLTAGE_HYSTERESYS = 30;		// 30mV
-		IndicatorIF::Update(voltage, VOLTAGE_HYSTERESYS);
-	}
-	
-	uint8_t GetLedsMaskAccordingToLevel() const
-	{
-		return GetLedMaskTableValue(m_level);
-	}
-
-	uint32_t GetLedsFlashingFlagsAccordingToLevel() const
-	{
-		return GetLedFlashingFlagsTableValue(m_level);
-	}
-
-private:
-	uint8_t GetTableSize() const
-	{
-		return GetVoltageLevelsTableSize();
-	}
-	uint16_t GetTableValue(const uint8_t idx) const
-	{
-		return GetVoltageLevelTableValue(idx);
-	}
-};
-
-class CurrentIndicator : private IndicatorIF
-{
-public:
-	CurrentIndicator() : IndicatorIF()
-	{
-	}
-	
-	void Update(const uint16_t current)
-	{
-		const uint16_t CURRENT_HYSTERESYS = 10;		// 10mA
-		IndicatorIF::Update(current, CURRENT_HYSTERESYS);
-	}
-
-	uint8_t GetLedsMaskAccordingToLevel() const
-	{
-		return GetLedMaskTableValue(m_level);
-	}
-
-	uint32_t GetLedsFlashingFlagsAccordingToLevel() const
-	{
-		return GetLedFlashingFlagsTableValue(m_level);
-	}
-
-private:
-	uint8_t GetTableSize() const
-	{
-		return GetCurrentLevelsTableSize();
-	}
-	uint16_t GetTableValue(const uint8_t idx) const
-	{
-		return GetCurrentLevelTableValue(idx);
-	}
+	uint8_t	m_tableNameIdx;
 };
 
 }	// namespace LedLamp

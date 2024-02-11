@@ -129,15 +129,13 @@ int main(void)
 
     Beep(50);
     const uint16_t ADC_READ_COUNT = 100;
-    StartTimer1DelayInMs(100);
+    StartTimer1DelayInMs(70);
     
 	
 	LedLamp::LedLampStatus status;
 	LedLamp::UpdateCounter updateCounter;
-	LedLamp::VoltageIndicator voltageIndicator;
-	LedLamp::CurrentIndicator currentIndicator;
-	LedLamp::LedsAndBeepIndicator ledsAndBeepIndicator;
-	
+	LedLamp::IndicatorLevelCalculator voltageIndicator(VCT_VOLTAGE);
+	LedLamp::IndicatorLevelCalculator currentIndicator(VCT_CURRENT);
 	
 	status.SetOverTemperature(false);
 	const bool isKeyOn = IsKeysON();
@@ -251,51 +249,48 @@ int main(void)
 	 		if (status.IsKeyON())
  			{
 	 			voltageIndicator.Update(voltage);
-				ledsAndBeepIndicator.SetVoltageFlagsAndMask(
-					voltageIndicator.GetLedsFlashingFlagsAccordingToLevel(),
-					voltageIndicator.GetLedsMaskAccordingToLevel());
 	 		}
  			else
  			{
-		 		ledsAndBeepIndicator.SetVoltageFlagsAndMask(0x00000000, 0x00);
+				voltageIndicator.Update(0);
  			}
  			currentIndicator.Update(chargeCurrent);
-			ledsAndBeepIndicator.SetCurrentFlagsAndMask(
-				currentIndicator.GetLedsFlashingFlagsAccordingToLevel(),
-				currentIndicator.GetLedsMaskAccordingToLevel());
 		}
 		
-		ledsAndBeepIndicator.SetBeepFlags(0b00000000000000000000000000000000);
-		if (status.IsLowBatteryWarning())
+		
+		LedLamp::LedsAndBeepIndicator::Update(IST_VOLTAGE, updateCounter.GetCounter(), voltageIndicator.GetLevel());		
+		LedLamp::LedsAndBeepIndicator::UpdateWithMerge(IST_CURRENT, updateCounter.GetCounter(), currentIndicator.GetLevel());		
+		
+		if (status.IsOverTemperature())
 		{
-			ledsAndBeepIndicator.SetBeepFlags(0b00000000001100000000110000000011);
+			LedLamp::LedsAndBeepIndicator::Update(IST_OVERTEMPERATURE, updateCounter.GetCounter());
 		}
-		if (status.IsLowBattery())
+		else
 		{
-			ledsAndBeepIndicator.SetBeepFlags(0b00111111111111111111111111111111);
-		}
-		if (status.IsIgnoreLowBattery())
-		{
-			if (!status.IsPrevIgnoreLowBattery())
+			if (!status.IsIgnoreLowBattery())
 			{
-				ledsAndBeepIndicator.SetBeepFlags(0b00000011000011000011000011000011);
-				ledsAndBeepIndicator.SetCurrentFlagsAndMask(0b00000011000011000011000011000011, 0b11000000);
-				ledsAndBeepIndicator.SetVoltageFlagsAndMask(0b00000011000011000011000011000011, 0b00110000);
+				if (status.IsLowBatteryWarning())
+				{
+					LedLamp::LedsAndBeepIndicator::Update(IST_LOW_BATTERY_WARNING, updateCounter.GetCounter());
+				}
+				if (status.IsLowBattery())
+				{
+					LedLamp::LedsAndBeepIndicator::Update(IST_LOW_BATTERY_SHUTDOWN, updateCounter.GetCounter());
+				}
 			}
 			else
 			{
-				ledsAndBeepIndicator.SetBeepFlags(0b00000000000000000000000000000000);
-			}
+				if (!status.IsPrevIgnoreLowBattery())
+				{
+					LedLamp::LedsAndBeepIndicator::Update(IST_IGNORE_LOW_BATTERY, updateCounter.GetCounter());
+				}
+			}		
 		}
 
-		if (status.IsOverTemperature())
-		{
-			ledsAndBeepIndicator.SetBeepFlags(0b00000001111100000111110000011111);
-			ledsAndBeepIndicator.SetCurrentFlagsAndMask(0b00000001111100000111110000011111, 0b01000000);
-			ledsAndBeepIndicator.SetVoltageFlagsAndMask(0b00000001111100000111110000011111, 0b00100000);
-		}
 
-		ledsAndBeepIndicator.Update(updateCounter.GetShiftBitMask());
+
+
+		//ledsAndBeepIndicator.Update(updateCounter.GetShiftBitMask());
 		ShiftRegPush();
 		
 		updateCounter.Increment();
