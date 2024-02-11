@@ -22,8 +22,8 @@
 bool IsKeysON()
 {
     // Turn off voltage sensor, and check is there any voltage propagated by keys.
-    SenseBatteryVoltageOff();
-    ShiftRegPush();
+    LedsControl::SenseBatteryVoltageOff();
+    LedsControl::ShiftRegPush();
     
     // Wait 3ms for ADC capacitor discharge
     const uint16_t CAPACITOR_CHARGE_TIME = 3;
@@ -32,8 +32,8 @@ bool IsKeysON()
     const uint16_t voltage = GetVoltageAdcValueInMv(1);
     
     // Restore battery sensor
-    SenseBatteryVoltageOn();
-    ShiftRegPush();
+    LedsControl::SenseBatteryVoltageOn();
+    LedsControl::ShiftRegPush();
 
     // Wait 3ms for ADC capacitor charge
     DelayMiliSec(CAPACITOR_CHARGE_TIME);
@@ -98,23 +98,23 @@ inline void Timer1Delay(const uint16_t delayInMs)
 
 void StartUpInit()
 {
-    ShiftRegInit();
+    LedsControl::ShiftRegInit();
 
-    AllLedsOff();
-    BuzzerOff();
-    AddChargeVoltageOff();
-    ConverterOff();
-    SenseBatteryVoltageOn();
-    ShiftRegPush();
+    LedsControl::AllLedsOff();
+    LedsControl::BuzzerOff();
+    LedsControl::AddChargeVoltageOff();
+    LedsControl::ConverterOff();
+    LedsControl::SenseBatteryVoltageOn();
+    LedsControl::ShiftRegPush();
 }
 
 void Beep(const uint16_t durationInMs)
 {
-    BuzzerOn();
-    ShiftRegPush();
+    LedsControl::BuzzerOn();
+    LedsControl::ShiftRegPush();
 	DelayMiliSec(durationInMs);
-    BuzzerOff();
-    ShiftRegPush();
+    LedsControl::BuzzerOff();
+    LedsControl::ShiftRegPush();
 }
 
 
@@ -223,24 +223,24 @@ int main(void)
 
 		if (chargeCurrent > CHARGER_ADD_VOLTAGE_ON_THRESHOLD)
 		{
-			AddChargeVoltageOn();
+			LedsControl::AddChargeVoltageOn();
 		}
 		else
 		{
 			if (chargeCurrent < CHARGER_ADD_VOLTAGE_OFF_THRESHOLD)
 			{
-				AddChargeVoltageOff();
+				LedsControl::AddChargeVoltageOff();
 			}
 		}
 
 		// ON/OFF converter
  		if (status.IsKeyON() && !status.IsOverTemperature() && (!status.IsLowBattery() || status.IsIgnoreLowBattery()) )
  		{
- 			ConverterOn();
+ 			LedsControl::ConverterOn();
  		}
  		else
  		{
- 			ConverterOff();
+ 			LedsControl::ConverterOff();
  		}
 
 		// Indication
@@ -291,7 +291,7 @@ int main(void)
 
 
 		//ledsAndBeepIndicator.Update(updateCounter.GetShiftBitMask());
-		ShiftRegPush();
+		LedsControl::ShiftRegPush();
 		
 		updateCounter.Increment();
     }   

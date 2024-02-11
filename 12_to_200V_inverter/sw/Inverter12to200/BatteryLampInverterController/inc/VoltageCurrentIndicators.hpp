@@ -82,19 +82,19 @@ private:
 	{
 		if (!mergeWithPreviousState)
 		{
-			SetBuzzer(false);
-			AllLedsOff();
+			LedsControl::SetBuzzer(false);
+			LedsControl::AllLedsOff();
 		}
 
-		if ((ledsBeepState & 0x0100) != 0)		SetBuzzer(true);
-		if ((ledsBeepState & 0b00000001) != 0)	SetLedVoltRed(true);
-		if ((ledsBeepState & 0b00000010) != 0)	SetLedVoltYellow(true);
-		if ((ledsBeepState & 0b00000100) != 0)	SetLedVoltGreen1(true);
-		if ((ledsBeepState & 0b00001000) != 0)	SetLedVoltGreen2(true);
-		if ((ledsBeepState & 0b00010000) != 0)	SetLedCurrGreen2(true);
-		if ((ledsBeepState & 0b00100000) != 0)	SetLedCurrGreen1(true);
-		if ((ledsBeepState & 0b01000000) != 0)	SetLedCurrYellow(true);
-		if ((ledsBeepState & 0b10000000) != 0)	SetLedCurrRed(true);
+		if ((ledsBeepState & 0x0100) != 0)		LedsControl::SetBuzzer(true);
+		if ((ledsBeepState & 0b00000001) != 0)	LedsControl::SetLedVoltRed(true);
+		if ((ledsBeepState & 0b00000010) != 0)	LedsControl::SetLedVoltYellow(true);
+		if ((ledsBeepState & 0b00000100) != 0)	LedsControl::SetLedVoltGreen1(true);
+		if ((ledsBeepState & 0b00001000) != 0)	LedsControl::SetLedVoltGreen2(true);
+		if ((ledsBeepState & 0b00010000) != 0)	LedsControl::SetLedCurrGreen2(true);
+		if ((ledsBeepState & 0b00100000) != 0)	LedsControl::SetLedCurrGreen1(true);
+		if ((ledsBeepState & 0b01000000) != 0)	LedsControl::SetLedCurrYellow(true);
+		if ((ledsBeepState & 0b10000000) != 0)	LedsControl::SetLedCurrRed(true);
 	}
 };
 	

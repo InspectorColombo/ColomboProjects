@@ -6,190 +6,11 @@
 #define LED_SCK		PB1
 #define LED_DATA	PB0
 
-uint16_t g_shiftRegCodeWord = 0x00;
 
-// Shift register constants
-#define SR_BUZZER					(0x0001 << 5)
-#define SR_ADD_CHARGE_VOLTAGE		(0x0001 << 3)
-#define SR_CONVERTER_ON				(0x0001 << 6)
-#define SR_SENSE_BATTERY_VOLTAGE	(0x0001 << 7)
-
-#define SR_LED_CURR_RED				(0x0001 << 9)
-#define SR_LED_CURR_YELLOW			(0x0001 << 11)
-#define SR_LED_CURR_GREEN1			(0x0001 << 13)
-#define SR_LED_CURR_GREEN2			(0x0001 << 15)
-
-#define SR_LED_VOLT_GREEN2			(0x0001 << 8)
-#define SR_LED_VOLT_GREEN1			(0x0001 << 10)
-#define SR_LED_VOLT_YELLOW			(0x0001 << 12)
-#define SR_LED_VOLT_RED				(0x0001 << 14)
-
+namespace LedsControl
+{
 
 //Other peripheries routines 
-void BuzzerOn()
-{
-	g_shiftRegCodeWord |= SR_BUZZER;
-}
-void BuzzerOff()
-{
-	g_shiftRegCodeWord &= ~SR_BUZZER;
-}
-
-void AddChargeVoltageOn()
-{
-	g_shiftRegCodeWord &= ~SR_ADD_CHARGE_VOLTAGE;
-}
-void AddChargeVoltageOff()
-{
-	g_shiftRegCodeWord |= SR_ADD_CHARGE_VOLTAGE;	
-}
-
-void ConverterOn()
-{
-	g_shiftRegCodeWord |= SR_CONVERTER_ON;
-}
-void ConverterOff()
-{
-	g_shiftRegCodeWord &= ~SR_CONVERTER_ON;
-}
-
-void SenseBatteryVoltageOn()
-{
-	g_shiftRegCodeWord |= SR_SENSE_BATTERY_VOLTAGE;
-}
-void SenseBatteryVoltageOff()
-{
-	g_shiftRegCodeWord &= ~SR_SENSE_BATTERY_VOLTAGE;
-}
-
-
-void SetLedVoltGreen2(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_GREEN2) : (g_shiftRegCodeWord & ~SR_LED_VOLT_GREEN2);
-}
-void SetLedVoltGreen1(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_GREEN1) : (g_shiftRegCodeWord & ~SR_LED_VOLT_GREEN1);
-}
-void SetLedVoltYellow(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_YELLOW) : (g_shiftRegCodeWord & ~SR_LED_VOLT_YELLOW);
-}
-void SetLedVoltRed(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_VOLT_RED) : (g_shiftRegCodeWord & ~SR_LED_VOLT_RED);
-}
-void SetLedCurrGreen2(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_GREEN2) : (g_shiftRegCodeWord & ~SR_LED_CURR_GREEN2);
-}
-void SetLedCurrGreen1(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_GREEN1) : (g_shiftRegCodeWord & ~SR_LED_CURR_GREEN1);
-}
-void SetLedCurrYellow(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_YELLOW) : (g_shiftRegCodeWord & ~SR_LED_CURR_YELLOW);
-}
-void SetLedCurrRed(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_LED_CURR_RED) : (g_shiftRegCodeWord & ~SR_LED_CURR_RED);
-}
-
-void SetBuzzer(const bool value)
-{
-	g_shiftRegCodeWord = value ? (g_shiftRegCodeWord | SR_BUZZER) : (g_shiftRegCodeWord & ~SR_BUZZER);
-}
-
-
-// Voltage LEDs routines
-void LedVoltGreen2On()
-{
-	g_shiftRegCodeWord |= SR_LED_VOLT_GREEN2;
-}
-void LedVoltGreen2Off()
-{
-	g_shiftRegCodeWord &= ~SR_LED_VOLT_GREEN2;
-}
-void LedVoltGreen1On()
-{
-	g_shiftRegCodeWord |= SR_LED_VOLT_GREEN1;
-}
-void LedVoltGreen1Off()
-{
-	g_shiftRegCodeWord &= ~SR_LED_VOLT_GREEN1;
-}
-void LedVoltYellowOn()
-{
-	g_shiftRegCodeWord |= SR_LED_VOLT_YELLOW;
-}
-void LedVoltYellowOff()
-{
-	g_shiftRegCodeWord &= ~SR_LED_VOLT_YELLOW;
-}
-void LedVoltRedOn()
-{
-	g_shiftRegCodeWord |= SR_LED_VOLT_RED;
-}
-void LedVoltRedOff()
-{
-	g_shiftRegCodeWord &= ~SR_LED_VOLT_RED;
-}
-
-// Current LEDs routines
-void LedCurrGreen2On()
-{
-	g_shiftRegCodeWord |= SR_LED_CURR_GREEN2;
-}
-void LedCurrGreen2Off()
-{
-	g_shiftRegCodeWord &= ~SR_LED_CURR_GREEN2;
-}
-void LedCurrGreen1On()
-{
-	g_shiftRegCodeWord |= SR_LED_CURR_GREEN1;
-}
-void LedCurrGreen1Off()
-{
-	g_shiftRegCodeWord &= ~SR_LED_CURR_GREEN1;
-}
-void LedCurrYellowOn()
-{
-	g_shiftRegCodeWord |= SR_LED_CURR_YELLOW;
-}
-void LedCurrYellowOff()
-{
-	g_shiftRegCodeWord &= ~SR_LED_CURR_YELLOW;
-}
-void LedCurrRedOn()
-{
-	g_shiftRegCodeWord |= SR_LED_CURR_RED;
-}
-void LedCurrRedOff()
-{
-	g_shiftRegCodeWord &= ~SR_LED_CURR_RED;
-}
-
-void AllLedsOff()
-{
-	LedCurrRedOff();
-	LedCurrYellowOff();
-	LedCurrGreen1Off();
-	LedCurrGreen2Off();
-	
-	LedVoltRedOff();
-	LedVoltYellowOff();
-	LedVoltGreen1Off();
-	LedVoltGreen2Off();
-}
-
-void VoltageLedsOff()
-{
-	LedVoltRedOff();
-	LedVoltYellowOff();
-	LedVoltGreen1Off();
-	LedVoltGreen2Off();
-}
 
 
 // Shift register SPI low level routines
@@ -277,6 +98,10 @@ void ShiftRegPush()
 	//g_shiftRegCodeWord |= (1 << 8);
 	//g_shiftRegCodeWord |= 0xFF00;
 	SendShiftRegisterWord(g_shiftRegCodeWord);
+}
+
+uint16_t g_shiftRegCodeWord = 0x00;
+
 }
 
 
