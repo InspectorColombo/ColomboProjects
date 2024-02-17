@@ -210,7 +210,7 @@ int main(void)
 
 		// Check for fast key switching
 		fastKeySwitchDetector.Update(status.IsKeyON());
-		if (status.IsLowBattery() && !status.IsIgnoreLowBattery() && fastKeySwitchDetector.IsFastSwitchingDetected())
+		if ((status.IsLowBattery() || status.IsLowBatteryWarning()) && !status.IsIgnoreLowBattery() && fastKeySwitchDetector.IsFastSwitchingDetected())
 		{
 			status.SetIgnoreLowBattery(true);
 			updateCounter.Reset();
@@ -269,11 +269,11 @@ int main(void)
 		{
 			if (!status.IsIgnoreLowBattery())
 			{
-				if (status.IsLowBatteryWarning())
+				if (status.IsLowBatteryWarning() && status.IsKeyON())
 				{
 					LedLamp::LedsAndBeepIndicator::Update(IST_LOW_BATTERY_WARNING, updateCounter.GetCounter());
 				}
-				if (status.IsLowBattery())
+				if (status.IsLowBattery() && status.IsKeyON())
 				{
 					LedLamp::LedsAndBeepIndicator::Update(IST_LOW_BATTERY_SHUTDOWN, updateCounter.GetCounter());
 				}
