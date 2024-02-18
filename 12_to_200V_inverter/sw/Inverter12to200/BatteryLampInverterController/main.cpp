@@ -179,7 +179,8 @@ int main(void)
         }
 		
 		// Check battery voltage        
-        const uint16_t BATTERY_LOW_WARNING_LEVEL = 10100;	// 10.1V - warning beeps
+        const uint16_t BATTERY_LOW_WARNING_ENABLE_LEVEL = 10100;	// 10.1V - warning beeps ON
+		const uint16_t BATTERY_LOW_WARNING_DISABLE_LEVEL = 10300;	// 10.3V - warning beeps OFF
         const uint16_t BATTERY_LOW_TURN_OFF_LEVEL = 9700;	// 9.7V - turn OFF
         const uint16_t BATTERY_LOW_TURN_ON_LEVEL = 11700;	// 11.7V - turn ON after low battery turn OFF
 //        const uint16_t BATTERY_LOW_WARNING_LEVEL = 13100;	// 10.1V - warning beeps
@@ -201,9 +202,16 @@ int main(void)
 			}
 			else
 			{
-				if (voltage < BATTERY_LOW_WARNING_LEVEL && !status.IsLowBattery())
+				if (!status.IsLowBattery())
 				{
-					status.SetLowBatteryWarning(true);
+					if (voltage < BATTERY_LOW_WARNING_ENABLE_LEVEL)
+					{
+						status.SetLowBatteryWarning(true);
+					}
+					if (voltage > BATTERY_LOW_WARNING_DISABLE_LEVEL)
+					{
+						status.SetLowBatteryWarning(false);
+					}
 				}
 			}
 		}
