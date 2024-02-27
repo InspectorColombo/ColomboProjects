@@ -15,10 +15,7 @@ static const uint16_t ST_LOW_BATTERY				= 0b00000100;
 static const uint16_t ST_LOW_BATTERY_WARNING		= 0b00001000;
 static const uint16_t ST_IGNORE_LOW_BATTERY			= 0b00010000;
 static const uint16_t ST_PREV_IGNORE_LOW_BATTERY	= 0b00100000;
-static const uint16_t ST_KEY_ON						= 0b01000000;
-static const uint16_t ST_PREV_KEY_ON				= 0b10000000;
-static const uint16_t ST_ADD_VOLTAGE				= 0b0000000100000000;
-static const uint16_t ST_CHARGE_FINISH				= 0b0000001000000000;
+static const uint16_t ST_KEY_ON						= 0b01000000;static const uint16_t ST_PREV_KEY_ON				= 0b10000000;static const uint16_t ST_ADD_VOLTAGE				= 0b0000000100000000;static const uint16_t ST_CHARGE_FINISH				= 0b0000001000000000;
 
 LedLampStatus::LedLampStatus() : m_statusByte(0)
 {
