@@ -160,6 +160,7 @@ int main(void)
 		if (updateCounter.GetUpdateFlag())
 		{
 			status.SetPrevIgnoreLowBattery(status.IsIgnoreLowBattery());
+			status.SetChargeFinish(false);
 		}
 
         // Update keys status
@@ -228,16 +229,22 @@ int main(void)
 		// Check battery current and apply additional charge voltage switch
 		const uint16_t CHARGER_ADD_VOLTAGE_ON_THRESHOLD = 140;		// 0.14A - charge current threshold to ENABLE additional voltage.
 		const uint16_t CHARGER_ADD_VOLTAGE_OFF_THRESHOLD = 100;		// 0.1A - charge current threshold to DISABLE additional voltage.
-
-		if (chargeCurrent > CHARGER_ADD_VOLTAGE_ON_THRESHOLD)
+		if (chargeCurrent > CHARGER_ADD_VOLTAGE_ON_THRESHOLD && status.IsKeyON())
 		{
 			LedsControl::AddChargeVoltageOn();
+			status.SetAddVoltage(true);
 		}
 		else
 		{
 			if (chargeCurrent < CHARGER_ADD_VOLTAGE_OFF_THRESHOLD)
 			{
+				if (status.IsAddVoltageON())
+				{
+					status.SetChargeFinish(true);
+					updateCounter.Reset();
+				}
 				LedsControl::AddChargeVoltageOff();
+				status.SetAddVoltage(false);
 			}
 		}
 
@@ -268,6 +275,11 @@ int main(void)
 		
 		LedLamp::LedsAndBeepIndicator::Update(IST_VOLTAGE, updateCounter.GetCounter(), voltageIndicator.GetLevel());		
 		LedLamp::LedsAndBeepIndicator::UpdateWithMerge(IST_CURRENT, updateCounter.GetCounter(), currentIndicator.GetLevel());		
+		
+		if (status.IsChargeFinishON())
+		{
+			LedLamp::LedsAndBeepIndicator::UpdateWithMerge(IST_CHARGE_FINISH, updateCounter.GetCounter());		
+		}
 		
 		if (status.IsOverTemperature())
 		{

@@ -24,6 +24,7 @@ uint16_t GetVoltageCurrentTableValue(const uint8_t idx, const uint8_t tableNameI
 #define IST_LOW_BATTERY_SHUTDOWN	3
 #define IST_IGNORE_LOW_BATTERY		4
 #define IST_OVERTEMPERATURE			5
+#define IST_CHARGE_FINISH			6
 #define IST_UNKNOWN					255
 
 // return 0b0000 000B CCCC VVVV

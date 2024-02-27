@@ -126,6 +126,18 @@ PROGMEM const uint8_t IgnoreLowBatteryFlashingTable[] =
 	27, 28
 };
 
+PROGMEM const uint8_t ChargeFinishFlashingTable[] =
+{
+	6,
+	2, 3,
+	6, 7,
+	12, 13,
+	16, 17,
+	22, 23,
+	26, 27
+};
+
+
 
 PROGMEM const uint16_t FlashingTableMap[] =
 {
@@ -135,7 +147,8 @@ PROGMEM const uint16_t FlashingTableMap[] =
 	(const uint16_t)(&LowBatteryWarningFlashingTable[0]),
 	(const uint16_t)(&LowBatteryShutdownFlashingTable[0]),
 	(const uint16_t)(&OverTemperatureFlashingTable[0]),
-	(const uint16_t)(&IgnoreLowBatteryFlashingTable[0])
+	(const uint16_t)(&IgnoreLowBatteryFlashingTable[0]),
+	(const uint16_t)(&ChargeFinishFlashingTable[0])
 };
 
 #define NoFlashingTableIDX							0
@@ -145,6 +158,7 @@ PROGMEM const uint16_t FlashingTableMap[] =
 #define LowBatteryShutdownFlashingTableIDX			4
 #define OverTemperatureFlashingTableIDX				5
 #define IgnoreLowBatteryFlashingTableIDX			6
+#define ChargeFinishFlashingTableIDX				7
 
 
 
@@ -223,6 +237,11 @@ PROGMEM const uint8_t OvertemperatureMaskTable[] =
 	0b00000000, 0b01000010, BEEP_ON | OverTemperatureFlashingTableIDX
 };
 
+PROGMEM const uint8_t ChargeFinishMaskTable[] =
+{
+	1,		// size
+	0b00000000, 0b00000000, BEEP_ON | ChargeFinishFlashingTableIDX
+};
 
 PROGMEM const uint16_t IndicationTableMap[] =
 {
@@ -231,7 +250,8 @@ PROGMEM const uint16_t IndicationTableMap[] =
 	(const uint16_t)(&LowBatteryWarningMaskTable[0]),
 	(const uint16_t)(&LowBatteryShutdownMaskTable[0]),
 	(const uint16_t)(&IgnoreLowBatteryMaskTable[0]),
-	(const uint16_t)(&OvertemperatureMaskTable[0])
+	(const uint16_t)(&OvertemperatureMaskTable[0]),
+	(const uint16_t)(&ChargeFinishMaskTable[0]),
 };
 
  // return 0b0000 000B CCCC VVVV

@@ -41,9 +41,16 @@ public:
 
 	bool IsPrevKeyON() const;
 	void SetPrevKeyON(const bool nv);
+	
+	bool IsAddVoltageON() const;
+	void SetAddVoltage(const bool nv);
+
+	bool IsChargeFinishON() const;
+	void SetChargeFinish(const bool nv);
+	
 
 private:
-	uint8_t m_statusByte;
+	uint16_t m_statusByte;
 };
 
 

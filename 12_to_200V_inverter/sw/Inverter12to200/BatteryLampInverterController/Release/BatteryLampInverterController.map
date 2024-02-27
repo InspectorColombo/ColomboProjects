@@ -75,11 +75,11 @@ Discarded input sections
  .data          0x00000000        0x0 src/LedLampStatus.o
  .bss           0x00000000        0x0 src/LedLampStatus.o
  .text._ZNK7LedLamp13LedLampStatus13IsConverterOnEv
-                0x00000000        0xa src/LedLampStatus.o
+                0x00000000        0xe src/LedLampStatus.o
  .text._ZN7LedLamp13LedLampStatus14SetConverterOnEb
-                0x00000000       0x12 src/LedLampStatus.o
+                0x00000000       0x18 src/LedLampStatus.o
  .text._ZNK7LedLamp13LedLampStatus11IsPrevKeyONEv
-                0x00000000        0xc src/LedLampStatus.o
+                0x00000000       0x14 src/LedLampStatus.o
  .group         0x00000000        0x8 src/LedsControl.o
  .text          0x00000000        0x0 src/LedsControl.o
  .data          0x00000000        0x0 src/LedsControl.o
@@ -374,7 +374,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xca2
+.text           0x00000000      0xda4
  *(.vectors)
  .vectors       0x00000000       0x1e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
                 0x00000000                __vector_default
@@ -391,277 +391,294 @@ END GROUP
  *libc.a:*(.progmem.data)
  *(.progmem*)
  .progmem.data.IndicationTableMap
-                0x0000001e        0xc C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x0000001e        0xe C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
                 0x0000001e                IndicationTableMap
+ .progmem.data.ChargeFinishMaskTable
+                0x0000002c        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x0000002c                ChargeFinishMaskTable
  .progmem.data.OvertemperatureMaskTable
-                0x0000002a        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x0000002a                OvertemperatureMaskTable
+                0x00000030        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000030                OvertemperatureMaskTable
  .progmem.data.IgnoreLowBatteryMaskTable
-                0x0000002e        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x0000002e                IgnoreLowBatteryMaskTable
+                0x00000034        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000034                IgnoreLowBatteryMaskTable
  .progmem.data.LowBatteryShutdownMaskTable
-                0x00000032        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000032                LowBatteryShutdownMaskTable
+                0x00000038        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000038                LowBatteryShutdownMaskTable
  .progmem.data.LowBatteryWarningMaskTable
-                0x00000036        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000036                LowBatteryWarningMaskTable
+                0x0000003c        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x0000003c                LowBatteryWarningMaskTable
  .progmem.data.CurrentMaskTable
-                0x0000003a       0x28 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x0000003a                CurrentMaskTable
+                0x00000040       0x28 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000040                CurrentMaskTable
  .progmem.data.VoltageMaskTable
-                0x00000062       0x28 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000062                VoltageMaskTable
+                0x00000068       0x28 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000068                VoltageMaskTable
  .progmem.data.FlashingTableMap
-                0x0000008a        0xe C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x0000008a                FlashingTableMap
+                0x00000090       0x10 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000090                FlashingTableMap
+ .progmem.data.ChargeFinishFlashingTable
+                0x000000a0        0xd C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000a0                ChargeFinishFlashingTable
  .progmem.data.IgnoreLowBatteryFlashingTable
-                0x00000098        0xb C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000098                IgnoreLowBatteryFlashingTable
+                0x000000ad        0xb C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000ad                IgnoreLowBatteryFlashingTable
  .progmem.data.OverTemperatureFlashingTable
-                0x000000a3        0x7 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000a3                OverTemperatureFlashingTable
+                0x000000b8        0x7 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000b8                OverTemperatureFlashingTable
  .progmem.data.LowBatteryShutdownFlashingTable
-                0x000000aa        0x3 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000aa                LowBatteryShutdownFlashingTable
+                0x000000bf        0x3 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000bf                LowBatteryShutdownFlashingTable
  .progmem.data.LowBatteryWarningFlashingTable
-                0x000000ad        0x7 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000ad                LowBatteryWarningFlashingTable
+                0x000000c2        0x7 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000c2                LowBatteryWarningFlashingTable
  .progmem.data.CurrentVoltageDoubleFlashingTable
-                0x000000b4        0x5 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000b4                CurrentVoltageDoubleFlashingTable
+                0x000000c9        0x5 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000c9                CurrentVoltageDoubleFlashingTable
  .progmem.data.CurrentVoltageSignleFlashingTable
-                0x000000b9        0x3 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000b9                CurrentVoltageSignleFlashingTable
+                0x000000ce        0x3 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000ce                CurrentVoltageSignleFlashingTable
  .progmem.data.NoFlashingTable
-                0x000000bc        0x1 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000bc                NoFlashingTable
+                0x000000d1        0x1 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000d1                NoFlashingTable
  .progmem.data.CurrentLevelsTable
-                0x000000bd       0x1c C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000bd                CurrentLevelsTable
+                0x000000d2       0x1c C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000d2                CurrentLevelsTable
  .progmem.data.VoltageLevelsTable
-                0x000000d9       0x1c C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x000000d9                VoltageLevelsTable
+                0x000000ee       0x1c C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x000000ee                VoltageLevelsTable
  .progmem.data.TempSensorTable
-                0x000000f5       0x5a C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
-                0x000000f5                TempSensorTable
-                0x00000150                . = ALIGN (0x2)
- *fill*         0x0000014f        0x1 
+                0x0000010a       0x5a C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
+                0x0000010a                TempSensorTable
+                0x00000164                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000150                __ctors_start = .
+                0x00000164                __ctors_start = .
  *(.ctors)
- .ctors         0x00000150        0x2 main.o
-                0x00000152                __ctors_end = .
-                0x00000152                __dtors_start = .
+ .ctors         0x00000164        0x2 main.o
+                0x00000166                __ctors_end = .
+                0x00000166                __dtors_start = .
  *(.dtors)
-                0x00000152                __dtors_end = .
+                0x00000166                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000152        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
-                0x00000152                __init
+ .init0         0x00000166        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
+                0x00000166                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000152        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
+ .init2         0x00000166        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x0000015e       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
-                0x0000015e                __do_copy_data
- .init4         0x00000174       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
-                0x00000174                __do_clear_bss
+ .init4         0x00000172       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
+                0x00000172                __do_copy_data
+ .init4         0x00000188       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
+                0x00000188                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
  *(.init6)
- .init6         0x00000184       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_ctors.o)
-                0x00000184                __do_global_ctors
+ .init6         0x00000198       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_ctors.o)
+                0x00000198                __do_global_ctors
  *(.init6)
  *(.init7)
  *(.init7)
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000198        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
+ .init9         0x000001ac        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
  *(.init9)
  *(.text)
- .text          0x0000019c        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
-                0x0000019c                __vector_1
-                0x0000019c                __vector_12
-                0x0000019c                __bad_interrupt
-                0x0000019c                __vector_6
-                0x0000019c                __vector_3
-                0x0000019c                __vector_11
-                0x0000019c                __vector_13
-                0x0000019c                __vector_7
-                0x0000019c                __vector_5
-                0x0000019c                __vector_4
-                0x0000019c                __vector_9
-                0x0000019c                __vector_2
-                0x0000019c                __vector_8
-                0x0000019c                __vector_14
-                0x0000019c                __vector_10
-                0x0000019e                . = ALIGN (0x2)
+ .text          0x000001b0        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny45/avr25/crtattiny45.o
+                0x000001b0                __vector_1
+                0x000001b0                __vector_12
+                0x000001b0                __bad_interrupt
+                0x000001b0                __vector_6
+                0x000001b0                __vector_3
+                0x000001b0                __vector_11
+                0x000001b0                __vector_13
+                0x000001b0                __vector_7
+                0x000001b0                __vector_5
+                0x000001b0                __vector_4
+                0x000001b0                __vector_9
+                0x000001b0                __vector_2
+                0x000001b0                __vector_8
+                0x000001b0                __vector_14
+                0x000001b0                __vector_10
+                0x000001b2                . = ALIGN (0x2)
  *(.text.*)
  .text._ZNK7LedLamp24IndicatorLevelCalculator14CalculateLevelEj.isra.1.constprop.4
-                0x0000019e       0x48 main.o
+                0x000001b2       0x48 main.o
  .text._ZN7LedLamp24IndicatorLevelCalculator6UpdateEj
-                0x000001e6       0x66 main.o
-                0x000001e6                _ZN7LedLamp24IndicatorLevelCalculator6UpdateEj
+                0x000001fa       0x66 main.o
+                0x000001fa                _ZN7LedLamp24IndicatorLevelCalculator6UpdateEj
  .text._ZN11LedsControl10AllLedsOffEv
-                0x0000024c       0x14 main.o
-                0x0000024c                _ZN11LedsControl10AllLedsOffEv
+                0x00000260       0x14 main.o
+                0x00000260                _ZN11LedsControl10AllLedsOffEv
  .text._ZN7LedLamp20LedsAndBeepIndicator15UpdateLedsStateEjb
-                0x00000260       0xea main.o
-                0x00000260                _ZN7LedLamp20LedsAndBeepIndicator15UpdateLedsStateEjb
+                0x00000274       0xea main.o
+                0x00000274                _ZN7LedLamp20LedsAndBeepIndicator15UpdateLedsStateEjb
  .text._ZN7LedLamp20LedsAndBeepIndicator6UpdateEhhh
-                0x0000034a        0xc main.o
-                0x0000034a                _ZN7LedLamp20LedsAndBeepIndicator6UpdateEhhh
+                0x0000035e        0xc main.o
+                0x0000035e                _ZN7LedLamp20LedsAndBeepIndicator6UpdateEhhh
  .text._Z8IsKeysONv
-                0x00000356       0x50 main.o
-                0x00000356                _Z8IsKeysONv
+                0x0000036a       0x50 main.o
+                0x0000036a                _Z8IsKeysONv
  .text._Z20StartTimer1DelayInMsj
-                0x000003a6       0x3a main.o
-                0x000003a6                _Z20StartTimer1DelayInMsj
+                0x000003ba       0x3a main.o
+                0x000003ba                _Z20StartTimer1DelayInMsj
  .text._Z24IsTimer1DelayInMsElapsedv
-                0x000003e0       0x14 main.o
-                0x000003e0                _Z24IsTimer1DelayInMsElapsedv
+                0x000003f4       0x14 main.o
+                0x000003f4                _Z24IsTimer1DelayInMsElapsedv
  .text._Z26WaitTimer1DelayInMsElapsedv
-                0x000003f4        0x8 main.o
-                0x000003f4                _Z26WaitTimer1DelayInMsElapsedv
+                0x00000408        0x8 main.o
+                0x00000408                _Z26WaitTimer1DelayInMsElapsedv
  .text._Z11StartUpInitv
-                0x000003fc       0x1a main.o
-                0x000003fc                _Z11StartUpInitv
+                0x00000410       0x1a main.o
+                0x00000410                _Z11StartUpInitv
  .text._Z4Beepj
-                0x00000416       0x36 main.o
-                0x00000416                _Z4Beepj
+                0x0000042a       0x36 main.o
+                0x0000042a                _Z4Beepj
  .text.startup.main
-                0x0000044c      0x312 main.o
-                0x0000044c                main
+                0x00000460      0x36a main.o
+                0x00000460                main
  .text.startup._GLOBAL__sub_I__Z8IsKeysONv
-                0x0000075e       0x22 main.o
+                0x000007ca       0x22 main.o
  .text._Z13DelayMicroSech
-                0x00000780       0x14 src/CsDelay.o
-                0x00000780                _Z13DelayMicroSech
+                0x000007ec       0x14 src/CsDelay.o
+                0x000007ec                _Z13DelayMicroSech
  .text._Z12DelayMiliSecj
-                0x00000794       0x24 src/CsDelay.o
-                0x00000794                _Z12DelayMiliSecj
+                0x00000800       0x24 src/CsDelay.o
+                0x00000800                _Z12DelayMiliSecj
  .text._Z20InitCurrentSensorADCv
-                0x000007b8       0x16 src/cs_adc.o
-                0x000007b8                _Z20InitCurrentSensorADCv
+                0x00000824       0x16 src/cs_adc.o
+                0x00000824                _Z20InitCurrentSensorADCv
  .text._Z14InitVoltageADCv
-                0x000007ce       0x16 src/cs_adc.o
-                0x000007ce                _Z14InitVoltageADCv
+                0x0000083a       0x16 src/cs_adc.o
+                0x0000083a                _Z14InitVoltageADCv
  .text._Z24InitTemperatureSensorADCv
-                0x000007e4       0x16 src/cs_adc.o
-                0x000007e4                _Z24InitTemperatureSensorADCv
+                0x00000850       0x16 src/cs_adc.o
+                0x00000850                _Z24InitTemperatureSensorADCv
  .text._Z18StartAdcConversionv
-                0x000007fa       0x1a src/cs_adc.o
-                0x000007fa                _Z18StartAdcConversionv
+                0x00000866       0x1a src/cs_adc.o
+                0x00000866                _Z18StartAdcConversionv
  .text.GetVoltageAdcValueInMv
-                0x00000814       0x7c src/cs_adc.o
-                0x00000814                GetVoltageAdcValueInMv
+                0x00000880       0x7c src/cs_adc.o
+                0x00000880                GetVoltageAdcValueInMv
  .text.GetCurrentAdcInMa
-                0x00000890       0x7c src/cs_adc.o
-                0x00000890                GetCurrentAdcInMa
+                0x000008fc       0x7c src/cs_adc.o
+                0x000008fc                GetCurrentAdcInMa
  .text.GetTemperatureAdcInDegrees
-                0x0000090c       0xc0 src/cs_adc.o
-                0x0000090c                GetTemperatureAdcInDegrees
+                0x00000978       0xc0 src/cs_adc.o
+                0x00000978                GetTemperatureAdcInDegrees
  .text._ZN7LedLamp13LedLampStatusC2Ev
-                0x000009cc        0x6 src/LedLampStatus.o
-                0x000009cc                _ZN7LedLamp13LedLampStatusC2Ev
-                0x000009cc                _ZN7LedLamp13LedLampStatusC1Ev
+                0x00000a38        0x8 src/LedLampStatus.o
+                0x00000a38                _ZN7LedLamp13LedLampStatusC2Ev
+                0x00000a38                _ZN7LedLamp13LedLampStatusC1Ev
  .text._ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv
-                0x000009d2        0x8 src/LedLampStatus.o
-                0x000009d2                _ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv
+                0x00000a40        0x8 src/LedLampStatus.o
+                0x00000a40                _ZNK7LedLamp13LedLampStatus17IsOverTemperatureEv
  .text._ZN7LedLamp13LedLampStatus18SetOverTemperatureEb
-                0x000009da       0x12 src/LedLampStatus.o
-                0x000009da                _ZN7LedLamp13LedLampStatus18SetOverTemperatureEb
+                0x00000a48       0x18 src/LedLampStatus.o
+                0x00000a48                _ZN7LedLamp13LedLampStatus18SetOverTemperatureEb
  .text._ZNK7LedLamp13LedLampStatus12IsLowBatteryEv
-                0x000009ec        0xc src/LedLampStatus.o
-                0x000009ec                _ZNK7LedLamp13LedLampStatus12IsLowBatteryEv
+                0x00000a60       0x12 src/LedLampStatus.o
+                0x00000a60                _ZNK7LedLamp13LedLampStatus12IsLowBatteryEv
  .text._ZN7LedLamp13LedLampStatus13SetLowBatteryEb
-                0x000009f8       0x12 src/LedLampStatus.o
-                0x000009f8                _ZN7LedLamp13LedLampStatus13SetLowBatteryEb
+                0x00000a72       0x18 src/LedLampStatus.o
+                0x00000a72                _ZN7LedLamp13LedLampStatus13SetLowBatteryEb
  .text._ZNK7LedLamp13LedLampStatus19IsLowBatteryWarningEv
-                0x00000a0a        0xc src/LedLampStatus.o
-                0x00000a0a                _ZNK7LedLamp13LedLampStatus19IsLowBatteryWarningEv
+                0x00000a8a       0x14 src/LedLampStatus.o
+                0x00000a8a                _ZNK7LedLamp13LedLampStatus19IsLowBatteryWarningEv
  .text._ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb
-                0x00000a16       0x12 src/LedLampStatus.o
-                0x00000a16                _ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb
+                0x00000a9e       0x18 src/LedLampStatus.o
+                0x00000a9e                _ZN7LedLamp13LedLampStatus20SetLowBatteryWarningEb
  .text._ZNK7LedLamp13LedLampStatus18IsIgnoreLowBatteryEv
-                0x00000a28        0xa src/LedLampStatus.o
-                0x00000a28                _ZNK7LedLamp13LedLampStatus18IsIgnoreLowBatteryEv
+                0x00000ab6       0x14 src/LedLampStatus.o
+                0x00000ab6                _ZNK7LedLamp13LedLampStatus18IsIgnoreLowBatteryEv
  .text._ZN7LedLamp13LedLampStatus19SetIgnoreLowBatteryEb
-                0x00000a32       0x12 src/LedLampStatus.o
-                0x00000a32                _ZN7LedLamp13LedLampStatus19SetIgnoreLowBatteryEb
+                0x00000aca       0x18 src/LedLampStatus.o
+                0x00000aca                _ZN7LedLamp13LedLampStatus19SetIgnoreLowBatteryEb
  .text._ZNK7LedLamp13LedLampStatus22IsPrevIgnoreLowBatteryEv
-                0x00000a44        0xc src/LedLampStatus.o
-                0x00000a44                _ZNK7LedLamp13LedLampStatus22IsPrevIgnoreLowBatteryEv
+                0x00000ae2       0x14 src/LedLampStatus.o
+                0x00000ae2                _ZNK7LedLamp13LedLampStatus22IsPrevIgnoreLowBatteryEv
  .text._ZN7LedLamp13LedLampStatus23SetPrevIgnoreLowBatteryEb
-                0x00000a50       0x12 src/LedLampStatus.o
-                0x00000a50                _ZN7LedLamp13LedLampStatus23SetPrevIgnoreLowBatteryEb
+                0x00000af6       0x18 src/LedLampStatus.o
+                0x00000af6                _ZN7LedLamp13LedLampStatus23SetPrevIgnoreLowBatteryEb
  .text._ZNK7LedLamp13LedLampStatus7IsKeyONEv
-                0x00000a62        0xc src/LedLampStatus.o
-                0x00000a62                _ZNK7LedLamp13LedLampStatus7IsKeyONEv
+                0x00000b0e       0x14 src/LedLampStatus.o
+                0x00000b0e                _ZNK7LedLamp13LedLampStatus7IsKeyONEv
  .text._ZN7LedLamp13LedLampStatus8SetKeyONEb
-                0x00000a6e       0x12 src/LedLampStatus.o
-                0x00000a6e                _ZN7LedLamp13LedLampStatus8SetKeyONEb
+                0x00000b22       0x18 src/LedLampStatus.o
+                0x00000b22                _ZN7LedLamp13LedLampStatus8SetKeyONEb
  .text._ZN7LedLamp13LedLampStatus12SetPrevKeyONEb
-                0x00000a80       0x12 src/LedLampStatus.o
-                0x00000a80                _ZN7LedLamp13LedLampStatus12SetPrevKeyONEb
+                0x00000b3a       0x18 src/LedLampStatus.o
+                0x00000b3a                _ZN7LedLamp13LedLampStatus12SetPrevKeyONEb
+ .text._ZNK7LedLamp13LedLampStatus14IsAddVoltageONEv
+                0x00000b52        0x8 src/LedLampStatus.o
+                0x00000b52                _ZNK7LedLamp13LedLampStatus14IsAddVoltageONEv
+ .text._ZN7LedLamp13LedLampStatus13SetAddVoltageEb
+                0x00000b5a       0x18 src/LedLampStatus.o
+                0x00000b5a                _ZN7LedLamp13LedLampStatus13SetAddVoltageEb
+ .text._ZNK7LedLamp13LedLampStatus16IsChargeFinishONEv
+                0x00000b72        0xa src/LedLampStatus.o
+                0x00000b72                _ZNK7LedLamp13LedLampStatus16IsChargeFinishONEv
+ .text._ZN7LedLamp13LedLampStatus15SetChargeFinishEb
+                0x00000b7c       0x18 src/LedLampStatus.o
+                0x00000b7c                _ZN7LedLamp13LedLampStatus15SetChargeFinishEb
  .text._ZN11LedsControl11ClearLedSckEv
-                0x00000a92        0x4 src/LedsControl.o
-                0x00000a92                _ZN11LedsControl11ClearLedSckEv
+                0x00000b94        0x4 src/LedsControl.o
+                0x00000b94                _ZN11LedsControl11ClearLedSckEv
  .text._ZN11LedsControl21SendShiftRegisterWordEj
-                0x00000a96       0x36 src/LedsControl.o
-                0x00000a96                _ZN11LedsControl21SendShiftRegisterWordEj
+                0x00000b98       0x36 src/LedsControl.o
+                0x00000b98                _ZN11LedsControl21SendShiftRegisterWordEj
  .text._ZN11LedsControl12ShiftRegInitEv
-                0x00000acc       0x10 src/LedsControl.o
-                0x00000acc                _ZN11LedsControl12ShiftRegInitEv
+                0x00000bce       0x10 src/LedsControl.o
+                0x00000bce                _ZN11LedsControl12ShiftRegInitEv
  .text._ZN11LedsControl12ShiftRegPushEv
-                0x00000adc        0xa src/LedsControl.o
-                0x00000adc                _ZN11LedsControl12ShiftRegPushEv
+                0x00000bde        0xa src/LedsControl.o
+                0x00000bde                _ZN11LedsControl12ShiftRegPushEv
  .text.GetVoltageCurrentTableValue
-                0x00000ae6       0x22 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000ae6                GetVoltageCurrentTableValue
+                0x00000be8       0x22 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000be8                GetVoltageCurrentTableValue
  .text.GetCurrVoltBeepInfo
-                0x00000b08       0xa0 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
-                0x00000b08                GetCurrVoltBeepInfo
+                0x00000c0a       0xa0 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(IndicatorsTable.o)
+                0x00000c0a                GetCurrVoltBeepInfo
  .text.GetTempSensorTableSize
-                0x00000ba8        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
-                0x00000ba8                GetTempSensorTableSize
+                0x00000caa        0x4 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
+                0x00000caa                GetTempSensorTableSize
  .text.GetTempSensorTableAdcValue
-                0x00000bac       0x14 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
-                0x00000bac                GetTempSensorTableAdcValue
+                0x00000cae       0x14 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
+                0x00000cae                GetTempSensorTableAdcValue
  .text.GetTempSensorTableTemperatureValue
-                0x00000bc0       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
-                0x00000bc0                GetTempSensorTableTemperatureValue
+                0x00000cc2       0x12 C:\__myworkspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\DataStorageRawC\Release\libDataStorageRawC.a(TempSensorTable.o)
+                0x00000cc2                GetTempSensorTableTemperatureValue
  .text.libgcc.mul
-                0x00000bd2       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
-                0x00000bd2                __mulhi3
+                0x00000cd4       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+                0x00000cd4                __mulhi3
  .text.libgcc.mul
-                0x00000bf4       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
-                0x00000bf4                __mulsi3
-                0x00000bf8                __mulsi3_helper
+                0x00000cf6       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
+                0x00000cf6                __mulsi3
+                0x00000cfa                __mulsi3_helper
  .text.libgcc.div
-                0x00000c26       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodhi4.o)
-                0x00000c26                __udivmodhi4
+                0x00000d28       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodhi4.o)
+                0x00000d28                __udivmodhi4
  .text.libgcc.div
-                0x00000c4e       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
-                0x00000c4e                __udivmodsi4
- .text.libgcc   0x00000c92        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_tablejump2.o)
-                0x00000c92                __tablejump2__
-                0x00000c9e                . = ALIGN (0x2)
+                0x00000d50       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
+                0x00000d50                __udivmodsi4
+ .text.libgcc   0x00000d94        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_tablejump2.o)
+                0x00000d94                __tablejump2__
+                0x00000da0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000c9e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
-                0x00000c9e                _exit
-                0x00000c9e                exit
+ .fini9         0x00000da0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+                0x00000da0                _exit
+                0x00000da0                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -680,11 +697,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000c9e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+ .fini0         0x00000da0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000ca2                _etext = .
+                0x00000da4                _etext = .
 
-.data           0x00800060        0xa load address 0x00000ca2
+.data           0x00800060        0xa load address 0x00000da4
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -714,8 +731,8 @@ END GROUP
                 0x00800074                _ZN11LedsControl18g_shiftRegCodeWordE
  *(COMMON)
                 0x00800076                PROVIDE (__bss_end, .)
-                0x00000ca2                __data_load_start = LOADADDR (.data)
-                0x00000cac                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000da4                __data_load_start = LOADADDR (.data)
+                0x00000dae                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800076        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
