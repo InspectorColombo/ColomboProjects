@@ -229,7 +229,7 @@ int main(void)
 		// Check battery current and apply additional charge voltage switch
 		const uint16_t CHARGER_ADD_VOLTAGE_ON_THRESHOLD = 140;		// 0.14A - charge current threshold to ENABLE additional voltage.
 		const uint16_t CHARGER_ADD_VOLTAGE_OFF_THRESHOLD = 100;		// 0.1A - charge current threshold to DISABLE additional voltage.
-		if (chargeCurrent > CHARGER_ADD_VOLTAGE_ON_THRESHOLD && status.IsKeyON())
+		if (chargeCurrent > CHARGER_ADD_VOLTAGE_ON_THRESHOLD && !status.IsKeyON())
 		{
 			LedsControl::AddChargeVoltageOn();
 			status.SetAddVoltage(true);
