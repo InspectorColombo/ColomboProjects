@@ -1,3 +1,0 @@
-Goggy
-DESKTOP-RTTVVKI 
-22 марта 2024 г.  3:00:16
