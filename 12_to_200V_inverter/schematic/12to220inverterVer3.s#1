@@ -3116,8 +3116,8 @@ DIN A4, landscape with location and doc. field</description>
 <connect gate="G$1" pin="PRI1_START" pad="2"/>
 <connect gate="G$1" pin="PRI2_END" pad="3"/>
 <connect gate="G$1" pin="PRI2_START" pad="4"/>
-<connect gate="G$1" pin="SEC_END" pad="12 13"/>
-<connect gate="G$1" pin="SEC_START" pad="9 10"/>
+<connect gate="G$1" pin="SEC_END" pad="9 10"/>
+<connect gate="G$1" pin="SEC_START" pad="12 13"/>
 </connects>
 <technologies>
 <technology name=""/>

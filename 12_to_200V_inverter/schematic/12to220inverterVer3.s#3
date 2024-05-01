@@ -3116,8 +3116,8 @@ DIN A4, landscape with location and doc. field</description>
 <connect gate="G$1" pin="PRI1_START" pad="2"/>
 <connect gate="G$1" pin="PRI2_END" pad="3"/>
 <connect gate="G$1" pin="PRI2_START" pad="4"/>
-<connect gate="G$1" pin="SEC_END" pad="12 13"/>
-<connect gate="G$1" pin="SEC_START" pad="9 10"/>
+<connect gate="G$1" pin="SEC_END" pad="9 10"/>
+<connect gate="G$1" pin="SEC_START" pad="12 13"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3905,7 +3905,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R28" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="51K"/>
 <part name="R26" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="51K"/>
 <part name="ZD1" library="__MyCommonLib1" deviceset="ZENNER" device="(SOD_80)" value="4.7V"/>
-<part name="D1" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
+<part name="D1" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_5MM" value="UF4007"/>
 <part name="C2" library="__MyCommonLib1" deviceset="CE" device="13MM" value="20uF x 450V"/>
 <part name="R27" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R2" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="510K"/>
@@ -4247,13 +4247,13 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <attribute name="NAME" x="132.08" y="129.54" size="1.27" layer="95" font="vector" ratio="20"/>
 <attribute name="VALUE" x="137.16" y="129.54" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="C1" gate="C$1" x="144.78" y="167.64" smashed="yes" rot="MR90">
-<attribute name="NAME" x="143.51" y="171.45" size="1.27" layer="95" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="143.51" y="170.18" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
+<instance part="C1" gate="C$1" x="129.54" y="167.64" smashed="yes" rot="MR90">
+<attribute name="NAME" x="128.27" y="171.45" size="1.27" layer="95" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="128.27" y="170.18" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
 </instance>
-<instance part="D3" gate="D$1" x="149.86" y="160.02" smashed="yes" rot="MR0">
-<attribute name="NAME" x="147.32" y="158.75" size="1.27" layer="95" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="147.32" y="157.48" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
+<instance part="D3" gate="D$1" x="134.62" y="160.02" smashed="yes" rot="MR0">
+<attribute name="NAME" x="132.08" y="158.75" size="1.27" layer="95" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="132.08" y="157.48" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
 </instance>
 <instance part="R11" gate="R$1" x="218.44" y="119.38" smashed="yes" rot="R180">
 <attribute name="NAME" x="220.98" y="114.3" size="1.27" layer="95" font="vector" ratio="20"/>
@@ -4319,25 +4319,25 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <attribute name="NAME" x="40.64" y="58.42" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="40.64" y="57.15" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
-<instance part="D1" gate="D$1" x="154.94" y="167.64" smashed="yes" rot="MR90">
-<attribute name="NAME" x="152.4" y="166.37" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="152.4" y="165.1" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+<instance part="D1" gate="D$1" x="139.7" y="167.64" smashed="yes" rot="MR90">
+<attribute name="NAME" x="137.16" y="166.37" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="137.16" y="165.1" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
-<instance part="C2" gate="C$1" x="160.02" y="160.02" smashed="yes" rot="MR0">
-<attribute name="NAME" x="156.21" y="173.99" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="156.21" y="172.72" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+<instance part="C2" gate="C$1" x="144.78" y="160.02" smashed="yes" rot="MR0">
+<attribute name="NAME" x="140.97" y="173.99" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="140.97" y="172.72" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
 <instance part="R27" gate="R$1" x="81.28" y="22.86" smashed="yes" rot="R180">
 <attribute name="NAME" x="78.74" y="25.4" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="78.74" y="22.86" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
-<instance part="R2" gate="R$1" x="172.72" y="162.56" smashed="yes" rot="R90">
-<attribute name="NAME" x="170.18" y="165.1" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="173.99" y="165.1" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="R2" gate="R$1" x="157.48" y="162.56" smashed="yes" rot="R90">
+<attribute name="NAME" x="154.94" y="165.1" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="158.75" y="165.1" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="R3" gate="R$1" x="172.72" y="160.02" smashed="yes" rot="R270">
-<attribute name="NAME" x="170.18" y="157.48" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="175.26" y="157.48" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="R3" gate="R$1" x="157.48" y="160.02" smashed="yes" rot="R270">
+<attribute name="NAME" x="154.94" y="157.48" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="160.02" y="157.48" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="D2" gate="D$1" x="43.18" y="162.56" smashed="yes" rot="MR90">
 <attribute name="NAME" x="40.64" y="161.29" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
@@ -4426,9 +4426,9 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <attribute name="NAME" x="40.64" y="129.54" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="40.64" y="128.27" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
-<instance part="TR100" gate="G$1" x="132.08" y="147.32" smashed="yes" rot="MR270">
-<attribute name="NAME" x="135.89" y="152.4" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="135.89" y="149.86" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+<instance part="TR100" gate="G$1" x="132.08" y="144.78" smashed="yes" rot="MR270">
+<attribute name="NAME" x="135.89" y="149.86" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="135.89" y="147.32" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
 <instance part="T14" gate="G$1" x="71.12" y="162.56" smashed="yes" rot="MR90">
 <attribute name="NAME" x="67.31" y="170.18" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
@@ -4472,14 +4472,14 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <junction x="38.1" y="139.7"/>
 </segment>
 <segment>
+<wire x1="132.08" y1="139.7" x2="132.08" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="137.16" x2="134.62" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="137.16" x2="134.62" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="137.16" x2="111.76" y2="137.16" width="0.1524" layer="91"/>
+<junction x="132.08" y="137.16"/>
 <label x="121.92" y="139.7" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-<pinref part="TR100" gate="G$1" pin="SEC2_END"/>
-<wire x1="142.24" y1="142.24" x2="142.24" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="137.16" x2="124.46" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="TR100" gate="G$1" pin="SEC1_START"/>
-<wire x1="124.46" y1="137.16" x2="111.76" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="142.24" x2="124.46" y2="137.16" width="0.1524" layer="91"/>
-<junction x="124.46" y="137.16"/>
+<pinref part="TR100" gate="G$1" pin="SEC1_END"/>
+<pinref part="TR100" gate="G$1" pin="SEC2_START"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -4552,27 +4552,27 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <net name="N$24" class="0">
 <segment>
 <pinref part="T7" gate="G$1" pin="DRAIN"/>
+<wire x1="124.46" y1="139.7" x2="124.46" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="134.62" x2="121.92" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="134.62" x2="121.92" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="C7" gate="C$1" pin="PIN1"/>
 <wire x1="121.92" y1="132.08" x2="121.92" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="132.08" x2="124.46" y2="132.08" width="0.1524" layer="91"/>
 <junction x="121.92" y="132.08"/>
-<pinref part="TR100" gate="G$1" pin="SEC1_END"/>
-<wire x1="121.92" y1="134.62" x2="132.08" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="134.62" x2="132.08" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="TR100" gate="G$1" pin="SEC1_START"/>
 </segment>
 </net>
 <net name="N$25" class="0">
 <segment>
 <pinref part="T8" gate="G$1" pin="DRAIN"/>
+<wire x1="142.24" y1="134.62" x2="144.78" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="134.62" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="R9" gate="R$1" pin="PIN0"/>
 <wire x1="144.78" y1="132.08" x2="144.78" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="132.08" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
 <junction x="144.78" y="132.08"/>
-<pinref part="TR100" gate="G$1" pin="SEC2_START"/>
-<wire x1="144.78" y1="134.62" x2="134.62" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="134.62" x2="134.62" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="139.7" x2="142.24" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="TR100" gate="G$1" pin="SEC2_END"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -4587,20 +4587,20 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <label x="173.99" y="170.18" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <pinref part="C2" gate="C$1" pin="PLUS"/>
 <pinref part="D1" gate="D$1" pin="CATHODE"/>
-<wire x1="165.1" y1="167.64" x2="160.02" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="162.56" x2="160.02" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="167.64" x2="157.48" y2="167.64" width="0.1524" layer="91"/>
-<junction x="160.02" y="167.64"/>
+<wire x1="149.86" y1="167.64" x2="144.78" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="162.56" x2="144.78" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="167.64" x2="142.24" y2="167.64" width="0.1524" layer="91"/>
+<junction x="144.78" y="167.64"/>
 <pinref part="R2" gate="R$1" pin="PIN1"/>
-<wire x1="167.64" y1="162.56" x2="165.1" y2="162.56" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="162.56" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
-<junction x="165.1" y="167.64"/>
+<wire x1="152.4" y1="162.56" x2="149.86" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="162.56" x2="149.86" y2="167.64" width="0.1524" layer="91"/>
+<junction x="149.86" y="167.64"/>
 <pinref part="X2" gate="G$1" pin="1"/>
 <pinref part="X3" gate="G$1" pin="1"/>
 <wire x1="205.74" y1="160.02" x2="208.28" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="160.02" x2="220.98" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="160.02" x2="208.28" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="167.64" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="167.64" x2="149.86" y2="167.64" width="0.1524" layer="91"/>
 <junction x="208.28" y="160.02"/>
 </segment>
 </net>
@@ -4800,31 +4800,29 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <net name="N$8" class="0">
 <segment>
 <pinref part="C1" gate="C$1" pin="MINUS"/>
-<pinref part="TR100" gate="G$1" pin="PRI_START"/>
-<wire x1="134.62" y1="152.4" x2="134.62" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="157.48" x2="129.54" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="157.48" x2="129.54" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="167.64" x2="142.24" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="127" y1="167.64" x2="124.46" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="167.64" x2="124.46" y2="149.86" width="0.1524" layer="91"/>
+<pinref part="TR100" gate="G$1" pin="PRI_END"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
 <pinref part="D3" gate="D$1" pin="CATHODE"/>
 <pinref part="C1" gate="C$1" pin="PLUS"/>
-<wire x1="149.86" y1="162.56" x2="149.86" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="167.64" x2="147.32" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="162.56" x2="134.62" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="167.64" x2="132.08" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="D1" gate="D$1" pin="ANODE"/>
-<wire x1="152.4" y1="167.64" x2="149.86" y2="167.64" width="0.1524" layer="91"/>
-<junction x="149.86" y="167.64"/>
+<wire x1="137.16" y1="167.64" x2="134.62" y2="167.64" width="0.1524" layer="91"/>
+<junction x="134.62" y="167.64"/>
 </segment>
 </net>
 <net name="N$1" class="0">
 <segment>
 <pinref part="R2" gate="R$1" pin="PIN0"/>
 <pinref part="R3" gate="R$1" pin="PIN1"/>
-<wire x1="177.8" y1="160.02" x2="180.34" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="160.02" x2="180.34" y2="162.56" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="162.56" x2="177.8" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="160.02" x2="165.1" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="160.02" x2="165.1" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="162.56" x2="162.56" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -4992,27 +4990,26 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <wire x1="27.94" y1="132.08" x2="27.94" y2="129.54" width="0.1524" layer="91"/>
 <junction x="27.94" y="129.54"/>
 <pinref part="D3" gate="D$1" pin="ANODE"/>
-<wire x1="149.86" y1="157.48" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="157.48" x2="134.62" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="152.4" x2="134.62" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="C2" gate="C$1" pin="MINUS"/>
-<wire x1="160.02" y1="157.48" x2="160.02" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="154.94" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="157.48" x2="144.78" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="152.4" x2="134.62" y2="152.4" width="0.1524" layer="91"/>
+<junction x="134.62" y="152.4"/>
 <pinref part="R3" gate="R$1" pin="PIN0"/>
-<wire x1="167.64" y1="160.02" x2="165.1" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="160.02" x2="165.1" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="154.94" x2="160.02" y2="154.94" width="0.1524" layer="91"/>
-<junction x="160.02" y="154.94"/>
-<wire x1="165.1" y1="154.94" x2="182.88" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="154.94" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="160.02" x2="149.86" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="160.02" x2="149.86" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="152.4" x2="144.78" y2="152.4" width="0.1524" layer="91"/>
+<junction x="144.78" y="152.4"/>
+<wire x1="149.86" y1="152.4" x2="182.88" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="152.4" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
 <junction x="182.88" y="111.76"/>
-<junction x="165.1" y="154.94"/>
+<junction x="149.86" y="152.4"/>
 <pinref part="C9" gate="C$1" pin="PIN0"/>
 <wire x1="38.1" y1="129.54" x2="43.18" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="129.54" x2="43.18" y2="132.08" width="0.1524" layer="91"/>
 <junction x="38.1" y="129.54"/>
-<pinref part="TR100" gate="G$1" pin="PRI_END"/>
-<wire x1="149.86" y1="154.94" x2="124.46" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="154.94" x2="124.46" y2="152.4" width="0.1524" layer="91"/>
-<junction x="149.86" y="154.94"/>
+<pinref part="TR100" gate="G$1" pin="PRI_START"/>
 </segment>
 </net>
 <net name="N$65" class="0">
