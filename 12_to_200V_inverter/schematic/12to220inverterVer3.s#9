@@ -4196,7 +4196,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="C21" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
-<part name="R76" library="__MyCommonLib1" deviceset="R" device="SMD_1206_BIG_GAP" value="1K0"/>
+<part name="R76" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="D20" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="D19" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
@@ -4239,7 +4239,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="X1" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_DRILL" value="BAT+"/>
 <part name="X4" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_DRILL" value="BAT-"/>
 <part name="F1" library="__MyCommonLib1" deviceset="FUSE" device="AUTO_SMALL" value="5A"/>
-<part name="D4" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_12.5MM" value="1N4001"/>
+<part name="D4" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4001"/>
 <part name="R70" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="240K"/>
 <part name="R64" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R67" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>

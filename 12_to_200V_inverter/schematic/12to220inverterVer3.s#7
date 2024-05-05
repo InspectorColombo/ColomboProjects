@@ -4212,7 +4212,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R91" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R90" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
-<part name="D23" library="__MyCommonLib1" deviceset="LL4147" device="(DO-35_12.5MM)" value="LL4148"/>
+<part name="D23" library="__MyCommonLib1" deviceset="LL4147" device="(DO-35_15MM)" value="LL4148"/>
 <part name="D24" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="D25" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="IC7" library="__MyCommonLib1" deviceset="74HC595" device="(SOIC16)" value="74HC595"/>

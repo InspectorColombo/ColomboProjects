@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
@@ -4106,7 +4106,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="CE2" library="__MyCommonLib1" deviceset="CE" device="10MM" value="1000uF x 25V"/>
 <part name="L1" library="__MyCommonLib1" deviceset="L" device="(7MM)" value="20uH"/>
 <part name="CE3" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="47uF x 25V"/>
-<part name="IC4" library="__MyCommonLib1" deviceset="TL431" device="TO-92A_PINS_SWAPPED" value="TL431"/>
+<part name="IC4" library="__MyCommonLib1" deviceset="TL431" device="TO-92A" value="TL431"/>
 <part name="R59" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K6"/>
 <part name="R61" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="C25" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="100pF"/>
