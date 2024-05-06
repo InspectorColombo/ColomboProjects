@@ -1947,6 +1947,7 @@ design rules under a new name.</description>
 <element name="R86" library="__MyCommonLib1" package="RSMD_0805" value="*" x="30" y="93" rot="MR0"/>
 <element name="D101" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="MBR20100CT" x="64" y="50" rot="R180"/>
 <element name="J101" library="__MyCommonLib1" package="RSMD_0805" value="0" x="128" y="93" rot="MR90"/>
+<element name="R110" library="__MyCommonLib1" package="RSMD_1206" value="*" x="0.4" y="-5"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -2668,11 +2669,15 @@ design rules under a new name.</description>
 <vertex x="23.7" y="28.9"/>
 <vertex x="23.7" y="32.5"/>
 </polygon>
+<contactref element="R110" pad="PAD_0"/>
+<wire x1="26.45" y1="26" x2="-1.15" y2="-5" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$26">
 <contactref element="C7" pad="PAD_0"/>
 <contactref element="R9" pad="PAD_1"/>
 <wire x1="33.45" y1="26" x2="29.55" y2="26" width="1.2" layer="16"/>
+<contactref element="R110" pad="PAD_1"/>
+<wire x1="1.95" y1="-5" x2="29.55" y2="26" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$20">
 <contactref element="T10" pad="1"/>
