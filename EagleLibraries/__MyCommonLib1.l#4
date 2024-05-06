@@ -2508,7 +2508,7 @@
 <wire x1="4.445" y1="-2.8575" x2="4.445" y2="2.8575" width="0.127" layer="39"/>
 <wire x1="4.445" y1="2.8575" x2="-4.445" y2="2.8575" width="0.127" layer="39"/>
 </package>
-<package name="DO-35">
+<package name="DO-35_8MM">
 <wire x1="-1.8" y1="0.8" x2="0.8" y2="0.8" width="0.4" layer="21"/>
 <wire x1="0.8" y1="0.8" x2="1.8" y2="0.8" width="0.4" layer="21"/>
 <wire x1="1.8" y1="0.8" x2="1.8" y2="-0.8" width="0.4" layer="21"/>
@@ -2520,6 +2520,53 @@
 <pad name="C" x="4" y="0" drill="0.8" diameter="2"/>
 <wire x1="-2.7" y1="0" x2="-2" y2="0" width="0.4" layer="21"/>
 <wire x1="2" y1="0" x2="2.7" y2="0" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="DO-35_10MM">
+<wire x1="-1.8" y1="0.8" x2="0.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="0.8" x2="1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="-0.8" x2="-1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-0.8" x2="-1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<pad name="A" x="-5" y="0" drill="0.8" diameter="2"/>
+<pad name="C" x="5" y="0" drill="0.8" diameter="2"/>
+<wire x1="-3.7" y1="0" x2="-2" y2="0" width="0.4" layer="21"/>
+<wire x1="2" y1="0" x2="3.7" y2="0" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="DO-35_12.5MM">
+<wire x1="-1.8" y1="0.8" x2="0.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="0.8" x2="1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="-0.8" x2="-1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-0.8" x2="-1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<pad name="A" x="-6.25" y="0" drill="0.8" diameter="2"/>
+<pad name="C" x="6.25" y="0" drill="0.8" diameter="2"/>
+<wire x1="-4.95" y1="0" x2="-2" y2="0" width="0.4" layer="21"/>
+<wire x1="2" y1="0" x2="4.95" y2="0" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="DO-35_15MM">
+<wire x1="-1.8" y1="0.8" x2="0.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="0.8" x2="1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="-0.8" x2="-1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-0.8" x2="-1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<pad name="A" x="-7.5" y="0" drill="0.8" diameter="2"/>
+<pad name="C" x="7.5" y="0" drill="0.8" diameter="2"/>
+<wire x1="-6.2" y1="0" x2="-2" y2="0" width="0.4" layer="21"/>
+<wire x1="2" y1="0" x2="6.2" y2="0" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>

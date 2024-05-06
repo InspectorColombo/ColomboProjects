@@ -4067,7 +4067,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R32" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="240K"/>
 <part name="TR3" library="__MyCommonLib1" deviceset="TRANS_FLYBACK_AUX_SINGLE_OUT" device="(ETD39-HORIZONTAL)" value="ETD29_Transf"/>
 <part name="D13" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="UF4007"/>
-<part name="ZD2" library="__MyCommonLib1" deviceset="ZENNER" device="DO-41_5MM" value="P6KE200"/>
+<part name="ZD2" library="__MyCommonLib1" deviceset="ZENNER" device="DO-41_10MM" value="P6KE200"/>
 <part name="T10" library="__MyCommonLib1" deviceset="IRF830" device="TO-220_VER2_BIG_PADS" value="16N60"/>
 <part name="R57" library="__MyCommonLib1" deviceset="R" device="SMD_1206" value="2R4"/>
 <part name="IC1" library="__MyCommonLib1" deviceset="UC3842" device="SOIC8" value="UC3842"/>
@@ -4212,7 +4212,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R91" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R90" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
-<part name="D23" library="__MyCommonLib1" deviceset="LL4147" device="(DO-35_12.5MM)" value="LL4148"/>
+<part name="D23" library="__MyCommonLib1" deviceset="LL4147" device="(DO-35_15MM)" value="LL4148"/>
 <part name="D24" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="D25" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="IC7" library="__MyCommonLib1" deviceset="74HC595" device="(SOIC16)" value="74HC595"/>
@@ -4310,6 +4310,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R69" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="*"/>
 <part name="R86" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="*"/>
 <part name="D101" library="__MyCommonLib1" deviceset="MBR20100CT" device=""/>
+<part name="J101" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="0"/>
 </parts>
 <sheets>
 <sheet>
@@ -7315,6 +7316,10 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <attribute name="NAME" x="157.48" y="142.875" size="1.27" layer="95" font="vector" ratio="20" rot="MR0"/>
 <attribute name="VALUE" x="157.48" y="141.605" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
 </instance>
+<instance part="J101" gate="R$1" x="152.4" y="50.8" smashed="yes" rot="R270">
+<attribute name="NAME" x="148.59" y="52.705" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="153.67" y="52.705" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -7681,10 +7686,12 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <wire x1="144.78" y1="88.9" x2="147.32" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="88.9" x2="147.32" y2="86.36" width="0.1524" layer="91"/>
 <junction x="147.32" y="88.9"/>
-<pinref part="IC7" gate="G$1" pin="LATCH"/>
-<wire x1="167.64" y1="50.8" x2="149.86" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="50.8" x2="149.86" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="50.8" x2="142.24" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="50.8" x2="142.24" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="66.04" x2="149.86" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="66.04" x2="149.86" y2="88.9" width="0.1524" layer="91"/>
 <junction x="149.86" y="88.9"/>
+<pinref part="J101" gate="R$1" pin="PIN0"/>
 </segment>
 </net>
 <net name="N$89" class="0">
@@ -8127,6 +8134,13 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <pinref part="D25" gate="D1" pin="ANODE"/>
 <wire x1="27.94" y1="137.16" x2="5.08" y2="137.16" width="0.1524" layer="91"/>
 <label x="25.4" y="138.43" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+</segment>
+</net>
+<net name="N$104" class="0">
+<segment>
+<pinref part="IC7" gate="G$1" pin="LATCH"/>
+<pinref part="J101" gate="R$1" pin="PIN1"/>
+<wire x1="157.48" y1="50.8" x2="167.64" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

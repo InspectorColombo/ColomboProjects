@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -2507,6 +2507,36 @@
 <wire x1="-4.445" y1="-2.8575" x2="4.445" y2="-2.8575" width="0.127" layer="39"/>
 <wire x1="4.445" y1="-2.8575" x2="4.445" y2="2.8575" width="0.127" layer="39"/>
 <wire x1="4.445" y1="2.8575" x2="-4.445" y2="2.8575" width="0.127" layer="39"/>
+</package>
+<package name="DO-35_8MM">
+<wire x1="-1.8" y1="0.8" x2="0.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="0.8" x2="1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="-0.8" x2="-1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-0.8" x2="-1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<pad name="A" x="-4" y="0" drill="0.8" diameter="2"/>
+<pad name="C" x="4" y="0" drill="0.8" diameter="2"/>
+<wire x1="-2.7" y1="0" x2="-2" y2="0" width="0.4" layer="21"/>
+<wire x1="2" y1="0" x2="2.7" y2="0" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="DO-35_10MM">
+<wire x1="-1.8" y1="0.8" x2="0.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="0.8" x2="1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="1.8" y1="-0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="-0.8" x2="-1.8" y2="-0.8" width="0.4" layer="21"/>
+<wire x1="-1.8" y1="-0.8" x2="-1.8" y2="0.8" width="0.4" layer="21"/>
+<wire x1="0.8" y1="0.8" x2="0.8" y2="-0.8" width="0.4" layer="21"/>
+<pad name="A" x="-5" y="0" drill="0.8" diameter="2"/>
+<pad name="C" x="5" y="0" drill="0.8" diameter="2"/>
+<wire x1="-3.7" y1="0" x2="-2" y2="0" width="0.4" layer="21"/>
+<wire x1="2" y1="0" x2="3.7" y2="0" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -5940,7 +5970,12 @@
 <gate name="G$1" symbol="DOUBLE_SHOTTKY_COMMON_CATHODE" x="0" y="0"/>
 </gates>
 <devices>
-<device name="">
+<device name="" package="TO-220(VER2)_BIG_PADS">
+<connects>
+<connect gate="G$1" pin="ANODE1" pad="1"/>
+<connect gate="G$1" pin="ANODE2" pad="3"/>
+<connect gate="G$1" pin="CATHODE" pad="2"/>
+</connects>
 <technologies>
 <technology name=""/>
 </technologies>
