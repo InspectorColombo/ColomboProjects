@@ -8,7 +8,7 @@
 </settings>
 <grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="10" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -23,18 +23,18 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
@@ -1177,8 +1177,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="41.86" y="61.085" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
 <element name="T7" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="IRFZ24N" x="38" y="39" smashed="yes">
-<attribute name="NAME" x="35.46" y="42.81" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="35.46" y="35.19" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="32.96" y="44.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="32.96" y="42.99" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="T5" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC857" x="37" y="46" smashed="yes" rot="MR180">
 <attribute name="NAME" x="37" y="46" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
@@ -1193,8 +1193,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="41.4" y="47" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
 <element name="T8" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="IRFZ24N" x="23.7" y="39" smashed="yes">
-<attribute name="NAME" x="21.16" y="42.81" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="21.16" y="35.19" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="21.06" y="44.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="18.96" y="42.99" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="T6" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC857" x="22.7" y="46" smashed="yes" rot="MR180">
 <attribute name="NAME" x="22.7" y="46" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
@@ -1217,28 +1217,28 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="36.4" y="25.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="C1" library="__MyCommonLib1" package="CE_13MM" value="20uF x 450V" x="7" y="19" smashed="yes" rot="R180">
-<attribute name="NAME" x="9.54" y="26.62" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="10.81" y="12.65" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="-1.06" y="22.02" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="-0.99" y="20.95" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="D3" library="__MyCommonLib1" package="DO-41_10MM" value="UF4007" x="7.2" y="27" smashed="yes" rot="R180">
-<attribute name="NAME" x="9.74" y="24.46" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="9.74" y="25.73" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="-1.06" y="27.96" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="-0.96" y="26.93" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="R11" library="__MyCommonLib1" package="R_1.0W" value="1R0" x="24" y="59.9" smashed="yes" rot="R270">
-<attribute name="NAME" x="24" y="59.9" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="24" y="59.9" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="24.1" y="61" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="22.4" y="61" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="C4" library="__MyCommonLib1" package="RSMD_0805" value="0.47uFx25V" x="52" y="65.5" smashed="yes" rot="MR180">
 <attribute name="NAME" x="52" y="65.5" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="54.2" y="66" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
 <element name="C3" library="__MyCommonLib1" package="CE_6.3MM" value="100uFx25V" x="52" y="62.9" smashed="yes">
-<attribute name="NAME" x="49.46" y="66.71" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="49.46" y="67.98" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="56.06" y="64.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="56.06" y="61.98" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="C5" library="__MyCommonLib1" package="CE_10MM" value="1000uFx25V" x="9" y="38" smashed="yes">
-<attribute name="NAME" x="6.46" y="31.65" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="5.19" y="43.08" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="-0.86" y="38.55" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="-0.59" y="40.22" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="C6" library="__MyCommonLib1" package="RSMD_1206" value="0.47uFx25V" x="44.5" y="36.9" smashed="yes" rot="MR270">
 <attribute name="NAME" x="44.5" y="36.9" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1289,12 +1289,12 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="30.5" y="62.5" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
 <element name="D1" library="__MyCommonLib1" package="DO-41_10MM" value="UF4007" x="2.1" y="36" smashed="yes" rot="R90">
-<attribute name="NAME" x="-0.44" y="33.46" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="0.83" y="33.46" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="-0.96" y="35.96" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="-1.06" y="34.93" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="C2" library="__MyCommonLib1" package="CE_13MM" value="20uF x 450V" x="7.1" y="50.1" smashed="yes" rot="R180">
-<attribute name="NAME" x="9.64" y="57.72" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="10.91" y="43.75" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="-0.96" y="50.02" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="-0.99" y="48.05" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="R27" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="31" y="54.9" smashed="yes" rot="MR0">
 <attribute name="NAME" x="31" y="54.9" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
@@ -1309,12 +1309,12 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="12.6" y="56.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="D2" library="__MyCommonLib1" package="DO-41_10MM" value="1N4001" x="74" y="69.9" smashed="yes" rot="R90">
-<attribute name="NAME" x="71.46" y="67.36" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="72.73" y="67.36" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="69.96" y="67.96" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="72.03" y="66.96" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="C8" library="__MyCommonLib1" package="CE_5.2MM" value="47uF x 10V" x="29" y="60.9" smashed="yes" rot="R180">
-<attribute name="NAME" x="31.54" y="57.09" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="31.54" y="55.82" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="28.36" y="56.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="28.36" y="57.08" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="R21" library="__MyCommonLib1" package="RSMD_0805" value="1M0" x="37" y="65.9" smashed="yes" rot="MR270">
 <attribute name="NAME" x="37" y="65.9" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1333,28 +1333,28 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="20.7" y="56.7" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
 <element name="X5" library="__MyCommonLib1" package="BRD_CONNECTOR_12X10.2" value="220VAC" x="145.2" y="53" smashed="yes">
-<attribute name="NAME" x="145.2" y="53" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="145.2" y="53" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="144.3" y="51.1" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="142.5" y="49.3" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="F2" library="__MyCommonLib1" package="FUSE_20X5MM_VERT_WIRE" value="2A" x="136" y="50.5" smashed="yes" rot="R270">
 <attribute name="NAME" x="131.9" y="48.7" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="132" y="54.7" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="C11" library="__MyCommonLib1" package="MKP_18X6" value="0.1uF x 275VAC X2" x="149.9" y="44.6" smashed="yes" rot="R270">
-<attribute name="NAME" x="149.9" y="44.6" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="149.9" y="44.6" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="145.9" y="44.3" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="142.5" y="42.3" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="TR2" library="__MyCommonLib1" package="EMI_CM_21X17" value="EMI" x="149.4" y="32.8" smashed="yes" rot="R270">
-<attribute name="NAME" x="149.4" y="32.8" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="149.4" y="32.8" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="148.1" y="37.7" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="148.1" y="36" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="C12" library="__MyCommonLib1" package="MKP_18X6" value="0.1uF x 275VAC X2" x="150" y="15.8" smashed="yes" rot="R90">
-<attribute name="NAME" x="150" y="15.8" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="150" y="15.8" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="151.5" y="16.7" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="157.7" y="14.5" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="RT1" library="__MyCommonLib1" package="NTC_9.0X4.2" value="5 Ohm" x="154.6" y="53" smashed="yes" rot="R90">
-<attribute name="NAME" x="154.6" y="53" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="154.6" y="53" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="155.7" y="51" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="158.2" y="50.1" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="CE1" library="__MyCommonLib1" package="CE_13MM" value="22uF x 400V" x="102.5" y="7.1" smashed="yes" rot="R270">
 <attribute name="NAME" x="100.96" y="-2.02" size="1.016" layer="25" font="vector" ratio="20"/>
@@ -1397,7 +1397,7 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="127.9" y="36.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="CE5" library="__MyCommonLib1" package="CE_6.3MM" value="100uFx50V" x="125.4" y="39.3" smashed="yes">
-<attribute name="NAME" x="121.06" y="44.51" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="NAME" x="121.16" y="44.61" size="1.016" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="121.06" y="43.18" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="R30" library="__MyCommonLib1" package="R_1.0W" value="120K" x="135.5" y="23.9" smashed="yes" rot="R270">
@@ -1452,9 +1452,9 @@ design rules under a new name.</description>
 <attribute name="NAME" x="119.4" y="51" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="121.1" y="50.5" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
-<element name="RT2" library="__MyCommonLib1" package="NTC_5.5X3" value="22K_20deg" x="109.4" y="46" smashed="yes" rot="R90">
-<attribute name="NAME" x="109.4" y="46" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="109.4" y="46" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<element name="RT2" library="__MyCommonLib1" package="NTC_5.5X3" value="100K_20deg" x="109.4" y="46" smashed="yes" rot="R90">
+<attribute name="NAME" x="106.8" y="44.7" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="113.2" y="43.3" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="R44" library="__MyCommonLib1" package="RSMD_0805" value="82K" x="115" y="43" smashed="yes" rot="MR0">
 <attribute name="NAME" x="115" y="43" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
@@ -1481,8 +1481,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="91.6" y="42.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
 <element name="CE4" library="__MyCommonLib1" package="CE_5.2MM" value="2.2uF x 50V" x="97.1" y="42.1" smashed="yes" rot="R90">
-<attribute name="NAME" x="93.29" y="39.56" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="92.02" y="39.56" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="98.94" y="45.99" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="101.02" y="41.06" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="T9" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC857" x="105" y="44" smashed="yes" rot="MR180">
 <attribute name="NAME" x="105" y="44" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
@@ -1501,8 +1501,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="115.1" y="-0.8" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="IC2" library="__MyCommonLib1" package="DIP4" value="PC817" x="126.2" y="57.2" smashed="yes" rot="R180">
-<attribute name="NAME" x="126.2" y="57.2" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="126.2" y="57.2" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="123" y="59" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="123" y="57" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="C14" library="__MyCommonLib1" package="RSMD_0805" value="2n2 x 50V" x="68" y="26" smashed="yes" rot="MR90">
 <attribute name="NAME" x="68" y="26" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
@@ -1521,20 +1521,20 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="84.2" y="-1" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="CE2" library="__MyCommonLib1" package="CE_10MM" value="1000uF x 25V" x="80.2" y="47" smashed="yes" rot="R90">
-<attribute name="NAME" x="86.55" y="44.46" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="75.12" y="43.19" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="82.06" y="46.05" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="78.89" y="40.68" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="L1" library="__MyCommonLib1" package="COIL_7MM" value="20uH" x="79.6" y="55.6" smashed="yes">
-<attribute name="NAME" x="79.6" y="55.6" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="79.6" y="55.6" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="78.8" y="57" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="77.9" y="53.1" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="CE3" library="__MyCommonLib1" package="CE_6.3MM" value="47uF x 25V" x="87" y="54.7" smashed="yes" rot="R90">
-<attribute name="NAME" x="83.19" y="52.16" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="81.92" y="52.16" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="86.06" y="50.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="86.06" y="48.98" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="IC4" library="__MyCommonLib1" package="TO-92A" value="TL431" x="125" y="73" smashed="yes" rot="R270">
-<attribute name="NAME" x="125" y="73" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="122.2" y="75.2" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="123" y="74" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="123" y="72" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="R59" library="__MyCommonLib1" package="RSMD_0805" value="5K6" x="122.7" y="62" smashed="yes" rot="MR270">
 <attribute name="NAME" x="122.7" y="62" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1549,20 +1549,20 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="122.5" y="76.2" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
 <element name="T2" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="IRF830" x="17" y="63.9" smashed="yes" rot="R270">
-<attribute name="NAME" x="20.81" y="66.44" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="13.19" y="66.44" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="15.06" y="83.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="15.06" y="81.99" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="X2" library="__MyCommonLib1" package="BRD_CONNECTOR_12X10.2" value="LAMP1" x="7" y="63.9" smashed="yes">
-<attribute name="NAME" x="7" y="63.9" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="7" y="63.9" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="6" y="62" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="4.8" y="60.7" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="X3" library="__MyCommonLib1" package="BRD_CONNECTOR_12X10.2" value="LAMP1" x="7" y="75.9" smashed="yes">
-<attribute name="NAME" x="7" y="75.9" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="7" y="75.9" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="6.1" y="74.4" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="5.1" y="72.5" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="T3" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="IRF830" x="17" y="75.9" smashed="yes" rot="R270">
-<attribute name="NAME" x="20.81" y="78.44" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="13.19" y="78.44" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="15.06" y="85.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="15.06" y="83.99" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="R5" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="13.2" y="82.3" smashed="yes" rot="MR180">
 <attribute name="NAME" x="13.2" y="82.3" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
@@ -1589,8 +1589,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="116.4" y="75" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
 <element name="R66" library="__MyCommonLib1" package="R_ADJ_STAND" value="10K" x="120" y="80" smashed="yes" rot="R180">
-<attribute name="NAME" x="123.175" y="82.54" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="123.175" y="82.54" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="122.975" y="83.04" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="118.975" y="83.04" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="R75" library="__MyCommonLib1" package="RSMD_0805" value="22K" x="126" y="80" smashed="yes" rot="MR0">
 <attribute name="NAME" x="126" y="80" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
@@ -1613,24 +1613,24 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="56.86" y="92.445" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
 <element name="C29" library="__MyCommonLib1" package="CE_5.2MM" value="10uFx16V" x="40" y="97" smashed="yes" rot="R90">
-<attribute name="NAME" x="36.19" y="94.46" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="34.92" y="94.46" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="44.06" y="98.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="44.06" y="96.98" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="C30" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="37" y="97" smashed="yes" rot="MR270">
 <attribute name="NAME" x="37" y="97" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
 <attribute name="VALUE" x="36.6" y="95.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
 <element name="C27" library="__MyCommonLib1" package="CE_6.3MM" value="470uFx25V" x="36" y="91" smashed="yes" rot="R270">
-<attribute name="NAME" x="39.81" y="93.54" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="41.08" y="93.54" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="40.06" y="89.01" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="40.06" y="87.98" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="C28" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="33.4" y="91" smashed="yes" rot="MR90">
 <attribute name="NAME" x="33.4" y="91" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="33" y="89.5" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
 <element name="IC5" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="LM317" x="24" y="93" smashed="yes" rot="R180">
-<attribute name="NAME" x="26.54" y="89.19" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="26.54" y="96.81" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="26.94" y="98.99" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="26.94" y="98.01" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="R87" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="27" y="97" smashed="yes" rot="MR90">
 <attribute name="NAME" x="27" y="97" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
@@ -1677,36 +1677,36 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="143.6" y="67.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
 <element name="LED1" library="__MyCommonLib1" package="LED3MM" value="VOLT_GREEN2" x="156.6" y="82" smashed="yes">
-<attribute name="NAME" x="160.4" y="82" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="168" y="82.2" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="161" y="83.1" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="161" y="82" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="LED2" library="__MyCommonLib1" package="LED3MM" value="CURR_RED" x="150" y="82" smashed="yes">
-<attribute name="NAME" x="134.6" y="82.8" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="147.2" y="83" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="147" y="83" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="147" y="82" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="LED3" library="__MyCommonLib1" package="LED3MM" value="VOLT_GREEN1" x="156.6" y="77" smashed="yes">
-<attribute name="NAME" x="160.4" y="77" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="168" y="77.2" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="161" y="78" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="161" y="77" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="LED4" library="__MyCommonLib1" package="LED3MM" value="CURR_YELLOW" x="150" y="77" smashed="yes">
-<attribute name="NAME" x="133.4" y="77.6" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="147" y="77.8" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="147" y="78" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="147" y="77" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="LED5" library="__MyCommonLib1" package="LED3MM" value="VOLT_YELLOW" x="156.6" y="72" smashed="yes">
-<attribute name="NAME" x="160.4" y="72.2" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="167.6" y="72.2" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="161" y="73" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="161" y="72" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="LED6" library="__MyCommonLib1" package="LED3MM" value="CURR_GREEN1" x="150" y="72" smashed="yes">
-<attribute name="NAME" x="133.2" y="72.6" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="147" y="72.6" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="147" y="73" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="147" y="72" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="LED7" library="__MyCommonLib1" package="LED3MM" value="VOLT_RED" x="156.6" y="67" smashed="yes">
-<attribute name="NAME" x="160.6" y="67" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="167.6" y="67.2" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="161" y="68" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="161" y="67" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="LED8" library="__MyCommonLib1" package="LED3MM" value="CURR_GREEN2" x="150" y="67" smashed="yes">
-<attribute name="NAME" x="132.8" y="67.4" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="146.6" y="67.4" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="147" y="68" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="147" y="67" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="C33" library="__MyCommonLib1" package="RSMD_0805" value="0.1uF" x="132" y="88" smashed="yes" rot="MR0">
 <attribute name="NAME" x="132" y="88" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
@@ -1785,8 +1785,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="119.8" y="68.4" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="R80" library="__MyCommonLib1" package="R_1.0W" value="0.1R" x="64" y="44" smashed="yes">
-<attribute name="NAME" x="64" y="44" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="64" y="44" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="62" y="44" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="62" y="43" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="R81" library="__MyCommonLib1" package="RSMD_0805" value="240R" x="109" y="67" smashed="yes" rot="MR270">
 <attribute name="NAME" x="109" y="67" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1841,16 +1841,16 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="22.4" y="84.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="X6" library="__MyCommonLib1" package="PIN2X1_2.54_WITH_CLAMP" value="LAMP1_SWITCH" x="34" y="72.9" smashed="yes" rot="R270">
-<attribute name="VALUE" x="35.27" y="74.17" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
-<attribute name="NAME" x="35.27" y="74.17" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="33.93" y="67.17" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="33.93" y="68.37" size="1.016" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="T21" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BC847" x="38" y="86" smashed="yes" rot="MR90">
 <attribute name="NAME" x="38" y="86" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="35.5" y="85.3" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
 <element name="X7" library="__MyCommonLib1" package="PIN2X1_2.54_WITH_CLAMP" value="LAMP1_SWITCH" x="25" y="72.9" smashed="yes" rot="R270">
-<attribute name="VALUE" x="26.27" y="74.17" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
-<attribute name="NAME" x="26.27" y="74.17" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="28.03" y="64.97" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="28.03" y="66.07" size="1.016" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="R91" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="40" y="90" smashed="yes" rot="MR0">
 <attribute name="NAME" x="40" y="90" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
@@ -1861,8 +1861,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="37.1" y="82.5" size="1.016" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
 <element name="D23" library="__MyCommonLib1" package="DO-35_15MM" value="LL4148" x="58.5" y="54.7" smashed="yes" rot="R180">
-<attribute name="NAME" x="58.5" y="54.7" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="61.7" y="53.5" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="59.9" y="58" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="61" y="57" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="D24" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="33.5" y="80" smashed="yes" rot="MR270">
 <attribute name="NAME" x="33.5" y="80" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1881,8 +1881,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="111.5" y="91.2" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
 <element name="U$1" library="__MyCommonLib1" package="BUZZER_14MM" value="BUZZER14MM" x="83.7" y="65.6" smashed="yes" rot="R180">
-<attribute name="NAME" x="83.7" y="65.6" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="83.7" y="65.6" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="87" y="68" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="89" y="66" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="D22" library="__MyCommonLib1" package="SOD-80" value="LL4148" x="83.7" y="65.6" smashed="yes" rot="MR90">
 <attribute name="NAME" x="83.7" y="65.6" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
@@ -1900,9 +1900,9 @@ design rules under a new name.</description>
 <attribute name="NAME" x="94.4" y="80.2" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
 <attribute name="VALUE" x="92.8" y="80.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
 </element>
-<element name="RT3" library="__MyCommonLib1" package="NTC_5.5X3" value="22K_20deg" x="50" y="48.9" smashed="yes" rot="R180">
-<attribute name="NAME" x="50" y="48.9" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="50" y="48.9" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<element name="RT3" library="__MyCommonLib1" package="NTC_5.5X3" value="100K_20deg" x="50" y="48.9" smashed="yes" rot="R180">
+<attribute name="NAME" x="46" y="49" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="53" y="47" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="R97" library="__MyCommonLib1" package="RSMD_0805" value="10K" x="56.8" y="79.6" smashed="yes" rot="MR270">
 <attribute name="NAME" x="56.8" y="79.6" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1917,36 +1917,36 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="58.9" y="78.3" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
 <element name="D21" library="__MyCommonLib1" package="DO-41_10MM" value="1N4001" x="29.6" y="76.5" smashed="yes" rot="R90">
-<attribute name="NAME" x="27.06" y="73.96" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="28.33" y="73.96" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="34.16" y="77.96" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="32.73" y="77.96" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="R1" library="__MyCommonLib1" package="RSMD_1206" value="1R0" x="74" y="71" smashed="yes" rot="MR90">
 <attribute name="NAME" x="74" y="71" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="73.4" y="69.2" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
 <element name="X8" library="__MyCommonLib1" package="PIN2X3_2.54MM_LOOSE_PADS" value="MCU_PROGRAMMING" x="83" y="90" smashed="yes" rot="R270">
-<attribute name="VALUE" x="79.19" y="86.19" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
-<attribute name="NAME" x="88.08" y="86.19" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="89.01" y="95.99" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="85.01" y="96.98" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="RV1" library="__MyCommonLib1" package="SVR_11.2X4" value="SVR471" x="153.5" y="21.5" smashed="yes" rot="R180">
-<attribute name="NAME" x="153.5" y="21.5" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="153.5" y="21.5" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="153.1" y="21.2" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="157.3" y="22.9" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="X1" library="__MyCommonLib1" package="PIN1X1_D3.5MM" value="BAT+" x="54.6" y="5" smashed="yes" rot="R270">
 <attribute name="VALUE" x="55.87" y="5" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="NAME" x="55.87" y="5" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="X4" library="__MyCommonLib1" package="PIN1X1_D3.5MM" value="BAT-" x="18" y="53" smashed="yes" rot="R270">
-<attribute name="VALUE" x="19.27" y="53" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
-<attribute name="NAME" x="19.27" y="53" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="13.1" y="56.07" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="NAME" x="19.1" y="56.37" size="1.016" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="F1" library="__MyCommonLib1" package="AUTO_FUSE_SMALL" value="5A" x="54.6" y="18" smashed="yes" rot="R270">
 <attribute name="NAME" x="54.6" y="18" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="54.6" y="18" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="D4" library="__MyCommonLib1" package="DO-41_10MM" value="1N4001" x="16.1" y="42" smashed="yes" rot="R270">
-<attribute name="NAME" x="18.64" y="44.54" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="17.37" y="44.54" size="1.016" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="15.74" y="43.64" size="1.016" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="14.03" y="40.96" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="R70" library="__MyCommonLib1" package="RSMD_0805" value="240K" x="113" y="73" smashed="yes" rot="MR270">
 <attribute name="NAME" x="113" y="73" size="1.016" layer="26" font="vector" ratio="20" rot="MR270"/>
@@ -1969,8 +1969,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="104.5" y="68.7" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
 <element name="R73" library="__MyCommonLib1" package="R0207" value="4K7" x="105" y="78" smashed="yes" rot="R90">
-<attribute name="NAME" x="105" y="78" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="105" y="78" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="103" y="80" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="103" y="78" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="T16" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BSS84" x="109" y="72" smashed="yes" rot="MR0">
 <attribute name="NAME" x="109" y="72" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
@@ -2008,7 +2008,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="49.8" y="83.4" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="49.4" y="81.8" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
-<element name="R115" library="__MyCommonLib1" package="RSMD_0805" value="1K" x="49.2" y="88" smashed="yes" rot="MR90">
+<element name="R115" library="__MyCommonLib1" package="RSMD_0805" value="1K0" x="49.2" y="88" smashed="yes" rot="MR90">
 <attribute name="NAME" x="49.2" y="88" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
 <attribute name="VALUE" x="48.6" y="87" size="1.016" layer="28" font="vector" ratio="20" rot="MR90"/>
 </element>
@@ -2074,7 +2074,7 @@ design rules under a new name.</description>
 </element>
 <element name="C38" library="__MyCommonLib1" package="CE_10MM" value="1000uFx25V" x="54.7" y="34.7" smashed="yes">
 <attribute name="NAME" x="52.16" y="28.35" size="1.016" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="50.89" y="39.78" size="1.016" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="49.79" y="26.58" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="J3" library="__MyCommonLib1" package="RSMD_1206_BIG_GAP" value="0" x="76.8" y="86.4" smashed="yes" rot="MR90">
 <attribute name="NAME" x="76.8" y="86.4" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
@@ -2141,16 +2141,16 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="126.89" y="-2.05" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="TR100" library="__MyCommonLib1" package="ETD29_HOR" value="12_to_200_trans" x="31.5" y="17.9" smashed="yes" rot="R90">
-<attribute name="NAME" x="31.5" y="17.9" size="1.016" layer="25" font="vector" ratio="20" rot="R90"/>
-<attribute name="VALUE" x="31.5" y="17.9" size="1.016" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="29" y="19" size="1.016" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="26" y="17" size="1.016" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="T14" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="AO3401" x="70" y="68.4" smashed="yes" rot="MR0">
 <attribute name="NAME" x="70" y="68.4" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
 <attribute name="VALUE" x="72.5" y="64.7" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
-<element name="ZD4" library="__MyCommonLib1" package="SOD-80" value="5V6" x="68.9" y="75" smashed="yes" rot="MR180">
-<attribute name="NAME" x="68.9" y="75" size="1.016" layer="26" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="67.4" y="77.7" size="1.016" layer="28" font="vector" ratio="20" rot="MR180"/>
+<element name="ZD4" library="__MyCommonLib1" package="SOD-80" value="5V6" x="68.9" y="75" smashed="yes" rot="MR0">
+<attribute name="NAME" x="68.9" y="75" size="1.016" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="70.4" y="72.3" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="ZD5" library="__MyCommonLib1" package="SOD-80" value="5V6" x="28" y="85.5" smashed="yes" rot="MR90">
 <attribute name="NAME" x="28" y="85.5" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
@@ -2165,8 +2165,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="30.4" y="92.6" size="1.016" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="D101" library="__MyCommonLib1" package="TO-220(VER2)_BIG_PADS" value="MBR20100CT" x="64" y="50" smashed="yes" rot="R180">
-<attribute name="NAME" x="66.54" y="46.19" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="66.54" y="53.81" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="NAME" x="62.74" y="53.59" size="1.016" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="62.44" y="52.51" size="1.016" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="J101" library="__MyCommonLib1" package="RSMD_0805" value="0" x="128" y="93" smashed="yes" rot="MR90">
 <attribute name="NAME" x="128" y="93" size="1.016" layer="26" font="vector" ratio="20" rot="MR90"/>
@@ -2795,13 +2795,11 @@ design rules under a new name.</description>
 <contactref element="R4" pad="PAD_0"/>
 <contactref element="R7" pad="PAD_1"/>
 <contactref element="T14" pad="1"/>
-<contactref element="ZD4" pad="CATHODE"/>
 <wire x1="72.4" y1="67.4" x2="76.2" y2="67.4" width="0.6" layer="16"/>
 <wire x1="77.9" y1="67.95" x2="77.95" y2="68" width="0.6" layer="16"/>
 <wire x1="68.95" y1="72" x2="68.65" y2="72.3" width="0.8" layer="16"/>
 <wire x1="68.65" y1="72.3" x2="67.9" y2="72.3" width="0.8" layer="16"/>
-<wire x1="67.025" y1="75" x2="67.2" y2="74.825" width="0.8" layer="16"/>
-<wire x1="67.2" y1="74.825" x2="67.2" y2="73" width="0.8" layer="16"/>
+<wire x1="67.2" y1="75" x2="67.2" y2="73" width="0.8" layer="16"/>
 <wire x1="67.2" y1="73" x2="67.9" y2="72.3" width="0.8" layer="16"/>
 <wire x1="68.95" y1="72" x2="68.95" y2="70.85" width="0.8" layer="16"/>
 <wire x1="68.95" y1="70.85" x2="68.8" y2="70.7" width="0.8" layer="16"/>
@@ -2817,6 +2815,8 @@ design rules under a new name.</description>
 <wire x1="71.6" y1="67.7" x2="71.9" y2="67.4" width="0.6" layer="16"/>
 <wire x1="77.9" y1="67.95" x2="76.75" y2="67.95" width="1" layer="16"/>
 <wire x1="76.75" y1="67.95" x2="76.2" y2="67.4" width="1" layer="16"/>
+<contactref element="ZD4" pad="ANODE"/>
+<wire x1="67.025" y1="75" x2="67.2" y2="75" width="0.8" layer="16"/>
 </signal>
 <signal name="N$16">
 <contactref element="R8" pad="PAD_0"/>
@@ -3223,14 +3223,15 @@ design rules under a new name.</description>
 <contactref element="R4" pad="PAD_1"/>
 <contactref element="D2" pad="CATHODE"/>
 <contactref element="R1" pad="PAD_1"/>
-<contactref element="ZD4" pad="ANODE"/>
-<wire x1="70.775" y1="75" x2="71" y2="74.775" width="0.6" layer="16"/>
 <wire x1="71" y1="74.775" x2="71" y2="72.05" width="0.6" layer="16"/>
 <wire x1="74" y1="72.55" x2="73.95" y2="72.5" width="0.6" layer="16"/>
 <wire x1="73.95" y1="72.5" x2="71.55" y2="72.5" width="0.6" layer="16"/>
 <wire x1="71.55" y1="72.5" x2="71.05" y2="72" width="0.6" layer="16"/>
 <wire x1="74" y1="72.55" x2="74" y2="74.98" width="0.6" layer="16"/>
 <wire x1="71" y1="72.05" x2="71.05" y2="72" width="0.6" layer="16"/>
+<contactref element="ZD4" pad="CATHODE"/>
+<wire x1="70.775" y1="75" x2="71" y2="75" width="0.8" layer="16"/>
+<wire x1="71" y1="75" x2="71" y2="74.775" width="0.8" layer="16"/>
 </signal>
 <signal name="+200VDC_I_SENSE">
 <contactref element="R11" pad="PAD_0"/>

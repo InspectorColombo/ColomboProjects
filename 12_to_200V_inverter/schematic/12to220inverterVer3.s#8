@@ -1802,6 +1802,31 @@ DIN A4, landscape with location and doc. field</description>
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="FUSE_20X5MM_VERT_WIRE">
+<pad name="PAD_0" x="-10.5" y="0" drill="0.8" diameter="2.5"/>
+<pad name="PAD1" x="10.5" y="0" drill="0.8" diameter="2.5"/>
+<wire x1="-9.8" y1="1.5" x2="-9.8" y2="2.6" width="0.4" layer="21"/>
+<wire x1="-9.8" y1="2.6" x2="-4.8" y2="2.6" width="0.4" layer="21"/>
+<wire x1="-4.8" y1="2.6" x2="-4.8" y2="2.1" width="0.4" layer="21"/>
+<wire x1="-4.8" y1="2.1" x2="4.8" y2="2.1" width="0.4" layer="21"/>
+<wire x1="4.8" y1="2.1" x2="4.8" y2="2.6" width="0.4" layer="21"/>
+<wire x1="4.8" y1="2.6" x2="9.8" y2="2.6" width="0.4" layer="21"/>
+<wire x1="9.8" y1="-2.6" x2="9.8" y2="-1.5" width="0.4" layer="21"/>
+<wire x1="9.8" y1="1.5" x2="9.8" y2="2.6" width="0.4" layer="21"/>
+<wire x1="9.8" y1="-2.6" x2="4.8" y2="-2.6" width="0.4" layer="21"/>
+<wire x1="4.8" y1="-2.6" x2="4.8" y2="-2.1" width="0.4" layer="21"/>
+<wire x1="4.8" y1="-2.1" x2="-4.8" y2="-2.1" width="0.4" layer="21"/>
+<wire x1="-4.8" y1="-2.1" x2="-4.8" y2="-2.6" width="0.4" layer="21"/>
+<wire x1="-4.8" y1="-2.6" x2="-9.8" y2="-2.6" width="0.4" layer="21"/>
+<wire x1="-9.8" y1="-2.6" x2="-9.8" y2="-1.5" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;name</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;value</text>
+<wire x1="-4.8" y1="2.1" x2="-4.8" y2="0" width="0.4" layer="21"/>
+<wire x1="-4.8" y1="0" x2="-4.8" y2="-2.1" width="0.4" layer="21"/>
+<wire x1="4.8" y1="2.1" x2="4.8" y2="0" width="0.4" layer="21"/>
+<wire x1="4.8" y1="0" x2="4.8" y2="-2.1" width="0.4" layer="21"/>
+<wire x1="-4.8" y1="0" x2="4.8" y2="0" width="0.4" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="C">
@@ -3139,6 +3164,15 @@ DIN A4, landscape with location and doc. field</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="(20X5MM_VERT_WIRE)" package="FUSE_20X5MM_VERT_WIRE">
+<connects>
+<connect gate="G$1" pin="PIN0" pad="PAD_0"/>
+<connect gate="G$1" pin="PIN1" pad="PAD1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="EMI_FILTER_COMMON_MODE">
@@ -4057,7 +4091,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R18" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="150R"/>
 <part name="FRAME1" library="frames" deviceset="A4L-LOC" device="" value="12_TO_200VDC_CONVERTER"/>
 <part name="X5" library="__MyCommonLib1" deviceset="PIN1X2" device="BRD_CONN_12X10.2" value="220VAC"/>
-<part name="F2" library="__MyCommonLib1" deviceset="FUSE" device="20X5.6MM" value="0.3A"/>
+<part name="F2" library="__MyCommonLib1" deviceset="FUSE" device="(20X5MM_VERT_WIRE)" value="0.3A"/>
 <part name="C11" library="__MyCommonLib1" deviceset="C" device="MKP_18X6" value="0.1uF x 275VAC X2"/>
 <part name="TR2" library="__MyCommonLib1" deviceset="EMI_FILTER_COMMON_MODE" device="(21X17)" value="EMI"/>
 <part name="C12" library="__MyCommonLib1" deviceset="C" device="MKP_18X6" value="0.1uF x 275VAC X2"/>

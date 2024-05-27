@@ -4091,7 +4091,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R18" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="150R"/>
 <part name="FRAME1" library="frames" deviceset="A4L-LOC" device="" value="12_TO_200VDC_CONVERTER"/>
 <part name="X5" library="__MyCommonLib1" deviceset="PIN1X2" device="BRD_CONN_12X10.2" value="220VAC"/>
-<part name="F2" library="__MyCommonLib1" deviceset="FUSE" device="(20X5MM_VERT_WIRE)" value="0.3A"/>
+<part name="F2" library="__MyCommonLib1" deviceset="FUSE" device="(20X5MM_VERT_WIRE)" value="2A"/>
 <part name="C11" library="__MyCommonLib1" deviceset="C" device="MKP_18X6" value="0.1uF x 275VAC X2"/>
 <part name="TR2" library="__MyCommonLib1" deviceset="EMI_FILTER_COMMON_MODE" device="(21X17)" value="EMI"/>
 <part name="C12" library="__MyCommonLib1" deviceset="C" device="MKP_18X6" value="0.1uF x 275VAC X2"/>
@@ -4178,14 +4178,14 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="GND36" library="supply1" deviceset="GND" device=""/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="IC6" library="__MyCommonLib1" deviceset="74HC595" device="(SOIC16)" value="74HC595"/>
-<part name="R99" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R100" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R101" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R102" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R103" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R104" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R105" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
-<part name="R106" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
+<part name="R99" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
+<part name="R100" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
+<part name="R101" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
+<part name="R102" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
+<part name="R103" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
+<part name="R104" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
+<part name="R105" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
+<part name="R106" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="2K2"/>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="LED1" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="VOLT_GREEN2"/>
 <part name="LED2" library="__MyCommonLib1" deviceset="LED3MM" device="(3MM)" value="CURR_RED"/>

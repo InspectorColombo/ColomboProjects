@@ -4120,7 +4120,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R55" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R45" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="22K"/>
 <part name="R46" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="9K1*"/>
-<part name="RT2" library="__MyCommonLib1" deviceset="TERMISTOR_NTC" device="5.5X3" value="22K_20deg"/>
+<part name="RT2" library="__MyCommonLib1" deviceset="TERMISTOR_NTC" device="5.5X3" value="100K_20deg"/>
 <part name="R44" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="82K"/>
 <part name="R39" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="22K"/>
 <part name="C15" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="2n2 x 50V"/>
@@ -4259,7 +4259,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="R94" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R92" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND28" library="supply1" deviceset="GND" device=""/>
-<part name="RT3" library="__MyCommonLib1" deviceset="TERMISTOR_NTC" device="5.5X3" value="22K_20deg"/>
+<part name="RT3" library="__MyCommonLib1" deviceset="TERMISTOR_NTC" device="5.5X3" value="100K_20deg"/>
 <part name="R97" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="C34" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
@@ -4294,7 +4294,7 @@ Source: Source: Comchip Bridge Rectifiers DF005S-G thru DF10S-G.pdf</description
 <part name="C24" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF"/>
 <part name="T23" library="__MyCommonLib1" deviceset="BSS84" device="(SOT23_SMALL_PADS)" value="BSS84"/>
 <part name="R114" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
-<part name="R115" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K"/>
+<part name="R115" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K0"/>
 <part name="T24" library="__MyCommonLib1" deviceset="BC847" device="SOT23_SMALL_PADS" value="BC847"/>
 <part name="R116" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="R117" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
