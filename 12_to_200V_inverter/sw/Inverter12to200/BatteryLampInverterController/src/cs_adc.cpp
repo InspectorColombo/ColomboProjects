@@ -190,7 +190,7 @@ uint16_t GetVoltageAdcValueInMv(const uint16_t readCyclesCount)
 
 uint16_t GetCurrentAdcInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue)
 {
-	const uint16_t MAX_ADC_COUNT = 14577;
+	const uint16_t MAX_ADC_COUNT = 37823;
 	const uint16_t adcCyclesCount = (numberOfAdcReadCyclesToGetAverageValue > MAX_ADC_COUNT)
 		? MAX_ADC_COUNT
 		: numberOfAdcReadCyclesToGetAverageValue;
@@ -208,16 +208,16 @@ uint16_t GetCurrentAdcInMa(const uint16_t numberOfAdcReadCyclesToGetAverageValue
 		summaryCurrentValue += ((uint32_t)adcValue);
 	}
 
-	// Current ratio is 2.304mA / ADC div
-	// Current offset error = 8.53mA
-	// 2304/1000 = 288 / 125
-	summaryCurrentValue *= (uint32_t)(288);
-	summaryCurrentValue /= (uint32_t)(125);
+	// Current ratio is 4.443259mA / ADC div
+	// Current offset error = 0.0mA (not measured)
+	// 4.44 = 444/100 = 111 / 25
+	summaryCurrentValue *= (uint32_t)(111);
+	summaryCurrentValue /= (uint32_t)(25);
 	summaryCurrentValue /= (uint32_t)(adcCyclesCount);
 
-	const uint16_t ADC_OFFSET_ERROR = 8;
-
-	return (uint16_t)(summaryCurrentValue) + ADC_OFFSET_ERROR;
+	//const uint16_t ADC_OFFSET_ERROR = 8;
+	//return (uint16_t)(summaryCurrentValue) + ADC_OFFSET_ERROR;
+	return (uint16_t)(summaryCurrentValue);
 }
 
 
