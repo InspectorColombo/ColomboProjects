@@ -1,0 +1,38 @@
+Push pull transformer for 12 to 200VDC conversion.
+
+P = 27W
+Uin = 10..15VDC
+Uout = 190..285VDC
+
+Core(1st variant):
+Material: Unknown (N87 or N27) Ring. Spare part from scrap.
+D = 22.2mm
+d = 13.8mm
+h = 8.4mm
+
+Freq = 35kHz
+
+w_pri_1 = 14
+w_pri_2 = 14
+d_pri1 = 0.85mm x 1
+d_pri2 = 0.85mm x 1
+
+w_sec = 133
+d_sec = 0.355mm x 1
+
+
+Core(2nd variant):
+Material: N87 EPCOS Ring 25/15/10. 
+D = 25.5mm
+d = 14.5mm
+h = 10.5mm
+
+Freq = 50kHz
+
+w_pri_1 = 7
+w_pri_2 = 7
+d_pri1 = 0.85mm x 1
+d_pri2 = 0.85mm x 1
+
+w_sec = 67
+d_sec = 0.355mm x 1

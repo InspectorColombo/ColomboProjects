@@ -1,0 +1,26 @@
+FlyBack transfomer for battery charger:
+
+Uin 180..250VAC
+Uout 15V 2.4A
+P = 38.4W
+F = 35kHz
+
+Core: ETD29/16/10
+Material: N87
+Air gap:  0.5mm
+
+Primary:
+Lpri = 3.35mH
+w_pri = 129.  (w_pri1 = 69,  w_pri2 = 60)
+diam = 0.355mm x 1
+Ipeak = 0.798A
+Rcs = 1.14 Ohm
+I_density = 3.076A/mm^2
+
+Secondary:
+w_sec = 15.
+diam = 0.85mm x 2
+
+Aux:
+w_aux = 17
+diam = 0.355mm x 1
