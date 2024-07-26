@@ -1,0 +1,10 @@
+15:43:38 **** Incremental Build of configuration Release for project EmptyProj ****
+make -j6 all 
+arm-none-eabi-size  EmptyProj.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2256	     12	   1572	   3840	    f00	EmptyProj.elf
+Finished building: default.size.stdout
+ 
+
+15:43:38 Build Finished. 0 errors, 0 warnings. (took 274ms)
+

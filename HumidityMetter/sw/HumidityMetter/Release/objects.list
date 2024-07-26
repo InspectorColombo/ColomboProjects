@@ -1,0 +1,8 @@
+"./CMSIS/src/stm32f1xx_it.o"
+"./CMSIS/src/syscalls.o"
+"./CMSIS/src/sysmem.o"
+"./CMSIS/src/system_stm32f1xx.o"
+"./Src/DelayTimer.o"
+"./Src/LcdScreen.o"
+"./Src/main.o"
+"./Startup/startup_stm32f103c8tx.o"

@@ -1,0 +1,40 @@
+/*
+ * DelayTimer.cpp
+ *
+ *  Created on: Jul 25, 2024
+ *      Author: Goggy
+ */
+
+// SYSCLK = 1MHz
+
+// Use timer counter 2 for this purpose
+
+#include "DelayTimer.hpp"
+#include "stm32f103xb.h"
+
+
+
+namespace DelayTimer
+{
+
+void Init()
+{
+
+	// Enable timer1 clock
+	RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;
+
+
+	uint32_t temp = TIM2->CR1;
+	temp |= CKD;
+
+
+
+}
+
+
+
+
+
+
+}
+
