@@ -8,8 +8,6 @@
 namespace LcdScreen
 {
 
-void LcdDelayUs(const uint32_t usec);
-
 void LcdInit();
 void LcdClear();
 void LcdToPos(const uint8_t x, const uint8_t y);

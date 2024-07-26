@@ -109,13 +109,10 @@ uint8_t LcdIn4bits()
 	return result;
 }
 
+/*
 void LcdDelayUs(const uint32_t usec)
 {
 	const uint32_t maxCount = (usec > 16) ? (usec * 65 / 1000) : 1;
-//	if (maxCount == 0)
-//	{
-//		maxCount = 1;
-//	}
 	for(uint32_t i = 0; i < maxCount; ++i)
 	{
 		volatile uint32_t bbbb=12;
@@ -125,7 +122,7 @@ void LcdDelayUs(const uint32_t usec)
 		}
 	}
 }
-
+*/
 
 void LcdSetDataOut()
 {
@@ -148,17 +145,17 @@ void Lcd4BitCommand(const uint8_t rs, const uint8_t rw, const uint8_t data)
 	LcdRS(rs);
 	LcdRW(rw);
 	LcdOut4bits((data & 0b11110000) >> 4);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdE(1);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdE(0);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdOut4bits((data & 0b00001111) >> 0);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdE(1);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdE(0);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 }
 
 void LcdInit()
@@ -169,61 +166,62 @@ void LcdInit()
 	LcdE(0);
 	LcdOut4bits(0b0000);
 
-	// Delay 40ms after power on
-	LcdDelayUs(40000);
-
 	LcdSetDataOut();
 	SetGpioOutPushPull(LCD_PORT, LCD_RS_PIN);
 	SetGpioOutPushPull(LCD_PORT, LCD_RW_PIN);
 	SetGpioOutPushPull(LCD_PORT, LCD_E_PIN);
 
+	// Delay 40ms after power on
+	DelayTimer::DelayMicroSec(40000);
+
+
 	// Switch to 4 bit mode
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdRS(0);
 	LcdRW(0);
 	LcdOut4bits(0b0011);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdE(1);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 	LcdE(0);
-	LcdDelayUs(50);
+	DelayTimer::DelayMicroSec(50);
 
-	LcdDelayUs(39);
+	DelayTimer::DelayMicroSec(39);
 	Lcd4BitCommand(0,0, 0b00101000);	// 2 lines, 5x8 dots
 
-	LcdDelayUs(39);
+	DelayTimer::DelayMicroSec(39);
 	Lcd4BitCommand(0,0, 0b00101000);	// 2 lines, 5x8 dots
 
-	LcdDelayUs(39);
+	DelayTimer::DelayMicroSec(39);
 	Lcd4BitCommand(0,0, 0b00001100);	// D = 1, C = 0, B = 0
 
-	LcdDelayUs(39);
+	DelayTimer::DelayMicroSec(39);
 	Lcd4BitCommand(0,0, 0b00000001);	// Display clear
 
-	LcdDelayUs(1530);
+	DelayTimer::DelayMicroSec(1530);
 	Lcd4BitCommand(0,0, 0b00000110);	// Entry mode set. Cursor - increment. Display shift - OFF
-	LcdDelayUs(39);
+	DelayTimer::DelayMicroSec(39);
 }
 
 
 void LcdClear()
 {
 	Lcd4BitCommand(0,0, 0b00000001);	// Display clear
-	LcdDelayUs(39);
+	DelayTimer::DelayMicroSec(39);
 }
 
 void LcdToPos(const uint8_t x, const uint8_t y)
 {
 	const uint8_t DRAM_ADDR = x + y * 40;
 	Lcd4BitCommand(0,0, 0b10000000 | DRAM_ADDR);	// Set DRAM ADDR command
-	LcdDelayUs(39);
+	DelayTimer::DelayMicroSec(39);
 }
 
 
 void LcdPrintChar(const uint8_t ch)
 {
 	Lcd4BitCommand(1,0, ch);	// Display clear
-	LcdDelayUs(43);
+	DelayTimer::DelayMicroSec(43);
 }
 
 // Print null terminated string

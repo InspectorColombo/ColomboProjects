@@ -14,6 +14,7 @@ namespace DelayTimer
 {
 
 // !!! BELLOW 200-300uSec timing are not accurate !!!
+// !!! It takes additionally ~80usec for any delay !!!
 void DelayMicroSec(const uint16_t usec);
 
 void DelayMilliSec(const uint16_t millisec);

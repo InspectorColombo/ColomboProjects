@@ -3,6 +3,7 @@
 "./CMSIS/src/sysmem.o"
 "./CMSIS/src/system_stm32f1xx.o"
 "./Src/DelayTimer.o"
+"./Src/GpioConfigurator.o"
 "./Src/LcdScreen.o"
 "./Src/main.o"
 "./Startup/startup_stm32f103c8tx.o"

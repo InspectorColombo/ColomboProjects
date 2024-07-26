@@ -35,6 +35,9 @@ inline void Init(const uint16_t usec, const uint16_t prescaller)
 	TIM1->ARR = usec;
 	TIM1->CNT = 0;
 
+	// Update generation
+	TIM1->EGR |= TIM_EGR_UG;
+
 	// Clear interrupt flag
 	TIM1->SR &= ~(TIM_SR_UIF);
 }
@@ -63,12 +66,6 @@ void DelayMilliSec(const uint16_t millisec)
 
 void DelaySec(const uint16_t sec)
 {
-//	if (sec < 65)
-//	{
-//		DelayMilliSec(sec * 1000);
-//		return;
-//	}
-
 	for(uint16_t secCnt = 0; secCnt < sec; ++secCnt)
 	{
 		Init(20, 49999);	// 50 millisec * 20

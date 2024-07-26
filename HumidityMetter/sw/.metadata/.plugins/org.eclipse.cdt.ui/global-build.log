@@ -1,5 +1,6 @@
-15:45:17 **** Incremental Build of configuration Release for project HumidityMetter ****
+18:18:49 **** Incremental Build of configuration Release for project HumidityMetter ****
 make -j6 all 
+arm-none-eabi-g++ "../Src/LcdScreen.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/LcdScreen.d" -MT"Src/LcdScreen.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/LcdScreen.o"
 arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
 ../Src/main.cpp: In function 'int main()':
 ../Src/main.cpp:141:23: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
@@ -11,7 +12,7 @@ Finished building target: HumidityMetter.elf
 arm-none-eabi-size  HumidityMetter.elf 
 arm-none-eabi-objdump -h -S HumidityMetter.elf  > "HumidityMetter.list"
    text	   data	    bss	    dec	    hex	filename
-   1684	      0	   1568	   3252	    cb4	HumidityMetter.elf
+   1648	      0	   1568	   3216	    c90	HumidityMetter.elf
 Finished building: default.size.stdout
  
 Finished building: HumidityMetter.list

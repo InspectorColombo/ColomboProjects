@@ -108,7 +108,7 @@ int main(void)
 {
 	InitClocks();
 	InitPorts();
-	LcdScreen::LcdDelayUs(1500000);	// Wait for power on of LCD
+	DelayTimer::DelayMilliSec(1500);	// Wait for power on of LCD
 
 	LcdScreen::LcdInit();
 	//LcdInit();
@@ -150,6 +150,9 @@ int main(void)
 
   //TIM1->CNT = 10;
 
+
+  //DelayTimer::DelayMicroSec(40000);
+
   while (1)
   {
 	  //GPIOC->
@@ -158,9 +161,11 @@ int main(void)
 	  LcdScreen::LcdPrintNumber(cnt);
 	  ++cnt;
 
-	  DelayTimer::DelaySec(1);
+	  //DelayTimer::DelayMicroSec(39);
 
-	  GPIOC->ODR &= ~(((uint32_t)(1)) << 13);
+	  GPIOC->BRR = 1 << 13;
+	  //GPIOC->ODR = (((uint32_t)(1)) << 13);
+	  //GPIOC->ODR &= ~(((uint32_t)(1)) << 13);
 
 	  //DelayTimer::DelayMicroSec(1000);
 
@@ -168,8 +173,15 @@ int main(void)
 
 	  //LcdDelayUs(30000);
 
+	  DelayTimer::DelayMilliSec(500);
 
-	  GPIOC->ODR |= (((uint32_t)1) << 13);
+
+
+	  //GPIOC->ODR |= (((uint32_t)1) << 13);
+	  //GPIOC->ODR = 0;
+	  GPIOC->BSRR = 1 << 13;
+
+	  DelayTimer::DelayMilliSec(500);
 
 
 	  //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);

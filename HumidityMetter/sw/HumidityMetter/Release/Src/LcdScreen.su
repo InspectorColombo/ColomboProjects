@@ -6,13 +6,12 @@
 ../Src/LcdScreen.cpp:82:6:void LcdScreen::LcdE(uint8_t)	0	static
 ../Src/LcdScreen.cpp:89:6:void LcdScreen::LcdOut4bits(uint8_t)	8	static
 ../Src/LcdScreen.cpp:100:9:uint8_t LcdScreen::LcdIn4bits()	0	static
-../Src/LcdScreen.cpp:112:6:void LcdScreen::LcdDelayUs(uint32_t)	8	static
-../Src/LcdScreen.cpp:130:6:void LcdScreen::LcdSetDataOut()	8	static
-../Src/LcdScreen.cpp:138:6:void LcdScreen::LcdSetDataIn()	8	static
-../Src/LcdScreen.cpp:146:6:void LcdScreen::Lcd4BitCommand(uint8_t, uint8_t, uint8_t)	8	static
-../Src/LcdScreen.cpp:164:6:void LcdScreen::LcdInit()	8	static
-../Src/LcdScreen.cpp:209:6:void LcdScreen::LcdClear()	8	static
-../Src/LcdScreen.cpp:215:6:void LcdScreen::LcdToPos(uint8_t, uint8_t)	8	static
-../Src/LcdScreen.cpp:223:6:void LcdScreen::LcdPrintChar(uint8_t)	8	static
-../Src/LcdScreen.cpp:230:6:void LcdScreen::LcdPrint(char*)	8	static
-../Src/LcdScreen.cpp:240:6:void LcdScreen::LcdPrintNumber(uint16_t)	24	static
+../Src/LcdScreen.cpp:127:6:void LcdScreen::LcdSetDataOut()	8	static
+../Src/LcdScreen.cpp:135:6:void LcdScreen::LcdSetDataIn()	8	static
+../Src/LcdScreen.cpp:143:6:void LcdScreen::Lcd4BitCommand(uint8_t, uint8_t, uint8_t)	8	static
+../Src/LcdScreen.cpp:161:6:void LcdScreen::LcdInit()	8	static
+../Src/LcdScreen.cpp:207:6:void LcdScreen::LcdClear()	8	static
+../Src/LcdScreen.cpp:213:6:void LcdScreen::LcdToPos(uint8_t, uint8_t)	8	static
+../Src/LcdScreen.cpp:221:6:void LcdScreen::LcdPrintChar(uint8_t)	8	static
+../Src/LcdScreen.cpp:228:6:void LcdScreen::LcdPrint(char*)	8	static
+../Src/LcdScreen.cpp:238:6:void LcdScreen::LcdPrintNumber(uint16_t)	24	static

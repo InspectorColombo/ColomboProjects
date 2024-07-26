@@ -1,0 +1,26 @@
+/*
+ * GpioConfigurator.hpp
+ *
+ *  Created on: Jul 26, 2024
+ *      Author: Goggy
+ */
+
+#ifndef __GPIOCONFIGURATOR_HPP__
+#define __GPIOCONFIGURATOR_HPP__
+
+#include <stdint.h>
+
+#include "stm32f103xb.h"
+
+
+namespace GpioConfigurator
+{
+
+
+
+}	// GpioConfigurator
+
+
+
+
+#endif	// __GPIOCONFIGURATOR_HPP__
