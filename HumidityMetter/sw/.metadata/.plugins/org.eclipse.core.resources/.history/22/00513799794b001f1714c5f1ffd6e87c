@@ -170,7 +170,12 @@ void LcdInit()
 	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_RS_PIN);
 	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_RW_PIN);
 	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_E_PIN);
+
+
 	LcdSetDataOut();
+	SetGpioOutPushPull(LCD_PORT, LCD_RS_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_RW_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_E_PIN);
 
 	// Delay 40ms after power on
 	DelayTimer::DelayMicroSec(40000);

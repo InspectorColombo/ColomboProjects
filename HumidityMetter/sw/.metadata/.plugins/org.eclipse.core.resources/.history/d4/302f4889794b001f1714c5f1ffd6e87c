@@ -7,7 +7,6 @@
 
 #include "LcdScreen.hpp"
 #include "DelayTimer.hpp"
-#include "GpioConfigurator.hpp"
 
 #include "stm32f103xb.h"
 
@@ -27,6 +26,43 @@ namespace LcdScreen
 void PORTB_CLOCK_ENABLE()
 {
 	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+}
+
+
+void SetGpioOutPushPull(GPIO_TypeDef* port, const uint8_t bitIdx)
+{
+	const uint8_t bitShift = (bitIdx > 7) ? ((bitIdx - 8) * 4) : (bitIdx * 4);
+	uint32_t mask = 0b1111 << bitShift;
+	uint32_t outBitsPushPull = 0b0001 << bitShift;
+
+	if (bitIdx > 7)
+	{
+		port->CRH &= ~mask;
+		port->CRH |= outBitsPushPull;
+	}
+	else
+	{
+		port->CRL &= ~mask;
+		port->CRL |= outBitsPushPull;
+	}
+}
+
+void SetGpioInFloating(GPIO_TypeDef* port, const uint8_t bitIdx)
+{
+	const uint8_t bitShift = (bitIdx > 7) ? ((bitIdx - 8) * 4) : (bitIdx * 4);
+	uint32_t mask = 0b1111 << bitShift;
+	uint32_t inFloating = 0b0100 << bitShift;
+
+	if (bitIdx > 7)
+	{
+		port->CRH &= ~mask;
+		port->CRH |= inFloating;
+	}
+	else
+	{
+		port->CRL &= ~mask;
+		port->CRL |= inFloating;
+	}
 }
 
 void LcdRS(const uint8_t value)
@@ -72,20 +108,35 @@ uint8_t LcdIn4bits()
 	return result;
 }
 
+/*
+void LcdDelayUs(const uint32_t usec)
+{
+	const uint32_t maxCount = (usec > 16) ? (usec * 65 / 1000) : 1;
+	for(uint32_t i = 0; i < maxCount; ++i)
+	{
+		volatile uint32_t bbbb=12;
+		if (bbbb==12)
+		{
+			++bbbb;
+		}
+	}
+}
+*/
+
 void LcdSetDataOut()
 {
-	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_D4_PIN);
-	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_D5_PIN);
-	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_D6_PIN);
-	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_D7_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_D4_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_D5_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_D6_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_D7_PIN);
 }
 
 void LcdSetDataIn()
 {
-	GpioConfigurator::SetGpioInFloating(LCD_PORT, LCD_D4_PIN);
-	GpioConfigurator::SetGpioInFloating(LCD_PORT, LCD_D5_PIN);
-	GpioConfigurator::SetGpioInFloating(LCD_PORT, LCD_D6_PIN);
-	GpioConfigurator::SetGpioInFloating(LCD_PORT, LCD_D7_PIN);
+	SetGpioInFloating(LCD_PORT, LCD_D4_PIN);
+	SetGpioInFloating(LCD_PORT, LCD_D5_PIN);
+	SetGpioInFloating(LCD_PORT, LCD_D6_PIN);
+	SetGpioInFloating(LCD_PORT, LCD_D7_PIN);
 }
 
 uint8_t Lcd4BitWideRead(const uint8_t rs, const uint8_t rw)
@@ -160,17 +211,16 @@ void WaitForBusy()
 
 void LcdInit()
 {
-	GpioConfigurator::GpioClockEnable(LCD_PORT);
-
+	PORTB_CLOCK_ENABLE();
 	LcdRS(0);
 	LcdRW(0);
 	LcdE(0);
 	LcdOut4bits(0b0000);
 
-	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_RS_PIN);
-	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_RW_PIN);
-	GpioConfigurator::SetGpioOutPushPull(LCD_PORT, LCD_E_PIN);
 	LcdSetDataOut();
+	SetGpioOutPushPull(LCD_PORT, LCD_RS_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_RW_PIN);
+	SetGpioOutPushPull(LCD_PORT, LCD_E_PIN);
 
 	// Delay 40ms after power on
 	DelayTimer::DelayMicroSec(40000);

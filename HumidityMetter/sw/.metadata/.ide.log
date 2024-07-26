@@ -349,3 +349,5 @@
 2024-07-26 15:55:09,132 [INFO] WebApp:544 - Web application path used C:\ST\STM32CubeIDE_1.15.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.11.0.202403141607\db\plugins\mcufinder\reactClient1\index.html
 2024-07-26 15:56:54,938 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
 2024-07-26 15:56:57,033 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2024-07-26 17:09:58,762 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Connect timed out
+2024-07-26 18:18:52,192 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out

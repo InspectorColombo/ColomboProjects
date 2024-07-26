@@ -1,5 +1,5 @@
 Src/LcdScreen.o: ../Src/LcdScreen.cpp ../Inc/LcdScreen.hpp \
- ../Inc/DelayTimer.hpp \
+ ../Inc/DelayTimer.hpp ../Inc/GpioConfigurator.hpp \
  C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc/stm32f103xb.h \
  C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc/core_cm3.h \
  C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc/cmsis_version.h \
@@ -8,6 +8,7 @@ Src/LcdScreen.o: ../Src/LcdScreen.cpp ../Inc/LcdScreen.hpp \
  C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc/system_stm32f1xx.h
 ../Inc/LcdScreen.hpp:
 ../Inc/DelayTimer.hpp:
+../Inc/GpioConfigurator.hpp:
 C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc/stm32f103xb.h:
 C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc/core_cm3.h:
 C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc/cmsis_version.h:
