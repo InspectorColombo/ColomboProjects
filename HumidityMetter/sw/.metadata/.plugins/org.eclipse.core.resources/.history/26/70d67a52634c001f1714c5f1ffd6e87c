@@ -1,0 +1,26 @@
+/*
+ * I2cRxTx.hpp
+ *
+ *  Created on: Jul 26, 2024
+ *      Author: Goggy
+ */
+
+#ifndef __I2CRXTX_HPP__
+#define __I2CRXTX_HPP__
+
+#include <stdint.h>
+
+namespace I2cRxTx
+{
+void Init();
+
+void StartCondition();
+void StopCondition();
+void SendByte(const uint8_t toSend);
+bool GetAcknowlegeBit();
+uint8_t RecieveByte();
+
+}	// namespace I2cRxTx
+
+
+#endif	// __I2CRXTX_HPP__

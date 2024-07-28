@@ -1,0 +1,20 @@
+/*
+ * I2cRxTx.hpp
+ *
+ *  Created on: Jul 26, 2024
+ *      Author: Goggy
+ */
+
+#ifndef __I2CRXTX_HPP__
+#define __I2CRXTX_HPP__
+
+
+namespace I2cRxTx
+{
+
+
+
+}	// namespace I2cRxTx
+
+
+#endif	// __I2CRXTX_HPP__

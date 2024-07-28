@@ -1,0 +1,27 @@
+/*
+ * I2cRxTx.cpp
+ *
+ *  Created on: Jul 26, 2024
+ *      Author: Goggy
+ */
+
+
+#include "I2cRxTx.hpp"
+#include "stm32f103xb.h"
+#include "GpioConfigurator.hpp"
+
+#define I2C_PORT		GPIOB
+#define I2C_SDA_PIN		11
+#define I2C_SCL_PIN		10
+
+
+namespace I2cRxTx
+{
+
+
+
+
+
+}	// namespace I2cRxTx
+
+

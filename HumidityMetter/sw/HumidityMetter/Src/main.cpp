@@ -21,6 +21,10 @@
 #include "stm32f103xb.h"
 #include "LcdScreen.hpp"
 #include "DelayTimer.hpp"
+#include "GpioConfigurator.hpp"
+
+#include "I2cRxTx.hpp"
+
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
@@ -104,6 +108,278 @@ private:
 
 
 
+class AM3220Sensor
+{
+public:
+	AM3220Sensor()
+	{
+		I2cRxTx::Init();
+	}
+
+	void Read()
+	{
+		volatile uint8_t bbbb=12;
+		for(;;)
+		{
+			if (bbbb != 12)
+				break;
+
+			//DelayTimer::DelayMilliSec(15);
+			Acquisition();
+
+			WakeCommand();
+			DelayTimer::DelayMilliSec(10);
+
+			if (!ReadCommand())
+				continue;
+
+			DelayTimer::DelayMilliSec(15);
+
+			if (!GetReadData())
+				continue;
+		}
+
+
+
+
+	}
+
+
+private:
+	void WakeCommand() const
+	{
+		// Wake sensor
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(0xB8);
+		I2cRxTx::GetAcknowlegeBit(true);
+		DelayTimer::DelayMicroSec(800);
+		I2cRxTx::StopCondition();
+	}
+
+	bool ReadCommand() const
+	{
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(0xB8);
+		const bool ack0 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack0 == true)
+		{
+			I2cRxTx::StopCondition();
+			return false;
+		}
+
+		I2cRxTx::SendByte(0x03);
+		const bool ack1 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack1 == true)
+		{
+			I2cRxTx::StopCondition();
+			return false;
+		}
+
+		I2cRxTx::SendByte(0x00);
+		const bool ack2 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack2 == true)
+		{
+			I2cRxTx::StopCondition();
+			return false;
+		}
+
+		I2cRxTx::SendByte(0x04);
+		const bool ack3 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack3 == true)
+		{
+			I2cRxTx::StopCondition();
+			return false;
+		}
+
+		I2cRxTx::StopCondition();
+		return true;
+	}
+
+static uint16_t CalcCRC16(uint8_t* ptr, const uint8_t size)
+{
+	uint16_t crc = 0xFFFF;
+	for(uint8_t byteCnt = 0; byteCnt < size; ++byteCnt)
+	{
+		crc ^= *ptr++;
+		for(uint8_t i = 0; i < 8; i++)
+		{
+			if(crc & 0x01)
+			{
+				crc>>=1;
+				crc^=0xA001;
+			}
+			else
+			{
+				crc>>=1;
+			}
+		}
+	}
+	return crc;
+}
+
+
+
+
+	bool GetReadData(/*uint8_t& resSize, uint8_t* result*/) const
+	{
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(0xB9);
+		const bool ack0 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack0 == true)
+		{
+			I2cRxTx::StopCondition();
+			return false;
+		}
+
+//#define RX_SIZE		8
+		const uint8_t RX_SIZE = 8;
+		uint8_t rx[RX_SIZE];	//  = {0,0,0,0,0,0,0,0};
+		for(uint8_t i = 0; i < RX_SIZE; ++i)
+		{
+			rx[i] = 0x00;
+		}
+
+		// Clear to default
+//		resSize = 0;
+///		for(uint8_t i = 0; i < 8; ++i)
+//		{
+//			*(result + i) = 0x00;
+//		}
+
+		uint8_t rxCnt = 0;
+		for(/*uint8_t rxCnt = 0*/; rxCnt < RX_SIZE; ++rxCnt)
+		{
+			rx[rxCnt] = I2cRxTx::RecieveByte();
+		    bool ack = false;
+
+		    if (rxCnt != 7)
+		    {
+		    	ack = I2cRxTx::GetAcknowlegeBit(false);
+		    }
+		    else
+		   	{
+		   		ack = I2cRxTx::GetAcknowlegeBit(true);
+		   	}
+
+		    if (ack == true && rxCnt != 7)
+		    	break;
+		}
+
+		I2cRxTx::StopCondition();
+
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+
+/*
+
+ 			LcdScreen::LcdPrint("RX=");
+			LcdScreen::LcdPrintHex(rxCnt);
+
+			volatile uint8_t bbbb=12;
+			if (bbbb==14)
+			{
+				uint8_t summ = 0;
+				for(uint8_t i = 0; i < 8; ++i)
+				{
+					summ += rx[i];
+				}
+				if (summ == 123)
+					return false;
+			}
+*/
+			if (rxCnt == 8)
+			{
+				uint16_t crcSlave = rx[7];
+				crcSlave = crcSlave << 8;
+				crcSlave += rx[6];
+
+				uint16_t crcMaster = CalcCRC16(&rx[0], 6);
+
+				if (crcSlave != crcMaster)
+				{
+					LcdScreen::LcdClear();
+					LcdScreen::LcdToPos(0, 0);
+					LcdScreen::LcdPrint("CRC ERR");
+					return false;
+				}
+
+				uint16_t humiduty = rx[2];
+				humiduty = humiduty << 8;
+				humiduty += rx[3];
+
+				uint16_t temperature = rx[4];
+				temperature = temperature << 8;
+				temperature += rx[5];
+
+				LcdScreen::LcdClear();
+				LcdScreen::LcdToPos(0, 0);
+				LcdScreen::LcdPrint("T=");
+				if ((temperature & (1 << 15)) != 0)
+				{
+					LcdScreen::LcdPrint("-");
+				}
+				temperature &= ~(1 << 15);
+				temperature = temperature % 10000;
+				LcdScreen::LcdPrintDigit(temperature / 1000);
+				temperature %= 1000;
+				LcdScreen::LcdPrintDigit(temperature / 100);
+				temperature %= 100;
+				LcdScreen::LcdPrintDigit(temperature / 10);
+				temperature %= 10;
+				LcdScreen::LcdPrint(".");
+				LcdScreen::LcdPrintDigit(temperature);
+				//LcdScreen::LcdPrint("C");
+				LcdScreen::LcdPrintChar(0b11011111);
+
+
+				LcdScreen::LcdToPos(0, 1);
+				LcdScreen::LcdPrint("H=");
+				temperature = humiduty % 10000;
+				LcdScreen::LcdPrintDigit(humiduty / 1000);
+				humiduty %= 1000;
+				LcdScreen::LcdPrintDigit(humiduty / 100);
+				humiduty %= 100;
+				LcdScreen::LcdPrintDigit(humiduty / 10);
+				humiduty %= 10;
+				LcdScreen::LcdPrint(".");
+				LcdScreen::LcdPrintDigit(humiduty);
+				LcdScreen::LcdPrint("%");
+				return true;
+			}
+
+
+
+
+			if (rxCnt == 0)
+			{
+				LcdScreen::LcdToPos(0, 0);
+				LcdScreen::LcdPrint("No answ");
+			}
+			else
+			{
+				for(uint8_t i = 0; i < 4 && i < rxCnt; ++i)
+			  {
+				  LcdScreen::LcdPrintHex(rx[i]);
+		  	  }
+		  	  LcdScreen::LcdToPos(0, 1);
+		      for(uint8_t i = 4; i < 8 && i < rxCnt; ++i)
+    		  {
+    			  LcdScreen::LcdPrintHex(rx[i]);
+    		  }
+		  }
+
+		return true;
+	}
+
+
+	void Acquisition() const
+	{
+		DelayTimer::DelayMilliSec(2000);
+	}
+
+};
+
+
 int main(void)
 {
 	InitClocks();
@@ -114,6 +390,11 @@ int main(void)
 	//LcdInit();
 
 
+
+	GpioConfigurator::GpioClockEnable(GPIOC);
+	GpioConfigurator::SetGpioOutPushPull(GPIOC, 13);
+
+/*
   uint32_t temp = GPIOC->CRH;
   temp &= ~(((uint32_t)0b1111) << 20);
   //temp |= (((uint32_t)0b0011) << 20);
@@ -122,7 +403,7 @@ int main(void)
 //  GPIOC->CRL |= (1 << 13);
 
 //  GPIOC->CRL
-
+*/
 
   {		// Test clock output on pin  MCO(PA8)
 	  //RCC->APB2ENR |= (1 << 0) | (1 << 2);	// PA and AFIO clock enable:
@@ -139,6 +420,148 @@ int main(void)
   }
 
   LcdScreen::LcdPrint("Hello!!!");
+
+
+
+  {	// @#$%#$^%@#$%@#$%@#$%@# AM2320 Sensor test @#%$@#%$@#$%@#%$@#%#$5
+
+	  AM3220Sensor sens;
+
+	  sens.Read();
+
+
+
+  }	// @#$%#$^%@#$%@#$%@#$%@# AM2320 Sensor test @#%$@#%$@#$%@#%$@#%#$5
+
+
+
+
+
+  I2cRxTx::Init();
+
+  for(uint8_t tryCnt = 0;; ++tryCnt)
+  {	// @#$@#$@#%@#$#@#$# I2C TEST @#$@#$@!#@!#@!#!#@!3
+
+	  // Wake sensor
+	  I2cRxTx::StartCondition();
+	  I2cRxTx::SendByte(0xB8);
+	  I2cRxTx::GetAcknowlegeBit();
+	  DelayTimer::DelayMicroSec(800);
+	  I2cRxTx::StopCondition();
+
+	  DelayTimer::DelayMicroSec(1500);
+
+//	  DelayTimer::DelayMicroSec(100);
+	  // Fake write command
+	  I2cRxTx::StartCondition();
+	  I2cRxTx::SendByte(0xB8);
+
+	  I2cRxTx::GetAcknowlegeBit(false);
+	  I2cRxTx::SendByte(0x03);
+	  I2cRxTx::GetAcknowlegeBit(false);
+	  I2cRxTx::SendByte(0x00);
+	  I2cRxTx::GetAcknowlegeBit(false);
+	  I2cRxTx::SendByte(0x04);
+	  I2cRxTx::GetAcknowlegeBit(false);
+	  I2cRxTx::StopCondition();
+
+
+	  // Get read back info
+
+
+	  DelayTimer::DelayMicroSec(15000);
+	  // Attempt to read
+	  I2cRxTx::StartCondition();
+
+	  I2cRxTx::SendByte(0xB9);
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  I2cRxTx::SendByte(0x03);
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  I2cRxTx::SendByte(0x00);
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  I2cRxTx::SendByte(0x04);
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(15000);
+
+
+
+
+
+	  uint8_t byte0 =  I2cRxTx::RecieveByte();
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  uint8_t byte1 =  I2cRxTx::RecieveByte();
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  uint8_t byte2 =  I2cRxTx::RecieveByte();
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  uint8_t byte3 =  I2cRxTx::RecieveByte();
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  uint8_t byte4 =  I2cRxTx::RecieveByte();
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  uint8_t byte5 =  I2cRxTx::RecieveByte();
+	  I2cRxTx::GetAcknowlegeBit(false);
+
+	  DelayTimer::DelayMicroSec(1000);
+
+	  I2cRxTx::StopCondition();
+
+
+	  DelayTimer::DelayMicroSec(50000);
+
+
+	  LcdScreen::LcdClear();
+//	  LcdScreen::LcdToPos(0, 0);
+//	  LcdScreen::LcdPrintHex(ack);
+
+	  LcdScreen::LcdToPos(6, 0);
+	  LcdScreen::LcdPrintHex(tryCnt);
+
+	  LcdScreen::LcdToPos(0, 0);
+	  LcdScreen::LcdPrintHex(byte0);
+	  LcdScreen::LcdPrintHex(byte1);
+
+	  LcdScreen::LcdToPos(0, 1);
+	  LcdScreen::LcdPrintHex(byte2);
+	  LcdScreen::LcdPrintHex(byte3);
+	  LcdScreen::LcdPrintHex(byte4);
+	  LcdScreen::LcdPrintHex(byte5);
+
+	  DelayTimer::DelayMilliSec(1000);
+	  volatile uint8_t bbbb=12;
+	  if (bbbb != 12)
+		  break;
+
+
+
+  } // @#$@#$@#%@#$#@#$# /I2C TEST @#$@#$@!#@!#@!#!#@!3
+
+
+
+
 
   //LcdClear();
   //LcdToPos(4,1);
@@ -173,7 +596,7 @@ int main(void)
 
 	  //LcdDelayUs(30000);
 
-	  DelayTimer::DelayMilliSec(500);
+	  DelayTimer::DelayMilliSec(50);
 
 
 
@@ -181,7 +604,7 @@ int main(void)
 	  //GPIOC->ODR = 0;
 	  GPIOC->BSRR = 1 << 13;
 
-	  DelayTimer::DelayMilliSec(500);
+	  DelayTimer::DelayMilliSec(50);
 
 
 	  //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);

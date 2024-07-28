@@ -1,0 +1,19 @@
+/*
+ * I2cRxTx.cpp
+ *
+ *  Created on: Jul 26, 2024
+ *      Author: Goggy
+ */
+
+
+#include "I2cRxTx.hpp"
+
+
+namespace I2cRxTx
+{
+
+
+
+}	// namespace I2cRxTx
+
+

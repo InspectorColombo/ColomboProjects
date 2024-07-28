@@ -79,6 +79,24 @@ void SetGpioOutPushPull(GPIO_TypeDef* port, const uint8_t bitIdx)
 	}
 }
 
+void SetGpioOutOpenDrain(GPIO_TypeDef* port, const uint8_t bitIdx)
+{
+	const uint8_t bitShift = (bitIdx > 7) ? ((bitIdx - 8) * 4) : (bitIdx * 4);
+	uint32_t mask = 0b1111 << bitShift;
+	uint32_t outBitsPushPull = 0b0101 << bitShift;
+
+	if (bitIdx > 7)
+	{
+		port->CRH &= ~mask;
+		port->CRH |= outBitsPushPull;
+	}
+	else
+	{
+		port->CRL &= ~mask;
+		port->CRL |= outBitsPushPull;
+	}
+}
+
 void SetGpioInFloating(GPIO_TypeDef* port, const uint8_t bitIdx)
 {
 	const uint8_t bitShift = (bitIdx > 7) ? ((bitIdx - 8) * 4) : (bitIdx * 4);

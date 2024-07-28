@@ -7,18 +7,21 @@
 CPP_SRCS += \
 ../Src/DelayTimer.cpp \
 ../Src/GpioConfigurator.cpp \
+../Src/I2cRxTx.cpp \
 ../Src/LcdScreen.cpp \
 ../Src/main.cpp 
 
 OBJS += \
 ./Src/DelayTimer.o \
 ./Src/GpioConfigurator.o \
+./Src/I2cRxTx.o \
 ./Src/LcdScreen.o \
 ./Src/main.o 
 
 CPP_DEPS += \
 ./Src/DelayTimer.d \
 ./Src/GpioConfigurator.d \
+./Src/I2cRxTx.d \
 ./Src/LcdScreen.d \
 ./Src/main.d 
 
@@ -30,7 +33,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.cpp Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
+	-$(RM) ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/I2cRxTx.cyclo ./Src/I2cRxTx.d ./Src/I2cRxTx.o ./Src/I2cRxTx.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
 
 .PHONY: clean-Src
 

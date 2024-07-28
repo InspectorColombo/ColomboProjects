@@ -17,6 +17,7 @@ namespace GpioConfigurator
 void GpioClockEnable(GPIO_TypeDef* port);
 void GpioClockDisable(GPIO_TypeDef* port);
 void SetGpioOutPushPull(GPIO_TypeDef* port, const uint8_t bitIdx);
+void SetGpioOutOpenDrain(GPIO_TypeDef* port, const uint8_t bitIdx);
 void SetGpioInFloating(GPIO_TypeDef* port, const uint8_t bitIdx);
 
 }	// GpioConfigurator

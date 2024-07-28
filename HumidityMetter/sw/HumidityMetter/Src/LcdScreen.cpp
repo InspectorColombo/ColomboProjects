@@ -272,6 +272,66 @@ void LcdPrintNumber(const uint16_t valueToPrint)
 	}
 }
 
+void LcdPrintHex(const uint8_t value)
+{
+	uint8_t low = value & 0x0F;
+	uint8_t high = (value & 0xF0) >> 4;
+
+	if (high < 10)
+	{
+		LcdPrintChar(high + '0');
+	}
+	else
+	{
+		LcdPrintChar(high - 10 + 'A');
+	}
+
+	if (low < 10)
+	{
+		LcdPrintChar(low + '0');
+	}
+	else
+	{
+		LcdPrintChar(low - 10 + 'A');
+	}
+}
+
+void LcdPrintHex(const uint16_t value)
+{
+	uint8_t low = (uint8_t)(value & 0x00FF);
+	uint8_t high = (uint8_t)((value & 0xFF00) >> 8);
+
+	LcdPrintHex(high);
+	LcdPrintHex(low);
+}
+
+
+
+void LcdPrintNumber(const uint8_t valueToPrint)
+{
+	uint8_t value = valueToPrint;
+	uint8_t printStr[3] = {' ', ' ', '0'};
+	value = valueToPrint;
+	for(uint8_t charIdx = 0; charIdx < 3; ++charIdx)
+	{
+		if (value == 0)
+			break;
+
+		uint8_t digit = (uint8_t)(value % 10) + (uint8_t)('0');
+		printStr[2 - charIdx] = digit;
+		value /= 10;
+	}
+	for(uint8_t charIdx = 0; charIdx < 3; ++charIdx)
+	{
+		LcdPrintChar(printStr[charIdx]);
+	}
+}
+
+void LcdPrintDigit(const uint8_t val)
+{
+	LcdPrintChar(val % 10 + '0');
+}
+
 
 }	// namespace LcdScreen
 
