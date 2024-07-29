@@ -2651,6 +2651,38 @@
 <text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="LCD_0802B">
+<wire x1="0" y1="0" x2="0" y2="32" width="0.127" layer="21"/>
+<wire x1="0" y1="32" x2="58" y2="32" width="0.127" layer="21"/>
+<wire x1="58" y1="32" x2="58" y2="0" width="0.127" layer="21"/>
+<wire x1="58" y1="0" x2="0" y2="0" width="0.127" layer="21"/>
+<hole x="2.5" y="2.5" drill="2.5"/>
+<hole x="2.5" y="29.5" drill="2.5"/>
+<hole x="55.5" y="29.5" drill="2.5"/>
+<hole x="55.5" y="2.5" drill="2.5"/>
+<pad name="1" x="4.24" y="8.38" drill="1" diameter="2"/>
+<pad name="2" x="1.7" y="8.38" drill="1" diameter="2"/>
+<pad name="3" x="4.24" y="10.92" drill="1" diameter="2"/>
+<pad name="4" x="1.7" y="10.92" drill="1" diameter="2"/>
+<pad name="5" x="4.24" y="13.46" drill="1" diameter="2"/>
+<pad name="6" x="1.7" y="13.46" drill="1" diameter="2"/>
+<pad name="7" x="4.24" y="16" drill="1" diameter="2"/>
+<pad name="8" x="1.7" y="16" drill="1" diameter="2"/>
+<pad name="9" x="4.24" y="18.54" drill="1" diameter="2"/>
+<pad name="10" x="1.7" y="18.54" drill="1" diameter="2"/>
+<pad name="11" x="4.24" y="21.08" drill="1" diameter="2"/>
+<pad name="12" x="1.7" y="21.08" drill="1" diameter="2"/>
+<pad name="13" x="4.24" y="23.62" drill="1" diameter="2"/>
+<pad name="14" x="1.7" y="23.62" drill="1" diameter="2"/>
+<text x="3.81" y="5.08" size="1.27" layer="51" font="vector" ratio="20">1</text>
+<text x="1.27" y="5.08" size="1.27" layer="51" font="vector" ratio="20">2</text>
+<text x="3.81" y="25.4" size="1.27" layer="51" font="vector" ratio="20">13</text>
+<text x="1.27" y="25.4" size="1.27" layer="51" font="vector" ratio="20">14</text>
+<text x="20.32" y="15.24" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="20.32" y="13.97" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<pad name="A" x="55.5" y="22.5" drill="1" diameter="2"/>
+<pad name="K" x="55.5" y="9.5" drill="1" diameter="2"/>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -4115,6 +4147,30 @@
 <pin name="VDD3" x="43.18" y="-25.4" length="short" rot="R180"/>
 <text x="-38.1" y="45.72" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
 <text x="30.48" y="45.72" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
+</symbol>
+<symbol name="LCD_0802B">
+<pin name="VDD" x="12.7" y="15.24" length="short" rot="R180"/>
+<wire x1="-10.16" y1="17.78" x2="-10.16" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-17.78" x2="10.16" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-17.78" x2="10.16" y2="17.78" width="0.254" layer="94"/>
+<wire x1="10.16" y1="17.78" x2="-10.16" y2="17.78" width="0.254" layer="94"/>
+<pin name="VSS" x="12.7" y="10.16" length="short" rot="R180"/>
+<pin name="VO" x="12.7" y="0" length="short" rot="R180"/>
+<pin name="E" x="-12.7" y="-10.16" length="short"/>
+<pin name="R/~W" x="-12.7" y="-12.7" length="short"/>
+<pin name="RS" x="-12.7" y="-15.24" length="short"/>
+<pin name="DB0" x="-12.7" y="-2.54" length="short"/>
+<pin name="DB1" x="-12.7" y="0" length="short"/>
+<pin name="DB2" x="-12.7" y="2.54" length="short"/>
+<pin name="DB3" x="-12.7" y="5.08" length="short"/>
+<pin name="DB4" x="-12.7" y="7.62" length="short"/>
+<pin name="DB5" x="-12.7" y="10.16" length="short"/>
+<pin name="DB6" x="-12.7" y="12.7" length="short"/>
+<pin name="DB7" x="-12.7" y="15.24" length="short"/>
+<pin name="A" x="12.7" y="-12.7" visible="pin" length="short" rot="R180"/>
+<pin name="K" x="12.7" y="-15.24" visible="pin" length="short" rot="R180"/>
+<text x="-10.16" y="20.32" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="2.54" y="20.32" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -6251,6 +6307,36 @@
 <connect gate="G$1" pin="VSS2" pad="35"/>
 <connect gate="G$1" pin="VSS3" pad="47"/>
 <connect gate="G$1" pin="VSSA" pad="8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LCD_0802B">
+<gates>
+<gate name="G$1" symbol="LCD_0802B" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(0802B)" package="LCD_0802B">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="DB0" pad="7"/>
+<connect gate="G$1" pin="DB1" pad="8"/>
+<connect gate="G$1" pin="DB2" pad="9"/>
+<connect gate="G$1" pin="DB3" pad="10"/>
+<connect gate="G$1" pin="DB4" pad="11"/>
+<connect gate="G$1" pin="DB5" pad="12"/>
+<connect gate="G$1" pin="DB6" pad="13"/>
+<connect gate="G$1" pin="DB7" pad="14"/>
+<connect gate="G$1" pin="E" pad="6"/>
+<connect gate="G$1" pin="K" pad="K"/>
+<connect gate="G$1" pin="R/~W" pad="5"/>
+<connect gate="G$1" pin="RS" pad="4"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VO" pad="3"/>
+<connect gate="G$1" pin="VSS" pad="1"/>
 </connects>
 <technologies>
 <technology name=""/>
