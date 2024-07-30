@@ -2725,11 +2725,6 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="193.04" y1="35.56" x2="182.88" y2="35.56" width="0.1524" layer="91"/>
 <label x="190.5" y="36.83" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 </segment>
-<segment>
-<pinref part="IC3" gate="G$1" pin="PB9/TIM4_CH4"/>
-<wire x1="33.02" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
-<label x="30.48" y="34.29" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-</segment>
 </net>
 <net name="N$21" class="0">
 <segment>
