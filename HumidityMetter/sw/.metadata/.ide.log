@@ -355,3 +355,4 @@
 2024-07-26 21:05:18,649 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
 2024-07-26 21:05:20,655 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
 2024-07-26 21:05:22,663 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2024-07-26 21:11:32,135 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out

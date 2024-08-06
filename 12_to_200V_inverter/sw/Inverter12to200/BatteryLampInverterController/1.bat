@@ -1,0 +1,1 @@
+"C:\__workspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\BatteryLampInverterController\PostBuild.bat" C:\__workspace\ColomboProjects\12_to_200V_inverter\sw\Inverter12to200\BatteryLampInverterController\ Release c:\__AVR_DUDE_NEW\ BatteryLampInverterController
