@@ -650,7 +650,7 @@ design rules under a new name.</description>
 <param name="dpMaxLengthDifference" value="10mm"/>
 <param name="dpGapFactor" value="2.5"/>
 <param name="checkGrid" value="0"/>
-<param name="checkAngle" value="0"/>
+<param name="checkAngle" value="1"/>
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
 <param name="useDiameter" value="13"/>
@@ -1376,8 +1376,8 @@ design rules under a new name.</description>
 <wire x1="21.855" y1="13.185" x2="21.98" y2="13.06" width="0.4" layer="16"/>
 <contactref element="R31" pad="PAD_1"/>
 <wire x1="29" y1="34" x2="29" y2="32" width="2" layer="16"/>
-<wire x1="29" y1="29" x2="29" y2="32" width="2" layer="16"/>
-<wire x1="31.25" y1="30" x2="29" y2="29" width="0.8" layer="16"/>
+<wire x1="29" y1="29" x2="29" y2="29.5" width="2" layer="16"/>
+<wire x1="29" y1="29.5" x2="29" y2="32" width="2" layer="16"/>
 <wire x1="33.25" y1="34.75" x2="33.25" y2="34.3" width="0.25" layer="16"/>
 <wire x1="33.25" y1="34.3" x2="32" y2="34.3" width="0.25" layer="16"/>
 <wire x1="32" y1="34.3" x2="31.2" y2="33.5" width="0.8" layer="16"/>
@@ -1448,6 +1448,8 @@ design rules under a new name.</description>
 <vertex x="17.1" y="17.1"/>
 </polygon>
 <wire x1="33" y1="9.05" x2="30" y2="9.05" width="0.8" layer="16"/>
+<wire x1="31.25" y1="30" x2="29.5" y2="30" width="0.8" layer="16"/>
+<wire x1="29.5" y1="30" x2="29" y2="29.5" width="0.8" layer="16"/>
 </signal>
 <signal name="PWR_HOLD">
 <contactref element="R11" pad="PAD_0"/>
@@ -1655,12 +1657,12 @@ design rules under a new name.</description>
 <wire x1="26" y1="23" x2="41" y2="23" width="0.5" layer="16"/>
 <wire x1="41" y1="23" x2="42" y2="22" width="0.5" layer="16"/>
 <wire x1="21" y1="26.95" x2="17" y2="26.95" width="0.8" layer="16"/>
-<wire x1="21" y1="26.95" x2="20.98" y2="25.95" width="0.8" layer="16"/>
-<wire x1="20.98" y1="25.95" x2="20.98" y2="24.895" width="0.8" layer="16"/>
 <wire x1="17" y1="24.625" x2="17" y2="26.95" width="0.8" layer="16"/>
 <wire x1="26" y1="23" x2="24" y2="25" width="0.5" layer="16"/>
 <wire x1="20.98" y1="24.895" x2="21.085" y2="25" width="0.5" layer="16"/>
 <wire x1="21.085" y1="25" x2="24" y2="25" width="0.5" layer="16"/>
+<wire x1="21.085" y1="25" x2="21.085" y2="26.865" width="0.8" layer="16"/>
+<wire x1="21.085" y1="26.865" x2="21" y2="26.95" width="0.8" layer="16"/>
 </signal>
 <signal name="BOOT1">
 <contactref element="IC3" pad="20"/>

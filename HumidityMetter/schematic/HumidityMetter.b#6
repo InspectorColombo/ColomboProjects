@@ -1002,10 +1002,12 @@ design rules under a new name.</description>
 <vertex x="90.9" y="37.8"/>
 <vertex x="89.6" y="39.1"/>
 <vertex x="81.2" y="39.1"/>
-<vertex x="81.2" y="51"/>
-<vertex x="86.1" y="55.9"/>
-<vertex x="86.1" y="57.1"/>
-<vertex x="83.5" y="59.7"/>
+<vertex x="80" y="39.1"/>
+<vertex x="79.1" y="40"/>
+<vertex x="79.1" y="43.3"/>
+<vertex x="81.2" y="45.4"/>
+<vertex x="81.2" y="56.6"/>
+<vertex x="78.1" y="59.7"/>
 <vertex x="74.1" y="59.7"/>
 <vertex x="74.1" y="61.8"/>
 <vertex x="94.8" y="61.8"/>
