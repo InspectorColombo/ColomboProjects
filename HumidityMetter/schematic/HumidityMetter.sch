@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
@@ -1187,6 +1187,38 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="1.9" y1="1.1" x2="1.9" y2="-1.1" width="0.2" layer="21"/>
 <wire x1="0.3" y1="1.1" x2="0.3" y2="-1.1" width="0.2" layer="21"/>
 </package>
+<package name="LCD_0802B(CHINA_CLONE)">
+<wire x1="0" y1="0" x2="0" y2="32" width="0.127" layer="21"/>
+<wire x1="0" y1="32" x2="58" y2="32" width="0.127" layer="21"/>
+<wire x1="58" y1="32" x2="58" y2="0" width="0.127" layer="21"/>
+<wire x1="58" y1="0" x2="0" y2="0" width="0.127" layer="21"/>
+<hole x="2.5" y="2.5" drill="2.5"/>
+<hole x="2.5" y="29.5" drill="2.5"/>
+<hole x="55.5" y="29.5" drill="2.5"/>
+<hole x="55.5" y="2.5" drill="2.5"/>
+<pad name="1" x="4.24" y="8.38" drill="1" diameter="2"/>
+<pad name="2" x="1.7" y="8.38" drill="1" diameter="2"/>
+<pad name="3" x="4.24" y="10.92" drill="1" diameter="2"/>
+<pad name="4" x="1.7" y="10.92" drill="1" diameter="2"/>
+<pad name="5" x="4.24" y="13.46" drill="1" diameter="2"/>
+<pad name="6" x="1.7" y="13.46" drill="1" diameter="2"/>
+<pad name="7" x="4.24" y="16" drill="1" diameter="2"/>
+<pad name="8" x="1.7" y="16" drill="1" diameter="2"/>
+<pad name="9" x="4.24" y="18.54" drill="1" diameter="2"/>
+<pad name="10" x="1.7" y="18.54" drill="1" diameter="2"/>
+<pad name="11" x="4.24" y="21.08" drill="1" diameter="2"/>
+<pad name="12" x="1.7" y="21.08" drill="1" diameter="2"/>
+<pad name="13" x="4.24" y="23.62" drill="1" diameter="2"/>
+<pad name="14" x="1.7" y="23.62" drill="1" diameter="2"/>
+<text x="3.81" y="5.08" size="1.27" layer="51" font="vector" ratio="20">1</text>
+<text x="1.27" y="5.08" size="1.27" layer="51" font="vector" ratio="20">2</text>
+<text x="3.81" y="25.4" size="1.27" layer="51" font="vector" ratio="20">13</text>
+<text x="1.27" y="25.4" size="1.27" layer="51" font="vector" ratio="20">14</text>
+<text x="20.32" y="15.24" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="20.32" y="13.97" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<pad name="A" x="56.44" y="24.4" drill="1" diameter="2"/>
+<pad name="K" x="56.44" y="7.6" drill="1" diameter="2"/>
+</package>
 </packages>
 <symbols>
 <symbol name="STM32F103C8T6(LQFP48)">
@@ -1609,6 +1641,29 @@ DIN A4, landscape with location and doc. field</description>
 </gates>
 <devices>
 <device name="(0802B)" package="LCD_0802B">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="DB0" pad="7"/>
+<connect gate="G$1" pin="DB1" pad="8"/>
+<connect gate="G$1" pin="DB2" pad="9"/>
+<connect gate="G$1" pin="DB3" pad="10"/>
+<connect gate="G$1" pin="DB4" pad="11"/>
+<connect gate="G$1" pin="DB5" pad="12"/>
+<connect gate="G$1" pin="DB6" pad="13"/>
+<connect gate="G$1" pin="DB7" pad="14"/>
+<connect gate="G$1" pin="E" pad="6"/>
+<connect gate="G$1" pin="K" pad="K"/>
+<connect gate="G$1" pin="R/~W" pad="5"/>
+<connect gate="G$1" pin="RS" pad="4"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VO" pad="3"/>
+<connect gate="G$1" pin="VSS" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="(0802B_CHINA_CLONE)" package="LCD_0802B(CHINA_CLONE)">
 <connects>
 <connect gate="G$1" pin="A" pad="A"/>
 <connect gate="G$1" pin="DB0" pad="7"/>
@@ -2272,7 +2327,7 @@ DIN A4, landscape with location and doc. field</description>
 <parts>
 <part name="FRAME1" library="frames" deviceset="A4L-LOC" device="" value="HUMIDITY METTER"/>
 <part name="IC3" library="__MyCommonLib1" deviceset="STM32F103C8T6(LQFP48)" device="(LQFP48)" value="STM32F103C8T6"/>
-<part name="LCD1" library="__MyCommonLib1" deviceset="LCD_0802B" device="(0802B)" value="LCD_0802B"/>
+<part name="LCD1" library="__MyCommonLib1" deviceset="LCD_0802B" device="(0802B_CHINA_CLONE)" value="LCD_0802B"/>
 <part name="IC1" library="__MyCommonLib1" deviceset="LM317" device="(D2PAK)" value="LM317"/>
 <part name="X1" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_DRILL" value="+9V"/>
 <part name="X2" library="__MyCommonLib1" deviceset="PIN1X1" device="3.5MM_DRILL" value="GND"/>
