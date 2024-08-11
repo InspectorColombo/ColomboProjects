@@ -1,7 +1,7 @@
-../Src/main.cpp:34:6:void InitClocks()	1
-../Src/main.cpp:67:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	1
-../Src/main.cpp:72:6:void PA_CLOCK_ENABLE()	1
-../Src/main.cpp:77:6:void PB_CLOCK_ENABLE()	1
-../Src/main.cpp:83:6:void PC_CLOCK_ENABLE()	1
-../Src/main.cpp:88:6:void InitPorts()	1
-../Src/main.cpp:383:5:int main()	21
+../Src/main.cpp:36:6:void InitClocks()	1
+../Src/main.cpp:69:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	1
+../Src/main.cpp:74:6:void PA_CLOCK_ENABLE()	1
+../Src/main.cpp:79:6:void PB_CLOCK_ENABLE()	1
+../Src/main.cpp:85:6:void PC_CLOCK_ENABLE()	1
+../Src/main.cpp:90:6:void InitPorts()	1
+../Src/main.cpp:374:5:int main()	21

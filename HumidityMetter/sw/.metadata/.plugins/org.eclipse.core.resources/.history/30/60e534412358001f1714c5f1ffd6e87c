@@ -1,0 +1,25 @@
+/*
+ * PowerControl.hpp
+ *
+ *  Created on: Aug 11, 2024
+ *      Author: Goggy
+ */
+
+#ifndef __POWERCONTROL_HPP__
+#define __POWERCONTROL_HPP__
+
+
+namespace PowerControl
+{
+
+
+
+}	// namespace PowerControl
+
+
+
+
+
+
+
+#endif /* POWERCONTROL_HPP_ */

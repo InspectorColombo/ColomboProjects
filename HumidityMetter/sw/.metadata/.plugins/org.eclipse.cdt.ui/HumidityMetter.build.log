@@ -1,47 +1,10 @@
-05:05:48 **** Incremental Build of configuration Release for project HumidityMetter ****
+23:56:33 **** Incremental Build of configuration Release for project HumidityMetter ****
 make -j6 all 
-arm-none-eabi-g++ "../Src/LcdScreen.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/LcdScreen.d" -MT"Src/LcdScreen.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/LcdScreen.o"
-arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-../Src/main.cpp: In member function 'bool AM3220Sensor::GetReadData() const':
-../Src/main.cpp:302:61: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  302 |                                         LcdScreen::LcdPrint("CRC ERR");
-      |                                                             ^~~~~~~~~
-../Src/main.cpp:316:53: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  316 |                                 LcdScreen::LcdPrint("T=");
-      |                                                     ^~~~
-../Src/main.cpp:319:61: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  319 |                                         LcdScreen::LcdPrint("-");
-      |                                                             ^~~
-../Src/main.cpp:329:53: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  329 |                                 LcdScreen::LcdPrint(".");
-      |                                                     ^~~
-../Src/main.cpp:336:53: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  336 |                                 LcdScreen::LcdPrint("H=");
-      |                                                     ^~~~
-../Src/main.cpp:344:53: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  344 |                                 LcdScreen::LcdPrint(".");
-      |                                                     ^~~
-../Src/main.cpp:346:53: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  346 |                                 LcdScreen::LcdPrint("%");
-      |                                                     ^~~
-../Src/main.cpp:356:53: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  356 |                                 LcdScreen::LcdPrint("No answ");
-      |                                                     ^~~~~~~~~
-../Src/main.cpp: In function 'int main()':
-../Src/main.cpp:422:23: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  422 |   LcdScreen::LcdPrint("Hello!!!");
-      |                       ^~~~~~~~~~
-arm-none-eabi-g++ -o "HumidityMetter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\__workspace\ColomboProjects\HumidityMetter\sw\HumidityMetter\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HumidityMetter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: HumidityMetter.elf
- 
 arm-none-eabi-size  HumidityMetter.elf 
-arm-none-eabi-objdump -h -S HumidityMetter.elf  > "HumidityMetter.list"
    text	   data	    bss	    dec	    hex	filename
-   3660	      0	   1568	   5228	   146c	HumidityMetter.elf
+   3740	      0	   1568	   5308	   14bc	HumidityMetter.elf
 Finished building: default.size.stdout
  
-Finished building: HumidityMetter.list
- 
 
-05:05:50 Build Finished. 0 errors, 9 warnings. (took 1s.174ms)
+23:56:33 Build Finished. 0 errors, 0 warnings. (took 249ms)
 

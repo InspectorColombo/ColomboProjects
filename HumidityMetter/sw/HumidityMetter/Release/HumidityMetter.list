@@ -5,31 +5,31 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   00000130  08000000  08000000  00001000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         00000ce8  08000130  08000130  00001130  2**2
+  1 .text         00000d38  08000130  08000130  00001130  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       0000002c  08000e18  08000e18  00001e18  2**0
+  2 .rodata       0000002c  08000e68  08000e68  00001e68  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08000e44  08000e44  00001e4c  2**0
+  3 .ARM.extab    00000000  08000e94  08000e94  00001e9c  2**0
                   CONTENTS
-  4 .ARM          00000000  08000e44  08000e44  00001e4c  2**0
+  4 .ARM          00000000  08000e94  08000e94  00001e9c  2**0
                   CONTENTS
-  5 .preinit_array 00000000  08000e44  08000e4c  00001e4c  2**0
+  5 .preinit_array 00000000  08000e94  08000e9c  00001e9c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08000e44  08000e44  00001e44  2**2
+  6 .init_array   00000004  08000e94  08000e94  00001e94  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  08000e48  08000e48  00001e48  2**2
+  7 .fini_array   00000004  08000e98  08000e98  00001e98  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         00000000  20000000  20000000  00001e4c  2**0
+  8 .data         00000000  20000000  20000000  00001e9c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          0000001c  20000000  08000e4c  00002000  2**2
+  9 .bss          0000001c  20000000  08000e9c  00002000  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  2000001c  08000e4c  0000201c  2**0
+ 10 ._user_heap_stack 00000604  2000001c  08000e9c  0000201c  2**0
                   ALLOC
- 11 .ARM.attributes 00000029  00000000  00000000  00001e4c  2**0
+ 11 .ARM.attributes 00000029  00000000  00000000  00001e9c  2**0
                   CONTENTS, READONLY
- 12 .comment      00000043  00000000  00000000  00001e75  2**0
+ 12 .comment      00000043  00000000  00000000  00001ec5  2**0
                   CONTENTS, READONLY
- 13 .debug_frame  0000002c  00000000  00000000  00001eb8  2**2
+ 13 .debug_frame  0000002c  00000000  00000000  00001f08  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -48,7 +48,7 @@ Disassembly of section .text:
  8000146:	bd10      	pop	{r4, pc}
  8000148:	20000000 	.word	0x20000000
  800014c:	00000000 	.word	0x00000000
- 8000150:	08000e00 	.word	0x08000e00
+ 8000150:	08000e50 	.word	0x08000e50
 
 08000154 <frame_dummy>:
  8000154:	b508      	push	{r3, lr}
@@ -60,7 +60,7 @@ Disassembly of section .text:
  8000162:	bd08      	pop	{r3, pc}
  8000164:	00000000 	.word	0x00000000
  8000168:	20000004 	.word	0x20000004
- 800016c:	08000e00 	.word	0x08000e00
+ 800016c:	08000e50 	.word	0x08000e50
 
 08000170 <NMI_Handler>:
  8000170:	e7fe      	b.n	8000170 <NMI_Handler>
@@ -412,10 +412,10 @@ Disassembly of section .text:
  8000464:	4a04      	ldr	r2, [pc, #16]	@ (8000478 <_ZN9LcdScreen5LcdRSEh+0x14>)
  8000466:	68d3      	ldr	r3, [r2, #12]
  8000468:	b118      	cbz	r0, 8000472 <_ZN9LcdScreen5LcdRSEh+0xe>
- 800046a:	f443 7300 	orr.w	r3, r3, #512	@ 0x200
+ 800046a:	f443 7380 	orr.w	r3, r3, #256	@ 0x100
  800046e:	60d3      	str	r3, [r2, #12]
  8000470:	4770      	bx	lr
- 8000472:	f423 7300 	bic.w	r3, r3, #512	@ 0x200
+ 8000472:	f423 7380 	bic.w	r3, r3, #256	@ 0x100
  8000476:	e7fa      	b.n	800046e <_ZN9LcdScreen5LcdRSEh+0xa>
  8000478:	40010c00 	.word	0x40010c00
 
@@ -423,10 +423,10 @@ Disassembly of section .text:
  800047c:	4a04      	ldr	r2, [pc, #16]	@ (8000490 <_ZN9LcdScreen5LcdRWEh+0x14>)
  800047e:	68d3      	ldr	r3, [r2, #12]
  8000480:	b118      	cbz	r0, 800048a <_ZN9LcdScreen5LcdRWEh+0xe>
- 8000482:	f443 7380 	orr.w	r3, r3, #256	@ 0x100
+ 8000482:	f443 7300 	orr.w	r3, r3, #512	@ 0x200
  8000486:	60d3      	str	r3, [r2, #12]
  8000488:	4770      	bx	lr
- 800048a:	f423 7380 	bic.w	r3, r3, #256	@ 0x100
+ 800048a:	f423 7300 	bic.w	r3, r3, #512	@ 0x200
  800048e:	e7fa      	b.n	8000486 <_ZN9LcdScreen5LcdRWEh+0xa>
  8000490:	40010c00 	.word	0x40010c00
 
@@ -442,898 +442,934 @@ Disassembly of section .text:
  80004a8:	40010c00 	.word	0x40010c00
 
 080004ac <_ZN9LcdScreen11LcdOut4bitsEh>:
- 80004ac:	490a      	ldr	r1, [pc, #40]	@ (80004d8 <_ZN9LcdScreen11LcdOut4bitsEh+0x2c>)
- 80004ae:	b510      	push	{r4, lr}
- 80004b0:	68ca      	ldr	r2, [r1, #12]
- 80004b2:	03c3      	lsls	r3, r0, #15
- 80004b4:	0344      	lsls	r4, r0, #13
- 80004b6:	b29b      	uxth	r3, r3
- 80004b8:	f404 4480 	and.w	r4, r4, #16384	@ 0x4000
- 80004bc:	f422 4270 	bic.w	r2, r2, #61440	@ 0xf000
- 80004c0:	4323      	orrs	r3, r4
- 80004c2:	4313      	orrs	r3, r2
- 80004c4:	02c2      	lsls	r2, r0, #11
- 80004c6:	f402 5200 	and.w	r2, r2, #8192	@ 0x2000
- 80004ca:	0240      	lsls	r0, r0, #9
- 80004cc:	4313      	orrs	r3, r2
- 80004ce:	f400 5080 	and.w	r0, r0, #4096	@ 0x1000
- 80004d2:	4318      	orrs	r0, r3
- 80004d4:	60c8      	str	r0, [r1, #12]
- 80004d6:	bd10      	pop	{r4, pc}
- 80004d8:	40010c00 	.word	0x40010c00
+ 80004ac:	b510      	push	{r4, lr}
+ 80004ae:	4c09      	ldr	r4, [pc, #36]	@ (80004d4 <_ZN9LcdScreen11LcdOut4bitsEh+0x28>)
+ 80004b0:	0303      	lsls	r3, r0, #12
+ 80004b2:	68e2      	ldr	r2, [r4, #12]
+ 80004b4:	0381      	lsls	r1, r0, #14
+ 80004b6:	f403 5380 	and.w	r3, r3, #4096	@ 0x1000
+ 80004ba:	f401 4100 	and.w	r1, r1, #32768	@ 0x8000
+ 80004be:	f422 4270 	bic.w	r2, r2, #61440	@ 0xf000
+ 80004c2:	430b      	orrs	r3, r1
+ 80004c4:	02c0      	lsls	r0, r0, #11
+ 80004c6:	4313      	orrs	r3, r2
+ 80004c8:	f400 40c0 	and.w	r0, r0, #24576	@ 0x6000
+ 80004cc:	4318      	orrs	r0, r3
+ 80004ce:	60e0      	str	r0, [r4, #12]
+ 80004d0:	bd10      	pop	{r4, pc}
+ 80004d2:	bf00      	nop
+ 80004d4:	40010c00 	.word	0x40010c00
 
-080004dc <_ZN9LcdScreen10LcdIn4bitsEv>:
- 80004dc:	4b08      	ldr	r3, [pc, #32]	@ (8000500 <_ZN9LcdScreen10LcdIn4bitsEv+0x24>)
- 80004de:	689b      	ldr	r3, [r3, #8]
- 80004e0:	0b5a      	lsrs	r2, r3, #13
- 80004e2:	f3c3 30c0 	ubfx	r0, r3, #15, #1
- 80004e6:	f002 0202 	and.w	r2, r2, #2
- 80004ea:	4310      	orrs	r0, r2
- 80004ec:	0ada      	lsrs	r2, r3, #11
- 80004ee:	f002 0204 	and.w	r2, r2, #4
- 80004f2:	0a5b      	lsrs	r3, r3, #9
- 80004f4:	4310      	orrs	r0, r2
- 80004f6:	f003 0308 	and.w	r3, r3, #8
- 80004fa:	4318      	orrs	r0, r3
- 80004fc:	4770      	bx	lr
- 80004fe:	bf00      	nop
- 8000500:	40010c00 	.word	0x40010c00
+080004d8 <_ZN9LcdScreen10LcdIn4bitsEv>:
+ 80004d8:	4b06      	ldr	r3, [pc, #24]	@ (80004f4 <_ZN9LcdScreen10LcdIn4bitsEv+0x1c>)
+ 80004da:	689b      	ldr	r3, [r3, #8]
+ 80004dc:	f3c3 3200 	ubfx	r2, r3, #12, #1
+ 80004e0:	f343 20c7 	sbfx	r0, r3, #11, #8
+ 80004e4:	0b9b      	lsrs	r3, r3, #14
+ 80004e6:	f003 0302 	and.w	r3, r3, #2
+ 80004ea:	4313      	orrs	r3, r2
+ 80004ec:	f000 000c 	and.w	r0, r0, #12
+ 80004f0:	4318      	orrs	r0, r3
+ 80004f2:	4770      	bx	lr
+ 80004f4:	40010c00 	.word	0x40010c00
 
-08000504 <_ZN9LcdScreen13LcdSetDataOutEv>:
- 8000504:	b510      	push	{r4, lr}
- 8000506:	4c09      	ldr	r4, [pc, #36]	@ (800052c <_ZN9LcdScreen13LcdSetDataOutEv+0x28>)
- 8000508:	210f      	movs	r1, #15
- 800050a:	4620      	mov	r0, r4
- 800050c:	f7ff fea0 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 8000510:	4620      	mov	r0, r4
- 8000512:	210e      	movs	r1, #14
- 8000514:	f7ff fe9c 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 8000518:	4620      	mov	r0, r4
- 800051a:	210d      	movs	r1, #13
- 800051c:	f7ff fe98 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 8000520:	4620      	mov	r0, r4
- 8000522:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 8000526:	210c      	movs	r1, #12
- 8000528:	f7ff be92 	b.w	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 800052c:	40010c00 	.word	0x40010c00
+080004f8 <_ZN9LcdScreen13LcdSetDataOutEv>:
+ 80004f8:	b510      	push	{r4, lr}
+ 80004fa:	4c09      	ldr	r4, [pc, #36]	@ (8000520 <_ZN9LcdScreen13LcdSetDataOutEv+0x28>)
+ 80004fc:	210c      	movs	r1, #12
+ 80004fe:	4620      	mov	r0, r4
+ 8000500:	f7ff fea6 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 8000504:	4620      	mov	r0, r4
+ 8000506:	210f      	movs	r1, #15
+ 8000508:	f7ff fea2 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 800050c:	4620      	mov	r0, r4
+ 800050e:	210d      	movs	r1, #13
+ 8000510:	f7ff fe9e 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 8000514:	4620      	mov	r0, r4
+ 8000516:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 800051a:	210e      	movs	r1, #14
+ 800051c:	f7ff be98 	b.w	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 8000520:	40010c00 	.word	0x40010c00
 
-08000530 <_ZN9LcdScreen12LcdSetDataInEv>:
- 8000530:	b510      	push	{r4, lr}
- 8000532:	4c09      	ldr	r4, [pc, #36]	@ (8000558 <_ZN9LcdScreen12LcdSetDataInEv+0x28>)
- 8000534:	210f      	movs	r1, #15
- 8000536:	4620      	mov	r0, r4
- 8000538:	f7ff fec8 	bl	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
- 800053c:	4620      	mov	r0, r4
- 800053e:	210e      	movs	r1, #14
- 8000540:	f7ff fec4 	bl	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
- 8000544:	4620      	mov	r0, r4
- 8000546:	210d      	movs	r1, #13
- 8000548:	f7ff fec0 	bl	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
- 800054c:	4620      	mov	r0, r4
- 800054e:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 8000552:	210c      	movs	r1, #12
- 8000554:	f7ff beba 	b.w	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
- 8000558:	40010c00 	.word	0x40010c00
+08000524 <_ZN9LcdScreen12LcdSetDataInEv>:
+ 8000524:	b510      	push	{r4, lr}
+ 8000526:	4c09      	ldr	r4, [pc, #36]	@ (800054c <_ZN9LcdScreen12LcdSetDataInEv+0x28>)
+ 8000528:	210c      	movs	r1, #12
+ 800052a:	4620      	mov	r0, r4
+ 800052c:	f7ff fece 	bl	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
+ 8000530:	4620      	mov	r0, r4
+ 8000532:	210f      	movs	r1, #15
+ 8000534:	f7ff feca 	bl	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
+ 8000538:	4620      	mov	r0, r4
+ 800053a:	210d      	movs	r1, #13
+ 800053c:	f7ff fec6 	bl	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
+ 8000540:	4620      	mov	r0, r4
+ 8000542:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 8000546:	210e      	movs	r1, #14
+ 8000548:	f7ff bec0 	b.w	80002cc <_ZN16GpioConfigurator17SetGpioInFloatingEP12GPIO_TypeDefh>
+ 800054c:	40010c00 	.word	0x40010c00
 
-0800055c <_ZN9LcdScreen15Lcd4BitWideReadEhh>:
- 800055c:	b538      	push	{r3, r4, r5, lr}
- 800055e:	4605      	mov	r5, r0
- 8000560:	460c      	mov	r4, r1
- 8000562:	f7ff ffe5 	bl	8000530 <_ZN9LcdScreen12LcdSetDataInEv>
- 8000566:	4628      	mov	r0, r5
- 8000568:	f7ff ff7c 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
- 800056c:	4620      	mov	r0, r4
- 800056e:	f7ff ff85 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
- 8000572:	2001      	movs	r0, #1
- 8000574:	f7ff ff8e 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 8000578:	f7ff fe26 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 800057c:	f7ff ffae 	bl	80004dc <_ZN9LcdScreen10LcdIn4bitsEv>
- 8000580:	0104      	lsls	r4, r0, #4
- 8000582:	2000      	movs	r0, #0
+08000550 <_ZN9LcdScreen15Lcd4BitWideReadEhh>:
+ 8000550:	b538      	push	{r3, r4, r5, lr}
+ 8000552:	4605      	mov	r5, r0
+ 8000554:	460c      	mov	r4, r1
+ 8000556:	f7ff ffe5 	bl	8000524 <_ZN9LcdScreen12LcdSetDataInEv>
+ 800055a:	4628      	mov	r0, r5
+ 800055c:	f7ff ff82 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
+ 8000560:	4620      	mov	r0, r4
+ 8000562:	f7ff ff8b 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
+ 8000566:	2001      	movs	r0, #1
+ 8000568:	f7ff ff94 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
+ 800056c:	f7ff fe2c 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000570:	f7ff ffb2 	bl	80004d8 <_ZN9LcdScreen10LcdIn4bitsEv>
+ 8000574:	0104      	lsls	r4, r0, #4
+ 8000576:	2000      	movs	r0, #0
+ 8000578:	f7ff ff8c 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
+ 800057c:	2001      	movs	r0, #1
+ 800057e:	f7ff fe23 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000582:	2001      	movs	r0, #1
  8000584:	f7ff ff86 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 8000588:	2001      	movs	r0, #1
- 800058a:	f7ff fe1d 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 800058e:	2001      	movs	r0, #1
- 8000590:	f7ff ff80 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 8000594:	f7ff fe18 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000598:	f7ff ffa0 	bl	80004dc <_ZN9LcdScreen10LcdIn4bitsEv>
- 800059c:	b2e4      	uxtb	r4, r4
- 800059e:	4404      	add	r4, r0
- 80005a0:	2000      	movs	r0, #0
- 80005a2:	f7ff ff77 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 80005a6:	b2e4      	uxtb	r4, r4
- 80005a8:	2001      	movs	r0, #1
- 80005aa:	f7ff fe0d 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80005ae:	4620      	mov	r0, r4
- 80005b0:	bd38      	pop	{r3, r4, r5, pc}
+ 8000588:	f7ff fe1e 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 800058c:	f7ff ffa4 	bl	80004d8 <_ZN9LcdScreen10LcdIn4bitsEv>
+ 8000590:	b2e4      	uxtb	r4, r4
+ 8000592:	4404      	add	r4, r0
+ 8000594:	2000      	movs	r0, #0
+ 8000596:	f7ff ff7d 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
+ 800059a:	b2e4      	uxtb	r4, r4
+ 800059c:	2001      	movs	r0, #1
+ 800059e:	f7ff fe13 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80005a2:	4620      	mov	r0, r4
+ 80005a4:	bd38      	pop	{r3, r4, r5, pc}
 
-080005b2 <_ZN9LcdScreen6IsBusyEv>:
- 80005b2:	2101      	movs	r1, #1
- 80005b4:	b508      	push	{r3, lr}
- 80005b6:	2000      	movs	r0, #0
- 80005b8:	f7ff ffd0 	bl	800055c <_ZN9LcdScreen15Lcd4BitWideReadEhh>
- 80005bc:	f3c0 10c0 	ubfx	r0, r0, #7, #1
- 80005c0:	bd08      	pop	{r3, pc}
+080005a6 <_ZN9LcdScreen6IsBusyEv>:
+ 80005a6:	2101      	movs	r1, #1
+ 80005a8:	b508      	push	{r3, lr}
+ 80005aa:	2000      	movs	r0, #0
+ 80005ac:	f7ff ffd0 	bl	8000550 <_ZN9LcdScreen15Lcd4BitWideReadEhh>
+ 80005b0:	f3c0 10c0 	ubfx	r0, r0, #7, #1
+ 80005b4:	bd08      	pop	{r3, pc}
 
-080005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>:
- 80005c2:	b510      	push	{r4, lr}
- 80005c4:	4614      	mov	r4, r2
- 80005c6:	f7ff ff4d 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
- 80005ca:	4608      	mov	r0, r1
- 80005cc:	f7ff ff56 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
- 80005d0:	2001      	movs	r0, #1
- 80005d2:	f7ff ff5f 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 80005d6:	f7ff ff95 	bl	8000504 <_ZN9LcdScreen13LcdSetDataOutEv>
- 80005da:	0920      	lsrs	r0, r4, #4
- 80005dc:	f7ff ff66 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
+080005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>:
+ 80005b6:	b510      	push	{r4, lr}
+ 80005b8:	4614      	mov	r4, r2
+ 80005ba:	f7ff ff53 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
+ 80005be:	4608      	mov	r0, r1
+ 80005c0:	f7ff ff5c 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
+ 80005c4:	2001      	movs	r0, #1
+ 80005c6:	f7ff ff65 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
+ 80005ca:	f7ff ff95 	bl	80004f8 <_ZN9LcdScreen13LcdSetDataOutEv>
+ 80005ce:	0920      	lsrs	r0, r4, #4
+ 80005d0:	f7ff ff6c 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
+ 80005d4:	2001      	movs	r0, #1
+ 80005d6:	f7ff fdf7 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80005da:	2000      	movs	r0, #0
+ 80005dc:	f7ff ff5a 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
  80005e0:	2001      	movs	r0, #1
  80005e2:	f7ff fdf1 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80005e6:	2000      	movs	r0, #0
+ 80005e6:	2001      	movs	r0, #1
  80005e8:	f7ff ff54 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 80005ec:	2001      	movs	r0, #1
- 80005ee:	f7ff fdeb 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80005f2:	2001      	movs	r0, #1
- 80005f4:	f7ff ff4e 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 80005f8:	f004 000f 	and.w	r0, r4, #15
- 80005fc:	f7ff ff56 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
+ 80005ec:	f004 000f 	and.w	r0, r4, #15
+ 80005f0:	f7ff ff5c 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
+ 80005f4:	2001      	movs	r0, #1
+ 80005f6:	f7ff fde7 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80005fa:	2000      	movs	r0, #0
+ 80005fc:	f7ff ff4a 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
  8000600:	2001      	movs	r0, #1
  8000602:	f7ff fde1 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000606:	2000      	movs	r0, #0
- 8000608:	f7ff ff44 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 800060c:	2001      	movs	r0, #1
- 800060e:	f7ff fddb 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000612:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 8000616:	f7ff bf8b 	b.w	8000530 <_ZN9LcdScreen12LcdSetDataInEv>
+ 8000606:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 800060a:	f7ff bf8b 	b.w	8000524 <_ZN9LcdScreen12LcdSetDataInEv>
 
-0800061a <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>:
- 800061a:	b510      	push	{r4, lr}
- 800061c:	4614      	mov	r4, r2
- 800061e:	f7ff ff21 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
- 8000622:	4608      	mov	r0, r1
- 8000624:	f7ff ff2a 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
- 8000628:	2001      	movs	r0, #1
- 800062a:	f7ff ff33 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 800062e:	f7ff ff69 	bl	8000504 <_ZN9LcdScreen13LcdSetDataOutEv>
- 8000632:	0920      	lsrs	r0, r4, #4
- 8000634:	f7ff ff3a 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
+0800060e <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>:
+ 800060e:	b510      	push	{r4, lr}
+ 8000610:	4614      	mov	r4, r2
+ 8000612:	f7ff ff27 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
+ 8000616:	4608      	mov	r0, r1
+ 8000618:	f7ff ff30 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
+ 800061c:	2001      	movs	r0, #1
+ 800061e:	f7ff ff39 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
+ 8000622:	f7ff ff69 	bl	80004f8 <_ZN9LcdScreen13LcdSetDataOutEv>
+ 8000626:	0920      	lsrs	r0, r4, #4
+ 8000628:	f7ff ff40 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
+ 800062c:	2001      	movs	r0, #1
+ 800062e:	f7ff fdcb 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000632:	2000      	movs	r0, #0
+ 8000634:	f7ff ff2e 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
  8000638:	2001      	movs	r0, #1
  800063a:	f7ff fdc5 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 800063e:	2000      	movs	r0, #0
- 8000640:	f7ff ff28 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 8000644:	2001      	movs	r0, #1
- 8000646:	f7ff fdbf 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 800064a:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 800064e:	f7ff bf6f 	b.w	8000530 <_ZN9LcdScreen12LcdSetDataInEv>
+ 800063e:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 8000642:	f7ff bf6f 	b.w	8000524 <_ZN9LcdScreen12LcdSetDataInEv>
 
-08000652 <_ZN9LcdScreen11WaitForBusyEv>:
- 8000652:	b508      	push	{r3, lr}
- 8000654:	f7ff ffad 	bl	80005b2 <_ZN9LcdScreen6IsBusyEv>
- 8000658:	2800      	cmp	r0, #0
- 800065a:	d1fb      	bne.n	8000654 <_ZN9LcdScreen11WaitForBusyEv+0x2>
- 800065c:	bd08      	pop	{r3, pc}
+08000646 <_ZN9LcdScreen11WaitForBusyEv>:
+ 8000646:	b508      	push	{r3, lr}
+ 8000648:	f7ff ffad 	bl	80005a6 <_ZN9LcdScreen6IsBusyEv>
+ 800064c:	2800      	cmp	r0, #0
+ 800064e:	d1fb      	bne.n	8000648 <_ZN9LcdScreen11WaitForBusyEv+0x2>
+ 8000650:	bd08      	pop	{r3, pc}
 	...
 
-08000660 <_ZN9LcdScreen7LcdInitEv>:
- 8000660:	b510      	push	{r4, lr}
- 8000662:	4c39      	ldr	r4, [pc, #228]	@ (8000748 <_ZN9LcdScreen7LcdInitEv+0xe8>)
- 8000664:	4620      	mov	r0, r4
- 8000666:	f7ff fdc7 	bl	80001f8 <_ZN16GpioConfigurator15GpioClockEnableEP12GPIO_TypeDef>
- 800066a:	2000      	movs	r0, #0
- 800066c:	f7ff fefa 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
- 8000670:	f7ff ff04 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
- 8000674:	f7ff ff0e 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
- 8000678:	f7ff ff18 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
- 800067c:	4620      	mov	r0, r4
- 800067e:	2109      	movs	r1, #9
- 8000680:	f7ff fde6 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 8000684:	4620      	mov	r0, r4
- 8000686:	2108      	movs	r1, #8
- 8000688:	f7ff fde2 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 800068c:	2107      	movs	r1, #7
- 800068e:	4620      	mov	r0, r4
- 8000690:	f7ff fdde 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 8000694:	f7ff ff36 	bl	8000504 <_ZN9LcdScreen13LcdSetDataOutEv>
- 8000698:	f649 4040 	movw	r0, #40000	@ 0x9c40
- 800069c:	f7ff fd94 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80006a0:	2100      	movs	r1, #0
- 80006a2:	2230      	movs	r2, #48	@ 0x30
- 80006a4:	4608      	mov	r0, r1
- 80006a6:	f7ff ffb8 	bl	800061a <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
- 80006aa:	f241 0004 	movw	r0, #4100	@ 0x1004
- 80006ae:	f7ff fd8b 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80006b2:	2100      	movs	r1, #0
- 80006b4:	2230      	movs	r2, #48	@ 0x30
- 80006b6:	4608      	mov	r0, r1
- 80006b8:	f7ff ffaf 	bl	800061a <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
- 80006bc:	2064      	movs	r0, #100	@ 0x64
- 80006be:	f7ff fd83 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80006c2:	2100      	movs	r1, #0
- 80006c4:	2230      	movs	r2, #48	@ 0x30
- 80006c6:	4608      	mov	r0, r1
- 80006c8:	f7ff ffa7 	bl	800061a <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
- 80006cc:	2064      	movs	r0, #100	@ 0x64
- 80006ce:	f7ff fd7b 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80006d2:	2100      	movs	r1, #0
- 80006d4:	2220      	movs	r2, #32
- 80006d6:	4608      	mov	r0, r1
- 80006d8:	f7ff ff9f 	bl	800061a <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
- 80006dc:	2064      	movs	r0, #100	@ 0x64
- 80006de:	f7ff fd73 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80006e2:	2100      	movs	r1, #0
- 80006e4:	2228      	movs	r2, #40	@ 0x28
- 80006e6:	4608      	mov	r0, r1
- 80006e8:	f7ff ff6b 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 80006ec:	2027      	movs	r0, #39	@ 0x27
- 80006ee:	f7ff fd6b 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 80006f2:	2100      	movs	r1, #0
- 80006f4:	2228      	movs	r2, #40	@ 0x28
- 80006f6:	4608      	mov	r0, r1
- 80006f8:	f7ff ff63 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 80006fc:	f7ff ffa9 	bl	8000652 <_ZN9LcdScreen11WaitForBusyEv>
- 8000700:	2027      	movs	r0, #39	@ 0x27
- 8000702:	f7ff fd61 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000706:	2100      	movs	r1, #0
- 8000708:	220c      	movs	r2, #12
- 800070a:	4608      	mov	r0, r1
- 800070c:	f7ff ff59 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 8000710:	f7ff ff9f 	bl	8000652 <_ZN9LcdScreen11WaitForBusyEv>
- 8000714:	2027      	movs	r0, #39	@ 0x27
- 8000716:	f7ff fd57 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 800071a:	2100      	movs	r1, #0
- 800071c:	2201      	movs	r2, #1
- 800071e:	4608      	mov	r0, r1
- 8000720:	f7ff ff4f 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 8000724:	f7ff ff95 	bl	8000652 <_ZN9LcdScreen11WaitForBusyEv>
- 8000728:	f240 50fa 	movw	r0, #1530	@ 0x5fa
- 800072c:	f7ff fd4c 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000730:	2100      	movs	r1, #0
- 8000732:	2206      	movs	r2, #6
- 8000734:	4608      	mov	r0, r1
- 8000736:	f7ff ff44 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 800073a:	2027      	movs	r0, #39	@ 0x27
- 800073c:	f7ff fd44 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000740:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 8000744:	f7ff bf85 	b.w	8000652 <_ZN9LcdScreen11WaitForBusyEv>
- 8000748:	40010c00 	.word	0x40010c00
+08000654 <_ZN9LcdScreen7LcdInitEv>:
+ 8000654:	b510      	push	{r4, lr}
+ 8000656:	4c39      	ldr	r4, [pc, #228]	@ (800073c <_ZN9LcdScreen7LcdInitEv+0xe8>)
+ 8000658:	4620      	mov	r0, r4
+ 800065a:	f7ff fdcd 	bl	80001f8 <_ZN16GpioConfigurator15GpioClockEnableEP12GPIO_TypeDef>
+ 800065e:	2000      	movs	r0, #0
+ 8000660:	f7ff ff00 	bl	8000464 <_ZN9LcdScreen5LcdRSEh>
+ 8000664:	f7ff ff0a 	bl	800047c <_ZN9LcdScreen5LcdRWEh>
+ 8000668:	f7ff ff14 	bl	8000494 <_ZN9LcdScreen4LcdEEh>
+ 800066c:	f7ff ff1e 	bl	80004ac <_ZN9LcdScreen11LcdOut4bitsEh>
+ 8000670:	4620      	mov	r0, r4
+ 8000672:	2108      	movs	r1, #8
+ 8000674:	f7ff fdec 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 8000678:	4620      	mov	r0, r4
+ 800067a:	2109      	movs	r1, #9
+ 800067c:	f7ff fde8 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 8000680:	2107      	movs	r1, #7
+ 8000682:	4620      	mov	r0, r4
+ 8000684:	f7ff fde4 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 8000688:	f7ff ff36 	bl	80004f8 <_ZN9LcdScreen13LcdSetDataOutEv>
+ 800068c:	f649 4040 	movw	r0, #40000	@ 0x9c40
+ 8000690:	f7ff fd9a 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000694:	2100      	movs	r1, #0
+ 8000696:	2230      	movs	r2, #48	@ 0x30
+ 8000698:	4608      	mov	r0, r1
+ 800069a:	f7ff ffb8 	bl	800060e <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
+ 800069e:	f241 0004 	movw	r0, #4100	@ 0x1004
+ 80006a2:	f7ff fd91 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80006a6:	2100      	movs	r1, #0
+ 80006a8:	2230      	movs	r2, #48	@ 0x30
+ 80006aa:	4608      	mov	r0, r1
+ 80006ac:	f7ff ffaf 	bl	800060e <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
+ 80006b0:	2064      	movs	r0, #100	@ 0x64
+ 80006b2:	f7ff fd89 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80006b6:	2100      	movs	r1, #0
+ 80006b8:	2230      	movs	r2, #48	@ 0x30
+ 80006ba:	4608      	mov	r0, r1
+ 80006bc:	f7ff ffa7 	bl	800060e <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
+ 80006c0:	2064      	movs	r0, #100	@ 0x64
+ 80006c2:	f7ff fd81 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80006c6:	2100      	movs	r1, #0
+ 80006c8:	2220      	movs	r2, #32
+ 80006ca:	4608      	mov	r0, r1
+ 80006cc:	f7ff ff9f 	bl	800060e <_ZN9LcdScreen20Lcd8BitWideFakeWriteEhhh>
+ 80006d0:	2064      	movs	r0, #100	@ 0x64
+ 80006d2:	f7ff fd79 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80006d6:	2100      	movs	r1, #0
+ 80006d8:	2228      	movs	r2, #40	@ 0x28
+ 80006da:	4608      	mov	r0, r1
+ 80006dc:	f7ff ff6b 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 80006e0:	2027      	movs	r0, #39	@ 0x27
+ 80006e2:	f7ff fd71 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80006e6:	2100      	movs	r1, #0
+ 80006e8:	2228      	movs	r2, #40	@ 0x28
+ 80006ea:	4608      	mov	r0, r1
+ 80006ec:	f7ff ff63 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 80006f0:	f7ff ffa9 	bl	8000646 <_ZN9LcdScreen11WaitForBusyEv>
+ 80006f4:	2027      	movs	r0, #39	@ 0x27
+ 80006f6:	f7ff fd67 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 80006fa:	2100      	movs	r1, #0
+ 80006fc:	220c      	movs	r2, #12
+ 80006fe:	4608      	mov	r0, r1
+ 8000700:	f7ff ff59 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 8000704:	f7ff ff9f 	bl	8000646 <_ZN9LcdScreen11WaitForBusyEv>
+ 8000708:	2027      	movs	r0, #39	@ 0x27
+ 800070a:	f7ff fd5d 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 800070e:	2100      	movs	r1, #0
+ 8000710:	2201      	movs	r2, #1
+ 8000712:	4608      	mov	r0, r1
+ 8000714:	f7ff ff4f 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 8000718:	f7ff ff95 	bl	8000646 <_ZN9LcdScreen11WaitForBusyEv>
+ 800071c:	f240 50fa 	movw	r0, #1530	@ 0x5fa
+ 8000720:	f7ff fd52 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000724:	2100      	movs	r1, #0
+ 8000726:	2206      	movs	r2, #6
+ 8000728:	4608      	mov	r0, r1
+ 800072a:	f7ff ff44 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 800072e:	2027      	movs	r0, #39	@ 0x27
+ 8000730:	f7ff fd4a 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000734:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 8000738:	f7ff bf85 	b.w	8000646 <_ZN9LcdScreen11WaitForBusyEv>
+ 800073c:	40010c00 	.word	0x40010c00
 
-0800074c <_ZN9LcdScreen8LcdClearEv>:
- 800074c:	b508      	push	{r3, lr}
- 800074e:	f7ff ff80 	bl	8000652 <_ZN9LcdScreen11WaitForBusyEv>
- 8000752:	2100      	movs	r1, #0
- 8000754:	2201      	movs	r2, #1
- 8000756:	4608      	mov	r0, r1
- 8000758:	f7ff ff33 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 800075c:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
- 8000760:	2027      	movs	r0, #39	@ 0x27
- 8000762:	f7ff bd31 	b.w	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+08000740 <_ZN9LcdScreen8LcdClearEv>:
+ 8000740:	b508      	push	{r3, lr}
+ 8000742:	f7ff ff80 	bl	8000646 <_ZN9LcdScreen11WaitForBusyEv>
+ 8000746:	2100      	movs	r1, #0
+ 8000748:	2201      	movs	r2, #1
+ 800074a:	4608      	mov	r0, r1
+ 800074c:	f7ff ff33 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 8000750:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+ 8000754:	2027      	movs	r0, #39	@ 0x27
+ 8000756:	f7ff bd37 	b.w	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
 
-08000766 <_ZN9LcdScreen8LcdToPosEhh>:
- 8000766:	b538      	push	{r3, r4, r5, lr}
- 8000768:	460d      	mov	r5, r1
- 800076a:	4604      	mov	r4, r0
- 800076c:	f7ff ff71 	bl	8000652 <_ZN9LcdScreen11WaitForBusyEv>
- 8000770:	2100      	movs	r1, #0
- 8000772:	eb05 0585 	add.w	r5, r5, r5, lsl #2
- 8000776:	eb04 02c5 	add.w	r2, r4, r5, lsl #3
- 800077a:	f062 027f 	orn	r2, r2, #127	@ 0x7f
- 800077e:	4608      	mov	r0, r1
- 8000780:	b2d2      	uxtb	r2, r2
- 8000782:	f7ff ff1e 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 8000786:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
- 800078a:	2027      	movs	r0, #39	@ 0x27
- 800078c:	f7ff bd1c 	b.w	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+0800075a <_ZN9LcdScreen8LcdToPosEhh>:
+ 800075a:	b538      	push	{r3, r4, r5, lr}
+ 800075c:	460d      	mov	r5, r1
+ 800075e:	4604      	mov	r4, r0
+ 8000760:	f7ff ff71 	bl	8000646 <_ZN9LcdScreen11WaitForBusyEv>
+ 8000764:	2100      	movs	r1, #0
+ 8000766:	eb05 0585 	add.w	r5, r5, r5, lsl #2
+ 800076a:	eb04 02c5 	add.w	r2, r4, r5, lsl #3
+ 800076e:	f062 027f 	orn	r2, r2, #127	@ 0x7f
+ 8000772:	4608      	mov	r0, r1
+ 8000774:	b2d2      	uxtb	r2, r2
+ 8000776:	f7ff ff1e 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 800077a:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+ 800077e:	2027      	movs	r0, #39	@ 0x27
+ 8000780:	f7ff bd22 	b.w	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
 
-08000790 <_ZN9LcdScreen12LcdPrintCharEh>:
- 8000790:	b510      	push	{r4, lr}
- 8000792:	4604      	mov	r4, r0
- 8000794:	f7ff ff5d 	bl	8000652 <_ZN9LcdScreen11WaitForBusyEv>
- 8000798:	4622      	mov	r2, r4
- 800079a:	2001      	movs	r0, #1
- 800079c:	2100      	movs	r1, #0
- 800079e:	f7ff ff10 	bl	80005c2 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
- 80007a2:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 80007a6:	202b      	movs	r0, #43	@ 0x2b
- 80007a8:	f7ff bd0e 	b.w	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+08000784 <_ZN9LcdScreen12LcdPrintCharEh>:
+ 8000784:	b510      	push	{r4, lr}
+ 8000786:	4604      	mov	r4, r0
+ 8000788:	f7ff ff5d 	bl	8000646 <_ZN9LcdScreen11WaitForBusyEv>
+ 800078c:	4622      	mov	r2, r4
+ 800078e:	2001      	movs	r0, #1
+ 8000790:	2100      	movs	r1, #0
+ 8000792:	f7ff ff10 	bl	80005b6 <_ZN9LcdScreen16Lcd4BitWideWriteEhhh>
+ 8000796:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 800079a:	202b      	movs	r0, #43	@ 0x2b
+ 800079c:	f7ff bd14 	b.w	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
 
-080007ac <_ZN9LcdScreen8LcdPrintEPc>:
- 80007ac:	b510      	push	{r4, lr}
- 80007ae:	1e44      	subs	r4, r0, #1
- 80007b0:	f814 0f01 	ldrb.w	r0, [r4, #1]!
- 80007b4:	b900      	cbnz	r0, 80007b8 <_ZN9LcdScreen8LcdPrintEPc+0xc>
- 80007b6:	bd10      	pop	{r4, pc}
- 80007b8:	f7ff ffea 	bl	8000790 <_ZN9LcdScreen12LcdPrintCharEh>
- 80007bc:	e7f8      	b.n	80007b0 <_ZN9LcdScreen8LcdPrintEPc+0x4>
+080007a0 <_ZN9LcdScreen8LcdPrintEPc>:
+ 80007a0:	b510      	push	{r4, lr}
+ 80007a2:	1e44      	subs	r4, r0, #1
+ 80007a4:	f814 0f01 	ldrb.w	r0, [r4, #1]!
+ 80007a8:	b900      	cbnz	r0, 80007ac <_ZN9LcdScreen8LcdPrintEPc+0xc>
+ 80007aa:	bd10      	pop	{r4, pc}
+ 80007ac:	f7ff ffea 	bl	8000784 <_ZN9LcdScreen12LcdPrintCharEh>
+ 80007b0:	e7f8      	b.n	80007a4 <_ZN9LcdScreen8LcdPrintEPc+0x4>
 	...
 
-080007c0 <_ZN9LcdScreen14LcdPrintNumberEt>:
- 80007c0:	b537      	push	{r0, r1, r2, r4, r5, lr}
- 80007c2:	4603      	mov	r3, r0
- 80007c4:	466a      	mov	r2, sp
- 80007c6:	4912      	ldr	r1, [pc, #72]	@ (8000810 <_ZN9LcdScreen14LcdPrintNumberEt+0x50>)
- 80007c8:	6808      	ldr	r0, [r1, #0]
- 80007ca:	7909      	ldrb	r1, [r1, #4]
- 80007cc:	9000      	str	r0, [sp, #0]
- 80007ce:	7111      	strb	r1, [r2, #4]
- 80007d0:	4618      	mov	r0, r3
- 80007d2:	b9cb      	cbnz	r3, 8000808 <_ZN9LcdScreen14LcdPrintNumberEt+0x48>
- 80007d4:	4614      	mov	r4, r2
- 80007d6:	2505      	movs	r5, #5
- 80007d8:	f814 0b01 	ldrb.w	r0, [r4], #1
- 80007dc:	3d01      	subs	r5, #1
- 80007de:	f7ff ffd7 	bl	8000790 <_ZN9LcdScreen12LcdPrintCharEh>
- 80007e2:	f015 05ff 	ands.w	r5, r5, #255	@ 0xff
- 80007e6:	d1f7      	bne.n	80007d8 <_ZN9LcdScreen14LcdPrintNumberEt+0x18>
- 80007e8:	b003      	add	sp, #12
- 80007ea:	bd30      	pop	{r4, r5, pc}
- 80007ec:	2909      	cmp	r1, #9
- 80007ee:	d9f1      	bls.n	80007d4 <_ZN9LcdScreen14LcdPrintNumberEt+0x14>
- 80007f0:	fbb0 f4f5 	udiv	r4, r0, r5
- 80007f4:	fb05 0114 	mls	r1, r5, r4, r0
- 80007f8:	3130      	adds	r1, #48	@ 0x30
- 80007fa:	f803 1d01 	strb.w	r1, [r3, #-1]!
- 80007fe:	4293      	cmp	r3, r2
- 8000800:	4601      	mov	r1, r0
- 8000802:	b2a0      	uxth	r0, r4
- 8000804:	d1f2      	bne.n	80007ec <_ZN9LcdScreen14LcdPrintNumberEt+0x2c>
- 8000806:	e7e5      	b.n	80007d4 <_ZN9LcdScreen14LcdPrintNumberEt+0x14>
- 8000808:	250a      	movs	r5, #10
- 800080a:	f10d 0305 	add.w	r3, sp, #5
- 800080e:	e7ef      	b.n	80007f0 <_ZN9LcdScreen14LcdPrintNumberEt+0x30>
- 8000810:	08000e18 	.word	0x08000e18
+080007b4 <_ZN9LcdScreen14LcdPrintNumberEt>:
+ 80007b4:	b537      	push	{r0, r1, r2, r4, r5, lr}
+ 80007b6:	4603      	mov	r3, r0
+ 80007b8:	466a      	mov	r2, sp
+ 80007ba:	4912      	ldr	r1, [pc, #72]	@ (8000804 <_ZN9LcdScreen14LcdPrintNumberEt+0x50>)
+ 80007bc:	6808      	ldr	r0, [r1, #0]
+ 80007be:	7909      	ldrb	r1, [r1, #4]
+ 80007c0:	9000      	str	r0, [sp, #0]
+ 80007c2:	7111      	strb	r1, [r2, #4]
+ 80007c4:	4618      	mov	r0, r3
+ 80007c6:	b9cb      	cbnz	r3, 80007fc <_ZN9LcdScreen14LcdPrintNumberEt+0x48>
+ 80007c8:	4614      	mov	r4, r2
+ 80007ca:	2505      	movs	r5, #5
+ 80007cc:	f814 0b01 	ldrb.w	r0, [r4], #1
+ 80007d0:	3d01      	subs	r5, #1
+ 80007d2:	f7ff ffd7 	bl	8000784 <_ZN9LcdScreen12LcdPrintCharEh>
+ 80007d6:	f015 05ff 	ands.w	r5, r5, #255	@ 0xff
+ 80007da:	d1f7      	bne.n	80007cc <_ZN9LcdScreen14LcdPrintNumberEt+0x18>
+ 80007dc:	b003      	add	sp, #12
+ 80007de:	bd30      	pop	{r4, r5, pc}
+ 80007e0:	2909      	cmp	r1, #9
+ 80007e2:	d9f1      	bls.n	80007c8 <_ZN9LcdScreen14LcdPrintNumberEt+0x14>
+ 80007e4:	fbb0 f4f5 	udiv	r4, r0, r5
+ 80007e8:	fb05 0114 	mls	r1, r5, r4, r0
+ 80007ec:	3130      	adds	r1, #48	@ 0x30
+ 80007ee:	f803 1d01 	strb.w	r1, [r3, #-1]!
+ 80007f2:	4293      	cmp	r3, r2
+ 80007f4:	4601      	mov	r1, r0
+ 80007f6:	b2a0      	uxth	r0, r4
+ 80007f8:	d1f2      	bne.n	80007e0 <_ZN9LcdScreen14LcdPrintNumberEt+0x2c>
+ 80007fa:	e7e5      	b.n	80007c8 <_ZN9LcdScreen14LcdPrintNumberEt+0x14>
+ 80007fc:	250a      	movs	r5, #10
+ 80007fe:	f10d 0305 	add.w	r3, sp, #5
+ 8000802:	e7ef      	b.n	80007e4 <_ZN9LcdScreen14LcdPrintNumberEt+0x30>
+ 8000804:	08000e68 	.word	0x08000e68
 
-08000814 <_ZN9LcdScreen11LcdPrintHexEh>:
- 8000814:	b510      	push	{r4, lr}
- 8000816:	289f      	cmp	r0, #159	@ 0x9f
- 8000818:	ea4f 1310 	mov.w	r3, r0, lsr #4
- 800081c:	f000 040f 	and.w	r4, r0, #15
- 8000820:	bf94      	ite	ls
- 8000822:	f103 0030 	addls.w	r0, r3, #48	@ 0x30
- 8000826:	f103 0037 	addhi.w	r0, r3, #55	@ 0x37
- 800082a:	f7ff ffb1 	bl	8000790 <_ZN9LcdScreen12LcdPrintCharEh>
- 800082e:	2c09      	cmp	r4, #9
- 8000830:	bf94      	ite	ls
- 8000832:	f104 0030 	addls.w	r0, r4, #48	@ 0x30
- 8000836:	f104 0037 	addhi.w	r0, r4, #55	@ 0x37
- 800083a:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 800083e:	f7ff bfa7 	b.w	8000790 <_ZN9LcdScreen12LcdPrintCharEh>
+08000808 <_ZN9LcdScreen11LcdPrintHexEh>:
+ 8000808:	b510      	push	{r4, lr}
+ 800080a:	289f      	cmp	r0, #159	@ 0x9f
+ 800080c:	ea4f 1310 	mov.w	r3, r0, lsr #4
+ 8000810:	f000 040f 	and.w	r4, r0, #15
+ 8000814:	bf94      	ite	ls
+ 8000816:	f103 0030 	addls.w	r0, r3, #48	@ 0x30
+ 800081a:	f103 0037 	addhi.w	r0, r3, #55	@ 0x37
+ 800081e:	f7ff ffb1 	bl	8000784 <_ZN9LcdScreen12LcdPrintCharEh>
+ 8000822:	2c09      	cmp	r4, #9
+ 8000824:	bf94      	ite	ls
+ 8000826:	f104 0030 	addls.w	r0, r4, #48	@ 0x30
+ 800082a:	f104 0037 	addhi.w	r0, r4, #55	@ 0x37
+ 800082e:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 8000832:	f7ff bfa7 	b.w	8000784 <_ZN9LcdScreen12LcdPrintCharEh>
 
-08000842 <_ZN9LcdScreen13LcdPrintDigitEh>:
- 8000842:	230a      	movs	r3, #10
- 8000844:	fbb0 f2f3 	udiv	r2, r0, r3
- 8000848:	fb02 0013 	mls	r0, r2, r3, r0
- 800084c:	3030      	adds	r0, #48	@ 0x30
- 800084e:	b2c0      	uxtb	r0, r0
- 8000850:	f7ff bf9e 	b.w	8000790 <_ZN9LcdScreen12LcdPrintCharEh>
+08000836 <_ZN9LcdScreen13LcdPrintDigitEh>:
+ 8000836:	230a      	movs	r3, #10
+ 8000838:	fbb0 f2f3 	udiv	r2, r0, r3
+ 800083c:	fb02 0013 	mls	r0, r2, r3, r0
+ 8000840:	3030      	adds	r0, #48	@ 0x30
+ 8000842:	b2c0      	uxtb	r0, r0
+ 8000844:	f7ff bf9e 	b.w	8000784 <_ZN9LcdScreen12LcdPrintCharEh>
 
-08000854 <_Z10InitClocksv>:
- 8000854:	4a08      	ldr	r2, [pc, #32]	@ (8000878 <_Z10InitClocksv+0x24>)
- 8000856:	6813      	ldr	r3, [r2, #0]
- 8000858:	f023 7386 	bic.w	r3, r3, #17563648	@ 0x10c0000
- 800085c:	f423 3380 	bic.w	r3, r3, #65536	@ 0x10000
- 8000860:	f443 3380 	orr.w	r3, r3, #65536	@ 0x10000
- 8000864:	6013      	str	r3, [r2, #0]
- 8000866:	6851      	ldr	r1, [r2, #4]
- 8000868:	4b04      	ldr	r3, [pc, #16]	@ (800087c <_Z10InitClocksv+0x28>)
- 800086a:	400b      	ands	r3, r1
- 800086c:	f043 6380 	orr.w	r3, r3, #67108864	@ 0x4000000
- 8000870:	f043 03a0 	orr.w	r3, r3, #160	@ 0xa0
- 8000874:	6053      	str	r3, [r2, #4]
- 8000876:	4770      	bx	lr
- 8000878:	40021000 	.word	0x40021000
- 800087c:	f8ffc00c 	.word	0xf8ffc00c
+08000848 <_ZN12PowerControl9PowerHoldEv>:
+ 8000848:	4a02      	ldr	r2, [pc, #8]	@ (8000854 <_ZN12PowerControl9PowerHoldEv+0xc>)
+ 800084a:	6913      	ldr	r3, [r2, #16]
+ 800084c:	f443 6380 	orr.w	r3, r3, #1024	@ 0x400
+ 8000850:	6113      	str	r3, [r2, #16]
+ 8000852:	4770      	bx	lr
+ 8000854:	40010800 	.word	0x40010800
 
-08000880 <_Z33ALTERNATIVE_FUNCTION_CLOCK_ENABLEv>:
- 8000880:	4a02      	ldr	r2, [pc, #8]	@ (800088c <_Z33ALTERNATIVE_FUNCTION_CLOCK_ENABLEv+0xc>)
- 8000882:	6993      	ldr	r3, [r2, #24]
- 8000884:	f043 0301 	orr.w	r3, r3, #1
- 8000888:	6193      	str	r3, [r2, #24]
- 800088a:	4770      	bx	lr
- 800088c:	40021000 	.word	0x40021000
+08000858 <_ZN12PowerControl11PowerUnholdEv>:
+ 8000858:	4a02      	ldr	r2, [pc, #8]	@ (8000864 <_ZN12PowerControl11PowerUnholdEv+0xc>)
+ 800085a:	6953      	ldr	r3, [r2, #20]
+ 800085c:	f443 6380 	orr.w	r3, r3, #1024	@ 0x400
+ 8000860:	6153      	str	r3, [r2, #20]
+ 8000862:	4770      	bx	lr
+ 8000864:	40010800 	.word	0x40010800
 
-08000890 <_Z15PA_CLOCK_ENABLEv>:
- 8000890:	4a02      	ldr	r2, [pc, #8]	@ (800089c <_Z15PA_CLOCK_ENABLEv+0xc>)
- 8000892:	6993      	ldr	r3, [r2, #24]
- 8000894:	f043 0304 	orr.w	r3, r3, #4
- 8000898:	6193      	str	r3, [r2, #24]
- 800089a:	4770      	bx	lr
- 800089c:	40021000 	.word	0x40021000
+08000868 <_ZN12PowerControl4InitEv>:
+ 8000868:	b538      	push	{r3, r4, r5, lr}
+ 800086a:	4604      	mov	r4, r0
+ 800086c:	4d06      	ldr	r5, [pc, #24]	@ (8000888 <_ZN12PowerControl4InitEv+0x20>)
+ 800086e:	4628      	mov	r0, r5
+ 8000870:	f7ff fcc2 	bl	80001f8 <_ZN16GpioConfigurator15GpioClockEnableEP12GPIO_TypeDef>
+ 8000874:	4628      	mov	r0, r5
+ 8000876:	210a      	movs	r1, #10
+ 8000878:	f7ff fcea 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 800087c:	4620      	mov	r0, r4
+ 800087e:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+ 8000882:	f7ff bfe9 	b.w	8000858 <_ZN12PowerControl11PowerUnholdEv>
+ 8000886:	bf00      	nop
+ 8000888:	40010800 	.word	0x40010800
 
-080008a0 <_Z15PB_CLOCK_ENABLEv>:
- 80008a0:	4a02      	ldr	r2, [pc, #8]	@ (80008ac <_Z15PB_CLOCK_ENABLEv+0xc>)
- 80008a2:	6993      	ldr	r3, [r2, #24]
- 80008a4:	f043 0308 	orr.w	r3, r3, #8
- 80008a8:	6193      	str	r3, [r2, #24]
- 80008aa:	4770      	bx	lr
- 80008ac:	40021000 	.word	0x40021000
+0800088c <_ZN12PowerControlC1Ev>:
+ 800088c:	b510      	push	{r4, lr}
+ 800088e:	4604      	mov	r4, r0
+ 8000890:	f7ff ffea 	bl	8000868 <_ZN12PowerControl4InitEv>
+ 8000894:	4620      	mov	r0, r4
+ 8000896:	bd10      	pop	{r4, pc}
 
-080008b0 <_Z15PC_CLOCK_ENABLEv>:
- 80008b0:	4a02      	ldr	r2, [pc, #8]	@ (80008bc <_Z15PC_CLOCK_ENABLEv+0xc>)
- 80008b2:	6993      	ldr	r3, [r2, #24]
- 80008b4:	f043 0310 	orr.w	r3, r3, #16
- 80008b8:	6193      	str	r3, [r2, #24]
+08000898 <_Z10InitClocksv>:
+ 8000898:	4a08      	ldr	r2, [pc, #32]	@ (80008bc <_Z10InitClocksv+0x24>)
+ 800089a:	6813      	ldr	r3, [r2, #0]
+ 800089c:	f023 7386 	bic.w	r3, r3, #17563648	@ 0x10c0000
+ 80008a0:	f423 3380 	bic.w	r3, r3, #65536	@ 0x10000
+ 80008a4:	f443 3380 	orr.w	r3, r3, #65536	@ 0x10000
+ 80008a8:	6013      	str	r3, [r2, #0]
+ 80008aa:	6851      	ldr	r1, [r2, #4]
+ 80008ac:	4b04      	ldr	r3, [pc, #16]	@ (80008c0 <_Z10InitClocksv+0x28>)
+ 80008ae:	400b      	ands	r3, r1
+ 80008b0:	f043 6380 	orr.w	r3, r3, #67108864	@ 0x4000000
+ 80008b4:	f043 03a0 	orr.w	r3, r3, #160	@ 0xa0
+ 80008b8:	6053      	str	r3, [r2, #4]
  80008ba:	4770      	bx	lr
  80008bc:	40021000 	.word	0x40021000
+ 80008c0:	f8ffc00c 	.word	0xf8ffc00c
 
-080008c0 <_Z9InitPortsv>:
- 80008c0:	b508      	push	{r3, lr}
- 80008c2:	f7ff ffdd 	bl	8000880 <_Z33ALTERNATIVE_FUNCTION_CLOCK_ENABLEv>
- 80008c6:	f7ff ffe3 	bl	8000890 <_Z15PA_CLOCK_ENABLEv>
- 80008ca:	f7ff ffe9 	bl	80008a0 <_Z15PB_CLOCK_ENABLEv>
- 80008ce:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
- 80008d2:	f7ff bfed 	b.w	80008b0 <_Z15PC_CLOCK_ENABLEv>
+080008c4 <_Z33ALTERNATIVE_FUNCTION_CLOCK_ENABLEv>:
+ 80008c4:	4a02      	ldr	r2, [pc, #8]	@ (80008d0 <_Z33ALTERNATIVE_FUNCTION_CLOCK_ENABLEv+0xc>)
+ 80008c6:	6993      	ldr	r3, [r2, #24]
+ 80008c8:	f043 0301 	orr.w	r3, r3, #1
+ 80008cc:	6193      	str	r3, [r2, #24]
+ 80008ce:	4770      	bx	lr
+ 80008d0:	40021000 	.word	0x40021000
+
+080008d4 <_Z15PA_CLOCK_ENABLEv>:
+ 80008d4:	4a02      	ldr	r2, [pc, #8]	@ (80008e0 <_Z15PA_CLOCK_ENABLEv+0xc>)
+ 80008d6:	6993      	ldr	r3, [r2, #24]
+ 80008d8:	f043 0304 	orr.w	r3, r3, #4
+ 80008dc:	6193      	str	r3, [r2, #24]
+ 80008de:	4770      	bx	lr
+ 80008e0:	40021000 	.word	0x40021000
+
+080008e4 <_Z15PB_CLOCK_ENABLEv>:
+ 80008e4:	4a02      	ldr	r2, [pc, #8]	@ (80008f0 <_Z15PB_CLOCK_ENABLEv+0xc>)
+ 80008e6:	6993      	ldr	r3, [r2, #24]
+ 80008e8:	f043 0308 	orr.w	r3, r3, #8
+ 80008ec:	6193      	str	r3, [r2, #24]
+ 80008ee:	4770      	bx	lr
+ 80008f0:	40021000 	.word	0x40021000
+
+080008f4 <_Z15PC_CLOCK_ENABLEv>:
+ 80008f4:	4a02      	ldr	r2, [pc, #8]	@ (8000900 <_Z15PC_CLOCK_ENABLEv+0xc>)
+ 80008f6:	6993      	ldr	r3, [r2, #24]
+ 80008f8:	f043 0310 	orr.w	r3, r3, #16
+ 80008fc:	6193      	str	r3, [r2, #24]
+ 80008fe:	4770      	bx	lr
+ 8000900:	40021000 	.word	0x40021000
+
+08000904 <_Z9InitPortsv>:
+ 8000904:	b508      	push	{r3, lr}
+ 8000906:	f7ff ffdd 	bl	80008c4 <_Z33ALTERNATIVE_FUNCTION_CLOCK_ENABLEv>
+ 800090a:	f7ff ffe3 	bl	80008d4 <_Z15PA_CLOCK_ENABLEv>
+ 800090e:	f7ff ffe9 	bl	80008e4 <_Z15PB_CLOCK_ENABLEv>
+ 8000912:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+ 8000916:	f7ff bfed 	b.w	80008f4 <_Z15PC_CLOCK_ENABLEv>
 	...
 
-080008d8 <main>:
- 80008d8:	e92d 47ff 	stmdb	sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, lr}
- 80008dc:	f240 50dc 	movw	r0, #1500	@ 0x5dc
- 80008e0:	f7ff ffb8 	bl	8000854 <_Z10InitClocksv>
- 80008e4:	f7ff ffec 	bl	80008c0 <_Z9InitPortsv>
- 80008e8:	f7ff fc7a 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
- 80008ec:	f7ff feb8 	bl	8000660 <_ZN9LcdScreen7LcdInitEv>
- 80008f0:	489d      	ldr	r0, [pc, #628]	@ (8000b68 <main+0x290>)
- 80008f2:	f7ff fc81 	bl	80001f8 <_ZN16GpioConfigurator15GpioClockEnableEP12GPIO_TypeDef>
- 80008f6:	210d      	movs	r1, #13
- 80008f8:	489b      	ldr	r0, [pc, #620]	@ (8000b68 <main+0x290>)
- 80008fa:	f7ff fca9 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
- 80008fe:	4a9b      	ldr	r2, [pc, #620]	@ (8000b6c <main+0x294>)
- 8000900:	489b      	ldr	r0, [pc, #620]	@ (8000b70 <main+0x298>)
- 8000902:	6853      	ldr	r3, [r2, #4]
- 8000904:	f24a 0501 	movw	r5, #40961	@ 0xa001
- 8000908:	f023 030f 	bic.w	r3, r3, #15
- 800090c:	f043 030b 	orr.w	r3, r3, #11
- 8000910:	6053      	str	r3, [r2, #4]
- 8000912:	f7ff ff4b 	bl	80007ac <_ZN9LcdScreen8LcdPrintEPc>
- 8000916:	f7ff fd19 	bl	800034c <_ZN7I2cRxTx4InitEv>
- 800091a:	230c      	movs	r3, #12
- 800091c:	f88d 3007 	strb.w	r3, [sp, #7]
- 8000920:	f89d 3007 	ldrb.w	r3, [sp, #7]
- 8000924:	2b0c      	cmp	r3, #12
- 8000926:	f040 8133 	bne.w	8000b90 <main+0x2b8>
- 800092a:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
- 800092e:	f7ff fc57 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
- 8000932:	f7ff fd26 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
- 8000936:	20b8      	movs	r0, #184	@ 0xb8
- 8000938:	f7ff fd41 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 800093c:	2001      	movs	r0, #1
- 800093e:	f7ff fd57 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000942:	f44f 7048 	mov.w	r0, #800	@ 0x320
- 8000946:	f7ff fc3f 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 800094a:	f7ff fd29 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
- 800094e:	200a      	movs	r0, #10
- 8000950:	f7ff fc46 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
- 8000954:	f7ff fd15 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
- 8000958:	20b8      	movs	r0, #184	@ 0xb8
- 800095a:	f7ff fd30 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 800095e:	2001      	movs	r0, #1
- 8000960:	f7ff fd46 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000964:	b110      	cbz	r0, 800096c <main+0x94>
- 8000966:	f7ff fd1b 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
- 800096a:	e7d9      	b.n	8000920 <main+0x48>
- 800096c:	2003      	movs	r0, #3
- 800096e:	f7ff fd26 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000972:	2001      	movs	r0, #1
- 8000974:	f7ff fd3c 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000978:	2800      	cmp	r0, #0
- 800097a:	d1f4      	bne.n	8000966 <main+0x8e>
- 800097c:	f7ff fd1f 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000980:	2001      	movs	r0, #1
- 8000982:	f7ff fd35 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000986:	2800      	cmp	r0, #0
- 8000988:	d1ed      	bne.n	8000966 <main+0x8e>
- 800098a:	2004      	movs	r0, #4
- 800098c:	f7ff fd17 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000990:	2001      	movs	r0, #1
- 8000992:	f7ff fd2d 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000996:	2800      	cmp	r0, #0
- 8000998:	d1e5      	bne.n	8000966 <main+0x8e>
+0800091c <main>:
+ 800091c:	e92d 47ff 	stmdb	sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, lr}
+ 8000920:	a801      	add	r0, sp, #4
+ 8000922:	f7ff ffb9 	bl	8000898 <_Z10InitClocksv>
+ 8000926:	f7ff ffed 	bl	8000904 <_Z9InitPortsv>
+ 800092a:	f7ff ffaf 	bl	800088c <_ZN12PowerControlC1Ev>
+ 800092e:	a801      	add	r0, sp, #4
+ 8000930:	f7ff ff8a 	bl	8000848 <_ZN12PowerControl9PowerHoldEv>
+ 8000934:	f240 50dc 	movw	r0, #1500	@ 0x5dc
+ 8000938:	f7ff fc52 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
+ 800093c:	f7ff fe8a 	bl	8000654 <_ZN9LcdScreen7LcdInitEv>
+ 8000940:	489d      	ldr	r0, [pc, #628]	@ (8000bb8 <main+0x29c>)
+ 8000942:	f7ff fc59 	bl	80001f8 <_ZN16GpioConfigurator15GpioClockEnableEP12GPIO_TypeDef>
+ 8000946:	210d      	movs	r1, #13
+ 8000948:	489b      	ldr	r0, [pc, #620]	@ (8000bb8 <main+0x29c>)
+ 800094a:	f7ff fc81 	bl	8000250 <_ZN16GpioConfigurator18SetGpioOutPushPullEP12GPIO_TypeDefh>
+ 800094e:	4a9b      	ldr	r2, [pc, #620]	@ (8000bbc <main+0x2a0>)
+ 8000950:	489b      	ldr	r0, [pc, #620]	@ (8000bc0 <main+0x2a4>)
+ 8000952:	6853      	ldr	r3, [r2, #4]
+ 8000954:	f24a 0501 	movw	r5, #40961	@ 0xa001
+ 8000958:	f023 030f 	bic.w	r3, r3, #15
+ 800095c:	f043 030b 	orr.w	r3, r3, #11
+ 8000960:	6053      	str	r3, [r2, #4]
+ 8000962:	f7ff ff1d 	bl	80007a0 <_ZN9LcdScreen8LcdPrintEPc>
+ 8000966:	f7ff fcf1 	bl	800034c <_ZN7I2cRxTx4InitEv>
+ 800096a:	230c      	movs	r3, #12
+ 800096c:	f88d 3007 	strb.w	r3, [sp, #7]
+ 8000970:	f89d 3007 	ldrb.w	r3, [sp, #7]
+ 8000974:	2b0c      	cmp	r3, #12
+ 8000976:	f040 8133 	bne.w	8000be0 <main+0x2c4>
+ 800097a:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
+ 800097e:	f7ff fc2f 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8000982:	f7ff fcfe 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
+ 8000986:	20b8      	movs	r0, #184	@ 0xb8
+ 8000988:	f7ff fd19 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 800098c:	2001      	movs	r0, #1
+ 800098e:	f7ff fd2f 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000992:	f44f 7048 	mov.w	r0, #800	@ 0x320
+ 8000996:	f7ff fc17 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
  800099a:	f7ff fd01 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
- 800099e:	200f      	movs	r0, #15
+ 800099e:	200a      	movs	r0, #10
  80009a0:	f7ff fc1e 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
  80009a4:	f7ff fced 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
- 80009a8:	20b9      	movs	r0, #185	@ 0xb9
+ 80009a8:	20b8      	movs	r0, #184	@ 0xb8
  80009aa:	f7ff fd08 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
  80009ae:	2001      	movs	r0, #1
  80009b0:	f7ff fd1e 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 80009b4:	4604      	mov	r4, r0
- 80009b6:	2800      	cmp	r0, #0
- 80009b8:	d1d5      	bne.n	8000966 <main+0x8e>
- 80009ba:	ae02      	add	r6, sp, #8
- 80009bc:	46b0      	mov	r8, r6
- 80009be:	4637      	mov	r7, r6
- 80009c0:	9002      	str	r0, [sp, #8]
- 80009c2:	6070      	str	r0, [r6, #4]
- 80009c4:	f7ff fd2c 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
- 80009c8:	2c07      	cmp	r4, #7
- 80009ca:	f807 0b01 	strb.w	r0, [r7], #1
- 80009ce:	bf14      	ite	ne
- 80009d0:	2000      	movne	r0, #0
- 80009d2:	2001      	moveq	r0, #1
- 80009d4:	f7ff fd0c 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 80009d8:	b380      	cbz	r0, 8000a3c <main+0x164>
- 80009da:	2c07      	cmp	r4, #7
- 80009dc:	bf08      	it	eq
- 80009de:	2408      	moveq	r4, #8
- 80009e0:	f7ff fcde 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
- 80009e4:	f7ff feb2 	bl	800074c <_ZN9LcdScreen8LcdClearEv>
- 80009e8:	2100      	movs	r1, #0
- 80009ea:	4608      	mov	r0, r1
- 80009ec:	f7ff febb 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 80009f0:	2c08      	cmp	r4, #8
- 80009f2:	f040 8099 	bne.w	8000b28 <main+0x250>
- 80009f6:	2706      	movs	r7, #6
- 80009f8:	f64f 73ff 	movw	r3, #65535	@ 0xffff
- 80009fc:	f8bd 100e 	ldrh.w	r1, [sp, #14]
- 8000a00:	f816 2b01 	ldrb.w	r2, [r6], #1
- 8000a04:	4053      	eors	r3, r2
- 8000a06:	2208      	movs	r2, #8
- 8000a08:	f003 0001 	and.w	r0, r3, #1
- 8000a0c:	085b      	lsrs	r3, r3, #1
- 8000a0e:	b108      	cbz	r0, 8000a14 <main+0x13c>
- 8000a10:	406b      	eors	r3, r5
- 8000a12:	b29b      	uxth	r3, r3
- 8000a14:	3a01      	subs	r2, #1
- 8000a16:	f012 02ff 	ands.w	r2, r2, #255	@ 0xff
- 8000a1a:	d1f5      	bne.n	8000a08 <main+0x130>
- 8000a1c:	3f01      	subs	r7, #1
- 8000a1e:	f017 07ff 	ands.w	r7, r7, #255	@ 0xff
- 8000a22:	d1ed      	bne.n	8000a00 <main+0x128>
- 8000a24:	4299      	cmp	r1, r3
- 8000a26:	d00e      	beq.n	8000a46 <main+0x16e>
- 8000a28:	f7ff fe90 	bl	800074c <_ZN9LcdScreen8LcdClearEv>
- 8000a2c:	4638      	mov	r0, r7
- 8000a2e:	4639      	mov	r1, r7
- 8000a30:	f7ff fe99 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000a34:	484f      	ldr	r0, [pc, #316]	@ (8000b74 <main+0x29c>)
- 8000a36:	f7ff feb9 	bl	80007ac <_ZN9LcdScreen8LcdPrintEPc>
- 8000a3a:	e771      	b.n	8000920 <main+0x48>
- 8000a3c:	3401      	adds	r4, #1
- 8000a3e:	b2e4      	uxtb	r4, r4
+ 80009b4:	b110      	cbz	r0, 80009bc <main+0xa0>
+ 80009b6:	f7ff fcf3 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
+ 80009ba:	e7d9      	b.n	8000970 <main+0x54>
+ 80009bc:	2003      	movs	r0, #3
+ 80009be:	f7ff fcfe 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 80009c2:	2001      	movs	r0, #1
+ 80009c4:	f7ff fd14 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 80009c8:	2800      	cmp	r0, #0
+ 80009ca:	d1f4      	bne.n	80009b6 <main+0x9a>
+ 80009cc:	f7ff fcf7 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 80009d0:	2001      	movs	r0, #1
+ 80009d2:	f7ff fd0d 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 80009d6:	2800      	cmp	r0, #0
+ 80009d8:	d1ed      	bne.n	80009b6 <main+0x9a>
+ 80009da:	2004      	movs	r0, #4
+ 80009dc:	f7ff fcef 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 80009e0:	2001      	movs	r0, #1
+ 80009e2:	f7ff fd05 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 80009e6:	2800      	cmp	r0, #0
+ 80009e8:	d1e5      	bne.n	80009b6 <main+0x9a>
+ 80009ea:	f7ff fcd9 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
+ 80009ee:	200f      	movs	r0, #15
+ 80009f0:	f7ff fbf6 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
+ 80009f4:	f7ff fcc5 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
+ 80009f8:	20b9      	movs	r0, #185	@ 0xb9
+ 80009fa:	f7ff fce0 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 80009fe:	2001      	movs	r0, #1
+ 8000a00:	f7ff fcf6 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000a04:	4604      	mov	r4, r0
+ 8000a06:	2800      	cmp	r0, #0
+ 8000a08:	d1d5      	bne.n	80009b6 <main+0x9a>
+ 8000a0a:	ae02      	add	r6, sp, #8
+ 8000a0c:	46b0      	mov	r8, r6
+ 8000a0e:	4637      	mov	r7, r6
+ 8000a10:	9002      	str	r0, [sp, #8]
+ 8000a12:	6070      	str	r0, [r6, #4]
+ 8000a14:	f7ff fd04 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
+ 8000a18:	2c07      	cmp	r4, #7
+ 8000a1a:	f807 0b01 	strb.w	r0, [r7], #1
+ 8000a1e:	bf14      	ite	ne
+ 8000a20:	2000      	movne	r0, #0
+ 8000a22:	2001      	moveq	r0, #1
+ 8000a24:	f7ff fce4 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000a28:	b380      	cbz	r0, 8000a8c <main+0x170>
+ 8000a2a:	2c07      	cmp	r4, #7
+ 8000a2c:	bf08      	it	eq
+ 8000a2e:	2408      	moveq	r4, #8
+ 8000a30:	f7ff fcb6 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
+ 8000a34:	f7ff fe84 	bl	8000740 <_ZN9LcdScreen8LcdClearEv>
+ 8000a38:	2100      	movs	r1, #0
+ 8000a3a:	4608      	mov	r0, r1
+ 8000a3c:	f7ff fe8d 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
  8000a40:	2c08      	cmp	r4, #8
- 8000a42:	d1bf      	bne.n	80009c4 <main+0xec>
- 8000a44:	e7cc      	b.n	80009e0 <main+0x108>
- 8000a46:	f8bd 800c 	ldrh.w	r8, [sp, #12]
- 8000a4a:	f8bd 600a 	ldrh.w	r6, [sp, #10]
- 8000a4e:	f7ff fe7d 	bl	800074c <_ZN9LcdScreen8LcdClearEv>
- 8000a52:	4639      	mov	r1, r7
- 8000a54:	4638      	mov	r0, r7
- 8000a56:	f7ff fe86 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000a5a:	fa98 f898 	rev16.w	r8, r8
- 8000a5e:	4846      	ldr	r0, [pc, #280]	@ (8000b78 <main+0x2a0>)
- 8000a60:	f7ff fea4 	bl	80007ac <_ZN9LcdScreen8LcdPrintEPc>
- 8000a64:	ba76      	rev16	r6, r6
- 8000a66:	f418 4f00 	tst.w	r8, #32768	@ 0x8000
- 8000a6a:	b2b6      	uxth	r6, r6
- 8000a6c:	fa1f f488 	uxth.w	r4, r8
- 8000a70:	d002      	beq.n	8000a78 <main+0x1a0>
- 8000a72:	4842      	ldr	r0, [pc, #264]	@ (8000b7c <main+0x2a4>)
- 8000a74:	f7ff fe9a 	bl	80007ac <_ZN9LcdScreen8LcdPrintEPc>
- 8000a78:	f242 7310 	movw	r3, #10000	@ 0x2710
- 8000a7c:	f3c4 040e 	ubfx	r4, r4, #0, #15
- 8000a80:	fbb4 f2f3 	udiv	r2, r4, r3
- 8000a84:	f44f 777a 	mov.w	r7, #1000	@ 0x3e8
- 8000a88:	fb03 4412 	mls	r4, r3, r2, r4
- 8000a8c:	b2a4      	uxth	r4, r4
- 8000a8e:	fbb4 f8f7 	udiv	r8, r4, r7
- 8000a92:	fa5f f088 	uxtb.w	r0, r8
- 8000a96:	fb07 4418 	mls	r4, r7, r8, r4
- 8000a9a:	f04f 0864 	mov.w	r8, #100	@ 0x64
- 8000a9e:	b2a4      	uxth	r4, r4
- 8000aa0:	f7ff fecf 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000aa4:	fbb4 f9f8 	udiv	r9, r4, r8
- 8000aa8:	fa5f f089 	uxtb.w	r0, r9
- 8000aac:	fb08 4419 	mls	r4, r8, r9, r4
- 8000ab0:	f04f 090a 	mov.w	r9, #10
- 8000ab4:	b2a4      	uxth	r4, r4
- 8000ab6:	f7ff fec4 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000aba:	fbb4 faf9 	udiv	sl, r4, r9
- 8000abe:	fa5f f08a 	uxtb.w	r0, sl
- 8000ac2:	f7ff febe 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000ac6:	482e      	ldr	r0, [pc, #184]	@ (8000b80 <main+0x2a8>)
- 8000ac8:	f7ff fe70 	bl	80007ac <_ZN9LcdScreen8LcdPrintEPc>
- 8000acc:	fb09 401a 	mls	r0, r9, sl, r4
- 8000ad0:	b2c0      	uxtb	r0, r0
- 8000ad2:	f7ff feb6 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000ad6:	20df      	movs	r0, #223	@ 0xdf
- 8000ad8:	f7ff fe5a 	bl	8000790 <_ZN9LcdScreen12LcdPrintCharEh>
- 8000adc:	2101      	movs	r1, #1
- 8000ade:	2000      	movs	r0, #0
- 8000ae0:	f7ff fe41 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000ae4:	4827      	ldr	r0, [pc, #156]	@ (8000b84 <main+0x2ac>)
- 8000ae6:	f7ff fe61 	bl	80007ac <_ZN9LcdScreen8LcdPrintEPc>
- 8000aea:	fbb6 f4f7 	udiv	r4, r6, r7
- 8000aee:	fb07 6614 	mls	r6, r7, r4, r6
- 8000af2:	b2e0      	uxtb	r0, r4
- 8000af4:	b2b6      	uxth	r6, r6
- 8000af6:	f7ff fea4 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000afa:	fbb6 f4f8 	udiv	r4, r6, r8
- 8000afe:	fb08 6614 	mls	r6, r8, r4, r6
- 8000b02:	b2e0      	uxtb	r0, r4
- 8000b04:	b2b6      	uxth	r6, r6
- 8000b06:	f7ff fe9c 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000b0a:	fbb6 f4f9 	udiv	r4, r6, r9
- 8000b0e:	b2e0      	uxtb	r0, r4
- 8000b10:	f7ff fe97 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000b14:	481a      	ldr	r0, [pc, #104]	@ (8000b80 <main+0x2a8>)
- 8000b16:	f7ff fe49 	bl	80007ac <_ZN9LcdScreen8LcdPrintEPc>
- 8000b1a:	fb09 6014 	mls	r0, r9, r4, r6
- 8000b1e:	b2c0      	uxtb	r0, r0
- 8000b20:	f7ff fe8f 	bl	8000842 <_ZN9LcdScreen13LcdPrintDigitEh>
- 8000b24:	4818      	ldr	r0, [pc, #96]	@ (8000b88 <main+0x2b0>)
- 8000b26:	e786      	b.n	8000a36 <main+0x15e>
- 8000b28:	b92c      	cbnz	r4, 8000b36 <main+0x25e>
- 8000b2a:	4620      	mov	r0, r4
- 8000b2c:	4621      	mov	r1, r4
- 8000b2e:	f7ff fe1a 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000b32:	4816      	ldr	r0, [pc, #88]	@ (8000b8c <main+0x2b4>)
- 8000b34:	e77f      	b.n	8000a36 <main+0x15e>
- 8000b36:	2700      	movs	r7, #0
- 8000b38:	3701      	adds	r7, #1
- 8000b3a:	f818 0b01 	ldrb.w	r0, [r8], #1
- 8000b3e:	b2ff      	uxtb	r7, r7
- 8000b40:	f7ff fe68 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000b44:	2f04      	cmp	r7, #4
- 8000b46:	d001      	beq.n	8000b4c <main+0x274>
- 8000b48:	42bc      	cmp	r4, r7
- 8000b4a:	d1f5      	bne.n	8000b38 <main+0x260>
- 8000b4c:	2101      	movs	r1, #1
- 8000b4e:	2000      	movs	r0, #0
- 8000b50:	f7ff fe09 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000b54:	2704      	movs	r7, #4
- 8000b56:	b2fb      	uxtb	r3, r7
- 8000b58:	42a3      	cmp	r3, r4
- 8000b5a:	f4bf aee1 	bcs.w	8000920 <main+0x48>
- 8000b5e:	5df0      	ldrb	r0, [r6, r7]
- 8000b60:	f7ff fe58 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000b64:	3701      	adds	r7, #1
- 8000b66:	e7f6      	b.n	8000b56 <main+0x27e>
- 8000b68:	40011000 	.word	0x40011000
- 8000b6c:	40010800 	.word	0x40010800
- 8000b70:	08000e1e 	.word	0x08000e1e
- 8000b74:	08000e27 	.word	0x08000e27
- 8000b78:	08000e2f 	.word	0x08000e2f
- 8000b7c:	08000e32 	.word	0x08000e32
- 8000b80:	08000e34 	.word	0x08000e34
- 8000b84:	08000e36 	.word	0x08000e36
- 8000b88:	08000e39 	.word	0x08000e39
- 8000b8c:	08000e3b 	.word	0x08000e3b
- 8000b90:	f7ff fbdc 	bl	800034c <_ZN7I2cRxTx4InitEv>
- 8000b94:	2400      	movs	r4, #0
- 8000b96:	f7ff fbf4 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
- 8000b9a:	20b8      	movs	r0, #184	@ 0xb8
- 8000b9c:	f7ff fc0f 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000ba0:	2001      	movs	r0, #1
- 8000ba2:	f7ff fc25 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000ba6:	f44f 7048 	mov.w	r0, #800	@ 0x320
- 8000baa:	f7ff fb0d 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000bae:	f7ff fbf7 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
- 8000bb2:	f240 50dc 	movw	r0, #1500	@ 0x5dc
- 8000bb6:	f7ff fb07 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000bba:	f7ff fbe2 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
- 8000bbe:	20b8      	movs	r0, #184	@ 0xb8
- 8000bc0:	f7ff fbfd 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000bc4:	2000      	movs	r0, #0
- 8000bc6:	f7ff fc13 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000bca:	2003      	movs	r0, #3
- 8000bcc:	f7ff fbf7 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000bd0:	2000      	movs	r0, #0
- 8000bd2:	f7ff fc0d 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000bd6:	2000      	movs	r0, #0
- 8000bd8:	f7ff fbf1 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000bdc:	2000      	movs	r0, #0
- 8000bde:	f7ff fc07 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000be2:	2004      	movs	r0, #4
- 8000be4:	f7ff fbeb 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000be8:	2000      	movs	r0, #0
- 8000bea:	f7ff fc01 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000bee:	f7ff fbd7 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
- 8000bf2:	f643 2098 	movw	r0, #15000	@ 0x3a98
- 8000bf6:	f7ff fae7 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000bfa:	f7ff fbc2 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
- 8000bfe:	20b9      	movs	r0, #185	@ 0xb9
- 8000c00:	f7ff fbdd 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000c04:	2000      	movs	r0, #0
- 8000c06:	f7ff fbf3 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000c0a:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
- 8000c0e:	f7ff fadb 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000c12:	2003      	movs	r0, #3
- 8000c14:	f7ff fbd3 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000c18:	2000      	movs	r0, #0
- 8000c1a:	f7ff fbe9 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000c1e:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
- 8000c22:	f7ff fad1 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000a42:	f040 8099 	bne.w	8000b78 <main+0x25c>
+ 8000a46:	2706      	movs	r7, #6
+ 8000a48:	f64f 73ff 	movw	r3, #65535	@ 0xffff
+ 8000a4c:	f8bd 100e 	ldrh.w	r1, [sp, #14]
+ 8000a50:	f816 2b01 	ldrb.w	r2, [r6], #1
+ 8000a54:	4053      	eors	r3, r2
+ 8000a56:	2208      	movs	r2, #8
+ 8000a58:	f003 0001 	and.w	r0, r3, #1
+ 8000a5c:	085b      	lsrs	r3, r3, #1
+ 8000a5e:	b108      	cbz	r0, 8000a64 <main+0x148>
+ 8000a60:	406b      	eors	r3, r5
+ 8000a62:	b29b      	uxth	r3, r3
+ 8000a64:	3a01      	subs	r2, #1
+ 8000a66:	f012 02ff 	ands.w	r2, r2, #255	@ 0xff
+ 8000a6a:	d1f5      	bne.n	8000a58 <main+0x13c>
+ 8000a6c:	3f01      	subs	r7, #1
+ 8000a6e:	f017 07ff 	ands.w	r7, r7, #255	@ 0xff
+ 8000a72:	d1ed      	bne.n	8000a50 <main+0x134>
+ 8000a74:	4299      	cmp	r1, r3
+ 8000a76:	d00e      	beq.n	8000a96 <main+0x17a>
+ 8000a78:	f7ff fe62 	bl	8000740 <_ZN9LcdScreen8LcdClearEv>
+ 8000a7c:	4638      	mov	r0, r7
+ 8000a7e:	4639      	mov	r1, r7
+ 8000a80:	f7ff fe6b 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000a84:	484f      	ldr	r0, [pc, #316]	@ (8000bc4 <main+0x2a8>)
+ 8000a86:	f7ff fe8b 	bl	80007a0 <_ZN9LcdScreen8LcdPrintEPc>
+ 8000a8a:	e771      	b.n	8000970 <main+0x54>
+ 8000a8c:	3401      	adds	r4, #1
+ 8000a8e:	b2e4      	uxtb	r4, r4
+ 8000a90:	2c08      	cmp	r4, #8
+ 8000a92:	d1bf      	bne.n	8000a14 <main+0xf8>
+ 8000a94:	e7cc      	b.n	8000a30 <main+0x114>
+ 8000a96:	f8bd 800c 	ldrh.w	r8, [sp, #12]
+ 8000a9a:	f8bd 600a 	ldrh.w	r6, [sp, #10]
+ 8000a9e:	f7ff fe4f 	bl	8000740 <_ZN9LcdScreen8LcdClearEv>
+ 8000aa2:	4639      	mov	r1, r7
+ 8000aa4:	4638      	mov	r0, r7
+ 8000aa6:	f7ff fe58 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000aaa:	fa98 f898 	rev16.w	r8, r8
+ 8000aae:	4846      	ldr	r0, [pc, #280]	@ (8000bc8 <main+0x2ac>)
+ 8000ab0:	f7ff fe76 	bl	80007a0 <_ZN9LcdScreen8LcdPrintEPc>
+ 8000ab4:	ba76      	rev16	r6, r6
+ 8000ab6:	f418 4f00 	tst.w	r8, #32768	@ 0x8000
+ 8000aba:	b2b6      	uxth	r6, r6
+ 8000abc:	fa1f f488 	uxth.w	r4, r8
+ 8000ac0:	d002      	beq.n	8000ac8 <main+0x1ac>
+ 8000ac2:	4842      	ldr	r0, [pc, #264]	@ (8000bcc <main+0x2b0>)
+ 8000ac4:	f7ff fe6c 	bl	80007a0 <_ZN9LcdScreen8LcdPrintEPc>
+ 8000ac8:	f242 7310 	movw	r3, #10000	@ 0x2710
+ 8000acc:	f3c4 040e 	ubfx	r4, r4, #0, #15
+ 8000ad0:	fbb4 f2f3 	udiv	r2, r4, r3
+ 8000ad4:	f44f 777a 	mov.w	r7, #1000	@ 0x3e8
+ 8000ad8:	fb03 4412 	mls	r4, r3, r2, r4
+ 8000adc:	b2a4      	uxth	r4, r4
+ 8000ade:	fbb4 f8f7 	udiv	r8, r4, r7
+ 8000ae2:	fa5f f088 	uxtb.w	r0, r8
+ 8000ae6:	fb07 4418 	mls	r4, r7, r8, r4
+ 8000aea:	f04f 0864 	mov.w	r8, #100	@ 0x64
+ 8000aee:	b2a4      	uxth	r4, r4
+ 8000af0:	f7ff fea1 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000af4:	fbb4 f9f8 	udiv	r9, r4, r8
+ 8000af8:	fa5f f089 	uxtb.w	r0, r9
+ 8000afc:	fb08 4419 	mls	r4, r8, r9, r4
+ 8000b00:	f04f 090a 	mov.w	r9, #10
+ 8000b04:	b2a4      	uxth	r4, r4
+ 8000b06:	f7ff fe96 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000b0a:	fbb4 faf9 	udiv	sl, r4, r9
+ 8000b0e:	fa5f f08a 	uxtb.w	r0, sl
+ 8000b12:	f7ff fe90 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000b16:	482e      	ldr	r0, [pc, #184]	@ (8000bd0 <main+0x2b4>)
+ 8000b18:	f7ff fe42 	bl	80007a0 <_ZN9LcdScreen8LcdPrintEPc>
+ 8000b1c:	fb09 401a 	mls	r0, r9, sl, r4
+ 8000b20:	b2c0      	uxtb	r0, r0
+ 8000b22:	f7ff fe88 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000b26:	20df      	movs	r0, #223	@ 0xdf
+ 8000b28:	f7ff fe2c 	bl	8000784 <_ZN9LcdScreen12LcdPrintCharEh>
+ 8000b2c:	2101      	movs	r1, #1
+ 8000b2e:	2000      	movs	r0, #0
+ 8000b30:	f7ff fe13 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000b34:	4827      	ldr	r0, [pc, #156]	@ (8000bd4 <main+0x2b8>)
+ 8000b36:	f7ff fe33 	bl	80007a0 <_ZN9LcdScreen8LcdPrintEPc>
+ 8000b3a:	fbb6 f4f7 	udiv	r4, r6, r7
+ 8000b3e:	fb07 6614 	mls	r6, r7, r4, r6
+ 8000b42:	b2e0      	uxtb	r0, r4
+ 8000b44:	b2b6      	uxth	r6, r6
+ 8000b46:	f7ff fe76 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000b4a:	fbb6 f4f8 	udiv	r4, r6, r8
+ 8000b4e:	fb08 6614 	mls	r6, r8, r4, r6
+ 8000b52:	b2e0      	uxtb	r0, r4
+ 8000b54:	b2b6      	uxth	r6, r6
+ 8000b56:	f7ff fe6e 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000b5a:	fbb6 f4f9 	udiv	r4, r6, r9
+ 8000b5e:	b2e0      	uxtb	r0, r4
+ 8000b60:	f7ff fe69 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000b64:	481a      	ldr	r0, [pc, #104]	@ (8000bd0 <main+0x2b4>)
+ 8000b66:	f7ff fe1b 	bl	80007a0 <_ZN9LcdScreen8LcdPrintEPc>
+ 8000b6a:	fb09 6014 	mls	r0, r9, r4, r6
+ 8000b6e:	b2c0      	uxtb	r0, r0
+ 8000b70:	f7ff fe61 	bl	8000836 <_ZN9LcdScreen13LcdPrintDigitEh>
+ 8000b74:	4818      	ldr	r0, [pc, #96]	@ (8000bd8 <main+0x2bc>)
+ 8000b76:	e786      	b.n	8000a86 <main+0x16a>
+ 8000b78:	b92c      	cbnz	r4, 8000b86 <main+0x26a>
+ 8000b7a:	4620      	mov	r0, r4
+ 8000b7c:	4621      	mov	r1, r4
+ 8000b7e:	f7ff fdec 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000b82:	4816      	ldr	r0, [pc, #88]	@ (8000bdc <main+0x2c0>)
+ 8000b84:	e77f      	b.n	8000a86 <main+0x16a>
+ 8000b86:	2700      	movs	r7, #0
+ 8000b88:	3701      	adds	r7, #1
+ 8000b8a:	f818 0b01 	ldrb.w	r0, [r8], #1
+ 8000b8e:	b2ff      	uxtb	r7, r7
+ 8000b90:	f7ff fe3a 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000b94:	2f04      	cmp	r7, #4
+ 8000b96:	d001      	beq.n	8000b9c <main+0x280>
+ 8000b98:	42bc      	cmp	r4, r7
+ 8000b9a:	d1f5      	bne.n	8000b88 <main+0x26c>
+ 8000b9c:	2101      	movs	r1, #1
+ 8000b9e:	2000      	movs	r0, #0
+ 8000ba0:	f7ff fddb 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000ba4:	2704      	movs	r7, #4
+ 8000ba6:	b2fb      	uxtb	r3, r7
+ 8000ba8:	42a3      	cmp	r3, r4
+ 8000baa:	f4bf aee1 	bcs.w	8000970 <main+0x54>
+ 8000bae:	5df0      	ldrb	r0, [r6, r7]
+ 8000bb0:	f7ff fe2a 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000bb4:	3701      	adds	r7, #1
+ 8000bb6:	e7f6      	b.n	8000ba6 <main+0x28a>
+ 8000bb8:	40011000 	.word	0x40011000
+ 8000bbc:	40010800 	.word	0x40010800
+ 8000bc0:	08000e6e 	.word	0x08000e6e
+ 8000bc4:	08000e77 	.word	0x08000e77
+ 8000bc8:	08000e7f 	.word	0x08000e7f
+ 8000bcc:	08000e82 	.word	0x08000e82
+ 8000bd0:	08000e84 	.word	0x08000e84
+ 8000bd4:	08000e86 	.word	0x08000e86
+ 8000bd8:	08000e89 	.word	0x08000e89
+ 8000bdc:	08000e8b 	.word	0x08000e8b
+ 8000be0:	f7ff fbb4 	bl	800034c <_ZN7I2cRxTx4InitEv>
+ 8000be4:	2400      	movs	r4, #0
+ 8000be6:	f7ff fbcc 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
+ 8000bea:	20b8      	movs	r0, #184	@ 0xb8
+ 8000bec:	f7ff fbe7 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 8000bf0:	2001      	movs	r0, #1
+ 8000bf2:	f7ff fbfd 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000bf6:	f44f 7048 	mov.w	r0, #800	@ 0x320
+ 8000bfa:	f7ff fae5 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000bfe:	f7ff fbcf 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
+ 8000c02:	f240 50dc 	movw	r0, #1500	@ 0x5dc
+ 8000c06:	f7ff fadf 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000c0a:	f7ff fbba 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
+ 8000c0e:	20b8      	movs	r0, #184	@ 0xb8
+ 8000c10:	f7ff fbd5 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 8000c14:	2000      	movs	r0, #0
+ 8000c16:	f7ff fbeb 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000c1a:	2003      	movs	r0, #3
+ 8000c1c:	f7ff fbcf 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 8000c20:	2000      	movs	r0, #0
+ 8000c22:	f7ff fbe5 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
  8000c26:	2000      	movs	r0, #0
  8000c28:	f7ff fbc9 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
  8000c2c:	2000      	movs	r0, #0
  8000c2e:	f7ff fbdf 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000c32:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
- 8000c36:	f7ff fac7 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000c3a:	2004      	movs	r0, #4
- 8000c3c:	f7ff fbbf 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
- 8000c40:	2000      	movs	r0, #0
- 8000c42:	f7ff fbd5 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000c46:	f643 2098 	movw	r0, #15000	@ 0x3a98
- 8000c4a:	f7ff fabd 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000c4e:	f7ff fbe7 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
- 8000c52:	4682      	mov	sl, r0
+ 8000c32:	2004      	movs	r0, #4
+ 8000c34:	f7ff fbc3 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
+ 8000c38:	2000      	movs	r0, #0
+ 8000c3a:	f7ff fbd9 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000c3e:	f7ff fbaf 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
+ 8000c42:	f643 2098 	movw	r0, #15000	@ 0x3a98
+ 8000c46:	f7ff fabf 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000c4a:	f7ff fb9a 	bl	8000382 <_ZN7I2cRxTx14StartConditionEv>
+ 8000c4e:	20b9      	movs	r0, #185	@ 0xb9
+ 8000c50:	f7ff fbb5 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
  8000c54:	2000      	movs	r0, #0
  8000c56:	f7ff fbcb 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
  8000c5a:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8000c5e:	f7ff fab3 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000c62:	f7ff fbdd 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
- 8000c66:	4681      	mov	r9, r0
+ 8000c62:	2003      	movs	r0, #3
+ 8000c64:	f7ff fbab 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
  8000c68:	2000      	movs	r0, #0
  8000c6a:	f7ff fbc1 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
  8000c6e:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8000c72:	f7ff faa9 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000c76:	f7ff fbd3 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
- 8000c7a:	4680      	mov	r8, r0
+ 8000c76:	2000      	movs	r0, #0
+ 8000c78:	f7ff fba1 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
  8000c7c:	2000      	movs	r0, #0
  8000c7e:	f7ff fbb7 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
  8000c82:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8000c86:	f7ff fa9f 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000c8a:	f7ff fbc9 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
- 8000c8e:	4607      	mov	r7, r0
+ 8000c8a:	2004      	movs	r0, #4
+ 8000c8c:	f7ff fb97 	bl	80003be <_ZN7I2cRxTx8SendByteEh>
  8000c90:	2000      	movs	r0, #0
  8000c92:	f7ff fbad 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000c96:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+ 8000c96:	f643 2098 	movw	r0, #15000	@ 0x3a98
  8000c9a:	f7ff fa95 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
  8000c9e:	f7ff fbbf 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
- 8000ca2:	4606      	mov	r6, r0
+ 8000ca2:	4682      	mov	sl, r0
  8000ca4:	2000      	movs	r0, #0
  8000ca6:	f7ff fba3 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
  8000caa:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8000cae:	f7ff fa8b 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
  8000cb2:	f7ff fbb5 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
- 8000cb6:	4605      	mov	r5, r0
+ 8000cb6:	4681      	mov	r9, r0
  8000cb8:	2000      	movs	r0, #0
  8000cba:	f7ff fb99 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
  8000cbe:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8000cc2:	f7ff fa81 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000cc6:	f7ff fb6b 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
- 8000cca:	f24c 3050 	movw	r0, #50000	@ 0xc350
- 8000cce:	f7ff fa7b 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
- 8000cd2:	f7ff fd3b 	bl	800074c <_ZN9LcdScreen8LcdClearEv>
- 8000cd6:	2100      	movs	r1, #0
- 8000cd8:	2006      	movs	r0, #6
- 8000cda:	f7ff fd44 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000cde:	b2e0      	uxtb	r0, r4
- 8000ce0:	f7ff fd98 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000ce4:	2100      	movs	r1, #0
- 8000ce6:	4608      	mov	r0, r1
- 8000ce8:	f7ff fd3d 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000cec:	4650      	mov	r0, sl
- 8000cee:	f7ff fd91 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000cf2:	4648      	mov	r0, r9
- 8000cf4:	f7ff fd8e 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000cf8:	2101      	movs	r1, #1
- 8000cfa:	2000      	movs	r0, #0
- 8000cfc:	f7ff fd33 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000d00:	4640      	mov	r0, r8
- 8000d02:	f7ff fd87 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000d06:	4638      	mov	r0, r7
- 8000d08:	f7ff fd84 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000d0c:	4630      	mov	r0, r6
- 8000d0e:	f7ff fd81 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000d12:	4628      	mov	r0, r5
- 8000d14:	f7ff fd7e 	bl	8000814 <_ZN9LcdScreen11LcdPrintHexEh>
- 8000d18:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
- 8000d1c:	f7ff fa60 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
- 8000d20:	230c      	movs	r3, #12
- 8000d22:	f88d 3008 	strb.w	r3, [sp, #8]
- 8000d26:	f89d 3008 	ldrb.w	r3, [sp, #8]
- 8000d2a:	3401      	adds	r4, #1
- 8000d2c:	2b0c      	cmp	r3, #12
- 8000d2e:	f43f af32 	beq.w	8000b96 <main+0x2be>
- 8000d32:	2400      	movs	r4, #0
- 8000d34:	4d0a      	ldr	r5, [pc, #40]	@ (8000d60 <main+0x488>)
- 8000d36:	f44f 5600 	mov.w	r6, #8192	@ 0x2000
- 8000d3a:	2101      	movs	r1, #1
- 8000d3c:	2000      	movs	r0, #0
- 8000d3e:	f7ff fd12 	bl	8000766 <_ZN9LcdScreen8LcdToPosEhh>
- 8000d42:	4620      	mov	r0, r4
- 8000d44:	f7ff fd3c 	bl	80007c0 <_ZN9LcdScreen14LcdPrintNumberEt>
- 8000d48:	2032      	movs	r0, #50	@ 0x32
- 8000d4a:	616e      	str	r6, [r5, #20]
- 8000d4c:	f7ff fa48 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
- 8000d50:	3401      	adds	r4, #1
- 8000d52:	2032      	movs	r0, #50	@ 0x32
- 8000d54:	612e      	str	r6, [r5, #16]
- 8000d56:	b2a4      	uxth	r4, r4
- 8000d58:	f7ff fa42 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
- 8000d5c:	e7eb      	b.n	8000d36 <main+0x45e>
- 8000d5e:	bf00      	nop
- 8000d60:	40011000 	.word	0x40011000
+ 8000cc6:	f7ff fbab 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
+ 8000cca:	4680      	mov	r8, r0
+ 8000ccc:	2000      	movs	r0, #0
+ 8000cce:	f7ff fb8f 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000cd2:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+ 8000cd6:	f7ff fa77 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000cda:	f7ff fba1 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
+ 8000cde:	4607      	mov	r7, r0
+ 8000ce0:	2000      	movs	r0, #0
+ 8000ce2:	f7ff fb85 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000ce6:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+ 8000cea:	f7ff fa6d 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000cee:	f7ff fb97 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
+ 8000cf2:	4606      	mov	r6, r0
+ 8000cf4:	2000      	movs	r0, #0
+ 8000cf6:	f7ff fb7b 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000cfa:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+ 8000cfe:	f7ff fa63 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000d02:	f7ff fb8d 	bl	8000420 <_ZN7I2cRxTx11RecieveByteEv>
+ 8000d06:	4605      	mov	r5, r0
+ 8000d08:	2000      	movs	r0, #0
+ 8000d0a:	f7ff fb71 	bl	80003f0 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000d0e:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+ 8000d12:	f7ff fa59 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000d16:	f7ff fb43 	bl	80003a0 <_ZN7I2cRxTx13StopConditionEv>
+ 8000d1a:	f24c 3050 	movw	r0, #50000	@ 0xc350
+ 8000d1e:	f7ff fa53 	bl	80001c8 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8000d22:	f7ff fd0d 	bl	8000740 <_ZN9LcdScreen8LcdClearEv>
+ 8000d26:	2100      	movs	r1, #0
+ 8000d28:	2006      	movs	r0, #6
+ 8000d2a:	f7ff fd16 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000d2e:	b2e0      	uxtb	r0, r4
+ 8000d30:	f7ff fd6a 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000d34:	2100      	movs	r1, #0
+ 8000d36:	4608      	mov	r0, r1
+ 8000d38:	f7ff fd0f 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000d3c:	4650      	mov	r0, sl
+ 8000d3e:	f7ff fd63 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000d42:	4648      	mov	r0, r9
+ 8000d44:	f7ff fd60 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000d48:	2101      	movs	r1, #1
+ 8000d4a:	2000      	movs	r0, #0
+ 8000d4c:	f7ff fd05 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000d50:	4640      	mov	r0, r8
+ 8000d52:	f7ff fd59 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000d56:	4638      	mov	r0, r7
+ 8000d58:	f7ff fd56 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000d5c:	4630      	mov	r0, r6
+ 8000d5e:	f7ff fd53 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000d62:	4628      	mov	r0, r5
+ 8000d64:	f7ff fd50 	bl	8000808 <_ZN9LcdScreen11LcdPrintHexEh>
+ 8000d68:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+ 8000d6c:	f7ff fa38 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8000d70:	230c      	movs	r3, #12
+ 8000d72:	f88d 3008 	strb.w	r3, [sp, #8]
+ 8000d76:	f89d 3008 	ldrb.w	r3, [sp, #8]
+ 8000d7a:	3401      	adds	r4, #1
+ 8000d7c:	2b0c      	cmp	r3, #12
+ 8000d7e:	f43f af32 	beq.w	8000be6 <main+0x2ca>
+ 8000d82:	2400      	movs	r4, #0
+ 8000d84:	4d0a      	ldr	r5, [pc, #40]	@ (8000db0 <main+0x494>)
+ 8000d86:	f44f 5600 	mov.w	r6, #8192	@ 0x2000
+ 8000d8a:	2101      	movs	r1, #1
+ 8000d8c:	2000      	movs	r0, #0
+ 8000d8e:	f7ff fce4 	bl	800075a <_ZN9LcdScreen8LcdToPosEhh>
+ 8000d92:	4620      	mov	r0, r4
+ 8000d94:	f7ff fd0e 	bl	80007b4 <_ZN9LcdScreen14LcdPrintNumberEt>
+ 8000d98:	2032      	movs	r0, #50	@ 0x32
+ 8000d9a:	616e      	str	r6, [r5, #20]
+ 8000d9c:	f7ff fa20 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8000da0:	3401      	adds	r4, #1
+ 8000da2:	2032      	movs	r0, #50	@ 0x32
+ 8000da4:	612e      	str	r6, [r5, #16]
+ 8000da6:	b2a4      	uxth	r4, r4
+ 8000da8:	f7ff fa1a 	bl	80001e0 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8000dac:	e7eb      	b.n	8000d86 <main+0x46a>
+ 8000dae:	bf00      	nop
+ 8000db0:	40011000 	.word	0x40011000
 
-08000d64 <Reset_Handler>:
- 8000d64:	480d      	ldr	r0, [pc, #52]	@ (8000d9c <LoopForever+0x2>)
- 8000d66:	4685      	mov	sp, r0
- 8000d68:	f7ff fa0b 	bl	8000182 <SystemInit>
- 8000d6c:	480c      	ldr	r0, [pc, #48]	@ (8000da0 <LoopForever+0x6>)
- 8000d6e:	490d      	ldr	r1, [pc, #52]	@ (8000da4 <LoopForever+0xa>)
- 8000d70:	4a0d      	ldr	r2, [pc, #52]	@ (8000da8 <LoopForever+0xe>)
- 8000d72:	2300      	movs	r3, #0
- 8000d74:	e002      	b.n	8000d7c <LoopCopyDataInit>
+08000db4 <Reset_Handler>:
+ 8000db4:	480d      	ldr	r0, [pc, #52]	@ (8000dec <LoopForever+0x2>)
+ 8000db6:	4685      	mov	sp, r0
+ 8000db8:	f7ff f9e3 	bl	8000182 <SystemInit>
+ 8000dbc:	480c      	ldr	r0, [pc, #48]	@ (8000df0 <LoopForever+0x6>)
+ 8000dbe:	490d      	ldr	r1, [pc, #52]	@ (8000df4 <LoopForever+0xa>)
+ 8000dc0:	4a0d      	ldr	r2, [pc, #52]	@ (8000df8 <LoopForever+0xe>)
+ 8000dc2:	2300      	movs	r3, #0
+ 8000dc4:	e002      	b.n	8000dcc <LoopCopyDataInit>
 
-08000d76 <CopyDataInit>:
- 8000d76:	58d4      	ldr	r4, [r2, r3]
- 8000d78:	50c4      	str	r4, [r0, r3]
- 8000d7a:	3304      	adds	r3, #4
+08000dc6 <CopyDataInit>:
+ 8000dc6:	58d4      	ldr	r4, [r2, r3]
+ 8000dc8:	50c4      	str	r4, [r0, r3]
+ 8000dca:	3304      	adds	r3, #4
 
-08000d7c <LoopCopyDataInit>:
- 8000d7c:	18c4      	adds	r4, r0, r3
- 8000d7e:	428c      	cmp	r4, r1
- 8000d80:	d3f9      	bcc.n	8000d76 <CopyDataInit>
- 8000d82:	4a0a      	ldr	r2, [pc, #40]	@ (8000dac <LoopForever+0x12>)
- 8000d84:	4c0a      	ldr	r4, [pc, #40]	@ (8000db0 <LoopForever+0x16>)
- 8000d86:	2300      	movs	r3, #0
- 8000d88:	e001      	b.n	8000d8e <LoopFillZerobss>
+08000dcc <LoopCopyDataInit>:
+ 8000dcc:	18c4      	adds	r4, r0, r3
+ 8000dce:	428c      	cmp	r4, r1
+ 8000dd0:	d3f9      	bcc.n	8000dc6 <CopyDataInit>
+ 8000dd2:	4a0a      	ldr	r2, [pc, #40]	@ (8000dfc <LoopForever+0x12>)
+ 8000dd4:	4c0a      	ldr	r4, [pc, #40]	@ (8000e00 <LoopForever+0x16>)
+ 8000dd6:	2300      	movs	r3, #0
+ 8000dd8:	e001      	b.n	8000dde <LoopFillZerobss>
 
-08000d8a <FillZerobss>:
- 8000d8a:	6013      	str	r3, [r2, #0]
- 8000d8c:	3204      	adds	r2, #4
+08000dda <FillZerobss>:
+ 8000dda:	6013      	str	r3, [r2, #0]
+ 8000ddc:	3204      	adds	r2, #4
 
-08000d8e <LoopFillZerobss>:
- 8000d8e:	42a2      	cmp	r2, r4
- 8000d90:	d3fb      	bcc.n	8000d8a <FillZerobss>
- 8000d92:	f000 f811 	bl	8000db8 <__libc_init_array>
- 8000d96:	f7ff fd9f 	bl	80008d8 <main>
+08000dde <LoopFillZerobss>:
+ 8000dde:	42a2      	cmp	r2, r4
+ 8000de0:	d3fb      	bcc.n	8000dda <FillZerobss>
+ 8000de2:	f000 f811 	bl	8000e08 <__libc_init_array>
+ 8000de6:	f7ff fd99 	bl	800091c <main>
 
-08000d9a <LoopForever>:
- 8000d9a:	e7fe      	b.n	8000d9a <LoopForever>
- 8000d9c:	20005000 	.word	0x20005000
- 8000da0:	20000000 	.word	0x20000000
- 8000da4:	20000000 	.word	0x20000000
- 8000da8:	08000e4c 	.word	0x08000e4c
- 8000dac:	20000000 	.word	0x20000000
- 8000db0:	2000001c 	.word	0x2000001c
+08000dea <LoopForever>:
+ 8000dea:	e7fe      	b.n	8000dea <LoopForever>
+ 8000dec:	20005000 	.word	0x20005000
+ 8000df0:	20000000 	.word	0x20000000
+ 8000df4:	20000000 	.word	0x20000000
+ 8000df8:	08000e9c 	.word	0x08000e9c
+ 8000dfc:	20000000 	.word	0x20000000
+ 8000e00:	2000001c 	.word	0x2000001c
 
-08000db4 <ADC1_2_IRQHandler>:
- 8000db4:	e7fe      	b.n	8000db4 <ADC1_2_IRQHandler>
+08000e04 <ADC1_2_IRQHandler>:
+ 8000e04:	e7fe      	b.n	8000e04 <ADC1_2_IRQHandler>
 	...
 
-08000db8 <__libc_init_array>:
- 8000db8:	b570      	push	{r4, r5, r6, lr}
- 8000dba:	2600      	movs	r6, #0
- 8000dbc:	4d0c      	ldr	r5, [pc, #48]	@ (8000df0 <__libc_init_array+0x38>)
- 8000dbe:	4c0d      	ldr	r4, [pc, #52]	@ (8000df4 <__libc_init_array+0x3c>)
- 8000dc0:	1b64      	subs	r4, r4, r5
- 8000dc2:	10a4      	asrs	r4, r4, #2
- 8000dc4:	42a6      	cmp	r6, r4
- 8000dc6:	d109      	bne.n	8000ddc <__libc_init_array+0x24>
- 8000dc8:	f000 f81a 	bl	8000e00 <_init>
- 8000dcc:	2600      	movs	r6, #0
- 8000dce:	4d0a      	ldr	r5, [pc, #40]	@ (8000df8 <__libc_init_array+0x40>)
- 8000dd0:	4c0a      	ldr	r4, [pc, #40]	@ (8000dfc <__libc_init_array+0x44>)
- 8000dd2:	1b64      	subs	r4, r4, r5
- 8000dd4:	10a4      	asrs	r4, r4, #2
- 8000dd6:	42a6      	cmp	r6, r4
- 8000dd8:	d105      	bne.n	8000de6 <__libc_init_array+0x2e>
- 8000dda:	bd70      	pop	{r4, r5, r6, pc}
- 8000ddc:	f855 3b04 	ldr.w	r3, [r5], #4
- 8000de0:	4798      	blx	r3
- 8000de2:	3601      	adds	r6, #1
- 8000de4:	e7ee      	b.n	8000dc4 <__libc_init_array+0xc>
- 8000de6:	f855 3b04 	ldr.w	r3, [r5], #4
- 8000dea:	4798      	blx	r3
- 8000dec:	3601      	adds	r6, #1
- 8000dee:	e7f2      	b.n	8000dd6 <__libc_init_array+0x1e>
- 8000df0:	08000e44 	.word	0x08000e44
- 8000df4:	08000e44 	.word	0x08000e44
- 8000df8:	08000e44 	.word	0x08000e44
- 8000dfc:	08000e48 	.word	0x08000e48
+08000e08 <__libc_init_array>:
+ 8000e08:	b570      	push	{r4, r5, r6, lr}
+ 8000e0a:	2600      	movs	r6, #0
+ 8000e0c:	4d0c      	ldr	r5, [pc, #48]	@ (8000e40 <__libc_init_array+0x38>)
+ 8000e0e:	4c0d      	ldr	r4, [pc, #52]	@ (8000e44 <__libc_init_array+0x3c>)
+ 8000e10:	1b64      	subs	r4, r4, r5
+ 8000e12:	10a4      	asrs	r4, r4, #2
+ 8000e14:	42a6      	cmp	r6, r4
+ 8000e16:	d109      	bne.n	8000e2c <__libc_init_array+0x24>
+ 8000e18:	f000 f81a 	bl	8000e50 <_init>
+ 8000e1c:	2600      	movs	r6, #0
+ 8000e1e:	4d0a      	ldr	r5, [pc, #40]	@ (8000e48 <__libc_init_array+0x40>)
+ 8000e20:	4c0a      	ldr	r4, [pc, #40]	@ (8000e4c <__libc_init_array+0x44>)
+ 8000e22:	1b64      	subs	r4, r4, r5
+ 8000e24:	10a4      	asrs	r4, r4, #2
+ 8000e26:	42a6      	cmp	r6, r4
+ 8000e28:	d105      	bne.n	8000e36 <__libc_init_array+0x2e>
+ 8000e2a:	bd70      	pop	{r4, r5, r6, pc}
+ 8000e2c:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8000e30:	4798      	blx	r3
+ 8000e32:	3601      	adds	r6, #1
+ 8000e34:	e7ee      	b.n	8000e14 <__libc_init_array+0xc>
+ 8000e36:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8000e3a:	4798      	blx	r3
+ 8000e3c:	3601      	adds	r6, #1
+ 8000e3e:	e7f2      	b.n	8000e26 <__libc_init_array+0x1e>
+ 8000e40:	08000e94 	.word	0x08000e94
+ 8000e44:	08000e94 	.word	0x08000e94
+ 8000e48:	08000e94 	.word	0x08000e94
+ 8000e4c:	08000e98 	.word	0x08000e98
 
-08000e00 <_init>:
- 8000e00:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8000e02:	bf00      	nop
- 8000e04:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8000e06:	bc08      	pop	{r3}
- 8000e08:	469e      	mov	lr, r3
- 8000e0a:	4770      	bx	lr
+08000e50 <_init>:
+ 8000e50:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000e52:	bf00      	nop
+ 8000e54:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8000e56:	bc08      	pop	{r3}
+ 8000e58:	469e      	mov	lr, r3
+ 8000e5a:	4770      	bx	lr
 
-08000e0c <_fini>:
- 8000e0c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8000e0e:	bf00      	nop
- 8000e10:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8000e12:	bc08      	pop	{r3}
- 8000e14:	469e      	mov	lr, r3
- 8000e16:	4770      	bx	lr
+08000e5c <_fini>:
+ 8000e5c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000e5e:	bf00      	nop
+ 8000e60:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8000e62:	bc08      	pop	{r3}
+ 8000e64:	469e      	mov	lr, r3
+ 8000e66:	4770      	bx	lr

@@ -16,13 +16,13 @@ namespace LcdScreen
 {
 
 #define LCD_PORT		GPIOB
-#define LCD_RS_PIN		8	//PB8
-#define LCD_RW_PIN		9	//PB9
+#define LCD_RS_PIN		9	//PB9
+#define LCD_RW_PIN		8	//PB8
 #define LCD_E_PIN		7	//PB7
-#define LCD_D4_PIN		12	//PB12
-#define LCD_D5_PIN		15	//PB15
+#define LCD_D4_PIN		15	//PB15
+#define LCD_D5_PIN		14	//PB14
 #define LCD_D6_PIN		13	//PB13
-#define LCD_D7_PIN		14	//PB12
+#define LCD_D7_PIN		12	//PB12
 
 void PORTB_CLOCK_ENABLE()
 {

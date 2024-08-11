@@ -21,9 +21,7 @@
 #include "stm32f103xb.h"
 #include "LcdScreen.hpp"
 #include "DelayTimer.hpp"
-#include "PowerControl.hpp"
 #include "GpioConfigurator.hpp"
-
 
 #include "I2cRxTx.hpp"
 
@@ -96,6 +94,17 @@ void InitPorts()
 }
 
 
+
+
+
+class MyClass
+{
+public:
+	MyClass()
+	{
+	};
+private:
+};
 
 
 
@@ -375,10 +384,6 @@ int main(void)
 {
 	InitClocks();
 	InitPorts();
-
-	PowerControl pwCtrl;
-	pwCtrl.PowerHold();
-
 	DelayTimer::DelayMilliSec(1500);	// Wait for power on of LCD
 
 	LcdScreen::LcdInit();

@@ -6,5 +6,6 @@
 "./Src/GpioConfigurator.o"
 "./Src/I2cRxTx.o"
 "./Src/LcdScreen.o"
+"./Src/PowerControl.o"
 "./Src/main.o"
 "./Startup/startup_stm32f103c8tx.o"

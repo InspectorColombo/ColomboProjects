@@ -1,0 +1,20 @@
+/*
+ * PowerControl.cpp
+ *
+ *  Created on: Aug 11, 2024
+ *      Author: Goggy
+ */
+
+#include "PowerControl.hpp"
+
+#define POWER_CONTROL_PORT GPIOA	//
+#define POWER_CONTROL_PIN	10		// PA10
+
+
+namespace PowerControl
+{
+
+
+}
+
+
