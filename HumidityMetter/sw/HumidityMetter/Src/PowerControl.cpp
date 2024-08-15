@@ -25,10 +25,12 @@ PowerControl::PowerControl()
 void PowerControl::PowerHold()
 {
 	POWER_CONTROL_PORT->BSRR |= (1 << POWER_CONTROL_PIN);
+	GpioConfigurator::SetGpioOutPushPull(POWER_CONTROL_PORT, POWER_CONTROL_PIN);
 }
 void PowerControl::PowerUnhold()
 {
 	POWER_CONTROL_PORT->BRR |= (1 << POWER_CONTROL_PIN);
+	GpioConfigurator::SetGpioInFloating(POWER_CONTROL_PORT, POWER_CONTROL_PIN);
 }
 
 void PowerControl::Init()

@@ -1,0 +1,33 @@
+/*
+ * ErrorLed.hpp
+ *
+ *  Created on: Aug 12, 2024
+ *      Author: Goggy
+ */
+
+#ifndef ERRORLED_HPP_
+#define ERRORLED_HPP_
+
+class ErrorLed
+{
+public:
+	enum ErrorType
+	{
+		ET_NO_ERROR,
+		ET_ONE_BLINK,
+		ET_TWO_BLINKS,
+		ET_THREE_BLINKS
+	};
+
+	ErrorLed();
+
+	void ShowError(const ErrorType et) const;
+
+private:
+	void Init() const;
+
+};
+
+
+
+#endif /* ERRORLED_HPP_ */

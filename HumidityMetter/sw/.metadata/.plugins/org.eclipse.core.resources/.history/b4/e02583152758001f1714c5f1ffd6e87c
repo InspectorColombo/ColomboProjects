@@ -1,0 +1,29 @@
+/*
+ * ErrorLed.cpp
+ *
+ *  Created on: Aug 12, 2024
+ *      Author: Goggy
+ */
+
+#include "ErrorLed.hpp"
+
+
+#define ERROR_LED_PORT	GPIOB
+#define ERROR_LED_PIN	4			// PB4 - error led
+
+ErrorLed::ErrorLed()
+{
+	Init();
+}
+
+	void ShowError(const ErrorType et) const;
+
+private:
+	void Init() const;
+
+};
+
+
+
+
+

@@ -1,7 +1,11 @@
-../Src/main.cpp:36:6:void InitClocks()	1
-../Src/main.cpp:69:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	1
-../Src/main.cpp:74:6:void PA_CLOCK_ENABLE()	1
-../Src/main.cpp:79:6:void PB_CLOCK_ENABLE()	1
-../Src/main.cpp:85:6:void PC_CLOCK_ENABLE()	1
-../Src/main.cpp:90:6:void InitPorts()	1
-../Src/main.cpp:374:5:int main()	21
+../Inc/AM2320Sensor.hpp:166:13:AM2320Sensor::ErrorState AM2320Sensor::GetReadData()	10
+../Src/main.cpp:37:6:void InitClocks()	1
+../Src/main.cpp:70:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	1
+../Src/main.cpp:75:6:void PA_CLOCK_ENABLE()	1
+../Src/main.cpp:80:6:void PB_CLOCK_ENABLE()	1
+../Src/main.cpp:86:6:void PC_CLOCK_ENABLE()	1
+../Src/main.cpp:91:6:void InitPorts()	1
+../Src/main.cpp:100:6:void ShowSensorError(const AM2320Sensor&)	5
+../Src/main.cpp:115:6:void ShowSensorTemperature(const AM2320Sensor&)	3
+../Src/main.cpp:135:6:void ShowSensorHumidity(const AM2320Sensor&)	3
+../Src/main.cpp:153:5:int main()	7
