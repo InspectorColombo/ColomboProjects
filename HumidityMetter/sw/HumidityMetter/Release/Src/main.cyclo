@@ -1,4 +1,8 @@
 ../Inc/AM2320Sensor.hpp:166:13:AM2320Sensor::ErrorState AM2320Sensor::GetReadData()	10
+../Inc/AM2320Sensor.hpp:572:7:bool BME280Sensor::ReadBurst(uint8_t, uint8_t*, uint8_t) const	6
+../Inc/AM2320Sensor.hpp:304:7:bool BME280Sensor::ReadCalibrationConstants()	19
+../Inc/AM2320Sensor.hpp:621:7:bool BME280Sensor::WriteBurst(uint8_t, const uint8_t*, uint8_t)	5
+../Inc/AM2320Sensor.hpp:468:7:bool BME280Sensor::ReadProbe()	8
 ../Src/main.cpp:37:6:void InitClocks()	1
 ../Src/main.cpp:70:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	1
 ../Src/main.cpp:75:6:void PA_CLOCK_ENABLE()	1
@@ -8,4 +12,4 @@
 ../Src/main.cpp:100:6:void ShowSensorError(const AM2320Sensor&)	5
 ../Src/main.cpp:115:6:void ShowSensorTemperature(const AM2320Sensor&)	3
 ../Src/main.cpp:135:6:void ShowSensorHumidity(const AM2320Sensor&)	3
-../Src/main.cpp:153:5:int main()	7
+../Src/main.cpp:153:5:int main()	12

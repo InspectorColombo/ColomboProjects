@@ -272,6 +272,29 @@ void LcdPrintNumber(const uint16_t valueToPrint)
 	}
 }
 
+void LcdPrintNumber(const uint32_t valueToPrint)
+{
+	uint32_t value = valueToPrint;
+	uint8_t printStr[10] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '0'};
+	value = valueToPrint;
+	for(uint8_t charIdx = 0; charIdx < 10; ++charIdx)
+	{
+		if (value == 0)
+			break;
+
+		uint8_t digit = (uint8_t)(value % 10) + (uint8_t)('0');
+		printStr[9 - charIdx] = digit;
+		value /= 10;
+	}
+	for(uint8_t charIdx = 0; charIdx < 10; ++charIdx)
+	{
+		if (printStr[charIdx] == ' ')
+			continue;
+		LcdPrintChar(printStr[charIdx]);
+	}
+}
+
+
 void LcdPrintHex(const uint8_t value)
 {
 	uint8_t low = value & 0x0F;
@@ -305,6 +328,14 @@ void LcdPrintHex(const uint16_t value)
 	LcdPrintHex(low);
 }
 
+void LcdPrintHex(const uint32_t value)
+{
+	uint16_t low = (uint16_t)(value & 0x0000FFFF);
+	uint16_t high = (uint16_t)((value & 0xFFFF0000) >> 16);
+
+	LcdPrintHex(high);
+	LcdPrintHex(low);
+}
 
 
 void LcdPrintNumber(const uint8_t valueToPrint)

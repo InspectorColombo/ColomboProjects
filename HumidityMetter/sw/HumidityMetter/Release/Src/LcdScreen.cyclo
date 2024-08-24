@@ -17,7 +17,9 @@
 ../Src/LcdScreen.cpp:237:6:void LcdScreen::LcdPrintChar(uint8_t)	1
 ../Src/LcdScreen.cpp:245:6:void LcdScreen::LcdPrint(char*)	2
 ../Src/LcdScreen.cpp:255:6:void LcdScreen::LcdPrintNumber(uint16_t)	5
-../Src/LcdScreen.cpp:275:6:void LcdScreen::LcdPrintHex(uint8_t)	3
-../Src/LcdScreen.cpp:299:6:void LcdScreen::LcdPrintHex(uint16_t)	1
-../Src/LcdScreen.cpp:310:6:void LcdScreen::LcdPrintNumber(uint8_t)	4
-../Src/LcdScreen.cpp:330:6:void LcdScreen::LcdPrintDigit(uint8_t)	1
+../Src/LcdScreen.cpp:275:6:void LcdScreen::LcdPrintNumber(uint32_t)	6
+../Src/LcdScreen.cpp:298:6:void LcdScreen::LcdPrintHex(uint8_t)	3
+../Src/LcdScreen.cpp:322:6:void LcdScreen::LcdPrintHex(uint16_t)	1
+../Src/LcdScreen.cpp:331:6:void LcdScreen::LcdPrintHex(uint32_t)	1
+../Src/LcdScreen.cpp:341:6:void LcdScreen::LcdPrintNumber(uint8_t)	4
+../Src/LcdScreen.cpp:361:6:void LcdScreen::LcdPrintDigit(uint8_t)	1

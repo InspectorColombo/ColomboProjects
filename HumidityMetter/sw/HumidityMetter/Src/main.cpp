@@ -166,6 +166,87 @@ int main(void)
 	LcdScreen::LcdInit();
 	LcdScreen::LcdPrint("Hello!!!");
 
+
+	volatile uint8_t bbbb=12;
+	if (bbbb==12)
+	{
+		BME280Sensor bme280Sens;
+
+		for(;;)
+		{
+			LcdScreen::LcdClear();
+			if (!bme280Sens.ReadProbe())
+			{
+				LcdScreen::LcdPrint("ERROR");
+			}
+			else
+			{
+				const uint32_t temp =  bme280Sens.GetTemperature();
+
+				LcdScreen::LcdPrint("T:");
+				LcdScreen::LcdPrintNumber((uint32_t)(temp / 100));
+				LcdScreen::LcdPrint(".");
+				uint8_t afterDot = (uint8_t)(temp % 100);
+				if (afterDot < 10)
+				{
+					LcdScreen::LcdPrint("0");
+				}
+				LcdScreen::LcdPrintNumber((uint32_t)afterDot);
+
+
+
+				/*
+				LcdScreen::LcdToPos(0,1);
+				LcdScreen::LcdPrint("P:");
+				const uint32_t pressure =  bme280Sens.GetPreassure();
+				LcdScreen::LcdPrintNumber(pressure / 256);
+				*/
+
+				LcdScreen::LcdToPos(0,1);
+				LcdScreen::LcdPrint("H:");
+				const uint32_t humidity =  bme280Sens.GetHumidity();
+				LcdScreen::LcdPrintNumber(humidity / 1024);
+
+				uint32_t afterDots = (humidity % 1024) * 999 / 1023;
+				LcdScreen::LcdPrint(".");
+				if (afterDots < 100)
+				{
+					LcdScreen::LcdPrint("0");
+				}
+				if (afterDots < 10)
+				{
+					LcdScreen::LcdPrint("0");
+				}
+				LcdScreen::LcdPrintNumber(afterDots);
+
+
+				//LcdScreen::LcdPrint(".");
+				//LcdScreen::LcdPrintNumber((uint16_t)(temp % 100));
+
+				//LcdScreen::LcdPrintHex(bme280Sens.GetTemperature());
+			}
+			DelayTimer::DelayMilliSec(1000);
+		}
+
+/*
+		uint8_t id = 0;
+		const bool success = bme280Sens.Read(0xD0, id);
+		LcdScreen::LcdToPos(0,1);
+		if (success)
+		{
+			LcdScreen::LcdPrint("ID:");
+			LcdScreen::LcdPrintHex(id);
+		}
+		else
+		{
+			LcdScreen::LcdPrint("ERROR");
+		}
+		for(;;);
+*/
+	}
+
+
+
 	AM2320Sensor sensor;
 	const uint8_t MAX_MEASURES_COUNT = 15;
 	uint8_t measuresCount = 0;
