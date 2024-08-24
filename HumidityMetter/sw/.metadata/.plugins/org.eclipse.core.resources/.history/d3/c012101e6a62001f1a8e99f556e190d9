@@ -25,7 +25,6 @@
 #include "GpioConfigurator.hpp"
 #include "ErrorLed.hpp"
 #include "AM2320Sensor.hpp"
-#include "BME280Sensor.hpp"
 
 #include "I2cRxTx.hpp"
 

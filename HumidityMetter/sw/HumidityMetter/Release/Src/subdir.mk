@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../Src/BME280Sensor.cpp \
 ../Src/DelayTimer.cpp \
 ../Src/ErrorLed.cpp \
 ../Src/GpioConfigurator.cpp \
@@ -14,6 +15,7 @@ CPP_SRCS += \
 ../Src/main.cpp 
 
 OBJS += \
+./Src/BME280Sensor.o \
 ./Src/DelayTimer.o \
 ./Src/ErrorLed.o \
 ./Src/GpioConfigurator.o \
@@ -23,6 +25,7 @@ OBJS += \
 ./Src/main.o 
 
 CPP_DEPS += \
+./Src/BME280Sensor.d \
 ./Src/DelayTimer.d \
 ./Src/ErrorLed.d \
 ./Src/GpioConfigurator.d \
@@ -39,7 +42,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.cpp Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/ErrorLed.cyclo ./Src/ErrorLed.d ./Src/ErrorLed.o ./Src/ErrorLed.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/I2cRxTx.cyclo ./Src/I2cRxTx.d ./Src/I2cRxTx.o ./Src/I2cRxTx.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/PowerControl.cyclo ./Src/PowerControl.d ./Src/PowerControl.o ./Src/PowerControl.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
+	-$(RM) ./Src/BME280Sensor.cyclo ./Src/BME280Sensor.d ./Src/BME280Sensor.o ./Src/BME280Sensor.su ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/ErrorLed.cyclo ./Src/ErrorLed.d ./Src/ErrorLed.o ./Src/ErrorLed.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/I2cRxTx.cyclo ./Src/I2cRxTx.d ./Src/I2cRxTx.o ./Src/I2cRxTx.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/PowerControl.cyclo ./Src/PowerControl.d ./Src/PowerControl.o ./Src/PowerControl.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
 
 .PHONY: clean-Src
 

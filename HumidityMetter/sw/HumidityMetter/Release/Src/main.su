@@ -1,15 +1,11 @@
 ../Inc/AM2320Sensor.hpp:166:13:AM2320Sensor::ErrorState AM2320Sensor::GetReadData()	32	static
-../Inc/AM2320Sensor.hpp:572:7:bool BME280Sensor::ReadBurst(uint8_t, uint8_t*, uint8_t) const	24	static
-../Inc/AM2320Sensor.hpp:304:7:bool BME280Sensor::ReadCalibrationConstants()	24	static
-../Inc/AM2320Sensor.hpp:621:7:bool BME280Sensor::WriteBurst(uint8_t, const uint8_t*, uint8_t)	24	static
-../Inc/AM2320Sensor.hpp:468:7:bool BME280Sensor::ReadProbe()	64	static
-../Src/main.cpp:37:6:void InitClocks()	0	static
-../Src/main.cpp:70:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	0	static
-../Src/main.cpp:75:6:void PA_CLOCK_ENABLE()	0	static
-../Src/main.cpp:80:6:void PB_CLOCK_ENABLE()	0	static
-../Src/main.cpp:86:6:void PC_CLOCK_ENABLE()	0	static
-../Src/main.cpp:91:6:void InitPorts()	8	static
-../Src/main.cpp:100:6:void ShowSensorError(const AM2320Sensor&)	8	static
-../Src/main.cpp:115:6:void ShowSensorTemperature(const AM2320Sensor&)	32	static
-../Src/main.cpp:135:6:void ShowSensorHumidity(const AM2320Sensor&)	24	static
-../Src/main.cpp:153:5:int main()	96	static
+../Src/main.cpp:38:6:void InitClocks()	0	static
+../Src/main.cpp:71:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	0	static
+../Src/main.cpp:76:6:void PA_CLOCK_ENABLE()	0	static
+../Src/main.cpp:81:6:void PB_CLOCK_ENABLE()	0	static
+../Src/main.cpp:87:6:void PC_CLOCK_ENABLE()	0	static
+../Src/main.cpp:92:6:void InitPorts()	8	static
+../Src/main.cpp:101:6:void ShowSensorError(const AM2320Sensor&)	8	static
+../Src/main.cpp:116:6:void ShowSensorTemperature(const AM2320Sensor&)	32	static
+../Src/main.cpp:136:6:void ShowSensorHumidity(const AM2320Sensor&)	24	static
+../Src/main.cpp:154:5:int main()	96	static

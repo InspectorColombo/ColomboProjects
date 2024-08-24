@@ -2,6 +2,7 @@
 "./CMSIS/src/syscalls.o"
 "./CMSIS/src/sysmem.o"
 "./CMSIS/src/system_stm32f1xx.o"
+"./Src/BME280Sensor.o"
 "./Src/DelayTimer.o"
 "./Src/ErrorLed.o"
 "./Src/GpioConfigurator.o"
