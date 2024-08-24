@@ -5,31 +5,31 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   00000130  08000000  08000000  00001000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         0000154c  08000130  08000130  00001130  2**2
+  1 .text         00001554  08000130  08000130  00001130  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000064  0800167c  0800167c  0000267c  2**0
+  2 .rodata       00000054  08001684  08001684  00002684  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  080016e0  080016e0  000026f0  2**0
+  3 .ARM.extab    00000000  080016d8  080016d8  000026e8  2**0
                   CONTENTS
-  4 .ARM          00000008  080016e0  080016e0  000026e0  2**2
+  4 .ARM          00000008  080016d8  080016d8  000026d8  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  080016e8  080016f0  000026f0  2**0
+  5 .preinit_array 00000000  080016e0  080016e8  000026e8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  080016e8  080016e8  000026e8  2**2
+  6 .init_array   00000004  080016e0  080016e0  000026e0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  080016ec  080016ec  000026ec  2**2
+  7 .fini_array   00000004  080016e4  080016e4  000026e4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         00000000  20000000  20000000  000026f0  2**0
+  8 .data         00000000  20000000  20000000  000026e8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          0000001c  20000000  080016f0  00003000  2**2
+  9 .bss          0000001c  20000000  080016e8  00003000  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  2000001c  080016f0  0000301c  2**0
+ 10 ._user_heap_stack 00000604  2000001c  080016e8  0000301c  2**0
                   ALLOC
- 11 .ARM.attributes 00000029  00000000  00000000  000026f0  2**0
+ 11 .ARM.attributes 00000029  00000000  00000000  000026e8  2**0
                   CONTENTS, READONLY
- 12 .comment      00000043  00000000  00000000  00002719  2**0
+ 12 .comment      00000043  00000000  00000000  00002711  2**0
                   CONTENTS, READONLY
- 13 .debug_frame  000000a4  00000000  00000000  0000275c  2**2
+ 13 .debug_frame  000000a4  00000000  00000000  00002754  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -48,7 +48,7 @@ Disassembly of section .text:
  8000146:	bd10      	pop	{r4, pc}
  8000148:	20000000 	.word	0x20000000
  800014c:	00000000 	.word	0x00000000
- 8000150:	08001664 	.word	0x08001664
+ 8000150:	0800166c 	.word	0x0800166c
 
 08000154 <frame_dummy>:
  8000154:	b508      	push	{r3, lr}
@@ -60,7 +60,7 @@ Disassembly of section .text:
  8000162:	bd08      	pop	{r3, pc}
  8000164:	00000000 	.word	0x00000000
  8000168:	20000004 	.word	0x20000004
- 800016c:	08001664 	.word	0x08001664
+ 800016c:	0800166c 	.word	0x0800166c
 
 08000170 <__aeabi_ldivmod>:
  8000170:	b97b      	cbnz	r3, 8000192 <__aeabi_ldivmod+0x22>
@@ -401,519 +401,516 @@ Disassembly of section .text:
  80004e0:	2300      	movs	r3, #0
  80004e2:	b510      	push	{r4, lr}
  80004e4:	4604      	mov	r4, r0
- 80004e6:	7001      	strb	r1, [r0, #0]
- 80004e8:	7403      	strb	r3, [r0, #16]
- 80004ea:	8243      	strh	r3, [r0, #18]
- 80004ec:	8283      	strh	r3, [r0, #20]
- 80004ee:	82c3      	strh	r3, [r0, #22]
- 80004f0:	8303      	strh	r3, [r0, #24]
- 80004f2:	8343      	strh	r3, [r0, #26]
- 80004f4:	8383      	strh	r3, [r0, #28]
- 80004f6:	83c3      	strh	r3, [r0, #30]
- 80004f8:	8403      	strh	r3, [r0, #32]
- 80004fa:	8443      	strh	r3, [r0, #34]	@ 0x22
- 80004fc:	8483      	strh	r3, [r0, #36]	@ 0x24
- 80004fe:	84c3      	strh	r3, [r0, #38]	@ 0x26
- 8000500:	8503      	strh	r3, [r0, #40]	@ 0x28
- 8000502:	f880 302a 	strb.w	r3, [r0, #42]	@ 0x2a
- 8000506:	8583      	strh	r3, [r0, #44]	@ 0x2c
- 8000508:	f880 302e 	strb.w	r3, [r0, #46]	@ 0x2e
- 800050c:	8603      	strh	r3, [r0, #48]	@ 0x30
- 800050e:	8643      	strh	r3, [r0, #50]	@ 0x32
- 8000510:	f880 3034 	strb.w	r3, [r0, #52]	@ 0x34
- 8000514:	f000 fb7e 	bl	8000c14 <_ZN7I2cRxTx4InitEv>
- 8000518:	4620      	mov	r0, r4
- 800051a:	bd10      	pop	{r4, pc}
+ 80004e6:	7303      	strb	r3, [r0, #12]
+ 80004e8:	81c3      	strh	r3, [r0, #14]
+ 80004ea:	8203      	strh	r3, [r0, #16]
+ 80004ec:	8243      	strh	r3, [r0, #18]
+ 80004ee:	8283      	strh	r3, [r0, #20]
+ 80004f0:	82c3      	strh	r3, [r0, #22]
+ 80004f2:	8303      	strh	r3, [r0, #24]
+ 80004f4:	8343      	strh	r3, [r0, #26]
+ 80004f6:	8383      	strh	r3, [r0, #28]
+ 80004f8:	83c3      	strh	r3, [r0, #30]
+ 80004fa:	8403      	strh	r3, [r0, #32]
+ 80004fc:	8443      	strh	r3, [r0, #34]	@ 0x22
+ 80004fe:	8483      	strh	r3, [r0, #36]	@ 0x24
+ 8000500:	f880 3026 	strb.w	r3, [r0, #38]	@ 0x26
+ 8000504:	8503      	strh	r3, [r0, #40]	@ 0x28
+ 8000506:	f880 302a 	strb.w	r3, [r0, #42]	@ 0x2a
+ 800050a:	8583      	strh	r3, [r0, #44]	@ 0x2c
+ 800050c:	85c3      	strh	r3, [r0, #46]	@ 0x2e
+ 800050e:	f880 3030 	strb.w	r3, [r0, #48]	@ 0x30
+ 8000512:	f880 1038 	strb.w	r1, [r0, #56]	@ 0x38
+ 8000516:	f000 fb7d 	bl	8000c14 <_ZN7I2cRxTx4InitEv>
+ 800051a:	4620      	mov	r0, r4
+ 800051c:	bd10      	pop	{r4, pc}
 
-0800051c <_ZNK12BME280Sensor14GetTemperatureEv>:
- 800051c:	6840      	ldr	r0, [r0, #4]
- 800051e:	4770      	bx	lr
+0800051e <_ZNK12BME280Sensor14GetTemperatureEv>:
+ 800051e:	6800      	ldr	r0, [r0, #0]
+ 8000520:	4770      	bx	lr
 
-08000520 <_ZNK12BME280Sensor11GetHumidityEv>:
- 8000520:	68c0      	ldr	r0, [r0, #12]
- 8000522:	4770      	bx	lr
+08000522 <_ZNK12BME280Sensor11GetHumidityEv>:
+ 8000522:	6880      	ldr	r0, [r0, #8]
+ 8000524:	4770      	bx	lr
 
-08000524 <_ZN12BME280Sensor30GetTemperatureWithCompensationEl>:
- 8000524:	8a42      	ldrh	r2, [r0, #18]
- 8000526:	ebc2 1321 	rsb	r3, r2, r1, asr #4
- 800052a:	435b      	muls	r3, r3
- 800052c:	0052      	lsls	r2, r2, #1
- 800052e:	ebc2 02e1 	rsb	r2, r2, r1, asr #3
- 8000532:	f9b0 1014 	ldrsh.w	r1, [r0, #20]
- 8000536:	131b      	asrs	r3, r3, #12
- 8000538:	434a      	muls	r2, r1
- 800053a:	f9b0 1016 	ldrsh.w	r1, [r0, #22]
- 800053e:	434b      	muls	r3, r1
- 8000540:	139b      	asrs	r3, r3, #14
- 8000542:	eb03 23e2 	add.w	r3, r3, r2, asr #11
- 8000546:	6383      	str	r3, [r0, #56]	@ 0x38
- 8000548:	eb03 0383 	add.w	r3, r3, r3, lsl #2
- 800054c:	f103 0080 	add.w	r0, r3, #128	@ 0x80
- 8000550:	1200      	asrs	r0, r0, #8
- 8000552:	4770      	bx	lr
+08000526 <_ZN12BME280Sensor30GetTemperatureWithCompensationEl>:
+ 8000526:	89c2      	ldrh	r2, [r0, #14]
+ 8000528:	ebc2 1321 	rsb	r3, r2, r1, asr #4
+ 800052c:	435b      	muls	r3, r3
+ 800052e:	0052      	lsls	r2, r2, #1
+ 8000530:	ebc2 02e1 	rsb	r2, r2, r1, asr #3
+ 8000534:	f9b0 1010 	ldrsh.w	r1, [r0, #16]
+ 8000538:	131b      	asrs	r3, r3, #12
+ 800053a:	434a      	muls	r2, r1
+ 800053c:	f9b0 1012 	ldrsh.w	r1, [r0, #18]
+ 8000540:	434b      	muls	r3, r1
+ 8000542:	139b      	asrs	r3, r3, #14
+ 8000544:	eb03 23e2 	add.w	r3, r3, r2, asr #11
+ 8000548:	6343      	str	r3, [r0, #52]	@ 0x34
+ 800054a:	eb03 0383 	add.w	r3, r3, r3, lsl #2
+ 800054e:	f103 0080 	add.w	r0, r3, #128	@ 0x80
+ 8000552:	1200      	asrs	r0, r0, #8
+ 8000554:	4770      	bx	lr
 
-08000554 <_ZN12BME280Sensor28GetPressureWithCompensationsEl>:
- 8000554:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
- 8000558:	4605      	mov	r5, r0
- 800055a:	6b86      	ldr	r6, [r0, #56]	@ 0x38
- 800055c:	ea4f 7ce6 	mov.w	ip, r6, asr #31
- 8000560:	f5b6 36fa 	subs.w	r6, r6, #128000	@ 0x1f400
- 8000564:	f14c 3cff 	adc.w	ip, ip, #4294967295
- 8000568:	fba6 e706 	umull	lr, r7, r6, r6
- 800056c:	fb06 f30c 	mul.w	r3, r6, ip
- 8000570:	eb07 0743 	add.w	r7, r7, r3, lsl #1
- 8000574:	f9b0 301a 	ldrsh.w	r3, [r0, #26]
- 8000578:	fb03 f20c 	mul.w	r2, r3, ip
- 800057c:	17d8      	asrs	r0, r3, #31
- 800057e:	fb06 2200 	mla	r2, r6, r0, r2
- 8000582:	fba3 3006 	umull	r3, r0, r3, r6
- 8000586:	4402      	add	r2, r0
- 8000588:	0312      	lsls	r2, r2, #12
- 800058a:	0318      	lsls	r0, r3, #12
- 800058c:	ea42 5213 	orr.w	r2, r2, r3, lsr #20
- 8000590:	f9b5 301c 	ldrsh.w	r3, [r5, #28]
- 8000594:	fb03 f407 	mul.w	r4, r3, r7
- 8000598:	ea4f 78e3 	mov.w	r8, r3, asr #31
- 800059c:	fb0e 4408 	mla	r4, lr, r8, r4
- 80005a0:	fba3 380e 	umull	r3, r8, r3, lr
- 80005a4:	4444      	add	r4, r8
- 80005a6:	0a1b      	lsrs	r3, r3, #8
- 80005a8:	f8b5 8018 	ldrh.w	r8, [r5, #24]
- 80005ac:	ea43 6304 	orr.w	r3, r3, r4, lsl #24
- 80005b0:	181b      	adds	r3, r3, r0
- 80005b2:	eb42 2224 	adc.w	r2, r2, r4, asr #8
- 80005b6:	fba3 3408 	umull	r3, r4, r3, r8
- 80005ba:	f502 4200 	add.w	r2, r2, #32768	@ 0x8000
- 80005be:	fb08 4402 	mla	r4, r8, r2, r4
- 80005c2:	17e3      	asrs	r3, r4, #31
- 80005c4:	1062      	asrs	r2, r4, #1
- 80005c6:	ea53 0464 	orrs.w	r4, r3, r4, asr #1
- 80005ca:	f04f 0000 	mov.w	r0, #0
- 80005ce:	d066      	beq.n	800069e <_ZN12BME280Sensor28GetPressureWithCompensationsEl+0x14a>
- 80005d0:	f9b5 4022 	ldrsh.w	r4, [r5, #34]	@ 0x22
- 80005d4:	f5c1 1180 	rsb	r1, r1, #1048576	@ 0x100000
- 80005d8:	4367      	muls	r7, r4
- 80005da:	ea4f 78e4 	mov.w	r8, r4, asr #31
- 80005de:	fb0e 7708 	mla	r7, lr, r8, r7
- 80005e2:	fba4 e40e 	umull	lr, r4, r4, lr
- 80005e6:	4427      	add	r7, r4
- 80005e8:	f9b5 4020 	ldrsh.w	r4, [r5, #32]
- 80005ec:	fb04 fc0c 	mul.w	ip, r4, ip
- 80005f0:	ea4f 78e4 	mov.w	r8, r4, asr #31
- 80005f4:	fb06 cc08 	mla	ip, r6, r8, ip
- 80005f8:	fba4 4606 	umull	r4, r6, r4, r6
- 80005fc:	4466      	add	r6, ip
- 80005fe:	0476      	lsls	r6, r6, #17
- 8000600:	ea46 36d4 	orr.w	r6, r6, r4, lsr #15
- 8000604:	0464      	lsls	r4, r4, #17
- 8000606:	eb14 040e 	adds.w	r4, r4, lr
- 800060a:	eb47 0706 	adc.w	r7, r7, r6
- 800060e:	f001 4600 	and.w	r6, r1, #2147483648	@ 0x80000000
- 8000612:	ea46 0651 	orr.w	r6, r6, r1, lsr #1
- 8000616:	1904      	adds	r4, r0, r4
- 8000618:	07c9      	lsls	r1, r1, #31
- 800061a:	1b08      	subs	r0, r1, r4
- 800061c:	f640 4135 	movw	r1, #3125	@ 0xc35
- 8000620:	f9b5 c01e 	ldrsh.w	ip, [r5, #30]
- 8000624:	fba0 0401 	umull	r0, r4, r0, r1
- 8000628:	eb07 07cc 	add.w	r7, r7, ip, lsl #3
- 800062c:	eb66 0607 	sbc.w	r6, r6, r7
- 8000630:	fb01 4106 	mla	r1, r1, r6, r4
- 8000634:	f7ff fd9c 	bl	8000170 <__aeabi_ldivmod>
- 8000638:	4607      	mov	r7, r0
- 800063a:	4608      	mov	r0, r1
- 800063c:	f9b5 3028 	ldrsh.w	r3, [r5, #40]	@ 0x28
- 8000640:	134c      	asrs	r4, r1, #13
- 8000642:	0b7a      	lsrs	r2, r7, #13
- 8000644:	ea42 42c1 	orr.w	r2, r2, r1, lsl #19
- 8000648:	fb03 f104 	mul.w	r1, r3, r4
- 800064c:	ea4f 7ce3 	mov.w	ip, r3, asr #31
- 8000650:	fb02 110c 	mla	r1, r2, ip, r1
- 8000654:	fba3 3c02 	umull	r3, ip, r3, r2
- 8000658:	435c      	muls	r4, r3
- 800065a:	4461      	add	r1, ip
- 800065c:	fb02 4401 	mla	r4, r2, r1, r4
- 8000660:	fba3 3202 	umull	r3, r2, r3, r2
- 8000664:	4422      	add	r2, r4
- 8000666:	0e5b      	lsrs	r3, r3, #25
- 8000668:	ea43 13c2 	orr.w	r3, r3, r2, lsl #7
- 800066c:	19db      	adds	r3, r3, r7
- 800066e:	eb40 6162 	adc.w	r1, r0, r2, asr #25
- 8000672:	f9b5 2026 	ldrsh.w	r2, [r5, #38]	@ 0x26
- 8000676:	4350      	muls	r0, r2
- 8000678:	17d4      	asrs	r4, r2, #31
- 800067a:	fb04 0007 	mla	r0, r4, r7, r0
- 800067e:	fba2 2607 	umull	r2, r6, r2, r7
- 8000682:	4430      	add	r0, r6
- 8000684:	0cd2      	lsrs	r2, r2, #19
- 8000686:	ea42 3240 	orr.w	r2, r2, r0, lsl #13
- 800068a:	189b      	adds	r3, r3, r2
- 800068c:	eb41 42e0 	adc.w	r2, r1, r0, asr #19
- 8000690:	0a1b      	lsrs	r3, r3, #8
- 8000692:	ea43 6302 	orr.w	r3, r3, r2, lsl #24
- 8000696:	f9b5 2024 	ldrsh.w	r2, [r5, #36]	@ 0x24
- 800069a:	eb03 1002 	add.w	r0, r3, r2, lsl #4
- 800069e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+08000556 <_ZN12BME280Sensor28GetPressureWithCompensationsEl>:
+ 8000556:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 800055a:	4605      	mov	r5, r0
+ 800055c:	6b46      	ldr	r6, [r0, #52]	@ 0x34
+ 800055e:	ea4f 7ce6 	mov.w	ip, r6, asr #31
+ 8000562:	f5b6 36fa 	subs.w	r6, r6, #128000	@ 0x1f400
+ 8000566:	f14c 3cff 	adc.w	ip, ip, #4294967295
+ 800056a:	fba6 e706 	umull	lr, r7, r6, r6
+ 800056e:	fb06 f30c 	mul.w	r3, r6, ip
+ 8000572:	eb07 0743 	add.w	r7, r7, r3, lsl #1
+ 8000576:	f9b0 3016 	ldrsh.w	r3, [r0, #22]
+ 800057a:	fb03 f20c 	mul.w	r2, r3, ip
+ 800057e:	17d8      	asrs	r0, r3, #31
+ 8000580:	fb06 2200 	mla	r2, r6, r0, r2
+ 8000584:	fba3 3006 	umull	r3, r0, r3, r6
+ 8000588:	4402      	add	r2, r0
+ 800058a:	0312      	lsls	r2, r2, #12
+ 800058c:	0318      	lsls	r0, r3, #12
+ 800058e:	ea42 5213 	orr.w	r2, r2, r3, lsr #20
+ 8000592:	f9b5 3018 	ldrsh.w	r3, [r5, #24]
+ 8000596:	fb03 f407 	mul.w	r4, r3, r7
+ 800059a:	ea4f 78e3 	mov.w	r8, r3, asr #31
+ 800059e:	fb0e 4408 	mla	r4, lr, r8, r4
+ 80005a2:	fba3 380e 	umull	r3, r8, r3, lr
+ 80005a6:	4444      	add	r4, r8
+ 80005a8:	0a1b      	lsrs	r3, r3, #8
+ 80005aa:	f8b5 8014 	ldrh.w	r8, [r5, #20]
+ 80005ae:	ea43 6304 	orr.w	r3, r3, r4, lsl #24
+ 80005b2:	181b      	adds	r3, r3, r0
+ 80005b4:	eb42 2224 	adc.w	r2, r2, r4, asr #8
+ 80005b8:	fba3 3408 	umull	r3, r4, r3, r8
+ 80005bc:	f502 4200 	add.w	r2, r2, #32768	@ 0x8000
+ 80005c0:	fb08 4402 	mla	r4, r8, r2, r4
+ 80005c4:	17e3      	asrs	r3, r4, #31
+ 80005c6:	1062      	asrs	r2, r4, #1
+ 80005c8:	ea53 0464 	orrs.w	r4, r3, r4, asr #1
+ 80005cc:	f04f 0000 	mov.w	r0, #0
+ 80005d0:	d066      	beq.n	80006a0 <_ZN12BME280Sensor28GetPressureWithCompensationsEl+0x14a>
+ 80005d2:	f9b5 401e 	ldrsh.w	r4, [r5, #30]
+ 80005d6:	f5c1 1180 	rsb	r1, r1, #1048576	@ 0x100000
+ 80005da:	4367      	muls	r7, r4
+ 80005dc:	ea4f 78e4 	mov.w	r8, r4, asr #31
+ 80005e0:	fb0e 7708 	mla	r7, lr, r8, r7
+ 80005e4:	fba4 e40e 	umull	lr, r4, r4, lr
+ 80005e8:	4427      	add	r7, r4
+ 80005ea:	f9b5 401c 	ldrsh.w	r4, [r5, #28]
+ 80005ee:	fb04 fc0c 	mul.w	ip, r4, ip
+ 80005f2:	ea4f 78e4 	mov.w	r8, r4, asr #31
+ 80005f6:	fb06 cc08 	mla	ip, r6, r8, ip
+ 80005fa:	fba4 4606 	umull	r4, r6, r4, r6
+ 80005fe:	4466      	add	r6, ip
+ 8000600:	0476      	lsls	r6, r6, #17
+ 8000602:	ea46 36d4 	orr.w	r6, r6, r4, lsr #15
+ 8000606:	0464      	lsls	r4, r4, #17
+ 8000608:	eb14 040e 	adds.w	r4, r4, lr
+ 800060c:	eb47 0706 	adc.w	r7, r7, r6
+ 8000610:	f001 4600 	and.w	r6, r1, #2147483648	@ 0x80000000
+ 8000614:	ea46 0651 	orr.w	r6, r6, r1, lsr #1
+ 8000618:	1904      	adds	r4, r0, r4
+ 800061a:	07c9      	lsls	r1, r1, #31
+ 800061c:	1b08      	subs	r0, r1, r4
+ 800061e:	f640 4135 	movw	r1, #3125	@ 0xc35
+ 8000622:	f9b5 c01a 	ldrsh.w	ip, [r5, #26]
+ 8000626:	fba0 0401 	umull	r0, r4, r0, r1
+ 800062a:	eb07 07cc 	add.w	r7, r7, ip, lsl #3
+ 800062e:	eb66 0607 	sbc.w	r6, r6, r7
+ 8000632:	fb01 4106 	mla	r1, r1, r6, r4
+ 8000636:	f7ff fd9b 	bl	8000170 <__aeabi_ldivmod>
+ 800063a:	4607      	mov	r7, r0
+ 800063c:	4608      	mov	r0, r1
+ 800063e:	f9b5 3024 	ldrsh.w	r3, [r5, #36]	@ 0x24
+ 8000642:	134c      	asrs	r4, r1, #13
+ 8000644:	0b7a      	lsrs	r2, r7, #13
+ 8000646:	ea42 42c1 	orr.w	r2, r2, r1, lsl #19
+ 800064a:	fb03 f104 	mul.w	r1, r3, r4
+ 800064e:	ea4f 7ce3 	mov.w	ip, r3, asr #31
+ 8000652:	fb02 110c 	mla	r1, r2, ip, r1
+ 8000656:	fba3 3c02 	umull	r3, ip, r3, r2
+ 800065a:	435c      	muls	r4, r3
+ 800065c:	4461      	add	r1, ip
+ 800065e:	fb02 4401 	mla	r4, r2, r1, r4
+ 8000662:	fba3 3202 	umull	r3, r2, r3, r2
+ 8000666:	4422      	add	r2, r4
+ 8000668:	0e5b      	lsrs	r3, r3, #25
+ 800066a:	ea43 13c2 	orr.w	r3, r3, r2, lsl #7
+ 800066e:	19db      	adds	r3, r3, r7
+ 8000670:	eb40 6162 	adc.w	r1, r0, r2, asr #25
+ 8000674:	f9b5 2022 	ldrsh.w	r2, [r5, #34]	@ 0x22
+ 8000678:	4350      	muls	r0, r2
+ 800067a:	17d4      	asrs	r4, r2, #31
+ 800067c:	fb04 0007 	mla	r0, r4, r7, r0
+ 8000680:	fba2 2607 	umull	r2, r6, r2, r7
+ 8000684:	4430      	add	r0, r6
+ 8000686:	0cd2      	lsrs	r2, r2, #19
+ 8000688:	ea42 3240 	orr.w	r2, r2, r0, lsl #13
+ 800068c:	189b      	adds	r3, r3, r2
+ 800068e:	eb41 42e0 	adc.w	r2, r1, r0, asr #19
+ 8000692:	0a1b      	lsrs	r3, r3, #8
+ 8000694:	ea43 6302 	orr.w	r3, r3, r2, lsl #24
+ 8000698:	f9b5 2020 	ldrsh.w	r2, [r5, #32]
+ 800069c:	eb03 1002 	add.w	r0, r3, r2, lsl #4
+ 80006a0:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
 
-080006a2 <_ZN12BME280Sensor27GetHumidityWithCompensationEl>:
- 80006a2:	f9b0 3030 	ldrsh.w	r3, [r0, #48]	@ 0x30
- 80006a6:	b510      	push	{r4, lr}
- 80006a8:	6b84      	ldr	r4, [r0, #56]	@ 0x38
- 80006aa:	f9b0 2032 	ldrsh.w	r2, [r0, #50]	@ 0x32
- 80006ae:	051b      	lsls	r3, r3, #20
- 80006b0:	f5a4 3496 	sub.w	r4, r4, #76800	@ 0x12c00
- 80006b4:	ebc3 3381 	rsb	r3, r3, r1, lsl #14
- 80006b8:	fb04 3312 	mls	r3, r4, r2, r3
- 80006bc:	f503 4380 	add.w	r3, r3, #16384	@ 0x4000
- 80006c0:	13da      	asrs	r2, r3, #15
- 80006c2:	f890 302e 	ldrb.w	r3, [r0, #46]	@ 0x2e
- 80006c6:	f990 1034 	ldrsb.w	r1, [r0, #52]	@ 0x34
- 80006ca:	4363      	muls	r3, r4
- 80006cc:	4361      	muls	r1, r4
- 80006ce:	12db      	asrs	r3, r3, #11
- 80006d0:	1289      	asrs	r1, r1, #10
- 80006d2:	f503 4300 	add.w	r3, r3, #32768	@ 0x8000
- 80006d6:	434b      	muls	r3, r1
- 80006d8:	f9b0 102c 	ldrsh.w	r1, [r0, #44]	@ 0x2c
- 80006dc:	129b      	asrs	r3, r3, #10
- 80006de:	f503 1300 	add.w	r3, r3, #2097152	@ 0x200000
- 80006e2:	434b      	muls	r3, r1
- 80006e4:	f503 5300 	add.w	r3, r3, #8192	@ 0x2000
- 80006e8:	139b      	asrs	r3, r3, #14
- 80006ea:	4353      	muls	r3, r2
- 80006ec:	13da      	asrs	r2, r3, #15
- 80006ee:	4352      	muls	r2, r2
- 80006f0:	f890 102a 	ldrb.w	r1, [r0, #42]	@ 0x2a
- 80006f4:	11d2      	asrs	r2, r2, #7
- 80006f6:	434a      	muls	r2, r1
- 80006f8:	eba3 1022 	sub.w	r0, r3, r2, asr #4
- 80006fc:	ea20 70e0 	bic.w	r0, r0, r0, asr #31
- 8000700:	f1b0 5fc8 	cmp.w	r0, #419430400	@ 0x19000000
- 8000704:	bfa8      	it	ge
- 8000706:	f04f 50c8 	movge.w	r0, #419430400	@ 0x19000000
- 800070a:	1300      	asrs	r0, r0, #12
- 800070c:	bd10      	pop	{r4, pc}
+080006a4 <_ZN12BME280Sensor27GetHumidityWithCompensationEl>:
+ 80006a4:	f9b0 302c 	ldrsh.w	r3, [r0, #44]	@ 0x2c
+ 80006a8:	b510      	push	{r4, lr}
+ 80006aa:	6b44      	ldr	r4, [r0, #52]	@ 0x34
+ 80006ac:	f9b0 202e 	ldrsh.w	r2, [r0, #46]	@ 0x2e
+ 80006b0:	051b      	lsls	r3, r3, #20
+ 80006b2:	f5a4 3496 	sub.w	r4, r4, #76800	@ 0x12c00
+ 80006b6:	ebc3 3381 	rsb	r3, r3, r1, lsl #14
+ 80006ba:	fb04 3312 	mls	r3, r4, r2, r3
+ 80006be:	f503 4380 	add.w	r3, r3, #16384	@ 0x4000
+ 80006c2:	13da      	asrs	r2, r3, #15
+ 80006c4:	f890 302a 	ldrb.w	r3, [r0, #42]	@ 0x2a
+ 80006c8:	f990 1030 	ldrsb.w	r1, [r0, #48]	@ 0x30
+ 80006cc:	4363      	muls	r3, r4
+ 80006ce:	4361      	muls	r1, r4
+ 80006d0:	12db      	asrs	r3, r3, #11
+ 80006d2:	1289      	asrs	r1, r1, #10
+ 80006d4:	f503 4300 	add.w	r3, r3, #32768	@ 0x8000
+ 80006d8:	434b      	muls	r3, r1
+ 80006da:	f9b0 1028 	ldrsh.w	r1, [r0, #40]	@ 0x28
+ 80006de:	129b      	asrs	r3, r3, #10
+ 80006e0:	f503 1300 	add.w	r3, r3, #2097152	@ 0x200000
+ 80006e4:	434b      	muls	r3, r1
+ 80006e6:	f503 5300 	add.w	r3, r3, #8192	@ 0x2000
+ 80006ea:	139b      	asrs	r3, r3, #14
+ 80006ec:	4353      	muls	r3, r2
+ 80006ee:	13da      	asrs	r2, r3, #15
+ 80006f0:	4352      	muls	r2, r2
+ 80006f2:	f890 1026 	ldrb.w	r1, [r0, #38]	@ 0x26
+ 80006f6:	11d2      	asrs	r2, r2, #7
+ 80006f8:	434a      	muls	r2, r1
+ 80006fa:	eba3 1022 	sub.w	r0, r3, r2, asr #4
+ 80006fe:	ea20 70e0 	bic.w	r0, r0, r0, asr #31
+ 8000702:	f1b0 5fc8 	cmp.w	r0, #419430400	@ 0x19000000
+ 8000706:	bfa8      	it	ge
+ 8000708:	f04f 50c8 	movge.w	r0, #419430400	@ 0x19000000
+ 800070c:	1300      	asrs	r0, r0, #12
+ 800070e:	bd10      	pop	{r4, pc}
 
-0800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>:
- 800070e:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8000710:	4605      	mov	r5, r0
- 8000712:	460f      	mov	r7, r1
- 8000714:	4614      	mov	r4, r2
- 8000716:	461e      	mov	r6, r3
- 8000718:	f000 fa97 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
- 800071c:	7828      	ldrb	r0, [r5, #0]
- 800071e:	f000 fab2 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 8000722:	2001      	movs	r0, #1
- 8000724:	f000 fac8 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000728:	b118      	cbz	r0, 8000732 <_ZNK12BME280Sensor9ReadBurstEhPhh+0x24>
- 800072a:	f000 fa9d 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 800072e:	2000      	movs	r0, #0
- 8000730:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
- 8000732:	4638      	mov	r0, r7
- 8000734:	f000 faa7 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 8000738:	2001      	movs	r0, #1
- 800073a:	f000 fabd 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 800073e:	2800      	cmp	r0, #0
- 8000740:	d1f3      	bne.n	800072a <_ZNK12BME280Sensor9ReadBurstEhPhh+0x1c>
- 8000742:	f000 fa91 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 8000746:	f000 fa80 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
- 800074a:	7828      	ldrb	r0, [r5, #0]
- 800074c:	f040 0001 	orr.w	r0, r0, #1
- 8000750:	f000 fa99 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 8000754:	2001      	movs	r0, #1
- 8000756:	f000 faaf 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 800075a:	2800      	cmp	r0, #0
- 800075c:	d1e5      	bne.n	800072a <_ZNK12BME280Sensor9ReadBurstEhPhh+0x1c>
- 800075e:	4625      	mov	r5, r4
- 8000760:	19a7      	adds	r7, r4, r6
- 8000762:	42bd      	cmp	r5, r7
- 8000764:	d103      	bne.n	800076e <_ZNK12BME280Sensor9ReadBurstEhPhh+0x60>
- 8000766:	f000 fa7f 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 800076a:	2001      	movs	r0, #1
- 800076c:	e7e0      	b.n	8000730 <_ZNK12BME280Sensor9ReadBurstEhPhh+0x22>
- 800076e:	f000 fabb 	bl	8000ce8 <_ZN7I2cRxTx11RecieveByteEv>
- 8000772:	f805 0b01 	strb.w	r0, [r5], #1
- 8000776:	1b2b      	subs	r3, r5, r4
- 8000778:	429e      	cmp	r6, r3
- 800077a:	bf0c      	ite	eq
- 800077c:	2001      	moveq	r0, #1
- 800077e:	2000      	movne	r0, #0
- 8000780:	f000 fa9a 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000784:	e7ed      	b.n	8000762 <_ZNK12BME280Sensor9ReadBurstEhPhh+0x54>
+08000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>:
+ 8000710:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000712:	4605      	mov	r5, r0
+ 8000714:	460f      	mov	r7, r1
+ 8000716:	4614      	mov	r4, r2
+ 8000718:	461e      	mov	r6, r3
+ 800071a:	f000 fa96 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
+ 800071e:	f895 0038 	ldrb.w	r0, [r5, #56]	@ 0x38
+ 8000722:	f000 fab0 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 8000726:	2001      	movs	r0, #1
+ 8000728:	f000 fac6 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 800072c:	b118      	cbz	r0, 8000736 <_ZNK12BME280Sensor9ReadBurstEhPhh+0x26>
+ 800072e:	f000 fa9b 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
+ 8000732:	2000      	movs	r0, #0
+ 8000734:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 8000736:	4638      	mov	r0, r7
+ 8000738:	f000 faa5 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 800073c:	2001      	movs	r0, #1
+ 800073e:	f000 fabb 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000742:	2800      	cmp	r0, #0
+ 8000744:	d1f3      	bne.n	800072e <_ZNK12BME280Sensor9ReadBurstEhPhh+0x1e>
+ 8000746:	f000 fa8f 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
+ 800074a:	f000 fa7e 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
+ 800074e:	f895 0038 	ldrb.w	r0, [r5, #56]	@ 0x38
+ 8000752:	f040 0001 	orr.w	r0, r0, #1
+ 8000756:	f000 fa96 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 800075a:	2001      	movs	r0, #1
+ 800075c:	f000 faac 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000760:	2800      	cmp	r0, #0
+ 8000762:	d1e4      	bne.n	800072e <_ZNK12BME280Sensor9ReadBurstEhPhh+0x1e>
+ 8000764:	4625      	mov	r5, r4
+ 8000766:	19a7      	adds	r7, r4, r6
+ 8000768:	42bd      	cmp	r5, r7
+ 800076a:	d103      	bne.n	8000774 <_ZNK12BME280Sensor9ReadBurstEhPhh+0x64>
+ 800076c:	f000 fa7c 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
+ 8000770:	2001      	movs	r0, #1
+ 8000772:	e7df      	b.n	8000734 <_ZNK12BME280Sensor9ReadBurstEhPhh+0x24>
+ 8000774:	f000 fab8 	bl	8000ce8 <_ZN7I2cRxTx11RecieveByteEv>
+ 8000778:	f805 0b01 	strb.w	r0, [r5], #1
+ 800077c:	1b2b      	subs	r3, r5, r4
+ 800077e:	429e      	cmp	r6, r3
+ 8000780:	bf0c      	ite	eq
+ 8000782:	2001      	moveq	r0, #1
+ 8000784:	2000      	movne	r0, #0
+ 8000786:	f000 fa97 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 800078a:	e7ed      	b.n	8000768 <_ZNK12BME280Sensor9ReadBurstEhPhh+0x58>
 
-08000786 <_ZNK12BME280Sensor4ReadEhRh>:
- 8000786:	2301      	movs	r3, #1
- 8000788:	f7ff bfc1 	b.w	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
+0800078c <_ZNK12BME280Sensor4ReadEhRh>:
+ 800078c:	2301      	movs	r3, #1
+ 800078e:	f7ff bfbf 	b.w	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+	...
 
-0800078c <_ZN12BME280Sensor24ReadCalibrationConstantsEv>:
- 800078c:	b573      	push	{r0, r1, r4, r5, r6, lr}
- 800078e:	7c05      	ldrb	r5, [r0, #16]
- 8000790:	4604      	mov	r4, r0
- 8000792:	2d00      	cmp	r5, #0
- 8000794:	f040 80c2 	bne.w	800091c <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x190>
- 8000798:	462e      	mov	r6, r5
- 800079a:	21f3      	movs	r1, #243	@ 0xf3
- 800079c:	4620      	mov	r0, r4
- 800079e:	aa01      	add	r2, sp, #4
- 80007a0:	f88d 6004 	strb.w	r6, [sp, #4]
- 80007a4:	f7ff ffef 	bl	8000786 <_ZNK12BME280Sensor4ReadEhRh>
- 80007a8:	2800      	cmp	r0, #0
- 80007aa:	f000 80b8 	beq.w	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80007ae:	f89d 3004 	ldrb.w	r3, [sp, #4]
- 80007b2:	07db      	lsls	r3, r3, #31
- 80007b4:	d4f1      	bmi.n	800079a <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0xe>
- 80007b6:	2302      	movs	r3, #2
- 80007b8:	2188      	movs	r1, #136	@ 0x88
- 80007ba:	4620      	mov	r0, r4
- 80007bc:	f104 0212 	add.w	r2, r4, #18
- 80007c0:	f7ff ffa5 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80007c4:	2800      	cmp	r0, #0
- 80007c6:	f000 80aa 	beq.w	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80007ca:	2302      	movs	r3, #2
- 80007cc:	218a      	movs	r1, #138	@ 0x8a
- 80007ce:	4620      	mov	r0, r4
- 80007d0:	f104 0214 	add.w	r2, r4, #20
- 80007d4:	f7ff ff9b 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80007d8:	2800      	cmp	r0, #0
- 80007da:	f000 80a0 	beq.w	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80007de:	2302      	movs	r3, #2
- 80007e0:	218c      	movs	r1, #140	@ 0x8c
- 80007e2:	4620      	mov	r0, r4
- 80007e4:	f104 0216 	add.w	r2, r4, #22
- 80007e8:	f7ff ff91 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80007ec:	2800      	cmp	r0, #0
- 80007ee:	f000 8096 	beq.w	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80007f2:	2302      	movs	r3, #2
- 80007f4:	218e      	movs	r1, #142	@ 0x8e
- 80007f6:	4620      	mov	r0, r4
- 80007f8:	f104 0218 	add.w	r2, r4, #24
- 80007fc:	f7ff ff87 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 8000800:	2800      	cmp	r0, #0
- 8000802:	f000 808c 	beq.w	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 8000806:	2302      	movs	r3, #2
- 8000808:	2190      	movs	r1, #144	@ 0x90
- 800080a:	4620      	mov	r0, r4
- 800080c:	f104 021a 	add.w	r2, r4, #26
- 8000810:	f7ff ff7d 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 8000814:	2800      	cmp	r0, #0
- 8000816:	f000 8082 	beq.w	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 800081a:	2302      	movs	r3, #2
- 800081c:	2192      	movs	r1, #146	@ 0x92
- 800081e:	4620      	mov	r0, r4
- 8000820:	f104 021c 	add.w	r2, r4, #28
- 8000824:	f7ff ff73 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 8000828:	2800      	cmp	r0, #0
- 800082a:	d078      	beq.n	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 800082c:	2302      	movs	r3, #2
- 800082e:	2194      	movs	r1, #148	@ 0x94
- 8000830:	4620      	mov	r0, r4
- 8000832:	f104 021e 	add.w	r2, r4, #30
- 8000836:	f7ff ff6a 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 800083a:	2800      	cmp	r0, #0
- 800083c:	d06f      	beq.n	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 800083e:	2302      	movs	r3, #2
- 8000840:	2196      	movs	r1, #150	@ 0x96
- 8000842:	4620      	mov	r0, r4
- 8000844:	f104 0220 	add.w	r2, r4, #32
- 8000848:	f7ff ff61 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 800084c:	2800      	cmp	r0, #0
- 800084e:	d066      	beq.n	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 8000850:	2302      	movs	r3, #2
- 8000852:	2198      	movs	r1, #152	@ 0x98
- 8000854:	4620      	mov	r0, r4
- 8000856:	f104 0222 	add.w	r2, r4, #34	@ 0x22
- 800085a:	f7ff ff58 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 800085e:	2800      	cmp	r0, #0
- 8000860:	d05d      	beq.n	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 8000862:	2302      	movs	r3, #2
- 8000864:	219a      	movs	r1, #154	@ 0x9a
- 8000866:	4620      	mov	r0, r4
- 8000868:	f104 0224 	add.w	r2, r4, #36	@ 0x24
- 800086c:	f7ff ff4f 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 8000870:	2800      	cmp	r0, #0
- 8000872:	d054      	beq.n	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 8000874:	2302      	movs	r3, #2
- 8000876:	219c      	movs	r1, #156	@ 0x9c
- 8000878:	4620      	mov	r0, r4
- 800087a:	f104 0226 	add.w	r2, r4, #38	@ 0x26
- 800087e:	f7ff ff46 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 8000882:	2800      	cmp	r0, #0
- 8000884:	d04b      	beq.n	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 8000886:	2302      	movs	r3, #2
- 8000888:	219e      	movs	r1, #158	@ 0x9e
- 800088a:	4620      	mov	r0, r4
- 800088c:	f104 0228 	add.w	r2, r4, #40	@ 0x28
- 8000890:	f7ff ff3d 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 8000894:	2800      	cmp	r0, #0
- 8000896:	d042      	beq.n	800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 8000898:	2301      	movs	r3, #1
- 800089a:	21a1      	movs	r1, #161	@ 0xa1
- 800089c:	4620      	mov	r0, r4
- 800089e:	f104 022a 	add.w	r2, r4, #42	@ 0x2a
- 80008a2:	f7ff ff34 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80008a6:	b3d0      	cbz	r0, 800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80008a8:	2302      	movs	r3, #2
- 80008aa:	21e1      	movs	r1, #225	@ 0xe1
- 80008ac:	4620      	mov	r0, r4
- 80008ae:	f104 022c 	add.w	r2, r4, #44	@ 0x2c
- 80008b2:	f7ff ff2c 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80008b6:	b390      	cbz	r0, 800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80008b8:	2302      	movs	r3, #2
- 80008ba:	21e3      	movs	r1, #227	@ 0xe3
- 80008bc:	4620      	mov	r0, r4
- 80008be:	f104 022e 	add.w	r2, r4, #46	@ 0x2e
- 80008c2:	f7ff ff24 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80008c6:	b350      	cbz	r0, 800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80008c8:	4b16      	ldr	r3, [pc, #88]	@ (8000924 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x198>)
- 80008ca:	21e4      	movs	r1, #228	@ 0xe4
- 80008cc:	881a      	ldrh	r2, [r3, #0]
- 80008ce:	789b      	ldrb	r3, [r3, #2]
- 80008d0:	f8ad 2004 	strh.w	r2, [sp, #4]
- 80008d4:	f88d 3006 	strb.w	r3, [sp, #6]
- 80008d8:	4620      	mov	r0, r4
- 80008da:	2303      	movs	r3, #3
- 80008dc:	aa01      	add	r2, sp, #4
- 80008de:	f7ff ff16 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80008e2:	b1e0      	cbz	r0, 800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 80008e4:	f89d 3005 	ldrb.w	r3, [sp, #5]
- 80008e8:	f89d 1004 	ldrb.w	r1, [sp, #4]
- 80008ec:	f003 020f 	and.w	r2, r3, #15
- 80008f0:	eb02 1201 	add.w	r2, r2, r1, lsl #4
- 80008f4:	8622      	strh	r2, [r4, #48]	@ 0x30
- 80008f6:	f89d 2006 	ldrb.w	r2, [sp, #6]
- 80008fa:	f003 03f0 	and.w	r3, r3, #240	@ 0xf0
- 80008fe:	eb03 2302 	add.w	r3, r3, r2, lsl #8
- 8000902:	f3c3 130b 	ubfx	r3, r3, #4, #12
- 8000906:	8663      	strh	r3, [r4, #50]	@ 0x32
- 8000908:	21e7      	movs	r1, #231	@ 0xe7
- 800090a:	2301      	movs	r3, #1
- 800090c:	4620      	mov	r0, r4
- 800090e:	f104 0234 	add.w	r2, r4, #52	@ 0x34
- 8000912:	f7ff fefc 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 8000916:	b110      	cbz	r0, 800091e <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
- 8000918:	2301      	movs	r3, #1
- 800091a:	7423      	strb	r3, [r4, #16]
- 800091c:	2501      	movs	r5, #1
- 800091e:	4628      	mov	r0, r5
- 8000920:	b002      	add	sp, #8
- 8000922:	bd70      	pop	{r4, r5, r6, pc}
- 8000924:	0800167c 	.word	0x0800167c
+08000794 <_ZN12BME280Sensor24ReadCalibrationConstantsEv>:
+ 8000794:	b573      	push	{r0, r1, r4, r5, r6, lr}
+ 8000796:	7b05      	ldrb	r5, [r0, #12]
+ 8000798:	4604      	mov	r4, r0
+ 800079a:	2d00      	cmp	r5, #0
+ 800079c:	f040 80c2 	bne.w	8000924 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x190>
+ 80007a0:	462e      	mov	r6, r5
+ 80007a2:	21f3      	movs	r1, #243	@ 0xf3
+ 80007a4:	4620      	mov	r0, r4
+ 80007a6:	aa01      	add	r2, sp, #4
+ 80007a8:	f88d 6004 	strb.w	r6, [sp, #4]
+ 80007ac:	f7ff ffee 	bl	800078c <_ZNK12BME280Sensor4ReadEhRh>
+ 80007b0:	2800      	cmp	r0, #0
+ 80007b2:	f000 80b8 	beq.w	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80007b6:	f89d 3004 	ldrb.w	r3, [sp, #4]
+ 80007ba:	07db      	lsls	r3, r3, #31
+ 80007bc:	d4f1      	bmi.n	80007a2 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0xe>
+ 80007be:	2302      	movs	r3, #2
+ 80007c0:	2188      	movs	r1, #136	@ 0x88
+ 80007c2:	4620      	mov	r0, r4
+ 80007c4:	f104 020e 	add.w	r2, r4, #14
+ 80007c8:	f7ff ffa2 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80007cc:	2800      	cmp	r0, #0
+ 80007ce:	f000 80aa 	beq.w	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80007d2:	2302      	movs	r3, #2
+ 80007d4:	218a      	movs	r1, #138	@ 0x8a
+ 80007d6:	4620      	mov	r0, r4
+ 80007d8:	f104 0210 	add.w	r2, r4, #16
+ 80007dc:	f7ff ff98 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80007e0:	2800      	cmp	r0, #0
+ 80007e2:	f000 80a0 	beq.w	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80007e6:	2302      	movs	r3, #2
+ 80007e8:	218c      	movs	r1, #140	@ 0x8c
+ 80007ea:	4620      	mov	r0, r4
+ 80007ec:	f104 0212 	add.w	r2, r4, #18
+ 80007f0:	f7ff ff8e 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80007f4:	2800      	cmp	r0, #0
+ 80007f6:	f000 8096 	beq.w	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80007fa:	2302      	movs	r3, #2
+ 80007fc:	218e      	movs	r1, #142	@ 0x8e
+ 80007fe:	4620      	mov	r0, r4
+ 8000800:	f104 0214 	add.w	r2, r4, #20
+ 8000804:	f7ff ff84 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 8000808:	2800      	cmp	r0, #0
+ 800080a:	f000 808c 	beq.w	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 800080e:	2302      	movs	r3, #2
+ 8000810:	2190      	movs	r1, #144	@ 0x90
+ 8000812:	4620      	mov	r0, r4
+ 8000814:	f104 0216 	add.w	r2, r4, #22
+ 8000818:	f7ff ff7a 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 800081c:	2800      	cmp	r0, #0
+ 800081e:	f000 8082 	beq.w	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 8000822:	2302      	movs	r3, #2
+ 8000824:	2192      	movs	r1, #146	@ 0x92
+ 8000826:	4620      	mov	r0, r4
+ 8000828:	f104 0218 	add.w	r2, r4, #24
+ 800082c:	f7ff ff70 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 8000830:	2800      	cmp	r0, #0
+ 8000832:	d078      	beq.n	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 8000834:	2302      	movs	r3, #2
+ 8000836:	2194      	movs	r1, #148	@ 0x94
+ 8000838:	4620      	mov	r0, r4
+ 800083a:	f104 021a 	add.w	r2, r4, #26
+ 800083e:	f7ff ff67 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 8000842:	2800      	cmp	r0, #0
+ 8000844:	d06f      	beq.n	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 8000846:	2302      	movs	r3, #2
+ 8000848:	2196      	movs	r1, #150	@ 0x96
+ 800084a:	4620      	mov	r0, r4
+ 800084c:	f104 021c 	add.w	r2, r4, #28
+ 8000850:	f7ff ff5e 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 8000854:	2800      	cmp	r0, #0
+ 8000856:	d066      	beq.n	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 8000858:	2302      	movs	r3, #2
+ 800085a:	2198      	movs	r1, #152	@ 0x98
+ 800085c:	4620      	mov	r0, r4
+ 800085e:	f104 021e 	add.w	r2, r4, #30
+ 8000862:	f7ff ff55 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 8000866:	2800      	cmp	r0, #0
+ 8000868:	d05d      	beq.n	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 800086a:	2302      	movs	r3, #2
+ 800086c:	219a      	movs	r1, #154	@ 0x9a
+ 800086e:	4620      	mov	r0, r4
+ 8000870:	f104 0220 	add.w	r2, r4, #32
+ 8000874:	f7ff ff4c 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 8000878:	2800      	cmp	r0, #0
+ 800087a:	d054      	beq.n	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 800087c:	2302      	movs	r3, #2
+ 800087e:	219c      	movs	r1, #156	@ 0x9c
+ 8000880:	4620      	mov	r0, r4
+ 8000882:	f104 0222 	add.w	r2, r4, #34	@ 0x22
+ 8000886:	f7ff ff43 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 800088a:	2800      	cmp	r0, #0
+ 800088c:	d04b      	beq.n	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 800088e:	2302      	movs	r3, #2
+ 8000890:	219e      	movs	r1, #158	@ 0x9e
+ 8000892:	4620      	mov	r0, r4
+ 8000894:	f104 0224 	add.w	r2, r4, #36	@ 0x24
+ 8000898:	f7ff ff3a 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 800089c:	2800      	cmp	r0, #0
+ 800089e:	d042      	beq.n	8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80008a0:	2301      	movs	r3, #1
+ 80008a2:	21a1      	movs	r1, #161	@ 0xa1
+ 80008a4:	4620      	mov	r0, r4
+ 80008a6:	f104 0226 	add.w	r2, r4, #38	@ 0x26
+ 80008aa:	f7ff ff31 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80008ae:	b3d0      	cbz	r0, 8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80008b0:	2302      	movs	r3, #2
+ 80008b2:	21e1      	movs	r1, #225	@ 0xe1
+ 80008b4:	4620      	mov	r0, r4
+ 80008b6:	f104 0228 	add.w	r2, r4, #40	@ 0x28
+ 80008ba:	f7ff ff29 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80008be:	b390      	cbz	r0, 8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80008c0:	2302      	movs	r3, #2
+ 80008c2:	21e3      	movs	r1, #227	@ 0xe3
+ 80008c4:	4620      	mov	r0, r4
+ 80008c6:	f104 022a 	add.w	r2, r4, #42	@ 0x2a
+ 80008ca:	f7ff ff21 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80008ce:	b350      	cbz	r0, 8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80008d0:	4b16      	ldr	r3, [pc, #88]	@ (800092c <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x198>)
+ 80008d2:	21e4      	movs	r1, #228	@ 0xe4
+ 80008d4:	881a      	ldrh	r2, [r3, #0]
+ 80008d6:	789b      	ldrb	r3, [r3, #2]
+ 80008d8:	f8ad 2004 	strh.w	r2, [sp, #4]
+ 80008dc:	f88d 3006 	strb.w	r3, [sp, #6]
+ 80008e0:	4620      	mov	r0, r4
+ 80008e2:	2303      	movs	r3, #3
+ 80008e4:	aa01      	add	r2, sp, #4
+ 80008e6:	f7ff ff13 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80008ea:	b1e0      	cbz	r0, 8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 80008ec:	f89d 3005 	ldrb.w	r3, [sp, #5]
+ 80008f0:	f89d 1004 	ldrb.w	r1, [sp, #4]
+ 80008f4:	f003 020f 	and.w	r2, r3, #15
+ 80008f8:	eb02 1201 	add.w	r2, r2, r1, lsl #4
+ 80008fc:	85a2      	strh	r2, [r4, #44]	@ 0x2c
+ 80008fe:	f89d 2006 	ldrb.w	r2, [sp, #6]
+ 8000902:	f003 03f0 	and.w	r3, r3, #240	@ 0xf0
+ 8000906:	eb03 2302 	add.w	r3, r3, r2, lsl #8
+ 800090a:	f3c3 130b 	ubfx	r3, r3, #4, #12
+ 800090e:	85e3      	strh	r3, [r4, #46]	@ 0x2e
+ 8000910:	21e7      	movs	r1, #231	@ 0xe7
+ 8000912:	2301      	movs	r3, #1
+ 8000914:	4620      	mov	r0, r4
+ 8000916:	f104 0230 	add.w	r2, r4, #48	@ 0x30
+ 800091a:	f7ff fef9 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 800091e:	b110      	cbz	r0, 8000926 <_ZN12BME280Sensor24ReadCalibrationConstantsEv+0x192>
+ 8000920:	2301      	movs	r3, #1
+ 8000922:	7323      	strb	r3, [r4, #12]
+ 8000924:	2501      	movs	r5, #1
+ 8000926:	4628      	mov	r0, r5
+ 8000928:	b002      	add	sp, #8
+ 800092a:	bd70      	pop	{r4, r5, r6, pc}
+ 800092c:	08001684 	.word	0x08001684
 
-08000928 <_ZN12BME280Sensor10WriteBurstEhPKhh>:
- 8000928:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 800092a:	4607      	mov	r7, r0
- 800092c:	460e      	mov	r6, r1
- 800092e:	4614      	mov	r4, r2
- 8000930:	461d      	mov	r5, r3
- 8000932:	f000 f98a 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
- 8000936:	7838      	ldrb	r0, [r7, #0]
- 8000938:	f000 f9a5 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 800093c:	2001      	movs	r0, #1
- 800093e:	f000 f9bb 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8000942:	b9b0      	cbnz	r0, 8000972 <_ZN12BME280Sensor10WriteBurstEhPKhh+0x4a>
- 8000944:	4425      	add	r5, r4
- 8000946:	42ac      	cmp	r4, r5
- 8000948:	d103      	bne.n	8000952 <_ZN12BME280Sensor10WriteBurstEhPKhh+0x2a>
- 800094a:	f000 f98d 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 800094e:	2001      	movs	r0, #1
- 8000950:	e012      	b.n	8000978 <_ZN12BME280Sensor10WriteBurstEhPKhh+0x50>
- 8000952:	4630      	mov	r0, r6
- 8000954:	f000 f997 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+08000930 <_ZN12BME280Sensor10WriteBurstEhPKhh>:
+ 8000930:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000932:	4607      	mov	r7, r0
+ 8000934:	460e      	mov	r6, r1
+ 8000936:	4614      	mov	r4, r2
+ 8000938:	461d      	mov	r5, r3
+ 800093a:	f000 f986 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
+ 800093e:	f897 0038 	ldrb.w	r0, [r7, #56]	@ 0x38
+ 8000942:	f000 f9a0 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 8000946:	2001      	movs	r0, #1
+ 8000948:	f000 f9b6 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 800094c:	b9b0      	cbnz	r0, 800097c <_ZN12BME280Sensor10WriteBurstEhPKhh+0x4c>
+ 800094e:	4425      	add	r5, r4
+ 8000950:	42ac      	cmp	r4, r5
+ 8000952:	d103      	bne.n	800095c <_ZN12BME280Sensor10WriteBurstEhPKhh+0x2c>
+ 8000954:	f000 f988 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
  8000958:	2001      	movs	r0, #1
- 800095a:	f000 f9ad 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 800095e:	b940      	cbnz	r0, 8000972 <_ZN12BME280Sensor10WriteBurstEhPKhh+0x4a>
- 8000960:	f814 0b01 	ldrb.w	r0, [r4], #1
- 8000964:	f000 f98f 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 8000968:	2001      	movs	r0, #1
- 800096a:	f000 f9a5 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 800096e:	2800      	cmp	r0, #0
- 8000970:	d0e9      	beq.n	8000946 <_ZN12BME280Sensor10WriteBurstEhPKhh+0x1e>
- 8000972:	f000 f979 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 8000976:	2000      	movs	r0, #0
- 8000978:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 800095a:	e012      	b.n	8000982 <_ZN12BME280Sensor10WriteBurstEhPKhh+0x52>
+ 800095c:	4630      	mov	r0, r6
+ 800095e:	f000 f992 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 8000962:	2001      	movs	r0, #1
+ 8000964:	f000 f9a8 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000968:	b940      	cbnz	r0, 800097c <_ZN12BME280Sensor10WriteBurstEhPKhh+0x4c>
+ 800096a:	f814 0b01 	ldrb.w	r0, [r4], #1
+ 800096e:	f000 f98a 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 8000972:	2001      	movs	r0, #1
+ 8000974:	f000 f9a0 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8000978:	2800      	cmp	r0, #0
+ 800097a:	d0e9      	beq.n	8000950 <_ZN12BME280Sensor10WriteBurstEhPKhh+0x20>
+ 800097c:	f000 f974 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
+ 8000980:	2000      	movs	r0, #0
+ 8000982:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
 
-0800097a <_ZN12BME280Sensor5WriteEhh>:
- 800097a:	b507      	push	{r0, r1, r2, lr}
- 800097c:	2301      	movs	r3, #1
- 800097e:	f88d 2007 	strb.w	r2, [sp, #7]
- 8000982:	f10d 0207 	add.w	r2, sp, #7
- 8000986:	f7ff ffcf 	bl	8000928 <_ZN12BME280Sensor10WriteBurstEhPKhh>
- 800098a:	b003      	add	sp, #12
- 800098c:	f85d fb04 	ldr.w	pc, [sp], #4
+08000984 <_ZN12BME280Sensor5WriteEhh>:
+ 8000984:	b507      	push	{r0, r1, r2, lr}
+ 8000986:	2301      	movs	r3, #1
+ 8000988:	f88d 2007 	strb.w	r2, [sp, #7]
+ 800098c:	f10d 0207 	add.w	r2, sp, #7
+ 8000990:	f7ff ffce 	bl	8000930 <_ZN12BME280Sensor10WriteBurstEhPKhh>
+ 8000994:	b003      	add	sp, #12
+ 8000996:	f85d fb04 	ldr.w	pc, [sp], #4
 
-08000990 <_ZN12BME280Sensor9ReadProbeEv>:
- 8000990:	b530      	push	{r4, r5, lr}
- 8000992:	b085      	sub	sp, #20
- 8000994:	4604      	mov	r4, r0
- 8000996:	f7ff fef9 	bl	800078c <_ZN12BME280Sensor24ReadCalibrationConstantsEv>
- 800099a:	b918      	cbnz	r0, 80009a4 <_ZN12BME280Sensor9ReadProbeEv+0x14>
- 800099c:	2500      	movs	r5, #0
- 800099e:	4628      	mov	r0, r5
- 80009a0:	b005      	add	sp, #20
- 80009a2:	bd30      	pop	{r4, r5, pc}
- 80009a4:	2205      	movs	r2, #5
- 80009a6:	21f2      	movs	r1, #242	@ 0xf2
- 80009a8:	4620      	mov	r0, r4
- 80009aa:	f7ff ffe6 	bl	800097a <_ZN12BME280Sensor5WriteEhh>
- 80009ae:	2800      	cmp	r0, #0
- 80009b0:	d0f4      	beq.n	800099c <_ZN12BME280Sensor9ReadProbeEv+0xc>
- 80009b2:	22b5      	movs	r2, #181	@ 0xb5
- 80009b4:	21f4      	movs	r1, #244	@ 0xf4
- 80009b6:	4620      	mov	r0, r4
- 80009b8:	f7ff ffdf 	bl	800097a <_ZN12BME280Sensor5WriteEhh>
- 80009bc:	2800      	cmp	r0, #0
- 80009be:	d0ed      	beq.n	800099c <_ZN12BME280Sensor9ReadProbeEv+0xc>
- 80009c0:	2300      	movs	r3, #0
- 80009c2:	f88d 3007 	strb.w	r3, [sp, #7]
- 80009c6:	21f3      	movs	r1, #243	@ 0xf3
- 80009c8:	4620      	mov	r0, r4
- 80009ca:	f10d 0207 	add.w	r2, sp, #7
- 80009ce:	f7ff feda 	bl	8000786 <_ZNK12BME280Sensor4ReadEhRh>
- 80009d2:	2800      	cmp	r0, #0
- 80009d4:	d0e2      	beq.n	800099c <_ZN12BME280Sensor9ReadProbeEv+0xc>
- 80009d6:	f89d 3007 	ldrb.w	r3, [sp, #7]
- 80009da:	071b      	lsls	r3, r3, #28
- 80009dc:	d4f3      	bmi.n	80009c6 <_ZN12BME280Sensor9ReadProbeEv+0x36>
- 80009de:	4a1a      	ldr	r2, [pc, #104]	@ (8000a48 <_ZN12BME280Sensor9ReadProbeEv+0xb8>)
- 80009e0:	ab02      	add	r3, sp, #8
- 80009e2:	f8d2 0003 	ldr.w	r0, [r2, #3]
- 80009e6:	f8d2 1007 	ldr.w	r1, [r2, #7]
- 80009ea:	c303      	stmia	r3!, {r0, r1}
- 80009ec:	2308      	movs	r3, #8
- 80009ee:	21f7      	movs	r1, #247	@ 0xf7
- 80009f0:	4620      	mov	r0, r4
- 80009f2:	eb0d 0203 	add.w	r2, sp, r3
- 80009f6:	f7ff fe8a 	bl	800070e <_ZNK12BME280Sensor9ReadBurstEhPhh>
- 80009fa:	4605      	mov	r5, r0
- 80009fc:	2800      	cmp	r0, #0
- 80009fe:	d0cd      	beq.n	800099c <_ZN12BME280Sensor9ReadProbeEv+0xc>
- 8000a00:	f8bd 300b 	ldrh.w	r3, [sp, #11]
- 8000a04:	f89d 100d 	ldrb.w	r1, [sp, #13]
- 8000a08:	ba5b      	rev16	r3, r3
- 8000a0a:	b29b      	uxth	r3, r3
- 8000a0c:	eb01 2103 	add.w	r1, r1, r3, lsl #8
- 8000a10:	0909      	lsrs	r1, r1, #4
- 8000a12:	4620      	mov	r0, r4
- 8000a14:	f7ff fd86 	bl	8000524 <_ZN12BME280Sensor30GetTemperatureWithCompensationEl>
- 8000a18:	f8bd 3008 	ldrh.w	r3, [sp, #8]
- 8000a1c:	f89d 100a 	ldrb.w	r1, [sp, #10]
- 8000a20:	ba5b      	rev16	r3, r3
- 8000a22:	b29b      	uxth	r3, r3
- 8000a24:	eb01 2103 	add.w	r1, r1, r3, lsl #8
- 8000a28:	6060      	str	r0, [r4, #4]
- 8000a2a:	0909      	lsrs	r1, r1, #4
- 8000a2c:	4620      	mov	r0, r4
- 8000a2e:	f7ff fd91 	bl	8000554 <_ZN12BME280Sensor28GetPressureWithCompensationsEl>
- 8000a32:	f8bd 100e 	ldrh.w	r1, [sp, #14]
- 8000a36:	60a0      	str	r0, [r4, #8]
- 8000a38:	ba49      	rev16	r1, r1
- 8000a3a:	4620      	mov	r0, r4
- 8000a3c:	b289      	uxth	r1, r1
- 8000a3e:	f7ff fe30 	bl	80006a2 <_ZN12BME280Sensor27GetHumidityWithCompensationEl>
- 8000a42:	60e0      	str	r0, [r4, #12]
- 8000a44:	e7ab      	b.n	800099e <_ZN12BME280Sensor9ReadProbeEv+0xe>
- 8000a46:	bf00      	nop
- 8000a48:	0800167c 	.word	0x0800167c
+0800099a <_ZN12BME280Sensor9ReadProbeEv>:
+ 800099a:	b530      	push	{r4, r5, lr}
+ 800099c:	b085      	sub	sp, #20
+ 800099e:	4604      	mov	r4, r0
+ 80009a0:	f7ff fef8 	bl	8000794 <_ZN12BME280Sensor24ReadCalibrationConstantsEv>
+ 80009a4:	b918      	cbnz	r0, 80009ae <_ZN12BME280Sensor9ReadProbeEv+0x14>
+ 80009a6:	2500      	movs	r5, #0
+ 80009a8:	4628      	mov	r0, r5
+ 80009aa:	b005      	add	sp, #20
+ 80009ac:	bd30      	pop	{r4, r5, pc}
+ 80009ae:	2205      	movs	r2, #5
+ 80009b0:	21f2      	movs	r1, #242	@ 0xf2
+ 80009b2:	4620      	mov	r0, r4
+ 80009b4:	f7ff ffe6 	bl	8000984 <_ZN12BME280Sensor5WriteEhh>
+ 80009b8:	2800      	cmp	r0, #0
+ 80009ba:	d0f4      	beq.n	80009a6 <_ZN12BME280Sensor9ReadProbeEv+0xc>
+ 80009bc:	22b5      	movs	r2, #181	@ 0xb5
+ 80009be:	21f4      	movs	r1, #244	@ 0xf4
+ 80009c0:	4620      	mov	r0, r4
+ 80009c2:	f7ff ffdf 	bl	8000984 <_ZN12BME280Sensor5WriteEhh>
+ 80009c6:	2800      	cmp	r0, #0
+ 80009c8:	d0ed      	beq.n	80009a6 <_ZN12BME280Sensor9ReadProbeEv+0xc>
+ 80009ca:	2300      	movs	r3, #0
+ 80009cc:	f88d 3007 	strb.w	r3, [sp, #7]
+ 80009d0:	21f3      	movs	r1, #243	@ 0xf3
+ 80009d2:	4620      	mov	r0, r4
+ 80009d4:	f10d 0207 	add.w	r2, sp, #7
+ 80009d8:	f7ff fed8 	bl	800078c <_ZNK12BME280Sensor4ReadEhRh>
+ 80009dc:	2800      	cmp	r0, #0
+ 80009de:	d0e2      	beq.n	80009a6 <_ZN12BME280Sensor9ReadProbeEv+0xc>
+ 80009e0:	f89d 3007 	ldrb.w	r3, [sp, #7]
+ 80009e4:	071b      	lsls	r3, r3, #28
+ 80009e6:	d4f3      	bmi.n	80009d0 <_ZN12BME280Sensor9ReadProbeEv+0x36>
+ 80009e8:	2308      	movs	r3, #8
+ 80009ea:	21f7      	movs	r1, #247	@ 0xf7
+ 80009ec:	4620      	mov	r0, r4
+ 80009ee:	eb0d 0203 	add.w	r2, sp, r3
+ 80009f2:	f7ff fe8d 	bl	8000710 <_ZNK12BME280Sensor9ReadBurstEhPhh>
+ 80009f6:	4605      	mov	r5, r0
+ 80009f8:	2800      	cmp	r0, #0
+ 80009fa:	d0d4      	beq.n	80009a6 <_ZN12BME280Sensor9ReadProbeEv+0xc>
+ 80009fc:	f89d 100c 	ldrb.w	r1, [sp, #12]
+ 8000a00:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 8000a04:	0209      	lsls	r1, r1, #8
+ 8000a06:	eb01 4103 	add.w	r1, r1, r3, lsl #16
+ 8000a0a:	f89d 300d 	ldrb.w	r3, [sp, #13]
+ 8000a0e:	4620      	mov	r0, r4
+ 8000a10:	4419      	add	r1, r3
+ 8000a12:	0909      	lsrs	r1, r1, #4
+ 8000a14:	f7ff fd87 	bl	8000526 <_ZN12BME280Sensor30GetTemperatureWithCompensationEl>
+ 8000a18:	f89d 1009 	ldrb.w	r1, [sp, #9]
+ 8000a1c:	f89d 3008 	ldrb.w	r3, [sp, #8]
+ 8000a20:	0209      	lsls	r1, r1, #8
+ 8000a22:	eb01 4103 	add.w	r1, r1, r3, lsl #16
+ 8000a26:	f89d 300a 	ldrb.w	r3, [sp, #10]
+ 8000a2a:	6020      	str	r0, [r4, #0]
+ 8000a2c:	4419      	add	r1, r3
+ 8000a2e:	0909      	lsrs	r1, r1, #4
+ 8000a30:	4620      	mov	r0, r4
+ 8000a32:	f7ff fd90 	bl	8000556 <_ZN12BME280Sensor28GetPressureWithCompensationsEl>
+ 8000a36:	f8bd 100e 	ldrh.w	r1, [sp, #14]
+ 8000a3a:	6060      	str	r0, [r4, #4]
+ 8000a3c:	ba49      	rev16	r1, r1
+ 8000a3e:	4620      	mov	r0, r4
+ 8000a40:	b289      	uxth	r1, r1
+ 8000a42:	f7ff fe2f 	bl	80006a4 <_ZN12BME280Sensor27GetHumidityWithCompensationEl>
+ 8000a46:	60a0      	str	r0, [r4, #8]
+ 8000a48:	e7ae      	b.n	80009a8 <_ZN12BME280Sensor9ReadProbeEv+0xe>
+	...
 
 08000a4c <_ZN10DelayTimer4InitEtt>:
  8000a4c:	4a0e      	ldr	r2, [pc, #56]	@ (8000a88 <_ZN10DelayTimer4InitEtt+0x3c>)
@@ -1919,9 +1916,9 @@ Disassembly of section .text:
  80013f0:	080016bf 	.word	0x080016bf
 
 080013f4 <main>:
- 80013f4:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+ 80013f4:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
  80013f8:	2014      	movs	r0, #20
- 80013fa:	b091      	sub	sp, #68	@ 0x44
+ 80013fa:	b090      	sub	sp, #64	@ 0x40
  80013fc:	f7ff fef6 	bl	80011ec <_Z10InitClocksv>
  8001400:	f7ff ff2a 	bl	8001258 <_Z9InitPortsv>
  8001404:	f7ff fb50 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
@@ -1932,241 +1929,245 @@ Disassembly of section .text:
  8001414:	20c8      	movs	r0, #200	@ 0xc8
  8001416:	f7ff fb47 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
  800141a:	f7ff fd7f 	bl	8000f1c <_ZN9LcdScreen7LcdInitEv>
- 800141e:	4863      	ldr	r0, [pc, #396]	@ (80015ac <main+0x1b8>)
+ 800141e:	4869      	ldr	r0, [pc, #420]	@ (80015c4 <main+0x1d0>)
  8001420:	f7ff fe22 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
  8001424:	230c      	movs	r3, #12
  8001426:	f88d 3003 	strb.w	r3, [sp, #3]
  800142a:	f89d 3003 	ldrb.w	r3, [sp, #3]
  800142e:	2b0c      	cmp	r3, #12
- 8001430:	d15a      	bne.n	80014e8 <main+0xf4>
+ 8001430:	d166      	bne.n	8001500 <main+0x10c>
  8001432:	21ec      	movs	r1, #236	@ 0xec
  8001434:	a801      	add	r0, sp, #4
  8001436:	f7ff f853 	bl	80004e0 <_ZN12BME280SensorC1Eh>
- 800143a:	4e5d      	ldr	r6, [pc, #372]	@ (80015b0 <main+0x1bc>)
- 800143c:	4d5d      	ldr	r5, [pc, #372]	@ (80015b4 <main+0x1c0>)
- 800143e:	4f5e      	ldr	r7, [pc, #376]	@ (80015b8 <main+0x1c4>)
- 8001440:	f7ff fde2 	bl	8001008 <_ZN9LcdScreen8LcdClearEv>
- 8001444:	a801      	add	r0, sp, #4
- 8001446:	f7ff faa3 	bl	8000990 <_ZN12BME280Sensor9ReadProbeEv>
- 800144a:	b938      	cbnz	r0, 800145c <main+0x68>
- 800144c:	485b      	ldr	r0, [pc, #364]	@ (80015bc <main+0x1c8>)
- 800144e:	f7ff fe0b 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 8001452:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
- 8001456:	f7ff fb27 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
- 800145a:	e7f1      	b.n	8001440 <main+0x4c>
- 800145c:	a801      	add	r0, sp, #4
- 800145e:	f7ff f85d 	bl	800051c <_ZNK12BME280Sensor14GetTemperatureEv>
- 8001462:	f04f 0964 	mov.w	r9, #100	@ 0x64
- 8001466:	4604      	mov	r4, r0
- 8001468:	4630      	mov	r0, r6
- 800146a:	f7ff fdfd 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 800146e:	fbb4 f8f9 	udiv	r8, r4, r9
- 8001472:	fb09 4418 	mls	r4, r9, r8, r4
- 8001476:	4640      	mov	r0, r8
- 8001478:	f7ff fe00 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
- 800147c:	4628      	mov	r0, r5
- 800147e:	f7ff fdf3 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 8001482:	2c09      	cmp	r4, #9
- 8001484:	d802      	bhi.n	800148c <main+0x98>
- 8001486:	484e      	ldr	r0, [pc, #312]	@ (80015c0 <main+0x1cc>)
- 8001488:	f7ff fdee 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 800148c:	4620      	mov	r0, r4
- 800148e:	f7ff fdf5 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
- 8001492:	2101      	movs	r1, #1
- 8001494:	2000      	movs	r0, #0
- 8001496:	f7ff fdc4 	bl	8001022 <_ZN9LcdScreen8LcdToPosEhh>
- 800149a:	4638      	mov	r0, r7
- 800149c:	f7ff fde4 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 80014a0:	a801      	add	r0, sp, #4
- 80014a2:	f7ff f83d 	bl	8000520 <_ZNK12BME280Sensor11GetHumidityEv>
- 80014a6:	4604      	mov	r4, r0
- 80014a8:	0a80      	lsrs	r0, r0, #10
- 80014aa:	f7ff fde7 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
- 80014ae:	f240 33e7 	movw	r3, #999	@ 0x3e7
- 80014b2:	f240 38ff 	movw	r8, #1023	@ 0x3ff
- 80014b6:	f3c4 0409 	ubfx	r4, r4, #0, #10
- 80014ba:	435c      	muls	r4, r3
- 80014bc:	4628      	mov	r0, r5
- 80014be:	f7ff fdd3 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 80014c2:	4b40      	ldr	r3, [pc, #256]	@ (80015c4 <main+0x1d0>)
- 80014c4:	fbb4 f8f8 	udiv	r8, r4, r8
- 80014c8:	429c      	cmp	r4, r3
- 80014ca:	d809      	bhi.n	80014e0 <main+0xec>
- 80014cc:	483c      	ldr	r0, [pc, #240]	@ (80015c0 <main+0x1cc>)
- 80014ce:	f7ff fdcb 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 80014d2:	f242 73f5 	movw	r3, #10229	@ 0x27f5
- 80014d6:	429c      	cmp	r4, r3
- 80014d8:	d802      	bhi.n	80014e0 <main+0xec>
- 80014da:	4839      	ldr	r0, [pc, #228]	@ (80015c0 <main+0x1cc>)
- 80014dc:	f7ff fdc4 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
- 80014e0:	4640      	mov	r0, r8
- 80014e2:	f7ff fdcb 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
- 80014e6:	e7b4      	b.n	8001452 <main+0x5e>
- 80014e8:	2400      	movs	r4, #0
- 80014ea:	2501      	movs	r5, #1
- 80014ec:	9401      	str	r4, [sp, #4]
- 80014ee:	f8ad 4008 	strh.w	r4, [sp, #8]
- 80014f2:	f7ff fb8f 	bl	8000c14 <_ZN7I2cRxTx4InitEv>
- 80014f6:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
- 80014fa:	f7ff fad5 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
- 80014fe:	200f      	movs	r0, #15
- 8001500:	f88d 500a 	strb.w	r5, [sp, #10]
- 8001504:	f7ff fad0 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
- 8001508:	f7ff fb9f 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
- 800150c:	20b8      	movs	r0, #184	@ 0xb8
- 800150e:	f7ff fbba 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 8001512:	2001      	movs	r0, #1
- 8001514:	f7ff fbd0 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8001518:	f44f 7048 	mov.w	r0, #800	@ 0x320
- 800151c:	f7ff fab8 	bl	8000a90 <_ZN10DelayTimer13DelayMicroSecEt>
- 8001520:	f7ff fba2 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 8001524:	200a      	movs	r0, #10
- 8001526:	f7ff fabf 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
- 800152a:	f7ff fb8e 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
- 800152e:	20b8      	movs	r0, #184	@ 0xb8
- 8001530:	f7ff fba9 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 8001534:	2001      	movs	r0, #1
- 8001536:	f7ff fbbf 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 800153a:	b168      	cbz	r0, 8001558 <main+0x164>
- 800153c:	f7ff fb94 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 8001540:	a801      	add	r0, sp, #4
- 8001542:	f7ff fe95 	bl	8001270 <_Z15ShowSensorErrorRK12AM2320Sensor>
- 8001546:	2c0e      	cmp	r4, #14
- 8001548:	d903      	bls.n	8001552 <main+0x15e>
- 800154a:	4668      	mov	r0, sp
- 800154c:	f7ff fdce 	bl	80010ec <_ZN12PowerControl11PowerUnholdEv>
- 8001550:	e7d1      	b.n	80014f6 <main+0x102>
- 8001552:	3401      	adds	r4, #1
- 8001554:	b2e4      	uxtb	r4, r4
- 8001556:	e7ce      	b.n	80014f6 <main+0x102>
- 8001558:	2003      	movs	r0, #3
- 800155a:	f7ff fb94 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 800155e:	2001      	movs	r0, #1
- 8001560:	f7ff fbaa 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8001564:	2800      	cmp	r0, #0
- 8001566:	d1e9      	bne.n	800153c <main+0x148>
- 8001568:	f7ff fb8d 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 800156c:	2001      	movs	r0, #1
- 800156e:	f7ff fba3 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8001572:	2800      	cmp	r0, #0
- 8001574:	d1e2      	bne.n	800153c <main+0x148>
- 8001576:	2004      	movs	r0, #4
- 8001578:	f7ff fb85 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
- 800157c:	2001      	movs	r0, #1
- 800157e:	f7ff fb9b 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
- 8001582:	2800      	cmp	r0, #0
- 8001584:	d1da      	bne.n	800153c <main+0x148>
- 8001586:	f7ff fb6f 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
- 800158a:	200f      	movs	r0, #15
- 800158c:	f7ff fa8c 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
- 8001590:	a801      	add	r0, sp, #4
- 8001592:	f7ff fdcd 	bl	8001130 <_ZN12AM2320Sensor11GetReadDataEv>
- 8001596:	f88d 000a 	strb.w	r0, [sp, #10]
+ 800143a:	4d63      	ldr	r5, [pc, #396]	@ (80015c8 <main+0x1d4>)
+ 800143c:	4e63      	ldr	r6, [pc, #396]	@ (80015cc <main+0x1d8>)
+ 800143e:	a801      	add	r0, sp, #4
+ 8001440:	f7ff faab 	bl	800099a <_ZN12BME280Sensor9ReadProbeEv>
+ 8001444:	b948      	cbnz	r0, 800145a <main+0x66>
+ 8001446:	f7ff fddf 	bl	8001008 <_ZN9LcdScreen8LcdClearEv>
+ 800144a:	4630      	mov	r0, r6
+ 800144c:	f7ff fe0c 	bl	8001068 <_ZN9LcdScreen8LcdPrintEPc>
+ 8001450:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+ 8001454:	f7ff fb28 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8001458:	e7f1      	b.n	800143e <main+0x4a>
+ 800145a:	f7ff fdd5 	bl	8001008 <_ZN9LcdScreen8LcdClearEv>
+ 800145e:	a801      	add	r0, sp, #4
+ 8001460:	f7ff f85d 	bl	800051e <_ZNK12BME280Sensor14GetTemperatureEv>
+ 8001464:	4604      	mov	r4, r0
+ 8001466:	2054      	movs	r0, #84	@ 0x54
+ 8001468:	f7ff fdf0 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 800146c:	203a      	movs	r0, #58	@ 0x3a
+ 800146e:	f7ff fded 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 8001472:	2c00      	cmp	r4, #0
+ 8001474:	da03      	bge.n	800147e <main+0x8a>
+ 8001476:	202d      	movs	r0, #45	@ 0x2d
+ 8001478:	f7ff fde8 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 800147c:	4264      	negs	r4, r4
+ 800147e:	f04f 0864 	mov.w	r8, #100	@ 0x64
+ 8001482:	fbb4 f7f8 	udiv	r7, r4, r8
+ 8001486:	fb08 4417 	mls	r4, r8, r7, r4
+ 800148a:	4638      	mov	r0, r7
+ 800148c:	f7ff fdf6 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
+ 8001490:	202e      	movs	r0, #46	@ 0x2e
+ 8001492:	f7ff fddb 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 8001496:	2c09      	cmp	r4, #9
+ 8001498:	dc02      	bgt.n	80014a0 <main+0xac>
+ 800149a:	2030      	movs	r0, #48	@ 0x30
+ 800149c:	f7ff fdd6 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 80014a0:	4620      	mov	r0, r4
+ 80014a2:	f7ff fdeb 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
+ 80014a6:	2101      	movs	r1, #1
+ 80014a8:	2000      	movs	r0, #0
+ 80014aa:	f7ff fdba 	bl	8001022 <_ZN9LcdScreen8LcdToPosEhh>
+ 80014ae:	2048      	movs	r0, #72	@ 0x48
+ 80014b0:	f7ff fdcc 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 80014b4:	203a      	movs	r0, #58	@ 0x3a
+ 80014b6:	f7ff fdc9 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 80014ba:	a801      	add	r0, sp, #4
+ 80014bc:	f7ff f831 	bl	8000522 <_ZNK12BME280Sensor11GetHumidityEv>
+ 80014c0:	4604      	mov	r4, r0
+ 80014c2:	0a80      	lsrs	r0, r0, #10
+ 80014c4:	f7ff fdda 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
+ 80014c8:	f240 33e7 	movw	r3, #999	@ 0x3e7
+ 80014cc:	f240 37ff 	movw	r7, #1023	@ 0x3ff
+ 80014d0:	f3c4 0409 	ubfx	r4, r4, #0, #10
+ 80014d4:	435c      	muls	r4, r3
+ 80014d6:	202e      	movs	r0, #46	@ 0x2e
+ 80014d8:	f7ff fdb8 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 80014dc:	42ac      	cmp	r4, r5
+ 80014de:	fbb4 f7f7 	udiv	r7, r4, r7
+ 80014e2:	d809      	bhi.n	80014f8 <main+0x104>
+ 80014e4:	2030      	movs	r0, #48	@ 0x30
+ 80014e6:	f7ff fdb1 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 80014ea:	f242 73f5 	movw	r3, #10229	@ 0x27f5
+ 80014ee:	429c      	cmp	r4, r3
+ 80014f0:	d802      	bhi.n	80014f8 <main+0x104>
+ 80014f2:	2030      	movs	r0, #48	@ 0x30
+ 80014f4:	f7ff fdaa 	bl	800104c <_ZN9LcdScreen12LcdPrintCharEh>
+ 80014f8:	4638      	mov	r0, r7
+ 80014fa:	f7ff fdbf 	bl	800107c <_ZN9LcdScreen14LcdPrintNumberEm>
+ 80014fe:	e7a7      	b.n	8001450 <main+0x5c>
+ 8001500:	2400      	movs	r4, #0
+ 8001502:	2501      	movs	r5, #1
+ 8001504:	9401      	str	r4, [sp, #4]
+ 8001506:	f8ad 4008 	strh.w	r4, [sp, #8]
+ 800150a:	f7ff fb83 	bl	8000c14 <_ZN7I2cRxTx4InitEv>
+ 800150e:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
+ 8001512:	f7ff fac9 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8001516:	200f      	movs	r0, #15
+ 8001518:	f88d 500a 	strb.w	r5, [sp, #10]
+ 800151c:	f7ff fac4 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8001520:	f7ff fb93 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
+ 8001524:	20b8      	movs	r0, #184	@ 0xb8
+ 8001526:	f7ff fbae 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 800152a:	2001      	movs	r0, #1
+ 800152c:	f7ff fbc4 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8001530:	f44f 7048 	mov.w	r0, #800	@ 0x320
+ 8001534:	f7ff faac 	bl	8000a90 <_ZN10DelayTimer13DelayMicroSecEt>
+ 8001538:	f7ff fb96 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
+ 800153c:	200a      	movs	r0, #10
+ 800153e:	f7ff fab3 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
+ 8001542:	f7ff fb82 	bl	8000c4a <_ZN7I2cRxTx14StartConditionEv>
+ 8001546:	20b8      	movs	r0, #184	@ 0xb8
+ 8001548:	f7ff fb9d 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 800154c:	2001      	movs	r0, #1
+ 800154e:	f7ff fbb3 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 8001552:	b168      	cbz	r0, 8001570 <main+0x17c>
+ 8001554:	f7ff fb88 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
+ 8001558:	a801      	add	r0, sp, #4
+ 800155a:	f7ff fe89 	bl	8001270 <_Z15ShowSensorErrorRK12AM2320Sensor>
+ 800155e:	2c0e      	cmp	r4, #14
+ 8001560:	d903      	bls.n	800156a <main+0x176>
+ 8001562:	4668      	mov	r0, sp
+ 8001564:	f7ff fdc2 	bl	80010ec <_ZN12PowerControl11PowerUnholdEv>
+ 8001568:	e7d1      	b.n	800150e <main+0x11a>
+ 800156a:	3401      	adds	r4, #1
+ 800156c:	b2e4      	uxtb	r4, r4
+ 800156e:	e7ce      	b.n	800150e <main+0x11a>
+ 8001570:	2003      	movs	r0, #3
+ 8001572:	f7ff fb88 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 8001576:	2001      	movs	r0, #1
+ 8001578:	f7ff fb9e 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 800157c:	2800      	cmp	r0, #0
+ 800157e:	d1e9      	bne.n	8001554 <main+0x160>
+ 8001580:	f7ff fb81 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 8001584:	2001      	movs	r0, #1
+ 8001586:	f7ff fb97 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
+ 800158a:	2800      	cmp	r0, #0
+ 800158c:	d1e2      	bne.n	8001554 <main+0x160>
+ 800158e:	2004      	movs	r0, #4
+ 8001590:	f7ff fb79 	bl	8000c86 <_ZN7I2cRxTx8SendByteEh>
+ 8001594:	2001      	movs	r0, #1
+ 8001596:	f7ff fb8f 	bl	8000cb8 <_ZN7I2cRxTx16GetAcknowlegeBitEb>
  800159a:	2800      	cmp	r0, #0
- 800159c:	d1d0      	bne.n	8001540 <main+0x14c>
- 800159e:	a801      	add	r0, sp, #4
- 80015a0:	f7ff fe92 	bl	80012c8 <_Z21ShowSensorTemperatureRK12AM2320Sensor>
- 80015a4:	a801      	add	r0, sp, #4
- 80015a6:	f7ff fedb 	bl	8001360 <_Z18ShowSensorHumidityRK12AM2320Sensor>
- 80015aa:	e7cc      	b.n	8001546 <main+0x152>
- 80015ac:	080016c8 	.word	0x080016c8
- 80015b0:	080016d7 	.word	0x080016d7
- 80015b4:	080016da 	.word	0x080016da
- 80015b8:	080016dc 	.word	0x080016dc
- 80015bc:	080016d1 	.word	0x080016d1
- 80015c0:	08001690 	.word	0x08001690
- 80015c4:	00018f9b 	.word	0x00018f9b
+ 800159c:	d1da      	bne.n	8001554 <main+0x160>
+ 800159e:	f7ff fb63 	bl	8000c68 <_ZN7I2cRxTx13StopConditionEv>
+ 80015a2:	200f      	movs	r0, #15
+ 80015a4:	f7ff fa80 	bl	8000aa8 <_ZN10DelayTimer13DelayMilliSecEt>
+ 80015a8:	a801      	add	r0, sp, #4
+ 80015aa:	f7ff fdc1 	bl	8001130 <_ZN12AM2320Sensor11GetReadDataEv>
+ 80015ae:	f88d 000a 	strb.w	r0, [sp, #10]
+ 80015b2:	2800      	cmp	r0, #0
+ 80015b4:	d1d0      	bne.n	8001558 <main+0x164>
+ 80015b6:	a801      	add	r0, sp, #4
+ 80015b8:	f7ff fe86 	bl	80012c8 <_Z21ShowSensorTemperatureRK12AM2320Sensor>
+ 80015bc:	a801      	add	r0, sp, #4
+ 80015be:	f7ff fecf 	bl	8001360 <_Z18ShowSensorHumidityRK12AM2320Sensor>
+ 80015c2:	e7cc      	b.n	800155e <main+0x16a>
+ 80015c4:	080016c8 	.word	0x080016c8
+ 80015c8:	00018f9b 	.word	0x00018f9b
+ 80015cc:	080016d1 	.word	0x080016d1
 
-080015c8 <Reset_Handler>:
- 80015c8:	480d      	ldr	r0, [pc, #52]	@ (8001600 <LoopForever+0x2>)
- 80015ca:	4685      	mov	sp, r0
- 80015cc:	f7fe ff87 	bl	80004de <SystemInit>
- 80015d0:	480c      	ldr	r0, [pc, #48]	@ (8001604 <LoopForever+0x6>)
- 80015d2:	490d      	ldr	r1, [pc, #52]	@ (8001608 <LoopForever+0xa>)
- 80015d4:	4a0d      	ldr	r2, [pc, #52]	@ (800160c <LoopForever+0xe>)
- 80015d6:	2300      	movs	r3, #0
- 80015d8:	e002      	b.n	80015e0 <LoopCopyDataInit>
+080015d0 <Reset_Handler>:
+ 80015d0:	480d      	ldr	r0, [pc, #52]	@ (8001608 <LoopForever+0x2>)
+ 80015d2:	4685      	mov	sp, r0
+ 80015d4:	f7fe ff83 	bl	80004de <SystemInit>
+ 80015d8:	480c      	ldr	r0, [pc, #48]	@ (800160c <LoopForever+0x6>)
+ 80015da:	490d      	ldr	r1, [pc, #52]	@ (8001610 <LoopForever+0xa>)
+ 80015dc:	4a0d      	ldr	r2, [pc, #52]	@ (8001614 <LoopForever+0xe>)
+ 80015de:	2300      	movs	r3, #0
+ 80015e0:	e002      	b.n	80015e8 <LoopCopyDataInit>
 
-080015da <CopyDataInit>:
- 80015da:	58d4      	ldr	r4, [r2, r3]
- 80015dc:	50c4      	str	r4, [r0, r3]
- 80015de:	3304      	adds	r3, #4
+080015e2 <CopyDataInit>:
+ 80015e2:	58d4      	ldr	r4, [r2, r3]
+ 80015e4:	50c4      	str	r4, [r0, r3]
+ 80015e6:	3304      	adds	r3, #4
 
-080015e0 <LoopCopyDataInit>:
- 80015e0:	18c4      	adds	r4, r0, r3
- 80015e2:	428c      	cmp	r4, r1
- 80015e4:	d3f9      	bcc.n	80015da <CopyDataInit>
- 80015e6:	4a0a      	ldr	r2, [pc, #40]	@ (8001610 <LoopForever+0x12>)
- 80015e8:	4c0a      	ldr	r4, [pc, #40]	@ (8001614 <LoopForever+0x16>)
- 80015ea:	2300      	movs	r3, #0
- 80015ec:	e001      	b.n	80015f2 <LoopFillZerobss>
+080015e8 <LoopCopyDataInit>:
+ 80015e8:	18c4      	adds	r4, r0, r3
+ 80015ea:	428c      	cmp	r4, r1
+ 80015ec:	d3f9      	bcc.n	80015e2 <CopyDataInit>
+ 80015ee:	4a0a      	ldr	r2, [pc, #40]	@ (8001618 <LoopForever+0x12>)
+ 80015f0:	4c0a      	ldr	r4, [pc, #40]	@ (800161c <LoopForever+0x16>)
+ 80015f2:	2300      	movs	r3, #0
+ 80015f4:	e001      	b.n	80015fa <LoopFillZerobss>
 
-080015ee <FillZerobss>:
- 80015ee:	6013      	str	r3, [r2, #0]
- 80015f0:	3204      	adds	r2, #4
+080015f6 <FillZerobss>:
+ 80015f6:	6013      	str	r3, [r2, #0]
+ 80015f8:	3204      	adds	r2, #4
 
-080015f2 <LoopFillZerobss>:
- 80015f2:	42a2      	cmp	r2, r4
- 80015f4:	d3fb      	bcc.n	80015ee <FillZerobss>
- 80015f6:	f000 f811 	bl	800161c <__libc_init_array>
- 80015fa:	f7ff fefb 	bl	80013f4 <main>
+080015fa <LoopFillZerobss>:
+ 80015fa:	42a2      	cmp	r2, r4
+ 80015fc:	d3fb      	bcc.n	80015f6 <FillZerobss>
+ 80015fe:	f000 f811 	bl	8001624 <__libc_init_array>
+ 8001602:	f7ff fef7 	bl	80013f4 <main>
 
-080015fe <LoopForever>:
- 80015fe:	e7fe      	b.n	80015fe <LoopForever>
- 8001600:	20005000 	.word	0x20005000
- 8001604:	20000000 	.word	0x20000000
- 8001608:	20000000 	.word	0x20000000
- 800160c:	080016f0 	.word	0x080016f0
+08001606 <LoopForever>:
+ 8001606:	e7fe      	b.n	8001606 <LoopForever>
+ 8001608:	20005000 	.word	0x20005000
+ 800160c:	20000000 	.word	0x20000000
  8001610:	20000000 	.word	0x20000000
- 8001614:	2000001c 	.word	0x2000001c
+ 8001614:	080016e8 	.word	0x080016e8
+ 8001618:	20000000 	.word	0x20000000
+ 800161c:	2000001c 	.word	0x2000001c
 
-08001618 <ADC1_2_IRQHandler>:
- 8001618:	e7fe      	b.n	8001618 <ADC1_2_IRQHandler>
+08001620 <ADC1_2_IRQHandler>:
+ 8001620:	e7fe      	b.n	8001620 <ADC1_2_IRQHandler>
 	...
 
-0800161c <__libc_init_array>:
- 800161c:	b570      	push	{r4, r5, r6, lr}
- 800161e:	2600      	movs	r6, #0
- 8001620:	4d0c      	ldr	r5, [pc, #48]	@ (8001654 <__libc_init_array+0x38>)
- 8001622:	4c0d      	ldr	r4, [pc, #52]	@ (8001658 <__libc_init_array+0x3c>)
- 8001624:	1b64      	subs	r4, r4, r5
- 8001626:	10a4      	asrs	r4, r4, #2
- 8001628:	42a6      	cmp	r6, r4
- 800162a:	d109      	bne.n	8001640 <__libc_init_array+0x24>
- 800162c:	f000 f81a 	bl	8001664 <_init>
- 8001630:	2600      	movs	r6, #0
- 8001632:	4d0a      	ldr	r5, [pc, #40]	@ (800165c <__libc_init_array+0x40>)
- 8001634:	4c0a      	ldr	r4, [pc, #40]	@ (8001660 <__libc_init_array+0x44>)
- 8001636:	1b64      	subs	r4, r4, r5
- 8001638:	10a4      	asrs	r4, r4, #2
- 800163a:	42a6      	cmp	r6, r4
- 800163c:	d105      	bne.n	800164a <__libc_init_array+0x2e>
- 800163e:	bd70      	pop	{r4, r5, r6, pc}
- 8001640:	f855 3b04 	ldr.w	r3, [r5], #4
- 8001644:	4798      	blx	r3
- 8001646:	3601      	adds	r6, #1
- 8001648:	e7ee      	b.n	8001628 <__libc_init_array+0xc>
- 800164a:	f855 3b04 	ldr.w	r3, [r5], #4
- 800164e:	4798      	blx	r3
- 8001650:	3601      	adds	r6, #1
- 8001652:	e7f2      	b.n	800163a <__libc_init_array+0x1e>
- 8001654:	080016e8 	.word	0x080016e8
- 8001658:	080016e8 	.word	0x080016e8
- 800165c:	080016e8 	.word	0x080016e8
- 8001660:	080016ec 	.word	0x080016ec
+08001624 <__libc_init_array>:
+ 8001624:	b570      	push	{r4, r5, r6, lr}
+ 8001626:	2600      	movs	r6, #0
+ 8001628:	4d0c      	ldr	r5, [pc, #48]	@ (800165c <__libc_init_array+0x38>)
+ 800162a:	4c0d      	ldr	r4, [pc, #52]	@ (8001660 <__libc_init_array+0x3c>)
+ 800162c:	1b64      	subs	r4, r4, r5
+ 800162e:	10a4      	asrs	r4, r4, #2
+ 8001630:	42a6      	cmp	r6, r4
+ 8001632:	d109      	bne.n	8001648 <__libc_init_array+0x24>
+ 8001634:	f000 f81a 	bl	800166c <_init>
+ 8001638:	2600      	movs	r6, #0
+ 800163a:	4d0a      	ldr	r5, [pc, #40]	@ (8001664 <__libc_init_array+0x40>)
+ 800163c:	4c0a      	ldr	r4, [pc, #40]	@ (8001668 <__libc_init_array+0x44>)
+ 800163e:	1b64      	subs	r4, r4, r5
+ 8001640:	10a4      	asrs	r4, r4, #2
+ 8001642:	42a6      	cmp	r6, r4
+ 8001644:	d105      	bne.n	8001652 <__libc_init_array+0x2e>
+ 8001646:	bd70      	pop	{r4, r5, r6, pc}
+ 8001648:	f855 3b04 	ldr.w	r3, [r5], #4
+ 800164c:	4798      	blx	r3
+ 800164e:	3601      	adds	r6, #1
+ 8001650:	e7ee      	b.n	8001630 <__libc_init_array+0xc>
+ 8001652:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8001656:	4798      	blx	r3
+ 8001658:	3601      	adds	r6, #1
+ 800165a:	e7f2      	b.n	8001642 <__libc_init_array+0x1e>
+ 800165c:	080016e0 	.word	0x080016e0
+ 8001660:	080016e0 	.word	0x080016e0
+ 8001664:	080016e0 	.word	0x080016e0
+ 8001668:	080016e4 	.word	0x080016e4
 
-08001664 <_init>:
- 8001664:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8001666:	bf00      	nop
- 8001668:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 800166a:	bc08      	pop	{r3}
- 800166c:	469e      	mov	lr, r3
- 800166e:	4770      	bx	lr
+0800166c <_init>:
+ 800166c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800166e:	bf00      	nop
+ 8001670:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8001672:	bc08      	pop	{r3}
+ 8001674:	469e      	mov	lr, r3
+ 8001676:	4770      	bx	lr
 
-08001670 <_fini>:
- 8001670:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8001672:	bf00      	nop
- 8001674:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8001676:	bc08      	pop	{r3}
- 8001678:	469e      	mov	lr, r3
- 800167a:	4770      	bx	lr
+08001678 <_fini>:
+ 8001678:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800167a:	bf00      	nop
+ 800167c:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800167e:	bc08      	pop	{r3}
+ 8001680:	469e      	mov	lr, r3
+ 8001682:	4770      	bx	lr

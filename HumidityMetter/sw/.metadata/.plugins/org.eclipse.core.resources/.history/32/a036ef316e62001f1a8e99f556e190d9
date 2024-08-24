@@ -41,7 +41,7 @@ BME280Sensor::BME280Sensor(const uint8_t addrI2c) :
 	I2cRxTx::Init();
 }
 
-int32_t BME280Sensor::GetTemperature() const
+uint32_t BME280Sensor::GetTemperature() const
 {
 	return m_temperature;
 }

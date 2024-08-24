@@ -8,4 +8,4 @@
 ../Src/main.cpp:101:6:void ShowSensorError(const AM2320Sensor&)	5
 ../Src/main.cpp:116:6:void ShowSensorTemperature(const AM2320Sensor&)	3
 ../Src/main.cpp:136:6:void ShowSensorHumidity(const AM2320Sensor&)	3
-../Src/main.cpp:154:5:int main()	12
+../Src/main.cpp:154:5:int main()	13

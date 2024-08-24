@@ -175,14 +175,13 @@ int main(void)
 
 		for(;;)
 		{
+			LcdScreen::LcdClear();
 			if (!bme280Sens.ReadProbe())
 			{
-				LcdScreen::LcdClear();
 				LcdScreen::LcdPrint("ERROR");
 			}
 			else
 			{
-				LcdScreen::LcdClear();
 				int32_t temp =  bme280Sens.GetTemperature();
 				LcdScreen::LcdPrintChar('T');
 				LcdScreen::LcdPrintChar(':');
@@ -200,6 +199,15 @@ int main(void)
 					LcdScreen::LcdPrintChar('0');
 				}
 				LcdScreen::LcdPrintNumber((uint32_t)afterDot);
+
+
+
+				/*
+				LcdScreen::LcdToPos(0,1);
+				LcdScreen::LcdPrint("P:");
+				const uint32_t pressure =  bme280Sens.GetPreassure();
+				LcdScreen::LcdPrintNumber(pressure / 256);
+				*/
 
 				LcdScreen::LcdToPos(0,1);
 				LcdScreen::LcdPrintChar('H');

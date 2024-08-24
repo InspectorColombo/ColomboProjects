@@ -175,47 +175,48 @@ int main(void)
 
 		for(;;)
 		{
+			LcdScreen::LcdClear();
 			if (!bme280Sens.ReadProbe())
 			{
-				LcdScreen::LcdClear();
 				LcdScreen::LcdPrint("ERROR");
 			}
 			else
 			{
-				LcdScreen::LcdClear();
-				int32_t temp =  bme280Sens.GetTemperature();
-				LcdScreen::LcdPrintChar('T');
-				LcdScreen::LcdPrintChar(':');
-				if (temp < 0)
-				{
-					LcdScreen::LcdPrintChar('-');
-					temp = -temp;
-				}
+				const uint32_t temp =  bme280Sens.GetTemperature();
 
+				LcdScreen::LcdPrint("T:");
 				LcdScreen::LcdPrintNumber((uint32_t)(temp / 100));
-				LcdScreen::LcdPrintChar('.');
+				LcdScreen::LcdPrint(".");
 				uint8_t afterDot = (uint8_t)(temp % 100);
 				if (afterDot < 10)
 				{
-					LcdScreen::LcdPrintChar('0');
+					LcdScreen::LcdPrint("0");
 				}
 				LcdScreen::LcdPrintNumber((uint32_t)afterDot);
 
+
+
+				/*
 				LcdScreen::LcdToPos(0,1);
-				LcdScreen::LcdPrintChar('H');
-				LcdScreen::LcdPrintChar(':');
+				LcdScreen::LcdPrint("P:");
+				const uint32_t pressure =  bme280Sens.GetPreassure();
+				LcdScreen::LcdPrintNumber(pressure / 256);
+				*/
+
+				LcdScreen::LcdToPos(0,1);
+				LcdScreen::LcdPrint("H:");
 				const uint32_t humidity =  bme280Sens.GetHumidity();
 				LcdScreen::LcdPrintNumber(humidity / 1024);
 
 				uint32_t afterDots = (humidity % 1024) * 999 / 1023;
-				LcdScreen::LcdPrintChar('.');
+				LcdScreen::LcdPrint(".");
 				if (afterDots < 100)
 				{
-					LcdScreen::LcdPrintChar('0');
+					LcdScreen::LcdPrint("0");
 				}
 				if (afterDots < 10)
 				{
-					LcdScreen::LcdPrintChar('0');
+					LcdScreen::LcdPrint("0");
 				}
 				LcdScreen::LcdPrintNumber(afterDots);
 

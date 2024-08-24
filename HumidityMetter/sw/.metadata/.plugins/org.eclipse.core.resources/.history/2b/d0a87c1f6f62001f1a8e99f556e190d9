@@ -175,14 +175,13 @@ int main(void)
 
 		for(;;)
 		{
+			LcdScreen::LcdClear();
 			if (!bme280Sens.ReadProbe())
 			{
-				LcdScreen::LcdClear();
 				LcdScreen::LcdPrint("ERROR");
 			}
 			else
 			{
-				LcdScreen::LcdClear();
 				int32_t temp =  bme280Sens.GetTemperature();
 				LcdScreen::LcdPrintChar('T');
 				LcdScreen::LcdPrintChar(':');

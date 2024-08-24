@@ -21,15 +21,6 @@
 #define ADDR_CALIB26	0xE1
 #define ADDR_CALIB0		0x88
 
-#define ADDR_PRESS_MSB	0xF7
-#define ADDR_PRESS_LSB	0xF8
-#define ADDR_PRESS_XLSB	0xF9
-#define ADDR_TEMP_MSB	0xFA
-#define ADDR_TEMP_LSB	0xFB
-#define ADDR_TEMP_XLSB	0xFC
-#define ADDR_HUM_MSB	0xFD
-#define ADDR_HUM_LSB	0xFE
-
 // STATUS register bits definition
 #define MEASURING_BIT	(1 << 3)
 #define IM_UPDATE_BIT	(1 << 0)
@@ -41,7 +32,7 @@ BME280Sensor::BME280Sensor(const uint8_t addrI2c) :
 	I2cRxTx::Init();
 }
 
-int32_t BME280Sensor::GetTemperature() const
+uint32_t BME280Sensor::GetTemperature() const
 {
 	return m_temperature;
 }
@@ -120,7 +111,7 @@ bool BME280Sensor::ReadCalibrationConstants()
 }
 
 
-int32_t BME280Sensor::GetTemperatureWithCompensation(const int32_t adc_T)
+int32_t BME280Sensor::GetTemperatureWithCompensation(int32_t adc_T)
 {
 	m_tFine = 0;
 
@@ -133,7 +124,9 @@ int32_t BME280Sensor::GetTemperatureWithCompensation(const int32_t adc_T)
 	return T;
 }
 
-uint32_t BME280Sensor::GetPressureWithCompensations(const int32_t adc_P)
+// Returns pressure in Pa as unsigned 32 bit integer in Q24.8 format (24 integer bits and 8	fractional bits).
+// Output value of “24674867” represents 24674867/256 = 96386.2 Pa = 963.862 hPa
+uint32_t BME280Sensor::GetPressureWithCompensations(int32_t adc_P)
 {
 	int64_t var1, var2, p;
 	var1 = ((int64_t)m_tFine) - 128000;
@@ -154,7 +147,9 @@ uint32_t BME280Sensor::GetPressureWithCompensations(const int32_t adc_P)
 	return (uint32_t)p;
 }
 
-uint32_t BME280Sensor::GetHumidityWithCompensation(const int32_t adc_H)
+// Returns humidity in %RH as unsigned 32 bit integer in Q22.10 format (22 integer and 10	fractional bits).
+// Output value of “47445” represents 47445/1024 = 46.333 %RH
+uint32_t BME280Sensor::GetHumidityWithCompensation(int32_t adc_H)
 {
 	int32_t v_x1_u32r;
 	v_x1_u32r = (m_tFine - ((int32_t)76800));
@@ -202,31 +197,35 @@ bool BME280Sensor::ReadProbe()
 	}
 
 	// Read data
-	struct ProbeData
-	{
-		uint8_t pressMsb;
-		uint8_t pressLsb;
-		uint8_t pressXLsb;
-
-		uint8_t tempMsb;
-		uint8_t tempLsb;
-		uint8_t tempXLsb;
-
-		uint8_t humMsb;
-		uint8_t humLsb;
-	} pd;
-
-
-	if (!ReadBurst(ADDR_PRESS_MSB, (uint8_t*)&pd, 8))
+	const uint8_t pressMsb = 0xF7;
+	uint8_t rx[8] = {0,0,0,0,0,0,0,0};
+	if (!ReadBurst(pressMsb, &rx[0], 8))
 		return false;
 
-	const uint32_t tempAdc = (((uint32_t)pd.tempMsb << 16) + ((uint32_t)pd.tempLsb << 8) + ((uint32_t)pd.tempXLsb)) >> 4;
+	uint32_t tempAdc = 0;
+	tempAdc = 0;
+	tempAdc = (uint32_t)rx[3];
+	tempAdc <<= 8;
+	tempAdc += (uint32_t)rx[4];
+	tempAdc <<= 8;
+	tempAdc += (uint32_t)rx[5];
+	tempAdc >>= 4;
 	m_temperature = GetTemperatureWithCompensation((int32_t)tempAdc);
 
-	const uint32_t pressureAdc = (((uint32_t)pd.pressMsb << 16) + ((uint32_t)pd.pressLsb << 8) + ((uint32_t)pd.pressXLsb)) >> 4;
+	uint32_t pressureAdc = 0;
+	pressureAdc = (uint32_t)rx[0];
+	pressureAdc <<= 8;
+	pressureAdc += (uint32_t)rx[1];
+	pressureAdc <<= 8;
+	pressureAdc += (uint32_t)rx[2];
+	pressureAdc >>= 4;
 	m_preassure = GetPressureWithCompensations((int32_t)pressureAdc);
 
-	const uint16_t humidityAdc = ((uint16_t)pd.humMsb << 8) + (uint16_t)pd.humLsb;
+	uint16_t humidityAdc = 0;
+	humidityAdc = rx[6];
+	humidityAdc <<= 8;
+	humidityAdc += (uint16_t)rx[7];
+
 	m_humidity = GetHumidityWithCompensation((int32_t) humidityAdc);
 	return true;
 }

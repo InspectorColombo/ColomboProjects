@@ -19,9 +19,20 @@ class BME280Sensor
 public:
 	BME280Sensor(const uint8_t addrI2c = 0b11101100);
 
-	int32_t GetTemperature() const;
+	uint32_t GetTemperature() const;
 	uint32_t GetPreassure() const;
 	uint32_t GetHumidity() const;
+
+
+
+	bool ReadCalibrationConstants();
+
+
+
+
+
+
+
 	bool ReadProbe();
 
 private:
@@ -58,14 +69,13 @@ private:
 		}
 	};
 
-	int32_t 				m_temperature;
+	uint8_t					m_i2cAddr;
+	uint32_t 				m_temperature;
 	uint32_t 				m_preassure;
 	uint32_t 				m_humidity;
-
 	CalibrationConstants	m_calibr;
-	int32_t					m_tFine;
-	uint8_t					m_i2cAddr;
 
+	int32_t					m_tFine;
 
 
 	// Returns temperature in DegC, resolution is 0.01 DegC. Output value of “5123” equals 51.23	DegC.
@@ -83,12 +93,12 @@ private:
 	// Copy-paste from datasheet
 	uint32_t GetHumidityWithCompensation(const int32_t adc_H);
 
-	bool ReadCalibrationConstants();
 
 	bool Read(const uint8_t address, uint8_t& data) const;
 	bool ReadBurst(const uint8_t address, uint8_t* dst, const uint8_t length) const;
 	bool Write(const uint8_t addr, const uint8_t data);
 	bool WriteBurst(const uint8_t startAddr, const uint8_t* data, const uint8_t length);
+
 };
 
 
