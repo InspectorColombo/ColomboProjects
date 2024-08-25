@@ -1,0 +1,33 @@
+/*
+ * KeyPressDetector.cpp
+ *
+ *  Created on: Aug 26, 2024
+ *      Author: Goggy
+ */
+
+
+#include "KeyPressDetector.hpp"
+
+#include "GpioConfigurator.hpp"
+#include "stm32f103xb.h"
+
+#define	KEY_PORT		GPIOA
+#define KEY_BIT			PA8		// PA9 - too
+
+
+KeyPressDetector::KeyPressDetector() : m_wasPressed(false)
+{
+	Init();
+}
+
+void KeyPressDetector::Reset();
+void KeyPressDetector::Update();
+bool KeyPressDetector::IsPressedNow() const;
+
+void KeyPressDetector::Init();
+
+
+}
+
+
+

@@ -27,6 +27,7 @@
 #include "AM2320Sensor.hpp"
 #include "BME280Sensor.hpp"
 
+#include "KeyPressDetector.hpp"
 #include "I2cRxTx.hpp"
 
 
@@ -149,6 +150,85 @@ void ShowSensorHumidity(const AM2320Sensor& sensor)
 }
 
 
+void ShowBME280Temperature(const BME280Sensor& sensor)
+{
+	int16_t temp =  sensor.GetTemperature();
+	LcdScreen::LcdToPos(0,0);
+//	LcdScreen::LcdPrintChar('T');
+//	LcdScreen::LcdPrintChar(':');
+	if (temp < 0)
+	{
+		LcdScreen::LcdPrintChar('-');
+		temp = -temp;
+	}
+
+	LcdScreen::LcdPrintNumber((uint8_t)(temp / 100), true);
+	LcdScreen::LcdPrintChar('.');
+	uint8_t afterDot = (uint8_t)(temp % 100);
+	if (afterDot < 10)
+	{
+		LcdScreen::LcdPrintChar('0');
+	}
+	LcdScreen::LcdPrintNumber((uint32_t)afterDot, true);
+	LcdScreen::LcdPrintChar(0b11011111);	// degree sign
+	LcdScreen::LcdPrintChar('C');
+}
+
+void ShowBME280Humidity(const BME280Sensor& sensor)
+{
+	LcdScreen::LcdToPos(0,1);
+//	LcdScreen::LcdPrintChar('H');
+//	LcdScreen::LcdPrintChar(':');
+	const uint32_t humidity =  sensor.GetHumidity();
+	LcdScreen::LcdPrintNumber(humidity / 1024, true);
+
+	// Left only 2 digit after dot
+	uint16_t afterDots = (uint16_t)((humidity % 1024) * 999 / 1023);
+	if ((afterDots % 10) > 4)
+	{
+		afterDots += 10;
+	}
+	afterDots /= 10;
+
+	LcdScreen::LcdPrintChar('.');
+	if (afterDots < 10)
+	{
+		LcdScreen::LcdPrintChar('0');
+	}
+	LcdScreen::LcdPrintNumber(afterDots, true);
+	LcdScreen::LcdPrintChar('%');
+}
+
+void ShowBME280Pressure(const BME280Sensor& sensor)
+{
+	uint32_t pressure = sensor.GetPressure();
+
+	LcdScreen::LcdToPos(0,1);
+//	LcdScreen::LcdPrintChar('P');
+//	LcdScreen::LcdPrintChar(':');
+	LcdScreen::LcdPrintNumber(pressure / 256, true);
+	LcdScreen::LcdPrintChar('P');
+	LcdScreen::LcdPrintChar('a');
+
+}
+
+void ShowBME280Error()
+{
+	LcdScreen::LcdClear();
+	LcdScreen::LcdToPos(0,0);
+	LcdScreen::LcdPrint("BME280");
+	LcdScreen::LcdToPos(0,1);
+	LcdScreen::LcdPrint("ERROR");
+}
+
+void ShowBatteryVoltage()
+{
+	LcdScreen::LcdClear();
+	LcdScreen::LcdToPos(0,0);
+	LcdScreen::LcdPrint("BATTERY");
+	LcdScreen::LcdToPos(0,1);
+	LcdScreen::LcdPrint("NOT_IMPL");
+}
 
 
 int main(void)
@@ -167,7 +247,7 @@ int main(void)
 	LcdScreen::LcdInit();
 	LcdScreen::LcdPrint("Hello!!!");
 
-
+/*
 	volatile uint8_t bbbb=12;
 	if (bbbb==12)
 	{
@@ -228,41 +308,76 @@ int main(void)
 			DelayTimer::DelayMilliSec(1000);
 		}
 
-/*
-		uint8_t id = 0;
-		const bool success = bme280Sens.Read(0xD0, id);
-		LcdScreen::LcdToPos(0,1);
-		if (success)
-		{
-			LcdScreen::LcdPrint("ID:");
-			LcdScreen::LcdPrintHex(id);
-		}
-		else
-		{
-			LcdScreen::LcdPrint("ERROR");
-		}
-		for(;;);
-*/
 	}
+*/
 
+	enum MainMenuState
+	{
+		MMS_TEMP_AND_HUMIDITY,
+		MMS_TEMP_AND_PRESSURE,
+		MMS_BAT_VOLTAGE
+	};
 
+	MainMenuState mainMenuState = MMS_TEMP_AND_HUMIDITY;
 
-	AM2320Sensor sensor;
-	const uint8_t MAX_MEASURES_COUNT = 15;
+	KeyPressDetector kpd;
+	BME280Sensor sensor;
+	//AM2320Sensor sensor;
+	const uint8_t MAX_MEASURES_COUNT = 120;	// 2 minutes before turn off
 	uint8_t measuresCount = 0;
 	for(;;)
 	{
-		sensor.DelayBeforeNextRead();
-		if (!sensor.Read())
+		//sensor.DelayBeforeNextRead();
+		if (!sensor.ReadProbe())
 		{
-			ShowSensorError(sensor);
-		}
-		else
-		{
-			ShowSensorTemperature(sensor);
-			ShowSensorHumidity(sensor);
+			ShowBME280Error();
+			continue;
 		}
 
+		// Show Values
+		LcdScreen::LcdClear();
+		switch(mainMenuState)
+		{
+		case MMS_TEMP_AND_HUMIDITY:
+			{
+				ShowBME280Temperature(sensor);
+				ShowBME280Humidity(sensor);
+				break;
+			}
+		case MMS_TEMP_AND_PRESSURE:
+			{
+				ShowBME280Temperature(sensor);
+				ShowBME280Pressure(sensor);
+				break;
+			}
+		case MMS_BAT_VOLTAGE:
+			{
+				ShowBatteryVoltage();
+				break;
+			}
+		}
+
+		// Delay
+		kpd.Reset();
+		for(uint8_t delayCnt = 0; delayCnt < 100; ++delayCnt)
+		{
+			kpd.Update();
+			DelayTimer::DelayMilliSec(10);
+		}
+
+		// Switch menu state if required;
+		if (kpd.WasPressed())
+		{
+			switch(mainMenuState)
+			{
+			case MMS_TEMP_AND_HUMIDITY:	mainMenuState = MMS_TEMP_AND_PRESSURE; break;
+			case MMS_TEMP_AND_PRESSURE:	mainMenuState = MMS_BAT_VOLTAGE; break;
+			case MMS_BAT_VOLTAGE:		mainMenuState = MMS_TEMP_AND_HUMIDITY; break;
+			}
+			measuresCount = 0;
+		}
+
+		// Check for self turn off
 		if (measuresCount < MAX_MEASURES_COUNT)
 		{
 			++measuresCount;

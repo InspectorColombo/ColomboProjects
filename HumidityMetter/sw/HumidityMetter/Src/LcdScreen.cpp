@@ -252,7 +252,30 @@ void LcdPrint(char* string)
 	}
 }
 
-void LcdPrintNumber(const uint16_t valueToPrint)
+void LcdPrintNumber(const uint8_t valueToPrint, const bool leftAligned)
+{
+	uint8_t value = valueToPrint;
+	uint8_t printStr[3] = {' ', ' ', '0'};
+	value = valueToPrint;
+	for(uint8_t charIdx = 0; charIdx < 3; ++charIdx)
+	{
+		if (value == 0)
+			break;
+
+		uint8_t digit = (uint8_t)(value % 10) + (uint8_t)('0');
+		printStr[2 - charIdx] = digit;
+		value /= 10;
+	}
+	for(uint8_t charIdx = 0; charIdx < 3; ++charIdx)
+	{
+		if (leftAligned && printStr[charIdx] == ' ')
+			continue;
+
+		LcdPrintChar(printStr[charIdx]);
+	}
+}
+
+void LcdPrintNumber(const uint16_t valueToPrint, const bool leftAligned)
 {
 	uint16_t value = valueToPrint;
 	uint8_t printStr[5] = {' ', ' ', ' ', ' ', '0'};
@@ -268,11 +291,13 @@ void LcdPrintNumber(const uint16_t valueToPrint)
 	}
 	for(uint8_t charIdx = 0; charIdx < 5; ++charIdx)
 	{
+		if (leftAligned && printStr[charIdx] == ' ')
+			continue;
 		LcdPrintChar(printStr[charIdx]);
 	}
 }
 
-void LcdPrintNumber(const uint32_t valueToPrint)
+void LcdPrintNumber(const uint32_t valueToPrint, const bool leftAligned)
 {
 	uint32_t value = valueToPrint;
 	uint8_t printStr[10] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '0'};
@@ -288,7 +313,7 @@ void LcdPrintNumber(const uint32_t valueToPrint)
 	}
 	for(uint8_t charIdx = 0; charIdx < 10; ++charIdx)
 	{
-		if (printStr[charIdx] == ' ')
+		if (leftAligned && printStr[charIdx] == ' ')
 			continue;
 		LcdPrintChar(printStr[charIdx]);
 	}
@@ -335,27 +360,6 @@ void LcdPrintHex(const uint32_t value)
 
 	LcdPrintHex(high);
 	LcdPrintHex(low);
-}
-
-
-void LcdPrintNumber(const uint8_t valueToPrint)
-{
-	uint8_t value = valueToPrint;
-	uint8_t printStr[3] = {' ', ' ', '0'};
-	value = valueToPrint;
-	for(uint8_t charIdx = 0; charIdx < 3; ++charIdx)
-	{
-		if (value == 0)
-			break;
-
-		uint8_t digit = (uint8_t)(value % 10) + (uint8_t)('0');
-		printStr[2 - charIdx] = digit;
-		value /= 10;
-	}
-	for(uint8_t charIdx = 0; charIdx < 3; ++charIdx)
-	{
-		LcdPrintChar(printStr[charIdx]);
-	}
 }
 
 void LcdPrintDigit(const uint8_t val)

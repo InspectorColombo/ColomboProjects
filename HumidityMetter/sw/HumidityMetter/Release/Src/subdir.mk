@@ -10,6 +10,7 @@ CPP_SRCS += \
 ../Src/ErrorLed.cpp \
 ../Src/GpioConfigurator.cpp \
 ../Src/I2cRxTx.cpp \
+../Src/KeyPressDetector.cpp \
 ../Src/LcdScreen.cpp \
 ../Src/PowerControl.cpp \
 ../Src/main.cpp 
@@ -20,6 +21,7 @@ OBJS += \
 ./Src/ErrorLed.o \
 ./Src/GpioConfigurator.o \
 ./Src/I2cRxTx.o \
+./Src/KeyPressDetector.o \
 ./Src/LcdScreen.o \
 ./Src/PowerControl.o \
 ./Src/main.o 
@@ -30,6 +32,7 @@ CPP_DEPS += \
 ./Src/ErrorLed.d \
 ./Src/GpioConfigurator.d \
 ./Src/I2cRxTx.d \
+./Src/KeyPressDetector.d \
 ./Src/LcdScreen.d \
 ./Src/PowerControl.d \
 ./Src/main.d 
@@ -42,7 +45,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.cpp Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/BME280Sensor.cyclo ./Src/BME280Sensor.d ./Src/BME280Sensor.o ./Src/BME280Sensor.su ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/ErrorLed.cyclo ./Src/ErrorLed.d ./Src/ErrorLed.o ./Src/ErrorLed.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/I2cRxTx.cyclo ./Src/I2cRxTx.d ./Src/I2cRxTx.o ./Src/I2cRxTx.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/PowerControl.cyclo ./Src/PowerControl.d ./Src/PowerControl.o ./Src/PowerControl.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
+	-$(RM) ./Src/BME280Sensor.cyclo ./Src/BME280Sensor.d ./Src/BME280Sensor.o ./Src/BME280Sensor.su ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/ErrorLed.cyclo ./Src/ErrorLed.d ./Src/ErrorLed.o ./Src/ErrorLed.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/I2cRxTx.cyclo ./Src/I2cRxTx.d ./Src/I2cRxTx.o ./Src/I2cRxTx.su ./Src/KeyPressDetector.cyclo ./Src/KeyPressDetector.d ./Src/KeyPressDetector.o ./Src/KeyPressDetector.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/PowerControl.cyclo ./Src/PowerControl.d ./Src/PowerControl.o ./Src/PowerControl.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
 
 .PHONY: clean-Src
 

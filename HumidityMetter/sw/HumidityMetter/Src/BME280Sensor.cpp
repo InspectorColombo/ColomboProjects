@@ -41,14 +41,14 @@ BME280Sensor::BME280Sensor(const uint8_t addrI2c) :
 	I2cRxTx::Init();
 }
 
-int32_t BME280Sensor::GetTemperature() const
+int16_t BME280Sensor::GetTemperature() const
 {
 	return m_temperature;
 }
 
-uint32_t BME280Sensor::GetPreassure() const
+uint32_t BME280Sensor::GetPressure() const
 {
-	return m_preassure;
+	return m_pressure;
 }
 
 uint32_t BME280Sensor::GetHumidity() const
@@ -221,10 +221,10 @@ bool BME280Sensor::ReadProbe()
 		return false;
 
 	const uint32_t tempAdc = (((uint32_t)pd.tempMsb << 16) + ((uint32_t)pd.tempLsb << 8) + ((uint32_t)pd.tempXLsb)) >> 4;
-	m_temperature = GetTemperatureWithCompensation((int32_t)tempAdc);
+	m_temperature = (int16_t)GetTemperatureWithCompensation((int32_t)tempAdc);
 
 	const uint32_t pressureAdc = (((uint32_t)pd.pressMsb << 16) + ((uint32_t)pd.pressLsb << 8) + ((uint32_t)pd.pressXLsb)) >> 4;
-	m_preassure = GetPressureWithCompensations((int32_t)pressureAdc);
+	m_pressure = GetPressureWithCompensations((int32_t)pressureAdc);
 
 	const uint16_t humidityAdc = ((uint16_t)pd.humMsb << 8) + (uint16_t)pd.humLsb;
 	m_humidity = GetHumidityWithCompensation((int32_t) humidityAdc);

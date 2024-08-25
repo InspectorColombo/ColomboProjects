@@ -19,8 +19,8 @@ class BME280Sensor
 public:
 	BME280Sensor(const uint8_t addrI2c = 0b11101100);
 
-	int32_t GetTemperature() const;
-	uint32_t GetPreassure() const;
+	int16_t GetTemperature() const;
+	uint32_t GetPressure() const;
 	uint32_t GetHumidity() const;
 	bool ReadProbe();
 
@@ -58,8 +58,8 @@ private:
 		}
 	};
 
-	int32_t 				m_temperature;
-	uint32_t 				m_preassure;
+	int16_t 				m_temperature;
+	uint32_t 				m_pressure;
 	uint32_t 				m_humidity;
 
 	CalibrationConstants	m_calibr;

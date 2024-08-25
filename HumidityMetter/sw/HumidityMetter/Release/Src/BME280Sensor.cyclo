@@ -1,6 +1,6 @@
 ../Src/BME280Sensor.cpp:38:1:BME280Sensor::BME280Sensor(uint8_t)	1
-../Src/BME280Sensor.cpp:44:9:int32_t BME280Sensor::GetTemperature() const	1
-../Src/BME280Sensor.cpp:49:10:uint32_t BME280Sensor::GetPreassure() const	1
+../Src/BME280Sensor.cpp:44:9:int16_t BME280Sensor::GetTemperature() const	1
+../Src/BME280Sensor.cpp:49:10:uint32_t BME280Sensor::GetPressure() const	1
 ../Src/BME280Sensor.cpp:54:10:uint32_t BME280Sensor::GetHumidity() const	1
 ../Src/BME280Sensor.cpp:123:9:int32_t BME280Sensor::GetTemperatureWithCompensation(int32_t)	1
 ../Src/BME280Sensor.cpp:136:10:uint32_t BME280Sensor::GetPressureWithCompensations(int32_t)	2

@@ -16,10 +16,10 @@
 ../Src/LcdScreen.cpp:228:6:void LcdScreen::LcdToPos(uint8_t, uint8_t)	16	static
 ../Src/LcdScreen.cpp:237:6:void LcdScreen::LcdPrintChar(uint8_t)	8	static
 ../Src/LcdScreen.cpp:245:6:void LcdScreen::LcdPrint(char*)	8	static
-../Src/LcdScreen.cpp:255:6:void LcdScreen::LcdPrintNumber(uint16_t)	24	static
-../Src/LcdScreen.cpp:275:6:void LcdScreen::LcdPrintNumber(uint32_t)	32	static
-../Src/LcdScreen.cpp:298:6:void LcdScreen::LcdPrintHex(uint8_t)	8	static
-../Src/LcdScreen.cpp:322:6:void LcdScreen::LcdPrintHex(uint16_t)	8	static
-../Src/LcdScreen.cpp:331:6:void LcdScreen::LcdPrintHex(uint32_t)	8	static
-../Src/LcdScreen.cpp:341:6:void LcdScreen::LcdPrintNumber(uint8_t)	16	static
-../Src/LcdScreen.cpp:361:6:void LcdScreen::LcdPrintDigit(uint8_t)	0	static
+../Src/LcdScreen.cpp:255:6:void LcdScreen::LcdPrintNumber(uint8_t, bool)	24	static
+../Src/LcdScreen.cpp:278:6:void LcdScreen::LcdPrintNumber(uint16_t, bool)	24	static
+../Src/LcdScreen.cpp:300:6:void LcdScreen::LcdPrintNumber(uint32_t, bool)	32	static
+../Src/LcdScreen.cpp:323:6:void LcdScreen::LcdPrintHex(uint8_t)	8	static
+../Src/LcdScreen.cpp:347:6:void LcdScreen::LcdPrintHex(uint16_t)	8	static
+../Src/LcdScreen.cpp:356:6:void LcdScreen::LcdPrintHex(uint32_t)	8	static
+../Src/LcdScreen.cpp:365:6:void LcdScreen::LcdPrintDigit(uint8_t)	0	static

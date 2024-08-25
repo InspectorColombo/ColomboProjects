@@ -7,6 +7,7 @@
 "./Src/ErrorLed.o"
 "./Src/GpioConfigurator.o"
 "./Src/I2cRxTx.o"
+"./Src/KeyPressDetector.o"
 "./Src/LcdScreen.o"
 "./Src/PowerControl.o"
 "./Src/main.o"
