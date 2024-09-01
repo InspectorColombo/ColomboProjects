@@ -147,7 +147,7 @@ public:
 	// Temperature in Celsius degrees
 	// return:
 	// deltaHeight in millimetters
-	int32_t GetDeltaHeight(const uint32_t pressure, int16_t currentTemperature) const
+	int32_t GetDeltaHeight(const uint32_t pressure, int16_t currentTemperature)
 	{
 		if (pressure == 0)
 			return -666;	// Something went wrong
@@ -168,7 +168,7 @@ public:
 				{
 					deltaP = PRESSURE_ITERATION_STEP;
 				}
-				resultHeight += -q * ((double)deltaP);
+				resultHeight += q * ((double)deltaP);
 				currPressure += deltaP;
 			}
 			else
@@ -178,7 +178,7 @@ public:
 				{
 					deltaP = PRESSURE_ITERATION_STEP;
 				}
-				resultHeight -= -q * ((double)deltaP);
+				resultHeight -= q * ((double)deltaP);
 				currPressure -= deltaP;
 			}
 			if (currPressure == pressure)
@@ -415,10 +415,10 @@ int main(void)
 			{
 				ShowBME280Temperature(sensor);
 				ShowBME280Pressure(sensor);
-				altMetter.SetStartPressure(sensor.GetPressure()/256);
+				altMetter.SetStartPressure(sensor.GetPressure());
 				break;
 			}
-		case MMS_TEMP_ALTITUDE:
+		case MMS_MMS_TEMP_ALTITUDE:
 			{
 				ShowBME280Temperature(sensor);
 				ShowBME280Altitude(sensor, altMetter);

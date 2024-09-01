@@ -147,7 +147,7 @@ public:
 	// Temperature in Celsius degrees
 	// return:
 	// deltaHeight in millimetters
-	int32_t GetDeltaHeight(const uint32_t pressure, int16_t currentTemperature) const
+	int32_t GetDeltaHeight(const uint32_t pressure, int16_t currentTemperature)
 	{
 		if (pressure == 0)
 			return -666;	// Something went wrong
@@ -168,7 +168,7 @@ public:
 				{
 					deltaP = PRESSURE_ITERATION_STEP;
 				}
-				resultHeight += -q * ((double)deltaP);
+				resultHeight += q * ((double)deltaP);
 				currPressure += deltaP;
 			}
 			else
@@ -178,7 +178,7 @@ public:
 				{
 					deltaP = PRESSURE_ITERATION_STEP;
 				}
-				resultHeight -= -q * ((double)deltaP);
+				resultHeight -= q * ((double)deltaP);
 				currPressure -= deltaP;
 			}
 			if (currPressure == pressure)
@@ -274,25 +274,7 @@ void ShowBME280Temperature(const BME280Sensor& sensor)
 
 
 
-void ShowBME280Altitude(const BME280Sensor& sensor, const AltitudeMetter& altMetter)
-{
-	int32_t altitude = altMetter.GetDeltaHeight(sensor.GetPressure() / 256, sensor.GetTemperature() / 100);
-
-	LcdScreen::LcdToPos(0,1);
-	if (altitude < 0)
-	{
-		altitude = -altitude;
-		LcdScreen::LcdPrintChar('-');
-	}
-	uint16_t beforeDot = (uint16_t)(((uint32_t)altitude) / 1000);
-	uint16_t afterDot  = (uint16_t)(((uint32_t)altitude) % 1000);
-	afterDot /= 100;
-
-	LcdScreen::LcdPrintNumber(beforeDot, true);
-	LcdScreen::LcdPrintChar('.');
-	LcdScreen::LcdPrintNumber(afterDot, true);
-	LcdScreen::LcdPrintChar('m');
-}
+void ShowBME280Altitude(const BME280Sensor& sensor, altMetter);
 
 void ShowBME280Humidity(const BME280Sensor& sensor)
 {
@@ -415,10 +397,10 @@ int main(void)
 			{
 				ShowBME280Temperature(sensor);
 				ShowBME280Pressure(sensor);
-				altMetter.SetStartPressure(sensor.GetPressure()/256);
+				altMetter.SetStartPressure(sensor.GetPressure());
 				break;
 			}
-		case MMS_TEMP_ALTITUDE:
+		case MMS_MMS_TEMP_ALTITUDE:
 			{
 				ShowBME280Temperature(sensor);
 				ShowBME280Altitude(sensor, altMetter);

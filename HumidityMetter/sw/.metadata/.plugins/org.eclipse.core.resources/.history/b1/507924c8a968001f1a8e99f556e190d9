@@ -168,7 +168,7 @@ public:
 				{
 					deltaP = PRESSURE_ITERATION_STEP;
 				}
-				resultHeight += -q * ((double)deltaP);
+				resultHeight += q * ((double)deltaP);
 				currPressure += deltaP;
 			}
 			else
@@ -178,7 +178,7 @@ public:
 				{
 					deltaP = PRESSURE_ITERATION_STEP;
 				}
-				resultHeight -= -q * ((double)deltaP);
+				resultHeight -= q * ((double)deltaP);
 				currPressure -= deltaP;
 			}
 			if (currPressure == pressure)

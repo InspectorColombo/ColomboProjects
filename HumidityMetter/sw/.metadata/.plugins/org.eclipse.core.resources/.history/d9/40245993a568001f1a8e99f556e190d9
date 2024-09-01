@@ -99,104 +99,6 @@ void InitPorts()
 }
 
 
-class AltitudeMetter
-{
-public:
-	AltitudeMetter(const uint32_t initialPressure) : m_initialPressure(initialPressure)
-	{
-	}
-
-	void SetStartPressure(const uint32_t initialPressure)
-	{
-		m_initialPressure = initialPressure;
-	}
-
-/*
-	// return delta height in meters
-	// Pressure in Pascal, temperature in Celsius degrees
-	int32_t GetDeltaHeight(const int32_t pressure, int16_t currentTemperature)
-	{
-		if (pressure == 0)
-			return -666;	// Something went wrong
-
-		int32_t resultHeight = 0;
-		const int32_t PRESSURE_ITERATION_STEP = 100;
-		//const int32_t deltaPStep = (pressure > m_initialPressure) ? PRESSURE_ITERATION_STEP : (-PRESSURE_ITERATION_STEP);
-		int32_t currPressure = m_initialPressure;
-		for(;;)
-		{
-			// Q - um/Pa
-			uint64_t q = (uint64_t)(8) * ((uint64_t)(1000000000) + (uint64_t)(3660000) * ((uint64_t)currentTemperature)) / (uint64_t(currPressure));
-
-			int32_t deltaP = pressure - currPressure;
-			const int32_t absDeltaP = (deltaP < 0) ? (-deltaP) : deltaP;
-			if (absDeltaP > PRESSURE_ITERATION_STEP)
-			{
-				deltaP = (deltaP < 0) ? (-PRESSURE_ITERATION_STEP) : PRESSURE_ITERATION_STEP;
-			}
-
-			int32_t deltaHeight = q *
-			retult +=
-		}
-	}
-*/
-
-	// return delta height in meters
-	// input:
-	// Pressure in Pascal
-	// Temperature in Celsius degrees
-	// return:
-	// deltaHeight in millimetters
-	int32_t GetDeltaHeight(const uint32_t pressure, int16_t currentTemperature) const
-	{
-		if (pressure == 0)
-			return -666;	// Something went wrong
-
-		double resultHeight = 0;
-		const uint32_t PRESSURE_ITERATION_STEP = 100;
-		uint32_t currPressure = m_initialPressure;
-		for(;;)
-		{
-			// Q - um/Pa
-			double q = 8000.0 * (1.0 + 0.00366 * (double)(currentTemperature)) / ((double)(currPressure));
-
-
-			if (pressure > currPressure)
-			{
-				uint32_t deltaP = pressure - currPressure;
-				if (deltaP > PRESSURE_ITERATION_STEP)
-				{
-					deltaP = PRESSURE_ITERATION_STEP;
-				}
-				resultHeight += -q * ((double)deltaP);
-				currPressure += deltaP;
-			}
-			else
-			{
-				uint32_t deltaP = currPressure - pressure;
-				if (deltaP > PRESSURE_ITERATION_STEP)
-				{
-					deltaP = PRESSURE_ITERATION_STEP;
-				}
-				resultHeight -= -q * ((double)deltaP);
-				currPressure -= deltaP;
-			}
-			if (currPressure == pressure)
-				break;
-		}
-		return (int32_t)(resultHeight * 1000.0);
-	}
-
-
-
-private:
-	uint32_t m_initialPressure;
-
-};
-
-
-
-
 void ShowSensorError(const AM2320Sensor& sensor)
 {
 	LcdScreen::LcdClear();
@@ -272,28 +174,6 @@ void ShowBME280Temperature(const BME280Sensor& sensor)
 	LcdScreen::LcdPrintChar('C');
 }
 
-
-
-void ShowBME280Altitude(const BME280Sensor& sensor, const AltitudeMetter& altMetter)
-{
-	int32_t altitude = altMetter.GetDeltaHeight(sensor.GetPressure() / 256, sensor.GetTemperature() / 100);
-
-	LcdScreen::LcdToPos(0,1);
-	if (altitude < 0)
-	{
-		altitude = -altitude;
-		LcdScreen::LcdPrintChar('-');
-	}
-	uint16_t beforeDot = (uint16_t)(((uint32_t)altitude) / 1000);
-	uint16_t afterDot  = (uint16_t)(((uint32_t)altitude) % 1000);
-	afterDot /= 100;
-
-	LcdScreen::LcdPrintNumber(beforeDot, true);
-	LcdScreen::LcdPrintChar('.');
-	LcdScreen::LcdPrintNumber(afterDot, true);
-	LcdScreen::LcdPrintChar('m');
-}
-
 void ShowBME280Humidity(const BME280Sensor& sensor)
 {
 	LcdScreen::LcdToPos(0,1);
@@ -359,6 +239,41 @@ void ShowBatteryVoltage()
 	LcdScreen::LcdPrint("NOT_IMPL");
 }
 
+class AltitudeMetter
+{
+public:
+	AltitudeMetter(const uint32_t initialPressure) : m_initialPressure(initialPressure)
+	{
+	}
+
+	// return delta height in meters
+	// Pressure in Pascal, temperature in Celsius degrees
+	int32_t GetDeltaHeight(const uint32_t pressure, int16_t currentTemperature)
+	{
+		if (pressure == 0)
+			return -666;	// Something went wrong
+
+		int32_t result = 0;
+		const int32_t PRESSURE_ITERATION_STEP = 100;
+		const int32_t deltaPStep = (pressure > m_initialPressure) ? PRESSURE_ITERATION_STEP : (-PRESSURE_ITERATION_STEP);
+		uint32_t currPressure = m_initialPressure;
+		for(;;)
+		{
+			uint32_t steps
+
+
+
+		}
+
+
+	}
+
+
+
+private:
+	const uint32_t m_initialPressure;
+
+};
 
 int main(void)
 {
@@ -388,7 +303,6 @@ int main(void)
 
 	KeyPressDetector kpd;
 	BME280Sensor sensor;
-	AltitudeMetter altMetter(0);
 	//AM2320Sensor sensor;
 	const uint8_t MAX_MEASURES_COUNT = 120;	// 2 minutes before turn off
 	uint8_t measuresCount = 0;
@@ -415,14 +329,6 @@ int main(void)
 			{
 				ShowBME280Temperature(sensor);
 				ShowBME280Pressure(sensor);
-				altMetter.SetStartPressure(sensor.GetPressure()/256);
-				break;
-			}
-		case MMS_TEMP_ALTITUDE:
-			{
-				ShowBME280Temperature(sensor);
-				ShowBME280Altitude(sensor, altMetter);
-				measuresCount = 0;	// avoid auto OFF in altitude metter mode
 				break;
 			}
 		case MMS_BAT_VOLTAGE:
