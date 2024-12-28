@@ -2839,6 +2839,36 @@
 <pad name="A" x="56.44" y="24.4" drill="1" diameter="2"/>
 <pad name="K" x="56.44" y="7.6" drill="1" diameter="2"/>
 </package>
+<package name="SOT223(WAVE_SOLDERING)">
+<smd name="4" x="0" y="3.1" dx="6.7" dy="1.9" layer="1"/>
+<smd name="1" x="-2.7" y="-3.1" dx="1.9" dy="1.9" layer="1"/>
+<smd name="2" x="0" y="-3.1" dx="1.1" dy="1.9" layer="1"/>
+<smd name="3" x="2.7" y="-3.1" dx="1.9" dy="1.9" layer="1"/>
+<wire x1="-4.35" y1="4.25" x2="4.35" y2="4.25" width="0.2" layer="39"/>
+<wire x1="4.35" y1="4.25" x2="4.35" y2="-4.25" width="0.2" layer="39"/>
+<wire x1="4.35" y1="-4.25" x2="-4.35" y2="-4.25" width="0.2" layer="39"/>
+<wire x1="-4.35" y1="-4.25" x2="-4.35" y2="4.25" width="0.2" layer="39"/>
+<wire x1="-3.15" y1="1.65" x2="3.15" y2="1.65" width="0.4" layer="21"/>
+<wire x1="3.15" y1="1.65" x2="3.15" y2="-1.65" width="0.4" layer="21"/>
+<wire x1="3.15" y1="-1.65" x2="-3.15" y2="-1.65" width="0.4" layer="21"/>
+<wire x1="-3.15" y1="-1.65" x2="-3.15" y2="1.65" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="RSMD_0603">
+<smd name="PAD_0" x="-0.75" y="0" dx="0.6" dy="0.9" layer="1" rot="R180"/>
+<smd name="PAD_1" x="0.75" y="0" dx="0.6" dy="0.9" layer="1" rot="R180"/>
+<wire x1="-1.3" y1="0.7" x2="1.3" y2="0.7" width="0.127" layer="39"/>
+<wire x1="1.3" y1="0.7" x2="1.3" y2="-0.7" width="0.127" layer="39"/>
+<wire x1="1.3" y1="-0.7" x2="-1.3" y2="-0.7" width="0.127" layer="39"/>
+<wire x1="-1.3" y1="-0.7" x2="-1.3" y2="0.7" width="0.127" layer="39"/>
+<wire x1="-1.3" y1="0.7" x2="1.3" y2="0.7" width="0.2" layer="21"/>
+<wire x1="1.3" y1="0.7" x2="1.3" y2="-0.7" width="0.2" layer="21"/>
+<wire x1="1.3" y1="-0.7" x2="-1.3" y2="-0.7" width="0.2" layer="21"/>
+<wire x1="-1.3" y1="-0.7" x2="-1.3" y2="0.7" width="0.2" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;name</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;value</text>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -3651,9 +3681,9 @@
 <wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
-<pin name="ADJ" x="0" y="-5.08" visible="pad" length="short" direction="in" rot="R90"/>
-<pin name="OUT" x="7.62" y="0" visible="pad" length="short" direction="out" rot="R180"/>
-<pin name="IN" x="-7.62" y="0" visible="pad" length="short" direction="in"/>
+<pin name="ADJ" x="0" y="-5.08" visible="off" length="short" direction="in" rot="R90"/>
+<pin name="OUT" x="7.62" y="0" visible="off" length="short" direction="out" rot="R180"/>
+<pin name="IN" x="-7.62" y="0" visible="off" length="short" direction="in"/>
 <text x="-2.54" y="5.08" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
 <text x="-2.54" y="2.54" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
 <text x="-4.445" y="0" size="1.27" layer="94" font="vector" ratio="20">IN</text>
@@ -4526,6 +4556,15 @@
 <technology name=""/>
 </technologies>
 </device>
+<device name="SMD_0603" package="RSMD_0603">
+<connects>
+<connect gate="R$1" pin="PIN0" pad="PAD_0"/>
+<connect gate="R$1" pin="PIN1" pad="PAD_1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="C">
@@ -4591,6 +4630,15 @@
 <connects>
 <connect gate="C$1" pin="PIN0" pad="PAD_0"/>
 <connect gate="C$1" pin="PIN1" pad="PAD1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="SMD_0603" package="RSMD_0603">
+<connects>
+<connect gate="C$1" pin="PIN0" pad="PAD_0"/>
+<connect gate="C$1" pin="PIN1" pad="PAD_1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -6644,6 +6692,23 @@
 <connect gate="G$1" pin="SCL" pad="4"/>
 <connect gate="G$1" pin="SDA" pad="2"/>
 <connect gate="G$1" pin="VDD" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="AMS1117">
+<gates>
+<gate name="G$1" symbol="LM317" x="0" y="0"/>
+</gates>
+<devices>
+<device name="SOT223_WS" package="SOT223(WAVE_SOLDERING)">
+<connects>
+<connect gate="G$1" pin="ADJ" pad="1"/>
+<connect gate="G$1" pin="IN" pad="3"/>
+<connect gate="G$1" pin="OUT" pad="2 4"/>
 </connects>
 <technologies>
 <technology name=""/>
