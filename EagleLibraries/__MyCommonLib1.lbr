@@ -2885,6 +2885,26 @@
 <wire x1="-2.25" y1="-2.15" x2="-2.25" y2="-1.45" width="0.4" layer="21"/>
 <wire x1="-2.25" y1="-0.75" x2="-2.25" y2="3.2" width="0.4" layer="21"/>
 </package>
+<package name="DO-214AC">
+<smd name="CATHODE" x="-1.98" y="0" dx="1.72" dy="1.68" layer="1"/>
+<smd name="ANODE" x="1.98" y="0" dx="1.72" dy="1.68" layer="1"/>
+<wire x1="-2.05" y1="1.2" x2="-0.7" y2="1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="1.2" x2="-0.4" y2="1.2" width="0.4" layer="21"/>
+<wire x1="-0.4" y1="1.2" x2="2.05" y2="1.2" width="0.4" layer="21"/>
+<wire x1="2.05" y1="-1.2" x2="-0.4" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="-1.2" x2="-2.05" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="1.2" x2="-0.7" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="-1.2" x2="-0.4" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.4" y1="-1.2" x2="-0.4" y2="1.2" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-3.1" y1="1.6" x2="3.1" y2="1.6" width="0.127" layer="39"/>
+<wire x1="3.1" y1="1.6" x2="3.1" y2="-1.6" width="0.127" layer="39"/>
+<wire x1="3.1" y1="-1.6" x2="-3.1" y2="-1.6" width="0.127" layer="39"/>
+<wire x1="-3.1" y1="-1.6" x2="-3.1" y2="1.6" width="0.127" layer="39"/>
+</package>
+<package name="DOUBLE_SHOTTKY_COMMON_ANODE">
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -4486,6 +4506,32 @@
 <wire x1="-2.54" y1="5.08" x2="-2.54" y2="2.54" width="0.254" layer="94"/>
 <wire x1="-2.54" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
 <wire x1="2.54" y1="2.54" x2="2.54" y2="5.08" width="0.254" layer="94"/>
+</symbol>
+<symbol name="DOUBLE_SHOTTKY_COMMON_ANODE">
+<pin name="ANODE" x="0" y="5.08" visible="off" length="short" direction="pas" rot="R270"/>
+<wire x1="3.81" y1="0.9525" x2="2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-1.27" x2="1.27" y2="0.9525" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0.9525" x2="3.81" y2="0.9525" width="0.254" layer="94"/>
+<pin name="CATHODE1" x="-2.54" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
+<wire x1="3.81" y1="-1.27" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="3.81" y1="-1.27" x2="3.81" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="3.81" y1="-1.905" x2="3.4925" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-1.27" x2="1.27" y2="-0.635" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-0.635" x2="1.5875" y2="-0.635" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="0.9525" x2="-2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-1.27" x2="-3.81" y2="0.9525" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="0.9525" x2="-1.27" y2="0.9525" width="0.254" layer="94"/>
+<pin name="CATHODE2" x="2.54" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
+<text x="5.08" y="1.27" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="5.08" y="0" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-1.27" y1="-1.27" x2="-3.81" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-1.27" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-1.905" x2="-1.5875" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="-1.27" x2="-3.81" y2="-0.635" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="-0.635" x2="-3.4925" y2="-0.635" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="2.54" width="0.1524" layer="94"/>
+<wire x1="-2.54" y1="2.54" x2="2.54" y2="2.54" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="0" width="0.1524" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -6779,6 +6825,39 @@
 <connect gate="G$1" pin="IN" pad="2"/>
 <connect gate="G$1" pin="SS" pad="8"/>
 <connect gate="G$1" pin="SW" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="BAT54A">
+<gates>
+<gate name="G$1" symbol="DOUBLE_SHOTTKY_COMMON_ANODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="SOT23_SMALL_PADS" package="SOT23_SMALL_PADS">
+<connects>
+<connect gate="G$1" pin="ANODE" pad="3"/>
+<connect gate="G$1" pin="CATHODE1" pad="1"/>
+<connect gate="G$1" pin="CATHODE2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="B120">
+<gates>
+<gate name="G$1" symbol="DIODE_SHOTTKY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(DO-214AC)" package="DO-214AC">
+<connects>
+<connect gate="G$1" pin="ANODE" pad="ANODE"/>
+<connect gate="G$1" pin="CATHODE" pad="CATHODE"/>
 </connects>
 <technologies>
 <technology name=""/>

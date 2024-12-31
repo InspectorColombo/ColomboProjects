@@ -690,148 +690,6 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="4.445" y1="1.27" x2="2.8575" y2="1.27" width="0.4" layer="51"/>
 <wire x1="4.445" y1="-1.27" x2="2.8575" y2="-1.27" width="0.4" layer="51"/>
 </package>
-<package name="DO-41_10MM">
-<pad name="ANODE" x="-5.08" y="0" drill="0.9" diameter="1.9304"/>
-<pad name="CATHODE" x="5.08" y="0" drill="0.9" diameter="1.9304"/>
-<wire x1="-2.54" y1="1.27" x2="-2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="-1.27" x2="2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="-1.27" x2="2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="-2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-3.81" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="3.81" y2="0" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="-2.54" y="1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="-1.27" x2="-2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="5.08" y2="0" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="0" x2="-5.08" y2="0" width="0.4" layer="51"/>
-</package>
-<package name="DO-41_12.5MM">
-<pad name="ANODE" x="-6.35" y="0" drill="0.9" diameter="1.9304"/>
-<pad name="CATHODE" x="6.35" y="0" drill="0.9" diameter="1.9304"/>
-<wire x1="-2.54" y1="1.27" x2="-2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="-1.27" x2="2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="-1.27" x2="2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="-2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-5.08" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="5.08" y2="0" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="-2.54" y="1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="-1.27" x2="-2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="6.35" y2="0" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="0" x2="-6.35" y2="0" width="0.4" layer="51"/>
-</package>
-<package name="DO-41_15MM">
-<pad name="ANODE" x="-7.62" y="0" drill="0.9" diameter="1.9304"/>
-<pad name="CATHODE" x="7.62" y="0" drill="0.9" diameter="1.9304"/>
-<wire x1="-2.54" y1="1.27" x2="-2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="-1.27" x2="2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="-1.27" x2="2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="-2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-6.35" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="6.35" y2="0" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="-2.54" y="1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="-1.27" x2="-2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="7.62" y2="0" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="0" x2="-7.62" y2="0" width="0.4" layer="51"/>
-</package>
-<package name="DO-41_20MM">
-<pad name="ANODE" x="-10.16" y="0" drill="0.9" diameter="1.9304"/>
-<pad name="CATHODE" x="10.16" y="0" drill="0.9" diameter="1.9304"/>
-<wire x1="-2.54" y1="1.27" x2="-2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="-1.27" x2="2.54" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="-1.27" x2="2.54" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="-2.54" y2="1.27" width="0.4" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-8.89" y2="0" width="0.4" layer="21"/>
-<wire x1="2.54" y1="0" x2="8.89" y2="0" width="0.4" layer="21"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="21"/>
-<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="-2.54" y="1.27" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="1.27" x2="1.5875" y2="1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="2.54" y2="1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="-1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="-1.27" x2="-2.54" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="1.5875" y1="1.27" x2="1.5875" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="2.54" y1="0" x2="10.16" y2="0" width="0.4" layer="51"/>
-<wire x1="-2.54" y1="0" x2="-10.16" y2="0" width="0.4" layer="51"/>
-</package>
-<package name="DO-41_5MM">
-<pad name="ANODE" x="-2.54" y="0" drill="0.9" diameter="1.9304"/>
-<pad name="CATHODE" x="2.54" y="0" drill="0.9" diameter="1.9304"/>
-<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="-1.27" y1="-1.27" x2="0.3175" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="0.3175" y1="-1.27" x2="0.635" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="0.635" y1="-1.27" x2="1.27" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="1.27" y1="-1.27" x2="1.27" y2="1.27" width="0.4" layer="21"/>
-<wire x1="1.27" y1="1.27" x2="0.635" y2="1.27" width="0.4" layer="21"/>
-<wire x1="0.635" y1="1.27" x2="0.3175" y2="1.27" width="0.4" layer="21"/>
-<wire x1="0.3175" y1="1.27" x2="-1.27" y2="1.27" width="0.4" layer="21"/>
-<wire x1="0.3175" y1="1.27" x2="0.3175" y2="-1.27" width="0.4" layer="21"/>
-<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="-2.54" y="3.81" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
-<wire x1="-1.27" y1="0" x2="-1.27" y2="1.27" width="0.4" layer="51"/>
-<wire x1="-1.27" y1="1.27" x2="0.3175" y2="1.27" width="0.4" layer="51"/>
-<wire x1="0.3175" y1="1.27" x2="0.635" y2="1.27" width="0.4" layer="51"/>
-<wire x1="0.635" y1="1.27" x2="1.27" y2="1.27" width="0.4" layer="51"/>
-<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.4" layer="51"/>
-<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="1.27" y1="-1.27" x2="0.635" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="0.635" y1="-1.27" x2="0.3175" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="0.3175" y1="-1.27" x2="-1.27" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="-1.27" y1="-1.27" x2="-1.27" y2="0" width="0.4" layer="51"/>
-<wire x1="0.3175" y1="1.27" x2="0.3175" y2="-1.27" width="0.4" layer="51"/>
-<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="-1.27" y1="0" x2="-2.54" y2="0" width="0.4" layer="51"/>
-<wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="21"/>
-<wire x1="0.635" y1="1.27" x2="0.635" y2="-1.27" width="0.4" layer="51"/>
-</package>
 <package name="LED3MM">
 <pad name="ANODE" x="-1.27" y="0" drill="0.8" diameter="1.9304"/>
 <pad name="CATHODE" x="1.27" y="0" drill="0.8" diameter="1.9304"/>
@@ -1007,6 +865,24 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="-0.45" y1="-2.15" x2="-2.25" y2="-2.15" width="0.4" layer="21"/>
 <wire x1="-2.25" y1="-2.15" x2="-2.25" y2="-1.45" width="0.4" layer="21"/>
 <wire x1="-2.25" y1="-0.75" x2="-2.25" y2="3.2" width="0.4" layer="21"/>
+</package>
+<package name="DO-214AC">
+<smd name="CATHODE" x="-1.98" y="0" dx="1.72" dy="1.68" layer="1"/>
+<smd name="ANODE" x="1.98" y="0" dx="1.72" dy="1.68" layer="1"/>
+<wire x1="-2.05" y1="1.2" x2="-0.7" y2="1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="1.2" x2="-0.4" y2="1.2" width="0.4" layer="21"/>
+<wire x1="-0.4" y1="1.2" x2="2.05" y2="1.2" width="0.4" layer="21"/>
+<wire x1="2.05" y1="-1.2" x2="-0.4" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="-1.2" x2="-2.05" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="1.2" x2="-0.7" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.7" y1="-1.2" x2="-0.4" y2="-1.2" width="0.4" layer="21"/>
+<wire x1="-0.4" y1="-1.2" x2="-0.4" y2="1.2" width="0.4" layer="21"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-3.1" y1="1.6" x2="3.1" y2="1.6" width="0.127" layer="39"/>
+<wire x1="3.1" y1="1.6" x2="3.1" y2="-1.6" width="0.127" layer="39"/>
+<wire x1="3.1" y1="-1.6" x2="-3.1" y2="-1.6" width="0.127" layer="39"/>
+<wire x1="-3.1" y1="-1.6" x2="-3.1" y2="1.6" width="0.127" layer="39"/>
 </package>
 </packages>
 <symbols>
@@ -1301,6 +1177,20 @@ DIN A4, landscape with location and doc. field</description>
 <circle x="-3.81" y="0" radius="0.3175" width="0.508" layer="94"/>
 <text x="2.54" y="3.81" size="1.27" layer="95" font="vector" ratio="20" rot="R180">&gt;NAME</text>
 <text x="2.54" y="5.08" size="1.27" layer="96" font="vector" ratio="20" rot="R180">&gt;VALUE</text>
+</symbol>
+<symbol name="DIODE_SHOTTKY">
+<pin name="CATHODE" x="0" y="2.54" visible="off" length="short" direction="pas" rot="R270"/>
+<wire x1="-1.27" y1="-0.9525" x2="0" y2="1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="1.27" x2="1.27" y2="-0.9525" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-0.9525" x2="-1.27" y2="-0.9525" width="0.254" layer="94"/>
+<pin name="ANODE" x="0" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
+<text x="2.54" y="1.27" size="1.27" layer="95" font="vector" ratio="20">&gt;NAME</text>
+<text x="2.54" y="0" size="1.27" layer="96" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-1.27" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="1.905" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.905" x2="-0.9525" y2="1.905" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0.635" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0.635" x2="0.9525" y2="0.635" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -1828,58 +1718,6 @@ DIN A4, landscape with location and doc. field</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="1N4001">
-<gates>
-<gate name="D$1" symbol="DIODE" x="0" y="0"/>
-</gates>
-<devices>
-<device name="DO-41_10MM" package="DO-41_10MM">
-<connects>
-<connect gate="D$1" pin="ANODE" pad="ANODE"/>
-<connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="DO-41_12.5MM" package="DO-41_12.5MM">
-<connects>
-<connect gate="D$1" pin="ANODE" pad="ANODE"/>
-<connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="DO-41_15MM" package="DO-41_15MM">
-<connects>
-<connect gate="D$1" pin="ANODE" pad="ANODE"/>
-<connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="DO-41_20MM" package="DO-41_20MM">
-<connects>
-<connect gate="D$1" pin="ANODE" pad="ANODE"/>
-<connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="DO-41_5MM" package="DO-41_5MM">
-<connects>
-<connect gate="D$1" pin="ANODE" pad="ANODE"/>
-<connect gate="D$1" pin="CATHODE" pad="CATHODE"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="LED3MM">
 <gates>
 <gate name="LED$1" symbol="LED" x="0" y="0"/>
@@ -1989,6 +1827,22 @@ DIN A4, landscape with location and doc. field</description>
 <connects>
 <connect gate="G$1" pin="END" pad="2"/>
 <connect gate="G$1" pin="START" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="B120">
+<gates>
+<gate name="G$1" symbol="DIODE_SHOTTKY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="(DO-214AC)" package="DO-214AC">
+<connects>
+<connect gate="G$1" pin="ANODE" pad="ANODE"/>
+<connect gate="G$1" pin="CATHODE" pad="CATHODE"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -2110,12 +1964,10 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R27" library="__MyCommonLib1" deviceset="R" device="SMD_0603" value="4K7"/>
 <part name="R28" library="__MyCommonLib1" deviceset="R" device="SMD_0603" value="200R"/>
 <part name="R29" library="__MyCommonLib1" deviceset="R" device="SMD_0603" value="200R"/>
-<part name="D10" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4007"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
 <part name="R33" library="__MyCommonLib1" deviceset="R" device="SMD_0603" value="1K0"/>
 <part name="LED1" library="__MyCommonLib1" deviceset="LED3MM" device="(SMD0805)" value="ERROR(RED)"/>
 <part name="GND30" library="supply1" deviceset="GND" device=""/>
-<part name="D2" library="__MyCommonLib1" deviceset="1N4001" device="DO-41_10MM" value="1N4007"/>
 <part name="GND31" library="supply1" deviceset="GND" device=""/>
 <part name="D3" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="R34" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
@@ -2144,6 +1996,8 @@ DIN A4, landscape with location and doc. field</description>
 <part name="C17" library="__MyCommonLib1" deviceset="C" device="SMD_1206" value="10uF x 10V"/>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
 <part name="X4" library="__MyCommonLib1" deviceset="PIN4X1" device="(JST_XH2.5)" value="SENSOR"/>
+<part name="D11" library="__MyCommonLib1" deviceset="B120" device="(DO-214AC)" value="B120"/>
+<part name="D2" library="__MyCommonLib1" deviceset="B120" device="(DO-214AC)" value="B120"/>
 </parts>
 <sheets>
 <sheet>
@@ -2405,10 +2259,6 @@ DIN A4, landscape with location and doc. field</description>
 <attribute name="NAME" x="103.505" y="143.51" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="109.22" y="143.51" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
-<instance part="D10" gate="D$1" x="467.36" y="180.34" smashed="yes">
-<attribute name="NAME" x="469.9" y="181.61" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="469.9" y="180.34" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
 <instance part="GND29" gate="1" x="467.36" y="172.72" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="469.265" y="170.815" size="1.27" layer="96" font="vector" ratio="20" rot="MR0"/>
 </instance>
@@ -2422,10 +2272,6 @@ DIN A4, landscape with location and doc. field</description>
 </instance>
 <instance part="GND30" gate="1" x="43.18" y="137.16" smashed="yes">
 <attribute name="VALUE" x="40.64" y="133.985" size="1.27" layer="96" font="vector" ratio="20"/>
-</instance>
-<instance part="D2" gate="D$1" x="66.04" y="160.02" smashed="yes" rot="R270">
-<attribute name="NAME" x="63.5" y="163.83" size="1.27" layer="95" font="vector" ratio="20"/>
-<attribute name="VALUE" x="63.5" y="162.56" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="GND31" gate="1" x="60.96" y="154.94" smashed="yes">
 <attribute name="VALUE" x="59.69" y="153.035" size="1.27" layer="96" font="vector" ratio="20"/>
@@ -2529,6 +2375,14 @@ DIN A4, landscape with location and doc. field</description>
 <instance part="X4" gate="G$1" x="124.46" y="147.32" smashed="yes">
 <attribute name="NAME" x="121.92" y="152.4" size="1.27" layer="95" font="vector" ratio="20"/>
 <attribute name="VALUE" x="120.65" y="138.43" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
+<instance part="D11" gate="G$1" x="66.04" y="160.02" smashed="yes" rot="R270">
+<attribute name="NAME" x="62.23" y="162.56" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="67.31" y="162.56" size="1.27" layer="96" font="vector" ratio="20"/>
+</instance>
+<instance part="D2" gate="G$1" x="467.36" y="180.34" smashed="yes">
+<attribute name="NAME" x="469.9" y="180.34" size="1.27" layer="95" font="vector" ratio="20"/>
+<attribute name="VALUE" x="469.9" y="179.07" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 </instances>
 <busses>
@@ -2685,9 +2539,9 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="218.44" y1="40.64" x2="218.44" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D10" gate="D$1" pin="ANODE"/>
 <pinref part="GND29" gate="1" pin="GND"/>
 <wire x1="467.36" y1="175.26" x2="467.36" y2="177.8" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="ANODE"/>
 </segment>
 <segment>
 <pinref part="LED1" gate="LED$1" pin="CATHODE"/>
@@ -2695,10 +2549,10 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="43.18" y1="139.7" x2="43.18" y2="149.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D2" gate="D$1" pin="ANODE"/>
 <pinref part="GND31" gate="1" pin="GND"/>
-<wire x1="63.5" y1="160.02" x2="60.96" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="160.02" x2="60.96" y2="157.48" width="0.1524" layer="91"/>
+<pinref part="D11" gate="G$1" pin="ANODE"/>
+<wire x1="60.96" y1="160.02" x2="63.5" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC10" gate="G$1" pin="ADJ"/>
@@ -2848,11 +2702,11 @@ DIN A4, landscape with location and doc. field</description>
 <pinref part="X3" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="154.94" x2="73.66" y2="154.94" width="0.1524" layer="91"/>
 <label x="81.28" y="156.21" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-<pinref part="D2" gate="D$1" pin="CATHODE"/>
 <wire x1="73.66" y1="154.94" x2="71.12" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="160.02" x2="73.66" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="160.02" x2="73.66" y2="154.94" width="0.1524" layer="91"/>
 <junction x="73.66" y="154.94"/>
+<pinref part="D11" gate="G$1" pin="CATHODE"/>
+<wire x1="68.58" y1="160.02" x2="73.66" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="VDDA"/>
@@ -3266,7 +3120,6 @@ DIN A4, landscape with location and doc. field</description>
 <segment>
 <pinref part="R1" gate="R$1" pin="PIN0"/>
 <wire x1="472.44" y1="185.42" x2="467.36" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="D10" gate="D$1" pin="CATHODE"/>
 <wire x1="467.36" y1="182.88" x2="467.36" y2="185.42" width="0.1524" layer="91"/>
 <pinref part="T1" gate="G$1" pin="SOURCE"/>
 <wire x1="462.28" y1="185.42" x2="459.74" y2="185.42" width="0.1524" layer="91"/>
@@ -3275,6 +3128,7 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="467.36" y1="185.42" x2="462.28" y2="185.42" width="0.1524" layer="91"/>
 <junction x="462.28" y="185.42"/>
 <junction x="467.36" y="185.42"/>
+<pinref part="D2" gate="G$1" pin="CATHODE"/>
 </segment>
 </net>
 <net name="N$26" class="0">
