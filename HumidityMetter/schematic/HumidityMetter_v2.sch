@@ -3206,9 +3206,9 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="436.88" y1="147.32" x2="436.88" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="33.02" y1="91.44" x2="22.86" y2="91.44" width="0.1524" layer="91"/>
-<label x="30.48" y="92.71" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-<pinref part="IC3" gate="G$1" pin="PA3/USART2_RX/ADC12_IN3/TIM2_CH4"/>
+<wire x1="33.02" y1="93.98" x2="22.86" y2="93.98" width="0.1524" layer="91"/>
+<label x="30.48" y="95.25" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<pinref part="IC3" gate="G$1" pin="PA2/USART2_TX/ADC12_IN2/TIM2_CH3"/>
 </segment>
 </net>
 <net name="BOOT1" class="0">
@@ -3400,9 +3400,9 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="472.44" y1="162.56" x2="472.44" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="33.02" y1="93.98" x2="22.86" y2="93.98" width="0.1524" layer="91"/>
-<label x="30.48" y="95.25" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
-<pinref part="IC3" gate="G$1" pin="PA2/USART2_TX/ADC12_IN2/TIM2_CH3"/>
+<wire x1="33.02" y1="96.52" x2="22.86" y2="96.52" width="0.1524" layer="91"/>
+<label x="30.48" y="97.79" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
+<pinref part="IC3" gate="G$1" pin="PA1/USART2_RTS/ADC12_IN1/TIM2_CH2"/>
 </segment>
 </net>
 <net name="N$8" class="0">
