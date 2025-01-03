@@ -2113,12 +2113,6 @@ design rules under a new name.</description>
 <wire x1="2.2" y1="10" x2="4.8" y2="10" width="0.4" layer="16"/>
 </signal>
 </signals>
-<errors>
-<approved hash="4,1,a9ecec23f43a95f0"/>
-<approved hash="4,1,99ecdc23f43a95f0"/>
-<approved hash="4,16,a9ecec23f43a95f0"/>
-<approved hash="4,16,99ecdc23f43a95f0"/>
-</errors>
 </board>
 </drawing>
 </eagle>
