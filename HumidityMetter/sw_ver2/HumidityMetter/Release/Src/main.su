@@ -1,0 +1,16 @@
+../Src/main.cpp:39:6:void InitClocks()	0	static
+../Src/main.cpp:72:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	0	static
+../Src/main.cpp:77:6:void PA_CLOCK_ENABLE()	0	static
+../Src/main.cpp:82:6:void PB_CLOCK_ENABLE()	0	static
+../Src/main.cpp:88:6:void PC_CLOCK_ENABLE()	0	static
+../Src/main.cpp:93:6:void InitPorts()	8	static
+../Src/main.cpp:200:6:void ShowSensorError(const AM2320Sensor&)	8	static
+../Src/main.cpp:215:6:void ShowSensorTemperature(const AM2320Sensor&)	32	static
+../Src/main.cpp:235:6:void ShowSensorHumidity(const AM2320Sensor&)	24	static
+../Src/main.cpp:251:6:void ShowBME280Temperature(const BME280Sensor&)	16	static
+../Src/main.cpp:277:6:void ShowBME280Altitude(const BME280Sensor&, const AltitudeMetter&)	48	static
+../Src/main.cpp:297:6:void ShowBME280Humidity(const BME280Sensor&)	8	static
+../Src/main.cpp:331:6:void ShowBME280Pressure(const BME280Sensor&)	8	static
+../Src/main.cpp:344:6:void ShowBME280Error()	8	static
+../Src/main.cpp:353:6:void ShowBatteryVoltage()	8	static
+../Src/main.cpp:363:5:int main()	96	static

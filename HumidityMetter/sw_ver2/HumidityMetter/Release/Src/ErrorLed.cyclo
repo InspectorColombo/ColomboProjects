@@ -1,0 +1,6 @@
+../Src/ErrorLed.cpp:37:6:static void ErrorLed::LedOn()	1
+../Src/ErrorLed.cpp:42:6:static void ErrorLed::LedOff()	1
+../Src/ErrorLed.cpp:24:6:void ErrorLed::Init() const	1
+../Src/ErrorLed.cpp:19:1:ErrorLed::ErrorLed()	1
+../Src/ErrorLed.cpp:47:6:void ErrorLed::ShowError(ErrorType) const	8
+../Src/ErrorLed.cpp:95:6:void ErrorLed::ShowErrorAndLock(ErrorType) const	1

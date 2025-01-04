@@ -1,0 +1,13 @@
+../Src/BME280Sensor.cpp:38:1:BME280Sensor::BME280Sensor(uint8_t)	1
+../Src/BME280Sensor.cpp:44:9:int16_t BME280Sensor::GetTemperature() const	1
+../Src/BME280Sensor.cpp:49:10:uint32_t BME280Sensor::GetPressure() const	1
+../Src/BME280Sensor.cpp:54:10:uint32_t BME280Sensor::GetHumidity() const	1
+../Src/BME280Sensor.cpp:123:9:int32_t BME280Sensor::GetTemperatureWithCompensation(int32_t)	1
+../Src/BME280Sensor.cpp:136:10:uint32_t BME280Sensor::GetPressureWithCompensations(int32_t)	2
+../Src/BME280Sensor.cpp:157:10:uint32_t BME280Sensor::GetHumidityWithCompensation(int32_t)	1
+../Src/BME280Sensor.cpp:239:6:bool BME280Sensor::ReadBurst(uint8_t, uint8_t*, uint8_t) const	6
+../Src/BME280Sensor.cpp:234:6:bool BME280Sensor::Read(uint8_t, uint8_t&) const	1
+../Src/BME280Sensor.cpp:59:6:bool BME280Sensor::ReadCalibrationConstants()	21
+../Src/BME280Sensor.cpp:288:6:bool BME280Sensor::WriteBurst(uint8_t, const uint8_t*, uint8_t)	5
+../Src/BME280Sensor.cpp:283:6:bool BME280Sensor::Write(uint8_t, uint8_t)	1
+../Src/BME280Sensor.cpp:172:6:bool BME280Sensor::ReadProbe()	7

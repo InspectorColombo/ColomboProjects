@@ -1,0 +1,51 @@
+00:33:08 **** Incremental Build of configuration Release for project HumidityMetter ****
+make -j6 all 
+arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.cpp: In function 'void ShowSensorError(const AM2320Sensor&)':
+../Src/main.cpp:204:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  204 |         LcdScreen::LcdPrint("Sensor:");
+      |                             ^~~~~~~~~
+../Src/main.cpp:208:55: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  208 |         case AM2320Sensor::ES_OK: LcdScreen::LcdPrint("OK"); break;
+      |                                                       ^~~~
+../Src/main.cpp:209:63: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  209 |         case AM2320Sensor::ES_NO_RESPOND: LcdScreen::LcdPrint("NO RESP"); break;
+      |                                                               ^~~~~~~~~
+../Src/main.cpp:210:72: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  210 |         case AM2320Sensor::ES_COMMUNICATION_ERROR: LcdScreen::LcdPrint("COMM ERR"); break;
+      |                                                                        ^~~~~~~~~~
+../Src/main.cpp:211:62: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  211 |         case AM2320Sensor::ES_CRC_ERROR: LcdScreen::LcdPrint("CRC ERR"); break;
+      |                                                              ^~~~~~~~~
+../Src/main.cpp: In function 'void ShowBME280Error()':
+../Src/main.cpp:348:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  348 |         LcdScreen::LcdPrint("BME280");
+      |                             ^~~~~~~~
+../Src/main.cpp:350:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  350 |         LcdScreen::LcdPrint("ERROR");
+      |                             ^~~~~~~
+../Src/main.cpp: In function 'void ShowBatteryVoltage()':
+../Src/main.cpp:357:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  357 |         LcdScreen::LcdPrint("BATTERY");
+      |                             ^~~~~~~~~
+../Src/main.cpp:359:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  359 |         LcdScreen::LcdPrint("NOT_IMPL");
+      |                             ^~~~~~~~~~
+../Src/main.cpp: In function 'int main()':
+../Src/main.cpp:377:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  377 |         LcdScreen::LcdPrint("Hello!!!");
+      |                             ^~~~~~~~~~
+arm-none-eabi-g++ -o "HumidityMetter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\__workspace\ColomboProjects\HumidityMetter\sw\HumidityMetter\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HumidityMetter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: HumidityMetter.elf
+ 
+arm-none-eabi-size  HumidityMetter.elf 
+arm-none-eabi-objdump -h -S HumidityMetter.elf  > "HumidityMetter.list"
+   text	   data	    bss	    dec	    hex	filename
+   8012	      0	   1568	   9580	   256c	HumidityMetter.elf
+Finished building: default.size.stdout
+ 
+Finished building: HumidityMetter.list
+ 
+
+00:33:11 Build Finished. 0 errors, 10 warnings. (took 2s.307ms)
+
