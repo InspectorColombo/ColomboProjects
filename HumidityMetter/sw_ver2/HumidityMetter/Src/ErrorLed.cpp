@@ -13,8 +13,8 @@
 #include "DelayTimer.hpp"
 #include "stm32f103xb.h"
 
-#define ERROR_LED_PORT	GPIOB
-#define ERROR_LED_PIN	4			// PB4 - error led
+#define ERROR_LED_PORT	GPIOA
+#define ERROR_LED_PIN	7			// PA7 - error led
 
 ErrorLed::ErrorLed()
 {
@@ -23,11 +23,11 @@ ErrorLed::ErrorLed()
 
 void ErrorLed::Init() const
 {
-	// Disable SW JATG to remap PB4 pin for common GPIO use
-	uint32_t temp = AFIO->MAPR;
-	temp &= ~AFIO_MAPR_SWJ_CFG_Msk;
-	temp |= AFIO_MAPR_SWJ_CFG_JTAGDISABLE;	// Jtag disable. SW-DP enable
-	AFIO->MAPR = temp;
+//	// Disable SW JATG to remap PB4 pin for common GPIO use
+//	uint32_t temp = AFIO->MAPR;
+//	temp &= ~AFIO_MAPR_SWJ_CFG_Msk;
+//	temp |= AFIO_MAPR_SWJ_CFG_JTAGDISABLE;	// Jtag disable. SW-DP enable
+//	AFIO->MAPR = temp;
 
 	GpioConfigurator::GpioClockEnable(ERROR_LED_PORT);
 	GpioConfigurator::SetGpioOutPushPull(ERROR_LED_PORT, ERROR_LED_PIN);

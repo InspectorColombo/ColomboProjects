@@ -14,7 +14,7 @@
 
 
 #define POWER_CONTROL_PORT GPIOA	//
-#define POWER_CONTROL_PIN	10		// PA10
+#define POWER_CONTROL_PIN	5		// PA5
 
 
 PowerControl::PowerControl()

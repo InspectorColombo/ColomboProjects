@@ -12,8 +12,8 @@
 #include "DelayTimer.hpp"
 
 #define I2C_PORT		GPIOB
-#define I2C_SDA_PIN		11
-#define I2C_SCL_PIN		10
+#define I2C_SDA_PIN		7
+#define I2C_SCL_PIN		6
 
 
 namespace I2cRxTx

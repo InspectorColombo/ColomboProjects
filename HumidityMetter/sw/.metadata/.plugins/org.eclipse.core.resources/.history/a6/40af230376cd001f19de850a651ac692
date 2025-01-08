@@ -1,0 +1,23 @@
+#ifndef __ADC_READ_HPP__
+#define __ADC_READ_HPP__
+
+#include <stdint.h>
+
+class AdcRead
+{
+public:
+	AdcRead();
+
+	uint16_t Read();
+
+private:
+	void Init();
+
+	static void DelayMicroseconds(const uint32_t us);
+
+};
+
+
+
+
+#endif	// __ADC_READ_HPP__

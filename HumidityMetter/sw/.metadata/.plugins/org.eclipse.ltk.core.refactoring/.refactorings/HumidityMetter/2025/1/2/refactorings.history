@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;HumidityMetter/Inc/AdcRead.hpp&apos; to &apos;AdcSingleRead.hpp&apos;" description="Rename resource &apos;AdcRead.hpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Inc/AdcRead.hpp" name="AdcSingleRead.hpp" stamp="1736312790096" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;HumidityMetter/Src/AdcRead.cpp&apos; to &apos;AdcSingleRead.cpp&apos;" description="Rename resource &apos;AdcRead.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/AdcRead.cpp" name="AdcSingleRead.cpp" stamp="1736312802312" updateReferences="true"/>
+</session>

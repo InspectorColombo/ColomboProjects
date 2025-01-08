@@ -16,13 +16,13 @@ namespace LcdScreen
 {
 
 #define LCD_PORT		GPIOB
-#define LCD_RS_PIN		8	//PB8
-#define LCD_RW_PIN		9	//PB9
-#define LCD_E_PIN		7	//PB7
-#define LCD_D4_PIN		12	//PB12
+#define LCD_RS_PIN		10	//PB10
+#define LCD_RW_PIN		11	//PB11
+#define LCD_E_PIN		12	//PB12
+#define LCD_D4_PIN		13	//PB13
 #define LCD_D5_PIN		15	//PB15
-#define LCD_D6_PIN		13	//PB13
-#define LCD_D7_PIN		14	//PB12
+#define LCD_D6_PIN		14	//PB14
+#define LCD_D7_PIN		3	//PB3
 
 void PORTB_CLOCK_ENABLE()
 {
@@ -161,6 +161,14 @@ void WaitForBusy()
 void LcdInit()
 {
 	GpioConfigurator::GpioClockEnable(LCD_PORT);
+
+	// Disable SW JATG to remap PB3(LCD_D7) pin for common GPIO use
+	uint32_t temp = AFIO->MAPR;
+	temp &= ~AFIO_MAPR_SWJ_CFG_Msk;
+	temp |= AFIO_MAPR_SWJ_CFG_JTAGDISABLE;	// Jtag disable. SW-DP enable
+	AFIO->MAPR = temp;
+
+
 
 	LcdRS(0);
 	LcdRW(0);

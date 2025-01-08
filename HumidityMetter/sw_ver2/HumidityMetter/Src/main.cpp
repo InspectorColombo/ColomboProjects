@@ -29,6 +29,7 @@
 
 #include "KeyPressDetector.hpp"
 #include "I2cRxTx.hpp"
+#include "BatterySensor.hpp"
 
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
@@ -350,13 +351,25 @@ void ShowBME280Error()
 	LcdScreen::LcdPrint("ERROR");
 }
 
-void ShowBatteryVoltage()
+void ShowBatteryVoltage(const BatterySensor& bs)
 {
 	LcdScreen::LcdClear();
 	LcdScreen::LcdToPos(0,0);
 	LcdScreen::LcdPrint("BATTERY");
 	LcdScreen::LcdToPos(0,1);
-	LcdScreen::LcdPrint("NOT_IMPL");
+
+	uint16_t voltage = bs.GetVoltageInMv();
+	const uint8_t volts = (uint8_t)(voltage / 1000);
+	const uint8_t afterDot = (uint8_t)((voltage % 1000) / 10);
+
+	LcdScreen::LcdPrintNumber(volts);
+	LcdScreen::LcdPrintChar('.');
+	if (afterDot < 10)
+	{
+		LcdScreen::LcdPrintChar('0');
+	}
+	LcdScreen::LcdPrintNumber(afterDot, true);
+	LcdScreen::LcdPrintChar('V');
 }
 
 
@@ -364,6 +377,9 @@ int main(void)
 {
 	InitClocks();
 	InitPorts();
+
+	ErrorLed errorLed;
+	errorLed.ShowError(ErrorLed::ET_NO_ERROR);
 
 
 	DelayTimer::DelayMilliSec(20);	// Wait 20 msec for power button hold
@@ -374,6 +390,7 @@ int main(void)
 	DelayTimer::DelayMilliSec(200);	// Wait for power on of LCD
 
 	LcdScreen::LcdInit();
+	LcdScreen::LcdClear();
 	LcdScreen::LcdPrint("Hello!!!");
 
 	enum MainMenuState
@@ -388,6 +405,7 @@ int main(void)
 
 	KeyPressDetector kpd;
 	BME280Sensor sensor;
+	BatterySensor batterySensor;
 	AltitudeMetter altMetter(0);
 	//AM2320Sensor sensor;
 	const uint8_t MAX_MEASURES_COUNT = 120;	// 2 minutes before turn off
@@ -398,6 +416,7 @@ int main(void)
 		if (!sensor.ReadProbe())
 		{
 			ShowBME280Error();
+			errorLed.ShowError(ErrorLed::ET_TWO_BLINKS);
 			continue;
 		}
 
@@ -427,7 +446,7 @@ int main(void)
 			}
 		case MMS_BAT_VOLTAGE:
 			{
-				ShowBatteryVoltage();
+				ShowBatteryVoltage(batterySensor);
 				break;
 			}
 		}

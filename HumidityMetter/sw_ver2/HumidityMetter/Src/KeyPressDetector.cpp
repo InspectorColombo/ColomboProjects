@@ -13,7 +13,7 @@
 #include "stm32f103xb.h"
 
 #define	KEY_PORT		GPIOA
-#define KEY_PIN			8		// PA8 and PA9 - too in parallel
+#define KEY_PIN			1		// PA1
 
 
 KeyPressDetector::KeyPressDetector() : m_wasPressed(false)

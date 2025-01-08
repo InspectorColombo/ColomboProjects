@@ -67,7 +67,6 @@ private:
 	uint8_t					m_i2cAddr;
 
 
-
 	// Returns temperature in DegC, resolution is 0.01 DegC. Output value of “5123” equals 51.23	DegC.
 	// m_tFine carries fine temperature as global value
 	// Copy-paste from datasheet

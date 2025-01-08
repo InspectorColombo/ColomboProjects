@@ -115,6 +115,23 @@ void SetGpioInFloating(GPIO_TypeDef* port, const uint8_t bitIdx)
 	}
 }
 
+void SetGpioAnalogMode(GPIO_TypeDef* port, const uint8_t bitIdx)
+{
+	const uint8_t bitShift = (bitIdx > 7) ? ((bitIdx - 8) * 4) : (bitIdx * 4);
+	uint32_t mask = 0b1111 << bitShift;
+	uint32_t analogMode = 0b0000 << bitShift;
+
+	if (bitIdx > 7)
+	{
+		port->CRH &= ~mask;
+		port->CRH |= analogMode;
+	}
+	else
+	{
+		port->CRL &= ~mask;
+		port->CRL |= analogMode;
+	}
+}
 
 
 

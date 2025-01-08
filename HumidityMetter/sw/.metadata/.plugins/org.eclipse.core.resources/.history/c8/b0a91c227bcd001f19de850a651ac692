@@ -1,0 +1,154 @@
+#include "AdcRead.hpp"
+
+//#include <stdint.h>
+#include "stm32f103xb.h"
+
+#include "GpioConfigurator.hpp"
+
+#include "LcdScreen.hpp"
+
+
+//#define ADC_PORT	GPIOA		// PORT A
+//#define ADC_PIN		2			// PA2 (ADC1 INPUT2)
+
+
+
+void Show(char* msg)
+{
+	LcdScreen::LcdClear();
+	LcdScreen::LcdToPos(0, 0);
+	LcdScreen::LcdPrint(msg);
+}
+
+
+AdcSingleRead::AdcSingleRead(const AdcNumber adcNumber, const AdcChannel adcChannel) :
+		m_adcPort(nullptr),
+		m_adcPin(255),
+		m_adc(nullptr)
+{
+
+
+
+	Init();
+}
+
+void AdcSingleRead::DelayUsecRough(const uint32_t us)
+{
+	for(uint32_t usCnt = us; usCnt != 0; --usCnt)
+	{
+		asm("nop");
+		asm("nop");
+	}
+
+}
+
+void AdcSingleRead::Init(const AdcNumber adcNumber, const AdcChannel adcChannel)
+{
+	// Let's get proper ADC PORT/PIN
+	GPIO_TypeDef* adcPort = nullptr;
+	uint8_t adcPin = 255;
+
+	switch (m_adcChanell)
+	{
+	case ADC_CHANNEL0: adcPort = GPIOA; adcPin = 0; break;
+	case ADC_CHANNEL1: adcPort = GPIOA; adcPin = 1; break;
+	case ADC_CHANNEL2: adcPort = GPIOA; adcPin = 2; break;
+	case ADC_CHANNEL3: adcPort = GPIOA; adcPin = 3; break;
+	case ADC_CHANNEL4: adcPort = GPIOA; adcPin = 4; break;
+	case ADC_CHANNEL5: adcPort = GPIOA; adcPin = 5; break;
+	case ADC_CHANNEL6: adcPort = GPIOA; adcPin = 6; break;
+	case ADC_CHANNEL7: adcPort = GPIOA; adcPin = 7; break;
+
+	case ADC_CHANNEL8: adcPort = GPIOB; adcPin = 0; break;
+	case ADC_CHANNEL9: adcPort = GPIOB; adcPin = 1; break;
+	default:
+		return;	// Incorrect ADC channel
+	}
+
+	// Set ADC port as analog input
+	GpioConfigurator::GpioClockEnable(adcPort);
+	GpioConfigurator::SetGpioAnalogMode(adcPort, adcPin);
+
+
+	uint32_t temp = RCC->CFGR;
+	temp &= ~RCC_CFGR_ADCPRE_Msk;
+	temp |= 0b00 << RCC_CFGR_ADCPRE_Pos; // PCLK / 2
+	RCC->CFGR = temp;
+
+	// Enable ADC1 clock, ADC PORT clock and ADC PORT AFIO clock
+	RCC->APB2ENR |= RCC_APB2ENR_ADC1EN | RCC_APB2ENR_AFIOEN
+			| (adcPort == GPIOA ? RCC_APB2ENR_IOPAEN : 0x00)
+			| (adcPort == GPIOB ? RCC_APB2ENR_IOPBEN : 0x00);
+
+
+
+
+	// Turn ON ADC
+	ADC1->CR2 = ADC_CR2_ADON | ADC_CR2_EXTSEL_0 | ADC_CR2_EXTSEL_1 | ADC_CR2_EXTSEL_2;
+
+	// Wait ADC turning ON
+	this->DelayMicroseconds(1000);
+
+	// Re-calibrate ADC
+	ADC1->CR2 |= ADC_CR2_RSTCAL;
+
+	// Wait for calibration end
+	while ((ADC1->CR2 & ADC_CR2_RSTCAL) != 0x00)
+	{
+	}
+
+	// Set 13.5cycles for channel 2
+	ADC1->SMPR2 = 0b010 << ADC_SMPR2_SMP2_Pos;
+
+	// Set only 1 channel (ADC_IN2) to conversion
+	ADC1->SQR1 =  0b0000 << ADC_SQR1_L_Pos;
+	ADC1->SQR2 =  0x00;
+	ADC1->SQR3 =  2 << ADC_SQR3_SQ1_Pos;
+}
+
+uint16_t AdcRead::Read()
+{
+//	// Wait if there is conversion right now
+//	while (ADC1->SR & ADC_SR_START)
+
+	ADC1->SR &= ~ADC_SR_EOC;
+
+//	ADC1->CR2 |= ADC_CR2_ADON;
+
+	ADC1->CR2 |= ADC_CR2_ADON;
+	ADC1->CR2 |= ADC_CR2_SWSTART;
+
+	//Show("Step6");
+
+	// wait for conversion end
+	while ((ADC1->SR & ADC_SR_EOC) == 0)
+	{
+/*
+ 		uint32_t cr2 = ADC1->CR2;
+		LcdScreen::LcdClear();
+		LcdScreen::LcdToPos(0,0);
+		LcdScreen::LcdPrint("CR2:");
+		LcdScreen::LcdToPos(0,1);
+		LcdScreen::LcdPrintHex((cr2));
+		DelayMicroseconds(100000);
+*/
+	}
+
+	//DelayMicroseconds(1000);
+
+
+	//Show("Step7");
+
+	uint16_t result = (uint16_t)(ADC1->DR & 0x0000FFFF);
+
+	// Clear EOC bit if it is not cleared yet
+	ADC1->SR &= ~ADC_SR_EOC;
+
+	return result;
+}
+
+
+
+
+
+

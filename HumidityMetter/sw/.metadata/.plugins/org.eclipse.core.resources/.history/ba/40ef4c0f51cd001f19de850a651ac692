@@ -1,0 +1,23 @@
+#ifndef __ADC_READ_HPP__
+#define __ADC_READ_HPP__
+
+#include <stdint.h>
+
+namespace AdcRead
+{
+void Init();
+
+
+
+//void StartCondition();
+//void StopCondition();
+//void SendByte(const uint8_t toSend);
+//bool GetAcknowlegeBit(const bool ack = true);
+//uint8_t RecieveByte();
+
+}	// namespace AdcRead
+
+
+
+
+#endif	// __ADC_READ_HPP__
