@@ -1,6 +1,0 @@
-../Src/KeyPressDetector.cpp:24:6:void KeyPressDetector::Reset()	0	static
-../Src/KeyPressDetector.cpp:29:6:void KeyPressDetector::Update()	0	static
-../Src/KeyPressDetector.cpp:35:6:bool KeyPressDetector::IsPressedNow() const	0	static
-../Src/KeyPressDetector.cpp:40:6:bool KeyPressDetector::WasPressed() const	0	static
-../Src/KeyPressDetector.cpp:45:6:void KeyPressDetector::Init()	8	static
-../Src/KeyPressDetector.cpp:19:1:KeyPressDetector::KeyPressDetector()	8	static
