@@ -1,0 +1,23 @@
+/*
+ * I2cSw.cpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ */
+
+#include "I2cSw.hpp"
+
+
+
+namespace i2c
+{
+
+
+
+
+
+
+
+}	// namespace i2c
+
+

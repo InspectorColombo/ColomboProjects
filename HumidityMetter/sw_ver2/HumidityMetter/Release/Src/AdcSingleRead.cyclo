@@ -1,0 +1,4 @@
+../Src/AdcSingleRead.cpp:94:10:uint16_t AdcSingleRead::Read() const	2
+../Src/AdcSingleRead.cpp:114:6:static void AdcSingleRead::DelayUsecRough(uint32_t)	2
+../Src/AdcSingleRead.cpp:36:6:void AdcSingleRead::Init(AdcChannel)	13
+../Src/AdcSingleRead.cpp:4:1:AdcSingleRead::AdcSingleRead(AdcNumber, AdcChannel)	6

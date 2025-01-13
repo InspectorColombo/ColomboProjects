@@ -1,0 +1,287 @@
+/*
+ * LCD_SSD1306.hpp
+ *
+ *  Created on: Jan 12, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __LCD_SSD1306_HPP__
+#define __LCD_SSD1306_HPP__
+
+#include "stm32f103xb.h"
+#include <stdint.h>
+
+#include "I2cRxTx.hpp"
+#include "LcdScreen.hpp"
+
+class SSD1306
+{
+public:
+	enum SlaveAddress
+	{
+		SA_0X7A,
+		SA_0X78
+	};
+
+	const uint8_t WRITE = 0x00;
+	const uint8_t READ = 0x01;
+
+	const uint8_t CONT		= 0b00000000;	// continuation
+	const uint8_t NON_CONT	= 0b10000000;	// non continuation
+	const uint8_t COMMAND	= 0b00000000;	// COMMAND follow
+	const uint8_t DATA		= 0b01000000;	// DATA follow
+
+	// COMMANDS LIST
+	const uint8_t SET_CONTRAST_CONTROL	= 0x81;
+	const uint8_t ENTIRE_DISPLAY_ON		= 0xA4;
+	const uint8_t ENTIRE_DISPLAY_OFF	= 0xA5;
+	const uint8_t SET_NORMAL_DISPLAY	= 0xA6;
+	const uint8_t SET_INVERSE_DISPLAY	= 0xA7;
+
+//	const uint8_t CHARGE_PUMP_SETTING	= 0x8D;	//
+
+
+	explicit SSD1306(const SlaveAddress slaveAddress) : m_slaveAddress(0x00), m_error(false)
+	{
+		switch(slaveAddress)
+		{
+			case SA_0X7A: m_slaveAddress = 0x7A; break;
+			case SA_0X78: m_slaveAddress = 0x78; break;
+			default:
+				return;	// Wrong address
+		}
+		I2cRxTx::Init();
+		I2cRxTx::StopCondition();
+	}
+
+	// COMMANDS
+	const uint8_t CHARGE_PUMP_ON		= { 4, WRITE, COMMAND | CONT, 0x8D, 0b00010100	};
+	const uint8_t CHARGE_PUMP_OFF		= { 4, WRITE, COMMAND | CONT, 0x8D, 0b00010000	};
+
+	const uint8_t DISPLAY_ON			= { 3, WRITE, COMMAND | NON_CONT, 0xAF }; // (normal mode)
+	const uint8_t DISPLAY_OFF			= { 3, WRITE, COMMAND | NON_CONT, 0xAE }; // (sleep mode)
+
+	const uint8_t ENTIRE_DISPLAY_ON		= { 3, WRITE, COMMAND | NON_CONT, 0xA4 }; // Entire display ON
+	const uint8_t ENTIRE_DISPLAY_OFF	= { 3, WRITE, COMMAND | NON_CONT, 0xA5 }; // Entire display OFF
+
+	const uint8_t SET_NORMAL_DISPLAY	= { 3, WRITE, COMMAND | NON_CONT, 0xA6 }; // Set normal display
+	const uint8_t SET_INVERSE_DISPLAY	= { 3, WRITE, COMMAND | NON_CONT, 0xA7 }; // Set inverse display
+
+
+
+
+	void SetError(const bool toSet)
+	{
+		m_error = toSet;
+	}
+
+	bool GetError() const
+	{
+		return m_error;
+	}
+
+	void SendCommand(const uint8_t* commandPointer) const
+	{
+		const uint8_t* cmdPtr = commandPointer;
+		uint8_t commandLength = *cmdPtr;
+		++cmdPtr;
+
+		I2cRxTx::StartCondition();
+		for(uint8_t cmdCnt = 0; cmdCnt < commandLength; ++cmdCnt)
+		{
+			const uint8_t byteToSend = (cmdCnt == 0) ? (*cmdPtr | m_slaveAddress) : (*cmdPtr);
+			++cmdPtr;
+
+			I2cRxTx::SendByte(byteToSend);
+			const bool ack = I2cRxTx::GetAcknowlegeBit();
+			if (ack)
+			{
+				SetError(true);
+				break;
+			}
+		}
+		I2cRxTx::StopCondition();
+	}
+
+
+
+	void Test()
+	{
+
+
+		uint8_t tx0[4] =
+		{
+			m_slaveAddress | WRITE,
+			COMMAND | CONT,
+			CHARGE_PUMP_SETTING,
+			0x14
+		};
+
+		if (!SendCommand(&tx0[0], 4))
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("FAIL_0");
+			return;
+		}
+
+
+
+		uint8_t tx[3] =
+		{
+			m_slaveAddress | WRITE,
+			COMMAND | NON_CONT,
+			DISPLAY_ON
+		};
+
+		if (!SendCommand(&tx[0], 3))
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("FAIL_1");
+			return;
+		}
+
+		uint8_t tx2[3] =
+		{
+			m_slaveAddress | WRITE,
+			COMMAND | NON_CONT,
+			ENTIRE_DISPLAY_ON
+		};
+
+		if (!SendCommand(&tx2[0], 3))
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("FAIL_2");
+			return;
+		}
+
+		uint8_t tx3[3] =
+		{
+			m_slaveAddress | WRITE,
+			COMMAND | NON_CONT,
+			SET_NORMAL_DISPLAY
+		};
+
+		if (!SendCommand(&tx3[0], 3))
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("FAIL_3");
+			return;
+		}
+
+
+		uint8_t tx4[131] =
+		{
+			m_slaveAddress | WRITE,
+			DATA | CONT,
+			0x00,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+		};
+
+		for(uint8_t i = 0; i < 128; ++i)
+		{
+			tx4[i + 3] = i;
+		}
+
+		if (!SendCommand(&tx4[0], 131))
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("FAIL_4");
+			return;
+		}
+
+
+		LcdScreen::LcdClear();
+		LcdScreen::LcdToPos(0, 0);
+		LcdScreen::LcdPrint("OK");
+
+
+
+	}
+
+
+	void Test2()
+	{
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(m_slaveAddress | WRITE);
+		bool ack = I2cRxTx::GetAcknowlegeBit();
+
+		if (ack)
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("NO_ACK");
+			I2cRxTx::StopCondition();
+			return;
+		}
+
+		I2cRxTx::SendByte(COMMAND | NON_CONT);
+		ack = I2cRxTx::GetAcknowlegeBit();
+
+		if (ack)
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("NO_ACK2");
+			I2cRxTx::StopCondition();
+			return;
+		}
+	}
+
+
+private:
+	uint8_t m_slaveAddress;
+	bool	m_error;
+	//I2cRxTx m_i2c;
+
+	bool SendCommand(const uint8_t* dataPtr, const uint8_t dataLength) const
+	{
+		I2cRxTx::StartCondition();
+
+		const uint8_t* ptr = dataPtr;
+		for(uint8_t dataCnt = 0; dataCnt < dataLength; ++dataCnt)
+		{
+			uint8_t data = *ptr;
+			I2cRxTx::SendByte(data);
+			bool ack = I2cRxTx::GetAcknowlegeBit();
+			if (ack)
+			{
+				I2cRxTx::StopCondition();
+				return false;
+			}
+			++ptr;
+		}
+
+		I2cRxTx::StopCondition();
+		return true;
+	}
+
+
+
+
+};
+
+
+
+
+
+#endif /* __LCD_SSD1306_HPP__ */

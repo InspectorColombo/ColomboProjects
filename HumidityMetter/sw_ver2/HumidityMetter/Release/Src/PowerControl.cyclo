@@ -1,0 +1,4 @@
+../Src/PowerControl.cpp:25:6:void PowerControl::PowerHold()	1
+../Src/PowerControl.cpp:30:6:void PowerControl::PowerUnhold()	1
+../Src/PowerControl.cpp:36:6:void PowerControl::Init()	1
+../Src/PowerControl.cpp:20:1:PowerControl::PowerControl()	1

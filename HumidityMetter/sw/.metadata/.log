@@ -19,3 +19,30 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-01-04 21:28:57.519
 !MESSAGE Indexed 'HumidityMetter' (13 sources, 86 headers) in 1.49 sec: 3,944 declarations; 8,376 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.016%)
+!SESSION 2025-01-12 02:50:53.045 -----------------------------------------------
+eclipse.buildId=Version 1.15.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-01-12 02:51:24.760
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-01-12 02:51:24.773
+!MESSAGE Log4j2 initialized with config file C:\__workspace\ColomboProjects\HumidityMetter\sw\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-01-12 02:51:40.040
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-01-13 02:58:48.793
+!MESSAGE Indexed 'HumidityMetter' (15 sources, 88 headers) in 1.57 sec: 4,034 declarations; 8,931 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.015%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-01-13 23:33:21.212
+!MESSAGE Indexed 'HumidityMetter' (15 sources, 88 headers) in 0.825 sec: 4,035 declarations; 8,932 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.015%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-01-13 23:34:31.896
+!MESSAGE Indexed 'HumidityMetter' (15 sources, 88 headers) in 0.7 sec: 4,034 declarations; 8,931 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.015%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-01-13 23:49:24.440
+!MESSAGE Indexed 'HumidityMetter' (15 sources, 89 headers) in 1.18 sec: 4,044 declarations; 8,941 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.015%)

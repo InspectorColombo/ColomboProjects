@@ -1,0 +1,87 @@
+/*
+ * LCD_SSD1306.hpp
+ *
+ *  Created on: Jan 12, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __LCD_SSD1306_HPP__
+#define __LCD_SSD1306_HPP__
+
+#include "stm32f103xb.h"
+#include <stdint.h>
+
+#include "I2cRxTx.hpp"
+#include "LcdScreen.hpp"
+
+class SSD1306
+{
+public:
+	enum SlaveAddress
+	{
+		SA_0X7A,
+		SA_0X78
+	};
+
+	const uint8_t WRITE = 0x00;
+	const uint8_t READ = 0x01;
+
+	const uint8_t CONT		= 0b00000000;	// continuation
+	const uint8_t NON_CONT	= 0b10000000;	// non continuation
+	const uint8_t COMMAND	= 0b00000000;	// COMMAND follow
+	const uint8_t DATA		= 0b01000000;	// DATA follow
+
+
+	explicit SSD1306(const SlaveAddress slaveAddress) : m_slaveAddress(0x00)
+	{
+		switch(slaveAddress)
+		{
+			case SA_0X7A: m_slaveAddress = 0x7A; break;
+			case SA_0X78: m_slaveAddress = 0x78; break;
+			default:
+				return;	// Wrong address
+		}
+		I2cRxTx::Init();
+		I2cRxTx::StopCondition();
+	}
+
+
+	void Test()
+	{
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(m_slaveAddress | WRITE);
+		const bool ack = I2cRxTx::GetAcknowlegeBit();
+
+		if (ack)
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("NO_ACK");
+		}
+		else
+		{
+			LcdScreen::LcdClear();
+			LcdScreen::LcdToPos(0, 0);
+			LcdScreen::LcdPrint("ACK_PRES");
+		}
+		I2cRxTx::StopCondition();
+		return;
+	}
+
+
+private:
+	uint8_t m_slaveAddress;
+	//I2cRxTx m_i2c;
+
+
+
+
+
+
+};
+
+
+
+
+
+#endif /* __LCD_SSD1306_HPP__ */

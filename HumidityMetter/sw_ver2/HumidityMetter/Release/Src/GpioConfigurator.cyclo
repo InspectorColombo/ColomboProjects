@@ -1,0 +1,6 @@
+../Src/GpioConfigurator.cpp:15:6:void GpioConfigurator::GpioClockEnable(GPIO_TypeDef*)	5
+../Src/GpioConfigurator.cpp:39:6:void GpioConfigurator::GpioClockDisable(GPIO_TypeDef*)	5
+../Src/GpioConfigurator.cpp:64:6:void GpioConfigurator::SetGpioOutPushPull(GPIO_TypeDef*, uint8_t)	3
+../Src/GpioConfigurator.cpp:82:6:void GpioConfigurator::SetGpioOutOpenDrain(GPIO_TypeDef*, uint8_t)	3
+../Src/GpioConfigurator.cpp:100:6:void GpioConfigurator::SetGpioInFloating(GPIO_TypeDef*, uint8_t)	3
+../Src/GpioConfigurator.cpp:118:6:void GpioConfigurator::SetGpioAnalogMode(GPIO_TypeDef*, uint8_t)	3

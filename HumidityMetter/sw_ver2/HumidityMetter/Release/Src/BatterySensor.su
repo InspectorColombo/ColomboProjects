@@ -1,0 +1,2 @@
+../Src/BatterySensor.cpp:12:1:BatterySensor::BatterySensor()	8	static
+../Src/BatterySensor.cpp:16:10:uint16_t BatterySensor::GetVoltageInMv() const	16	static

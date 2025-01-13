@@ -1,0 +1,11 @@
+../Src/I2cRxTx.cpp:28:13:void I2cRxTx::SetSDA()	1
+../Src/I2cRxTx.cpp:32:13:void I2cRxTx::ClrSDA()	1
+../Src/I2cRxTx.cpp:37:13:void I2cRxTx::SetSCL()	1
+../Src/I2cRxTx.cpp:41:13:void I2cRxTx::ClrSCL()	1
+../Src/I2cRxTx.cpp:63:6:void I2cRxTx::Init()	1
+../Src/I2cRxTx.cpp:74:6:void I2cRxTx::I2cDelay()	1
+../Src/I2cRxTx.cpp:79:6:void I2cRxTx::StartCondition()	1
+../Src/I2cRxTx.cpp:89:6:void I2cRxTx::StopCondition()	1
+../Src/I2cRxTx.cpp:100:6:void I2cRxTx::SendByte(uint8_t)	3
+../Src/I2cRxTx.cpp:123:6:bool I2cRxTx::GetAcknowlegeBit(bool)	2
+../Src/I2cRxTx.cpp:145:9:uint8_t I2cRxTx::RecieveByte()	3

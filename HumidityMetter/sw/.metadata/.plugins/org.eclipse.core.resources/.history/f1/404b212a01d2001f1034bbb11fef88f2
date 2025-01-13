@@ -1,0 +1,30 @@
+/*
+ * I2cSw.hpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ *
+ *	I2C Software implementation class
+ */
+
+#ifndef __I2CSW_HPP__
+#define __I2CSW_HPP__
+
+namespace i2c
+{
+
+class I2cSw
+{
+
+
+}	//
+
+
+}	//namespace i2c
+
+
+
+
+
+
+#endif // __I2CSW_HPP__

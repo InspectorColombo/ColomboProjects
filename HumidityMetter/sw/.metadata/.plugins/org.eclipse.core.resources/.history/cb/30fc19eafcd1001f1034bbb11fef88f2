@@ -1,0 +1,36 @@
+/*
+ * LCD_SSD1306.cpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ */
+
+#include "LCD_SSD1306.hpp"
+
+
+namespace LcdDrivers
+{
+
+
+
+// Read/Write bits definition
+#define WRITE 0x00
+#define READ 0x01
+
+// Command/Data bits definition
+#define CONT		0b00000000		// continuation
+#define NON_CONT	0b10000000		// non continuation
+#define COMMAND		0b00000000		// COMMAND follow
+#define DATA		0b01000000		// DATA follow
+
+// COMMANDS LIST
+const uint8_t SET_CONTRAST_CONTROL	= 0x81;
+
+
+
+
+
+}	namespace LcdDrivers
+
+
+

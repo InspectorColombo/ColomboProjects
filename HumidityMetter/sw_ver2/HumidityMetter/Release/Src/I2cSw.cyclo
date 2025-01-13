@@ -1,0 +1,11 @@
+../Src/I2cSw.cpp:24:13:void i2c::RoughDelayUs(uint8_t)	2
+../Src/I2cSw.cpp:38:13:void i2c::SetSDA()	1
+../Src/I2cSw.cpp:42:13:void i2c::ClrSDA()	1
+../Src/I2cSw.cpp:47:13:void i2c::SetSCL()	1
+../Src/I2cSw.cpp:51:13:void i2c::ClrSCL()	1
+../Src/I2cSw.cpp:73:1:i2c::I2cSw::I2cSw(uint8_t)	1
+../Src/I2cSw.cpp:83:6:void i2c::I2cSw::StartCondition() const	1
+../Src/I2cSw.cpp:93:6:void i2c::I2cSw::StopCondition() const	1
+../Src/I2cSw.cpp:144:9:uint8_t i2c::I2cSw::RxByte() const	3
+../Src/I2cSw.cpp:166:6:bool i2c::I2cSw::GetAckBit(bool) const	2
+../Src/I2cSw.cpp:103:6:bool i2c::I2cSw::TxByte(uint8_t, bool) const	3

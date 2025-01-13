@@ -1,0 +1,41 @@
+/*
+ * I2cSw.hpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ *
+ *	I2C Software implementation class
+ */
+
+#ifndef __I2CSW_HPP__
+#define __I2CSW_HPP__
+
+namespace i2c
+{
+
+class I2cSw
+{
+public:
+
+	void Init();
+
+	void StartCondition();
+	void StopCondition();
+	void SendByte(const uint8_t toSend);
+	bool GetAcknowlegeBit(const bool ack = true);
+	uint8_t RecieveByte();
+
+
+private:
+
+};
+
+
+}	//namespace i2c
+
+
+
+
+
+
+#endif // __I2CSW_HPP__

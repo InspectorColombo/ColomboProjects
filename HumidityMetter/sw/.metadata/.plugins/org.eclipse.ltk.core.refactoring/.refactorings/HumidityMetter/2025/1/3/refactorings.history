@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;HumidityMetter/Src/LCD_SSD1306.cpp&apos; to &apos;SSD1306.cpp&apos;" description="Rename resource &apos;LCD_SSD1306.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/LCD_SSD1306.cpp" name="SSD1306.cpp" stamp="1736807607535" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;HumidityMetter/Inc/LCD_SSD1306.hpp&apos; to &apos;SSD1306.hpp&apos;" description="Rename resource &apos;LCD_SSD1306.hpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Inc/LCD_SSD1306.hpp" name="SSD1306.hpp" stamp="1736807625135" updateReferences="true"/>
+</session>

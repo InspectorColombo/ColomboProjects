@@ -1,0 +1,35 @@
+/*
+ * LCD_SSD1306.hpp
+ *
+ *  Created on: Jan 12, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __LCD_SSD1306_HPP__
+#define __LCD_SSD1306_HPP__
+
+
+class SSD1306
+{
+public:
+	enum SlaveAddress
+	{
+		SA_0X7A,
+		SA_0X7B
+	};
+
+	SSD1306(const SlaveAddress slaveAddress) : m_slaveAddress(0x00)
+
+
+
+private:
+	uint8_t m_slaveAddress;
+
+
+}
+
+
+
+
+
+#endif /* __LCD_SSD1306_HPP__ */

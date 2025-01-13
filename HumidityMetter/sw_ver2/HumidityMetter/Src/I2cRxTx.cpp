@@ -141,20 +141,6 @@ bool GetAcknowlegeBit(const bool ack)
 	return result;
 }
 
-/*
-bool GetAcknowlegeBit()
-{
-	SetSDA();
-	I2cDelay();
-	SetSCL();
-	I2cDelay();
-	const bool result = GetSDA();
-	ClrSCL();
-	I2cDelay();
-
-	return result;
-}
-*/
 
 uint8_t RecieveByte()
 {

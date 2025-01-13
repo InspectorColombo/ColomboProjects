@@ -31,6 +31,8 @@
 #include "I2cRxTx.hpp"
 #include "BatterySensor.hpp"
 
+#include "SSD1306.hpp"
+
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
@@ -373,6 +375,9 @@ void ShowBatteryVoltage(const BatterySensor& bs)
 }
 
 
+
+
+
 int main(void)
 {
 	InitClocks();
@@ -392,6 +397,40 @@ int main(void)
 	LcdScreen::LcdInit();
 	LcdScreen::LcdClear();
 	LcdScreen::LcdPrint("Hello!!!");
+
+
+
+
+
+
+	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
+	{
+
+
+		LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
+
+		lcd.Test();
+
+
+		for(;;);
+
+//		volatile bool skipFlag = false;
+//		while(!skipFlag)
+//		{
+//		}
+
+	}
+
+
+
+
+
+	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
+
+
+
+
+
 
 	enum MainMenuState
 	{
@@ -482,6 +521,9 @@ int main(void)
 			pwCtrl.PowerUnhold();
 		}
 	}
+
+
+
 }
 
 
