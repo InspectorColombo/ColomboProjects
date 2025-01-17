@@ -403,21 +403,39 @@ int main(void)
 
 
 
-/*
+
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
 	{
+
+
 		LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
+
 		for(;;)
 		{
 			lcd.ClearScreen();
 			lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
 		}
+
 		lcd.ClearScreen();
 		lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
+		//lcd.Print(0, 0, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+
 		for(;;);
+
+//		volatile bool skipFlag = false;
+//		while(!skipFlag)
+//		{
+//		}
+
 	}
+
+
+
+
+
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
-*/
+
 
 
 

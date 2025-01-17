@@ -1,0 +1,319 @@
+/*
+ * I2cSw.cpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ */
+
+#include "I2cSw.hpp"
+
+#include "stm32f103xb.h"
+
+#include "GpioConfigurator.hpp"
+
+namespace i2c
+{
+
+// I2C SW PINS definition
+#define I2C_PORT		GPIOB
+#define I2C_SDA_PIN		7
+#define I2C_SCL_PIN		6
+
+// Put here dummy code to delay 0.625uS for 400KHz I2C
+#define RoughDelay0_625us()	{\
+//asm("nop");\
+}\
+
+//asm("nop");\
+
+// Put here dummy code to delay 2.5uS for 100kHz I2C
+#define RoughDelay2_5us()	{\
+asm("nop");\
+asm("nop");\
+asm("nop");\
+}\
+
+// Definition for SET/CLEAR SDA/SCL pins. And read of SDA pin.
+#define GetSDA()	((I2C_PORT->IDR & (1 << I2C_SDA_PIN)) != 0)
+#define SetSDA()	I2C_PORT->BSRR = (1 << I2C_SDA_PIN)
+#define	ClrSDA()	I2C_PORT->BRR = (1 << I2C_SDA_PIN)
+#define SetSCL()	I2C_PORT->BSRR = (1 << I2C_SCL_PIN)
+#define ClrSCL()	I2C_PORT->BRR = (1 << I2C_SCL_PIN)
+
+// Initialization of SDA/SCL pins directions
+inline void SDAOut()
+{
+	GpioConfigurator::SetGpioOutOpenDrain(I2C_PORT, I2C_SDA_PIN);
+}
+inline void SDAIn()
+{
+	GpioConfigurator::SetGpioInFloating(I2C_PORT, I2C_SDA_PIN);
+}
+inline void SCLOut()
+{
+	GpioConfigurator::SetGpioOutOpenDrain(I2C_PORT, I2C_SCL_PIN);
+}
+inline void SCLIn()
+{
+	GpioConfigurator::SetGpioInFloating(I2C_PORT, I2C_SCL_PIN);
+}
+
+// I2C SW 100KHz class
+void I2c100KHzSw::Init()
+{
+	GpioConfigurator::GpioClockEnable(I2C_PORT);
+	SetSDA();
+	SetSCL();
+	SDAOut();
+	SCLOut();
+	RoughDelay2_5us();
+}
+
+void I2c100KHzSw::UnInit()
+{
+	SetSDA();
+	SetSCL();
+	SDAIn();
+	SCLIn();
+	RoughDelay2_5us();
+}
+
+void I2c100KHzSw::StartCondition()
+{
+	SetSCL();
+	RoughDelay2_5us();
+	ClrSDA();
+	RoughDelay2_5us();
+	ClrSCL();
+	RoughDelay2_5us();
+}
+
+void I2c100KHzSw::StopCondition()
+{
+	ClrSDA();
+	RoughDelay2_5us();
+	SetSCL();
+	RoughDelay2_5us();
+	SetSDA();
+	RoughDelay2_5us();
+}
+
+bool I2c100KHzSw::TxByte(const uint8_t toSend, const bool ack)
+{
+	if ((toSend & 0b10000000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	if ((toSend & 0b01000000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	if ((toSend & 0b00100000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	if ((toSend & 0b00010000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	if ((toSend & 0b00001000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	if ((toSend & 0b00000100) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	if ((toSend & 0b00000010) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	if ((toSend & 0b00000001) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay2_5us();	SetSCL();	RoughDelay2_5us();	ClrSCL();	RoughDelay2_5us();
+	return GetAckBit(ack);
+}
+
+bool I2c100KHzSw::GetAckBit(const bool ack)
+{
+	if (ack) { SetSDA(); } else { ClrSDA(); }
+	RoughDelay2_5us();
+	SetSCL();
+	RoughDelay2_5us();
+	const bool result = GetSDA();
+	ClrSCL();
+	RoughDelay2_5us();
+	return result;
+}
+
+uint8_t I2c100KHzSw::RxByte()
+{
+	SetSDA();	// Set SDA pulled up to get proper answer
+	RoughDelay2_5us();
+
+	uint8_t result = 0;
+
+	SetSCL();	RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 7); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 6); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 5); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 4); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 3); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 2); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 1); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 0); }
+	ClrSCL(); RoughDelay2_5us();
+	return result;
+}
+
+uint16_t I2c100KHzSw::RxByteWithAck()
+{
+	SetSDA();	// Set SDA pulled up to get proper answer
+	RoughDelay2_5us();
+
+	uint16_t result = 0;
+
+	SetSCL();	RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 7); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 6); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 5); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 4); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 3); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 2); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 1); }
+	ClrSCL(); RoughDelay2_5us(); SetSCL(); RoughDelay2_5us();
+	if (GetSDA())	{ result |= (1 << 8); }	// ACK
+	ClrSCL(); RoughDelay2_5us();
+	return result;
+}
+
+
+
+// I2C SW 400KHz class
+void I2c400KHzSw::Init()
+{
+	GpioConfigurator::GpioClockEnable(I2C_PORT);
+	SetSDA();
+	SetSCL();
+	SDAOut();
+	SCLOut();
+	RoughDelay0_625us();
+}
+
+void I2c400KHzSw::UnInit()
+{
+	SetSDA();
+	SetSCL();
+	SDAIn();
+	SCLIn();
+	RoughDelay0_625us();
+}
+
+void I2c400KHzSw::StartCondition()
+{
+	SetSCL();
+	RoughDelay0_625us();
+	ClrSDA();
+	RoughDelay0_625us();
+	ClrSCL();
+	RoughDelay0_625us();
+}
+
+void I2c400KHzSw::StopCondition()
+{
+	ClrSDA();
+	RoughDelay0_625us();
+	SetSCL();
+	RoughDelay0_625us();
+	SetSDA();
+	RoughDelay0_625us();
+}
+
+bool I2c400KHzSw::TxByte(const uint8_t toSend, const bool ack)
+{
+	if ((toSend & 0b10000000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	if ((toSend & 0b01000000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	if ((toSend & 0b00100000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	if ((toSend & 0b00010000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	if ((toSend & 0b00001000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	if ((toSend & 0b00000100) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	if ((toSend & 0b00000010) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	if ((toSend & 0b00000001) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay0_625us(); SetSCL(); RoughDelay0_625us(); ClrSCL(); RoughDelay0_625us();
+	return GetAckBit(ack);
+}
+
+bool I2c400KHzSw::GetAckBit(const bool ack)
+{
+	if (ack) { SetSDA(); } else { ClrSDA(); }
+	RoughDelay0_625us();
+	SetSCL();
+	RoughDelay0_625us();
+	const bool result = GetSDA();
+	ClrSCL();
+	RoughDelay0_625us();
+	return result;
+}
+
+uint8_t I2c400KHzSw::RxByte()
+{
+	SetSDA();	// Set SDA pulled up to get proper answer
+	RoughDelay0_625us();
+
+	uint8_t result = 0;
+
+	SetSCL();	RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 7); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 6); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 5); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 4); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 3); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 2); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 1); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 0); }
+	ClrSCL(); RoughDelay0_625us();
+	return result;
+}
+
+uint16_t I2c400KHzSw::RxByteWithAck()
+{
+	SetSDA();	// Set SDA pulled up to get proper answer
+	RoughDelay0_625us();
+
+	uint16_t result = 0;
+
+	SetSCL();	RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 7); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 6); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 5); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 4); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 3); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 2); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 1); }
+	ClrSCL(); RoughDelay0_625us(); SetSCL(); RoughDelay0_625us();
+	if (GetSDA())	{ result |= (1 << 8); }	// ACK
+	ClrSCL(); RoughDelay0_625us();
+	return result;
+}
+
+}	// namespace i2c
+
+
