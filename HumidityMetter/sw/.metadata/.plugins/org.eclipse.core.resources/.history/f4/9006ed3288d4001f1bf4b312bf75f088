@@ -268,14 +268,14 @@ bool BME280Sensor::ReadBurst(const uint8_t address, uint8_t* dst, const uint8_t 
 
 	for(uint8_t byteCnt = 0; byteCnt < length; ++byteCnt)
 	{
-		*(dst + byteCnt) = I2cClass::RxByte();
+		*(dst + byteCnt) = I2cClass::RecieveByte();
 		if ((byteCnt + 1) == length)
 		{
-			I2cClass::GetAckBit(true);
+			I2cClass::GetAcknowlegeBit(true);
 		}
 		else
 		{
-			I2cClass::GetAckBit(false);
+			I2cClass::GetAcknowlegeBit(false);
 		}
 	}
 	I2cClass::StopCondition();
@@ -290,7 +290,8 @@ bool BME280Sensor::Write(const uint8_t addr, const uint8_t data)
 bool BME280Sensor::WriteBurst(const uint8_t startAddr, const uint8_t* data, const uint8_t length)
 {
 	I2cClass::StartCondition();
-	if (I2cClass::TxByte(m_i2cAddr | WRITE_FLAG) == true)
+	I2cClass::SendByte(m_i2cAddr | WRITE_FLAG);
+	if (I2cClass::GetAcknowlegeBit(true) == true)
 	{
 		I2cClass::StopCondition();
 		return false;	// Device doesn't respond
@@ -299,13 +300,15 @@ bool BME280Sensor::WriteBurst(const uint8_t startAddr, const uint8_t* data, cons
 	uint8_t addr = startAddr;
 	for(uint8_t byteCnt = 0; byteCnt < length; ++byteCnt)
 	{
-		if (I2cClass::TxByte(addr) == true)
+		I2cClass::SendByte(addr);
+		if (I2cClass::GetAcknowlegeBit(true) == true)
 		{
 			I2cClass::StopCondition();
 			return false;	// Device doesn't respond
 		}
 
-		if (I2cClass::TxByte(*(data + byteCnt)) == true)
+		I2cClass::SendByte(*(data + byteCnt));
+		if (I2cClass::GetAcknowlegeBit(true) == true)
 		{
 			I2cClass::StopCondition();
 			return false;	// Device doesn't respond

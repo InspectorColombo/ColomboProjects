@@ -290,7 +290,7 @@ bool BME280Sensor::Write(const uint8_t addr, const uint8_t data)
 bool BME280Sensor::WriteBurst(const uint8_t startAddr, const uint8_t* data, const uint8_t length)
 {
 	I2cClass::StartCondition();
-	if (I2cClass::TxByte(m_i2cAddr | WRITE_FLAG) == true)
+	if (I2cClass::Tx(m_i2cAddr | WRITE_FLAG) == true)
 	{
 		I2cClass::StopCondition();
 		return false;	// Device doesn't respond

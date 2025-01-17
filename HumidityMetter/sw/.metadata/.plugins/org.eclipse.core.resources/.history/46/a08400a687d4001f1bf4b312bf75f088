@@ -244,41 +244,44 @@ bool BME280Sensor::Read(const uint8_t address, uint8_t& data) const
 bool BME280Sensor::ReadBurst(const uint8_t address, uint8_t* dst, const uint8_t length) const
 {
 	// "Write command" to pass address
-	I2cClass::StartCondition();
-	if (I2cClass::TxByte(m_i2cAddr | WRITE_FLAG) == true)
+	I2c400KHzSw::StartCondition();
+	I2c400KHzSw::SendByte(m_i2cAddr | WRITE_FLAG);
+	if (I2c400KHzSw::GetAcknowlegeBit(true) == true)
 	{
-		I2cClass::StopCondition();
+		I2c400KHzSw::StopCondition();
 		return false;	// Device doesn't respond
 	}
 
-	if (I2cClass::TxByte(address) == true)
+	I2c400KHzSw::SendByte(address);
+	if (I2c400KHzSw::GetAcknowlegeBit(true) == true)
 	{
-		I2cClass::StopCondition();
+		I2c400KHzSw::StopCondition();
 		return false;	// Device doesn't respond
 	}
-	I2cClass::StopCondition();
+	I2cRxTx::StopCondition();
 
 	// Read command
-	I2cClass::StartCondition();
-	if (I2cClass::TxByte(m_i2cAddr | READ_FLAG) == true)
+	I2cRxTx::StartCondition();
+	I2cRxTx::SendByte(m_i2cAddr | READ_FLAG);
+	if (I2cRxTx::GetAcknowlegeBit(true) == true)
 	{
-		I2cClass::StopCondition();
+		I2cRxTx::StopCondition();
 		return false;	// Device doesn't respond
 	}
 
 	for(uint8_t byteCnt = 0; byteCnt < length; ++byteCnt)
 	{
-		*(dst + byteCnt) = I2cClass::RxByte();
+		*(dst + byteCnt) = I2cRxTx::RecieveByte();
 		if ((byteCnt + 1) == length)
 		{
-			I2cClass::GetAckBit(true);
+			I2cRxTx::GetAcknowlegeBit(true);
 		}
 		else
 		{
-			I2cClass::GetAckBit(false);
+			I2cRxTx::GetAcknowlegeBit(false);
 		}
 	}
-	I2cClass::StopCondition();
+	I2cRxTx::StopCondition();
 	return true;
 }
 
@@ -289,29 +292,32 @@ bool BME280Sensor::Write(const uint8_t addr, const uint8_t data)
 
 bool BME280Sensor::WriteBurst(const uint8_t startAddr, const uint8_t* data, const uint8_t length)
 {
-	I2cClass::StartCondition();
-	if (I2cClass::TxByte(m_i2cAddr | WRITE_FLAG) == true)
+	I2cRxTx::StartCondition();
+	I2cRxTx::SendByte(m_i2cAddr | WRITE_FLAG);
+	if (I2cRxTx::GetAcknowlegeBit(true) == true)
 	{
-		I2cClass::StopCondition();
+		I2cRxTx::StopCondition();
 		return false;	// Device doesn't respond
 	}
 
 	uint8_t addr = startAddr;
 	for(uint8_t byteCnt = 0; byteCnt < length; ++byteCnt)
 	{
-		if (I2cClass::TxByte(addr) == true)
+		I2cRxTx::SendByte(addr);
+		if (I2cRxTx::GetAcknowlegeBit(true) == true)
 		{
-			I2cClass::StopCondition();
+			I2cRxTx::StopCondition();
 			return false;	// Device doesn't respond
 		}
 
-		if (I2cClass::TxByte(*(data + byteCnt)) == true)
+		I2cRxTx::SendByte(*(data + byteCnt));
+		if (I2cRxTx::GetAcknowlegeBit(true) == true)
 		{
-			I2cClass::StopCondition();
+			I2cRxTx::StopCondition();
 			return false;	// Device doesn't respond
 		}
 	}
-	I2cClass::StopCondition();
+	I2cRxTx::StopCondition();
 	return true;
 }
 
