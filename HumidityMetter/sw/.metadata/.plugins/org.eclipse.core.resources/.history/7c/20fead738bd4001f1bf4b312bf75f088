@@ -194,10 +194,10 @@ private:
 		return ES_OK;
 	}
 
-	static void Acquisition()
+	static void Acquisition() const
 	{
 		DelayTimer::DelayMilliSec(2000);
 	}
 };
 
-#endif	// __AM2320SENSOR_HPP__
+endif	// __AM2320SENSOR_HPP__

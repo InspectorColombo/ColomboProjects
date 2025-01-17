@@ -1,17 +1,48 @@
-07:05:14 **** Incremental Build of configuration Release for project HumidityMetter ****
+07:28:29 **** Incremental Build of configuration Release for project HumidityMetter ****
 make -j6 all 
-arm-none-eabi-g++ "../Src/BME280Sensor.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw_ver2/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw_ver2/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/BME280Sensor.d" -MT"Src/BME280Sensor.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/BME280Sensor.o"
+arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw_ver2/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw_ver2/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.cpp: In function 'void ShowSensorError(const AM2320Sensor&)':
+../Src/main.cpp:208:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  208 |         LcdScreen::LcdPrint("Sensor:");
+      |                             ^~~~~~~~~
+../Src/main.cpp:212:55: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  212 |         case AM2320Sensor::ES_OK: LcdScreen::LcdPrint("OK"); break;
+      |                                                       ^~~~
+../Src/main.cpp:213:63: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  213 |         case AM2320Sensor::ES_NO_RESPOND: LcdScreen::LcdPrint("NO RESP"); break;
+      |                                                               ^~~~~~~~~
+../Src/main.cpp:214:72: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  214 |         case AM2320Sensor::ES_COMMUNICATION_ERROR: LcdScreen::LcdPrint("COMM ERR"); break;
+      |                                                                        ^~~~~~~~~~
+../Src/main.cpp:215:62: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  215 |         case AM2320Sensor::ES_CRC_ERROR: LcdScreen::LcdPrint("CRC ERR"); break;
+      |                                                              ^~~~~~~~~
+../Src/main.cpp: In function 'void ShowBME280Error()':
+../Src/main.cpp:352:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  352 |         LcdScreen::LcdPrint("BME280");
+      |                             ^~~~~~~~
+../Src/main.cpp:354:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  354 |         LcdScreen::LcdPrint("ERROR");
+      |                             ^~~~~~~
+../Src/main.cpp: In function 'void ShowBatteryVoltage(const BatterySensor&)':
+../Src/main.cpp:361:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  361 |         LcdScreen::LcdPrint("BATTERY");
+      |                             ^~~~~~~~~
+../Src/main.cpp: In function 'int main()':
+../Src/main.cpp:400:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  400 |         LcdScreen::LcdPrint("Hello!!!");
+      |                             ^~~~~~~~~~
 arm-none-eabi-g++ -o "HumidityMetter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\__workspace\ColomboProjects\HumidityMetter\sw_ver2\HumidityMetter\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HumidityMetter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 Finished building target: HumidityMetter.elf
  
 arm-none-eabi-size  HumidityMetter.elf 
 arm-none-eabi-objdump -h -S HumidityMetter.elf  > "HumidityMetter.list"
    text	   data	    bss	    dec	    hex	filename
-   8872	      0	   1568	  10440	   28c8	HumidityMetter.elf
+   5752	      0	   1568	   7320	   1c98	HumidityMetter.elf
 Finished building: default.size.stdout
  
 Finished building: HumidityMetter.list
  
 
-07:05:15 Build Finished. 0 errors, 0 warnings. (took 868ms)
+07:28:29 Build Finished. 0 errors, 9 warnings. (took 704ms)
 

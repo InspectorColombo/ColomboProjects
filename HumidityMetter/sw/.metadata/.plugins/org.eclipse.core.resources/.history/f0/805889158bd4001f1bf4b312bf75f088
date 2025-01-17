@@ -5,6 +5,8 @@
  *      Author: Goggy
  */
 
+
+
 #ifndef __AM2320SENSOR_HPP__
 #define __AM2320SENSOR_HPP__
 
@@ -13,6 +15,7 @@
 #include "stm32f103xb.h"
 #include "DelayTimer.hpp"
 #include "ErrorLed.hpp"
+//#include "I2cRxTx.hpp"
 #include "I2cSw.hpp"
 
 
@@ -94,6 +97,7 @@ private:
 		// Wake sensor
 		I2cClass::StartCondition();
 		I2cClass::TxByte(0xB8);
+		//I2cRxTx::GetAcknowlegeBit(true);
 		DelayTimer::DelayMicroSec(800);
 		I2cClass::StopCondition();
 	}
@@ -194,10 +198,44 @@ private:
 		return ES_OK;
 	}
 
-	static void Acquisition()
+	void Acquisition() const
 	{
 		DelayTimer::DelayMilliSec(2000);
 	}
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif	// __AM2320SENSOR_HPP__

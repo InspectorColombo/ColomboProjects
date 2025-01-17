@@ -403,7 +403,7 @@ int main(void)
 
 
 
-
+/*
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
 	{
 		LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
@@ -417,7 +417,7 @@ int main(void)
 		for(;;);
 	}
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
-
+*/
 
 
 

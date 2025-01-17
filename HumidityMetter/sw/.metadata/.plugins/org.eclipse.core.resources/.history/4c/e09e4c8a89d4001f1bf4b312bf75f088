@@ -3,10 +3,6 @@
  *
  *  Created on: Jan 14, 2025
  *      Author: Goggy
- *
- *	IMPORTANT:
- *  Please define I2C SLC SDA pins and port
- *  Also define RoughDelay for 0.625uS and 2.5uS according to MCU SYSCLK
  */
 
 #include "I2cSw.hpp"

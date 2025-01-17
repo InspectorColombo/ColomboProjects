@@ -5,6 +5,8 @@
  *      Author: Goggy
  */
 
+
+
 #ifndef __AM2320SENSOR_HPP__
 #define __AM2320SENSOR_HPP__
 
@@ -13,21 +15,19 @@
 #include "stm32f103xb.h"
 #include "DelayTimer.hpp"
 #include "ErrorLed.hpp"
-#include "I2cSw.hpp"
+#include "I2cRxTx.hpp"
 
 
 class AM2320Sensor
 {
 public:
-	typedef typename i2c::I2c100KHzSw I2cClass;
-
 	AM2320Sensor() :
 		m_temperature(0),
 		m_temperatureMinusSign(false),
 		m_humidity(0),
 		m_errorState(ES_OK)
 	{
-		I2cClass::Init();
+		I2cRxTx::Init();
 	}
 
 	enum ErrorState
@@ -92,90 +92,110 @@ private:
 	void WakeCommand() const
 	{
 		// Wake sensor
-		I2cClass::StartCondition();
-		I2cClass::TxByte(0xB8);
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(0xB8);
+		I2cRxTx::GetAcknowlegeBit(true);
 		DelayTimer::DelayMicroSec(800);
-		I2cClass::StopCondition();
+		I2cRxTx::StopCondition();
 	}
 
 	bool ReadCommand() const
 	{
-		I2cClass::StartCondition();
-		if (I2cClass::TxByte(0xB8) == true)
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(0xB8);
+		const bool ack0 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack0 == true)
 		{
-			I2cClass::StopCondition();
+			I2cRxTx::StopCondition();
 			return false;
 		}
 
-		if (I2cClass::TxByte(0x03) == true)
+		I2cRxTx::SendByte(0x03);
+		const bool ack1 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack1 == true)
 		{
-			I2cClass::StopCondition();
+			I2cRxTx::StopCondition();
 			return false;
 		}
 
-		if (I2cClass::TxByte(0x00) == true)
+		I2cRxTx::SendByte(0x00);
+		const bool ack2 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack2 == true)
 		{
-			I2cClass::StopCondition();
+			I2cRxTx::StopCondition();
 			return false;
 		}
 
-		if (I2cClass::TxByte(0x04) == true)
+		I2cRxTx::SendByte(0x04);
+		const bool ack3 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack3 == true)
 		{
-			I2cClass::StopCondition();
+			I2cRxTx::StopCondition();
 			return false;
 		}
 
-		I2cClass::StopCondition();
+		I2cRxTx::StopCondition();
 		return true;
 	}
 
-	static uint16_t CalcCRC16(uint8_t* ptr, const uint8_t size)
+static uint16_t CalcCRC16(uint8_t* ptr, const uint8_t size)
+{
+	uint16_t crc = 0xFFFF;
+	for(uint8_t byteCnt = 0; byteCnt < size; ++byteCnt)
 	{
-		uint16_t crc = 0xFFFF;
-		for(uint8_t byteCnt = 0; byteCnt < size; ++byteCnt)
+		crc ^= *ptr++;
+		for(uint8_t i = 0; i < 8; i++)
 		{
-			crc ^= *ptr++;
-			for(uint8_t i = 0; i < 8; i++)
+			if(crc & 0x01)
 			{
-				if(crc & 0x01)
-				{
-					crc>>=1;
-					crc^=0xA001;
-				}
-				else
-				{
-					crc>>=1;
-				}
+				crc>>=1;
+				crc^=0xA001;
+			}
+			else
+			{
+				crc>>=1;
 			}
 		}
-		return crc;
 	}
+	return crc;
+}
+
+
+
 
 	ErrorState GetReadData()
 	{
 		// Read data from sensor
-		I2cClass::StartCondition();
-		if (I2cClass::TxByte(0xB9) == true)
+		I2cRxTx::StartCondition();
+		I2cRxTx::SendByte(0xB9);
+		const bool ack0 = I2cRxTx::GetAcknowlegeBit(true);
+		if (ack0 == true)
 		{
-			I2cClass::StopCondition();
+			I2cRxTx::StopCondition();
 			return ES_COMMUNICATION_ERROR;
 		}
 
+//#define RX_SIZE		8
 		const uint8_t RX_SIZE = 8;
-		uint8_t rx[RX_SIZE] = {0,0,0,0,0,0,0,0};
-		uint8_t rxCnt = 0;
-		for(; rxCnt < RX_SIZE; ++rxCnt)
+		uint8_t rx[RX_SIZE];	//  = {0,0,0,0,0,0,0,0};
+		for(uint8_t i = 0; i < RX_SIZE; ++i)
 		{
-			rx[rxCnt] = I2cClass::RxByte();
+			rx[i] = 0x00;
+		}
+
+		uint8_t rxCnt = 0;
+		for(/*uint8_t rxCnt = 0*/; rxCnt < RX_SIZE; ++rxCnt)
+		{
+			rx[rxCnt] = I2cRxTx::RecieveByte();
 		    const bool ack = (rxCnt != 7)
-		    	? I2cClass::GetAckBit(false)
-		    	: I2cClass::GetAckBit(true);
+		    	? I2cRxTx::GetAcknowlegeBit(false)
+		    	: I2cRxTx::GetAcknowlegeBit(true);
 
 		    if (ack == true && rxCnt != 7)
 		    	break;
 		}
 
-		I2cClass::StopCondition();
+		I2cRxTx::StopCondition();
 
 		if (rxCnt != 8)
 			return ES_COMMUNICATION_ERROR;
@@ -194,10 +214,47 @@ private:
 		return ES_OK;
 	}
 
-	static void Acquisition()
+
+	void Acquisition() const
 	{
 		DelayTimer::DelayMilliSec(2000);
+		//DelayTimer::DelayMilliSec(5000);
 	}
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif	// __AM2320SENSOR_HPP__

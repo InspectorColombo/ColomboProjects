@@ -42,6 +42,9 @@ public:
 	void SetError(const bool toSet);
 	bool GetError() const;
 
+
+	//void Test();
+
 private:
 	void Init();
 	void UnInit();
@@ -62,6 +65,8 @@ private:
 	void SetColumnStartAddressForPAM(const uint8_t columnStartAddress);
 	void SetPageStartAddressForPAM(const uint8_t pageStartAddress);
 
+
+	//i2c::I2cSw		m_i2c;
 	uint8_t			m_slaveAddress;
 	uint8_t 		m_colCnt;
 	uint8_t 		m_rowCnt;

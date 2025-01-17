@@ -14,6 +14,7 @@
 class BME280Sensor
 {
 public:
+
 	typedef i2c::I2c400KHzSw	I2cClass;
 
 	BME280Sensor(const uint8_t addrI2c = 0b11101100);
@@ -88,6 +89,9 @@ private:
 	bool Write(const uint8_t addr, const uint8_t data);
 	bool WriteBurst(const uint8_t startAddr, const uint8_t* data, const uint8_t length);
 };
+
+
+
 
 
 #endif // __BME280SENSOR_HPP__
