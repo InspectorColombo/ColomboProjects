@@ -10,6 +10,8 @@
 #include "stm32f103xb.h"
 
 #include "LcdScreen.hpp"
+#include "Font8x8.hpp"
+#include "Font8x8Right.hpp"
 
 namespace LcdDrivers
 {
@@ -38,13 +40,101 @@ const uint8_t ENTIRE_DISPLAY_OFF[4]	= { 3, WRITE, COMMAND | NON_CONT, 0xA5 }; //
 const uint8_t SET_NORMAL_DISPLAY[4]	= { 3, WRITE, COMMAND | NON_CONT, 0xA6 }; // Set normal display
 const uint8_t SET_INVERSE_DISPLAY[4]= { 3, WRITE, COMMAND | NON_CONT, 0xA7 }; // Set inverse display
 
+const uint8_t SET_SEGMENT_REMAP_X_NORMAL[4]		= { 3, WRITE, COMMAND | NON_CONT, 0xA0 };
+const uint8_t SET_SEGMENT_REMAP_X_INVERTED[4]	= { 3, WRITE, COMMAND | NON_CONT, 0xA1 };
+
+const uint8_t SET_COM_SCAN_DIRECTION_Y_NORMAL[4]	= { 3, WRITE, COMMAND | NON_CONT, 0xC0 };
+const uint8_t SET_COM_SCAN_DIRECTION_Y_INVERTED[4]	= { 3, WRITE, COMMAND | NON_CONT, 0xC8 };
+
+
+const uint8_t SET_MEMORY_ADDRESSING_MODE_HORIZONTAL[5]=	{ 4, WRITE, COMMAND | CONT, 0x20, 0b00000000}; // Horizontal memory addressing mode
+const uint8_t SET_MEMORY_ADDRESSING_MODE_VERTICAL[5]=	{ 4, WRITE, COMMAND | CONT, 0x20, 0b00000001}; // Vertical memory addressing mode
+const uint8_t SET_MEMORY_ADDRESSING_MODE_PAGE[5]=		{ 4, WRITE, COMMAND | CONT, 0x20, 0b00000010}; // Page memory addressing mode
+
+#define SET_LOWER_COLLUMN_ADDRESS_PAM	0b00000000	// 0b0000XXXX
+#define SET_HIGHER_COLLUMN_ADDRESS_PAM	0b00010000	// 0b0001XXXX
+#define SET_PAGE_START_ADDRESS_PAM		0b10110000	// 0b10110XXX	(page 0-7)
+#define SET_COLUMN_ADDRESS_HVM			0b00100001	// 0b00100001 0b*AAAAAAA 0b*BBBBBBB
+#define SET_PAGE_ADDRESS_HVM			0b00100010	// 0b00100010 0b*****AAA 0b*****BBB
 
 // COMMANDS LIST
 //const uint8_t SET_CONTRAST_CONTROL	= 0x81;
 
-
-Driver::Driver(const SlaveAddress slaveAddress) : m_slaveAddress(0x00), m_error(false), m_i2c(2)
+void Driver::SetColumnPageAddressesForHVM(
+		const uint8_t columnStartAddress,
+		const uint8_t columnEndAddress,
+		const uint8_t pageStartAddress,
+		const uint8_t pageEndAddress)
 {
+	bool ack = false;
+	I2cClass::StartCondition();
+	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(COMMAND | CONT);
+	ack |= I2cClass::TxByte(SET_COLUMN_ADDRESS_HVM);
+	ack |= I2cClass::TxByte(columnStartAddress & 0b01111111);
+	ack |= I2cClass::TxByte(columnEndAddress & 0b01111111);
+	I2cClass::StopCondition();
+
+	I2cClass::StartCondition();
+	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(COMMAND | CONT);
+	ack |= I2cClass::TxByte(SET_PAGE_ADDRESS_HVM);
+	ack |= I2cClass::TxByte(pageStartAddress & 0b00000111);
+	ack |= I2cClass::TxByte(pageEndAddress & 0b00000111);
+	I2cClass::StopCondition();
+}
+
+
+// Set column start address for page addressing mode
+void Driver::SetColumnStartAddressForPAM(const uint8_t columnStartAddress)
+{
+	I2cClass::StartCondition();
+
+	bool ack = false;
+	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(COMMAND | NON_CONT);
+	ack |= I2cClass::TxByte(SET_LOWER_COLLUMN_ADDRESS_PAM | (columnStartAddress & 0b00001111));
+	ack |= I2cClass::TxByte(COMMAND | NON_CONT);
+	ack |= I2cClass::TxByte(SET_HIGHER_COLLUMN_ADDRESS_PAM | ((columnStartAddress >> 4) & 0b00001111));
+	I2cClass::StopCondition();
+	SetError(ack == true);
+}
+
+void Driver::SetPageStartAddressForPAM(const uint8_t pageStartAddress)
+{
+	if (pageStartAddress > 7)
+	{
+		SetError(true);
+		return;
+	}
+
+	I2cClass::StartCondition();
+
+	bool ack = false;
+	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(COMMAND | NON_CONT);
+	ack |= I2cClass::TxByte(SET_PAGE_START_ADDRESS_PAM | (pageStartAddress & 0b00000111));
+	I2cClass::StopCondition();
+	SetError(ack == true);
+}
+
+
+
+Driver::Driver(
+	const SlaveAddress slaveAddress,
+	const uint8_t colCnt,
+	const uint8_t rowCnt,
+	const bool invertX,
+	const bool invertY) :
+			//I2cClass(2),
+			m_slaveAddress(0x00),
+			m_colCnt(colCnt),
+			m_rowCnt(rowCnt),
+			m_invertX(invertX),
+			m_invertY(invertY),
+			m_error(false)
+{
+	I2cClass::Init();
 	switch(slaveAddress)
 	{
 		case SA_0X7A: m_slaveAddress = 0x7A; break;
@@ -52,10 +142,35 @@ Driver::Driver(const SlaveAddress slaveAddress) : m_slaveAddress(0x00), m_error(
 		default:
 			return;	// Wrong address
 	}
-	//I2cRxTx::Init();
-	//I2cRxTx::StopCondition();
-	m_i2c.StopCondition();
+	I2cClass::StopCondition();
+
+	Init();
 }
+
+Driver::~Driver()
+{
+	I2cClass::UnInit();
+	UnInit();
+}
+
+
+void Driver::Init()
+{
+	SendCommand(CHARGE_PUMP_ON);
+	SendCommand(DISPLAY_ON);
+	SendCommand(ENTIRE_DISPLAY_ON);
+	SendCommand(SET_NORMAL_DISPLAY);
+	SendCommand(m_invertX ? SET_SEGMENT_REMAP_X_INVERTED : SET_SEGMENT_REMAP_X_NORMAL);
+	SendCommand(m_invertY ? SET_COM_SCAN_DIRECTION_Y_INVERTED : SET_COM_SCAN_DIRECTION_Y_NORMAL);
+}
+
+void Driver::UnInit()
+{
+	SendCommand(ENTIRE_DISPLAY_OFF);
+	SendCommand(DISPLAY_OFF);
+	SendCommand(CHARGE_PUMP_OFF);
+}
+
 
 void Driver::SetError(const bool toSet)
 {
@@ -73,53 +188,43 @@ void Driver::SendCommand(const uint8_t* commandPointer)
 	uint8_t commandLength = *cmdPtr;
 	++cmdPtr;
 
-	m_i2c.StartCondition();
-	//I2cRxTx::StartCondition();
+	I2cClass::StartCondition();
 	for(uint8_t cmdCnt = 0; cmdCnt < commandLength; ++cmdCnt)
 	{
 		const uint8_t byteToSend = (cmdCnt == 0) ? (*cmdPtr | m_slaveAddress) : (*cmdPtr);
 		++cmdPtr;
 
-//		I2cRxTx::SendByte(byteToSend);
-//		const bool ack = I2cRxTx::GetAcknowlegeBit();
-//		if (ack)
-//		{
-//			SetError(true);
-//			break;
-//		}
-
-		if (m_i2c.TxByte(byteToSend))
+		if (I2cClass::TxByte(byteToSend))
 		{
 			SetError(true);
 			break;
 		}
 	}
-	//I2cRxTx::StopCondition();
-	m_i2c.StopCondition();
+	I2cClass::StopCondition();
 }
 
 void Driver::SendData(const uint8_t* dataPointer, const uint16_t dataLength)
 {
 	//I2cRxTx::StartCondition();
-	m_i2c.StartCondition();
+	I2cClass::StartCondition();
 
 	//I2cRxTx::SendByte(m_slaveAddress | WRITE);
 	//bool ack = I2cRxTx::GetAcknowlegeBit();
-	bool ack = m_i2c.TxByte(m_slaveAddress | WRITE);
+	bool ack = I2cClass::TxByte(m_slaveAddress | WRITE);
 
 	//I2cRxTx::SendByte(DATA | CONT);
 	//ack |= I2cRxTx::GetAcknowlegeBit();
-	ack |= m_i2c.TxByte(DATA | CONT);
+	ack |= I2cClass::TxByte(DATA | CONT);
 
 
 	//I2cRxTx::SendByte(0x00);
 	//ack |= I2cRxTx::GetAcknowlegeBit();
-	ack |= m_i2c.TxByte(0x00);
+	//ack |= I2cClass::TxByte(0x00);
 
 	if (ack)
 	{
 		//I2cRxTx::StopCondition();
-		m_i2c.StopCondition();
+		I2cClass::StopCondition();
 		SetError(true);
 		return;
 	}
@@ -134,7 +239,7 @@ void Driver::SendData(const uint8_t* dataPointer, const uint16_t dataLength)
 //			break;
 //		}
 
-		if (m_i2c.TxByte(*dataPtr))
+		if (I2cClass::TxByte(*dataPtr))
 		{
 			SetError(true);
 			break;
@@ -145,50 +250,108 @@ void Driver::SendData(const uint8_t* dataPointer, const uint16_t dataLength)
 
 	}
 	//I2cRxTx::StopCondition();
-	m_i2c.StopCondition();
+	I2cClass::StopCondition();
 }
 
-void Driver::Test()
+void Driver::SendDataRawStart()
 {
-	SendCommand(CHARGE_PUMP_ON);
-	SendCommand(DISPLAY_ON);
-	SendCommand(ENTIRE_DISPLAY_ON);
-	SendCommand(SET_NORMAL_DISPLAY);
+	I2cClass::StartCondition();
+	bool ack = I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(DATA | CONT);
 
-	const uint8_t tx4[128] =
+	//ack |= I2cClass::TxByte(0x00);		// ??????????
+
+	if (ack == true)
 	{
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-	};
+		SetError(true);
+	}
+}
 
-	SendData(tx4, 128);
+void Driver::SendDataRawEnd()
+{
+	I2cClass::StopCondition();
+}
 
-	if (GetError())
+void Driver::SendDataRaw(const uint8_t data)
+{
+	if (I2cClass::TxByte(data) == true)
 	{
-		LcdScreen::LcdClear();
-		LcdScreen::LcdToPos(0, 0);
-		LcdScreen::LcdPrint("FAIL");
+		SetError(true);
+	}
+}
+
+
+
+
+void Driver::ClearScreen()
+{
+	SendCommand(SET_MEMORY_ADDRESSING_MODE_VERTICAL);
+	SetColumnPageAddressesForHVM(0, 127, 0, 7);
+
+	SendDataRawStart();
+	for(uint16_t byteCnt = 0; byteCnt < (128*64/8); ++byteCnt)
+	{
+		if (byteCnt < 8 || (byteCnt >= (128*64/8) - 8))
+		{
+			SendDataRaw(0xFF);
+		}
+		else
+		{
+			SendDataRaw(0x00);
+		}
+	}
+	SendDataRawEnd();
+}
+
+
+
+void Driver::Print(const uint8_t x, const uint8_t y, const char* str)
+{
+	font::Font8x8Right fn;
+
+	if (x >= (m_colCnt / 8) || y >= (m_rowCnt / 8))
+	{
+		SetError(true);
 		return;
 	}
 
-	LcdScreen::LcdClear();
-	LcdScreen::LcdToPos(0, 0);
-	LcdScreen::LcdPrint("OK");
+	uint8_t xPos = x * 8;
+	uint8_t yPos = y;
+
+	const char* ch = str;
+
+	SendCommand(SET_MEMORY_ADDRESSING_MODE_PAGE);
+
+	bool updatePage = true;
+	while(*ch != 0x00)
+	{
+		if (updatePage)
+		{
+			updatePage = false;
+			SetColumnStartAddressForPAM(xPos);
+			SetPageStartAddressForPAM(yPos);
+		}
+
+
+		const uint8_t* bmPtr = fn.GetCharBitmap((uint8_t)(*ch));
+		SendData(bmPtr, 8);
+
+		// Update XY
+		xPos +=8;
+		if (xPos >= m_colCnt)
+		{
+			updatePage = true;
+			xPos = x * 8;
+			yPos += 1;
+			if (yPos >= m_rowCnt)
+			{
+				return;
+			}
+		}
+		++ch;
+	}
 }
+
 
 }	// namespace SSD1306
 }	// namespace LcdDrivers

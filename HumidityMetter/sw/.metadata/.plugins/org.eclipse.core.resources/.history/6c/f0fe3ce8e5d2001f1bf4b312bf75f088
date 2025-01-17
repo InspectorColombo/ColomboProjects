@@ -1,0 +1,39 @@
+/*
+ * Font8x8_normal.hpp
+ *
+ *  Created on: Jan 15, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __FONT_IF_HPP__
+#define __FONT_IF_HPP__
+
+#include <stdint.h>
+#include "fontIf.hpp"
+
+
+namespace font
+{
+
+class FontIf
+{
+public:
+	FontIf(){}
+
+protected:
+	uint8_t* GetCharBitmap(const uint8_t char) const = 0;
+
+
+
+private:
+
+}
+
+
+
+
+}	// namespace font
+
+
+
+#endif // __FONT_IF_HPP__

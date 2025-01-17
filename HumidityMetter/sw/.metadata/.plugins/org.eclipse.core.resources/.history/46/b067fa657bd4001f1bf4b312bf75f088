@@ -1,0 +1,194 @@
+/*
+ * I2cSw.cpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ */
+
+#include "I2cSw.hpp"
+
+#include "stm32f103xb.h"
+
+#include "GpioConfigurator.hpp"
+
+namespace i2c
+{
+
+// I2C SW PINS definition
+#define I2C_PORT		GPIOB
+#define I2C_SDA_PIN		7
+#define I2C_SCL_PIN		6
+
+// Put here dummy code to delay 0.625uS
+#define RoughDelay0_625us()	{\
+asm("nop");\
+}\
+
+// Put here dummy code to delay 2.5uS
+#define RoughDelay2_5us()	{\
+asm("nop");\
+asm("nop");\
+asm("nop");\
+}\
+
+
+
+namespace I2c100KHzSw
+{
+void StartCondition();
+void StopCondition() const;
+bool TxByte(const uint8_t toSend, const bool ack = true);
+bool GetAckBit(const bool ack = true);
+uint8_t RxByte();
+uint8_t RxByteWithAck();
+};
+
+#define GetSDA()	((I2C_PORT->IDR & (1 << I2C_SDA_PIN)) != 0)
+#define SetSDA()	I2C_PORT->BSRR = (1 << I2C_SDA_PIN)
+#define	ClrSDA()	I2C_PORT->BRR = (1 << I2C_SDA_PIN)
+#define SetSCL()	I2C_PORT->BSRR = (1 << I2C_SCL_PIN)
+#define ClrSCL()	I2C_PORT->BRR = (1 << I2C_SCL_PIN)
+
+
+
+inline void SDAOut()
+{
+	GpioConfigurator::SetGpioOutOpenDrain(I2C_PORT, I2C_SDA_PIN);
+}
+inline void SDAIn()
+{
+	GpioConfigurator::SetGpioInFloating(I2C_PORT, I2C_SDA_PIN);
+}
+inline void SCLOut()
+{
+	GpioConfigurator::SetGpioOutOpenDrain(I2C_PORT, I2C_SCL_PIN);
+}
+inline void SCLIn()
+{
+	GpioConfigurator::SetGpioInFloating(I2C_PORT, I2C_SCL_PIN);
+}
+
+I2cSw::I2cSw(const uint8_t usDelay) : m_usDelay(usDelay)
+{
+	GpioConfigurator::GpioClockEnable(I2C_PORT);
+	SetSDA();
+	SetSCL();
+	SDAOut();
+	SCLOut();
+	RoughDelay();
+}
+
+void I2cSw::StartCondition() const
+{
+	SetSCL();
+	RoughDelay();
+	ClrSDA();
+	RoughDelay();
+	ClrSCL();
+	RoughDelay();
+}
+
+void I2cSw::StopCondition() const
+{
+	ClrSDA();
+	RoughDelay();
+	SetSCL();
+	RoughDelay();
+	SetSDA();
+	RoughDelay();
+}
+
+/*
+bool I2cSw::TxByte(const uint8_t toSend, const bool ack) const
+{
+	uint8_t byte = toSend;
+	for(uint8_t bitCnt = 0; bitCnt < 8; ++bitCnt)
+	{
+		if ((byte & 0b10000000) != 0)
+		{
+			SetSDA();
+		}
+		else
+		{
+			ClrSDA();
+		}
+		RoughDelay();
+		SetSCL();
+		RoughDelay();
+		ClrSCL();
+		RoughDelay();	// !!!! questionable. May be should be removed
+		byte = byte << 1;
+	}
+	return GetAckBit(ack);
+}
+*/
+bool I2cSw::TxByte(const uint8_t byte, const bool ack) const
+{
+	if ((byte & 0b10000000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	if ((byte & 0b01000000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	if ((byte & 0b00100000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	if ((byte & 0b00010000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	if ((byte & 0b00001000) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	if ((byte & 0b00000100) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	if ((byte & 0b00000010) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	if ((byte & 0b00000001) != 0) { SetSDA();}	else { ClrSDA();}
+	RoughDelay();	SetSCL();	RoughDelay();	ClrSCL();	RoughDelay();
+	return GetAckBit(ack);
+}
+
+
+
+uint8_t I2cSw::RxByte() const
+{
+	SetSDA();	// Set SDA pulled up to get proper answer
+	RoughDelay();
+
+	uint8_t byte = 0;
+	for(uint8_t bitCnt = 0; bitCnt < 8; ++bitCnt)
+	{
+		byte = byte << 1;
+		SetSCL();
+		RoughDelay();
+		if (GetSDA())
+		{
+			byte |= 0b00000001;
+		}
+		RoughDelay();
+		ClrSCL();
+		RoughDelay();	// !!!! questionable. May be should be removed
+	}
+	return byte;
+}
+
+bool I2cSw::GetAckBit(const bool ack) const
+{
+	if (ack)
+	{
+		SetSDA();
+	}
+	else
+	{
+		ClrSDA();
+	}
+
+	RoughDelay();
+	SetSCL();
+	RoughDelay();
+	const bool result = GetSDA();
+	ClrSCL();
+	RoughDelay();
+
+	return result;
+}
+
+
+}	// namespace i2c
+
+

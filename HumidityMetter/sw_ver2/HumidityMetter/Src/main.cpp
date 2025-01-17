@@ -58,8 +58,9 @@ void InitClocks()
 	temp |= RCC_CFGR_SW_HSI;
 
 	// AHB = SYSCLK / 8
-	temp &= ~(RCC_CFGR_HPRE);
+	//temp &= ~(RCC_CFGR_HPRE);
 	temp |= RCC_CFGR_HPRE_DIV8;
+	//temp |= RCC_CFGR_HPRE_DIV1;
 
 	// PCLK2 = SYSCLK / 1
 	temp &= ~(RCC_CFGR_PPRE2);
@@ -409,7 +410,15 @@ int main(void)
 
 		LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
 
-		lcd.Test();
+		for(;;)
+		{
+			lcd.ClearScreen();
+			lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
+		}
+
+		lcd.ClearScreen();
+		lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
+		//lcd.Print(0, 0, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
 
 		for(;;);

@@ -1,16 +1,16 @@
 ../Src/main.cpp:42:6:void InitClocks()	1
-../Src/main.cpp:75:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	1
-../Src/main.cpp:80:6:void PA_CLOCK_ENABLE()	1
-../Src/main.cpp:85:6:void PB_CLOCK_ENABLE()	1
-../Src/main.cpp:91:6:void PC_CLOCK_ENABLE()	1
-../Src/main.cpp:96:6:void InitPorts()	1
-../Src/main.cpp:203:6:void ShowSensorError(const AM2320Sensor&)	5
-../Src/main.cpp:218:6:void ShowSensorTemperature(const AM2320Sensor&)	3
-../Src/main.cpp:238:6:void ShowSensorHumidity(const AM2320Sensor&)	3
-../Src/main.cpp:254:6:void ShowBME280Temperature(const BME280Sensor&)	3
-../Src/main.cpp:280:6:void ShowBME280Altitude(const BME280Sensor&, const AltitudeMetter&)	5
-../Src/main.cpp:300:6:void ShowBME280Humidity(const BME280Sensor&)	4
-../Src/main.cpp:334:6:void ShowBME280Pressure(const BME280Sensor&)	1
-../Src/main.cpp:347:6:void ShowBME280Error()	1
-../Src/main.cpp:356:6:void ShowBatteryVoltage(const BatterySensor&)	2
-../Src/main.cpp:381:5:int main()	1
+../Src/main.cpp:76:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	1
+../Src/main.cpp:81:6:void PA_CLOCK_ENABLE()	1
+../Src/main.cpp:86:6:void PB_CLOCK_ENABLE()	1
+../Src/main.cpp:92:6:void PC_CLOCK_ENABLE()	1
+../Src/main.cpp:97:6:void InitPorts()	1
+../Src/main.cpp:204:6:void ShowSensorError(const AM2320Sensor&)	5
+../Src/main.cpp:219:6:void ShowSensorTemperature(const AM2320Sensor&)	3
+../Src/main.cpp:239:6:void ShowSensorHumidity(const AM2320Sensor&)	3
+../Src/main.cpp:255:6:void ShowBME280Temperature(const BME280Sensor&)	3
+../Src/main.cpp:281:6:void ShowBME280Altitude(const BME280Sensor&, const AltitudeMetter&)	5
+../Src/main.cpp:301:6:void ShowBME280Humidity(const BME280Sensor&)	4
+../Src/main.cpp:335:6:void ShowBME280Pressure(const BME280Sensor&)	1
+../Src/main.cpp:348:6:void ShowBME280Error()	1
+../Src/main.cpp:357:6:void ShowBatteryVoltage(const BatterySensor&)	2
+../Src/main.cpp:382:5:int main()	1

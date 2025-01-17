@@ -7,6 +7,8 @@
 "./Src/BatterySensor.o"
 "./Src/DelayTimer.o"
 "./Src/ErrorLed.o"
+"./Src/Font8x8.o"
+"./Src/Font8x8Right.o"
 "./Src/GpioConfigurator.o"
 "./Src/I2cRxTx.o"
 "./Src/I2cSw.o"

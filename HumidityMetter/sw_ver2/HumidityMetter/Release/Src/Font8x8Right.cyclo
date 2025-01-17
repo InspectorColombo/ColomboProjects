@@ -1,0 +1,2 @@
+../Src/Font8x8Right.cpp:2580:16:virtual const uint8_t* font::Font8x8Right::GetCharBitmap(uint8_t) const	1
+../Src/Font8x8Right.cpp:2587:9:virtual uint8_t font::Font8x8Right::GetWidth() const	1

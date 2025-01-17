@@ -1,35 +1,10 @@
-02:46:22 **** Incremental Build of configuration Release for project HumidityMetter ****
+06:40:55 **** Incremental Build of configuration Release for project HumidityMetter ****
 make -j6 all 
-arm-none-eabi-g++ "../Src/SSD1306.cpp" -mcpu=cortex-m3 -std=gnu++14 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"C:/__workspace/ColomboProjects/HumidityMetter/sw_ver2/HumidityMetter/CMSIS/src" -I"C:/__workspace/ColomboProjects/HumidityMetter/sw_ver2/HumidityMetter/CMSIS/inc" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/SSD1306.d" -MT"Src/SSD1306.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/SSD1306.o"
-In file included from ../Src/SSD1306.cpp:8:
-../Inc/SSD1306.hpp: In constructor 'LcdDrivers::SSD1306::Driver::Driver(SlaveAddress)':
-../Inc/SSD1306.hpp:40:33: warning: 'LcdDrivers::SSD1306::Driver::m_error' will be initialized after [-Wreorder]
-   40 |         bool                    m_error;
-      |                                 ^~~~~~~
-../Inc/SSD1306.hpp:38:33: warning:   'i2c::I2cSw LcdDrivers::SSD1306::Driver::m_i2c' [-Wreorder]
-   38 |         i2c::I2cSw              m_i2c;
-      |                                 ^~~~~
-../Src/SSD1306.cpp:46:1: warning:   when initialized here [-Wreorder]
-   46 | Driver::Driver(const SlaveAddress slaveAddress) : m_slaveAddress(0x00), m_error(false), m_i2c(2)
-      | ^~~~~~
-../Src/SSD1306.cpp: In member function 'void LcdDrivers::SSD1306::Driver::Test()':
-../Src/SSD1306.cpp:184:37: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  184 |                 LcdScreen::LcdPrint("FAIL");
-      |                                     ^~~~~~
-../Src/SSD1306.cpp:190:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-  190 |         LcdScreen::LcdPrint("OK");
-      |                             ^~~~
-arm-none-eabi-g++ -o "HumidityMetter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\__workspace\ColomboProjects\HumidityMetter\sw_ver2\HumidityMetter\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HumidityMetter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: HumidityMetter.elf
- 
 arm-none-eabi-size  HumidityMetter.elf 
-arm-none-eabi-objdump -h -S HumidityMetter.elf  > "HumidityMetter.list"
    text	   data	    bss	    dec	    hex	filename
-   3160	      0	   1568	   4728	   1278	HumidityMetter.elf
+   5752	      0	   1568	   7320	   1c98	HumidityMetter.elf
 Finished building: default.size.stdout
  
-Finished building: HumidityMetter.list
- 
 
-02:46:22 Build Finished. 0 errors, 5 warnings. (took 501ms)
+06:40:55 Build Finished. 0 errors, 0 warnings. (took 243ms)
 

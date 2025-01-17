@@ -1,0 +1,19 @@
+/*
+ * Font8x8_normal.hpp
+ *
+ *  Created on: Jan 15, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __FONT8X8_HPP__
+#define __FONT8X8_HPP__
+
+namespace font
+{
+
+
+}	// namespace font
+
+
+
+#endif // __FONT8X8_HPP__

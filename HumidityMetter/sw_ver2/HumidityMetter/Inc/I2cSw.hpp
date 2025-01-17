@@ -15,27 +15,42 @@
 namespace i2c
 {
 
-class I2cSw
+class I2c100KHzSw
 {
 public:
-	I2cSw(const uint8_t usDelay);
+	static void Init();
+	static void UnInit();
+	static void StartCondition();
+	static void StopCondition();
+	static bool TxByte(const uint8_t toSend, const bool ack = true);
+	static bool GetAckBit(const bool ack = true);
+	static uint8_t RxByte();
 
-	void StartCondition() const;
-	void StopCondition() const;
-	bool TxByte(const uint8_t toSend, const bool ack = true) const;
-	uint8_t RxByte() const;
-	bool GetAckBit(const bool ack = true) const;
-
+	// return 0x01XX   01 - ACK bit XX - data byte
+	static uint16_t RxByteWithAck();
 private:
-	uint8_t	m_usDelay;
+	// do not allow to create object of class
+	I2c100KHzSw();
 };
 
+class I2c400KHzSw
+{
+public:
+	static void Init();
+	static void UnInit();
+	static void StartCondition();
+	static void StopCondition();
+	static bool TxByte(const uint8_t toSend, const bool ack = true);
+	static bool GetAckBit(const bool ack = true);
+	static uint8_t RxByte();
+
+	// return 0x01XX   01 - ACK bit XX - data byte
+	static uint16_t RxByteWithAck();
+private:
+	// do not allow to create object of class
+	I2c400KHzSw();
+};
 
 }	//namespace i2c
-
-
-
-
-
 
 #endif // __I2CSW_HPP__

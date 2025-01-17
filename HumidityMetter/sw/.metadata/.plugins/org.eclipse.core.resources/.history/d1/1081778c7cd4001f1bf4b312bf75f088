@@ -1,0 +1,47 @@
+/*
+ * I2cSw.hpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ *
+ *	I2C Software implementation class
+ */
+
+#ifndef __I2CSW_HPP__
+#define __I2CSW_HPP__
+
+#include <stdint.h>
+
+namespace i2c
+{
+
+namespace I2c100KHzSw
+{
+void Init();
+void UnInit();
+void StartCondition();
+void StopCondition();
+bool TxByte(const uint8_t toSend, const bool ack = true);
+bool GetAckBit(const bool ack = true);
+uint8_t RxByte();
+uint8_t RxByteWithAck();
+};
+
+namespace I2c400KHzSw
+{
+void StartCondition();
+void StopCondition() const;
+bool TxByte(const uint8_t toSend, const bool ack = true);
+bool GetAckBit(const bool ack = true);
+uint8_t RxByte();
+uint8_t RxByteWithAck();
+};
+
+}	//namespace i2c
+
+
+
+
+
+
+#endif // __I2CSW_HPP__

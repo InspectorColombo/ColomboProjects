@@ -1,0 +1,36 @@
+/*
+ * Font8x8.cpp
+ *
+ *  Created on: Jan 15, 2025
+ *      Author: Goggy
+ */
+
+#include "Font8x8.hpp"
+
+
+namespace font
+{
+
+uint8_t* Font8x8::GetCharBitmap(const uint8_t ch) const
+{
+
+}
+
+
+
+uint8_t Font8x8::GetWidth() const
+{
+	return 8;
+}
+uint8_t Font8x8::GetHeight() const
+{
+	return 8;
+}
+
+
+
+
+}	// namespace font
+
+
+

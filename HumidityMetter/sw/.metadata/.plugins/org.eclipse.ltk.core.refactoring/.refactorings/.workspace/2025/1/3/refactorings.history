@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;HumidityMetter/Inc/I2cTimingConfig.hpp&apos;" deleteContents="false" description="Delete resource &apos;HumidityMetter/Inc/I2cTimingConfig.hpp&apos;" element1="/HumidityMetter/Inc/I2cTimingConfig.hpp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1736809118605"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;HumidityMetter/Inc/I2cTimingConfig.hpp&apos;" deleteContents="false" description="Delete resource &apos;HumidityMetter/Inc/I2cTimingConfig.hpp&apos;" element1="/HumidityMetter/Inc/I2cTimingConfig.hpp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1736809118605"/>&#x0A;<refactoring comment="Delete resource &apos;HumidityMetter/Src/Font8x8_normal.cpp&apos;" deleteContents="false" description="Delete resource &apos;HumidityMetter/Src/Font8x8_normal.cpp&apos;" element1="/HumidityMetter/Src/Font8x8_normal.cpp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1736907493982"/>
 </session>
