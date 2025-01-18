@@ -59,8 +59,8 @@ void InitClocks()
 
 	// AHB = SYSCLK / 8
 	//temp &= ~(RCC_CFGR_HPRE);
-	temp |= RCC_CFGR_HPRE_DIV8;
-	//temp |= RCC_CFGR_HPRE_DIV1;
+	//temp |= RCC_CFGR_HPRE_DIV8;
+	temp |= RCC_CFGR_HPRE_DIV1;
 
 	// PCLK2 = SYSCLK / 1
 	temp &= ~(RCC_CFGR_PPRE2);
@@ -395,9 +395,9 @@ int main(void)
 
 	DelayTimer::DelayMilliSec(200);	// Wait for power on of LCD
 
-	LcdScreen::LcdInit();
-	LcdScreen::LcdClear();
-	LcdScreen::LcdPrint("Hello!!!");
+//	LcdScreen::LcdInit();
+//	LcdScreen::LcdClear();
+//	LcdScreen::LcdPrint("Hello!!!");
 
 
 
@@ -406,18 +406,26 @@ int main(void)
 
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
 	{
-		LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
+
+
+		//LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
+
+		//LcdDrivers::SSD1306::Driver0x78_128x64_LS lcd;
+		LcdDrivers::SSD1306::Driver<0x78, 128, 64,
+			LcdDrivers::SSD1306::ST_PORTRAIT,
+			LcdDrivers::SSD1306::X_NORMAL,
+			LcdDrivers::SSD1306::Y_NORMAL> lcd;
 		for(;;)
 		{
-			lcd.ClearScreen();
 			lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
+			DelayTimer::DelaySec(1 * 8);
+			lcd.ClearScreen();
 		}
 		lcd.ClearScreen();
 		lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
 		for(;;);
 	}
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
-
 
 
 

@@ -60,7 +60,48 @@ const uint8_t SET_MEMORY_ADDRESSING_MODE_PAGE[5]=		{ 4, WRITE, COMMAND | CONT, 0
 // COMMANDS LIST
 //const uint8_t SET_CONTRAST_CONTROL	= 0x81;
 
-void Driver::SetColumnPageAddressesForHVM(
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::Driver(
+	//const SlaveAddress slaveAddress,
+	//const uint8_t colCnt,
+	//const uint8_t rowCnt,
+	//const bool invertX,
+	//const bool invertY
+	) :
+			//I2cClass(2),
+			//m_slaveAddress(0x00),
+			//m_colCnt(colCnt),
+			//m_rowCnt(rowCnt),
+			//m_invertX(invertX),
+			//m_invertY(invertY),
+			m_error(false)
+{
+//	TestClass<0x00, 10, 20, LcdDrivers::SSD1306::ST_PORTRAIT> tc;
+//	tc.Test();
+
+
+	I2cClass::Init();
+//	switch(slaveAddress)
+//	{
+//		case SA_0X7A: m_slaveAddress = 0x7A; break;
+//		case SA_0X78: m_slaveAddress = 0x78; break;
+//		default:
+//			return;	// Wrong address
+//	}
+	I2cClass::StopCondition();
+
+	Init();
+}
+
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::~Driver()
+{
+	I2cClass::UnInit();
+	UnInit();
+}
+
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SetColumnPageAddressesForHVM(
 		const uint8_t columnStartAddress,
 		const uint8_t columnEndAddress,
 		const uint8_t pageStartAddress,
@@ -68,7 +109,7 @@ void Driver::SetColumnPageAddressesForHVM(
 {
 	bool ack = false;
 	I2cClass::StartCondition();
-	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(SlaveAddr | WRITE);
 	ack |= I2cClass::TxByte(COMMAND | CONT);
 	ack |= I2cClass::TxByte(SET_COLUMN_ADDRESS_HVM);
 	ack |= I2cClass::TxByte(columnStartAddress & 0b01111111);
@@ -76,7 +117,7 @@ void Driver::SetColumnPageAddressesForHVM(
 	I2cClass::StopCondition();
 
 	I2cClass::StartCondition();
-	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(SlaveAddr | WRITE);
 	ack |= I2cClass::TxByte(COMMAND | CONT);
 	ack |= I2cClass::TxByte(SET_PAGE_ADDRESS_HVM);
 	ack |= I2cClass::TxByte(pageStartAddress & 0b00000111);
@@ -86,12 +127,13 @@ void Driver::SetColumnPageAddressesForHVM(
 
 
 // Set column start address for page addressing mode
-void Driver::SetColumnStartAddressForPAM(const uint8_t columnStartAddress)
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SetColumnStartAddressForPAM(const uint8_t columnStartAddress)
 {
 	I2cClass::StartCondition();
 
 	bool ack = false;
-	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(SlaveAddr | WRITE);
 	ack |= I2cClass::TxByte(COMMAND | NON_CONT);
 	ack |= I2cClass::TxByte(SET_LOWER_COLLUMN_ADDRESS_PAM | (columnStartAddress & 0b00001111));
 	ack |= I2cClass::TxByte(COMMAND | NON_CONT);
@@ -100,9 +142,10 @@ void Driver::SetColumnStartAddressForPAM(const uint8_t columnStartAddress)
 	SetError(ack == true);
 }
 
-void Driver::SetPageStartAddressForPAM(const uint8_t pageStartAddress)
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SetPageStartAddressForPAM(const uint8_t pageStartAddress)
 {
-	if (pageStartAddress > 7)
+	if (pageStartAddress >= (RowCnt / 8))
 	{
 		SetError(true);
 		return;
@@ -111,78 +154,46 @@ void Driver::SetPageStartAddressForPAM(const uint8_t pageStartAddress)
 	I2cClass::StartCondition();
 
 	bool ack = false;
-	ack |= I2cClass::TxByte(m_slaveAddress | WRITE);
+	ack |= I2cClass::TxByte(SlaveAddr | WRITE);
 	ack |= I2cClass::TxByte(COMMAND | NON_CONT);
 	ack |= I2cClass::TxByte(SET_PAGE_START_ADDRESS_PAM | (pageStartAddress & 0b00000111));
 	I2cClass::StopCondition();
 	SetError(ack == true);
 }
 
-
-
-Driver::Driver(
-	const SlaveAddress slaveAddress,
-	const uint8_t colCnt,
-	const uint8_t rowCnt,
-	const bool invertX,
-	const bool invertY) :
-			//I2cClass(2),
-			m_slaveAddress(0x00),
-			m_colCnt(colCnt),
-			m_rowCnt(rowCnt),
-			m_invertX(invertX),
-			m_invertY(invertY),
-			m_error(false)
-{
-	I2cClass::Init();
-	switch(slaveAddress)
-	{
-		case SA_0X7A: m_slaveAddress = 0x7A; break;
-		case SA_0X78: m_slaveAddress = 0x78; break;
-		default:
-			return;	// Wrong address
-	}
-	I2cClass::StopCondition();
-
-	Init();
-}
-
-Driver::~Driver()
-{
-	I2cClass::UnInit();
-	UnInit();
-}
-
-
-void Driver::Init()
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::Init()
 {
 	SendCommand(CHARGE_PUMP_ON);
 	SendCommand(DISPLAY_ON);
 	SendCommand(ENTIRE_DISPLAY_ON);
 	SendCommand(SET_NORMAL_DISPLAY);
-	SendCommand(m_invertX ? SET_SEGMENT_REMAP_X_INVERTED : SET_SEGMENT_REMAP_X_NORMAL);
-	SendCommand(m_invertY ? SET_COM_SCAN_DIRECTION_Y_INVERTED : SET_COM_SCAN_DIRECTION_Y_NORMAL);
+	SendCommand(XT == X_INVERTED ? SET_SEGMENT_REMAP_X_INVERTED : SET_SEGMENT_REMAP_X_NORMAL);
+	SendCommand(YT == Y_INVERTED ? SET_COM_SCAN_DIRECTION_Y_INVERTED : SET_COM_SCAN_DIRECTION_Y_NORMAL);
 }
 
-void Driver::UnInit()
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::UnInit()
 {
 	SendCommand(ENTIRE_DISPLAY_OFF);
 	SendCommand(DISPLAY_OFF);
 	SendCommand(CHARGE_PUMP_OFF);
 }
 
-
-void Driver::SetError(const bool toSet)
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SetError(const bool toSet)
 {
 	m_error = toSet;
 }
 
-bool Driver::GetError() const
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+bool Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::GetError() const
 {
 	return m_error;
 }
 
-void Driver::SendCommand(const uint8_t* commandPointer)
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SendCommand(const uint8_t* commandPointer)
 {
 	const uint8_t* cmdPtr = commandPointer;
 	uint8_t commandLength = *cmdPtr;
@@ -191,7 +202,7 @@ void Driver::SendCommand(const uint8_t* commandPointer)
 	I2cClass::StartCondition();
 	for(uint8_t cmdCnt = 0; cmdCnt < commandLength; ++cmdCnt)
 	{
-		const uint8_t byteToSend = (cmdCnt == 0) ? (*cmdPtr | m_slaveAddress) : (*cmdPtr);
+		const uint8_t byteToSend = (cmdCnt == 0) ? (*cmdPtr | SlaveAddr) : (*cmdPtr);
 		++cmdPtr;
 
 		if (I2cClass::TxByte(byteToSend))
@@ -203,27 +214,14 @@ void Driver::SendCommand(const uint8_t* commandPointer)
 	I2cClass::StopCondition();
 }
 
-void Driver::SendData(const uint8_t* dataPointer, const uint16_t dataLength)
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SendData(const uint8_t* dataPointer, const uint16_t dataLength)
 {
-	//I2cRxTx::StartCondition();
 	I2cClass::StartCondition();
-
-	//I2cRxTx::SendByte(m_slaveAddress | WRITE);
-	//bool ack = I2cRxTx::GetAcknowlegeBit();
-	bool ack = I2cClass::TxByte(m_slaveAddress | WRITE);
-
-	//I2cRxTx::SendByte(DATA | CONT);
-	//ack |= I2cRxTx::GetAcknowlegeBit();
+	bool ack = I2cClass::TxByte(SlaveAddr | WRITE);
 	ack |= I2cClass::TxByte(DATA | CONT);
-
-
-	//I2cRxTx::SendByte(0x00);
-	//ack |= I2cRxTx::GetAcknowlegeBit();
-	//ack |= I2cClass::TxByte(0x00);
-
 	if (ack)
 	{
-		//I2cRxTx::StopCondition();
 		I2cClass::StopCondition();
 		SetError(true);
 		return;
@@ -232,47 +230,36 @@ void Driver::SendData(const uint8_t* dataPointer, const uint16_t dataLength)
 	const uint8_t* dataPtr = dataPointer;
 	for(uint16_t dataCnt = 0; dataCnt < dataLength; ++dataCnt)
 	{
-//		I2cRxTx::SendByte(*dataPtr);
-//		if (I2cRxTx::GetAcknowlegeBit())
-//		{
-//			SetError(true);
-//			break;
-//		}
-
 		if (I2cClass::TxByte(*dataPtr))
 		{
 			SetError(true);
 			break;
 		}
-
-
 		++dataPtr;
-
 	}
-	//I2cRxTx::StopCondition();
 	I2cClass::StopCondition();
 }
 
-void Driver::SendDataRawStart()
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SendDataRawStart()
 {
 	I2cClass::StartCondition();
-	bool ack = I2cClass::TxByte(m_slaveAddress | WRITE);
+	bool ack = I2cClass::TxByte(SlaveAddr | WRITE);
 	ack |= I2cClass::TxByte(DATA | CONT);
-
-	//ack |= I2cClass::TxByte(0x00);		// ??????????
-
 	if (ack == true)
 	{
 		SetError(true);
 	}
 }
 
-void Driver::SendDataRawEnd()
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SendDataRawEnd()
 {
 	I2cClass::StopCondition();
 }
 
-void Driver::SendDataRaw(const uint8_t data)
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::SendDataRaw(const uint8_t data)
 {
 	if (I2cClass::TxByte(data) == true)
 	{
@@ -280,36 +267,28 @@ void Driver::SendDataRaw(const uint8_t data)
 	}
 }
 
-
-
-
-void Driver::ClearScreen()
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::ClearScreen()
 {
 	SendCommand(SET_MEMORY_ADDRESSING_MODE_VERTICAL);
-	SetColumnPageAddressesForHVM(0, 127, 0, 7);
+	SetColumnPageAddressesForHVM(0, (ColCnt - 1), 0, (RowCnt / 8) - 1);
 
 	SendDataRawStart();
-	for(uint16_t byteCnt = 0; byteCnt < (128*64/8); ++byteCnt)
+//	for(uint16_t byteCnt = 0; byteCnt < (128*64/8); ++byteCnt)
+	for(uint16_t byteCnt = 0; byteCnt < (ColCnt * RowCnt / 8); ++byteCnt)
 	{
-		if (byteCnt < 8 || (byteCnt >= (128*64/8) - 8))
-		{
-			SendDataRaw(0xFF);
-		}
-		else
-		{
-			SendDataRaw(0x00);
-		}
+		SendDataRaw(0x00);
 	}
 	SendDataRawEnd();
 }
 
-
-
-void Driver::Print(const uint8_t x, const uint8_t y, const char* str)
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void Driver<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::Print(const uint8_t x, const uint8_t y, const char* str)
 {
 	font::Font8x8Right fn;
 
-	if (x >= (m_colCnt / 8) || y >= (m_rowCnt / 8))
+	//if (x >= (m_colCnt / 8) || y >= (m_rowCnt / 8))
+	if (x >= (ColCnt / 8) || y >= (RowCnt / 8))
 	{
 		SetError(true);
 		return;
@@ -338,12 +317,14 @@ void Driver::Print(const uint8_t x, const uint8_t y, const char* str)
 
 		// Update XY
 		xPos +=8;
-		if (xPos >= m_colCnt)
+		//if (xPos >= m_colCnt)
+		if (xPos >= ColCnt)
 		{
 			updatePage = true;
 			xPos = x * 8;
 			yPos += 1;
-			if (yPos >= m_rowCnt)
+			//if (yPos >= m_rowCnt)
+			if (yPos >= RowCnt)
 			{
 				return;
 			}
@@ -351,6 +332,73 @@ void Driver::Print(const uint8_t x, const uint8_t y, const char* str)
 		++ch;
 	}
 }
+
+
+
+
+template class Driver<0x7A, 128, 64, ST_LANDSCAPE, X_NORMAL, Y_NORMAL>;
+template class Driver<0x7A, 128, 64, ST_LANDSCAPE, X_NORMAL, Y_INVERTED>;
+template class Driver<0x7A, 128, 64, ST_LANDSCAPE, X_INVERTED, Y_NORMAL>;
+template class Driver<0x7A, 128, 64, ST_LANDSCAPE, X_INVERTED, Y_INVERTED>;
+
+template class Driver<0x78, 128, 64, ST_LANDSCAPE, X_NORMAL, Y_NORMAL>;
+template class Driver<0x78, 128, 64, ST_LANDSCAPE, X_NORMAL, Y_INVERTED>;
+template class Driver<0x78, 128, 64, ST_LANDSCAPE, X_INVERTED, Y_NORMAL>;
+template class Driver<0x78, 128, 64, ST_LANDSCAPE, X_INVERTED, Y_INVERTED>;
+
+template class Driver<0x7A, 128, 32, ST_LANDSCAPE, X_NORMAL, Y_NORMAL>;
+template class Driver<0x7A, 128, 32, ST_LANDSCAPE, X_NORMAL, Y_INVERTED>;
+template class Driver<0x7A, 128, 32, ST_LANDSCAPE, X_INVERTED, Y_NORMAL>;
+template class Driver<0x7A, 128, 32, ST_LANDSCAPE, X_INVERTED, Y_INVERTED>;
+
+template class Driver<0x78, 128, 32, ST_LANDSCAPE, X_NORMAL, Y_NORMAL>;
+template class Driver<0x78, 128, 32, ST_LANDSCAPE, X_NORMAL, Y_INVERTED>;
+template class Driver<0x78, 128, 32, ST_LANDSCAPE, X_INVERTED, Y_NORMAL>;
+template class Driver<0x78, 128, 32, ST_LANDSCAPE, X_INVERTED, Y_INVERTED>;
+
+template class Driver<0x7A, 128, 64, ST_PORTRAIT, X_NORMAL, Y_NORMAL>;
+template class Driver<0x7A, 128, 64, ST_PORTRAIT, X_NORMAL, Y_INVERTED>;
+template class Driver<0x7A, 128, 64, ST_PORTRAIT, X_INVERTED, Y_NORMAL>;
+template class Driver<0x7A, 128, 64, ST_PORTRAIT, X_INVERTED, Y_INVERTED>;
+
+template class Driver<0x78, 128, 64, ST_PORTRAIT, X_NORMAL, Y_NORMAL>;
+template class Driver<0x78, 128, 64, ST_PORTRAIT, X_NORMAL, Y_INVERTED>;
+template class Driver<0x78, 128, 64, ST_PORTRAIT, X_INVERTED, Y_NORMAL>;
+template class Driver<0x78, 128, 64, ST_PORTRAIT, X_INVERTED, Y_INVERTED>;
+
+template class Driver<0x7A, 128, 32, ST_PORTRAIT, X_NORMAL, Y_NORMAL>;
+template class Driver<0x7A, 128, 32, ST_PORTRAIT, X_NORMAL, Y_INVERTED>;
+template class Driver<0x7A, 128, 32, ST_PORTRAIT, X_INVERTED, Y_NORMAL>;
+template class Driver<0x7A, 128, 32, ST_PORTRAIT, X_INVERTED, Y_INVERTED>;
+
+template class Driver<0x78, 128, 32, ST_PORTRAIT, X_NORMAL, Y_NORMAL>;
+template class Driver<0x78, 128, 32, ST_PORTRAIT, X_NORMAL, Y_INVERTED>;
+template class Driver<0x78, 128, 32, ST_PORTRAIT, X_INVERTED, Y_NORMAL>;
+template class Driver<0x78, 128, 32, ST_PORTRAIT, X_INVERTED, Y_INVERTED>;
+
+
+
+
+
+
+
+
+
+/*
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void TestClass<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::Test()
+{
+	for(uint8_t i = 0; i < ColCnt; ++i)
+	{
+		for(uint8_t j = 0; j < RowCnt; ++j)
+		{
+			asm("nop");
+		}
+	}
+}
+
+template class TestClass<0x00, 10, 20, ST_PORTRAIT>;
+*/
 
 
 }	// namespace SSD1306
