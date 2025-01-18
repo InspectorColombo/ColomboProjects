@@ -15,6 +15,5 @@
 "./Src/KeyPressDetector.o"
 "./Src/LcdScreen.o"
 "./Src/PowerControl.o"
-"./Src/SSD1306.o"
 "./Src/main.o"
 "./Startup/startup_stm32f103c8tx.o"

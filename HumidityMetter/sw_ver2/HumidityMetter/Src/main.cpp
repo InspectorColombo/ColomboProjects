@@ -411,10 +411,24 @@ int main(void)
 		//LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
 
 		//LcdDrivers::SSD1306::Driver0x78_128x64_LS lcd;
-		LcdDrivers::SSD1306::Driver<0x78, 128, 64,
+/*
+ 		LcdDrivers::SSD1306::Driver<
+			i2c::I2c400KHzSw,
+			0x78, 128, 64,
 			LcdDrivers::SSD1306::ST_PORTRAIT,
 			LcdDrivers::SSD1306::X_NORMAL,
 			LcdDrivers::SSD1306::Y_NORMAL> lcd;
+*/
+			LcdDrivers::SSD1306::Driver<
+				i2c::I2c400KHzSw,
+				LcdDrivers::SSD1306::SA_0x78,
+				128,
+				64,
+				LcdDrivers::SSD1306::PORTRAIT,
+				LcdDrivers::SSD1306::X_NORMAL,
+				LcdDrivers::SSD1306::Y_NORMAL> lcd;
+
+
 		for(;;)
 		{
 			lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");

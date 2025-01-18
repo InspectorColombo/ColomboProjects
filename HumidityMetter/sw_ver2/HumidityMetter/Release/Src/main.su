@@ -13,4 +13,5 @@
 ../Src/main.cpp:335:6:void ShowBME280Pressure(const BME280Sensor&)	8	static
 ../Src/main.cpp:348:6:void ShowBME280Error()	8	static
 ../Src/main.cpp:357:6:void ShowBatteryVoltage(const BatterySensor&)	16	static
-../Src/main.cpp:382:5:int main()	24	static
+../Inc/SSD1306.hpp:261:6:void LcdDrivers::SSD1306::Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::SendCommand(const uint8_t*) [with I2cClass = i2c::I2c400KHzSw; LcdDrivers::SSD1306::SlaveAddress SA = LcdDrivers::SSD1306::SA_0x78; unsigned char ColCnt = 128; unsigned char RowCnt = 64; LcdDrivers::SSD1306::ScreenType ST = LcdDrivers::SSD1306::PORTRAIT; LcdDrivers::SSD1306::XType XT = LcdDrivers::SSD1306::X_NORMAL; LcdDrivers::SSD1306::YType YT = LcdDrivers::SSD1306::Y_NORMAL]	24	static
+../Src/main.cpp:382:5:int main()	32	static

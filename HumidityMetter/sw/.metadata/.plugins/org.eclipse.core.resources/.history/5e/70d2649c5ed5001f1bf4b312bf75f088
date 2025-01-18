@@ -1,0 +1,46 @@
+/*
+ * LCD_SSD1306.cpp
+ *
+ *  Created on: Jan 14, 2025
+ *      Author: Goggy
+ */
+
+#include "SSD1306.hpp"
+
+#include "stm32f103xb.h"
+
+#include "LcdScreen.hpp"
+#include "Font8x8.hpp"
+#include "Font8x8Right.hpp"
+
+namespace LcdDrivers
+{
+namespace SSD1306
+{
+
+
+
+
+
+/*
+template<const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
+void TestClass<SlaveAddr, ColCnt, RowCnt, ST, XT, YT>::Test()
+{
+	for(uint8_t i = 0; i < ColCnt; ++i)
+	{
+		for(uint8_t j = 0; j < RowCnt; ++j)
+		{
+			asm("nop");
+		}
+	}
+}
+
+template class TestClass<0x00, 10, 20, ST_PORTRAIT>;
+*/
+
+
+}	// namespace SSD1306
+}	// namespace LcdDrivers
+
+
+
