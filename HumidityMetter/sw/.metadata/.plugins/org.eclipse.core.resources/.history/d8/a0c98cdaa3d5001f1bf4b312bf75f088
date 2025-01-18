@@ -433,11 +433,11 @@ int main(void)
 		{
 			//lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
 			//lcd.Print(0, 0, "HELLO");
-			lcd.Print(lcd.GetMaxCharX()  -5, 0, "8.72V");
+			lcd.Print(lcd.GetMaxCharX() -1 -9, 0, "Bat:8.72V");
 
-			lcd.Print(0, 6, "97450Pa");
-			lcd.Print(0, 2, "27.18\xDBC");
-			lcd.Print(0, 4, "42.17%");
+			lcd.Print(0, 6, "P: 97450Pa");
+			lcd.Print(0, 2, "T:  27.18\xDBC");
+			lcd.Print(0, 4, "H: 42.17%");
 
 
 

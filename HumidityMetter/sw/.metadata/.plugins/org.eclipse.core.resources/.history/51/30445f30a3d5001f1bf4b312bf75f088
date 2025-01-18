@@ -380,22 +380,22 @@ void Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::Print(const uint8_t x, co
 	{
 		if (ST == PORTRAIT)
 		{
-			//font::Font8x8Right fn;
-			font::Font8x8 fn;
- 			if (x >= MaxCharX || y >= MaxCharY)
+			font::Font8x8Right fn;
+			//font::Font8x8 fn;
+			if (x >= MaxCharX || y >= MaxCharY)
 			{
 				SetError(true);
 				return;
 			}
-
- 			uint8_t xPos = x;
+			uint8_t xPos = x;
 			uint8_t yPos = y;
+
 			SendCommand(SET_MEMORY_ADDRESSING_MODE_HORIZONTAL);
 			for(const char* chPtr = str; *chPtr != 0x00; ++chPtr)
 			{
 				SetColumnPageAddressesForHVM(
-						yPos * 8 + 0,
-						yPos * 8 + 7,
+						yPos * 8,
+						yPos * 8,
 						MaxCharX - 1 - xPos,
 						MaxCharX - 1 - xPos);
 

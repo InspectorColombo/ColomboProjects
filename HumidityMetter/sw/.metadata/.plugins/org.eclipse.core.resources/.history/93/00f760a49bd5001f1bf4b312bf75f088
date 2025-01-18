@@ -54,9 +54,6 @@ template<
 class Driver
 {
 public:
-	static const uint8_t MaxCharX = (ST == LANDSCAPE ? (ColCnt / 8) : (ST == PORTRAIT ? (RowCnt) : 0x00));
-	static const uint8_t MaxCharY = (ST == LANDSCAPE ? (RowCnt) : (ST == PORTRAIT ? (ColCnt / 8) : 0x00));
-
 	Driver();
 
 	~Driver();
@@ -66,9 +63,6 @@ public:
 
 	void SetError(const bool toSet);
 	bool GetError() const;
-
-	uint8_t GetMaxCharX() const {return MaxCharX;}
-	uint8_t GetMaxCharY() const {return MaxCharY;}
 
 private:
 	void Init();
@@ -90,27 +84,43 @@ private:
 	void SetColumnStartAddressForPAM(const uint8_t columnStartAddress);
 	void SetPageStartAddressForPAM(const uint8_t pageStartAddress);
 	const uint8_t m_slaveAddress;
-
 	bool			m_error;
 };
 
 
 // Read/Write bits definition
+//#define WRITE 0x00
+//#define READ 0x01
+
 const uint8_t WRITE = 0x00;
 const uint8_t READ = 0x01;
 
+
 // Command/Data bits definition
+//#define CONT		0b00000000		// continuation
+//#define NON_CONT	0b10000000		// non continuation
+//#define COMMAND		0b00000000		// COMMAND follow
+//#define DATA		0b01000000		// DATA follow
+
 const uint8_t CONT		= 0b00000000;		// continuation
 const uint8_t NON_CONT	= 0b10000000;		// non continuation
 const uint8_t COMMAND	= 0b00000000;		// COMMAND follow
 const uint8_t DATA		= 0b01000000;		// DATA follow
 
 // Commands definition
+//#define SET_LOWER_COLLUMN_ADDRESS_PAM	0b00000000	// 0b0000XXXX
+//#define SET_HIGHER_COLLUMN_ADDRESS_PAM	0b00010000	// 0b0001XXXX
+//#define SET_PAGE_START_ADDRESS_PAM		0b10110000	// 0b10110XXX	(page 0-7)
+//#define SET_COLUMN_ADDRESS_HVM			0b00100001	// 0b00100001 0b*AAAAAAA 0b*BBBBBBB
+//#define SET_PAGE_ADDRESS_HVM			0b00100010	// 0b00100010 0b*****AAA 0b*****BBB
+
 const uint8_t SET_LOWER_COLLUMN_ADDRESS_PAM		= 0b00000000;
 const uint8_t SET_HIGHER_COLLUMN_ADDRESS_PAM	= 0b00010000;	// 0b0001XXXX
 const uint8_t SET_PAGE_START_ADDRESS_PAM		= 0b10110000;	// 0b10110XXX	(page 0-7)
 const uint8_t SET_COLUMN_ADDRESS_HVM			= 0b00100001;	// 0b00100001 0b*AAAAAAA 0b*BBBBBBB
 const uint8_t SET_PAGE_ADDRESS_HVM				= 0b00100010;	// 0b00100010 0b*****AAA 0b*****BBB
+
+
 
 // COMMANDS
 const uint8_t CHARGE_PUMP_ON[5]		= { 4, WRITE, COMMAND | CONT, 0x8D, 0b00010100	};
@@ -131,15 +141,16 @@ const uint8_t SET_SEGMENT_REMAP_X_INVERTED[4]	= { 3, WRITE, COMMAND | NON_CONT, 
 const uint8_t SET_COM_SCAN_DIRECTION_Y_NORMAL[4]	= { 3, WRITE, COMMAND | NON_CONT, 0xC0 };
 const uint8_t SET_COM_SCAN_DIRECTION_Y_INVERTED[4]	= { 3, WRITE, COMMAND | NON_CONT, 0xC8 };
 
+
 const uint8_t SET_MEMORY_ADDRESSING_MODE_HORIZONTAL[5]=	{ 4, WRITE, COMMAND | CONT, 0x20, 0b00000000}; // Horizontal memory addressing mode
 const uint8_t SET_MEMORY_ADDRESSING_MODE_VERTICAL[5]=	{ 4, WRITE, COMMAND | CONT, 0x20, 0b00000001}; // Vertical memory addressing mode
 const uint8_t SET_MEMORY_ADDRESSING_MODE_PAGE[5]=		{ 4, WRITE, COMMAND | CONT, 0x20, 0b00000010}; // Page memory addressing mode
 
+
+
 template<typename I2cClass, const SlaveAddress SA, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
 Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::Driver() :
 	m_slaveAddress(SA == SA_0x78 ? 0x78 : (SA == SA_0x7A ? 0x7A : 0x00)),
-//	m_maxCharX(ST == LANDSCAPE ? (ColCnt / 8) : (ST == PORTRAIT ? (RowCnt) : 0x00)),
-//	m_maxCharY(ST == LANDSCAPE ? (RowCnt) : (ST == PORTRAIT ? (ColCnt / 8) : 0x00)),
 	m_error(false)
 {
 	I2cClass::Init();
@@ -328,6 +339,7 @@ void Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::ClearScreen()
 	SetColumnPageAddressesForHVM(0, (ColCnt - 1), 0, (RowCnt / 8) - 1);
 
 	SendDataRawStart();
+//	for(uint16_t byteCnt = 0; byteCnt < (128*64/8); ++byteCnt)
 	for(uint16_t byteCnt = 0; byteCnt < (ColCnt * RowCnt / 8); ++byteCnt)
 	{
 		SendDataRaw(0x00);
@@ -338,83 +350,51 @@ void Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::ClearScreen()
 template<typename I2cClass, const SlaveAddress SA, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT>
 void Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::Print(const uint8_t x, const uint8_t y, const char* str)
 {
-	if (ST == LANDSCAPE)
+	font::Font8x8Right fn;
+
+	//if (x >= (m_colCnt / 8) || y >= (m_rowCnt / 8))
+	if (x >= (ColCnt / 8) || y >= (RowCnt / 8))
 	{
-		font::Font8x8Right fn;
-		if (x >= MaxCharX || y >= MaxCharY)
-		{
-			SetError(true);
-			return;
-		}
-		uint8_t xPos = x;
-		uint8_t yPos = y;
-
-		SendCommand(SET_MEMORY_ADDRESSING_MODE_PAGE);
-		bool updatePage = true;
-		for(const char* chPtr = str; *chPtr != 0x00; ++chPtr)
-		{
-			if (updatePage)
-			{
-				updatePage = false;
-				SetColumnStartAddressForPAM(xPos * 8);
-				SetPageStartAddressForPAM(yPos);
-			}
-			const uint8_t* charBitmap = fn.GetCharBitmap((uint8_t)(*chPtr));
-			SendData(charBitmap, 8);
-
-			// Update XY
-			++xPos;
-			if (xPos >= MaxCharX)
-			{
-				updatePage = true;
-				xPos = 0;
-				yPos += 1;
-				if (yPos >= MaxCharY)
-				{
-					return;
-				}
-			}
-		}
+		SetError(true);
+		return;
 	}
-	else
+
+	uint8_t xPos = x * 8;
+	uint8_t yPos = y;
+
+	const char* ch = str;
+
+	SendCommand(SET_MEMORY_ADDRESSING_MODE_PAGE);
+
+	bool updatePage = true;
+	while(*ch != 0x00)
 	{
-		if (ST == PORTRAIT)
+		if (updatePage)
 		{
-			//font::Font8x8Right fn;
-			font::Font8x8 fn;
- 			if (x >= MaxCharX || y >= MaxCharY)
+			updatePage = false;
+			SetColumnStartAddressForPAM(xPos);
+			SetPageStartAddressForPAM(yPos);
+		}
+
+
+		const uint8_t* bmPtr = fn.GetCharBitmap((uint8_t)(*ch));
+		SendData(bmPtr, 8);
+
+		// Update XY
+		xPos +=8;
+		//if (xPos >= m_colCnt)
+		if (xPos >= ColCnt)
+		{
+			updatePage = true;
+			xPos = x * 8;
+			yPos += 1;
+			//if (yPos >= m_rowCnt)
+			if (yPos >= RowCnt)
 			{
-				SetError(true);
 				return;
 			}
-
- 			uint8_t xPos = x;
-			uint8_t yPos = y;
-			SendCommand(SET_MEMORY_ADDRESSING_MODE_HORIZONTAL);
-			for(const char* chPtr = str; *chPtr != 0x00; ++chPtr)
-			{
-				SetColumnPageAddressesForHVM(
-						yPos * 8 + 0,
-						yPos * 8 + 7,
-						MaxCharX - 1 - xPos,
-						MaxCharX - 1 - xPos);
-
-				const uint8_t* charBitmap = fn.GetCharBitmap((uint8_t)(*chPtr));
-				SendData(charBitmap, 8);
-
-				// Update XY
-				++xPos;
-				if (xPos >= MaxCharX)
-				{
-					xPos = 0;
-					yPos += 1;
-					if (yPos >= MaxCharY)
-					{
-						return;
-					}
-				}
-			}
 		}
+		++ch;
 	}
 }
 
