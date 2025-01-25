@@ -1,0 +1,255 @@
+/*
+ * IntToStr.cpp
+ *
+ *  Created on: Jan 22, 2025
+ *      Author: Goggy
+ */
+
+
+#include "IntToStr.hpp"
+
+
+namespace intToStr
+{
+
+// Define string conversion buffer
+#define STR_SIZE 		22
+static char strBuff[STR_SIZE];
+
+template <typename T, const uint8_t BUFF_SIZE>
+class Buffer
+{
+public:
+	enum ErrorType
+	{
+		ET_OK,
+		ET_OUT_OF_MAX_RANGE,
+		ET_OUT_OF_RANGE
+	};
+
+
+	Buffer() : m_size(0), m_errorType(ET_OK)
+	{
+		Clear();
+	}
+
+	void Clear()
+	{
+		m_size = 0;
+		for(uint8_t idx = 0; idx < BUFF_SIZE; ++idx)
+		{
+			m_buff[idx] = T(0);
+		}
+	}
+
+	void PushBack(const T val)
+	{
+		if (m_size >= BUFF_SIZE)
+		{
+			Error(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+		m_buff[m_size] = val;
+		++m_size;
+	}
+
+	void PushFront(const T val)
+	{
+		if (m_size >= BUFF_SIZE)
+		{
+			Error(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+
+		Resize(m_size + 1);
+		Shift(0, 1, m_size - 1);
+
+		m_buff[0] = val;
+	}
+
+	T& operator[](const uint8_t idx)
+	{
+		if (idx >= m_size)
+		{
+			Error(ET_OUT_OF_RANGE);
+			return m_buff[0];
+		}
+		return m_buff[idx];
+	}
+
+	void Shift(const uint8_t srcIdx, const uint8_t dstIdx, const uint8_t count)
+	{
+		if ((dstIdx + count - 1) >= BUFF_SIZE
+			|| (srcIdx + count - 1) >= BUFF_SIZE)
+		{
+			Error(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+
+		if ((dstIdx + count - 1) >= m_size
+			|| (srcIdx + count - 1) >= m_size)
+		{
+			Error(ET_OUT_OF_RANGE);
+			return;
+		}
+
+		if (dstIdx > srcIdx)
+		{
+			for(uint8_t cnt = 0; cnt < count; ++cnt)
+			{
+				m_buff[dstIdx + (count - 1) - cnt] = m_buff[srcIdx + (count - 1) - cnt];
+			}
+		}
+		else
+		{
+			for(uint8_t cnt = 0; cnt < count; ++cnt)
+			{
+				m_buff[dstIdx + cnt] = m_buff[srcIdx + cnt];
+			}
+		}
+	}
+
+	uint8_t Size() const
+	{
+		return m_size();
+	}
+
+	void Resize(const uint8_t newSize, const T newValue = T(0))
+	{
+		if (newSize > BUFF_SIZE)
+		{
+			Error(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+
+		if (newSize > m_size)
+		{
+			for(uint8_t idx = m_size; idx < newSize; ++idx)
+			{
+				m_buff[idx] = newValue;
+			}
+		}
+		m_size = newSize;
+	}
+
+
+	void Error(const ErrorType et)
+	{
+		m_errorType = et;
+	}
+
+	ErrorType GetError()
+	{
+		return m_errorType;
+	}
+
+
+
+private:
+	T 			m_buff[BUFF_SIZE];
+	uint8_t		m_size;
+	ErrorType 	m_errorType;
+};
+
+
+
+// ------------ To Hex conversions ---------------
+template <class T>
+inline const char* UIntToHex(const T valInput, const uint8_t sizeInHalfBytes)
+{
+	strBuff[0] = '0';
+	strBuff[1] = 'x';
+	T val = valInput;
+	for(uint8_t halfByteCnt = 0; halfByteCnt < sizeInHalfBytes; ++halfByteCnt)
+	{
+		char halfHexSymbol = (uint8_t)(val & 0x0F);
+		halfHexSymbol += (halfHexSymbol > 9) ? ('A' - 10) : ('0');
+		strBuff[2 + (sizeInHalfBytes - 1 - halfByteCnt)] = halfHexSymbol;
+		val >>= 4;
+	}
+	strBuff[2 + sizeInHalfBytes] = 0x00;
+	return &strBuff[0];
+}
+
+
+template <>
+const char* ToHex(const uint8_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+
+template <>
+const char* ToHex(const uint16_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+template <>
+const char* ToHex(const uint32_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+template <>
+const char* ToHex(const uint64_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+//--------------- To decimal conversions --------------------
+
+template <class T>
+inline T Abs(const T val)
+{
+	return (val < T(0)) ? (T(0) - val) : val;
+}
+
+inline bool IsSigned(const uint8_t) {return false;}
+inline bool IsSigned(const uint16_t) {return false;}
+inline bool IsSigned(const uint32_t) {return false;}
+inline bool IsSigned(const uint64_t) {return false;}
+inline bool IsSigned(const int8_t) {return true;}
+inline bool IsSigned(const int16_t) {return true;}
+inline bool IsSigned(const int32_t) {return true;}
+inline bool IsSigned(const int64_t) {return true;}
+
+
+template <class T>
+inline char* IntToDec(char* dstPtr, const T valInput, const uint8_t sizeInDigits)
+{
+	for(uint8_t digitIdx = 0; digitIdx < sizeInDigits; ++digitIdx)
+
+
+
+
+
+	strBuff[0] = '0';
+	strBuff[1] = 'x';
+	T val = valInput;
+	for(uint8_t halfByteCnt = 0; halfByteCnt < sizeInHalfBytes; ++halfByteCnt)
+	{
+		char halfHexSymbol = (uint8_t)(val & 0x0F);
+		halfHexSymbol += (halfHexSymbol > 9) ? ('A' - 10) : ('0');
+		strBuff[2 + (sizeInHalfBytes - 1 - halfByteCnt)] = halfHexSymbol;
+		val >>= 4;
+	}
+	strBuff[2 + sizeInHalfBytes] = 0x00;
+	return &strBuff[0];
+}
+*/
+
+
+/*
+template <>
+const char* ToDec(const uint8_t val)
+{
+
+}
+*/
+
+
+
+}	// namespace intToStr
+
+

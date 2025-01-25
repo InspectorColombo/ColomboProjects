@@ -1,0 +1,86 @@
+/*
+ * Sprite.hpp
+ *
+ *  Created on: Jan 18, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __SPRITE_HPP__
+#define __SPRITE_HPP__
+
+#include <stdint.h>
+
+namespace sprite
+{
+
+class Sprite
+{
+public:
+	explicit Sprite(const uint8_t* rawSpriteDataArrayPtr) :
+		m_width(*rawSpriteDataArrayPtr),
+		m_height(*(rawSpriteDataArrayPtr + 1)),
+		m_bitmap(rawSpriteDataArrayPtr + 2)
+	{
+	}
+
+	explicit Sprite(const uint8_t width, const uint8_t height, const uint8_t* bitmapPtr) :
+		m_width(width),
+		m_heigth(height),
+		m_bitmap(bitmapPtr)
+	{
+	}
+
+	const uint8_t GetWidth() const
+	{
+		return m_width;
+	}
+
+	const uint8_t GetHeight() const
+	{
+		return m_height;
+	}
+
+	const uint8_t* GetBitmap() const
+	{
+		return m_bitmap;
+	}
+
+private:
+	const uint8_t	m_width;
+	const uint8_t	m_height;
+	const uint8_t*	m_bitmap;
+};
+
+const uint8_t Battery[] =
+{
+	7,	// width
+	4,	// height
+	0b01111001,
+	0b01000101,
+	0b00110011,
+	0b00001111
+};
+
+const uint8_t Rectangle[] =
+{
+	18,		// width
+	9,		// height
+	0b11111111, 0b11111111, 0b11000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b11111111, 0b11111111, 0b11000000
+};
+
+
+
+}	// namespace sprite
+
+
+
+
+#endif	// __SPRITE_HPP__

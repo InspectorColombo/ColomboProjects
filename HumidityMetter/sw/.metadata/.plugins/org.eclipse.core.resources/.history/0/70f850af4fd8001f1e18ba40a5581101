@@ -1,0 +1,146 @@
+/*
+ * SSD1306_SimplePrint.hpp
+ *
+ *  Created on: Jan 22, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __SSD1306_SIMPLEPRINT_HPP__
+#define __SSD1306_SIMPLEPRINT_HPP__
+
+#include "SSD1306.hpp"
+#include "Font8x8.hpp"
+#include "Font8x8Right.hpp"
+#include "Sprites.hpp"
+
+namespace LcdDrivers
+{
+namespace SSD1306
+{
+
+enum ScreenType
+{
+	ST_LANDSCAPE,
+	ST_PORTRAIT
+};
+
+
+template<typename I2cClass>
+class SimplePrintDriver : public Driver<I2cClass>
+{
+public:
+	SimplePrintDriver(
+			const ScreenType screenType = ST_LANDSCAPE,
+			const SlaveAddress SA = SA_0x78,
+			const uint8_t colCnt = 128,
+			const uint8_t rowCnt = 64) :
+		Driver<I2cClass>(SA, colCnt, rowCnt),
+		m_screenType(screenType),
+		m_maxCharX(screenType == ST_LANDSCAPE ? (colCnt / 8) : (screenType == ST_PORTRAIT ? (rowCnt / 8) : 0)),
+		m_maxCharY(screenType == ST_LANDSCAPE ? (rowCnt / 8) : (screenType == ST_PORTRAIT ? (colCnt / 8) : 0))
+	{
+
+	}
+
+	void Print(const uint8_t x, const uint8_t y, const char* str);
+
+private:
+	const ScreenType	m_screenType;
+	const uint8_t		m_maxCharX;
+	const uint8_t		m_maxCharY;
+
+
+};
+
+
+template<typename I2cClass>
+void SimplePrintDriver<I2cClass>::Print(const uint8_t x, const uint8_t y, const char* str)
+{
+	if (m_screenType == ST_LANDSCAPE)
+	{
+		font::Font8x8Right fn;
+		if (x >= m_maxCharX || y >= m_maxCharY)
+		{
+			SetError(true);
+			return;
+		}
+		uint8_t xPos = x;
+		uint8_t yPos = y;
+
+		SetAddressingModePage();
+		bool updatePage = true;
+		for(const char* chPtr = str; *chPtr != 0x00; ++chPtr)
+		{
+			if (updatePage)
+			{
+				updatePage = false;
+				SetColumnStartAddressForPAM(xPos * 8);
+				SetPageStartAddressForPAM(yPos);
+			}
+			const uint8_t* charBitmap = fn.GetCharBitmap((uint8_t)(*chPtr));
+			SendData(charBitmap, 8);
+
+			// Update XY
+			++xPos;
+			if (xPos >= MaxCharX)
+			{
+				updatePage = true;
+				xPos = 0;
+				yPos += 1;
+				if (yPos >= MaxCharY)
+				{
+					return;
+				}
+			}
+		}
+	}
+	else
+	{
+		if (m_screenType == PORTRAIT)
+		{
+			//font::Font8x8Right fn;
+			font::Font8x8 fn;
+ 			if (x >= MaxCharX || y >= MaxCharY)
+			{
+				SetError(true);
+				return;
+			}
+
+ 			uint8_t xPos = x;
+			uint8_t yPos = y;
+			SendCommand(SET_MEMORY_ADDRESSING_MODE_HORIZONTAL);
+			for(const char* chPtr = str; *chPtr != 0x00; ++chPtr)
+			{
+				SetColumnPageAddressesForHVM(
+						yPos * 8 + 0,
+						yPos * 8 + 7,
+						MaxCharX - 1 - xPos,
+						MaxCharX - 1 - xPos);
+
+				const uint8_t* charBitmap = fn.GetCharBitmap((uint8_t)(*chPtr));
+				SendData(charBitmap, 8);
+
+				// Update XY
+				++xPos;
+				if (xPos >= MaxCharX)
+				{
+					xPos = 0;
+					yPos += 1;
+					if (yPos >= MaxCharY)
+					{
+						return;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+}	// namespace SSD1306
+}	// namespace LcdDrivers
+
+
+
+#endif /* SSD1306_SIMPLEPRINT_HPP_ */

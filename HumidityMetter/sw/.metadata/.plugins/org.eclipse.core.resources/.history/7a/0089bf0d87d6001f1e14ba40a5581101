@@ -1,0 +1,153 @@
+/*
+ * Sprite.hpp
+ *
+ *  Created on: Jan 18, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __SPRITE_HPP__
+#define __SPRITE_HPP__
+
+#include <stdint.h>
+
+namespace sprites
+{
+
+struct DataAndMask
+{
+	uint8_t data;
+	uint8_t mask;
+};
+
+class Sprite
+{
+public:
+	explicit Sprite(const uint8_t* rawSpriteDataArrayPtr) :
+		m_widthInPixels(*rawSpriteDataArrayPtr),
+		m_widthInBytes(GetWidthInBytes(*rawSpriteDataArrayPtr)),
+		m_heightInPixels(*(rawSpriteDataArrayPtr + 1)),
+		m_bitmap(rawSpriteDataArrayPtr + 2)
+	{
+	}
+
+	explicit Sprite(const uint8_t widthInPixels, const uint8_t heightInPixels, const uint8_t* bitmapPtr) :
+		m_widthInPixels(width),
+		m_widthInBytes(GetWidthInBytes(width)),
+		m_heightInPixels(height),
+		m_bitmap(bitmapPtr)
+	{
+	}
+
+	const uint8_t GetWidthInPixels() const
+	{
+		return m_width;
+	}
+
+	const uint8_t GetHeightInPixels() const
+	{
+		return m_height;
+	}
+
+	DataAndMask GetHorisontal8BitLine(const uint8_t xOrigin, const uint8_t yOrigin) const
+	{
+		DataAndMask result;
+		result.data = 0x00;
+		result.mask = 0x00;
+
+		// Outside sprite
+		const bool yOutside = yOrigin >= (int8_t)m_heightInPixels;
+		if (yOutside)
+			return result;
+
+		const bool xOutside = (xOrigin >= widthInPixels && (xOrigin + 7) >= widthInPixels);
+		if (xOutside)
+			return result;
+
+		const uint8_t addrOffsetY = yOrigin * m_widthInBytes;
+
+		// Case - start left from sprite
+		if ((xOrigin + 8) < widthInPixels && (xOrigin > widthInPixels))
+		{
+			const uint8_t xRightShift = xOrigin + 8;
+			result.mask = 0xFF;
+			result.mask >>= xRightShift;
+			result.data = *(m_bitmap + addrOffsetY + 0);
+			result.data >>= xRightShift;
+			return result;
+		}
+
+		// Case - end right from sprite
+		if (xOrigin < widthInPixels && (xOrigin + 8) > widthInPixels)
+		{
+			const uint8_t xLeftShift = xOrigin & 0x07;
+			const uint8_t addrOffsetX = xOrigin / 8;
+
+
+			result.mask = 0xFF;
+			result.mask >>= xShift;
+			result.data = *(m_bitmap + addrOffsetY + 0);
+			result.data >>= xShift;
+			return result;
+		}
+
+
+
+	}
+
+
+
+//	const uint8_t* GetBitmap() const
+//	{
+//		return m_bitmap;
+//	}
+
+private:
+	const uint8_t	m_widthInPixels;
+	const uint8_t	m_widthInBytes;
+	const uint8_t	m_heightInPixels;
+	const uint8_t*	m_bitmap;
+
+	static uint8_t GetWidthInBytes(const uint8_t widthInPixels)
+	{
+		widthInBytes = (widthInPixels >> 3) + ((widthInPixels & 0b00000111) != 0 ? 1 : 0);
+		return widthInBytes;
+	}
+
+};
+
+const uint8_t Battery[] =
+{
+	7,	// width
+	4,	// height
+	0b01111001,
+	0b01000101,
+	0b00110011,
+	0b00001111
+};
+
+Sprite batterySprite(Battery);
+
+const uint8_t Rectangle[] =
+{
+	18,		// width
+	9,		// height
+	0b11111111, 0b11111111, 0b11000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b11111111, 0b11111111, 0b11000000
+};
+
+Sprite rectangleSprite(Rectangle);
+
+
+}	// namespace sprite
+
+
+
+
+#endif	// __SPRITE_HPP__

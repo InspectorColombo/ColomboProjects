@@ -1,0 +1,27 @@
+/*
+ * IntToStr.hpp
+ *
+ *  Created on: Jan 22, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __INTTOSTR_HPP__
+#define __INTTOSTR_HPP__
+
+#include <stdint.h>
+
+namespace IntToStr
+{
+
+template <class T>
+const char* ToHex(const T val);
+
+template <class T>
+const char* ToDec(const T val);
+
+}	// namespace IntToStr
+
+
+
+
+#endif	// __INTTOSTR_HPP__

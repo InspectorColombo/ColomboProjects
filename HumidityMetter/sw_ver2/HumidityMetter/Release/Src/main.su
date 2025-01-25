@@ -1,19 +1,20 @@
-../Src/main.cpp:42:6:void InitClocks()	0	static
-../Src/main.cpp:76:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	0	static
-../Src/main.cpp:81:6:void PA_CLOCK_ENABLE()	0	static
-../Src/main.cpp:86:6:void PB_CLOCK_ENABLE()	0	static
-../Src/main.cpp:92:6:void PC_CLOCK_ENABLE()	0	static
-../Src/main.cpp:97:6:void InitPorts()	8	static
-../Src/main.cpp:204:6:void ShowSensorError(const AM2320Sensor&)	8	static
-../Src/main.cpp:219:6:void ShowSensorTemperature(const AM2320Sensor&)	32	static
-../Src/main.cpp:239:6:void ShowSensorHumidity(const AM2320Sensor&)	24	static
-../Src/main.cpp:255:6:void ShowBME280Temperature(const BME280Sensor&)	16	static
-../Src/main.cpp:281:6:void ShowBME280Altitude(const BME280Sensor&, const AltitudeMetter&)	48	static
-../Src/main.cpp:301:6:void ShowBME280Humidity(const BME280Sensor&)	8	static
-../Src/main.cpp:335:6:void ShowBME280Pressure(const BME280Sensor&)	8	static
-../Src/main.cpp:348:6:void ShowBME280Error()	8	static
-../Src/main.cpp:357:6:void ShowBatteryVoltage(const BatterySensor&)	16	static
-../Inc/SSD1306.hpp:250:6:void LcdDrivers::SSD1306::Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::SendCommand(const uint8_t*) [with I2cClass = i2c::I2c400KHzSw; LcdDrivers::SSD1306::SlaveAddress SA = LcdDrivers::SSD1306::SA_0x78; unsigned char ColCnt = 128; unsigned char RowCnt = 64; LcdDrivers::SSD1306::ScreenType ST = LcdDrivers::SSD1306::PORTRAIT; LcdDrivers::SSD1306::XType XT = LcdDrivers::SSD1306::X_NORMAL; LcdDrivers::SSD1306::YType YT = LcdDrivers::SSD1306::Y_NORMAL]	24	static
-../Inc/SSD1306.hpp:158:6:void LcdDrivers::SSD1306::Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::SetColumnPageAddressesForHVM(uint8_t, uint8_t, uint8_t, uint8_t) [with I2cClass = i2c::I2c400KHzSw; LcdDrivers::SSD1306::SlaveAddress SA = LcdDrivers::SSD1306::SA_0x78; unsigned char ColCnt = 128; unsigned char RowCnt = 64; LcdDrivers::SSD1306::ScreenType ST = LcdDrivers::SSD1306::PORTRAIT; LcdDrivers::SSD1306::XType XT = LcdDrivers::SSD1306::X_NORMAL; LcdDrivers::SSD1306::YType YT = LcdDrivers::SSD1306::Y_NORMAL]	24	static
-../Inc/SSD1306.hpp:339:6:void LcdDrivers::SSD1306::Driver<I2cClass, SA, ColCnt, RowCnt, ST, XT, YT>::Print(uint8_t, uint8_t, const char*) [with I2cClass = i2c::I2c400KHzSw; LcdDrivers::SSD1306::SlaveAddress SA = LcdDrivers::SSD1306::SA_0x78; unsigned char ColCnt = 128; unsigned char RowCnt = 64; LcdDrivers::SSD1306::ScreenType ST = LcdDrivers::SSD1306::PORTRAIT; LcdDrivers::SSD1306::XType XT = LcdDrivers::SSD1306::X_NORMAL; LcdDrivers::SSD1306::YType YT = LcdDrivers::SSD1306::Y_NORMAL]	48	static
-../Src/main.cpp:382:5:int main()	32	static
+../Src/main.cpp:44:6:void InitClocks()	0	static
+../Src/main.cpp:78:6:void ALTERNATIVE_FUNCTION_CLOCK_ENABLE()	0	static
+../Src/main.cpp:83:6:void PA_CLOCK_ENABLE()	0	static
+../Src/main.cpp:88:6:void PB_CLOCK_ENABLE()	0	static
+../Src/main.cpp:94:6:void PC_CLOCK_ENABLE()	0	static
+../Src/main.cpp:99:6:void InitPorts()	8	static
+../Src/main.cpp:206:6:void ShowSensorError(const AM2320Sensor&)	8	static
+../Src/main.cpp:221:6:void ShowSensorTemperature(const AM2320Sensor&)	32	static
+../Src/main.cpp:241:6:void ShowSensorHumidity(const AM2320Sensor&)	24	static
+../Src/main.cpp:257:6:void ShowBME280Temperature(const BME280Sensor&)	16	static
+../Src/main.cpp:283:6:void ShowBME280Altitude(const BME280Sensor&, const AltitudeMetter&)	48	static
+../Src/main.cpp:303:6:void ShowBME280Humidity(const BME280Sensor&)	8	static
+../Src/main.cpp:337:6:void ShowBME280Pressure(const BME280Sensor&)	8	static
+../Src/main.cpp:350:6:void ShowBME280Error()	8	static
+../Src/main.cpp:359:6:void ShowBatteryVoltage(const BatterySensor&)	16	static
+../Inc/SSD1306_SimplePrint.hpp:68:6:void LcdDrivers::SSD1306::SimplePrintDriver<I2cClass, ST>::GotoXY(uint8_t, uint8_t) [with I2cClass = i2c::I2c400KHzSw; LcdDrivers::SSD1306::ScreenType ST = LcdDrivers::SSD1306::ST_LANDSCAPE]	0	static
+../Inc/SSD1306.hpp:171:6:void LcdDrivers::SSD1306::Driver<I2cClass>::SendCommand(const uint8_t*) [with I2cClass = i2c::I2c400KHzSw]	24	static
+../Inc/SSD1306_SimplePrint.hpp:121:6:void LcdDrivers::SSD1306::SimplePrintDriver<I2cClass, ST>::Print(const char*) [with I2cClass = i2c::I2c400KHzSw; LcdDrivers::SSD1306::ScreenType ST = LcdDrivers::SSD1306::ST_LANDSCAPE]	32	static
+../Src/main.cpp:384:5:int main()	24	static
+../Src/main.cpp:557:1:cpp)	0	static

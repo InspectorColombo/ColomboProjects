@@ -1,0 +1,116 @@
+/*
+ * IntToStr.cpp
+ *
+ *  Created on: Jan 22, 2025
+ *      Author: Goggy
+ */
+
+
+#include "IntToStr.hpp"
+
+
+namespace intToStr
+{
+
+// Define string conversion buffer
+#define STR_SIZE 		22
+static char strBuff[STR_SIZE];
+
+
+char HalfHexToChar(const uint8_t val)
+{
+	char res = (char)(val & 0x0F);
+	res += (res > 9) ? ('A' - 10) : ('0');
+	return res;
+}
+
+template <>
+const char* ToHex(const uint8_t val)
+{
+	strBuff[0] = '0';
+	strBuff[1] = 'x';
+	strBuff[2] = HalfHexToChar((val & 0xF0) >> 4);
+	strBuff[3] = HalfHexToChar(val & 0x0F);
+	strBuff[4] = 0x00;
+	return &strBuff[0];
+}
+
+/*
+template <uint16_t>
+const char* ToHex(const uint16_t val)
+{
+	strBuff[0] = '0';
+	strBuff[1] = 'x';
+	strBuff[2] = HalfHexToChar((uint8_t)((val  >> 12) & 0x0F));
+	strBuff[3] = HalfHexToChar((uint8_t)((val  >> 8) & 0x0F));
+	strBuff[4] = HalfHexToChar((uint8_t)((val  >> 4) & 0x0F));
+	strBuff[5] = HalfHexToChar((uint8_t)((val  >> 0) & 0x0F));
+	strBuff[6] = 0x00;
+	return &strBuff[0];
+}
+
+template <uint32_t>
+const char* ToHex(const uint32_t val)
+{
+	strBuff[0] = '0';
+	strBuff[1] = 'x';
+	strBuff[2] = HalfHexToChar((uint8_t)((val  >> 28) & 0x0F));
+	strBuff[3] = HalfHexToChar((uint8_t)((val  >> 24) & 0x0F));
+	strBuff[4] = HalfHexToChar((uint8_t)((val  >> 20) & 0x0F));
+	strBuff[5] = HalfHexToChar((uint8_t)((val  >> 16) & 0x0F));
+	strBuff[6] = HalfHexToChar((uint8_t)((val  >> 12) & 0x0F));
+	strBuff[7] = HalfHexToChar((uint8_t)((val  >> 8) & 0x0F));
+	strBuff[8] = HalfHexToChar((uint8_t)((val  >> 4) & 0x0F));
+	strBuff[9] = HalfHexToChar((uint8_t)((val  >> 0) & 0x0F));
+	strBuff[10] = 0x00;
+	return &strBuff[0];
+}
+*/
+
+
+
+/*
+const char* SimplePrintDriver<I2cClass>::HexToStr(const uint8_t val)
+{
+	m_numBuff[0] = '0';
+	m_numBuff[1] = 'x';
+	m_numBuff[2] = HalfHexToChar((val & 0xF0) >> 4);
+	m_numBuff[3] = HalfHexToChar(val & 0x0F);
+	m_numBuff[4] = 0;
+	return &m_numBuff[0];
+}
+
+template<typename I2cClass>
+const char* SimplePrintDriver<I2cClass>::HexToStr(const uint16_t val)
+{
+	m_numBuff[0] = '0';
+	m_numBuff[1] = 'x';
+	uint16_t tmp = val;
+	for(uint8_t chIdx = 5; chIdx >= 2; --chIdx)
+	{
+		m_numBuff[chIdx] = HalfHexToChar((uint8_t)(tmp & 0x0F));
+		tmp >>= 4;
+	}
+	m_numBuff[6] = 0;
+	return &m_numBuff[0];
+}
+
+template<typename I2cClass>
+const char* SimplePrintDriver<I2cClass>::HexToStr(const uint32_t val)
+{
+	m_numBuff[0] = '0';
+	m_numBuff[1] = 'x';
+	uint32_t tmp = val;
+	for(uint8_t chIdx = 9; chIdx >= 2; --chIdx)
+	{
+		m_numBuff[chIdx] = HalfHexToChar((uint8_t)(tmp & 0x0F));
+		tmp >>= 4;
+	}
+	m_numBuff[10] = 0;
+	return &m_numBuff[0];
+}
+*/
+
+}	// namespace intToStr
+
+

@@ -1,0 +1,48 @@
+/*
+ * Sprite.hpp
+ *
+ *  Created on: Jan 18, 2025
+ *      Author: Goggy
+ */
+
+#ifndef SPRITE_HPP_
+#define SPRITE_HPP_
+
+#include <stdint.h>
+
+namespace sprite
+{
+
+const uint8_t Battery[] =
+{
+	7,	// width
+	4,	// height
+	0b01111001,
+	0b01000101,
+	0b00110011,
+	0b00001111
+};
+
+const uint8_t Rectangle[] =
+{
+	18,		// width
+	9,		// height
+	0b11111111, 0b11111111, 0b11000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b10000000, 0b00000000, 0b01000000,
+	0b11111111, 0b11111111, 0b11000000
+};
+
+
+
+}	// namespace sprite
+
+
+
+
+#endif /* SPRITE_HPP_ */

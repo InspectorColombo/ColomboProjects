@@ -1,0 +1,114 @@
+/*
+ * IntToStr.cpp
+ *
+ *  Created on: Jan 22, 2025
+ *      Author: Goggy
+ */
+
+
+#include "IntToStr.hpp"
+
+
+namespace intToStr
+{
+
+// Define string conversion buffer
+#define STR_SIZE 		22
+static char strBuff[STR_SIZE];
+
+
+inline char HalfHexToChar(const uint8_t val)
+{
+	char res = (char)(val & 0x0F);
+	res += (res > 9) ? ('A' - 10) : ('0');
+	return res;
+}
+
+template <class T>
+inline const char* UIntToHex(const T valInput, const uint8_t sizeInHalfBytes)
+{
+	strBuff[0] = '0';
+	strBuff[1] = 'x';
+	T val = valInput;
+	for(uint8_t halfByteCnt = 0; halfByteCnt < sizeInHalfBytes; ++halfByteCnt)
+	{
+		strBuff[2 + (sizeInHalfBytes - 1 - halfByteCnt)] =
+				HalfHexToChar((uint8_t)(val & 0x0F));
+		val >>= 4;
+	}
+	strBuff[2 + sizeInHalfBytes] = 0x00;
+}
+
+
+template <>
+const char* ToHex(const uint8_t val)
+{
+	return UIntToHex(val, sizeof(val));
+}
+
+
+template <>
+const char* ToHex(const uint16_t val)
+{
+	return UIntToHex(val, sizeof(val));
+}
+
+template <>
+const char* ToHex(const uint32_t val)
+{
+	return UIntToHex(val, sizeof(val));
+}
+
+template <>
+const char* ToHex(const uint64_t val)
+{
+	return UIntToHex(val, sizeof(val));
+}
+
+
+
+/*
+const char* SimplePrintDriver<I2cClass>::HexToStr(const uint8_t val)
+{
+	m_numBuff[0] = '0';
+	m_numBuff[1] = 'x';
+	m_numBuff[2] = HalfHexToChar((val & 0xF0) >> 4);
+	m_numBuff[3] = HalfHexToChar(val & 0x0F);
+	m_numBuff[4] = 0;
+	return &m_numBuff[0];
+}
+
+template<typename I2cClass>
+const char* SimplePrintDriver<I2cClass>::HexToStr(const uint16_t val)
+{
+	m_numBuff[0] = '0';
+	m_numBuff[1] = 'x';
+	uint16_t tmp = val;
+	for(uint8_t chIdx = 5; chIdx >= 2; --chIdx)
+	{
+		m_numBuff[chIdx] = HalfHexToChar((uint8_t)(tmp & 0x0F));
+		tmp >>= 4;
+	}
+	m_numBuff[6] = 0;
+	return &m_numBuff[0];
+}
+
+template<typename I2cClass>
+const char* SimplePrintDriver<I2cClass>::HexToStr(const uint32_t val)
+{
+	m_numBuff[0] = '0';
+	m_numBuff[1] = 'x';
+	uint32_t tmp = val;
+	for(uint8_t chIdx = 9; chIdx >= 2; --chIdx)
+	{
+		m_numBuff[chIdx] = HalfHexToChar((uint8_t)(tmp & 0x0F));
+		tmp >>= 4;
+	}
+	m_numBuff[10] = 0;
+	return &m_numBuff[0];
+}
+*/
+
+}	// namespace intToStr
+
+

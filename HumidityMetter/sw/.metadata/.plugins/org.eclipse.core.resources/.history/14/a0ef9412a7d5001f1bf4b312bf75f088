@@ -1,0 +1,39 @@
+/*
+ * Sprite.hpp
+ *
+ *  Created on: Jan 18, 2025
+ *      Author: Goggy
+ */
+
+#ifndef SPRITE_HPP_
+#define SPRITE_HPP_
+
+#include <stdint.h>
+
+namespace sprite
+{
+
+struct Battery
+{
+const uint8_t width = 7;
+const uint8_t height = 4;
+
+const uint8_t data[] =
+{
+	0b01111001,
+	0b01000101,
+	0b00110011,
+	0b00001111
+};
+
+}
+
+
+
+
+}	// namespace sprite
+
+
+
+
+#endif /* SPRITE_HPP_ */

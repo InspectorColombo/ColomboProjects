@@ -1,0 +1,216 @@
+/*
+ * stdBuff.hpp
+ *
+ *  Created on: Jan 25, 2025
+ *      Author: Goggy
+ *
+ *      Simple analog of std::vector with some new features
+ * 1. MAX_SIZE is defined via template and cannot be changed
+ * 2. PushBack(), PushFront() - methods
+ * 3. Size()
+ * 4. Clear()
+ * 5. Resize(new size, new value)
+ * 6. operator []
+ * 7. Shift(srcIdx, dstIdx, shiftCount)
+ * 8. Reverse() - for full reverse of elements
+ * 9. Reverse(startIdx, endIdx)
+ * 10.Insert(posIdx, value)
+ *
+ */
+
+#ifndef __STDBUFF_HPP__
+#define __STDBUFF_HPP__
+
+#include <stdint.h>
+
+namespace stdAnalog
+{
+
+
+template <typename T, const uint8_t BUFF_SIZE>
+class Buffer
+{
+public:
+	enum ErrorType
+	{
+		ET_OK,
+		ET_OUT_OF_MAX_RANGE,
+		ET_OUT_OF_RANGE
+	};
+
+
+	Buffer() : m_size(0), m_errorType(ET_OK)
+	{
+		Clear();
+	}
+
+	void Clear()
+	{
+		m_size = 0;
+		for(uint8_t idx = 0; idx < BUFF_SIZE; ++idx)
+		{
+			m_buff[idx] = T(0);
+		}
+	}
+
+	void PushBack(const T val)
+	{
+		if (m_size >= BUFF_SIZE)
+		{
+			SetError(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+		m_buff[m_size] = val;
+		++m_size;
+	}
+
+	void PushFront(const T val)
+	{
+		if (m_size >= BUFF_SIZE)
+		{
+			Error(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+
+		Resize(m_size + 1);
+		Shift(0, 1, m_size - 1);
+
+		m_buff[0] = val;
+	}
+
+	T& operator[](const uint8_t idx)
+	{
+		if (idx >= m_size)
+		{
+			SetError(ET_OUT_OF_RANGE);
+			return m_buff[0];
+		}
+		return m_buff[idx];
+	}
+
+	void Shift(const uint8_t srcIdx, const uint8_t dstIdx, const uint8_t count)
+	{
+		if ((dstIdx + count - 1) >= BUFF_SIZE
+			|| (srcIdx + count - 1) >= BUFF_SIZE)
+		{
+			Error(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+
+		if ((dstIdx + count - 1) >= m_size
+			|| (srcIdx + count - 1) >= m_size)
+		{
+			Error(ET_OUT_OF_RANGE);
+			return;
+		}
+
+		if (dstIdx > srcIdx)
+		{
+			for(uint8_t cnt = 0; cnt < count; ++cnt)
+			{
+				m_buff[dstIdx + (count - 1) - cnt] = m_buff[srcIdx + (count - 1) - cnt];
+			}
+		}
+		else
+		{
+			for(uint8_t cnt = 0; cnt < count; ++cnt)
+			{
+				m_buff[dstIdx + cnt] = m_buff[srcIdx + cnt];
+			}
+		}
+	}
+
+	uint8_t Size() const
+	{
+		return m_size;
+	}
+
+	void Resize(const uint8_t newSize, const T newValue = T(0))
+	{
+		if (newSize > BUFF_SIZE)
+		{
+			SetError(ET_OUT_OF_MAX_RANGE);
+			return;
+		}
+
+		if (newSize > m_size)
+		{
+			for(uint8_t idx = m_size; idx < newSize; ++idx)
+			{
+				m_buff[idx] = newValue;
+			}
+		}
+		m_size = newSize;
+	}
+
+	void Insert(const uint8_t posIdx, const T value)
+	{
+		if (posIdx >= m_size)
+		{
+			SetError(ET_OUT_OF_RANGE);
+			return;
+		}
+
+		const uint8_t ammountToShift = (m_size - 1) - posIdx;
+
+		// Add new element at end
+		PushBack(T(0));
+
+		// Shift everything from pos to end
+		Shift(posIdx, posIdx + 1, ammountToShift);
+
+		m_buff[posIdx] = value;
+	}
+
+	void Reverse(const uint8_t startIndex, const uint8_t endIndex)
+	{
+		if (startIndex >= m_size || endIndex >= m_size)
+		{
+			SetError(ET_OUT_OF_RANGE);
+			return;
+		}
+
+		if (startIndex >= endIndex)
+			return;	// Nothing to revert
+
+		for(uint8_t stIdx = startIndex, enIdx = endIndex;
+				stIdx < enIdx;
+				++stIdx, --enIdx)
+		{
+			const T tmp = m_buff[stIdx];
+			m_buff[stIdx] = m_buff[enIdx];
+			m_buff[enIdx] = tmp;
+		}
+	}
+
+	void Reverse()
+	{
+		if (m_size < 2)
+			return;
+
+		Reverse(0, m_size - 1);
+	}
+
+	ErrorType GetError()
+	{
+		return m_errorType;
+	}
+
+private:
+	T 			m_buff[BUFF_SIZE];
+	uint8_t		m_size;
+	ErrorType 	m_errorType;
+
+	void SetError(const ErrorType et)
+	{
+		m_errorType = et;
+	}
+};
+
+
+}	// namespace stdAnalog
+
+
+
+
+#endif	// __STDBUFF_HPP__

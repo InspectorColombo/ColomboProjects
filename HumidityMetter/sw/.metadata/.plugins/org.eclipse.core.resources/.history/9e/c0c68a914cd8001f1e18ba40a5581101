@@ -1,0 +1,24 @@
+/*
+ * SSD1306_SimplePrint.hpp
+ *
+ *  Created on: Jan 22, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __SSD1306_SIMPLEPRINT_HPP__
+#define __SSD1306_SIMPLEPRINT_HPP__
+
+#include "SSD1306.hpp"
+
+namespace LcdDrivers
+{
+namespace SSD1306
+{
+
+
+}	// namespace SSD1306
+}	// namespace LcdDrivers
+
+
+
+#endif /* SSD1306_SIMPLEPRINT_HPP_ */

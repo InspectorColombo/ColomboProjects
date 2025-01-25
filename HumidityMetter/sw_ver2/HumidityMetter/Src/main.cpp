@@ -31,7 +31,9 @@
 #include "I2cRxTx.hpp"
 #include "BatterySensor.hpp"
 
-#include "SSD1306.hpp"
+//#include "SSD1306.hpp"
+#include "SSD1306_SimplePrint.hpp"
+#include "IntToStr.hpp"
 
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
@@ -395,9 +397,9 @@ int main(void)
 
 	DelayTimer::DelayMilliSec(200);	// Wait for power on of LCD
 
-//	LcdScreen::LcdInit();
-//	LcdScreen::LcdClear();
-//	LcdScreen::LcdPrint("Hello!!!");
+	LcdScreen::LcdInit();
+	LcdScreen::LcdClear();
+	LcdScreen::LcdPrint("Hello!!!");
 
 
 
@@ -406,47 +408,52 @@ int main(void)
 
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#
 	{
-
-
-		//LcdDrivers::SSD1306::Driver lcd(LcdDrivers::SSD1306::Driver::SA_0X78);
-
-		//LcdDrivers::SSD1306::Driver0x78_128x64_LS lcd;
-/*
- 		LcdDrivers::SSD1306::Driver<
-			i2c::I2c400KHzSw,
-			0x78, 128, 64,
-			LcdDrivers::SSD1306::ST_PORTRAIT,
-			LcdDrivers::SSD1306::X_NORMAL,
-			LcdDrivers::SSD1306::Y_NORMAL> lcd;
-*/
-			LcdDrivers::SSD1306::Driver<
-				i2c::I2c400KHzSw,
-				LcdDrivers::SSD1306::SA_0x78,
-				128,
-				64,
-				LcdDrivers::SSD1306::PORTRAIT,
-				LcdDrivers::SSD1306::X_NORMAL,
-				LcdDrivers::SSD1306::Y_NORMAL> lcd;
-
+		LcdDrivers::SSD1306::SimplePrintDriver<i2c::I2c400KHzSw, LcdDrivers::SSD1306::ST_LANDSCAPE> lcd;
 
 		for(;;)
 		{
-			//lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
-			//lcd.Print(0, 0, "HELLO");
-			lcd.Print(lcd.GetMaxCharX()  -5, 0, "8.72V");
 
-			lcd.Print(0, 6, "97450Pa");
-			lcd.Print(0, 2, "27.18\xDBC");
-			lcd.Print(0, 4, "42.17%");
+			//lcd.Print(3, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
 
 
+			//lcd.Print(0,0, intToStr::ToDec((uint8_t)(123)));
+			//lcd.Print(0,1, intToStr::ToDec((uint8_t)(12)));
+			//lcd.Print(0,2, intToStr::ToDec((uint8_t)(1)));
+
+			lcd.GotoXY(0, 0);
+			lcd.Print(intToStr::ToDec((uint16_t)(12345), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
+			lcd.GotoXY(0, 1);
+			lcd.Print(intToStr::ToDec((uint16_t)(1234), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
+			lcd.GotoXY(0, 2);
+			lcd.Print(intToStr::ToDec((uint16_t)(123), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
+			lcd.GotoXY(0, 3);
+			lcd.Print(intToStr::ToDec((uint16_t)(12), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
+			lcd.GotoXY(0, 4);
+			lcd.Print(intToStr::ToDec((uint16_t)(1), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
+			lcd.GotoXY(0, 5);
+			lcd.Print(intToStr::ToDec((uint16_t)(0), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
+			lcd.GotoXY(0, 6);
+			lcd.Print(intToStr::ToDec((int16_t)(-1), intToStr::DDT_LEFT_ALIGN | intToStr::DDT_ENABLE_ZEROS | intToStr::DDT_SIGN, 5));
 
 
-			DelayTimer::DelaySec(1 * 8);
+			//lcd.Print(0,3, intToStr::ToDec((uint32_t)(1234567890), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
+			//lcd.Print(0,5, intToStr::ToDec((int64_t)(-1234567890)));
+
+/*
+			lcd.Print(0,0, intToStr::ToHex((uint8_t)(0x1A)));
+			lcd.Print(0,2, intToStr::ToHex(uint16_t(0x12AB)));
+			lcd.Print(0,4, intToStr::ToHex(uint32_t(0x1234ABCD)));
+			lcd.Print(0,6, intToStr::ToHex(uint64_t(0x0123456789abcdef)));
+*/
+
+//			lcd.Print(0,0, "__HELLO__");
+
+
+			DelayTimer::DelaySec(1);
+
 			lcd.ClearScreen();
 		}
-		lcd.ClearScreen();
-		lcd.Print(0, 0, "HELLO! Let me tell some story. Once upon a time I was in a western Europe. I've met many kind and polite people. It was great!");
+
 		for(;;);
 	}
 	// $@#$@#%$@#$%@#$@#@#$@ TEST @#$%@#$@#$@#$@!#$@!#$@!#$@#

@@ -12,6 +12,7 @@
 "./Src/GpioConfigurator.o"
 "./Src/I2cRxTx.o"
 "./Src/I2cSw.o"
+"./Src/IntToStr.o"
 "./Src/KeyPressDetector.o"
 "./Src/LcdScreen.o"
 "./Src/PowerControl.o"

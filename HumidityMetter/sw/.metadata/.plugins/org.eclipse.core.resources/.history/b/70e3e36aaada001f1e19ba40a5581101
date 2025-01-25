@@ -1,0 +1,140 @@
+/*
+ * IntToStr.cpp
+ *
+ *  Created on: Jan 22, 2025
+ *      Author: Goggy
+ */
+
+
+#include "IntToStr.hpp"
+#include "StdAnBuff.hpp"
+
+namespace intToStr
+{
+
+
+
+// Define string conversion buffer
+static stdAnalog::Buffer<char, uint8_t, uint8_t(24)> strBuff;
+
+//#define STR_SIZE 		22
+//static char strBuff[STR_SIZE];
+
+
+
+
+// ------------ To Hex conversions ---------------
+template <class T>
+inline const char* UIntToHex(const T valInput, const uint8_t sizeInHalfBytes)
+{
+	strBuff.Clear();
+	T val = valInput;
+	for(uint8_t halfByteCnt = 0; halfByteCnt < sizeInHalfBytes; ++halfByteCnt)
+	{
+		char halfHexSymbol = (uint8_t)(val & 0x0F);
+		halfHexSymbol += (halfHexSymbol > 9) ? ('A' - 10) : ('0');
+		strBuff.PushBack(halfHexSymbol);
+		val >>= 4;
+	}
+	strBuff.PushBack('x');
+	strBuff.PushBack('0');
+	strBuff.Reverse();
+	strBuff.PushBack(0x00);
+	return &strBuff[0];
+}
+
+
+template <>
+const char* ToHex(const uint8_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+
+template <>
+const char* ToHex(const uint16_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+template <>
+const char* ToHex(const uint32_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+template <>
+const char* ToHex(const uint64_t val)
+{
+	return UIntToHex(val, sizeof(val) * 2);
+}
+
+//--------------- To decimal conversions --------------------
+
+template <class T>
+inline T Abs(const T val)
+{
+	return (val < T(0)) ? (T(0) - val) : val;
+}
+
+inline bool IsSigned(const uint8_t) {return false;}
+inline bool IsSigned(const uint16_t) {return false;}
+inline bool IsSigned(const uint32_t) {return false;}
+inline bool IsSigned(const uint64_t) {return false;}
+inline bool IsSigned(const int8_t) {return true;}
+inline bool IsSigned(const int16_t) {return true;}
+inline bool IsSigned(const int32_t) {return true;}
+inline bool IsSigned(const int64_t) {return true;}
+
+inline uint8_t GetDecDigitsCount(const uint8_t) { return 3;}
+inline uint8_t GetDecDigitsCount(const int8_t) { return 3;}
+inline uint8_t GetDecDigitsCount(const uint16_t) { return 5;}
+inline uint8_t GetDecDigitsCount(const int16_t) { return 5;}
+inline uint8_t GetDecDigitsCount(const uint32_t) { return 10;}
+inline uint8_t GetDecDigitsCount(const int32_t) { return 10;}
+inline uint8_t GetDecDigitsCount(const uint64_t) { return 20;}
+inline uint8_t GetDecDigitsCount(const int64_t) { return 20;}
+
+
+
+
+/*
+template <class T>
+inline char* IntToDec(char* dstPtr, const T valInput, const uint8_t sizeInDigits)
+{
+	for(uint8_t digitIdx = 0; digitIdx < sizeInDigits; ++digitIdx)
+
+
+
+
+
+	strBuff[0] = '0';
+	strBuff[1] = 'x';
+	T val = valInput;
+	for(uint8_t halfByteCnt = 0; halfByteCnt < sizeInHalfBytes; ++halfByteCnt)
+	{
+		char halfHexSymbol = (uint8_t)(val & 0x0F);
+		halfHexSymbol += (halfHexSymbol > 9) ? ('A' - 10) : ('0');
+		strBuff[2 + (sizeInHalfBytes - 1 - halfByteCnt)] = halfHexSymbol;
+		val >>= 4;
+	}
+	strBuff[2 + sizeInHalfBytes] = 0x00;
+	return &strBuff[0];
+
+}
+*/
+
+
+/*
+template <>
+const char* ToDec(const uint8_t val)
+{
+
+}
+*/
+
+
+
+}	// namespace intToStr
+
+

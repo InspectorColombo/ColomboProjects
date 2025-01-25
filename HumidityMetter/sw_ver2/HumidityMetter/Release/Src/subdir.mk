@@ -15,6 +15,7 @@ CPP_SRCS += \
 ../Src/GpioConfigurator.cpp \
 ../Src/I2cRxTx.cpp \
 ../Src/I2cSw.cpp \
+../Src/IntToStr.cpp \
 ../Src/KeyPressDetector.cpp \
 ../Src/LcdScreen.cpp \
 ../Src/PowerControl.cpp \
@@ -31,6 +32,7 @@ OBJS += \
 ./Src/GpioConfigurator.o \
 ./Src/I2cRxTx.o \
 ./Src/I2cSw.o \
+./Src/IntToStr.o \
 ./Src/KeyPressDetector.o \
 ./Src/LcdScreen.o \
 ./Src/PowerControl.o \
@@ -47,6 +49,7 @@ CPP_DEPS += \
 ./Src/GpioConfigurator.d \
 ./Src/I2cRxTx.d \
 ./Src/I2cSw.d \
+./Src/IntToStr.d \
 ./Src/KeyPressDetector.d \
 ./Src/LcdScreen.d \
 ./Src/PowerControl.d \
@@ -60,7 +63,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.cpp Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/AdcSingleRead.cyclo ./Src/AdcSingleRead.d ./Src/AdcSingleRead.o ./Src/AdcSingleRead.su ./Src/BME280Sensor.cyclo ./Src/BME280Sensor.d ./Src/BME280Sensor.o ./Src/BME280Sensor.su ./Src/BatterySensor.cyclo ./Src/BatterySensor.d ./Src/BatterySensor.o ./Src/BatterySensor.su ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/ErrorLed.cyclo ./Src/ErrorLed.d ./Src/ErrorLed.o ./Src/ErrorLed.su ./Src/Font8x8.cyclo ./Src/Font8x8.d ./Src/Font8x8.o ./Src/Font8x8.su ./Src/Font8x8Right.cyclo ./Src/Font8x8Right.d ./Src/Font8x8Right.o ./Src/Font8x8Right.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/I2cRxTx.cyclo ./Src/I2cRxTx.d ./Src/I2cRxTx.o ./Src/I2cRxTx.su ./Src/I2cSw.cyclo ./Src/I2cSw.d ./Src/I2cSw.o ./Src/I2cSw.su ./Src/KeyPressDetector.cyclo ./Src/KeyPressDetector.d ./Src/KeyPressDetector.o ./Src/KeyPressDetector.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/PowerControl.cyclo ./Src/PowerControl.d ./Src/PowerControl.o ./Src/PowerControl.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
+	-$(RM) ./Src/AdcSingleRead.cyclo ./Src/AdcSingleRead.d ./Src/AdcSingleRead.o ./Src/AdcSingleRead.su ./Src/BME280Sensor.cyclo ./Src/BME280Sensor.d ./Src/BME280Sensor.o ./Src/BME280Sensor.su ./Src/BatterySensor.cyclo ./Src/BatterySensor.d ./Src/BatterySensor.o ./Src/BatterySensor.su ./Src/DelayTimer.cyclo ./Src/DelayTimer.d ./Src/DelayTimer.o ./Src/DelayTimer.su ./Src/ErrorLed.cyclo ./Src/ErrorLed.d ./Src/ErrorLed.o ./Src/ErrorLed.su ./Src/Font8x8.cyclo ./Src/Font8x8.d ./Src/Font8x8.o ./Src/Font8x8.su ./Src/Font8x8Right.cyclo ./Src/Font8x8Right.d ./Src/Font8x8Right.o ./Src/Font8x8Right.su ./Src/GpioConfigurator.cyclo ./Src/GpioConfigurator.d ./Src/GpioConfigurator.o ./Src/GpioConfigurator.su ./Src/I2cRxTx.cyclo ./Src/I2cRxTx.d ./Src/I2cRxTx.o ./Src/I2cRxTx.su ./Src/I2cSw.cyclo ./Src/I2cSw.d ./Src/I2cSw.o ./Src/I2cSw.su ./Src/IntToStr.cyclo ./Src/IntToStr.d ./Src/IntToStr.o ./Src/IntToStr.su ./Src/KeyPressDetector.cyclo ./Src/KeyPressDetector.d ./Src/KeyPressDetector.o ./Src/KeyPressDetector.su ./Src/LcdScreen.cyclo ./Src/LcdScreen.d ./Src/LcdScreen.o ./Src/LcdScreen.su ./Src/PowerControl.cyclo ./Src/PowerControl.d ./Src/PowerControl.o ./Src/PowerControl.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su
 
 .PHONY: clean-Src
 

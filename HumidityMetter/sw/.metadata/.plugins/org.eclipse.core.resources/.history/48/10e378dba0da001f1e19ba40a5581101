@@ -1,0 +1,21 @@
+/*
+ * stdBuff.hpp
+ *
+ *  Created on: Jan 25, 2025
+ *      Author: Goggy
+ */
+
+#ifndef __STDBUFF_HPP__
+#define __STDBUFF_HPP__
+
+namespace stdAnalog
+{
+
+
+
+}	// namespace stdAnalog
+
+
+
+
+#endif	// __STDBUFF_HPP__

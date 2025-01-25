@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="while"/>
+		<item key="selection" value="PORTRAIT"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="while"/>
-			<item value="ADC1"/>
-			<item value="ADC_SR_EOC"/>
-			<item value="APB2ENR"/>
-			<item value="ADC_SR_EOS"/>
-			<item value="ADC2"/>
+			<item value="PORTRAIT"/>
+			<item value="SlaveAddr"/>
+			<item value="LANDSCAPE"/>
+			<item value="div"/>
+			<item value="div8"/>
+			<item value="/8"/>
+			<item value="7"/>
+			<item value="&lt;SlaveAddr, ColCnt, RowCnt, ST&gt;"/>
+			<item value="template&lt;const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST&gt;"/>
+			<item value="m_slaveAddress"/>
+			<item value="Driver"/>
+			<item value="TestCl"/>
+			<item value="Test"/>
+			<item value="I2cRxTx"/>
 			<item value="main("/>
-			<item value="ADCPRE"/>
-			<item value="SQR2"/>
-			<item value="sqr1"/>
-			<item value="smpr"/>
-			<item value="adon"/>
-			<item value="Init"/>
-			<item value="ShowBME280Error"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
+			<item value="&lt;SlaveAddr, ColCnt, RowCnt, ST, XT, YT&gt;"/>
+			<item value="template&lt;const uint8_t SlaveAddr, const uint8_t ColCnt, const uint8_t RowCnt, const enum ScreenType ST, const enum XType XT, const enum YType YT&gt;"/>
+			<item value="I2cClass::"/>
+			<item value="I2cClass"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1022"/>
-		<item key="DIALOG_Y_ORIGIN" value="266"/>
+		<item key="DIALOG_X_ORIGIN" value="1328"/>
+		<item key="DIALOG_Y_ORIGIN" value="305"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
