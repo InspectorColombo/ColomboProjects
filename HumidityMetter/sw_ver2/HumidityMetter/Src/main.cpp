@@ -422,19 +422,22 @@ int main(void)
 
 			lcd.GotoXY(0, 0);
 			lcd.Print(intToStr::ToDec((uint16_t)(12345), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
-			lcd.GotoXY(0, 1);
+			lcd.NewLine();
 			lcd.Print(intToStr::ToDec((uint16_t)(1234), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
-			lcd.GotoXY(0, 2);
+			lcd.NewLine();
 			lcd.Print(intToStr::ToDec((uint16_t)(123), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
-			lcd.GotoXY(0, 3);
+			lcd.NewLine();
 			lcd.Print(intToStr::ToDec((uint16_t)(12), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
-			lcd.GotoXY(0, 4);
+			lcd.NewLine();
 			lcd.Print(intToStr::ToDec((uint16_t)(1), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
-			lcd.GotoXY(0, 5);
+			lcd.NewLine();
 			lcd.Print(intToStr::ToDec((uint16_t)(0), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
-			lcd.GotoXY(0, 6);
-			lcd.Print(intToStr::ToDec((int16_t)(-1), intToStr::DDT_LEFT_ALIGN | intToStr::DDT_ENABLE_ZEROS | intToStr::DDT_SIGN, 5));
-
+			lcd.NewLine();
+			lcd.Print(intToStr::ToDec((int16_t)(-32767), intToStr::DDT_LEFT_ALIGN | intToStr::DDT_ENABLE_ZEROS | intToStr::DDT_SIGN, 5));
+			lcd.Print('.');
+			lcd.Print('0');
+			lcd.Print('0');
+			lcd.Print('\xc9');
 
 			//lcd.Print(0,3, intToStr::ToDec((uint32_t)(1234567890), /*intToStr::DDT_LEFT_ALIGN |*/ intToStr::DDT_DISABLE_ZEROS, 5));
 			//lcd.Print(0,5, intToStr::ToDec((int64_t)(-1234567890)));
