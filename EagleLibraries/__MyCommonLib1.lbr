@@ -3089,6 +3089,15 @@
 <text x="4.445" y="-1.905" size="1.27" layer="52" font="vector" ratio="20" rot="MR0">4</text>
 <smd name="4" x="3.81" y="3" dx="2" dy="6" layer="1"/>
 </package>
+<package name="PIN1X1_2.5X2.5MM">
+<smd name="1" x="0" y="0" dx="2.5" dy="2.5" layer="1" rot="R180"/>
+<wire x1="-1.05" y1="1.05" x2="1.05" y2="1.05" width="0.4" layer="51"/>
+<wire x1="1.05" y1="1.05" x2="1.05" y2="-1.05" width="0.4" layer="51"/>
+<wire x1="1.05" y1="-1.05" x2="-1.05" y2="-1.05" width="0.4" layer="51"/>
+<wire x1="-1.05" y1="-1.05" x2="-1.05" y2="1.05" width="0.4" layer="51"/>
+<text x="0" y="0" size="1.27" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="R">
@@ -5271,6 +5280,14 @@
 </technologies>
 </device>
 <device name="3.5MM_DRILL" package="PIN1X1_D3.5MM">
+<connects>
+<connect gate="X$1" pin="1" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="PAD_2.5X2.5" package="PIN1X1_2.5X2.5MM">
 <connects>
 <connect gate="X$1" pin="1" pad="1"/>
 </connects>
