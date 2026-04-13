@@ -8,7 +8,7 @@
 </settings>
 <grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="10" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -23,18 +23,18 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
@@ -46,19 +46,19 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="no"/>
@@ -373,27 +373,90 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="U1" library="__MyCommonLib1" package="SOIC8" value="LM358" x="8.7" y="8.5" rot="R180"/>
-<element name="C1" library="__MyCommonLib1" package="RSMD_0603" value="*" x="13.3" y="10" rot="R270"/>
-<element name="R1" library="__MyCommonLib1" package="RSMD_0603" value="22K" x="12.2" y="3.9" rot="R270"/>
-<element name="U2" library="__MyCommonLib1" package="SOT23" value="TL431" x="15.84" y="2.81"/>
-<element name="X1" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="GND" x="19.5" y="2"/>
-<element name="X2" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="+12V" x="1.7" y="1.6"/>
-<element name="X3" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="CS_IN" x="5.3" y="1.6"/>
-<element name="X4" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="VReg_OUT" x="1.75" y="13.3"/>
-<element name="R2" library="__MyCommonLib1" package="RSMD_0805" value="10R" x="2.8" y="4.5" rot="R180"/>
-<element name="R3" library="__MyCommonLib1" package="RSMD_0603" value="5K1" x="4.5" y="13" rot="R270"/>
-<element name="C2" library="__MyCommonLib1" package="RSMD_0805" value="0.47uF x 16V" x="10.3" y="12.8" rot="R180"/>
-<element name="R4" library="__MyCommonLib1" package="RSMD_0603" value="*" x="8.5" y="1.3" rot="R180"/>
-<element name="C3" library="__MyCommonLib1" package="RSMD_0603" value="1n0 16V" x="13.3" y="7" rot="R270"/>
-<element name="C4" library="__MyCommonLib1" package="RSMD_0603" value="*" x="15.8" y="9.5"/>
-<element name="R5" library="__MyCommonLib1" package="RSMD_0603" value="*" x="17.1" y="7" rot="R90"/>
-<element name="R6" library="__MyCommonLib1" package="RSMD_0603" value="680K" x="15.2" y="7" rot="R90"/>
-<element name="C5" library="__MyCommonLib1" package="RSMD_0603" value="0.1uF x 16V" x="12" y="1.3" rot="R180"/>
-<element name="R7" library="__MyCommonLib1" package="RSMD_0805" value="5K1" x="8.6" y="4" rot="R180"/>
-<element name="R8" library="__MyCommonLib1" package="RSMD_0603" value="10K" x="15.8" y="11.4" rot="R180"/>
-<element name="J1" library="__MyCommonLib1" package="RSMD_0805" value="0" x="18.6" y="11.6" rot="R270"/>
-<element name="D1" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BAT54A" x="2.5" y="8.4"/>
+<element name="U1" library="__MyCommonLib1" package="SOIC8" value="LM358" x="8.7" y="8.5" smashed="yes" rot="R180">
+<attribute name="NAME" x="8.475" y="10.64" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="7.455" y="10.44" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="C1" library="__MyCommonLib1" package="RSMD_0603" value="*" x="13.3" y="10" smashed="yes" rot="R270">
+<attribute name="NAME" x="11.4" y="10.4" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="12.9" y="10.3" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="R1" library="__MyCommonLib1" package="RSMD_0603" value="22K" x="12.2" y="3.9" smashed="yes" rot="R270">
+<attribute name="NAME" x="11.7" y="4.3" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="11.7" y="5" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="U2" library="__MyCommonLib1" package="SOT23" value="TL431" x="15.84" y="2.81" smashed="yes">
+<attribute name="NAME" x="15.84" y="2.81" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="15.84" y="2.81" size="0.8128" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="X1" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="GND" x="19.5" y="2" smashed="yes">
+<attribute name="NAME" x="19.2" y="-1.4" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="20.2" y="-1.3" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="X2" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="+12V" x="1.7" y="1.6" smashed="yes">
+<attribute name="NAME" x="0.3" y="-0.4" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="1.8" y="-0.3" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="X3" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="CS_IN" x="5.3" y="1.6" smashed="yes">
+<attribute name="NAME" x="4.4" y="-0.3" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="5.7" y="-0.3" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="X4" library="__MyCommonLib1" package="PIN1X1_2.5X2.5MM" value="VReg_OUT" x="1.75" y="13.3" smashed="yes">
+<attribute name="NAME" x="-0.65" y="12.9" size="0.8128" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="-0.45" y="14.5" size="0.8128" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="R2" library="__MyCommonLib1" package="RSMD_0805" value="10R" x="2.8" y="4.5" smashed="yes" rot="R180">
+<attribute name="NAME" x="-0.4" y="4.4" size="0.8128" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="3.8" y="4.9" size="0.8128" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="R3" library="__MyCommonLib1" package="RSMD_0603" value="5K1" x="4.5" y="13" smashed="yes" rot="R270">
+<attribute name="NAME" x="4.2" y="17.4" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="4.1" y="14.2" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="C2" library="__MyCommonLib1" package="RSMD_0805" value="0.47uF x 16V" x="10.3" y="12.8" smashed="yes" rot="R180">
+<attribute name="NAME" x="8.4" y="15.5" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="7.2" y="16.6" size="0.8128" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="R4" library="__MyCommonLib1" package="RSMD_0603" value="*" x="8.5" y="1.3" smashed="yes" rot="R180">
+<attribute name="NAME" x="9.1" y="-0.4" size="0.8128" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="8.9" y="1.6" size="0.8128" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="C3" library="__MyCommonLib1" package="RSMD_0603" value="1n0 16V" x="13.3" y="7" smashed="yes" rot="R270">
+<attribute name="NAME" x="27.1" y="5.2" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="22.3" y="8.1" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="C4" library="__MyCommonLib1" package="RSMD_0603" value="*" x="15.8" y="9.5" smashed="yes">
+<attribute name="NAME" x="24.6" y="9.3" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="15.4" y="9" size="0.8128" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="R5" library="__MyCommonLib1" package="RSMD_0603" value="*" x="17.1" y="7" smashed="yes" rot="R90">
+<attribute name="NAME" x="29.2" y="5.3" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="17.4" y="6.5" size="0.8128" layer="27" font="vector" ratio="20" rot="R90"/>
+</element>
+<element name="R6" library="__MyCommonLib1" package="RSMD_0603" value="680K" x="15.2" y="7" smashed="yes" rot="R90">
+<attribute name="NAME" x="28.1" y="5.2" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="24" y="8.2" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="C5" library="__MyCommonLib1" package="RSMD_0603" value="0.1uF x 16V" x="12" y="1.3" smashed="yes" rot="R180">
+<attribute name="NAME" x="12.3" y="-1.7" size="0.8128" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="10.7" y="-1.1" size="0.8128" layer="27" font="vector" ratio="20"/>
+</element>
+<element name="R7" library="__MyCommonLib1" package="RSMD_0805" value="5K1" x="8.6" y="4" smashed="yes" rot="R180">
+<attribute name="NAME" x="9.5" y="3.9" size="0.8128" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="9.7" y="4.9" size="0.8128" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="R8" library="__MyCommonLib1" package="RSMD_0603" value="10K" x="15.8" y="11.4" smashed="yes" rot="R180">
+<attribute name="NAME" x="16.3" y="13.2" size="0.8128" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="17" y="11.8" size="0.8128" layer="27" font="vector" ratio="20" rot="R180"/>
+</element>
+<element name="J1" library="__MyCommonLib1" package="RSMD_0805" value="0" x="18.6" y="11.6" smashed="yes" rot="R270">
+<attribute name="NAME" x="18.2" y="11.7" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="18.2" y="13" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
+</element>
+<element name="D1" library="__MyCommonLib1" package="SOT23_SMALL_PADS" value="BAT54A" x="2.5" y="8.4" smashed="yes">
+<attribute name="NAME" x="-1.7" y="8.6" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="0.7" y="5.9" size="0.8128" layer="27" font="vector" ratio="20"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -412,7 +475,7 @@ design rules under a new name.</description>
 <wire x1="16.55" y1="11.4" x2="16.75" y2="11.6" width="0.4" layer="1"/>
 <wire x1="16.75" y1="11.6" x2="20.1" y2="11.6" width="0.4" layer="1"/>
 <wire x1="20.1" y1="11.6" x2="20.6" y2="11.1" width="0.4" layer="1"/>
-<polygon width="0.4" layer="1">
+<polygon width="0.4" layer="1" spacing="0.8128">
 <vertex x="11.1" y="10.3"/>
 <vertex x="12.2" y="10.3"/>
 <vertex x="12.6" y="10.7"/>
@@ -436,7 +499,7 @@ design rules under a new name.</description>
 <wire x1="15.63" y1="1.3" x2="15.84" y2="1.51" width="0.6" layer="1"/>
 <wire x1="15.84" y1="1.51" x2="19.01" y2="1.51" width="1" layer="1"/>
 <wire x1="19.01" y1="1.51" x2="19.5" y2="2" width="1" layer="1"/>
-<polygon width="0.4" layer="1">
+<polygon width="0.4" layer="1" spacing="0.8128">
 <vertex x="18.6" y="5.4"/>
 <vertex x="18.6" y="4"/>
 <vertex x="18.9" y="3.7"/>
@@ -472,7 +535,7 @@ design rules under a new name.</description>
 <wire x1="6.7" y1="4" x2="6.2" y2="4.5" width="0.8" layer="1"/>
 <wire x1="6.00125" y1="6.595" x2="5.9" y2="6.49375" width="0.6" layer="1"/>
 <wire x1="5.9" y1="6.49375" x2="5.9" y2="4.8" width="0.6" layer="1"/>
-<polygon width="0.4" layer="1">
+<polygon width="0.4" layer="1" spacing="0.8128">
 <vertex x="5.8" y="4.8"/>
 <vertex x="6.7" y="3.9"/>
 <vertex x="7.6" y="3.9"/>
