@@ -2396,7 +2396,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R24" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1M0"/>
 <part name="R25" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K1"/>
 <part name="T6" library="__MyCommonLib1" deviceset="BC857" device="SOT23" value="BC857"/>
-<part name="T7" library="__MyCommonLib1" deviceset="BC847" device="SOT23"/>
+<part name="T7" library="__MyCommonLib1" deviceset="BC847" device="SOT23" value="BC847"/>
 <part name="GND23" library="supply1" deviceset="GND" device=""/>
 <part name="C9" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF x 16V"/>
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
