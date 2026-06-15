@@ -6,36 +6,36 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
-<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
-<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
-<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
-<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
-<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
-<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
-<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
-<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
-<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
-<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
-<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
-<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
-<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="no"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="yes" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="yes" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="yes" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="yes" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="yes" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="yes" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="yes" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="yes" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="yes" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="yes" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="yes" active="no"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -44,8 +44,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -53,12 +53,12 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -2334,7 +2334,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="FRAME4" library="frames" deviceset="A4L-LOC" device="" value="LampSoftStart"/>
 <part name="U1" library="__MyCommonLib1" deviceset="LM324" device="" value="TP2274"/>
 <part name="U2" library="__MyCommonLib1" deviceset="AMS1117" device="SOT223_WS" value="AMS1117"/>
-<part name="C1" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="47uFx16V"/>
+<part name="C1" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="22uFx16V"/>
 <part name="C2" library="__MyCommonLib1" deviceset="CE" device="10MM" value="470uFx25V"/>
 <part name="X1" library="__MyCommonLib1" deviceset="RPI_MALE" device="6.3_TWO_HOLES" value="+12V"/>
 <part name="D3" library="__MyCommonLib1" deviceset="B120" device="(DO-214AC)" value="B120"/>
@@ -2373,20 +2373,20 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R7" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="20R"/>
 <part name="R8" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
-<part name="R9" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="51K"/>
-<part name="R11" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="36K"/>
-<part name="R12" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="100K"/>
+<part name="R9" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="13K"/>
+<part name="R11" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
+<part name="R12" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="82K"/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="R13" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="51K"/>
 <part name="R14" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="51K"/>
 <part name="R15" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="51K"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
-<part name="R16" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="10K"/>
+<part name="R16" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="8K2"/>
 <part name="C6" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="1nF x 16V"/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="C7" library="__MyCommonLib1" deviceset="C" device="SMD_0805" value="0.1uF x 16V"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
-<part name="C8" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="47uFx16V"/>
+<part name="C8" library="__MyCommonLib1" deviceset="CE" device="6.3MM" value="22uFx16V"/>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="X5" library="__MyCommonLib1" deviceset="PIN1X3" device="(2.54MM_WITH_CLAMP)" value="SET_DUTY_CYCLE(10K)"/>
@@ -2424,7 +2424,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R28" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="15K"/>
 <part name="R29" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="1K6"/>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
-<part name="R10" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="4K7"/>
+<part name="R10" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="5K1"/>
 <part name="R30" library="__MyCommonLib1" deviceset="R" device="SMD_0805" value="20K"/>
 <part name="D5" library="__MyCommonLib1" deviceset="LL4147" device="SOD-80" value="LL4148"/>
 <part name="T8" library="__MyCommonLib1" deviceset="2N7002" device="SOT23" value="2N7002"/>
@@ -2447,11 +2447,13 @@ DIN A4, landscape with location and doc. field</description>
 <sheets>
 <sheet>
 <plain>
-<text x="15.24" y="77.47" size="1.27" layer="94" font="vector" ratio="20" rot="R180">+3.310V</text>
-<text x="22.86" y="63.5" size="1.27" layer="94" font="vector" ratio="20">Umin=0.9181V</text>
-<text x="22.86" y="62.23" size="1.27" layer="94" font="vector" ratio="20">Umax=4.9981V</text>
-<text x="60.96" y="91.44" size="1.27" layer="94" font="vector" ratio="20">+4.0V</text>
+<text x="15.24" y="77.47" size="1.27" layer="94" font="vector" ratio="20" rot="R180">+4.347V</text>
+<text x="22.86" y="63.5" size="1.27" layer="94" font="vector" ratio="20">Umin=0.832V</text>
+<text x="22.86" y="62.23" size="1.27" layer="94" font="vector" ratio="20">Umax=7.05V</text>
+<text x="60.96" y="91.44" size="1.27" layer="94" font="vector" ratio="20">+5V</text>
 <text x="54.61" y="71.12" size="1.27" layer="94" font="vector" ratio="20">50KHz_Saw_1.0_to_5.0V</text>
+<text x="63.5" y="15.24" size="1.27" layer="94" font="vector" ratio="20">0.0V to 2.0V rise</text>
+<text x="63.5" y="12.7" size="1.27" layer="94" font="vector" ratio="20">Trise = 5.5sec</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0" smashed="yes">
@@ -2678,8 +2680,8 @@ DIN A4, landscape with location and doc. field</description>
 <attribute name="NAME" x="55.88" y="12.7" size="1.27" layer="95" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="55.88" y="11.43" size="1.27" layer="96" font="vector" ratio="20" rot="R180"/>
 </instance>
-<instance part="GND19" gate="1" x="63.5" y="7.62" smashed="yes">
-<attribute name="VALUE" x="62.23" y="5.08" size="1.27" layer="96" font="vector" ratio="20"/>
+<instance part="GND19" gate="1" x="83.82" y="17.78" smashed="yes">
+<attribute name="VALUE" x="82.55" y="15.24" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
 <instance part="GND20" gate="1" x="58.42" y="7.62" smashed="yes">
 <attribute name="VALUE" x="57.15" y="5.08" size="1.27" layer="96" font="vector" ratio="20"/>
@@ -2813,13 +2815,13 @@ DIN A4, landscape with location and doc. field</description>
 <instance part="GND32" gate="1" x="106.68" y="137.16" smashed="yes">
 <attribute name="VALUE" x="104.14" y="134.62" size="1.27" layer="96" font="vector" ratio="20"/>
 </instance>
-<instance part="R10" gate="R$1" x="63.5" y="17.78" smashed="yes" rot="MR0">
-<attribute name="NAME" x="66.04" y="19.05" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="66.04" y="17.78" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+<instance part="R10" gate="R$1" x="73.66" y="22.86" smashed="yes" rot="MR270">
+<attribute name="NAME" x="71.12" y="21.59" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="76.2" y="21.59" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
 <instance part="R30" gate="R$1" x="73.66" y="25.4" smashed="yes" rot="MR270">
-<attribute name="NAME" x="71.12" y="24.13" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
-<attribute name="VALUE" x="71.12" y="22.86" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
+<attribute name="NAME" x="71.12" y="27.94" size="1.27" layer="95" font="vector" ratio="20" rot="MR180"/>
+<attribute name="VALUE" x="76.2" y="27.94" size="1.27" layer="96" font="vector" ratio="20" rot="MR180"/>
 </instance>
 <instance part="D5" gate="D1" x="88.9" y="33.02" smashed="yes" rot="R270">
 <attribute name="NAME" x="86.36" y="36.83" size="1.27" layer="95" font="vector" ratio="20"/>
@@ -3039,7 +3041,8 @@ DIN A4, landscape with location and doc. field</description>
 <segment>
 <pinref part="R10" gate="R$1" pin="PIN0"/>
 <pinref part="GND19" gate="1" pin="GND"/>
-<wire x1="63.5" y1="10.16" x2="63.5" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="20.32" x2="83.82" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="22.86" x2="78.74" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="T8" gate="G$1" pin="SOURCE"/>
@@ -3550,6 +3553,7 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="63.5" y1="30.48" x2="63.5" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="R30" gate="R$1" pin="PIN1"/>
 <wire x1="63.5" y1="25.4" x2="63.5" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="22.86" x2="68.58" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="25.4" x2="63.5" y2="25.4" width="0.1524" layer="91"/>
 <junction x="63.5" y="25.4"/>
 <pinref part="U1" gate="OP1" pin="IN-"/>
