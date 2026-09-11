@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.5" unitdist="mm" unit="mm" style="lines" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -23,9 +23,9 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
@@ -37,7 +37,7 @@
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -67,7 +67,7 @@
 <layer number="96" name="Values" color="7" fill="1" visible="no" active="no"/>
 <layer number="97" name="Info" color="7" fill="1" visible="no" active="no"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
-<layer number="116" name="centerDrill" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="116" name="centerDrill" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
 <plain>
@@ -105,6 +105,27 @@
 <circle x="78.12" y="26.12" radius="1" width="1.6" layer="116"/>
 <circle x="59.88" y="26.12" radius="1" width="1.6" layer="116"/>
 <circle x="81.75" y="48" radius="0.75" width="1.1" layer="116"/>
+<circle x="7.9" y="26.1" radius="2.5" width="5" layer="30"/>
+<circle x="26.1" y="26.1" radius="2.5" width="5" layer="30"/>
+<circle x="7.9" y="7.9" radius="2.5" width="5" layer="30"/>
+<circle x="26.1" y="7.9" radius="2.5" width="5" layer="30"/>
+<circle x="59.9" y="7.9" radius="2.5" width="5" layer="30"/>
+<circle x="59.9" y="26.2" radius="2.5" width="5" layer="30"/>
+<circle x="78.2" y="7.9" radius="2.5" width="5" layer="30"/>
+<circle x="78.2" y="26.2" radius="2.5" width="5" layer="30"/>
+<circle x="12.8" y="103.2" radius="2.5" width="5" layer="30"/>
+<circle x="12.9" y="84.8" radius="2.5" width="5" layer="30"/>
+<circle x="31.2" y="84.8" radius="2.5" width="5" layer="30"/>
+<circle x="31.2" y="103.2" radius="2.5" width="5" layer="30"/>
+<rectangle x1="15" y1="29.4" x2="19.5" y2="33" layer="30"/>
+<rectangle x1="65" y1="29.5" x2="72.5" y2="33" layer="30"/>
+<rectangle x1="16" y1="78.5" x2="28.2" y2="82" layer="30"/>
+<rectangle x1="71.4" y1="82" x2="83.6" y2="85.5" layer="30"/>
+<rectangle x1="73.6" y1="100" x2="81" y2="103.4" layer="30"/>
+<rectangle x1="0" y1="0" x2="86" y2="5" layer="30"/>
+<rectangle x1="0" y1="0" x2="5" y2="110" layer="30"/>
+<rectangle x1="0" y1="105" x2="86" y2="110" layer="30"/>
+<rectangle x1="81" y1="0" x2="86" y2="110" layer="30"/>
 </plain>
 <libraries>
 <library name="__MyCommonLib1">
